@@ -1,0 +1,59 @@
+# Public records
+
+Public records are the lifeblood of investigative reporting. They carry their own philosophical framework, in a manner of speaking.
+
+* Sunlight is the best disinfectant. Corruption hides in the shadows.
+* You paid for it with your taxes. It should be yours (with exceptions).
+* Journalism with a capital J is about holding the powerful accountable for their actions.
+
+Keeping those things in mind as you navigate public records is helpful.
+
+## Federal law
+
+Your access to public records and public meetings is a matter of the law. As a journalist, it is your job to know this law better than most lawyers. Which law applies depends on which branch of government you are asking.
+
+The Federal Government is covered by the Freedom of Information Act, or FOIA. FOIA is not a universal term. Do not use it if you are not talking to a federal agency. FOIA is a beacon of openness to the world. FOIA is deeply flawed and frustrating.
+
+Why? 
+
+* There is no real timetable with FOIA. Requests can take months, even years.
+* As a journalist, you can ask that your request be expedited. 
+* Guess what? That requires review. More delays.
+* Exemptions are broad. National security, personal privacy, often overused.
+* Denied? You can appeal. More delays.
+
+The law was enacted in 1966, but it’s still poorly understood by most federal employees, if not outright flouted by political appointees. Lawsuits are common. 
+
+Post 9/11, the Bush administration rolled back many agency rules. Obama ordered a "presumption of openness" but followed it with some of the most restrictive policies ever seen. The Trump Administration, similar to the Obama administration, claims to be the most transparent administration, but has steadily removed records from open access and broadly denied access to records. 
+
+Result? FOIA is in trouble.
+
+[SPJ is a good resource](https://www.spj.org/foi-guide-pros.asp). 
+
+## State law
+
+States are -- generally -- more open than the federal government. The distance between the government and the governed is smaller. Some states, like Florida and Texas, are very open. Others, like Virginia and Pennsylvania, are not.
+
+Nebraska? Somewhere in the middle. Better than some, worse than others.
+
+Under Nebraska law: 
+
+* You are entitled to see and copy public records.
+* They can charge you a fee for those copies.
+* They do not have to give you records in a format different from what they keep them in.
+
+With a written request, Nebraska public officials have **four days** to respond. If Nebraska public officials deny your request, they must do so **in writing** specifying their reasons. If it will take more than four days, they must tell you, in writing, why and how long it will take.
+
+[The Reporters Committee For Freedom of the Press is a good resource](https://www.rcfp.org/open-government-guide/nebraska/).
+
+Please and thank you will get you more records than any lawyer or well written request. When requesting data, you are going to scare the press office and you are going to confuse the agency lawyer. Request to have their data person on the phone.
+
+**Be. Nice.**
+
+Hunting for records is like any other kind of reporting -- you have to do research. You have to ask questions. What records do you keep? For how long?
+
+A good source of info? Records retention schedules, often required by law or administrative rule at an agency. [Nebraska's is particularly good](http://www.sos.ne.gov/records-management/retention_schedules.html). 
+
+For an example, let's say we wanted to look at nursing homes in Nebraska, because they're closing down quickly. If we just wanted a data set of licensed nursing homes in the state, our options online are ... not good. The Department of Health and Human Services [publishes a list online](http://dhhs.ne.gov/licensure/Documents/LTCRoster.pdf), but it's a horribly formatted PDF. 
+
+But what does the agency keep? Looking at [DHHS's public health departments records retention schedule](https://sos.nebraska.gov/sites/sos.nebraska.gov/files/doc/records-management/state-government/Health-and-Human-Services/150-6-dhhs-licensure-unit-website-5-12-2014.pdf), you'll find a lot more. And that opens doors for public records requests.

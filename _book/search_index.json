@@ -1,0 +1,11 @@
+[
+["index.html", "Data Journalism with R and the Tidyverse Chapter 1 Introduction", " Data Journalism with R and the Tidyverse Matt Waite 2019-12-26 Chapter 1 Introduction 1.0.1 What we’ll cover Public records and open data Installations R Basics Replication Data basics and structures Exploratory data analysis Aggregates Mutating Filters Data smells Cleaning data I Cleaning data II Pulling data from PDFs Advanced analysis: Correlations and regressions Advanced analysis: Logistic regression Basic data scraping Intermediate data scraping Getting data from APIs: Census Visualizing for reporting: Basics Visualizing for reporting: More forms Visualizing for reporting: Faceting Geographic data basics Geographic queries Geographic visualization Text analysis basics Text analysis Writing with and about data Data journalism ethics "],
+["public-records.html", "Chapter 2 Public records", " Chapter 2 Public records "],
+["installations.html", "Chapter 3 Installations", " Chapter 3 Installations Here is a review of existing methods. "],
+["methods.html", "Chapter 4 Methods", " Chapter 4 Methods We describe our methods in this chapter. "],
+["applications.html", "Chapter 5 Applications 5.1 Example one 5.2 Example two", " Chapter 5 Applications Some significant applications are demonstrated in this chapter. 5.1 Example one 5.2 Example two "],
+["final-words.html", "Chapter 6 Final Words", " Chapter 6 Final Words We have finished a nice book. "],
+["data-basics.html", "Chapter 7 Data basics", " Chapter 7 Data basics "],
+["exploratory-data-analysis.html", "Chapter 8 Exploratory data analysis", " Chapter 8 Exploratory data analysis "],
+["aggregates.html", "Chapter 9 Aggregates", " Chapter 9 Aggregates "]
+]
