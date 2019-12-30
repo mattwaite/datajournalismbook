@@ -50,7 +50,6 @@ This book is the collection of class materials for the author's Data Journalism 
 * R Basics
 * Replication
 * Data basics and structures
-* Exploratory data analysis
 * Aggregates
 * Mutating
 * Filters

@@ -1,0 +1,151 @@
+# Aggregates
+
+R is a statistical programming language that is purpose built for data analysis.
+
+Base R does a lot, but there are a mountain of external libraries that do things to make R better/easier/more fully featured. We already installed the tidyverse -- or you should have if you followed the instructions for the last assignment -- which isn't exactly a library, but a collection of libraries. Together, they make up the tidyverse. Individually, they are extraordinarily useful for what they do. We can load them all at once using the tidyverse name, or we can load them individually. Let's start with individually. 
+
+The two libraries we are going to need for this assignment are `readr` and `dplyr`. The library `readr` reads different types of data in. For this assignment, we're going to read in csv data or Comma Separated Values data. That's data that has a comma between each column of data. 
+
+Then we're going to use `dplyr` to analyze it. 
+
+To use a library, you need to import it. Good practice -- one I'm going to insist on -- is that you put all your library steps at the top of your notebooks. 
+
+That code looks like this:
+
+```{r}
+library(readr)
+```
+
+To load them both, you need to do this:
+
+```{r}
+library(readr)
+library(dplyr)
+```
+
+You can keep doing that for as many libraries as you need. I've seen notebooks with 10 or more library imports.
+
+## Importing data
+
+The first thing we need to do is get some data to work with. We do that by reading it in. In our case, we're going to read data from a csv file -- a comma-separated values file.
+
+The CSV file we're going to read from is a [Nebraska Game and Parks Commission dataset](https://unl.box.com/s/xjipgkesl9rjmng4weg77vb73xt41apf) of confirmed mountain lion sightings in Nebraska. There are, on occasion, fierce debates about mountain lions and if they should be hunted in Nebraska. This dataset can tell us some interesting things about that debate. 
+
+So step 1 is to import the data. The code looks *something* like this, but hold off copying it just yet:
+
+`mountainlions <- read_csv("~/Documents/Data/mountainlions.csv")`
+
+Let's unpack that.
+
+The first part -- mountainlions -- is the name of your variable. A variable is just a name of a thing. In this case, our variable is a dataframe, which is R's way of storing data. We can call this whatever we want. I always want to name dataframes after what is in it. In this case, we're going to import a dataset of mountain lion sightings from the Nebraska Game and Parks Commission. **Variable names, by convention are one word all lower case**. You can end a variable with a number, but you can't start one with a number.
+
+The <- bit, you'll recall from the basics, is the **variable assignment operator**. It's how we know we're assigning something to a word. Think of the arrow as saying "Take everything on the right of this arrow and stuff it into the thing on the left." So we're creating an empty vessel called mountainlions and stuffing all this data into it. 
+
+The `read_csv` bits are pretty obvious, except for one thing. What happens in the quote marks is the path to the data. In there, I have to tell R where it will find the data. 
+
+>The easiest thing to do, if you are confused about how to find your data, is to put your data in the same folder as as your notebook (you'll have to save that notebook first). If you do that, then you just need to put the name of the file in there (mountainlions.csv). 
+
+In my case, the file path I've got starts with a ~ character. That's a shortcut for my home directory. It's the same on your computer. Your home directory is where your Documents, Desktop and Downloads directories are. I've got a folder called Documents in my home directory, and in there is a folder called Data that has the file called mountainlions.csv in it. Thus, `~/Documents/Data/mountainlions.csv`
+
+Some people -- insane people -- leave the data in their downloads folder. The data path then would be `~/Downloads/nameofthedatafilehere.csv` on PC or Mac.
+
+A quick way to find your data file? The tab key. If you start your code `dataframenamehere <- read_csv(")` and after typing the first quote mark you hit tab, it will show you the files in the folder you are in. With that, you can start to narrow in on where you need to go. 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BZit27dLwbo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+**So what you put in your import step will be different from mine**. Your first task is to import the data. Here's mine. Use the tab key to find your data file and get the correct path.
+
+```{r}
+mountainlions <- read_csv("data/mountainlions.csv")
+```
+
+Now we can inspect the data we imported. What does it look like? To do that, we use `head(mountainlions)` to **show the headers and the first six rows of data**. If we wanted to see them all, we could just simply enter `mountainlions` and run it.
+
+To get the number of records in our dataset, we run `nrow(mountainlions)`
+
+```{r}
+head(mountainlions)
+nrow(mountainlions)
+```
+
+## Group by and count
+
+So what if we wanted to know how many mountain lion sightings there were in each county? 
+
+To do that by hand, we'd have to take each of the 393 records and sort them into a pile. We'd put them in groups and then count them.
+
+`dplyr` has a group by function in it that does just this. A massive amount of data analysis involves grouping like things together and then doing simple things like counting them, or averaging them together. So it's a good place to start.
+
+So to do this, we'll take our dataset and we'll introduce a new operator: `%>%`. The best way to read that operator, in my opinion, is to interpret that as "and then do this." 
+
+We're going to establish a pattern that will come up again and again throughout this book: `data %>% function`. The first step of every analysis starts with the data being used. Then we apply functions to the data. 
+
+In our case, the pattern that you'll use many, many times is: `data %>% group_by(FIELD NAME) %>% summarize(VARIABLE NAME = AGGREGATE FUNCTION(FIELD NAME))`
+
+Here's the code:
+
+```{r}
+mountainlions %>%
+  group_by(COUNTY) %>%
+  summarise(
+    total = n()
+  )
+```
+
+So let's walk through that. We start with our dataset -- `mountainlions` -- and then we tell it to group the data by a given field in the data. In this case, we wanted to group together all the counties, signified by the field name COUNTY, which you could get from looking at `head(mountainlions)`. After we group the data, we need to count them up. In dplyr, we use `summarize` [which can do more than just count things](http://dplyr.tidyverse.org/reference/summarise.html). Inside the parentheses in summarize, we set up the summaries we want. In this case, we just want a count of the counties: `total = n(),` says create a new field, called `total` and set it equal to `n()`, which might look weird, but it's common in stats. The number of things in a dataset? Statisticians call in n. There are n number of incidents in this dataset. So `n()` is a function that counts the number of things there are. 
+
+And when we run that, we get a list of counties with a count next to them. But it's not in any order. So we'll add another And Then Do This %>% and use `arrange`. Arrange does what you think it does -- it arranges data in order. By default, it's in ascending order -- smallest to largest. But if we want to know the county with the most mountain lion sightings, we need to sort it in descending order. That looks like this:
+
+```{r}
+mountainlions %>%
+  group_by(COUNTY) %>%
+  summarise(
+    count = n()
+  ) %>% arrange(desc(count))
+```
+
+We can, if we want, group by more than one thing. So how are these sightings being confirmed? To do that, we can group by County and "Cofirm Type", which is how the state misspelled Confirm. But note something in this example below:
+
+```{r}
+mountainlions %>%
+  group_by(COUNTY, `Cofirm Type`) %>%
+  summarise(
+    count = n()
+  ) %>% arrange(desc(count))
+```
+
+See it? When you have a field name that has two words, `readr` wraps it in back ticks, which is next to the 1 key on your keyboard. You can figure out which fields have back ticks around it by looking at the output of `readr`. Pay attention to that, because it's coming up again in the next section and will be a part of your homework.
+
+## Other aggregates: Mean and median
+
+In the last example, we grouped some data together and counted it up, but there's so much more you can do. You can do multiple measures in a single step as well.
+
+Let's look at some [salary data from the University of Nebraska](https://unl.box.com/s/09t2u4qoncfh6qlv2156flzlxb8ruzpq).
+
+```{r}
+salaries <- read_csv("data/nusalaries1819.csv")
+head(salaries)
+```
+
+In summarize, we can calculate any number of measures. Here, we'll use R's built in mean and median functions to calculate ... well, you get the idea.
+
+```{r}
+salaries %>%
+  summarise(
+    count = n(),
+    mean_salary = mean(`Budgeted Annual Salary`),
+    median_salary = median(`Budgeted Annual Salary`)
+  )
+```
+So there's 13,039 employees in the database, spread across four campuses plus the system office. The mean or average salary is about \$62,000, but the median salary is slightly more than \$51,000.
+
+Why? 
+
+Let's let sort help us. 
+```{r}
+salaries %>% arrange(desc(`Budgeted Annual Salary`))
+```
+
+Oh, right. In this dataset, the university pays a football coach $5 million. Extremes influence averages, not medians, and now you have your answer.  
+
+So when choosing a measure of the middle, you have to ask yourself -- could I have extremes? Because a median won't be sensitive to extremes. It will be the point at which half the numbers are above and half are below. The average or mean will be a measure of the middle, but if you have a bunch of low paid people and then one football coach, the average will be wildly skewed. Here, because there's so few highly paid football coaches compared to people who make a normal salary, the number is only slightly skewed in the grand scheme, but skewed nonetheless. 
