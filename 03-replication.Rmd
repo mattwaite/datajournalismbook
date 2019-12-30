@@ -159,4 +159,34 @@ For our purposes in this book, replication requires two things from you, the stu
 
 In an R Notebook, there are two blocks: A block that uses markdown, which has no special notation, and a code block. The code blocks can run mulitple languages inside R Studio, including Python, a general purpose scripting language; and SQL, or Structured Query Language, the language of databases. 
 
+For the rest of the class, we're going to be working in notebooks. In notebooks, you will both run your code and explain each step, much as I am doing here. 
 
+To start a notebook, you click on the green plus in the top left corner and go down to R Notebook. Do that now. 
+
+```{r, echo=FALSE}
+knitr::include_graphics(rep("images/verybasics2.png"))
+```
+
+You will see that the notebook adds a lot of text for you. It tells you how to work in notebooks -- and you should read it. The most important parts are these: 
+
+To add text, simply type. To add code you can click on the *Insert* button on the toolbar or by pressing *Cmd+Option+I* on Mac or *Ctl+Alt+I* on Windows.
+
+Highlight all that text and delete it. You should have a blank document. This document is called a R Markdown file -- it's a special form of text, one that you can style, and one you can include R in the middle of it. Markdown is a simple markup format that you can use to create documents. So first things first, let's give our notebook a big headline. Add this:
+
+`# My awesome notebook` 
+
+Now, under that, without any markup, just type This is my awesome notebook.
+
+Under that, you can make text bold by writing `It is **really** awesome`.
+
+If you want it italics, just do this on the next line: `No, it's _really_ awesome. I swear.`
+
+To see what it looks like without the markup, click the Preview or Knit button in the toolbar. That will turn your notebook into a webpage, with the formatting included.
+
+Throughout this book, we're going to use this markdown to explain what we are doing and, more importantly, why we are doing it. Explaining your thinking is a vital part of understanding what you are doing. 
+
+That explaination, plus the code, is the real power of notebooks. To add a block of code, follow the instructions from above: click on the *Insert* button on the toolbar or by pressing *Cmd+Option+I* on Mac or *Ctl+Alt+I* on Windows.
+
+In that window, use some of the code from above and add two numbers together. To see it run, click the green triangle on the right. That runs the chunk. You should see the answer to your addition problem. 
+
+And that, just that, is the foundation you need to start this book.
