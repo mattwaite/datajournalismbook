@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Aggregates | Data Journalism with R and the Tidyverse</title>
   <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
-  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Aggregates | Data Journalism with R and the Tidyverse" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Matt Waite" />
 
 
-<meta name="date" content="2019-12-30" />
+<meta name="date" content="2020-01-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="data-structures-and-types.html"/>
-
+<link rel="next" href="mutating-data.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -132,11 +132,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#data-journalism-history"><i class="fa fa-check"></i><b>1.1</b> Data journalism history</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#modern-data-journalism"><i class="fa fa-check"></i><b>1.2</b> Modern data journalism</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#installations"><i class="fa fa-check"></i><b>1.3</b> Installations</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#about-this-book"><i class="fa fa-check"></i><b>1.4</b> About this book</a></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#what-well-cover"><i class="fa fa-check"></i><b>1.5</b> What we’ll cover</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#modern-data-journalism"><i class="fa fa-check"></i><b>1.1</b> Modern data journalism</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installations"><i class="fa fa-check"></i><b>1.2</b> Installations</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#about-this-book"><i class="fa fa-check"></i><b>1.3</b> About this book</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#what-well-cover"><i class="fa fa-check"></i><b>1.4</b> What we’ll cover</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="public-records.html"><a href="public-records.html"><i class="fa fa-check"></i><b>2</b> Public records</a><ul>
 <li class="chapter" data-level="2.1" data-path="public-records.html"><a href="public-records.html#federal-law"><i class="fa fa-check"></i><b>2.1</b> Federal law</a></li>
@@ -163,6 +162,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="aggregates.html"><a href="aggregates.html#importing-data"><i class="fa fa-check"></i><b>6.1</b> Importing data</a></li>
 <li class="chapter" data-level="6.2" data-path="aggregates.html"><a href="aggregates.html#group-by-and-count"><i class="fa fa-check"></i><b>6.2</b> Group by and count</a></li>
 <li class="chapter" data-level="6.3" data-path="aggregates.html"><a href="aggregates.html#other-aggregates-mean-and-median"><i class="fa fa-check"></i><b>6.3</b> Other aggregates: Mean and median</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>7</b> Mutating data</a></li>
+<li class="chapter" data-level="8" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>8</b> Working with dates</a><ul>
+<li class="chapter" data-level="8.1" data-path="working-with-dates.html"><a href="working-with-dates.html#the-hard-way"><i class="fa fa-check"></i><b>8.1</b> The hard way</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -192,10 +195,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Then we’re going to use <code>dplyr</code> to analyze it.</p>
 <p>To use a library, you need to import it. Good practice – one I’m going to insist on – is that you put all your library steps at the top of your notebooks.</p>
 <p>That code looks like this:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(readr)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">library</span>(readr)</a></code></pre></div>
 <p>To load them both, you need to do this:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(readr)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">library</span>(readr)</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a></code></pre></div>
 <pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.5.2</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;dplyr&#39;</code></pre>
@@ -205,6 +208,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
+<p>But, because those two libraries – and several others that we’re going to use over the course of this class – are so commonly used, there’s a shortcut to loading all of the libraries we’ll need:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## ── Attaching packages ─────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.2.1     ✓ purrr   0.3.3
+## ✓ tibble  2.1.3     ✓ stringr 1.4.0
+## ✓ tidyr   1.0.0     ✓ forcats 0.4.0</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## Warning: package &#39;stringr&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## Warning: package &#39;forcats&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## ── Conflicts ────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
 <p>You can keep doing that for as many libraries as you need. I’ve seen notebooks with 10 or more library imports.</p>
 <div id="importing-data" class="section level2">
 <h2><span class="header-section-number">6.1</span> Importing data</h2>
@@ -225,7 +244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <iframe width="560" height="315" src="https://www.youtube.com/embed/BZit27dLwbo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
 <p><strong>So what you put in your import step will be different from mine</strong>. Your first task is to import the data. Here’s mine. Use the tab key to find your data file and get the correct path.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">mountainlions &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/mountainlions.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">mountainlions &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/mountainlions.csv&quot;</span>)</a></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   ID = col_double(),
@@ -235,7 +254,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## )</code></pre>
 <p>Now we can inspect the data we imported. What does it look like? To do that, we use <code>head(mountainlions)</code> to <strong>show the headers and the first six rows of data</strong>. If we wanted to see them all, we could just simply enter <code>mountainlions</code> and run it.</p>
 <p>To get the number of records in our dataset, we run <code>nrow(mountainlions)</code></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">head</span>(mountainlions)</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw">head</span>(mountainlions)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 4
 ##      ID `Cofirm Type` COUNTY       Date    
 ##   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;        &lt;chr&gt;   
@@ -245,7 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4     4 Mortality     Sioux        5/9/99  
 ## 5     5 Mortality     Box Butte    9/29/99 
 ## 6     6 Track         Scotts Bluff 11/12/99</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">nrow</span>(mountainlions)</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">nrow</span>(mountainlions)</a></code></pre></div>
 <pre><code>## [1] 393</code></pre>
 </div>
 <div id="group-by-and-count" class="section level2">
@@ -257,11 +276,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We’re going to establish a pattern that will come up again and again throughout this book: <code>data %&gt;% function</code>. The first step of every analysis starts with the data being used. Then we apply functions to the data.</p>
 <p>In our case, the pattern that you’ll use many, many times is: <code>data %&gt;% group_by(FIELD NAME) %&gt;% summarize(VARIABLE NAME = AGGREGATE FUNCTION(FIELD NAME))</code></p>
 <p>Here’s the code:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">mountainlions <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(COUNTY) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb13-4" data-line-number="4">    <span class="dt">total =</span> <span class="kw">n</span>()</a>
-<a class="sourceLine" id="cb13-5" data-line-number="5">  )</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">mountainlions <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(COUNTY) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb34-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb34-4" data-line-number="4">    <span class="dt">total =</span> <span class="kw">n</span>()</a>
+<a class="sourceLine" id="cb34-5" data-line-number="5">  )</a></code></pre></div>
 <pre><code>## # A tibble: 42 x 2
 ##    COUNTY    total
 ##    &lt;chr&gt;     &lt;int&gt;
@@ -278,11 +297,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## # … with 32 more rows</code></pre>
 <p>So let’s walk through that. We start with our dataset – <code>mountainlions</code> – and then we tell it to group the data by a given field in the data. In this case, we wanted to group together all the counties, signified by the field name COUNTY, which you could get from looking at <code>head(mountainlions)</code>. After we group the data, we need to count them up. In dplyr, we use <code>summarize</code> <a href="http://dplyr.tidyverse.org/reference/summarise.html">which can do more than just count things</a>. Inside the parentheses in summarize, we set up the summaries we want. In this case, we just want a count of the counties: <code>total = n(),</code> says create a new field, called <code>total</code> and set it equal to <code>n()</code>, which might look weird, but it’s common in stats. The number of things in a dataset? Statisticians call in n. There are n number of incidents in this dataset. So <code>n()</code> is a function that counts the number of things there are.</p>
 <p>And when we run that, we get a list of counties with a count next to them. But it’s not in any order. So we’ll add another And Then Do This %&gt;% and use <code>arrange</code>. Arrange does what you think it does – it arranges data in order. By default, it’s in ascending order – smallest to largest. But if we want to know the county with the most mountain lion sightings, we need to sort it in descending order. That looks like this:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">mountainlions <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(COUNTY) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb15-4" data-line-number="4">    <span class="dt">count =</span> <span class="kw">n</span>()</a>
-<a class="sourceLine" id="cb15-5" data-line-number="5">  ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(count))</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">mountainlions <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(COUNTY) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb36-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb36-4" data-line-number="4">    <span class="dt">count =</span> <span class="kw">n</span>()</a>
+<a class="sourceLine" id="cb36-5" data-line-number="5">  ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(count))</a></code></pre></div>
 <pre><code>## # A tibble: 42 x 2
 ##    COUNTY       count
 ##    &lt;chr&gt;        &lt;int&gt;
@@ -298,11 +317,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 Custer           8
 ## # … with 32 more rows</code></pre>
 <p>We can, if we want, group by more than one thing. So how are these sightings being confirmed? To do that, we can group by County and “Cofirm Type”, which is how the state misspelled Confirm. But note something in this example below:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">mountainlions <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(COUNTY, <span class="st">`</span><span class="dt">Cofirm Type</span><span class="st">`</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb17-4" data-line-number="4">    <span class="dt">count =</span> <span class="kw">n</span>()</a>
-<a class="sourceLine" id="cb17-5" data-line-number="5">  ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(count))</a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">mountainlions <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb38-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(COUNTY, <span class="st">`</span><span class="dt">Cofirm Type</span><span class="st">`</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb38-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb38-4" data-line-number="4">    <span class="dt">count =</span> <span class="kw">n</span>()</a>
+<a class="sourceLine" id="cb38-5" data-line-number="5">  ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(count))</a></code></pre></div>
 <pre><code>## # A tibble: 93 x 3
 ## # Groups:   COUNTY [42]
 ##    COUNTY       `Cofirm Type`      count
@@ -324,7 +343,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.3</span> Other aggregates: Mean and median</h2>
 <p>In the last example, we grouped some data together and counted it up, but there’s so much more you can do. You can do multiple measures in a single step as well.</p>
 <p>Let’s look at some <a href="https://unl.box.com/s/09t2u4qoncfh6qlv2156flzlxb8ruzpq">salary data from the University of Nebraska</a>.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">salaries &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/nusalaries1819.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">salaries &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/nusalaries1819.csv&quot;</span>)</a></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   Employee = col_character(),
@@ -335,7 +354,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   `Salary from State Aided Funds` = col_number(),
 ##   `Salary from Other Funds` = col_number()
 ## )</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw">head</span>(salaries)</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw">head</span>(salaries)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 7
 ##   Employee Position Campus Department `Budgeted Annua… `Salary from St…
 ##   &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;                 &lt;dbl&gt;            &lt;dbl&gt;
@@ -347,12 +366,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6 Abdel-M… Researc… UNL    Public Po…            58502               NA
 ## # … with 1 more variable: `Salary from Other Funds` &lt;dbl&gt;</code></pre>
 <p>In summarize, we can calculate any number of measures. Here, we’ll use R’s built in mean and median functions to calculate … well, you get the idea.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">salaries <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="st">  </span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb23-3" data-line-number="3">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
-<a class="sourceLine" id="cb23-4" data-line-number="4">    <span class="dt">mean_salary =</span> <span class="kw">mean</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>),</a>
-<a class="sourceLine" id="cb23-5" data-line-number="5">    <span class="dt">median_salary =</span> <span class="kw">median</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>)</a>
-<a class="sourceLine" id="cb23-6" data-line-number="6">  )</a></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">salaries <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb44-2" data-line-number="2"><span class="st">  </span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb44-3" data-line-number="3">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb44-4" data-line-number="4">    <span class="dt">mean_salary =</span> <span class="kw">mean</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>),</a>
+<a class="sourceLine" id="cb44-5" data-line-number="5">    <span class="dt">median_salary =</span> <span class="kw">median</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>)</a>
+<a class="sourceLine" id="cb44-6" data-line-number="6">  )</a></code></pre></div>
 <pre><code>## # A tibble: 1 x 3
 ##   count mean_salary median_salary
 ##   &lt;int&gt;       &lt;dbl&gt;         &lt;dbl&gt;
@@ -360,7 +379,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>So there’s 13,039 employees in the database, spread across four campuses plus the system office. The mean or average salary is about $62,000, but the median salary is slightly more than $51,000.</p>
 <p>Why?</p>
 <p>Let’s let sort help us.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1">salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 13,039 x 7
 ##    Employee Position Campus Department `Budgeted Annua… `Salary from St…
 ##    &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;                 &lt;dbl&gt;            &lt;dbl&gt;
@@ -374,8 +393,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  8 William… Head Co… UNL    Athletics            626750               NA
 ##  9 Bounds,… Preside… UNCA   Office of…           540000           540000
 ## 10 Austin … Assista… UNL    Athletics            475000               NA
-## # … with 13,029 more rows, and 1 more variable: `Salary from Other
-## #   Funds` &lt;dbl&gt;</code></pre>
+## # … with 13,029 more rows, and 1 more variable: `Salary from Other Funds` &lt;dbl&gt;</code></pre>
 <p>Oh, right. In this dataset, the university pays a football coach $5 million. Extremes influence averages, not medians, and now you have your answer.</p>
 <p>So when choosing a measure of the middle, you have to ask yourself – could I have extremes? Because a median won’t be sensitive to extremes. It will be the point at which half the numbers are above and half are below. The average or mean will be a measure of the middle, but if you have a bunch of low paid people and then one football coach, the average will be wildly skewed. Here, because there’s so few highly paid football coaches compared to people who make a normal salary, the number is only slightly skewed in the grand scheme, but skewed nonetheless.</p>
 
@@ -386,8 +404,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="data-structures-and-types.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="data-structures-and-types.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="mutating-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -406,12 +424,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -423,6 +440,10 @@ gitbook.start({
 "text": "Edit"
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
