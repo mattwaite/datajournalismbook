@@ -1,0 +1,47 @@
+# Mutating data
+
+One of the most common data analysis techniques is to look at change over time. The most common way of comparing change over time is through percent change. The math behind calculating percent change is very simple, and you should know it off the top of your head. The easy way to remember it is:
+
+`(new - old) / old` 
+
+Or new minus old divided by old. Your new number minus the old number, the result of which is divided by the old number. To do that in R, we can use `dplyr` and `mutate` to calculate new metrics in a new field using existing fields of data. 
+
+So first we'll import the tidyverse so we can read in our data and begin to work with it.
+
+```{r}
+library(tidyverse)
+```
+
+Now we'll import a common and [simple dataset of county  population estimates](https://unl.box.com/s/hvxmnxhr41x4ikgt3vk38aczcbrf97pn) from the US Census Bureau. Each year, the Census Bureau publishes estimates for states and counties. This one has every county in the US. A common question: who are the winners and losers? 
+
+```{r}
+population <- read_csv('data/countypopulations.csv')
+```
+The code to calculate percent change is pretty simple. Remember, with `summarize`, we used `n()` to count things. With `mutate`, we use very similar syntax to calculate a new value -- a new column of data -- using other values in our dataset. So in this case, we're trying to do (new-old)/old, but we're doing it with fields. 
+
+
+If we look at what we got when we imported the data, you'll see there's `POPESTIMATE2018` as the new data, and we'll use `POPESTIMATE2017` as the old data. So we're looking at one year. Then, to help us, we'll use arrange again to sort it, so we get the fastest growing county over one year. 
+
+```{r}
+population %>% mutate(
+  change = (POPESTIMATE2018 - POPESTIMATE2017)/POPESTIMATE2017
+) 
+```
+Click the black arrow pointing right and you'll see, way out on the right, your change column. But what do you see right away? Do those numbers look like we expect them to? No. They're a decimal expressed as a percentage. So let's fix that by multiplying by 100. 
+
+```{r}
+population %>% mutate(
+  change = ((POPESTIMATE2018 - POPESTIMATE2017)/POPESTIMATE2017)*100
+) 
+```
+Now, does this ordering do anything for us? No. Let's fix that with arrange. 
+
+```{r}
+population %>% mutate(
+  change = ((POPESTIMATE2018 - POPESTIMATE2017)/POPESTIMATE2017)*100
+)  %>% arrange(desc(change))
+```
+
+So who had the most growth last year from the year before? Is everyone moving to Loving County, Texas? Or is it small changes in a small county? Also, note North Dakota showing up twice in the top 10.
+
+> EXERCISE: What happens when you sort it in ascending order? Delete the desc part in arrange and see what happens. How would you describe this list?

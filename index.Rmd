@@ -14,9 +14,49 @@ description: "This is a book built on a very opinionated philosophy for undergra
 
 # Introduction
 
-## Data journalism history
+If you were at all paying attention in pre-college science classes, you have probably seen this equation:
+
+    d = rt or distance = rate*time
+
+In English, that says we can know how far something has travelled if we know how fast it's going and for how long. If we multiply the rate by the time, we'll get the distance.
+
+If you remember just a bit about algebra, you know we can move these things around. If we know two of them, we can figure out the third. So, for instance, if we know the distance and we know the time, we can use algebra to divide the distance by the time to get the rate.
+
+    d/t = r or distance/time = rate
+
+In 2012, the South Florida Sun Sentinel found a story in this formula.
+
+People were dying on South Florida tollways in terrible car accidents. What made these different from other car fatal car accidents that happen every day in the US? Police officers driving way too fast were causing them.
+
+But do police regularly speed on tollways or were there just a few random and fatal exceptions?
+
+Thanks to Florida's public records laws, the Sun Sentinel got records from the toll transponders in police cars in south Florida. The transponders recorded when a car went through a given place. And then it would do it again. And again.
+
+Given that those places are fixed -- they're toll plazas -- and they had the time it took to go from one toll plaza to another, they had the distance and the time.
+
+[It took high school algebra to find how fast police officers were driving. And the results were shocking.](http://www.sun-sentinel.com/news/local/speeding-cops/fl-speeding-cops-20120211,0,3706919.story)
+
+Twenty percent of police officers had exceeded 90 miles per hour on toll roads. In a 13-month period, officers drove between 90 and 110 mph more than 5,000 times. And these were just instances found on toll roads. Not all roads have tolls.
+
+The story was a stunning find, and the newspaper documented case after case of police officers violating the law and escaping punishment. And, in 2013, they won the Pulitzer Prize for Public Service.
+
+All with simple high school algebra.
 
 ## Modern data journalism
+
+It's a single word in a single job description, but a Buzzfeed job posting in 2017 is another indicator in what could be a profound shift in how data journalism is both practiced and taught.
+
+"We’re looking for someone with a passion for news and a commitment to using data to find amazing, important stories — both quick hits and deeper analyses that drive conversations," the posting seeking a data journalist says. It goes on to list five things BuzzFeed is looking for: Excellent collaborator, clear writer, deep statistical understanding, knowledge of obtaining and restructuring data.
+
+And then there's this:
+
+__"You should have a strong command of at least one toolset that (a) allows for filtering, joining, pivoting, and aggregating tabular data, and (b) enables reproducible workflows."__
+
+This is not the data journalism of 20 years ago. When it started, it was a small group of people in newsrooms using spreadsheets and databases. Data journalism now encompases programming for all kinds of purposes, product development, user interface design, data visualization and graphics on top of more traditional skills like analyzing data and writing stories. 
+
+In this book, you'll get a taste of modern data journalism through programming in R, a statistics language. You'll be challenged to think programmatically while thinking about a story you can tell to readers in a way that they'll want to read. They might seem like two different sides of the brain --  mutually exclusive skills. They aren't. I'm confident you'll see programming is a creative endeavor and storytelling can be analytical. 
+
+Combining them together has the power to change policy, expose injustice and deeply inform. 
 
 ## Installations
 
@@ -42,7 +82,7 @@ This book is the collection of class materials for the author's Data Journalism 
 * The topics will remain the same but the text is going to be constantly tinkered with. 
 * What is the work of the author is copyright Matt Waite 2020.
 * The text is [Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/) Creative Commons licensed. That means you can share it and change it, but only if you share your changes with the same license and it cannot be used for commercial purposes. I'm not making money on this so you can't either.  
-* As such, the whole book -- authored in Bookdown -- is [open sourced on Github](https://github.com/mattwaite/sportsdatabook). Pull requests welcomed! 
+* As such, the whole book -- authored in Bookdown -- is [open sourced on Github](https://github.com/mattwaite/datajournalismbook). Pull requests welcomed! 
 
 ## What we'll cover
 
@@ -52,6 +92,7 @@ This book is the collection of class materials for the author's Data Journalism 
 * Data basics and structures
 * Aggregates
 * Mutating
+* Working with dates
 * Filters
 * Data smells
 * Cleaning data I

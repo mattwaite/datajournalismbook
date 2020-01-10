@@ -23,6 +23,12 @@ library(readr)
 library(dplyr)
 ```
 
+But, because those two libraries -- and several others that we're going to use over the course of this class -- are so commonly used, there's a shortcut to loading all of the libraries we'll need:
+
+```{r}
+library(tidyverse)
+```
+
 You can keep doing that for as many libraries as you need. I've seen notebooks with 10 or more library imports.
 
 ## Importing data
@@ -65,6 +71,9 @@ To get the number of records in our dataset, we run `nrow(mountainlions)`
 
 ```{r}
 head(mountainlions)
+```
+
+```{r}
 nrow(mountainlions)
 ```
 
