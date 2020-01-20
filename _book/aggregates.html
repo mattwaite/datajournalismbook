@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Aggregates | Data Journalism with R and the Tidyverse</title>
   <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
-  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Aggregates | Data Journalism with R and the Tidyverse" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Matt Waite" />
 
 
-<meta name="date" content="2020-01-10" />
+<meta name="date" content="2020-01-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -128,7 +128,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="http://mattwaite.github.io/datajournalism/">Data Journalism With R</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
@@ -163,7 +163,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2" data-path="aggregates.html"><a href="aggregates.html#group-by-and-count"><i class="fa fa-check"></i><b>6.2</b> Group by and count</a></li>
 <li class="chapter" data-level="6.3" data-path="aggregates.html"><a href="aggregates.html#other-aggregates-mean-and-median"><i class="fa fa-check"></i><b>6.3</b> Other aggregates: Mean and median</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>7</b> Mutating data</a></li>
+<li class="chapter" data-level="7" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>7</b> Mutating data</a><ul>
+<li class="chapter" data-level="7.1" data-path="mutating-data.html"><a href="mutating-data.html#another-use-of-mutate"><i class="fa fa-check"></i><b>7.1</b> Another use of mutate</a></li>
+</ul></li>
 <li class="chapter" data-level="8" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>8</b> Working with dates</a><ul>
 <li class="chapter" data-level="8.1" data-path="working-with-dates.html"><a href="working-with-dates.html#the-hard-way"><i class="fa fa-check"></i><b>8.1</b> The hard way</a></li>
 </ul></li>
@@ -211,7 +213,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>But, because those two libraries – and several others that we’re going to use over the course of this class – are so commonly used, there’s a shortcut to loading all of the libraries we’ll need:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.5.2</code></pre>
-<pre><code>## ── Attaching packages ─────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ── Attaching packages ── tidyverse 1.3.0 ──</code></pre>
 <pre><code>## ✓ ggplot2 3.2.1     ✓ purrr   0.3.3
 ## ✓ tibble  2.1.3     ✓ stringr 1.4.0
 ## ✓ tidyr   1.0.0     ✓ forcats 0.4.0</code></pre>
@@ -221,7 +223,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.5.2</code></pre>
 <pre><code>## Warning: package &#39;stringr&#39; was built under R version 3.5.2</code></pre>
 <pre><code>## Warning: package &#39;forcats&#39; was built under R version 3.5.2</code></pre>
-<pre><code>## ── Conflicts ────────── tidyverse_conflicts() ──
+<pre><code>## ── Conflicts ───── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <p>You can keep doing that for as many libraries as you need. I’ve seen notebooks with 10 or more library imports.</p>
