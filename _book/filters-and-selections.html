@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Data Journalism with R and the Tidyverse</title>
+  <title>Chapter 9 Filters and selections | Data Journalism with R and the Tidyverse</title>
   <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Data Journalism with R and the Tidyverse" />
+  <meta property="og:title" content="Chapter 9 Filters and selections | Data Journalism with R and the Tidyverse" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Data Journalism with R and the Tidyverse" />
+  <meta name="twitter:title" content="Chapter 9 Filters and selections | Data Journalism with R and the Tidyverse" />
   
   <meta name="twitter:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="working-with-dates.html"/>
 
-<link rel="next" href="public-records.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -190,101 +190,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Data Journalism with R and the Tidyverse</h1>
-<p class="author"><em>Matt Waite</em></p>
-<p class="date"><em>2020-01-20</em></p>
-</div>
-<div id="introduction" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<p>If you were at all paying attention in pre-college science classes, you have probably seen this equation:</p>
-<pre><code>d = rt or distance = rate*time</code></pre>
-<p>In English, that says we can know how far something has travelled if we know how fast it’s going and for how long. If we multiply the rate by the time, we’ll get the distance.</p>
-<p>If you remember just a bit about algebra, you know we can move these things around. If we know two of them, we can figure out the third. So, for instance, if we know the distance and we know the time, we can use algebra to divide the distance by the time to get the rate.</p>
-<pre><code>d/t = r or distance/time = rate</code></pre>
-<p>In 2012, the South Florida Sun Sentinel found a story in this formula.</p>
-<p>People were dying on South Florida tollways in terrible car accidents. What made these different from other car fatal car accidents that happen every day in the US? Police officers driving way too fast were causing them.</p>
-<p>But do police regularly speed on tollways or were there just a few random and fatal exceptions?</p>
-<p>Thanks to Florida’s public records laws, the Sun Sentinel got records from the toll transponders in police cars in south Florida. The transponders recorded when a car went through a given place. And then it would do it again. And again.</p>
-<p>Given that those places are fixed – they’re toll plazas – and they had the time it took to go from one toll plaza to another, they had the distance and the time.</p>
-<p><a href="http://www.sun-sentinel.com/news/local/speeding-cops/fl-speeding-cops-20120211,0,3706919.story">It took high school algebra to find how fast police officers were driving. And the results were shocking.</a></p>
-<p>Twenty percent of police officers had exceeded 90 miles per hour on toll roads. In a 13-month period, officers drove between 90 and 110 mph more than 5,000 times. And these were just instances found on toll roads. Not all roads have tolls.</p>
-<p>The story was a stunning find, and the newspaper documented case after case of police officers violating the law and escaping punishment. And, in 2013, they won the Pulitzer Prize for Public Service.</p>
-<p>All with simple high school algebra.</p>
-<div id="modern-data-journalism" class="section level2">
-<h2><span class="header-section-number">1.1</span> Modern data journalism</h2>
-<p>It’s a single word in a single job description, but a Buzzfeed job posting in 2017 is another indicator in what could be a profound shift in how data journalism is both practiced and taught.</p>
-<p>“We’re looking for someone with a passion for news and a commitment to using data to find amazing, important stories — both quick hits and deeper analyses that drive conversations,” the posting seeking a data journalist says. It goes on to list five things BuzzFeed is looking for: Excellent collaborator, clear writer, deep statistical understanding, knowledge of obtaining and restructuring data.</p>
-<p>And then there’s this:</p>
-<p><strong>“You should have a strong command of at least one toolset that (a) allows for filtering, joining, pivoting, and aggregating tabular data, and (b) enables reproducible workflows.”</strong></p>
-<p>This is not the data journalism of 20 years ago. When it started, it was a small group of people in newsrooms using spreadsheets and databases. Data journalism now encompases programming for all kinds of purposes, product development, user interface design, data visualization and graphics on top of more traditional skills like analyzing data and writing stories.</p>
-<p>In this book, you’ll get a taste of modern data journalism through programming in R, a statistics language. You’ll be challenged to think programmatically while thinking about a story you can tell to readers in a way that they’ll want to read. They might seem like two different sides of the brain – mutually exclusive skills. They aren’t. I’m confident you’ll see programming is a creative endeavor and storytelling can be analytical.</p>
-<p>Combining them together has the power to change policy, expose injustice and deeply inform.</p>
-</div>
-<div id="installations" class="section level2">
-<h2><span class="header-section-number">1.2</span> Installations</h2>
-<p>This book is all in the R statistical language. To follow along, you’ll do the following:</p>
-<ol style="list-style-type: decimal">
-<li><p>Install the R language on your computer. Go to the <a href="https://www.r-project.org/">R Project website</a>, click download R and select a mirror closest to your location. Then download the version for your computer.</p></li>
-<li><p>Install <a href="https://www.rstudio.com/products/rstudio/#Desktop">R Studio Desktop</a>. The free version is great.</p></li>
-</ol>
-<p>Going forward, you’ll see passages like this:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</a></code></pre></div>
-<p>That is code that you’ll need to run in your R Studio. When you see that, you’ll know what to do.</p>
-</div>
-<div id="about-this-book" class="section level2">
-<h2><span class="header-section-number">1.3</span> About this book</h2>
-<p>This book is the collection of class materials for the author’s Data Journalism class at the University of Nebraska-Lincoln’s College of Journalism and Mass Communications. There’s some things you should know about it:</p>
-<ul>
-<li>It is free for students.</li>
-<li>The topics will remain the same but the text is going to be constantly tinkered with.</li>
-<li>What is the work of the author is copyright Matt Waite 2020.</li>
-<li>The text is <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Attribution-NonCommercial-ShareAlike 4.0 International</a> Creative Commons licensed. That means you can share it and change it, but only if you share your changes with the same license and it cannot be used for commercial purposes. I’m not making money on this so you can’t either.<br />
-</li>
-<li>As such, the whole book – authored in Bookdown – is <a href="https://github.com/mattwaite/datajournalismbook">open sourced on Github</a>. Pull requests welcomed!</li>
-</ul>
-</div>
-<div id="what-well-cover" class="section level2">
-<h2><span class="header-section-number">1.4</span> What we’ll cover</h2>
-<ul>
-<li>Public records and open data</li>
-<li>R Basics</li>
-<li>Replication</li>
-<li>Data basics and structures</li>
-<li>Aggregates</li>
-<li>Mutating</li>
-<li>Working with dates</li>
-<li>Filters</li>
-<li>Data smells</li>
-<li>Cleaning data I</li>
-<li>Cleaning data II</li>
-<li>Pulling data from PDFs</li>
-<li>Advanced analysis: Correlations and regressions</li>
-<li>Advanced analysis: Logistic regression</li>
-<li>Basic data scraping</li>
-<li>Intermediate data scraping</li>
-<li>Getting data from APIs: Census</li>
-<li>Visualizing for reporting: Basics</li>
-<li>Visualizing for reporting: More forms</li>
-<li>Visualizing for reporting: Faceting</li>
-<li>Geographic data basics</li>
-<li>Geographic queries</li>
-<li>Geographic visualization</li>
-<li>Text analysis basics</li>
-<li>Text analysis</li>
-<li>Writing with and about data</li>
-<li>Data journalism ethics</li>
-</ul>
+<div id="filters-and-selections" class="section level1">
+<h1><span class="header-section-number">Chapter 9</span> Filters and selections</h1>
+<p>More often than not, we have more data than we want. Sometimes we need to be rid of that data. In <code>dplyr</code>, there’s two ways to go about this: filtering and selecting.</p>
+<p><strong>Filtering creates a subset of the data based on criteria</strong>. All records where the count is greater than 10. All records that match “Nebraska”. Something like that. <strong>Filtering works with rows – when we filter, we get fewer rows back than we start with.</strong></p>
+<p><strong>Selecting simply returns only the fields named</strong>. So if you only want to see Year and County, you select those fields. When you look at your data again, you’ll have two columns. If you try to use one of your columns that you had before you used select, you’ll get an error. <strong>Selecting works with columns. You will have the same number of records when you are done, but fewer columns of data to work with.</strong></p>
+<p>Let’s work with the <a href="https://unl.box.com/s/9826nisk29fztlc1xhup988eah0mqdby">salaries data from the University of Nebraska</a>. It has data from all NU campuses, but only one of them is our campus, so let’s filter out everyone else.</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1">salaries &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/nusalaries1819.csv&quot;</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   Employee = col_character(),
+##   Position = col_character(),
+##   Campus = col_character(),
+##   Department = col_character(),
+##   `Budgeted Annual Salary` = col_number(),
+##   `Salary from State Aided Funds` = col_number(),
+##   `Salary from Other Funds` = col_number()
+## )</code></pre>
+<p>The data we want to filter on is in <code>Campus</code>. So we’re going to use filter and something called a comparison operator. We need to filter all records equal to UNL. The comparison operators in R, like most programming languages, are == for equal to, != for not equal to, &gt; for greater than, &gt;= for greater than or equal to and so on.</p>
+<p><strong>Be careful: <code>=</code> is not <code>==</code> and <code>=</code> is not “equal to”. <code>=</code> is an assignment operator in most languages – how things get named.</strong></p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1">unl &lt;-<span class="st"> </span>salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Campus <span class="op">==</span><span class="st"> &quot;UNL&quot;</span>)</a>
+<a class="sourceLine" id="cb79-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb79-3" data-line-number="3"><span class="kw">head</span>(unl)</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 7
+##   Employee Position Campus Department `Budgeted Annua… `Salary from St…
+##   &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;                 &lt;dbl&gt;            &lt;dbl&gt;
+## 1 Abbott,… Staff S… UNL    FM&amp;P Faci…            37318               NA
+## 2 Abdel-M… Researc… UNL    Public Po…            58502               NA
+## 3 Abel, M… Chairpe… UNL    English               64470            64470
+## 4 Abel, M… Profess… UNL    English               39647            39647
+## 5 Abel, R… Control… UNL    FM&amp;P Buil…            57178            57178
+## 6 Abendro… Asst Di… UNL    Housing F…            79037               NA
+## # … with 1 more variable: `Salary from Other Funds` &lt;dbl&gt;</code></pre>
+<p>And just like that, we have just UNL, which we can verify looking at the head, the first six rows.</p>
+<p>We also have more data than we might want. For example, the salary data is only in the Budgeted Annual Salary column. The other two salary fields are useless detail.</p>
+<p>To simplify our dataset, we can use select.</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1">selected_unl &lt;-<span class="st"> </span>unl <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(Employee, Position, Campus, <span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>)</a>
+<a class="sourceLine" id="cb81-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb81-3" data-line-number="3"><span class="kw">head</span>(selected_unl)</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 4
+##   Employee           Position                      Campus `Budgeted Annual Sala…
+##   &lt;chr&gt;              &lt;chr&gt;                         &lt;chr&gt;                   &lt;dbl&gt;
+## 1 Abbott, Frances M  Staff Secy III                UNL                     37318
+## 2 Abdel-Monem, Tari… Research Specialist           UNL                     58502
+## 3 Abel, Marco        Chairperson                   UNL                     64470
+## 4 Abel, Marco        Professor                     UNL                     39647
+## 5 Abel, Rick A       Control Systems Tech/Alarm S… UNL                     57178
+## 6 Abendroth, Curtis… Asst Dir Facilities Mgt/Main… UNL                     79037</code></pre>
+<p>And now we only have four columns of data for whatever salary analysis we might want to do.</p>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
+<a href="working-with-dates.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="public-records.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -315,7 +278,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/08-filters.Rmd",
 "text": "Edit"
 },
 "history": {

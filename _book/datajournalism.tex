@@ -1442,4 +1442,93 @@ Any guesses why those months?
 
 I'll give you a hint. It involves 90,000 people gathering in a big building on campus in the fall and one day in April or late March every spring.
 
+\hypertarget{filters-and-selections}{%
+\chapter{Filters and selections}\label{filters-and-selections}}
+
+More often than not, we have more data than we want. Sometimes we need to be rid of that data. In \texttt{dplyr}, there's two ways to go about this: filtering and selecting.
+
+\textbf{Filtering creates a subset of the data based on criteria}. All records where the count is greater than 10. All records that match ``Nebraska''. Something like that. \textbf{Filtering works with rows -- when we filter, we get fewer rows back than we start with.}
+
+\textbf{Selecting simply returns only the fields named}. So if you only want to see Year and County, you select those fields. When you look at your data again, you'll have two columns. If you try to use one of your columns that you had before you used select, you'll get an error. \textbf{Selecting works with columns. You will have the same number of records when you are done, but fewer columns of data to work with.}
+
+Let's work with the \href{https://unl.box.com/s/9826nisk29fztlc1xhup988eah0mqdby}{salaries data from the University of Nebraska}. It has data from all NU campuses, but only one of them is our campus, so let's filter out everyone else.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{salaries <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"data/nusalaries1819.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Parsed with column specification:
+## cols(
+##   Employee = col_character(),
+##   Position = col_character(),
+##   Campus = col_character(),
+##   Department = col_character(),
+##   `Budgeted Annual Salary` = col_number(),
+##   `Salary from State Aided Funds` = col_number(),
+##   `Salary from Other Funds` = col_number()
+## )
+\end{verbatim}
+
+The data we want to filter on is in \texttt{Campus}. So we're going to use filter and something called a comparison operator. We need to filter all records equal to UNL. The comparison operators in R, like most programming languages, are == for equal to, != for not equal to, \textgreater{} for greater than, \textgreater{}= for greater than or equal to and so on.
+
+\textbf{Be careful: \texttt{=} is not \texttt{==} and \texttt{=} is not ``equal to''. \texttt{=} is an assignment operator in most languages -- how things get named.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{unl <-}\StringTok{ }\NormalTok{salaries }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(Campus }\OperatorTok{==}\StringTok{ "UNL"}\NormalTok{)}
+
+\KeywordTok{head}\NormalTok{(unl)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 7
+##   Employee Position Campus Department `Budgeted Annua~ `Salary from St~
+##   <chr>    <chr>    <chr>  <chr>                 <dbl>            <dbl>
+## 1 Abbott,~ Staff S~ UNL    FM&P Faci~            37318               NA
+## 2 Abdel-M~ Researc~ UNL    Public Po~            58502               NA
+## 3 Abel, M~ Chairpe~ UNL    English               64470            64470
+## 4 Abel, M~ Profess~ UNL    English               39647            39647
+## 5 Abel, R~ Control~ UNL    FM&P Buil~            57178            57178
+## 6 Abendro~ Asst Di~ UNL    Housing F~            79037               NA
+## # ... with 1 more variable: `Salary from Other Funds` <dbl>
+\end{verbatim}
+
+And just like that, we have just UNL, which we can verify looking at the head, the first six rows.
+
+We also have more data than we might want. For example, the salary data is only in the Budgeted Annual Salary column. The other two salary fields are useless detail.
+
+To simplify our dataset, we can use select.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{selected_unl <-}\StringTok{ }\NormalTok{unl }\OperatorTok{%>%}\StringTok{ }\KeywordTok{select}\NormalTok{(Employee, Position, Campus, }\StringTok{`}\DataTypeTok{Budgeted Annual Salary}\StringTok{`}\NormalTok{)}
+
+\KeywordTok{head}\NormalTok{(selected_unl)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 4
+##   Employee           Position                      Campus `Budgeted Annual Sala~
+##   <chr>              <chr>                         <chr>                   <dbl>
+## 1 Abbott, Frances M  Staff Secy III                UNL                     37318
+## 2 Abdel-Monem, Tari~ Research Specialist           UNL                     58502
+## 3 Abel, Marco        Chairperson                   UNL                     64470
+## 4 Abel, Marco        Professor                     UNL                     39647
+## 5 Abel, Rick A       Control Systems Tech/Alarm S~ UNL                     57178
+## 6 Abendroth, Curtis~ Asst Dir Facilities Mgt/Main~ UNL                     79037
+\end{verbatim}
+
+And now we only have four columns of data for whatever salary analysis we might want to do.
+
 \end{document}
