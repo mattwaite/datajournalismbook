@@ -41,9 +41,11 @@ library(lubridate)
 Lubridate can handle this tickets data easier with one of it's many functions. The functions parse dates given a basic pattern. In this case, our data is in a very common pattern of year month date hours minutes seconds. Lubridate has a function called `ymd_hms`.
 
 ```{r}
-tickets %>% mutate(
+lubridatetickets <- tickets %>% mutate(
     CleanDate = ymd_hms(Date)
 )
+
+head(lubridatetickets)
 ```
 That's less code and less weirdness, so that's good. 
 
