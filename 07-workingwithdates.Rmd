@@ -21,12 +21,16 @@ head(tickets)
 Note the date is a factor, not a date. We have to fix that. There's a lot of ways to fix dates. The base R way is to use formatting. The code is ... a little odd ... but it's useful to know if you get a really odd date format. What you are doing is essentially parsing the date into it's component parts then reassmbling it into a date using formatting. 
 
 ```{r}
-tickets %>% mutate(
+newtickets <- tickets %>% mutate(
     CleanDate = as.POSIXct(Date, format="%Y-%m-%d %H:%M:%S")
 )
+
+head(newtickets)
 ```
 
-You can almost read that code: The format of the date is %Y, which means a four digit year DASH %m or two digit month DASH %d or two digit day SPACE %H or two digit hour COLON %M or two digit minute COLON %S or two digit second. You can remix that as you need. If you had a date that was `20021212` then you would do `format="%Y%m%d"` and so on. 
+CleanDate is now a special date format that includes times.
+
+You can almost read the code that created it: The format of the date is %Y, which means a four digit year DASH %m or two digit month DASH %d or two digit day SPACE %H or two digit hour COLON %M or two digit minute COLON %S or two digit second. You can remix that as you need. If you had a date that was `20021212` then you would do `format="%Y%m%d"` and so on. 
 
 There is a [library called lubridate](https://cran.r-project.org/web/packages/lubridate/vignettes/lubridate.html) that can parse some common date problems. If it's not already installed, just run `install.packages('lubridate')`
 

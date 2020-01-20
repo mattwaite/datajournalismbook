@@ -44,4 +44,19 @@ population %>% mutate(
 
 So who had the most growth last year from the year before? Is everyone moving to Loving County, Texas? Or is it small changes in a small county? Also, note North Dakota showing up twice in the top 10.
 
+## Another use of mutate
+
+Note in our data we have separate State and County name fields. If we were publishing this, we wouldn't want that. 
+
+So how can we fix that? Mutate! And a new function to combine text together called `paste`. Paste allows us to merge fields together easily with a separator. In our case, we want to combine the county name and the state name with a comma and a space between them. 
+
+```{r}
+population %>% 
+  mutate(
+    change = ((POPESTIMATE2018 - POPESTIMATE2017)/POPESTIMATE2017)*100,
+    location = paste(CTYNAME, STNAME, sep=", ")) %>% 
+  arrange(desc(change))
+```
+
+
 > EXERCISE: What happens when you sort it in ascending order? Delete the desc part in arrange and see what happens. How would you describe this list?
