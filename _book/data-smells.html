@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 R basics | Data Journalism with R and the Tidyverse</title>
+  <title>Chapter 11 Data smells | Data Journalism with R and the Tidyverse</title>
   <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 R basics | Data Journalism with R and the Tidyverse" />
+  <meta property="og:title" content="Chapter 11 Data smells | Data Journalism with R and the Tidyverse" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 R basics | Data Journalism with R and the Tidyverse" />
+  <meta name="twitter:title" content="Chapter 11 Data smells | Data Journalism with R and the Tidyverse" />
   
   <meta name="twitter:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="public-records.html"/>
-<link rel="next" href="data-journalism-in-the-age-of-replication.html"/>
+<link rel="prev" href="filters-and-selections.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -199,40 +199,141 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="r-basics" class="section level1">
-<h1><span class="header-section-number">Chapter 3</span> R basics</h1>
-<p>R is a programming language, one specifically geared toward statistical analysis. Like all programming languages, it has certain built-in functions and you can interact with it in multiple ways. The first, and most basic, is the console.</p>
-<p><img src="images/verybasics1.png" width="683" /></p>
-<p>Think of the console like talking directly to R. It’s direct, but it has some drawbacks and some quirks we’ll get into later. For now, try typing this into the console and hit enter:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="dv">2</span><span class="op">+</span><span class="dv">2</span></a></code></pre></div>
-<pre><code>## [1] 4</code></pre>
-<p>Congrats, you’ve run some code. It’s not very complex, and you knew the answer before hand, but you get the idea. We can compute things. We can also store things. <strong>In programming languages, these are called variables</strong>. We can assign things to variables using <code>&lt;-</code>. And then we can do things with them. <strong>The <code>&lt;-</code> is a called an assignment operator</strong>.</p>
-<p>Try this in your console.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">number &lt;-<span class="st"> </span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">number <span class="op">*</span><span class="st"> </span>number</a></code></pre></div>
-<pre><code>## [1] 4</code></pre>
-<p>Now assign a different number to the variable number. Try run <code>number * number</code> again. Get what you expected?</p>
-<p>We can have as many variables as we can name. <strong>We can even reuse them (but be careful you know you’re doing that or you’ll introduce errors)</strong>. Try this in your console.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">firstnumber &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">secondnumber &lt;-<span class="st"> </span><span class="dv">2</span> </a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4">(firstnumber <span class="op">+</span><span class="st"> </span>secondnumber) <span class="op">*</span><span class="st"> </span>secondnumber</a></code></pre></div>
-<pre><code>## [1] 6</code></pre>
-<p><strong>We can store anything in a variable</strong>. A whole table. An array of numbers. A single word. A whole book. All the books of the 18th century. They’re really powerful. We’ll explore them at length.</p>
-<div id="adding-libraries-part-1" class="section level2">
-<h2><span class="header-section-number">3.1</span> Adding libraries, part 1</h2>
-<p>The real strength of any given programming language is the external libraries that power it. The base language can do a lot, but it’s the external libraries that solve many specific problems – even making the base language easier to use.</p>
-<p>For this class, we’re going to need several external libraries.</p>
-<p>The first library we’re going to use is called Swirl. So in the console, type <code>install.packages('swirl')</code> and hit enter. That installs swirl.</p>
-<p>Now, to use the library, type <code>library(swirl)</code> and hit enter. That loads swirl. Then type <code>swirl()</code> and hit enter. Now you’re running swirl. Follow the directions on the screen. When you are asked, you want to install course 1 R Programming: The basics of programming in R. Then, when asked, you want to do option 1, R Programming, in that course.</p>
-<p>When you are finished with the course – it will take just a few minutes – type 0 to exit (it will not be clear that’s what you do when you are done).</p>
+<div id="data-smells" class="section level1">
+<h1><span class="header-section-number">Chapter 11</span> Data smells</h1>
+<p>Any time you are given a dataset from anyone, you should immediately be suspicious. Is this data what I think it is? Does it include what I expect? Is there anything I need to know about it? Will it produce the information I expect?</p>
+<p>One of the first things you should do is give it the smell test.</p>
+<p>Failure to give data the smell test <a href="https://source.opennews.org/en-US/learning/handling-data-about-race-and-ethnicity/">can lead you to miss stories and get your butt kicked on a competitive story</a>.</p>
+<p>Let’s look at some campus parking ticket data. You can <a href="https://unl.box.com/s/3c5kx2i5iouc52ty46k4js412u48yajr">get it here</a>.</p>
+<p>With data smells, we’re trying to find common mistakes in data. <a href="https://github.com/nikeiubel/data-smells/wiki/Ensuring-Accuracy-in-Data-Journalism">For more on data smells, read the GitHub wiki post that started it all</a>. The common mistakes we’re looking for are:,</p>
+<ul>
+<li>Missing data</li>
+<li>Gaps in data</li>
+<li>Wrong type of data</li>
+<li>Outliers</li>
+<li>Sharp curves</li>
+<li>Conflicting information within a dataset</li>
+<li>Conflicting information across datasets</li>
+<li>Wrongly derived data</li>
+<li>Internal inconsistency</li>
+<li>External inconsistency</li>
+<li>Wrong spatial data</li>
+<li>Unusuable data, including non-standard abbreviations, ambigious data, extraneous data, inconsistent data</li>
+</ul>
+<p>Not all of these data smells are detectable in code. You may have to ask people about the data. You may have to compare it to another dataset yourself. Does the agency that uses the data produce reports from the data? Does your analysis match those reports? That will expose wrongly derived data, or wrong units, or mistakes you made with inclusion or exclusion.</p>
+<p>But with several of these data smells, we can do them first, before we do anything else.</p>
+<div id="wrong-type" class="section level2">
+<h2><span class="header-section-number">11.1</span> Wrong Type</h2>
+<p>First, let’s look at <strong>Wrong Type Of Data</strong>. We can sniff that out by looking at the output of <code>readr</code></p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1">tickets &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/tickets.csv&quot;</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   Citation = col_double(),
+##   Date = col_datetime(format = &quot;&quot;),
+##   Location = col_character(),
+##   Violation = col_character()
+## )</code></pre>
+<pre><code>## Warning: 104265 parsing failures.
+##   row      col expected    actual               file
+## 56735 Citation a double T2TEST    &#39;data/tickets.csv&#39;
+## 57050 Citation a double EF0800001 &#39;data/tickets.csv&#39;
+## 57051 Citation a double EF0300004 &#39;data/tickets.csv&#39;
+## 57052 Citation a double EF0300005 &#39;data/tickets.csv&#39;
+## 57053 Citation a double EF010020  &#39;data/tickets.csv&#39;
+## ..... ........ ........ ......... ..................
+## See problems(...) for more details.</code></pre>
+<p>Right away, we see there’s 104,265 parsing errors. Why? Look closely. The Citation number that <code>readr</code> interprets from the first rows comes in at a number. But 56,000 rows in, those citation numbers start having letters in them, and letters are not numbers.</p>
+<p>The cheap way to fix this is to change the guess_max parameter of <code>readr</code> to just use more than a few rows to guess the column types. It’ll go a little slower, but it’ll fix the problem.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1">tickets &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/tickets.csv&quot;</span>, <span class="dt">guess_max =</span> <span class="dv">60000</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   Citation = col_character(),
+##   Date = col_datetime(format = &quot;&quot;),
+##   Location = col_character(),
+##   Violation = col_character()
+## )</code></pre>
+<p>For this, things seem to be good. <code>Date</code> appears to be in date format, things that aren’t numbers appear to be text. That’s a good start.</p>
 </div>
-<div id="adding-libraries-part-2" class="section level2">
-<h2><span class="header-section-number">3.2</span> Adding libraries, part 2</h2>
-<p>We’ll mostly use two libraries for analysis – <code>dplyr</code> and <code>ggplot2</code>. To get them, and several other useful libraries, we can install a single collection of libraries called the tidyverse. Type this into your console: <code>install.packages('tidyverse')</code></p>
-<p><strong>NOTE</strong>: This is a pattern. You should always install libraries in the console.</p>
-<p>Then, to help us with learning and replication, we’re going to use R Notebooks. So we need to install that library. Type this into your console: <code>install.packages('rmarkdown')</code></p>
+<div id="missing-data" class="section level2">
+<h2><span class="header-section-number">11.2</span> Missing Data</h2>
+<p>The second smell we can find in code is <strong>missing data</strong>. We can do that through a series of Group By and Count steps.</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1">tickets <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Location) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 247 x 2
+##    Location                        n
+##    &lt;chr&gt;                       &lt;int&gt;
+##  1 1001 Y Street                 508
+##  2 10th &amp; Q Street               303
+##  3 10th &amp; U Street               222
+##  4 1101 Y Street                  83
+##  5 11th &amp; Y Street                38
+##  6 1235 Military Road             33
+##  7 1320 Q                          1
+##  8 13th &amp; R Lot                 4918
+##  9 14th &amp; Avery Lot             1601
+## 10 14th &amp; Avery Parking Garage  2494
+## # … with 237 more rows</code></pre>
+<p>What we’re looking for here are blanks: Tickets without a location. Typically, those will appear first or last, depending on several things, so it’s worth checking the front and back of our data.</p>
+<p>What about ticket type?</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1">tickets <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Violation) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 25 x 2
+##    Violation                          n
+##    &lt;chr&gt;                          &lt;int&gt;
+##  1 Damage Property                   25
+##  2 Displaying Altered Permit      23280
+##  3 Displaying Counterfeit Permit     18
+##  4 Displaying Stolen Permit           4
+##  5 Expired Meter                  45072
+##  6 Failure to Pay[on exit]          251
+##  7 Failure to Reg. Veh to Permit     53
+##  8 Failure to Register Veh w/ UNL   113
+##  9 False Lost/Stolen Permit Rept    927
+## 10 Falsify Permit Application         3
+## # … with 15 more rows</code></pre>
+<p>None here either, so that’s good. It means our tickets will always have a location and a violation type.</p>
+</div>
+<div id="gaps-in-data" class="section level2">
+<h2><span class="header-section-number">11.3</span> Gaps in data</h2>
+<p>Let’s now look at <strong>gaps in data</strong>. It’s been my experience that gaps in data often have to do with time, so let’s first look at ticket dates, so we can see if there’s any big jumps in data. You’d expect the numbers to change, but not by huge amounts. Huge change would indicate, more often than not, that the data is missing. Let’s start with Date. If we’re going to work with dates, we should have <code>lubridate</code> handy for <code>floor_date</code>.</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1"><span class="kw">library</span>(lubridate)</a></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1">tickets <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(<span class="kw">floor_date</span>(Date, <span class="st">&quot;month&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 56 x 2
+##    `floor_date(Date, &quot;month&quot;)`     n
+##    &lt;dttm&gt;                      &lt;int&gt;
+##  1 2012-04-01 00:00:00          3473
+##  2 2012-05-01 00:00:00          2572
+##  3 2012-06-01 00:00:00          2478
+##  4 2012-07-01 00:00:00          2134
+##  5 2012-08-01 00:00:00          3774
+##  6 2012-09-01 00:00:00          4138
+##  7 2012-10-01 00:00:00          4173
+##  8 2012-11-01 00:00:00          3504
+##  9 2012-12-01 00:00:00          1593
+## 10 2013-01-01 00:00:00          3078
+## # … with 46 more rows</code></pre>
+<p>First thing to notice: our data starts in April 2012. So 2012 isn’t a complete year. Then, scroll through. Look at December 2013 - March 2014. The number of tickets drops to about 10 percent of normal. That’s … odd. And then let’s look at the end – November 2016. So not a complete year in 2016 either.</p>
+</div>
+<div id="internal-inconsistency" class="section level2">
+<h2><span class="header-section-number">11.4</span> Internal inconsistency</h2>
+<p>Any time you are going to focus on something, you should check it for consistency inside the data set. So let’s pretend the large number of Displaying Altered Permit tickets caught your attention and you want to do a story about tens of thousands of students being caught altering their parking permits to reduce their costs parking on campus. Good story right? Before you go calling the parking office for comment, I’d check that data first.</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1">tickets <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Violation <span class="op">==</span><span class="st"> &quot;Displaying Altered Permit&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(<span class="kw">floor_date</span>(Date, <span class="st">&quot;month&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 29 x 2
+##    `floor_date(Date, &quot;month&quot;)`     n
+##    &lt;dttm&gt;                      &lt;int&gt;
+##  1 2012-04-01 00:00:00          1072
+##  2 2012-05-01 00:00:00          1283
+##  3 2012-06-01 00:00:00          1324
+##  4 2012-07-01 00:00:00          1357
+##  5 2012-08-01 00:00:00          2249
+##  6 2012-09-01 00:00:00          1797
+##  7 2012-10-01 00:00:00          1588
+##  8 2012-11-01 00:00:00          1183
+##  9 2012-12-01 00:00:00           458
+## 10 2013-01-01 00:00:00          1132
+## # … with 19 more rows</code></pre>
+<p>So this charge exists when our data starts, but scroll forward: In October 2013, there’s 1,081 tickets written. A month later, only 121. A month after that? 1. And then one sporadically for three more years.</p>
+<p>Something major changed. What is it? That’s why you are a reporter. Go ask. But we know our data doesn’t support the story we started with.</p>
+<p>And that’s what Data Smells are designed to do: stop you from going down a bad path.</p>
 
 </div>
 </div>
@@ -241,8 +342,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="public-records.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-journalism-in-the-age-of-replication.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="filters-and-selections.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -273,7 +374,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-basics.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/09-datasmells.Rmd",
 "text": "Edit"
 },
 "history": {

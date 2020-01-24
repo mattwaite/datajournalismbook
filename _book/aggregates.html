@@ -24,7 +24,7 @@
 <meta name="author" content="Matt Waite" />
 
 
-<meta name="date" content="2020-01-20" />
+<meta name="date" content="2020-01-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="data-structures-and-types.html"/>
-<link rel="next" href="mutating-data.html"/>
+<link rel="next" href="other-aggregates.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -163,13 +163,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2" data-path="aggregates.html"><a href="aggregates.html#group-by-and-count"><i class="fa fa-check"></i><b>6.2</b> Group by and count</a></li>
 <li class="chapter" data-level="6.3" data-path="aggregates.html"><a href="aggregates.html#other-aggregates-mean-and-median"><i class="fa fa-check"></i><b>6.3</b> Other aggregates: Mean and median</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>7</b> Mutating data</a><ul>
-<li class="chapter" data-level="7.1" data-path="mutating-data.html"><a href="mutating-data.html#another-use-of-mutate"><i class="fa fa-check"></i><b>7.1</b> Another use of mutate</a></li>
+<li class="chapter" data-level="7" data-path="other-aggregates.html"><a href="other-aggregates.html"><i class="fa fa-check"></i><b>7</b> Other aggregates</a></li>
+<li class="chapter" data-level="8" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>8</b> Mutating data</a><ul>
+<li class="chapter" data-level="8.1" data-path="mutating-data.html"><a href="mutating-data.html#another-use-of-mutate"><i class="fa fa-check"></i><b>8.1</b> Another use of mutate</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>8</b> Working with dates</a><ul>
-<li class="chapter" data-level="8.1" data-path="working-with-dates.html"><a href="working-with-dates.html#the-hard-way"><i class="fa fa-check"></i><b>8.1</b> The hard way</a></li>
+<li class="chapter" data-level="9" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>9</b> Working with dates</a><ul>
+<li class="chapter" data-level="9.1" data-path="working-with-dates.html"><a href="working-with-dates.html#the-hard-way"><i class="fa fa-check"></i><b>9.1</b> The hard way</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="filters-and-selections.html"><a href="filters-and-selections.html"><i class="fa fa-check"></i><b>9</b> Filters and selections</a></li>
+<li class="chapter" data-level="10" data-path="filters-and-selections.html"><a href="filters-and-selections.html"><i class="fa fa-check"></i><b>10</b> Filters and selections</a><ul>
+<li class="chapter" data-level="10.1" data-path="filters-and-selections.html"><a href="filters-and-selections.html#combining-filters"><i class="fa fa-check"></i><b>10.1</b> Combining filters</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="data-smells.html"><a href="data-smells.html"><i class="fa fa-check"></i><b>11</b> Data smells</a><ul>
+<li class="chapter" data-level="11.1" data-path="data-smells.html"><a href="data-smells.html#wrong-type"><i class="fa fa-check"></i><b>11.1</b> Wrong Type</a></li>
+<li class="chapter" data-level="11.2" data-path="data-smells.html"><a href="data-smells.html#missing-data"><i class="fa fa-check"></i><b>11.2</b> Missing Data</a></li>
+<li class="chapter" data-level="11.3" data-path="data-smells.html"><a href="data-smells.html#gaps-in-data"><i class="fa fa-check"></i><b>11.3</b> Gaps in data</a></li>
+<li class="chapter" data-level="11.4" data-path="data-smells.html"><a href="data-smells.html#internal-inconsistency"><i class="fa fa-check"></i><b>11.4</b> Internal inconsistency</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -214,7 +223,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>But, because those two libraries – and several others that we’re going to use over the course of this class – are so commonly used, there’s a shortcut to loading all of the libraries we’ll need:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.5.2</code></pre>
-<pre><code>## ── Attaching packages ── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ── Attaching packages ────── tidyverse 1.3.0 ──</code></pre>
 <pre><code>## ✓ ggplot2 3.2.1     ✓ purrr   0.3.3
 ## ✓ tibble  2.1.3     ✓ stringr 1.4.0
 ## ✓ tidyr   1.0.0     ✓ forcats 0.4.0</code></pre>
@@ -224,7 +233,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.5.2</code></pre>
 <pre><code>## Warning: package &#39;stringr&#39; was built under R version 3.5.2</code></pre>
 <pre><code>## Warning: package &#39;forcats&#39; was built under R version 3.5.2</code></pre>
-<pre><code>## ── Conflicts ───── tidyverse_conflicts() ──
+<pre><code>## ── Conflicts ───────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <p>You can keep doing that for as many libraries as you need. I’ve seen notebooks with 10 or more library imports.</p>
@@ -399,7 +408,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## # … with 13,029 more rows, and 1 more variable: `Salary from Other Funds` &lt;dbl&gt;</code></pre>
 <p>Oh, right. In this dataset, the university pays a football coach $5 million. Extremes influence averages, not medians, and now you have your answer.</p>
 <p>So when choosing a measure of the middle, you have to ask yourself – could I have extremes? Because a median won’t be sensitive to extremes. It will be the point at which half the numbers are above and half are below. The average or mean will be a measure of the middle, but if you have a bunch of low paid people and then one football coach, the average will be wildly skewed. Here, because there’s so few highly paid football coaches compared to people who make a normal salary, the number is only slightly skewed in the grand scheme, but skewed nonetheless.</p>
-
 </div>
 </div>
             </section>
@@ -408,7 +416,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="data-structures-and-types.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="mutating-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="other-aggregates.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
