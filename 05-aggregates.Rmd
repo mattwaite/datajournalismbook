@@ -158,3 +158,22 @@ salaries %>% arrange(desc(`Budgeted Annual Salary`))
 Oh, right. In this dataset, the university pays a football coach $5 million. Extremes influence averages, not medians, and now you have your answer.  
 
 So when choosing a measure of the middle, you have to ask yourself -- could I have extremes? Because a median won't be sensitive to extremes. It will be the point at which half the numbers are above and half are below. The average or mean will be a measure of the middle, but if you have a bunch of low paid people and then one football coach, the average will be wildly skewed. Here, because there's so few highly paid football coaches compared to people who make a normal salary, the number is only slightly skewed in the grand scheme, but skewed nonetheless. 
+
+# Other aggregates
+
+There's a ton of things we can do in summarize -- we'll work with more of them as the course progresses -- but here's a few other questions you can ask.
+
+Which department on campus has the highest wage bill? And what is the highest and lowest salary in the department? And how wide is the spread between salaries? We can find that with `sum` to add up the salaries to get the total wage bill, `min` to find the minumum salary, `max` to find the maximum salary and `sd` to find the standard deviation in the numbers. 
+
+```{r}
+salaries %>% 
+  group_by(Campus, Department) %>% 
+  summarize(
+    total = sum(`Budgeted Annual Salary`), 
+    avgsalary = mean(`Budgeted Annual Salary`), 
+    minsalary = min(`Budgeted Annual Salary`),
+    maxsalary = max(`Budgeted Annual Salary`),
+    stdev = sd(`Budgeted Annual Salary`)) %>% arrange(desc(total))
+```
+
+So again, no surprise, the UNL athletic department has the single largest wage bill at nearly $36 million. The average salary in the department is \$118,508 -- more than double the univeristy as a whole, again thanks to Scott Frost's paycheck. 

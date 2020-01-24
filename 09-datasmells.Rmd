@@ -1,0 +1,97 @@
+# Data smells
+
+Any time you are given a dataset from anyone, you should immediately be suspicious. Is this data what I think it is? Does it include what I expect? Is there anything I need to know about it? Will it produce the information I expect?
+
+One of the first things you should do is give it the smell test. 
+
+Failure to give data the smell test [can lead you to miss stories and get your butt kicked on a competitive story](https://source.opennews.org/en-US/learning/handling-data-about-race-and-ethnicity/).
+
+Let's look at some campus parking ticket data. You can [get it here](https://unl.box.com/s/3c5kx2i5iouc52ty46k4js412u48yajr).
+
+With data smells, we're trying to find common mistakes in data. [For more on data smells, read the GitHub wiki post that started it all](https://github.com/nikeiubel/data-smells/wiki/Ensuring-Accuracy-in-Data-Journalism). The common mistakes we're looking for are:,
+
+* Missing data
+* Gaps in data
+* Wrong type of data
+* Outliers
+* Sharp curves
+* Conflicting information within a dataset
+* Conflicting information across datasets
+* Wrongly derived data
+* Internal inconsistency
+* External inconsistency
+* Wrong spatial data
+* Unusuable data, including non-standard abbreviations, ambigious data, extraneous data, inconsistent data
+
+Not all of these data smells are detectable in code. You may have to ask people about the data. You may have to compare it to another dataset yourself. Does the agency that uses the data produce reports from the data? Does your analysis match those reports? That will expose wrongly derived data, or wrong units, or mistakes you made with inclusion or exclusion.
+
+But with several of these data smells, we can do them first, before we do anything else. 
+
+## Wrong Type
+
+First, let's look at **Wrong Type Of Data**. We can sniff that out by looking at the output of `readr`
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+tickets <- read_csv("data/tickets.csv")
+```
+
+Right away, we see there's 104,265 parsing errors. Why? Look closely. The Citation number that `readr` interprets from the first rows comes in at a number. But 56,000 rows in, those citation numbers start having letters in them, and letters are not numbers.
+
+The cheap way to fix this is to change the guess_max parameter of `readr` to just use more than a few rows to guess the column types. It'll go a little slower, but it'll fix the problem.
+
+```{r}
+tickets <- read_csv("data/tickets.csv", guess_max = 60000)
+```
+
+For this, things seem to be good. `Date` appears to be in date format, things that aren't numbers appear to be text. That's a good start.
+
+## Missing Data
+
+The second smell we can find in code is **missing data**. We can do that through a series of Group By and Count steps. 
+
+```{r}
+tickets %>% group_by(Location) %>% tally()
+```
+
+What we're looking for here are blanks: Tickets without a location. Typically, those will appear first or last, depending on several things, so it's worth checking the front and back of our data. 
+
+What about ticket type?
+
+```{r}
+tickets %>% group_by(Violation) %>% tally()
+```
+
+None here either, so that's good. It means our tickets will always have a location and a violation type.
+
+## Gaps in data
+
+Let's now look at **gaps in data**. It's been my experience that gaps in data often have to do with time, so let's first look at ticket dates, so we can see if there's any big jumps in data. You'd expect the numbers to change, but not by huge amounts. Huge change would indicate, more often than not, that the data is missing. Let's start with Date. If we're going to work with dates, we should have `lubridate` handy for `floor_date`. 
+
+```{r}
+library(lubridate)
+```
+
+
+```{r}
+tickets %>% group_by(floor_date(Date, "month")) %>% tally()
+```
+
+First thing to notice: our data starts in April 2012. So 2012 isn't a complete year. Then, scroll through. Look at December 2013 - March 2014. The number of tickets drops to about 10 percent of normal. That's ... odd. And then let's look at the end -- November 2016. So not a complete year in 2016 either. 
+
+## Internal inconsistency
+
+Any time you are going to focus on something, you should check it for consistency inside the data set. So let's pretend the large number of Displaying Altered Permit tickets caught your attention and you want to do a story about tens of thousands of students being caught altering their parking permits to reduce their costs parking on campus. Good story right? Before you go calling the parking office for comment, I'd check that data first. 
+
+```{r}
+tickets %>% filter(Violation == "Displaying Altered Permit") %>% group_by(floor_date(Date, "month")) %>% tally()
+```
+
+So this charge exists when our data starts, but scroll forward: In October 2013, there's 1,081 tickets written. A month later, only 121. A month after that? 1. And then one sporadically for three more years. 
+
+Something major changed. What is it? That's why you are a reporter. Go ask. But we know our data doesn't support the story we started with.
+
+And that's what Data Smells are designed to do: stop you from going down a bad path.
