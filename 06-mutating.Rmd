@@ -12,7 +12,7 @@ So first we'll import the tidyverse so we can read in our data and begin to work
 library(tidyverse)
 ```
 
-Now we'll import a common and [simple dataset of county  population estimates](https://unl.box.com/s/hvxmnxhr41x4ikgt3vk38aczcbrf97pn) from the US Census Bureau. Each year, the Census Bureau publishes estimates for states and counties. This one has every county in the US. A common question: who are the winners and losers? 
+Now we'll import a common and [simple dataset of county  population estimates](https://unl.box.com/s/ad8zrib123psjxjjhd8t5m2fgfdfv3q3) from the US Census Bureau. Each year, the Census Bureau publishes estimates for states and counties. This one has every county in the US. A common question: who are the winners and losers? 
 
 ```{r}
 population <- read_csv('data/countypopulations.csv')
