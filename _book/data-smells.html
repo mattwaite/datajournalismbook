@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 11 Data smells | Data Journalism with R and the Tidyverse</title>
+  <title>Chapter 10 Data smells | Data Journalism with R and the Tidyverse</title>
   <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 11 Data smells | Data Journalism with R and the Tidyverse" />
+  <meta property="og:title" content="Chapter 10 Data smells | Data Journalism with R and the Tidyverse" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 11 Data smells | Data Journalism with R and the Tidyverse" />
+  <meta name="twitter:title" content="Chapter 10 Data smells | Data Journalism with R and the Tidyverse" />
   
   <meta name="twitter:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Matt Waite" />
 
 
-<meta name="date" content="2020-01-24" />
+<meta name="date" content="2020-01-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -162,22 +162,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="aggregates.html"><a href="aggregates.html#importing-data"><i class="fa fa-check"></i><b>6.1</b> Importing data</a></li>
 <li class="chapter" data-level="6.2" data-path="aggregates.html"><a href="aggregates.html#group-by-and-count"><i class="fa fa-check"></i><b>6.2</b> Group by and count</a></li>
 <li class="chapter" data-level="6.3" data-path="aggregates.html"><a href="aggregates.html#other-aggregates-mean-and-median"><i class="fa fa-check"></i><b>6.3</b> Other aggregates: Mean and median</a></li>
+<li class="chapter" data-level="6.4" data-path="aggregates.html"><a href="aggregates.html#even-more-aggregates"><i class="fa fa-check"></i><b>6.4</b> Even more aggregates</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="other-aggregates.html"><a href="other-aggregates.html"><i class="fa fa-check"></i><b>7</b> Other aggregates</a></li>
-<li class="chapter" data-level="8" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>8</b> Mutating data</a><ul>
-<li class="chapter" data-level="8.1" data-path="mutating-data.html"><a href="mutating-data.html#another-use-of-mutate"><i class="fa fa-check"></i><b>8.1</b> Another use of mutate</a></li>
+<li class="chapter" data-level="7" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>7</b> Mutating data</a><ul>
+<li class="chapter" data-level="7.1" data-path="mutating-data.html"><a href="mutating-data.html#another-use-of-mutate"><i class="fa fa-check"></i><b>7.1</b> Another use of mutate</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>9</b> Working with dates</a><ul>
-<li class="chapter" data-level="9.1" data-path="working-with-dates.html"><a href="working-with-dates.html#the-hard-way"><i class="fa fa-check"></i><b>9.1</b> The hard way</a></li>
+<li class="chapter" data-level="8" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>8</b> Working with dates</a><ul>
+<li class="chapter" data-level="8.1" data-path="working-with-dates.html"><a href="working-with-dates.html#the-hard-way"><i class="fa fa-check"></i><b>8.1</b> The hard way</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="filters-and-selections.html"><a href="filters-and-selections.html"><i class="fa fa-check"></i><b>10</b> Filters and selections</a><ul>
-<li class="chapter" data-level="10.1" data-path="filters-and-selections.html"><a href="filters-and-selections.html#combining-filters"><i class="fa fa-check"></i><b>10.1</b> Combining filters</a></li>
+<li class="chapter" data-level="9" data-path="filters-and-selections.html"><a href="filters-and-selections.html"><i class="fa fa-check"></i><b>9</b> Filters and selections</a><ul>
+<li class="chapter" data-level="9.1" data-path="filters-and-selections.html"><a href="filters-and-selections.html#combining-filters"><i class="fa fa-check"></i><b>9.1</b> Combining filters</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="data-smells.html"><a href="data-smells.html"><i class="fa fa-check"></i><b>11</b> Data smells</a><ul>
-<li class="chapter" data-level="11.1" data-path="data-smells.html"><a href="data-smells.html#wrong-type"><i class="fa fa-check"></i><b>11.1</b> Wrong Type</a></li>
-<li class="chapter" data-level="11.2" data-path="data-smells.html"><a href="data-smells.html#missing-data"><i class="fa fa-check"></i><b>11.2</b> Missing Data</a></li>
-<li class="chapter" data-level="11.3" data-path="data-smells.html"><a href="data-smells.html#gaps-in-data"><i class="fa fa-check"></i><b>11.3</b> Gaps in data</a></li>
-<li class="chapter" data-level="11.4" data-path="data-smells.html"><a href="data-smells.html#internal-inconsistency"><i class="fa fa-check"></i><b>11.4</b> Internal inconsistency</a></li>
+<li class="chapter" data-level="10" data-path="data-smells.html"><a href="data-smells.html"><i class="fa fa-check"></i><b>10</b> Data smells</a><ul>
+<li class="chapter" data-level="10.1" data-path="data-smells.html"><a href="data-smells.html#wrong-type"><i class="fa fa-check"></i><b>10.1</b> Wrong Type</a></li>
+<li class="chapter" data-level="10.2" data-path="data-smells.html"><a href="data-smells.html#missing-data"><i class="fa fa-check"></i><b>10.2</b> Missing Data</a></li>
+<li class="chapter" data-level="10.3" data-path="data-smells.html"><a href="data-smells.html#gaps-in-data"><i class="fa fa-check"></i><b>10.3</b> Gaps in data</a></li>
+<li class="chapter" data-level="10.4" data-path="data-smells.html"><a href="data-smells.html#internal-inconsistency"><i class="fa fa-check"></i><b>10.4</b> Internal inconsistency</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -200,7 +200,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="data-smells" class="section level1">
-<h1><span class="header-section-number">Chapter 11</span> Data smells</h1>
+<h1><span class="header-section-number">Chapter 10</span> Data smells</h1>
 <p>Any time you are given a dataset from anyone, you should immediately be suspicious. Is this data what I think it is? Does it include what I expect? Is there anything I need to know about it? Will it produce the information I expect?</p>
 <p>One of the first things you should do is give it the smell test.</p>
 <p>Failure to give data the smell test <a href="https://source.opennews.org/en-US/learning/handling-data-about-race-and-ethnicity/">can lead you to miss stories and get your butt kicked on a competitive story</a>.</p>
@@ -223,7 +223,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Not all of these data smells are detectable in code. You may have to ask people about the data. You may have to compare it to another dataset yourself. Does the agency that uses the data produce reports from the data? Does your analysis match those reports? That will expose wrongly derived data, or wrong units, or mistakes you made with inclusion or exclusion.</p>
 <p>But with several of these data smells, we can do them first, before we do anything else.</p>
 <div id="wrong-type" class="section level2">
-<h2><span class="header-section-number">11.1</span> Wrong Type</h2>
+<h2><span class="header-section-number">10.1</span> Wrong Type</h2>
 <p>First, let’s look at <strong>Wrong Type Of Data</strong>. We can sniff that out by looking at the output of <code>readr</code></p>
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1">tickets &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/tickets.csv&quot;</span>)</a></code></pre></div>
@@ -256,7 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For this, things seem to be good. <code>Date</code> appears to be in date format, things that aren’t numbers appear to be text. That’s a good start.</p>
 </div>
 <div id="missing-data" class="section level2">
-<h2><span class="header-section-number">11.2</span> Missing Data</h2>
+<h2><span class="header-section-number">10.2</span> Missing Data</h2>
 <p>The second smell we can find in code is <strong>missing data</strong>. We can do that through a series of Group By and Count steps.</p>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1">tickets <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Location) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>()</a></code></pre></div>
 <pre><code>## # A tibble: 247 x 2
@@ -293,7 +293,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>None here either, so that’s good. It means our tickets will always have a location and a violation type.</p>
 </div>
 <div id="gaps-in-data" class="section level2">
-<h2><span class="header-section-number">11.3</span> Gaps in data</h2>
+<h2><span class="header-section-number">10.3</span> Gaps in data</h2>
 <p>Let’s now look at <strong>gaps in data</strong>. It’s been my experience that gaps in data often have to do with time, so let’s first look at ticket dates, so we can see if there’s any big jumps in data. You’d expect the numbers to change, but not by huge amounts. Huge change would indicate, more often than not, that the data is missing. Let’s start with Date. If we’re going to work with dates, we should have <code>lubridate</code> handy for <code>floor_date</code>.</p>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1"><span class="kw">library</span>(lubridate)</a></code></pre></div>
 <div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1">tickets <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(<span class="kw">floor_date</span>(Date, <span class="st">&quot;month&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>()</a></code></pre></div>
@@ -314,7 +314,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>First thing to notice: our data starts in April 2012. So 2012 isn’t a complete year. Then, scroll through. Look at December 2013 - March 2014. The number of tickets drops to about 10 percent of normal. That’s … odd. And then let’s look at the end – November 2016. So not a complete year in 2016 either.</p>
 </div>
 <div id="internal-inconsistency" class="section level2">
-<h2><span class="header-section-number">11.4</span> Internal inconsistency</h2>
+<h2><span class="header-section-number">10.4</span> Internal inconsistency</h2>
 <p>Any time you are going to focus on something, you should check it for consistency inside the data set. So let’s pretend the large number of Displaying Altered Permit tickets caught your attention and you want to do a story about tens of thousands of students being caught altering their parking permits to reduce their costs parking on campus. Good story right? Before you go calling the parking office for comment, I’d check that data first.</p>
 <div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1">tickets <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Violation <span class="op">==</span><span class="st"> &quot;Displaying Altered Permit&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(<span class="kw">floor_date</span>(Date, <span class="st">&quot;month&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>()</a></code></pre></div>
 <pre><code>## # A tibble: 29 x 2
