@@ -12,30 +12,49 @@ But let's start simple. There are certain things that need we can start with tha
 
 ## Cleaning headers
 
+One of the first places we can start with cleaning data is cleaning the headers. Every system has their own way of recording headers, and every developer has their own thoughts of what a good idea is within it. R is most happy when headers are one word, lower case, without special characters. If you've noticed `readr`  output with backticks around headers like Incident Date, it's because of the space. Headers that start with numbers or are just a number -- 2002 -- also get backticks in `readr`. 
 
+There is an external library in R called `janitor` that makes fixing headers trivially simple. You can install it by running `install.packages("janitor")` in your console. 
+
+Load libraries like we always do.
 
 ```{r}
 library(tidyverse)
 library(janitor)
 ```
 
+Let's load a new dataset -- the [list of active inmates in the Nebraska prison system](https://unl.box.com/s/wlurwk2ks880x65ao0l67k8pmjk04gy2). 
 
 ```{r}
 inmates <- read_csv("data/activeinmates.csv")
 ```
 
+From the output of `readr`, you can see all kinds of problems from the get go. Two columns are missing names entirely. Three columns repeat -- first name, middle name and name extension. And many field names have spaces or other not-allowed characters. Not to mention: All of them are in ALL CAPS.
+
+Janitor makes this easy to fix. How easy? This easy. 
+
 ```{r}
 inmates %>% clean_names()
 ```
+
+Just like that, all lower case, all one word, no backticks necessary to confuse our code later on. 
+
+Another thing janitor does well is to make it easy to drop empty columns. Remember the two unnamed columns in the data? Turns out they're unnamamed because there's nothing in them. Nada. Blank. We could use `select` but janitor reduces the labor involved there.
+
+First, let's see how many columns we have. 
 
 ```{r}
 inmates %>% ncol()
 ```
 
+And by using `remove_empty("cols")`, how many do we get rid of?
+
 ```{r}
 inmates %>% clean_names() %>% remove_empty("cols") %>% ncol()
 ```
 
+So this tells us there's three completely empty columns in our data. So why keep them around. 
+So we can run all of this together and get a dataset with useful columns and clean headers.
 
 ```{r}
 inmates %>% clean_names() %>% remove_empty("cols") -> clean_headers_inmates
@@ -43,29 +62,50 @@ inmates %>% clean_names() %>% remove_empty("cols") -> clean_headers_inmates
 
 ## Duplicates
 
+One of the most difficult problems to fix in data is duplicates in the data. They can creep  in with bad joins, bad data entry practices, mistakes -- all kinds of reasons. One trick is determining if a duplicate is indeed a duplicate. 
+
+So the question is, do we have any inmates repeated? Anyone in prison twice? 
+
+Here we'll use a function called `get_dupes`. And we'll use the inmate's last name, first name and date of birth. The likelihood that someone has the same name and date of birth is very small, so if there are no duplicates, we should get zero records returned. 
 
 ```{r}
 clean_headers_inmates %>% get_dupes(committed_last_name, first_name, date_of_birth)
 ```
 
+Uh oh. We get two Pamela Wallaces born on the same day in 1966. But is it a duplicate record? Look closely. Two different `id_number`s. In two different facilities on two different dates. Two different sentencing dates. Is it a duplicate record or the same person entering the system two different times?  
+
 ## Inconsistency
 
+Janitor also has some handy tools for our data smells. One is called `tabyl`, which creates a table of unique records in a single field. 
+
+So does the Department of Corrections record gender consistently? `tabyl` will tell us and will tell us a little bit about the data.
 
 ```{r}
 clean_headers_inmates %>% tabyl(gender)
 ```
 
+So the Department of Corrections clearly doesn't buy into more modern sentiments about gender, but they are at least consistent. Every inmate has a gender -- no NAs -- and note that 90 percent of inmates are men. 
+
+How about race? 
+
 ```{r}
 clean_headers_inmates %>% tabyl(race_desc)
 ```
+
+Three people do not have a race -- and according to the Census Bureau, Hispanic is not a race, it's an ethnicity  -- but otherwise, it looks solid. There's very little in the way of inconsistency. 
+
+How about what facilities they are in? 
 
 ```{r}
 clean_headers_inmates %>% tabyl(facility)
 ```
 
+Not sure how I feel about 118 inmates not having a facility. That's probably worth investigating. At least one, I know about -- it lists the inmate as having escaped in the 1960s and never found. Not sure about the others. 
+
+But sometimes, NAs are not bad data. Sometimes they're just NA. Let's look at `inst_release_type` or how inmates were released. 
+
 ```{r}
 clean_headers_inmates %>% tabyl(inst_release_type)
 ```
 
-
-
+By far the largest group here is NA. Why is that? They haven't been released yet. They're still in prison.
