@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 13 Cleaning Data Part IV: PDFs | Data Journalism with R and the Tidyverse</title>
+  <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 13 Cleaning Data Part IV: PDFs | Data Journalism with R and the Tidyverse" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 13 Cleaning Data Part IV: PDFs | Data Journalism with R and the Tidyverse" />
+  
+  <meta name="twitter:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  
+
+<meta name="author" content="Matt Waite" />
+
+
+<meta name="date" content="2020-02-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-cleaning-part-iii-open-refine.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="http://mattwaite.github.io/datajournalism/">Data Journalism With R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#modern-data-journalism"><i class="fa fa-check"></i><b>1.1</b> Modern data journalism</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installations"><i class="fa fa-check"></i><b>1.2</b> Installations</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#about-this-book"><i class="fa fa-check"></i><b>1.3</b> About this book</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#what-well-cover"><i class="fa fa-check"></i><b>1.4</b> What we’ll cover</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="public-records.html"><a href="public-records.html"><i class="fa fa-check"></i><b>2</b> Public records</a><ul>
+<li class="chapter" data-level="2.1" data-path="public-records.html"><a href="public-records.html#federal-law"><i class="fa fa-check"></i><b>2.1</b> Federal law</a></li>
+<li class="chapter" data-level="2.2" data-path="public-records.html"><a href="public-records.html#state-law"><i class="fa fa-check"></i><b>2.2</b> State law</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>3</b> R basics</a><ul>
+<li class="chapter" data-level="3.1" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-1"><i class="fa fa-check"></i><b>3.1</b> Adding libraries, part 1</a></li>
+<li class="chapter" data-level="3.2" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-2"><i class="fa fa-check"></i><b>3.2</b> Adding libraries, part 2</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html"><i class="fa fa-check"></i><b>4</b> Data journalism in the age of replication</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#the-stylebook"><i class="fa fa-check"></i><b>4.1</b> The stylebook</a></li>
+<li class="chapter" data-level="4.2" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication"><i class="fa fa-check"></i><b>4.2</b> Replication</a></li>
+<li class="chapter" data-level="4.3" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#goodbye-excel"><i class="fa fa-check"></i><b>4.3</b> Goodbye Excel?</a></li>
+<li class="chapter" data-level="4.4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#receptivity-is-high"><i class="fa fa-check"></i><b>4.4</b> “Receptivity … is high”</a></li>
+<li class="chapter" data-level="4.5" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication-in-notebooks"><i class="fa fa-check"></i><b>4.5</b> Replication in notebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html"><i class="fa fa-check"></i><b>5</b> Data, structures and types</a><ul>
+<li class="chapter" data-level="5.1" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#rows-and-columns"><i class="fa fa-check"></i><b>5.1</b> Rows and columns</a></li>
+<li class="chapter" data-level="5.2" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#types"><i class="fa fa-check"></i><b>5.2</b> Types</a></li>
+<li class="chapter" data-level="5.3" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#a-simple-way-to-get-data"><i class="fa fa-check"></i><b>5.3</b> A simple way to get data</a></li>
+<li class="chapter" data-level="5.4" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#cleaning-the-data"><i class="fa fa-check"></i><b>5.4</b> Cleaning the data</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="aggregates.html"><a href="aggregates.html"><i class="fa fa-check"></i><b>6</b> Aggregates</a><ul>
+<li class="chapter" data-level="6.1" data-path="aggregates.html"><a href="aggregates.html#importing-data"><i class="fa fa-check"></i><b>6.1</b> Importing data</a></li>
+<li class="chapter" data-level="6.2" data-path="aggregates.html"><a href="aggregates.html#group-by-and-count"><i class="fa fa-check"></i><b>6.2</b> Group by and count</a></li>
+<li class="chapter" data-level="6.3" data-path="aggregates.html"><a href="aggregates.html#other-aggregates-mean-and-median"><i class="fa fa-check"></i><b>6.3</b> Other aggregates: Mean and median</a></li>
+<li class="chapter" data-level="6.4" data-path="aggregates.html"><a href="aggregates.html#even-more-aggregates"><i class="fa fa-check"></i><b>6.4</b> Even more aggregates</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>7</b> Mutating data</a><ul>
+<li class="chapter" data-level="7.1" data-path="mutating-data.html"><a href="mutating-data.html#another-use-of-mutate"><i class="fa fa-check"></i><b>7.1</b> Another use of mutate</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>8</b> Working with dates</a><ul>
+<li class="chapter" data-level="8.1" data-path="working-with-dates.html"><a href="working-with-dates.html#the-hard-way"><i class="fa fa-check"></i><b>8.1</b> The hard way</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="filters-and-selections.html"><a href="filters-and-selections.html"><i class="fa fa-check"></i><b>9</b> Filters and selections</a><ul>
+<li class="chapter" data-level="9.1" data-path="filters-and-selections.html"><a href="filters-and-selections.html#combining-filters"><i class="fa fa-check"></i><b>9.1</b> Combining filters</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html"><i class="fa fa-check"></i><b>10</b> Data Cleaning Part I: Data smells</a><ul>
+<li class="chapter" data-level="10.1" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#wrong-type"><i class="fa fa-check"></i><b>10.1</b> Wrong Type</a></li>
+<li class="chapter" data-level="10.2" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#missing-data"><i class="fa fa-check"></i><b>10.2</b> Missing Data</a></li>
+<li class="chapter" data-level="10.3" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#gaps-in-data"><i class="fa fa-check"></i><b>10.3</b> Gaps in data</a></li>
+<li class="chapter" data-level="10.4" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#internal-inconsistency"><i class="fa fa-check"></i><b>10.4</b> Internal inconsistency</a></li>
+<li class="chapter" data-level="10.5" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#a-shortcut-summary"><i class="fa fa-check"></i><b>10.5</b> A Shortcut: Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html"><i class="fa fa-check"></i><b>11</b> Data Cleaning Part II: Janitor</a><ul>
+<li class="chapter" data-level="11.1" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#cleaning-headers"><i class="fa fa-check"></i><b>11.1</b> Cleaning headers</a></li>
+<li class="chapter" data-level="11.2" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#duplicates"><i class="fa fa-check"></i><b>11.2</b> Duplicates</a></li>
+<li class="chapter" data-level="11.3" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#inconsistency"><i class="fa fa-check"></i><b>11.3</b> Inconsistency</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html"><i class="fa fa-check"></i><b>12</b> Data Cleaning Part III: Open Refine</a></li>
+<li class="chapter" data-level="13" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html"><i class="fa fa-check"></i><b>13</b> Cleaning Data Part IV: PDFs</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Journalism with R and the Tidyverse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="cleaning-data-part-iv-pdfs" class="section level1">
+<h1><span class="header-section-number">Chapter 13</span> Cleaning Data Part IV: PDFs</h1>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-cleaning-part-iii-open-refine.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/12-pdfs.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["datajournalism.pdf", "datajournalism.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
