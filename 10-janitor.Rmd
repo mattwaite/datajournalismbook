@@ -1,0 +1,71 @@
+# Data Cleaning Part II: Janitor
+
+The bane of every data analyst's existence is data cleaning. 
+
+Every developer, every data system, every agency, the all have opinions about how data gets collected. Some decisions make sense from the outside. Some decisions are based entirely on internal poltics: who is creating the data, how they are creating it, why they are creating it. Is it automated? Is it manual? Are data normalized? Are there free form fields where users can just type into or does the system restrict them to choices? 
+
+Your question -- what you want to do with the data -- is almost never part of that equation. 
+
+So cleaning data is the process of fixing issues in your data so you can answer the questions you want to answer. Unfortunately, there's no template here. There's no checklist. It's just a big bag of tricks that eventually runs out and you'll be left fixing individual issues by hand, if it's really bad.
+
+But let's start simple. There are certain things that need we can start with that will make our lives easier. We'll slowly make it harder as we dig deeper.
+
+## Cleaning headers
+
+
+
+```{r}
+library(tidyverse)
+library(janitor)
+```
+
+
+```{r}
+inmates <- read_csv("data/activeinmates.csv")
+```
+
+```{r}
+inmates %>% clean_names()
+```
+
+```{r}
+inmates %>% ncol()
+```
+
+```{r}
+inmates %>% clean_names() %>% remove_empty("cols") %>% ncol()
+```
+
+
+```{r}
+inmates %>% clean_names() %>% remove_empty("cols") -> clean_headers_inmates
+```
+
+## Duplicates
+
+
+```{r}
+clean_headers_inmates %>% get_dupes(committed_last_name, first_name, date_of_birth)
+```
+
+## Inconsistency
+
+
+```{r}
+clean_headers_inmates %>% tabyl(gender)
+```
+
+```{r}
+clean_headers_inmates %>% tabyl(race_desc)
+```
+
+```{r}
+clean_headers_inmates %>% tabyl(facility)
+```
+
+```{r}
+clean_headers_inmates %>% tabyl(inst_release_type)
+```
+
+
+

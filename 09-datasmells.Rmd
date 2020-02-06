@@ -1,4 +1,4 @@
-# Data smells
+# Data Cleaning Part I: Data smells
 
 Any time you are given a dataset from anyone, you should immediately be suspicious. Is this data what I think it is? Does it include what I expect? Is there anything I need to know about it? Will it produce the information I expect?
 
@@ -21,7 +21,7 @@ With data smells, we're trying to find common mistakes in data. [For more on dat
 * Internal inconsistency
 * External inconsistency
 * Wrong spatial data
-* Unusuable data, including non-standard abbreviations, ambigious data, extraneous data, inconsistent data
+* Unusable data, including non-standard abbreviations, ambiguous data, extraneous data, inconsistent data
 
 Not all of these data smells are detectable in code. You may have to ask people about the data. You may have to compare it to another dataset yourself. Does the agency that uses the data produce reports from the data? Does your analysis match those reports? That will expose wrongly derived data, or wrong units, or mistakes you made with inclusion or exclusion.
 
@@ -95,3 +95,15 @@ So this charge exists when our data starts, but scroll forward: In October 2013,
 Something major changed. What is it? That's why you are a reporter. Go ask. But we know our data doesn't support the story we started with.
 
 And that's what Data Smells are designed to do: stop you from going down a bad path.
+
+## A Shortcut: Summary
+
+One quick way to get some data smells is to use R's built in summary function. What summary does is run summary statistics on each column of your dataset. Some of the output is ... underwhelming ... but some is really useful. For example,  looking at min and max for dates can point to bad data there. Min and max will also show you out of range numbers -- numbers far too big or small to make sense. 
+
+The syntax is simple. 
+
+```{r}
+summary(tickets)
+```
+
+In this case, the output doesn't do much for us except dates. Looking at the min and max will tell us if we have any out of range dates. In this case, we do not. 

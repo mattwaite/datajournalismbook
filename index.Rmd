@@ -94,10 +94,11 @@ This book is the collection of class materials for the author's Data Journalism 
 * Mutating
 * Working with dates
 * Filters
-* Data smells
-* Cleaning data I
-* Cleaning data II
-* Pulling data from PDFs
+* Cleaning I: Data smells
+* Cleaning II: Janitor
+* Cleaning III: Open Refine
+* Cleaning IV: Pulling Data from PDFs
+* Joins
 * Advanced analysis: Correlations and regressions
 * Advanced analysis: Logistic regression
 * Basic data scraping

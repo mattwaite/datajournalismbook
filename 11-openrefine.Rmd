@@ -1,0 +1,28 @@
+# Data Cleaning Part III: Open Refine
+
+```{r}
+library(tidyverse)
+library(refinr)
+library(janitor)
+```
+
+```{r}
+charges <- read_csv("data/charges.csv")  %>% clean_names()
+```
+
+```{r}
+charges %>% tabyl(offense_arrest_desc)
+```
+
+```{r}
+charges %>% group_by(offense_arrest_desc) %>% tally(sort=TRUE)
+```
+
+
+```{r}
+charges %>% 
+  mutate(clean_offense_arrest_desc = n_gram_merge(offense_arrest_desc, weight = c(d = 0.2, i = 0.2, s = 1, t = 1))) %>% 
+  group_by(clean_offense_arrest_desc) %>% 
+  tally(sort=TRUE)
+```
+

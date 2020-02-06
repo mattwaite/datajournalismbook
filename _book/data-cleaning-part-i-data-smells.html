@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 10 Data Cleaning Part I: Data smells | Data Journalism with R and the Tidyverse</title>
+  <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 10 Data Cleaning Part I: Data smells | Data Journalism with R and the Tidyverse" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 10 Data Cleaning Part I: Data smells | Data Journalism with R and the Tidyverse" />
+  
+  <meta name="twitter:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  
+
+<meta name="author" content="Matt Waite" />
+
+
+<meta name="date" content="2020-02-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="filters-and-selections.html"/>
+<link rel="next" href="data-cleaning-part-ii-janitor.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="http://mattwaite.github.io/datajournalism/">Data Journalism With R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#modern-data-journalism"><i class="fa fa-check"></i><b>1.1</b> Modern data journalism</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installations"><i class="fa fa-check"></i><b>1.2</b> Installations</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#about-this-book"><i class="fa fa-check"></i><b>1.3</b> About this book</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#what-well-cover"><i class="fa fa-check"></i><b>1.4</b> What we’ll cover</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="public-records.html"><a href="public-records.html"><i class="fa fa-check"></i><b>2</b> Public records</a><ul>
+<li class="chapter" data-level="2.1" data-path="public-records.html"><a href="public-records.html#federal-law"><i class="fa fa-check"></i><b>2.1</b> Federal law</a></li>
+<li class="chapter" data-level="2.2" data-path="public-records.html"><a href="public-records.html#state-law"><i class="fa fa-check"></i><b>2.2</b> State law</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>3</b> R basics</a><ul>
+<li class="chapter" data-level="3.1" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-1"><i class="fa fa-check"></i><b>3.1</b> Adding libraries, part 1</a></li>
+<li class="chapter" data-level="3.2" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-2"><i class="fa fa-check"></i><b>3.2</b> Adding libraries, part 2</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html"><i class="fa fa-check"></i><b>4</b> Data journalism in the age of replication</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#the-stylebook"><i class="fa fa-check"></i><b>4.1</b> The stylebook</a></li>
+<li class="chapter" data-level="4.2" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication"><i class="fa fa-check"></i><b>4.2</b> Replication</a></li>
+<li class="chapter" data-level="4.3" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#goodbye-excel"><i class="fa fa-check"></i><b>4.3</b> Goodbye Excel?</a></li>
+<li class="chapter" data-level="4.4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#receptivity-is-high"><i class="fa fa-check"></i><b>4.4</b> “Receptivity … is high”</a></li>
+<li class="chapter" data-level="4.5" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication-in-notebooks"><i class="fa fa-check"></i><b>4.5</b> Replication in notebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html"><i class="fa fa-check"></i><b>5</b> Data, structures and types</a><ul>
+<li class="chapter" data-level="5.1" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#rows-and-columns"><i class="fa fa-check"></i><b>5.1</b> Rows and columns</a></li>
+<li class="chapter" data-level="5.2" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#types"><i class="fa fa-check"></i><b>5.2</b> Types</a></li>
+<li class="chapter" data-level="5.3" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#a-simple-way-to-get-data"><i class="fa fa-check"></i><b>5.3</b> A simple way to get data</a></li>
+<li class="chapter" data-level="5.4" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#cleaning-the-data"><i class="fa fa-check"></i><b>5.4</b> Cleaning the data</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="aggregates.html"><a href="aggregates.html"><i class="fa fa-check"></i><b>6</b> Aggregates</a><ul>
+<li class="chapter" data-level="6.1" data-path="aggregates.html"><a href="aggregates.html#importing-data"><i class="fa fa-check"></i><b>6.1</b> Importing data</a></li>
+<li class="chapter" data-level="6.2" data-path="aggregates.html"><a href="aggregates.html#group-by-and-count"><i class="fa fa-check"></i><b>6.2</b> Group by and count</a></li>
+<li class="chapter" data-level="6.3" data-path="aggregates.html"><a href="aggregates.html#other-aggregates-mean-and-median"><i class="fa fa-check"></i><b>6.3</b> Other aggregates: Mean and median</a></li>
+<li class="chapter" data-level="6.4" data-path="aggregates.html"><a href="aggregates.html#even-more-aggregates"><i class="fa fa-check"></i><b>6.4</b> Even more aggregates</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>7</b> Mutating data</a><ul>
+<li class="chapter" data-level="7.1" data-path="mutating-data.html"><a href="mutating-data.html#another-use-of-mutate"><i class="fa fa-check"></i><b>7.1</b> Another use of mutate</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>8</b> Working with dates</a><ul>
+<li class="chapter" data-level="8.1" data-path="working-with-dates.html"><a href="working-with-dates.html#the-hard-way"><i class="fa fa-check"></i><b>8.1</b> The hard way</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="filters-and-selections.html"><a href="filters-and-selections.html"><i class="fa fa-check"></i><b>9</b> Filters and selections</a><ul>
+<li class="chapter" data-level="9.1" data-path="filters-and-selections.html"><a href="filters-and-selections.html#combining-filters"><i class="fa fa-check"></i><b>9.1</b> Combining filters</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html"><i class="fa fa-check"></i><b>10</b> Data Cleaning Part I: Data smells</a><ul>
+<li class="chapter" data-level="10.1" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#wrong-type"><i class="fa fa-check"></i><b>10.1</b> Wrong Type</a></li>
+<li class="chapter" data-level="10.2" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#missing-data"><i class="fa fa-check"></i><b>10.2</b> Missing Data</a></li>
+<li class="chapter" data-level="10.3" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#gaps-in-data"><i class="fa fa-check"></i><b>10.3</b> Gaps in data</a></li>
+<li class="chapter" data-level="10.4" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#internal-inconsistency"><i class="fa fa-check"></i><b>10.4</b> Internal inconsistency</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html"><i class="fa fa-check"></i><b>11</b> Data Cleaning Part II: Janitor</a><ul>
+<li class="chapter" data-level="11.1" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#cleaning-headers"><i class="fa fa-check"></i><b>11.1</b> Cleaning headers</a></li>
+<li class="chapter" data-level="11.2" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#duplicates"><i class="fa fa-check"></i><b>11.2</b> Duplicates</a></li>
+<li class="chapter" data-level="11.3" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#inconsistency"><i class="fa fa-check"></i><b>11.3</b> Inconsistency</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html"><i class="fa fa-check"></i><b>12</b> Data Cleaning Part III: Open Refine</a></li>
+<li class="chapter" data-level="13" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html"><i class="fa fa-check"></i><b>13</b> Cleaning Data Part IV: PDFs</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Journalism with R and the Tidyverse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-cleaning-part-i-data-smells" class="section level1">
+<h1><span class="header-section-number">Chapter 10</span> Data Cleaning Part I: Data smells</h1>
+<p>Any time you are given a dataset from anyone, you should immediately be suspicious. Is this data what I think it is? Does it include what I expect? Is there anything I need to know about it? Will it produce the information I expect?</p>
+<p>One of the first things you should do is give it the smell test.</p>
+<p>Failure to give data the smell test <a href="https://source.opennews.org/en-US/learning/handling-data-about-race-and-ethnicity/">can lead you to miss stories and get your butt kicked on a competitive story</a>.</p>
+<p>Let’s look at some campus parking ticket data. You can <a href="https://unl.box.com/s/3c5kx2i5iouc52ty46k4js412u48yajr">get it here</a>.</p>
+<p>With data smells, we’re trying to find common mistakes in data. <a href="https://github.com/nikeiubel/data-smells/wiki/Ensuring-Accuracy-in-Data-Journalism">For more on data smells, read the GitHub wiki post that started it all</a>. The common mistakes we’re looking for are:,</p>
+<ul>
+<li>Missing data</li>
+<li>Gaps in data</li>
+<li>Wrong type of data</li>
+<li>Outliers</li>
+<li>Sharp curves</li>
+<li>Conflicting information within a dataset</li>
+<li>Conflicting information across datasets</li>
+<li>Wrongly derived data</li>
+<li>Internal inconsistency</li>
+<li>External inconsistency</li>
+<li>Wrong spatial data</li>
+<li>Unusuable data, including non-standard abbreviations, ambigious data, extraneous data, inconsistent data</li>
+</ul>
+<p>Not all of these data smells are detectable in code. You may have to ask people about the data. You may have to compare it to another dataset yourself. Does the agency that uses the data produce reports from the data? Does your analysis match those reports? That will expose wrongly derived data, or wrong units, or mistakes you made with inclusion or exclusion.</p>
+<p>But with several of these data smells, we can do them first, before we do anything else.</p>
+<div id="wrong-type" class="section level2">
+<h2><span class="header-section-number">10.1</span> Wrong Type</h2>
+<p>First, let’s look at <strong>Wrong Type Of Data</strong>. We can sniff that out by looking at the output of <code>readr</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.2.1     ✓ purrr   0.3.3
+## ✓ tibble  2.1.3     ✓ dplyr   0.8.3
+## ✓ tidyr   1.0.0     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.4.0</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## Warning: package &#39;stringr&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## Warning: package &#39;forcats&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">tickets &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/tickets.csv&quot;</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   Citation = col_double(),
+##   Date = col_datetime(format = &quot;&quot;),
+##   Location = col_character(),
+##   Violation = col_character()
+## )</code></pre>
+<pre><code>## Warning: 104265 parsing failures.
+##   row      col expected    actual               file
+## 56735 Citation a double T2TEST    &#39;data/tickets.csv&#39;
+## 57050 Citation a double EF0800001 &#39;data/tickets.csv&#39;
+## 57051 Citation a double EF0300004 &#39;data/tickets.csv&#39;
+## 57052 Citation a double EF0300005 &#39;data/tickets.csv&#39;
+## 57053 Citation a double EF010020  &#39;data/tickets.csv&#39;
+## ..... ........ ........ ......... ..................
+## See problems(...) for more details.</code></pre>
+<p>Right away, we see there’s 104,265 parsing errors. Why? Look closely. The Citation number that <code>readr</code> interprets from the first rows comes in at a number. But 56,000 rows in, those citation numbers start having letters in them, and letters are not numbers.</p>
+<p>The cheap way to fix this is to change the guess_max parameter of <code>readr</code> to just use more than a few rows to guess the column types. It’ll go a little slower, but it’ll fix the problem.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">tickets &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/tickets.csv&quot;</span>, <span class="dt">guess_max =</span> <span class="dv">60000</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   Citation = col_character(),
+##   Date = col_datetime(format = &quot;&quot;),
+##   Location = col_character(),
+##   Violation = col_character()
+## )</code></pre>
+<p>For this, things seem to be good. <code>Date</code> appears to be in date format, things that aren’t numbers appear to be text. That’s a good start.</p>
+</div>
+<div id="missing-data" class="section level2">
+<h2><span class="header-section-number">10.2</span> Missing Data</h2>
+<p>The second smell we can find in code is <strong>missing data</strong>. We can do that through a series of Group By and Count steps.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">tickets <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Location) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 247 x 2
+##    Location                        n
+##    &lt;chr&gt;                       &lt;int&gt;
+##  1 1001 Y Street                 508
+##  2 10th &amp; Q Street               303
+##  3 10th &amp; U Street               222
+##  4 1101 Y Street                  83
+##  5 11th &amp; Y Street                38
+##  6 1235 Military Road             33
+##  7 1320 Q                          1
+##  8 13th &amp; R Lot                 4918
+##  9 14th &amp; Avery Lot             1601
+## 10 14th &amp; Avery Parking Garage  2494
+## # … with 237 more rows</code></pre>
+<p>What we’re looking for here are blanks: Tickets without a location. Typically, those will appear first or last, depending on several things, so it’s worth checking the front and back of our data.</p>
+<p>What about ticket type?</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">tickets <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Violation) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 25 x 2
+##    Violation                          n
+##    &lt;chr&gt;                          &lt;int&gt;
+##  1 Damage Property                   25
+##  2 Displaying Altered Permit      23280
+##  3 Displaying Counterfeit Permit     18
+##  4 Displaying Stolen Permit           4
+##  5 Expired Meter                  45072
+##  6 Failure to Pay[on exit]          251
+##  7 Failure to Reg. Veh to Permit     53
+##  8 Failure to Register Veh w/ UNL   113
+##  9 False Lost/Stolen Permit Rept    927
+## 10 Falsify Permit Application         3
+## # … with 15 more rows</code></pre>
+<p>None here either, so that’s good. It means our tickets will always have a location and a violation type.</p>
+</div>
+<div id="gaps-in-data" class="section level2">
+<h2><span class="header-section-number">10.3</span> Gaps in data</h2>
+<p>Let’s now look at <strong>gaps in data</strong>. It’s been my experience that gaps in data often have to do with time, so let’s first look at ticket dates, so we can see if there’s any big jumps in data. You’d expect the numbers to change, but not by huge amounts. Huge change would indicate, more often than not, that the data is missing. Let’s start with Date. If we’re going to work with dates, we should have <code>lubridate</code> handy for <code>floor_date</code>.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">library</span>(lubridate)</a></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;lubridate&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:base&#39;:
+## 
+##     date</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">tickets <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(<span class="kw">floor_date</span>(Date, <span class="st">&quot;month&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 56 x 2
+##    `floor_date(Date, &quot;month&quot;)`     n
+##    &lt;dttm&gt;                      &lt;int&gt;
+##  1 2012-04-01 00:00:00          3473
+##  2 2012-05-01 00:00:00          2572
+##  3 2012-06-01 00:00:00          2478
+##  4 2012-07-01 00:00:00          2134
+##  5 2012-08-01 00:00:00          3774
+##  6 2012-09-01 00:00:00          4138
+##  7 2012-10-01 00:00:00          4173
+##  8 2012-11-01 00:00:00          3504
+##  9 2012-12-01 00:00:00          1593
+## 10 2013-01-01 00:00:00          3078
+## # … with 46 more rows</code></pre>
+<p>First thing to notice: our data starts in April 2012. So 2012 isn’t a complete year. Then, scroll through. Look at December 2013 - March 2014. The number of tickets drops to about 10 percent of normal. That’s … odd. And then let’s look at the end – November 2016. So not a complete year in 2016 either.</p>
+</div>
+<div id="internal-inconsistency" class="section level2">
+<h2><span class="header-section-number">10.4</span> Internal inconsistency</h2>
+<p>Any time you are going to focus on something, you should check it for consistency inside the data set. So let’s pretend the large number of Displaying Altered Permit tickets caught your attention and you want to do a story about tens of thousands of students being caught altering their parking permits to reduce their costs parking on campus. Good story right? Before you go calling the parking office for comment, I’d check that data first.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">tickets <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Violation <span class="op">==</span><span class="st"> &quot;Displaying Altered Permit&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(<span class="kw">floor_date</span>(Date, <span class="st">&quot;month&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 29 x 2
+##    `floor_date(Date, &quot;month&quot;)`     n
+##    &lt;dttm&gt;                      &lt;int&gt;
+##  1 2012-04-01 00:00:00          1072
+##  2 2012-05-01 00:00:00          1283
+##  3 2012-06-01 00:00:00          1324
+##  4 2012-07-01 00:00:00          1357
+##  5 2012-08-01 00:00:00          2249
+##  6 2012-09-01 00:00:00          1797
+##  7 2012-10-01 00:00:00          1588
+##  8 2012-11-01 00:00:00          1183
+##  9 2012-12-01 00:00:00           458
+## 10 2013-01-01 00:00:00          1132
+## # … with 19 more rows</code></pre>
+<p>So this charge exists when our data starts, but scroll forward: In October 2013, there’s 1,081 tickets written. A month later, only 121. A month after that? 1. And then one sporadically for three more years.</p>
+<p>Something major changed. What is it? That’s why you are a reporter. Go ask. But we know our data doesn’t support the story we started with.</p>
+<p>And that’s what Data Smells are designed to do: stop you from going down a bad path.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="filters-and-selections.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-cleaning-part-ii-janitor.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/09-datasmells.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["datajournalism.pdf", "datajournalism.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
