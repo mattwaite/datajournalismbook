@@ -24,7 +24,7 @@
 <meta name="author" content="Matt Waite" />
 
 
-<meta name="date" content="2020-02-08" />
+<meta name="date" content="2020-02-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -190,7 +190,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#more-complex-issues"><i class="fa fa-check"></i><b>12.2</b> More complex issues</a></li>
 <li class="chapter" data-level="12.3" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#manually-cleaning-data-with-open-refine"><i class="fa fa-check"></i><b>12.3</b> Manually cleaning data with Open Refine</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html"><i class="fa fa-check"></i><b>13</b> Cleaning Data Part IV: PDFs</a></li>
+<li class="chapter" data-level="13" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html"><i class="fa fa-check"></i><b>13</b> Cleaning Data Part IV: PDFs</a><ul>
+<li class="chapter" data-level="13.1" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-looks-good-but-goes-wrong"><i class="fa fa-check"></i><b>13.1</b> When it looks good, but goes wrong</a></li>
+<li class="chapter" data-level="13.2" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-works-well."><i class="fa fa-check"></i><b>13.2</b> When it works well.</a></li>
+<li class="chapter" data-level="13.3" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#cleaning-up-the-data-in-r"><i class="fa fa-check"></i><b>13.3</b> Cleaning up the data in R</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -213,7 +217,103 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="cleaning-data-part-iv-pdfs" class="section level1">
 <h1><span class="header-section-number">Chapter 13</span> Cleaning Data Part IV: PDFs</h1>
+<p>The next circle of Hell on the Dante’s Inferno of Data Journalism is the PDF. Governments everywhere love the PDF and publish all kinds of records in a PDF. The problem is a PDF isn’t a data format – it’s a middle finger, saying I’ve Got Your Accountability Right Here, Pal.</p>
+<p>It’s so ridiculous that there’s a constellation of tools that do nothing more than try to harvest tables out of PDFs. There are online services like <a href="https://www.cometdocs.com/">CometDocs</a> where you can upload your PDF and point and click your way into an Excel file. There are mobile device apps that take a picture of a table and convert it into a spreadsheet. But one of the best is a tool called <a href="https://tabula.technology/">Tabula</a>. It was build by journalists for journalists.</p>
+<p>There is a version of Tabula that will run inside of R – a library called Tabulizer – but the truth is I’m having the hardest time installing it on my machine, which leads me to believe that trying to install it across a classroom of various machines would be disasterous. The standalone version works just fine.</p>
+<p>Unfortunately, harvesting tables from PDFs with Tabula is an exercise in getting your hopes up, only to have them dashed. We’ll start with an example.</p>
+<div id="when-it-looks-good-but-goes-wrong" class="section level2">
+<h2><span class="header-section-number">13.1</span> When it looks good, but goes wrong</h2>
+<p>Every year, the University of Nebraska-Lincoln publishes dozens of PDFs that give you interesting demographic information about students, the faculty and a variety of other things. But all of it – every little bit of it – is in a PDF. And most of them are designed to look “nice” not convey data. Even when they do very obviously look like they came from a spreadsheet – like someone printed the spreadsheet to a PDF so they could put it on the web – it doesn’t work.</p>
+<p>A perfect example of this is the data showing the <a href="https://iea.unl.edu/dmdocuments/050_fall_2018_enrl_p100.pdf">breakdown of students by degree, major, race and sex</a>. Open it up, it looks like a spreadsheet but in a PDF.</p>
+<p><img src="images/pdfs1.png" width="993" /></p>
+<p><a href="https://tabula.technology/">Download and install Tabula</a>. Tabula works much the same way as Open Refine does – it works in the browser by spinning up a small webserver in
+your computer.</p>
+<p>When Tabula opens, you click browse to find the PDF on your computer somewhere, and then click import.</p>
+<p>After it imports, click autodetect tables. You’ll see red boxes appear around what Tabula believes are the tables. You’ll see it does a pretty good job at this.</p>
+<p><img src="images/pdfs2.png" width="1412" /></p>
+<p>If you like what you see, click Preview and Export Extracted Data.</p>
+<p>And here’s where it all starts to go wrong.</p>
+<p>You’ll see at first it looks good – you get a reasonable representation of the table. But look at the first line.</p>
+<p><img src="images/pdfs3.png" width="1204" /></p>
+<p>First, the misspelling of college is disturbing. Did a university document misspell it? No. Which means Tabula is reading two ls as one. That’s … not good.</p>
+<p>Second, notice how the College of Agri Sci and Natl Resources, which was in it’s own column before have been merged, somewhat inartfully, into the first column of major names. There is no major Colege of Agri Sci and Agribusiness. Same with Natl Resources Agricultural &amp; Env Sci Comm. Those aren’t things.</p>
+<p>Note the empty column between Major1 and DegreeId.</p>
+<p>Now scroll down some more.</p>
+<p><img src="images/pdfs4.png" width="1093" /></p>
+<p>Notice Architecture has the same merging of college name and first major problems as the first one does, but note the blank column is missing.</p>
+<p>Look at Arts and Sciences. Arts and Sciences are now in their own column, as the data shows, but there’s now empty names that shouldn’t be. What are those?</p>
+<p>In short, it’s a mess.</p>
+<p>Here’s the sad truth: THIS IS PRETTY GOOD. Open it in a spreadsheet and a little copying and pasting work while double checking the right names line up with the right rows and you’re in business. As converted PDFs, this isn’t bad.</p>
+<p>It beats typing it out.</p>
+</div>
+<div id="when-it-works-well." class="section level2">
+<h2><span class="header-section-number">13.2</span> When it works well.</h2>
+<p>Each month, the Nebraska Department of Revenue releases the monthly tax receipts of the state, and forecasts into the future what tax receipts might be in the near future. They do this for planning purposes – the Legislature needs to know how much money the state may have when the new budget is put into place so they know how much money they have to spend.</p>
+<p><a href="https://revenue.nebraska.gov/about/news-releases/previous-general-funds-receipts-news-releases">The announcement comes in a press release</a>. Each press release includes a table showing the current number, the predicted number, and difference. Of course it’s a PDF.</p>
+<p>Let’s look at the most recent month as of this writing: <a href="https://revenue.nebraska.gov/sites/revenue.nebraska.gov/files/doc/news-release/gen-fund/2020/General_Fund_Receipts_January_2020.pdf">January 2020</a>. Download it, open it in Tabula and hit Autodetect tables.</p>
+<p>You’ll note it finds no tables on the first page. Which is good, because there aren’t any. Let’s look at the third page. It finds a table, but is it one?</p>
+<p><img src="images/pdfs5.png" width="1046" /></p>
+<p>Let’s hit the X in the top right on that one.</p>
+<p>That leaves page 2. It finds two tables there. Let’s just grab the first. Hit X on the second and click to preview the extracted data.</p>
+<p>This looks good. So let’s export it to a csv.</p>
+</div>
+<div id="cleaning-up-the-data-in-r" class="section level2">
+<h2><span class="header-section-number">13.3</span> Cleaning up the data in R</h2>
+<p>The good news is that we have data we don’t have to retype. The bad news is, it’s hardly in importable shape.</p>
+<p>Let’s load libraries.</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<p>To import this, we need one row of headers. We have three. And we need headers that make sense.</p>
+<p>We can spell these out in the import step. First, we’ll use <code>skip</code> to skip the first three lines. Then we’ll spell out the column names by hand in a <code>col_names</code> bit. Here’s how it looks.</p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1">receipts &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;~/Downloads/tabula-General_Fund_Receipts_January_2020.csv&quot;</span>, <span class="dt">skip =</span> <span class="dv">3</span>, <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;Month&quot;</span>, <span class="st">&quot;TotalActualNetReceipts&quot;</span>, <span class="st">&quot;TotalProjectedNetReceipts&quot;</span>, <span class="st">&quot;Difference&quot;</span>, <span class="st">&quot;PercentDifference&quot;</span>, <span class="st">&quot;CumulativeActualNetReceipts&quot;</span>, <span class="st">&quot;CumulativeProjectedNetReceipts&quot;</span>, <span class="st">&quot;CumulativeDifference&quot;</span>,<span class="st">&quot;CumulativePercentDifference&quot;</span>))</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   Month = col_character(),
+##   TotalActualNetReceipts = col_character(),
+##   TotalProjectedNetReceipts = col_character(),
+##   Difference = col_character(),
+##   PercentDifference = col_character(),
+##   CumulativeActualNetReceipts = col_character(),
+##   CumulativeProjectedNetReceipts = col_character(),
+##   CumulativeDifference = col_character(),
+##   CumulativePercentDifference = col_character()
+## )</code></pre>
+<p>Now we have a harder part.</p>
+<p>The columns come in as character columns. Why? Because the state puts commas and $ and % in them, which R does not interpret as anything except text. So we need to get rid of them. We can mutate columns and use a function called <code>gsub</code> that finds a string and replaces it with something. So in our case, we’re going to <code>gsub(&quot;,&quot;,&quot;&quot;, fieldname)</code>. The unfortunate part is we have a lot of colunns and a lot of fixes. So this is going to require a lot of code. It is repetitive, though, so we can copy and paste and adjust with most of it.</p>
+<p>At the end, we need to use a function called <code>mutate_at</code> and convert the columns that aren’t text into numbers.</p>
+<p>And one last thing: If we do many months of this, we should note which report this comes from. We can do this with mutate as well.</p>
+<p>Here’s what that looks like:</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" data-line-number="1">receipts <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb157-2" data-line-number="2">  <span class="dt">TotalActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,TotalActualNetReceipts),</a>
+<a class="sourceLine" id="cb157-3" data-line-number="3">  <span class="dt">TotalActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,TotalActualNetReceipts),</a>
+<a class="sourceLine" id="cb157-4" data-line-number="4">  <span class="dt">TotalProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,TotalProjectedNetReceipts),</a>
+<a class="sourceLine" id="cb157-5" data-line-number="5">  <span class="dt">TotalProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,TotalProjectedNetReceipts),</a>
+<a class="sourceLine" id="cb157-6" data-line-number="6">  <span class="dt">Difference =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,Difference),</a>
+<a class="sourceLine" id="cb157-7" data-line-number="7">  <span class="dt">Difference =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,Difference),</a>
+<a class="sourceLine" id="cb157-8" data-line-number="8">  <span class="dt">PercentDifference =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">%&quot;</span>,<span class="st">&quot;&quot;</span>,PercentDifference),</a>
+<a class="sourceLine" id="cb157-9" data-line-number="9">  <span class="dt">CumulativeActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeActualNetReceipts),</a>
+<a class="sourceLine" id="cb157-10" data-line-number="10">  <span class="dt">CumulativeActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeActualNetReceipts),</a>
+<a class="sourceLine" id="cb157-11" data-line-number="11">  <span class="dt">CumulativeProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeProjectedNetReceipts),</a>
+<a class="sourceLine" id="cb157-12" data-line-number="12">  <span class="dt">CumulativeProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeProjectedNetReceipts),</a>
+<a class="sourceLine" id="cb157-13" data-line-number="13">  <span class="dt">CumulativeDifference =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeDifference),</a>
+<a class="sourceLine" id="cb157-14" data-line-number="14">  <span class="dt">CumulativeDifference =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeDifference),</a>
+<a class="sourceLine" id="cb157-15" data-line-number="15">  <span class="dt">CumulativePercentDifference =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">%&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativePercentDifference)</a>
+<a class="sourceLine" id="cb157-16" data-line-number="16">  ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(<span class="op">-</span>Month), as.numeric) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">ReportMonth =</span> <span class="st">&quot;January 2020&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 7 x 10
+##   Month TotalActualNetR… TotalProjectedN… Difference PercentDifferen…
+##   &lt;chr&gt;            &lt;dbl&gt;            &lt;dbl&gt;      &lt;dbl&gt;            &lt;dbl&gt;
+## 1 July         284883132        271473079   13410054              4.9
+## 2 Augu…        462019974        440504016   21515958              4.9
+## 3 Sept…        551908013        510286143   41621870              8.2
+## 4 Octo…        289723434        266204529   23518905              8.8
+## 5 Nove…        431787603        404934524   26853079              6.6
+## 6 Dece…        472926836        421455999   51470837             12.2
+## 7 Janu…        467698460        412661036   55037424             13.3
+## # … with 5 more variables: CumulativeActualNetReceipts &lt;dbl&gt;,
+## #   CumulativeProjectedNetReceipts &lt;dbl&gt;, CumulativeDifference &lt;dbl&gt;,
+## #   CumulativePercentDifference &lt;dbl&gt;, ReportMonth &lt;chr&gt;</code></pre>
+<p>We can now reuse this with other months after we harvest the data out of it.</p>
 
+</div>
 </div>
             </section>
 

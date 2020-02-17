@@ -118,7 +118,7 @@
 
 \title{Data Journalism with R and the Tidyverse}
 \author{Matt Waite}
-\date{2020-02-08}
+\date{2020-02-16}
 
 \begin{document}
 \maketitle
@@ -2022,6 +2022,7 @@ And by using \texttt{remove\_empty("cols")}, how many do we get rid of?
 \end{verbatim}
 
 So this tells us there's three completely empty columns in our data. So why keep them around.
+
 So we can run all of this together and get a dataset with useful columns and clean headers.
 
 \begin{Shaded}
@@ -2350,7 +2351,7 @@ Here's an example using sensible defaults for weighting -- unfortunately \href{h
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3035
+## [1] 3034
 \end{verbatim}
 
 Cuts it down by almost 1000. That seems pretty good. Here's a different method, using a method that turns words into phonetic spellings called soundex.
@@ -2467,5 +2468,165 @@ There's no good answer. You have to find it yourself.
 
 \hypertarget{cleaning-data-part-iv-pdfs}{%
 \chapter{Cleaning Data Part IV: PDFs}\label{cleaning-data-part-iv-pdfs}}
+
+The next circle of Hell on the Dante's Inferno of Data Journalism is the PDF. Governments everywhere love the PDF and publish all kinds of records in a PDF. The problem is a PDF isn't a data format -- it's a middle finger, saying I've Got Your Accountability Right Here, Pal.
+
+It's so ridiculous that there's a constellation of tools that do nothing more than try to harvest tables out of PDFs. There are online services like \href{https://www.cometdocs.com/}{CometDocs} where you can upload your PDF and point and click your way into an Excel file. There are mobile device apps that take a picture of a table and convert it into a spreadsheet. But one of the best is a tool called \href{https://tabula.technology/}{Tabula}. It was build by journalists for journalists.
+
+There is a version of Tabula that will run inside of R -- a library called Tabulizer -- but the truth is I'm having the hardest time installing it on my machine, which leads me to believe that trying to install it across a classroom of various machines would be disasterous. The standalone version works just fine.
+
+Unfortunately, harvesting tables from PDFs with Tabula is an exercise in getting your hopes up, only to have them dashed. We'll start with an example.
+
+\hypertarget{when-it-looks-good-but-goes-wrong}{%
+\section{When it looks good, but goes wrong}\label{when-it-looks-good-but-goes-wrong}}
+
+Every year, the University of Nebraska-Lincoln publishes dozens of PDFs that give you interesting demographic information about students, the faculty and a variety of other things. But all of it -- every little bit of it -- is in a PDF. And most of them are designed to look ``nice'' not convey data. Even when they do very obviously look like they came from a spreadsheet -- like someone printed the spreadsheet to a PDF so they could put it on the web -- it doesn't work.
+
+A perfect example of this is the data showing the \href{https://iea.unl.edu/dmdocuments/050_fall_2018_enrl_p100.pdf}{breakdown of students by degree, major, race and sex}. Open it up, it looks like a spreadsheet but in a PDF.
+
+\includegraphics[width=27.58in]{images/pdfs1}
+
+\href{https://tabula.technology/}{Download and install Tabula}. Tabula works much the same way as Open Refine does -- it works in the browser by spinning up a small webserver in
+your computer.
+
+When Tabula opens, you click browse to find the PDF on your computer somewhere, and then click import.
+
+After it imports, click autodetect tables. You'll see red boxes appear around what Tabula believes are the tables. You'll see it does a pretty good job at this.
+
+\includegraphics[width=39.22in]{images/pdfs2}
+
+If you like what you see, click Preview and Export Extracted Data.
+
+And here's where it all starts to go wrong.
+
+You'll see at first it looks good -- you get a reasonable representation of the table. But look at the first line.
+
+\includegraphics[width=33.44in]{images/pdfs3}
+
+First, the misspelling of college is disturbing. Did a university document misspell it? No.~Which means Tabula is reading two ls as one. That's \ldots{} not good.
+
+Second, notice how the College of Agri Sci and Natl Resources, which was in it's own column before have been merged, somewhat inartfully, into the first column of major names. There is no major Colege of Agri Sci and Agribusiness. Same with Natl Resources Agricultural \& Env Sci Comm. Those aren't things.
+
+Note the empty column between Major1 and DegreeId.
+
+Now scroll down some more.
+
+\includegraphics[width=30.36in]{images/pdfs4}
+
+Notice Architecture has the same merging of college name and first major problems as the first one does, but note the blank column is missing.
+
+Look at Arts and Sciences. Arts and Sciences are now in their own column, as the data shows, but there's now empty names that shouldn't be. What are those?
+
+In short, it's a mess.
+
+Here's the sad truth: THIS IS PRETTY GOOD. Open it in a spreadsheet and a little copying and pasting work while double checking the right names line up with the right rows and you're in business. As converted PDFs, this isn't bad.
+
+It beats typing it out.
+
+\hypertarget{when-it-works-well.}{%
+\section{When it works well.}\label{when-it-works-well.}}
+
+Each month, the Nebraska Department of Revenue releases the monthly tax receipts of the state, and forecasts into the future what tax receipts might be in the near future. They do this for planning purposes -- the Legislature needs to know how much money the state may have when the new budget is put into place so they know how much money they have to spend.
+
+\href{https://revenue.nebraska.gov/about/news-releases/previous-general-funds-receipts-news-releases}{The announcement comes in a press release}. Each press release includes a table showing the current number, the predicted number, and difference. Of course it's a PDF.
+
+Let's look at the most recent month as of this writing: \href{https://revenue.nebraska.gov/sites/revenue.nebraska.gov/files/doc/news-release/gen-fund/2020/General_Fund_Receipts_January_2020.pdf}{January 2020}. Download it, open it in Tabula and hit Autodetect tables.
+
+You'll note it finds no tables on the first page. Which is good, because there aren't any. Let's look at the third page. It finds a table, but is it one?
+
+\includegraphics[width=29.06in]{images/pdfs5}
+
+Let's hit the X in the top right on that one.
+
+That leaves page 2. It finds two tables there. Let's just grab the first. Hit X on the second and click to preview the extracted data.
+
+This looks good. So let's export it to a csv.
+
+\hypertarget{cleaning-up-the-data-in-r}{%
+\section{Cleaning up the data in R}\label{cleaning-up-the-data-in-r}}
+
+The good news is that we have data we don't have to retype. The bad news is, it's hardly in importable shape.
+
+Let's load libraries.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+To import this, we need one row of headers. We have three. And we need headers that make sense.
+
+We can spell these out in the import step. First, we'll use \texttt{skip} to skip the first three lines. Then we'll spell out the column names by hand in a \texttt{col\_names} bit. Here's how it looks.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{receipts <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"~/Downloads/tabula-General_Fund_Receipts_January_2020.csv"}\NormalTok{, }\DataTypeTok{skip =} \DecValTok{3}\NormalTok{, }\DataTypeTok{col_names =} \KeywordTok{c}\NormalTok{(}\StringTok{"Month"}\NormalTok{, }\StringTok{"TotalActualNetReceipts"}\NormalTok{, }\StringTok{"TotalProjectedNetReceipts"}\NormalTok{, }\StringTok{"Difference"}\NormalTok{, }\StringTok{"PercentDifference"}\NormalTok{, }\StringTok{"CumulativeActualNetReceipts"}\NormalTok{, }\StringTok{"CumulativeProjectedNetReceipts"}\NormalTok{, }\StringTok{"CumulativeDifference"}\NormalTok{,}\StringTok{"CumulativePercentDifference"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Parsed with column specification:
+## cols(
+##   Month = col_character(),
+##   TotalActualNetReceipts = col_character(),
+##   TotalProjectedNetReceipts = col_character(),
+##   Difference = col_character(),
+##   PercentDifference = col_character(),
+##   CumulativeActualNetReceipts = col_character(),
+##   CumulativeProjectedNetReceipts = col_character(),
+##   CumulativeDifference = col_character(),
+##   CumulativePercentDifference = col_character()
+## )
+\end{verbatim}
+
+Now we have a harder part.
+
+The columns come in as character columns. Why? Because the state puts commas and \$ and \% in them, which R does not interpret as anything except text. So we need to get rid of them. We can mutate columns and use a function called \texttt{gsub} that finds a string and replaces it with something. So in our case, we're going to \texttt{gsub(",","",\ fieldname)}. The unfortunate part is we have a lot of colunns and a lot of fixes. So this is going to require a lot of code. It is repetitive, though, so we can copy and paste and adjust with most of it.
+
+At the end, we need to use a function called \texttt{mutate\_at} and convert the columns that aren't text into numbers.
+
+And one last thing: If we do many months of this, we should note which report this comes from. We can do this with mutate as well.
+
+Here's what that looks like:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{receipts }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}
+  \DataTypeTok{TotalActualNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,TotalActualNetReceipts),}
+  \DataTypeTok{TotalActualNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,TotalActualNetReceipts),}
+  \DataTypeTok{TotalProjectedNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,TotalProjectedNetReceipts),}
+  \DataTypeTok{TotalProjectedNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,TotalProjectedNetReceipts),}
+  \DataTypeTok{Difference =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,Difference),}
+  \DataTypeTok{Difference =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,Difference),}
+  \DataTypeTok{PercentDifference =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{%"}\NormalTok{,}\StringTok{""}\NormalTok{,PercentDifference),}
+  \DataTypeTok{CumulativeActualNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativeActualNetReceipts),}
+  \DataTypeTok{CumulativeActualNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativeActualNetReceipts),}
+  \DataTypeTok{CumulativeProjectedNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativeProjectedNetReceipts),}
+  \DataTypeTok{CumulativeProjectedNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativeProjectedNetReceipts),}
+  \DataTypeTok{CumulativeDifference =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativeDifference),}
+  \DataTypeTok{CumulativeDifference =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativeDifference),}
+  \DataTypeTok{CumulativePercentDifference =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{%"}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativePercentDifference)}
+\NormalTok{  ) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate_at}\NormalTok{(}\KeywordTok{vars}\NormalTok{(}\OperatorTok{-}\NormalTok{Month), as.numeric) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{ReportMonth =} \StringTok{"January 2020"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 7 x 10
+##   Month TotalActualNetR~ TotalProjectedN~ Difference PercentDifferen~
+##   <chr>            <dbl>            <dbl>      <dbl>            <dbl>
+## 1 July         284883132        271473079   13410054              4.9
+## 2 Augu~        462019974        440504016   21515958              4.9
+## 3 Sept~        551908013        510286143   41621870              8.2
+## 4 Octo~        289723434        266204529   23518905              8.8
+## 5 Nove~        431787603        404934524   26853079              6.6
+## 6 Dece~        472926836        421455999   51470837             12.2
+## 7 Janu~        467698460        412661036   55037424             13.3
+## # ... with 5 more variables: CumulativeActualNetReceipts <dbl>,
+## #   CumulativeProjectedNetReceipts <dbl>, CumulativeDifference <dbl>,
+## #   CumulativePercentDifference <dbl>, ReportMonth <chr>
+\end{verbatim}
+
+We can now reuse this with other months after we harvest the data out of it.
 
 \end{document}
