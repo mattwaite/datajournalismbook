@@ -54,6 +54,7 @@ inmates %>% clean_names() %>% remove_empty("cols") %>% ncol()
 ```
 
 So this tells us there's three completely empty columns in our data. So why keep them around. 
+
 So we can run all of this together and get a dataset with useful columns and clean headers.
 
 ```{r}
