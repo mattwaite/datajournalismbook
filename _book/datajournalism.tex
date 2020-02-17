@@ -2156,7 +2156,7 @@ By far the largest group here is NA. Why is that? They haven't been released yet
 \hypertarget{data-cleaning-part-iii-open-refine}{%
 \chapter{Data Cleaning Part III: Open Refine}\label{data-cleaning-part-iii-open-refine}}
 
-Gather 'round kids and let me tell you a tale about your author. In college, your author got involved in a project where he mapped crime in the city, looking specifically in the neighorhoods surrounding campus. This was in the mid 1990s. Computers were underpowered. Tools were pretty primitive. I was given a database of nearly 50,000 calls for service.
+Gather 'round kids and let me tell you a tale about your author. In college, your author got involved in a project where he mapped crime in the city, looking specifically in the neighborhoods surrounding campus. This was in the mid 1990s. Computers were under powered. Tools were pretty primitive. I was given a database of nearly 50,000 calls for service.
 
 And then I learned that addresses were not stored in a standard way. However the officer wrote it down, that's how it was recorded.
 
@@ -2233,7 +2233,7 @@ The issue in this dataset, if you look carefully, is that there's two Sheridan c
 
 The first merging technique we'll try is the \texttt{key\_collision\_merge}. The key collision merge function takes each string and extracts the key parts of it. It then puts every key in a bin based on the keys matching. So in this case, it finds sheridan and Sheridan and recognizes that the keys match, and since Sheridan is more common, it uses that one.
 
-One rule you should follow: \textbf{do not overwrite your original fields}. Always work on a copy. To follow this, I'm going to mutate a new field called CleanCounty and put the results of key collision merge there.
+One rule you should follow: \textbf{do not overwrite your original fields}. Always work on a copy. If you overwrite your original field, how will you know if it did the right thing? How can you compare it to your original data? To follow this, I'm going to mutate a new field called CleanCounty and put the results of key collision merge there.
 
 Then, to show it worked, I'll do the same group and count.
 
@@ -2350,7 +2350,7 @@ Here's an example using sensible defaults for weighting -- unfortunately \href{h
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3034
+## [1] 3035
 \end{verbatim}
 
 Cuts it down by almost 1000. That seems pretty good. Here's a different method, using a method that turns words into phonetic spellings called soundex.
@@ -2451,7 +2451,7 @@ Now begins the fun part: You have to look at all 303 clusters found and decide i
 
 When you're done, click Merge Selected and Re-Cluster.
 
-If any new clusters come up, evalue them. Repeat until either no clusters come up or the clusters that do come up are ones you reject.
+If any new clusters come up, evaluate them. Repeat until either no clusters come up or the clusters that do come up are ones you reject.
 
 Now. Try a new method. Rinse and repeat. You'll keep doing this, and if the dataset is reasonably clean, you'll find the end.
 

@@ -213,7 +213,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="data-cleaning-part-iii-open-refine" class="section level1">
 <h1><span class="header-section-number">Chapter 12</span> Data Cleaning Part III: Open Refine</h1>
-<p>Gather ’round kids and let me tell you a tale about your author. In college, your author got involved in a project where he mapped crime in the city, looking specifically in the neighorhoods surrounding campus. This was in the mid 1990s. Computers were underpowered. Tools were pretty primitive. I was given a database of nearly 50,000 calls for service.</p>
+<p>Gather ’round kids and let me tell you a tale about your author. In college, your author got involved in a project where he mapped crime in the city, looking specifically in the neighborhoods surrounding campus. This was in the mid 1990s. Computers were under powered. Tools were pretty primitive. I was given a database of nearly 50,000 calls for service.</p>
 <p>And then I learned that addresses were not stored in a standard way. However the officer wrote it down, that’s how it was recorded.</p>
 <p>What did that mean?</p>
 <p>It meant the Lincoln Police Department came up with dozens of ways to say a single place. And since the mapping software needed the addressed to be in a specific form, I had to fix them. For example, I will go to my grave knowing that Lincoln High School’s street address is 2229 J Street. Police officers wrote down LHS, L.H.S., Lincoln HS, Lincoln H.S., LHS (J Street), 2229 J, 2229 J ST, St., Street and on and on and on. That one was relatively easy. The local convenience store chain, with 8 locations around the city, was harder. I had to use the patrol district to locate them.</p>
@@ -255,7 +255,7 @@ Every time I talk about Open Refine, I remember this, and I get mad.</p>
 ## 10 Dawes       111
 ## # … with 32 more rows</code></pre>
 <p>The first merging technique we’ll try is the <code>key_collision_merge</code>. The key collision merge function takes each string and extracts the key parts of it. It then puts every key in a bin based on the keys matching. So in this case, it finds sheridan and Sheridan and recognizes that the keys match, and since Sheridan is more common, it uses that one.</p>
-<p>One rule you should follow: <strong>do not overwrite your original fields</strong>. Always work on a copy. To follow this, I’m going to mutate a new field called CleanCounty and put the results of key collision merge there.</p>
+<p>One rule you should follow: <strong>do not overwrite your original fields</strong>. Always work on a copy. If you overwrite your original field, how will you know if it did the right thing? How can you compare it to your original data? To follow this, I’m going to mutate a new field called CleanCounty and put the results of key collision merge there.</p>
 <p>Then, to show it worked, I’ll do the same group and count.</p>
 <div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" data-line-number="1">mountainlions <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb139-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">CleanCounty =</span> <span class="kw">key_collision_merge</span>(COUNTY)) <span class="op">%&gt;%</span></a>
@@ -321,7 +321,7 @@ Every time I talk about Open Refine, I remember this, and I get mad.</p>
 <a class="sourceLine" id="cb148-5" data-line-number="5"><span class="st">  </span><span class="kw">group_by</span>(clean_charges) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb148-6" data-line-number="6"><span class="st">  </span><span class="kw">tally</span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb148-7" data-line-number="7"><span class="st">  </span><span class="kw">nrow</span>()</a></code></pre></div>
-<pre><code>## [1] 3034</code></pre>
+<pre><code>## [1] 3035</code></pre>
 <p>Cuts it down by almost 1000. That seems pretty good. Here’s a different method, using a method that turns words into phonetic spellings called soundex.</p>
 <div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1">charges <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb150-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(</a>
@@ -380,7 +380,7 @@ Every time I talk about Open Refine, I remember this, and I get mad.</p>
 <p><img src="images/open6.png" width="1000" /></p>
 <p>Now begins the fun part: You have to look at all 303 clusters found and decide if they are indeed valid. The key collision method is very good, and very conservative. You’ll find that most of them are usually valid.</p>
 <p>When you’re done, click Merge Selected and Re-Cluster.</p>
-<p>If any new clusters come up, evalue them. Repeat until either no clusters come up or the clusters that do come up are ones you reject.</p>
+<p>If any new clusters come up, evaluate them. Repeat until either no clusters come up or the clusters that do come up are ones you reject.</p>
 <p>Now. Try a new method. Rinse and repeat. You’ll keep doing this, and if the dataset is reasonably clean, you’ll find the end.</p>
 <p>If it’s not, it’ll go on forever.</p>
 <p><img src="images/open7.png" width="999" />
