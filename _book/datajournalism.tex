@@ -118,7 +118,7 @@
 
 \title{Data Journalism with R and the Tidyverse}
 \author{Matt Waite}
-\date{2020-02-16}
+\date{2020-02-18}
 
 \begin{document}
 \maketitle
@@ -2351,7 +2351,7 @@ Here's an example using sensible defaults for weighting -- unfortunately \href{h
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3034
+## [1] 3035
 \end{verbatim}
 
 Cuts it down by almost 1000. That seems pretty good. Here's a different method, using a method that turns words into phonetic spellings called soundex.
@@ -2561,7 +2561,7 @@ We can spell these out in the import step. First, we'll use \texttt{skip} to ski
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{receipts <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"~/Downloads/tabula-General_Fund_Receipts_January_2020.csv"}\NormalTok{, }\DataTypeTok{skip =} \DecValTok{3}\NormalTok{, }\DataTypeTok{col_names =} \KeywordTok{c}\NormalTok{(}\StringTok{"Month"}\NormalTok{, }\StringTok{"TotalActualNetReceipts"}\NormalTok{, }\StringTok{"TotalProjectedNetReceipts"}\NormalTok{, }\StringTok{"Difference"}\NormalTok{, }\StringTok{"PercentDifference"}\NormalTok{, }\StringTok{"CumulativeActualNetReceipts"}\NormalTok{, }\StringTok{"CumulativeProjectedNetReceipts"}\NormalTok{, }\StringTok{"CumulativeDifference"}\NormalTok{,}\StringTok{"CumulativePercentDifference"}\NormalTok{))}
+\NormalTok{receipts <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"~/Downloads/tabula-General_Fund_Receipts_January_2020.csv"}\NormalTok{, }\DataTypeTok{skip =} \DecValTok{3}\NormalTok{, }\DataTypeTok{col_names =} \KeywordTok{c}\NormalTok{(}\StringTok{"Month"}\NormalTok{, }\StringTok{"TotalActualNetReceipts"}\NormalTok{, }\StringTok{"TotalProjectedNetReceipts"}\NormalTok{, }\StringTok{"Difference"}\NormalTok{, }\StringTok{"PercentDifference"}\NormalTok{, }\StringTok{"CumulativeActualNetReceipts"}\NormalTok{, }\StringTok{"CumulativeProjectedNetReceipts"}\NormalTok{, }\StringTok{"CumulativeDifference"}\NormalTok{,}\StringTok{"CumulativePercentDifference"}\NormalTok{), }\DataTypeTok{skip_empty_rows =} \OtherTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 

@@ -24,7 +24,7 @@
 <meta name="author" content="Matt Waite" />
 
 
-<meta name="date" content="2020-02-16" />
+<meta name="date" content="2020-02-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -264,7 +264,7 @@ your computer.</p>
 <div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <p>To import this, we need one row of headers. We have three. And we need headers that make sense.</p>
 <p>We can spell these out in the import step. First, we’ll use <code>skip</code> to skip the first three lines. Then we’ll spell out the column names by hand in a <code>col_names</code> bit. Here’s how it looks.</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1">receipts &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;~/Downloads/tabula-General_Fund_Receipts_January_2020.csv&quot;</span>, <span class="dt">skip =</span> <span class="dv">3</span>, <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;Month&quot;</span>, <span class="st">&quot;TotalActualNetReceipts&quot;</span>, <span class="st">&quot;TotalProjectedNetReceipts&quot;</span>, <span class="st">&quot;Difference&quot;</span>, <span class="st">&quot;PercentDifference&quot;</span>, <span class="st">&quot;CumulativeActualNetReceipts&quot;</span>, <span class="st">&quot;CumulativeProjectedNetReceipts&quot;</span>, <span class="st">&quot;CumulativeDifference&quot;</span>,<span class="st">&quot;CumulativePercentDifference&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1">receipts &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;~/Downloads/tabula-General_Fund_Receipts_January_2020.csv&quot;</span>, <span class="dt">skip =</span> <span class="dv">3</span>, <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;Month&quot;</span>, <span class="st">&quot;TotalActualNetReceipts&quot;</span>, <span class="st">&quot;TotalProjectedNetReceipts&quot;</span>, <span class="st">&quot;Difference&quot;</span>, <span class="st">&quot;PercentDifference&quot;</span>, <span class="st">&quot;CumulativeActualNetReceipts&quot;</span>, <span class="st">&quot;CumulativeProjectedNetReceipts&quot;</span>, <span class="st">&quot;CumulativeDifference&quot;</span>,<span class="st">&quot;CumulativePercentDifference&quot;</span>), <span class="dt">skip_empty_rows =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   Month = col_character(),
