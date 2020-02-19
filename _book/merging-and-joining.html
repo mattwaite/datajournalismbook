@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 14 Merging and joining | Data Journalism with R and the Tidyverse</title>
+  <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 14 Merging and joining | Data Journalism with R and the Tidyverse" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 14 Merging and joining | Data Journalism with R and the Tidyverse" />
+  
+  <meta name="twitter:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  
+
+<meta name="author" content="Matt Waite" />
+
+
+<meta name="date" content="2020-02-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="cleaning-data-part-iv-pdfs.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="http://mattwaite.github.io/datajournalism/">Data Journalism With R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#modern-data-journalism"><i class="fa fa-check"></i><b>1.1</b> Modern data journalism</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installations"><i class="fa fa-check"></i><b>1.2</b> Installations</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#about-this-book"><i class="fa fa-check"></i><b>1.3</b> About this book</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#what-well-cover"><i class="fa fa-check"></i><b>1.4</b> What we’ll cover</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="public-records.html"><a href="public-records.html"><i class="fa fa-check"></i><b>2</b> Public records</a><ul>
+<li class="chapter" data-level="2.1" data-path="public-records.html"><a href="public-records.html#federal-law"><i class="fa fa-check"></i><b>2.1</b> Federal law</a></li>
+<li class="chapter" data-level="2.2" data-path="public-records.html"><a href="public-records.html#state-law"><i class="fa fa-check"></i><b>2.2</b> State law</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>3</b> R basics</a><ul>
+<li class="chapter" data-level="3.1" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-1"><i class="fa fa-check"></i><b>3.1</b> Adding libraries, part 1</a></li>
+<li class="chapter" data-level="3.2" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-2"><i class="fa fa-check"></i><b>3.2</b> Adding libraries, part 2</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html"><i class="fa fa-check"></i><b>4</b> Data journalism in the age of replication</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#the-stylebook"><i class="fa fa-check"></i><b>4.1</b> The stylebook</a></li>
+<li class="chapter" data-level="4.2" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication"><i class="fa fa-check"></i><b>4.2</b> Replication</a></li>
+<li class="chapter" data-level="4.3" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#goodbye-excel"><i class="fa fa-check"></i><b>4.3</b> Goodbye Excel?</a></li>
+<li class="chapter" data-level="4.4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#receptivity-is-high"><i class="fa fa-check"></i><b>4.4</b> “Receptivity … is high”</a></li>
+<li class="chapter" data-level="4.5" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication-in-notebooks"><i class="fa fa-check"></i><b>4.5</b> Replication in notebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html"><i class="fa fa-check"></i><b>5</b> Data, structures and types</a><ul>
+<li class="chapter" data-level="5.1" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#rows-and-columns"><i class="fa fa-check"></i><b>5.1</b> Rows and columns</a></li>
+<li class="chapter" data-level="5.2" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#types"><i class="fa fa-check"></i><b>5.2</b> Types</a></li>
+<li class="chapter" data-level="5.3" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#a-simple-way-to-get-data"><i class="fa fa-check"></i><b>5.3</b> A simple way to get data</a></li>
+<li class="chapter" data-level="5.4" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#cleaning-the-data"><i class="fa fa-check"></i><b>5.4</b> Cleaning the data</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="aggregates.html"><a href="aggregates.html"><i class="fa fa-check"></i><b>6</b> Aggregates</a><ul>
+<li class="chapter" data-level="6.1" data-path="aggregates.html"><a href="aggregates.html#importing-data"><i class="fa fa-check"></i><b>6.1</b> Importing data</a></li>
+<li class="chapter" data-level="6.2" data-path="aggregates.html"><a href="aggregates.html#group-by-and-count"><i class="fa fa-check"></i><b>6.2</b> Group by and count</a></li>
+<li class="chapter" data-level="6.3" data-path="aggregates.html"><a href="aggregates.html#other-aggregates-mean-and-median"><i class="fa fa-check"></i><b>6.3</b> Other aggregates: Mean and median</a></li>
+<li class="chapter" data-level="6.4" data-path="aggregates.html"><a href="aggregates.html#even-more-aggregates"><i class="fa fa-check"></i><b>6.4</b> Even more aggregates</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>7</b> Mutating data</a><ul>
+<li class="chapter" data-level="7.1" data-path="mutating-data.html"><a href="mutating-data.html#another-use-of-mutate"><i class="fa fa-check"></i><b>7.1</b> Another use of mutate</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>8</b> Working with dates</a><ul>
+<li class="chapter" data-level="8.1" data-path="working-with-dates.html"><a href="working-with-dates.html#the-hard-way"><i class="fa fa-check"></i><b>8.1</b> The hard way</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="filters-and-selections.html"><a href="filters-and-selections.html"><i class="fa fa-check"></i><b>9</b> Filters and selections</a><ul>
+<li class="chapter" data-level="9.1" data-path="filters-and-selections.html"><a href="filters-and-selections.html#combining-filters"><i class="fa fa-check"></i><b>9.1</b> Combining filters</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html"><i class="fa fa-check"></i><b>10</b> Data Cleaning Part I: Data smells</a><ul>
+<li class="chapter" data-level="10.1" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#wrong-type"><i class="fa fa-check"></i><b>10.1</b> Wrong Type</a></li>
+<li class="chapter" data-level="10.2" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#missing-data"><i class="fa fa-check"></i><b>10.2</b> Missing Data</a></li>
+<li class="chapter" data-level="10.3" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#gaps-in-data"><i class="fa fa-check"></i><b>10.3</b> Gaps in data</a></li>
+<li class="chapter" data-level="10.4" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#internal-inconsistency"><i class="fa fa-check"></i><b>10.4</b> Internal inconsistency</a></li>
+<li class="chapter" data-level="10.5" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#a-shortcut-summary"><i class="fa fa-check"></i><b>10.5</b> A Shortcut: Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html"><i class="fa fa-check"></i><b>11</b> Data Cleaning Part II: Janitor</a><ul>
+<li class="chapter" data-level="11.1" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#cleaning-headers"><i class="fa fa-check"></i><b>11.1</b> Cleaning headers</a></li>
+<li class="chapter" data-level="11.2" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#duplicates"><i class="fa fa-check"></i><b>11.2</b> Duplicates</a></li>
+<li class="chapter" data-level="11.3" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#inconsistency"><i class="fa fa-check"></i><b>11.3</b> Inconsistency</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html"><i class="fa fa-check"></i><b>12</b> Data Cleaning Part III: Open Refine</a><ul>
+<li class="chapter" data-level="12.1" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#refinr-open-refine-in-r"><i class="fa fa-check"></i><b>12.1</b> Refinr, Open Refine in R</a></li>
+<li class="chapter" data-level="12.2" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#more-complex-issues"><i class="fa fa-check"></i><b>12.2</b> More complex issues</a></li>
+<li class="chapter" data-level="12.3" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#manually-cleaning-data-with-open-refine"><i class="fa fa-check"></i><b>12.3</b> Manually cleaning data with Open Refine</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html"><i class="fa fa-check"></i><b>13</b> Cleaning Data Part IV: PDFs</a><ul>
+<li class="chapter" data-level="13.1" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-looks-good-but-goes-wrong"><i class="fa fa-check"></i><b>13.1</b> When it looks good, but goes wrong</a></li>
+<li class="chapter" data-level="13.2" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-works-well."><i class="fa fa-check"></i><b>13.2</b> When it works well.</a></li>
+<li class="chapter" data-level="13.3" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#cleaning-up-the-data-in-r"><i class="fa fa-check"></i><b>13.3</b> Cleaning up the data in R</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="merging-and-joining.html"><a href="merging-and-joining.html"><i class="fa fa-check"></i><b>14</b> Merging and joining</a><ul>
+<li class="chapter" data-level="14.1" data-path="merging-and-joining.html"><a href="merging-and-joining.html#merging-data"><i class="fa fa-check"></i><b>14.1</b> Merging data</a></li>
+<li class="chapter" data-level="14.2" data-path="merging-and-joining.html"><a href="merging-and-joining.html#joining-data"><i class="fa fa-check"></i><b>14.2</b> Joining data</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Journalism with R and the Tidyverse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="merging-and-joining" class="section level1">
+<h1><span class="header-section-number">Chapter 14</span> Merging and joining</h1>
+<p>Often, as data journalists, we’re looking at data across time or at data stored in multiple tables. And to do that, we need to often need to merge that data together.</p>
+<p>Depending on what we have, we may just need to stack data on top of each other to make new data. If we have 2019 data and 2018 data and we want that to be one file, we stack them. If we have a dataset of cows in counties and a dataset of populations in county, we’re going to join those two together on the county – the common element.</p>
+<p>Let’s explore.</p>
+<div id="merging-data" class="section level2">
+<h2><span class="header-section-number">14.1</span> Merging data</h2>
+<p>In the last assignment, we harvested data out of PDFs. Let’s reuse what we did there and merge three months of reports from the Department of Revenue together. For mine, I have <a href="https://unl.box.com/s/nd1yaroltsy161pqgbges9xrtav2qdqp">January 2020</a>, <a href="https://unl.box.com/s/jfdtqffty1vb2zbil8z5qalu18yg0590">December 2019</a>, and <a href="https://unl.box.com/s/g1dc0mibxxutsitqssv2uf75pmb7avle">November 2019</a>.</p>
+<p>Let’s do what we need to import them properly. I’ve merged it all into one step for each of the three datasets.</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" data-line-number="1">receiptsJan20 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;~/Downloads/tabula-General_Fund_Receipts_January_2020.csv&quot;</span>, <span class="dt">skip =</span> <span class="dv">3</span>, <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;Month&quot;</span>, <span class="st">&quot;TotalActualNetReceipts&quot;</span>, <span class="st">&quot;TotalProjectedNetReceipts&quot;</span>, <span class="st">&quot;Difference&quot;</span>, <span class="st">&quot;PercentDifference&quot;</span>, <span class="st">&quot;CumulativeActualNetReceipts&quot;</span>, <span class="st">&quot;CumulativeProjectedNetReceipts&quot;</span>, <span class="st">&quot;CumulativeDifference&quot;</span>,<span class="st">&quot;CumulativePercentDifference&quot;</span>), <span class="dt">skip_empty_rows =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb160-2" data-line-number="2">  <span class="dt">TotalActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,TotalActualNetReceipts),</a>
+<a class="sourceLine" id="cb160-3" data-line-number="3">  <span class="dt">TotalActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,TotalActualNetReceipts),</a>
+<a class="sourceLine" id="cb160-4" data-line-number="4">  <span class="dt">TotalProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,TotalProjectedNetReceipts),</a>
+<a class="sourceLine" id="cb160-5" data-line-number="5">  <span class="dt">TotalProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,TotalProjectedNetReceipts),</a>
+<a class="sourceLine" id="cb160-6" data-line-number="6">  <span class="dt">Difference =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,Difference),</a>
+<a class="sourceLine" id="cb160-7" data-line-number="7">  <span class="dt">Difference =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,Difference),</a>
+<a class="sourceLine" id="cb160-8" data-line-number="8">  <span class="dt">PercentDifference =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">%&quot;</span>,<span class="st">&quot;&quot;</span>,PercentDifference),</a>
+<a class="sourceLine" id="cb160-9" data-line-number="9">  <span class="dt">CumulativeActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeActualNetReceipts),</a>
+<a class="sourceLine" id="cb160-10" data-line-number="10">  <span class="dt">CumulativeActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeActualNetReceipts),</a>
+<a class="sourceLine" id="cb160-11" data-line-number="11">  <span class="dt">CumulativeProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeProjectedNetReceipts),</a>
+<a class="sourceLine" id="cb160-12" data-line-number="12">  <span class="dt">CumulativeProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeProjectedNetReceipts),</a>
+<a class="sourceLine" id="cb160-13" data-line-number="13">  <span class="dt">CumulativeDifference =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeDifference),</a>
+<a class="sourceLine" id="cb160-14" data-line-number="14">  <span class="dt">CumulativeDifference =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeDifference),</a>
+<a class="sourceLine" id="cb160-15" data-line-number="15">  <span class="dt">CumulativePercentDifference =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">%&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativePercentDifference)</a>
+<a class="sourceLine" id="cb160-16" data-line-number="16">  ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(<span class="op">-</span>Month), as.numeric) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">ReportMonth =</span> <span class="st">&quot;January 2020&quot;</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   Month = col_character(),
+##   TotalActualNetReceipts = col_character(),
+##   TotalProjectedNetReceipts = col_character(),
+##   Difference = col_character(),
+##   PercentDifference = col_character(),
+##   CumulativeActualNetReceipts = col_character(),
+##   CumulativeProjectedNetReceipts = col_character(),
+##   CumulativeDifference = col_character(),
+##   CumulativePercentDifference = col_character()
+## )</code></pre>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" data-line-number="1">receiptsDec19 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;~/Downloads/tabula-General_Fund_Receipts_December_2019.csv&quot;</span>, <span class="dt">skip =</span> <span class="dv">3</span>, <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;Month&quot;</span>, <span class="st">&quot;TotalActualNetReceipts&quot;</span>, <span class="st">&quot;TotalProjectedNetReceipts&quot;</span>, <span class="st">&quot;Difference&quot;</span>, <span class="st">&quot;PercentDifference&quot;</span>, <span class="st">&quot;CumulativeActualNetReceipts&quot;</span>, <span class="st">&quot;CumulativeProjectedNetReceipts&quot;</span>, <span class="st">&quot;CumulativeDifference&quot;</span>,<span class="st">&quot;CumulativePercentDifference&quot;</span>), <span class="dt">skip_empty_rows =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb162-2" data-line-number="2">  <span class="dt">TotalActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,TotalActualNetReceipts),</a>
+<a class="sourceLine" id="cb162-3" data-line-number="3">  <span class="dt">TotalActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,TotalActualNetReceipts),</a>
+<a class="sourceLine" id="cb162-4" data-line-number="4">  <span class="dt">TotalProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,TotalProjectedNetReceipts),</a>
+<a class="sourceLine" id="cb162-5" data-line-number="5">  <span class="dt">TotalProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,TotalProjectedNetReceipts),</a>
+<a class="sourceLine" id="cb162-6" data-line-number="6">  <span class="dt">Difference =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,Difference),</a>
+<a class="sourceLine" id="cb162-7" data-line-number="7">  <span class="dt">Difference =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,Difference),</a>
+<a class="sourceLine" id="cb162-8" data-line-number="8">  <span class="dt">PercentDifference =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">%&quot;</span>,<span class="st">&quot;&quot;</span>,PercentDifference),</a>
+<a class="sourceLine" id="cb162-9" data-line-number="9">  <span class="dt">CumulativeActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeActualNetReceipts),</a>
+<a class="sourceLine" id="cb162-10" data-line-number="10">  <span class="dt">CumulativeActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeActualNetReceipts),</a>
+<a class="sourceLine" id="cb162-11" data-line-number="11">  <span class="dt">CumulativeProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeProjectedNetReceipts),</a>
+<a class="sourceLine" id="cb162-12" data-line-number="12">  <span class="dt">CumulativeProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeProjectedNetReceipts),</a>
+<a class="sourceLine" id="cb162-13" data-line-number="13">  <span class="dt">CumulativeDifference =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeDifference),</a>
+<a class="sourceLine" id="cb162-14" data-line-number="14">  <span class="dt">CumulativeDifference =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeDifference),</a>
+<a class="sourceLine" id="cb162-15" data-line-number="15">  <span class="dt">CumulativePercentDifference =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">%&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativePercentDifference)</a>
+<a class="sourceLine" id="cb162-16" data-line-number="16">  ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(<span class="op">-</span>Month), as.numeric) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">ReportMonth =</span> <span class="st">&quot;December 2019&quot;</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   Month = col_character(),
+##   TotalActualNetReceipts = col_character(),
+##   TotalProjectedNetReceipts = col_character(),
+##   Difference = col_character(),
+##   PercentDifference = col_character(),
+##   CumulativeActualNetReceipts = col_character(),
+##   CumulativeProjectedNetReceipts = col_character(),
+##   CumulativeDifference = col_character(),
+##   CumulativePercentDifference = col_character()
+## )</code></pre>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" data-line-number="1">receiptsNov19 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;~/Downloads/tabula-General_Fund_Receipts_November_12-13-2019.csv&quot;</span>, <span class="dt">skip =</span> <span class="dv">3</span>, <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;Month&quot;</span>, <span class="st">&quot;TotalActualNetReceipts&quot;</span>, <span class="st">&quot;TotalProjectedNetReceipts&quot;</span>, <span class="st">&quot;Difference&quot;</span>, <span class="st">&quot;PercentDifference&quot;</span>, <span class="st">&quot;CumulativeActualNetReceipts&quot;</span>, <span class="st">&quot;CumulativeProjectedNetReceipts&quot;</span>, <span class="st">&quot;CumulativeDifference&quot;</span>,<span class="st">&quot;CumulativePercentDifference&quot;</span>), <span class="dt">skip_empty_rows =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb164-2" data-line-number="2">  <span class="dt">TotalActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,TotalActualNetReceipts),</a>
+<a class="sourceLine" id="cb164-3" data-line-number="3">  <span class="dt">TotalActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,TotalActualNetReceipts),</a>
+<a class="sourceLine" id="cb164-4" data-line-number="4">  <span class="dt">TotalProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,TotalProjectedNetReceipts),</a>
+<a class="sourceLine" id="cb164-5" data-line-number="5">  <span class="dt">TotalProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,TotalProjectedNetReceipts),</a>
+<a class="sourceLine" id="cb164-6" data-line-number="6">  <span class="dt">Difference =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,Difference),</a>
+<a class="sourceLine" id="cb164-7" data-line-number="7">  <span class="dt">Difference =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,Difference),</a>
+<a class="sourceLine" id="cb164-8" data-line-number="8">  <span class="dt">PercentDifference =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">%&quot;</span>,<span class="st">&quot;&quot;</span>,PercentDifference),</a>
+<a class="sourceLine" id="cb164-9" data-line-number="9">  <span class="dt">CumulativeActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeActualNetReceipts),</a>
+<a class="sourceLine" id="cb164-10" data-line-number="10">  <span class="dt">CumulativeActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeActualNetReceipts),</a>
+<a class="sourceLine" id="cb164-11" data-line-number="11">  <span class="dt">CumulativeProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeProjectedNetReceipts),</a>
+<a class="sourceLine" id="cb164-12" data-line-number="12">  <span class="dt">CumulativeProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeProjectedNetReceipts),</a>
+<a class="sourceLine" id="cb164-13" data-line-number="13">  <span class="dt">CumulativeDifference =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeDifference),</a>
+<a class="sourceLine" id="cb164-14" data-line-number="14">  <span class="dt">CumulativeDifference =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeDifference),</a>
+<a class="sourceLine" id="cb164-15" data-line-number="15">  <span class="dt">CumulativePercentDifference =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">%&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativePercentDifference)</a>
+<a class="sourceLine" id="cb164-16" data-line-number="16">  ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(<span class="op">-</span>Month), as.numeric) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">ReportMonth =</span> <span class="st">&quot;November 2019&quot;</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   Month = col_character(),
+##   TotalActualNetReceipts = col_character(),
+##   TotalProjectedNetReceipts = col_character(),
+##   Difference = col_character(),
+##   PercentDifference = col_character(),
+##   CumulativeActualNetReceipts = col_character(),
+##   CumulativeProjectedNetReceipts = col_character(),
+##   CumulativeDifference = col_character(),
+##   CumulativePercentDifference = col_character()
+## )</code></pre>
+<p>All three of these datasets have the same number of columns, all with the same names, so if we want to merge them together to compare them over time, we need to stack them together. The verb here, in R, is <code>rbind</code>. The good news about <code>rbind</code> is that it is very simple. The bad news – you can only merge two things at a time.</p>
+<p>Since we have three things, we’re going to do this in steps. First, we’ll create a dataframe that will hold it all and we’ll populate it with two of our revenue dataframes rbinded together. Then, we’ll overwrite our new dataframe with the results of that dataframe with the third revenue dataframe.</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" data-line-number="1">predictions &lt;-<span class="st"> </span><span class="kw">rbind</span>(receiptsJan20, receiptsDec19)</a>
+<a class="sourceLine" id="cb166-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb166-3" data-line-number="3">predictions &lt;-<span class="st"> </span><span class="kw">rbind</span>(predictions, receiptsNov19)</a>
+<a class="sourceLine" id="cb166-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb166-5" data-line-number="5">predictions</a></code></pre></div>
+<pre><code>## # A tibble: 18 x 10
+##    Month TotalActualNetR… TotalProjectedN… Difference PercentDifferen…
+##    &lt;chr&gt;            &lt;dbl&gt;            &lt;dbl&gt;      &lt;dbl&gt;            &lt;dbl&gt;
+##  1 July         284883132        271473079   13410054              4.9
+##  2 Augu…        462019974        440504016   21515958              4.9
+##  3 Sept…        551908013        510286143   41621870              8.2
+##  4 Octo…        289723434        266204529   23518905              8.8
+##  5 Nove…        431787603        404934524   26853079              6.6
+##  6 Dece…        472926836        421455999   51470837             12.2
+##  7 Janu…        467698460        412661036   55037424             13.3
+##  8 July         284883132        271473079   13410054              4.9
+##  9 Augu…        462019974        440504016   21515958              4.9
+## 10 Sept…        551908013        510286143   41621870              8.2
+## 11 Octo…        289723434        266204529   23518905              8.8
+## 12 Nove…        431787603        404934524   26853079              6.6
+## 13 Dece…        472926836        421455999   51470837             12.2
+## 14 July         284883132        271473079   13410054              4.9
+## 15 Augu…        462019974        440504016   21515958              4.9
+## 16 Sept…        551908013        510286143   41621870              8.2
+## 17 Octo…        289723434        266204529   23518905              8.8
+## 18 Nove…        431787603        404934524   26853079              6.6
+## # … with 5 more variables: CumulativeActualNetReceipts &lt;dbl&gt;,
+## #   CumulativeProjectedNetReceipts &lt;dbl&gt;, CumulativeDifference &lt;dbl&gt;,
+## #   CumulativePercentDifference &lt;dbl&gt;, ReportMonth &lt;chr&gt;</code></pre>
+<p>And boom, like that, we have 18 rows of data instead of three dataframes of 5, 6, and 7 respectively.</p>
+</div>
+<div id="joining-data" class="section level2">
+<h2><span class="header-section-number">14.2</span> Joining data</h2>
+<p>More difficult is when you have two separate tables that are connected by a common element or elements.</p>
+<p>Let’s return to our fatal accident data. In reality, the Fatality Analysis Reporting System data has 27 tables in it – everything from details about the damage to the paperwork done.</p>
+<p>Let’s just merge two of them and just for the state of Nebraska – download <a href="https://unl.box.com/s/1h79r809xsmu1vcsszcobvf3fj9ect8k">the accidents</a> and <a href="https://unl.box.com/s/5rp7li8ukq4e8eoy5ymjuzs1a21ba7bv">the people</a>.</p>
+<p>Often, when talking about relational data files like this, there’s substantial amounts of documentation that go with it to tell you how these things are related and what codes mean. <a href="https://crashstats.nhtsa.dot.gov/Api/Public/ViewPublication/812827">The FARS data is no different</a>. You should open it and click on the PERSON Data File.</p>
+<blockquote>
+<p>ST_CASE should be used to merge the Person data file with the Accident data file for a set of all motorists and non-motorists.</p>
+</blockquote>
+<p>So that’s what we’re going to do.</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" data-line-number="1">accidents &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/neaccidents.csv&quot;</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   .default = col_double(),
+##   TWAY_ID = col_character(),
+##   TWAY_ID2 = col_character(),
+##   RAIL = col_character()
+## )</code></pre>
+<pre><code>## See spec(...) for full column specifications.</code></pre>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" data-line-number="1">persons &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/nepersons.csv&quot;</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   .default = col_double()
+## )</code></pre>
+<pre><code>## See spec(...) for full column specifications.</code></pre>
+<p>First, notice something in the environment about your dataset: there are 201 accidents but 553 persons. That means there’s not quite 3 people involved in every accident on average between drivers and passengers. Some are single car, single person crashes. Some involve a lot of people.</p>
+<p>To put these two tables together, we need to use something called a join. There are different kinds of join. It’s better if you think of two tables sitting next to each other. A <code>left_join</code> takes all the records from the left table and only the records that match in the right one. A <code>right_join</code> does the same thing. An <code>inner_join</code> takes only the records where they are equal. There’s one other join – a <code>full_join</code> which returns all rows of both, regardless of if there’s a match – but I’ve never once had a use for a full join.</p>
+<p>In the PERSON Data File documentation, we see that column that connects these two tables together is the ST_CASE column.</p>
+<p>So we can do this join multiple ways and get a similar result. We can put the person file on the left and the accident on the right and use a left join to get them all together. And we use <code>by=</code> to join by the right column. And to avoid rendering hundreds of rows of data, I’m going to count the rows at the end. The reason I’m going this is important: <strong>Rule 1 in joining data is having an idea of what you are expecting to get</strong>. So with a left join with people on the left, I have 553 people, so I expect to get 553 rows when I’m done.</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" data-line-number="1">persons <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(accidents, <span class="dt">by=</span><span class="st">&quot;ST_CASE&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">nrow</span>()</a></code></pre></div>
+<pre><code>## [1] 553</code></pre>
+<p>Remove the nrow and run it again for yourself. See how there are several columns that end with .X? That means they’re duplicates. There’s a solid chance they are the same in both tables. By default, <code>dplyr</code> will do a “natural” join, where it’ll match all the matching columns in both tables. So if we take out the by, it’ll use all the common columns between the tables. That may not be right – our documentation says ST_CASE is how they are related – but let’s try it. If it works, we should get 553 rows.</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" data-line-number="1">persons <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(accidents) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">nrow</span>()</a></code></pre></div>
+<pre><code>## Joining, by = c(&quot;STATE&quot;, &quot;ST_CASE&quot;, &quot;VE_FORMS&quot;, &quot;COUNTY&quot;, &quot;DAY&quot;, &quot;MONTH&quot;,
+## &quot;HOUR&quot;, &quot;MINUTE&quot;, &quot;RUR_URB&quot;, &quot;FUNC_SYS&quot;, &quot;HARM_EV&quot;, &quot;MAN_COLL&quot;, &quot;SCH_BUS&quot;)</code></pre>
+<pre><code>## [1] 553</code></pre>
+<p>So instead of just one column, it used 13. And we got the same answer. And we don’t have any columns with .X after it anymore. So we’re good to move forward.</p>
+<p>Let’s save our joined data to a new dataframe.</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" data-line-number="1">personaccidents &lt;-<span class="st"> </span>persons <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(accidents)</a></code></pre></div>
+<pre><code>## Joining, by = c(&quot;STATE&quot;, &quot;ST_CASE&quot;, &quot;VE_FORMS&quot;, &quot;COUNTY&quot;, &quot;DAY&quot;, &quot;MONTH&quot;,
+## &quot;HOUR&quot;, &quot;MINUTE&quot;, &quot;RUR_URB&quot;, &quot;FUNC_SYS&quot;, &quot;HARM_EV&quot;, &quot;MAN_COLL&quot;, &quot;SCH_BUS&quot;)</code></pre>
+<p>Now, with our joined data, we can answer questions that come from both datasets. So what if we looked at median age of drivers who died broken down by what kind of roadway the accident happened on?</p>
+<p>We can do this now because the accident data has the roadway information information and the age and who was driving and what type of injury they sustained comes from the person table.</p>
+<p>We get this by using filters followed by a group by and summarize. In the data documentation linked above, look in the PERSON Data File to get the appropriate filters. In this case, we want PER_TYPE of 1 (the driver) and an INJ_SEV of 4, which means death. In the ACCCIDENT Data File section, we learn it’s the ROUTE we want to group by.</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" data-line-number="1">personaccidents <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb181-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(PER_TYP <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb181-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(INJ_SEV <span class="op">==</span><span class="st"> </span><span class="dv">4</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb181-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(ROUTE) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb181-5" data-line-number="5"><span class="st">  </span><span class="kw">summarize</span>(</a>
+<a class="sourceLine" id="cb181-6" data-line-number="6">    <span class="dt">count =</span> <span class="kw">n</span>(), </a>
+<a class="sourceLine" id="cb181-7" data-line-number="7">    <span class="dt">avgage =</span> <span class="kw">mean</span>(AGE), </a>
+<a class="sourceLine" id="cb181-8" data-line-number="8">    <span class="dt">medage =</span> <span class="kw">median</span>(AGE))</a></code></pre></div>
+<pre><code>## # A tibble: 5 x 4
+##   ROUTE count avgage medage
+##   &lt;dbl&gt; &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1     1    15   40.5     33
+## 2     2    51   53.1     51
+## 3     3    31   42.3     42
+## 4     4    37   37.3     36
+## 5     6    18   40.4     35</code></pre>
+<p>According to our query, 15 accidents happened on interstates, and the median age of those was the lowest of all at 33. The most accidents were on US Highways, which makes sense because there’s a lot more lane miles of US Highways than Interstates in Nebraska and pretty much every other state. But the second most common is county roads. And the median age of drivers there was quite low at 36.</p>
+<p>Let’s break this down one more step. What if we added RUR_URB – if the accident happened in rural or urban place. A common feeling in a rural state like Nebraska is that urban interstate is a ribbon of insanity. But is it?</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" data-line-number="1">personaccidents <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb183-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(PER_TYP <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb183-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(INJ_SEV <span class="op">==</span><span class="st"> </span><span class="dv">4</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb183-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(RUR_URB, ROUTE) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb183-5" data-line-number="5"><span class="st">  </span><span class="kw">summarize</span>(</a>
+<a class="sourceLine" id="cb183-6" data-line-number="6">    <span class="dt">count =</span> <span class="kw">n</span>(), </a>
+<a class="sourceLine" id="cb183-7" data-line-number="7">    <span class="dt">avgage =</span> <span class="kw">mean</span>(AGE), </a>
+<a class="sourceLine" id="cb183-8" data-line-number="8">    <span class="dt">medage =</span> <span class="kw">median</span>(AGE))</a></code></pre></div>
+<pre><code>## # A tibble: 8 x 5
+## # Groups:   RUR_URB [2]
+##   RUR_URB ROUTE count avgage medage
+##     &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1       1     1    12   45.3   42.5
+## 2       1     2    41   52.5   51  
+## 3       1     3    27   41.9   42  
+## 4       1     4    37   37.3   36  
+## 5       2     1     3   21.3   21  
+## 6       2     2    10   55.3   54.5
+## 7       2     3     4   45     35  
+## 8       2     6    18   40.4   35</code></pre>
+<p>In 2018, only 3 of the 15 deaths on interestates were in urban areas. All the rest were in rural areas. And all 37 drivers who died in accidents on county roads were in rural areas. Most of the driver deaths on US Highways were in rural places as well.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="cleaning-data-part-iv-pdfs.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/13-merging.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["datajournalism.pdf", "datajournalism.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

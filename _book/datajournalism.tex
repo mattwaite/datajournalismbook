@@ -118,7 +118,7 @@
 
 \title{Data Journalism with R and the Tidyverse}
 \author{Matt Waite}
-\date{2020-02-18}
+\date{2020-02-19}
 
 \begin{document}
 \maketitle
@@ -2628,5 +2628,346 @@ Here's what that looks like:
 \end{verbatim}
 
 We can now reuse this with other months after we harvest the data out of it.
+
+\hypertarget{merging-and-joining}{%
+\chapter{Merging and joining}\label{merging-and-joining}}
+
+Often, as data journalists, we're looking at data across time or at data stored in multiple tables. And to do that, we need to often need to merge that data together.
+
+Depending on what we have, we may just need to stack data on top of each other to make new data. If we have 2019 data and 2018 data and we want that to be one file, we stack them. If we have a dataset of cows in counties and a dataset of populations in county, we're going to join those two together on the county -- the common element.
+
+Let's explore.
+
+\hypertarget{merging-data}{%
+\section{Merging data}\label{merging-data}}
+
+In the last assignment, we harvested data out of PDFs. Let's reuse what we did there and merge three months of reports from the Department of Revenue together. For mine, I have \href{https://unl.box.com/s/nd1yaroltsy161pqgbges9xrtav2qdqp}{January 2020}, \href{https://unl.box.com/s/jfdtqffty1vb2zbil8z5qalu18yg0590}{December 2019}, and \href{https://unl.box.com/s/g1dc0mibxxutsitqssv2uf75pmb7avle}{November 2019}.
+
+Let's do what we need to import them properly. I've merged it all into one step for each of the three datasets.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{receiptsJan20 <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"~/Downloads/tabula-General_Fund_Receipts_January_2020.csv"}\NormalTok{, }\DataTypeTok{skip =} \DecValTok{3}\NormalTok{, }\DataTypeTok{col_names =} \KeywordTok{c}\NormalTok{(}\StringTok{"Month"}\NormalTok{, }\StringTok{"TotalActualNetReceipts"}\NormalTok{, }\StringTok{"TotalProjectedNetReceipts"}\NormalTok{, }\StringTok{"Difference"}\NormalTok{, }\StringTok{"PercentDifference"}\NormalTok{, }\StringTok{"CumulativeActualNetReceipts"}\NormalTok{, }\StringTok{"CumulativeProjectedNetReceipts"}\NormalTok{, }\StringTok{"CumulativeDifference"}\NormalTok{,}\StringTok{"CumulativePercentDifference"}\NormalTok{), }\DataTypeTok{skip_empty_rows =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}
+  \DataTypeTok{TotalActualNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,TotalActualNetReceipts),}
+  \DataTypeTok{TotalActualNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,TotalActualNetReceipts),}
+  \DataTypeTok{TotalProjectedNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,TotalProjectedNetReceipts),}
+  \DataTypeTok{TotalProjectedNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,TotalProjectedNetReceipts),}
+  \DataTypeTok{Difference =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,Difference),}
+  \DataTypeTok{Difference =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,Difference),}
+  \DataTypeTok{PercentDifference =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{%"}\NormalTok{,}\StringTok{""}\NormalTok{,PercentDifference),}
+  \DataTypeTok{CumulativeActualNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativeActualNetReceipts),}
+  \DataTypeTok{CumulativeActualNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativeActualNetReceipts),}
+  \DataTypeTok{CumulativeProjectedNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativeProjectedNetReceipts),}
+  \DataTypeTok{CumulativeProjectedNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativeProjectedNetReceipts),}
+  \DataTypeTok{CumulativeDifference =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativeDifference),}
+  \DataTypeTok{CumulativeDifference =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativeDifference),}
+  \DataTypeTok{CumulativePercentDifference =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{%"}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativePercentDifference)}
+\NormalTok{  ) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate_at}\NormalTok{(}\KeywordTok{vars}\NormalTok{(}\OperatorTok{-}\NormalTok{Month), as.numeric) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{ReportMonth =} \StringTok{"January 2020"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Parsed with column specification:
+## cols(
+##   Month = col_character(),
+##   TotalActualNetReceipts = col_character(),
+##   TotalProjectedNetReceipts = col_character(),
+##   Difference = col_character(),
+##   PercentDifference = col_character(),
+##   CumulativeActualNetReceipts = col_character(),
+##   CumulativeProjectedNetReceipts = col_character(),
+##   CumulativeDifference = col_character(),
+##   CumulativePercentDifference = col_character()
+## )
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{receiptsDec19 <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"~/Downloads/tabula-General_Fund_Receipts_December_2019.csv"}\NormalTok{, }\DataTypeTok{skip =} \DecValTok{3}\NormalTok{, }\DataTypeTok{col_names =} \KeywordTok{c}\NormalTok{(}\StringTok{"Month"}\NormalTok{, }\StringTok{"TotalActualNetReceipts"}\NormalTok{, }\StringTok{"TotalProjectedNetReceipts"}\NormalTok{, }\StringTok{"Difference"}\NormalTok{, }\StringTok{"PercentDifference"}\NormalTok{, }\StringTok{"CumulativeActualNetReceipts"}\NormalTok{, }\StringTok{"CumulativeProjectedNetReceipts"}\NormalTok{, }\StringTok{"CumulativeDifference"}\NormalTok{,}\StringTok{"CumulativePercentDifference"}\NormalTok{), }\DataTypeTok{skip_empty_rows =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}
+  \DataTypeTok{TotalActualNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,TotalActualNetReceipts),}
+  \DataTypeTok{TotalActualNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,TotalActualNetReceipts),}
+  \DataTypeTok{TotalProjectedNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,TotalProjectedNetReceipts),}
+  \DataTypeTok{TotalProjectedNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,TotalProjectedNetReceipts),}
+  \DataTypeTok{Difference =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,Difference),}
+  \DataTypeTok{Difference =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,Difference),}
+  \DataTypeTok{PercentDifference =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{%"}\NormalTok{,}\StringTok{""}\NormalTok{,PercentDifference),}
+  \DataTypeTok{CumulativeActualNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativeActualNetReceipts),}
+  \DataTypeTok{CumulativeActualNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativeActualNetReceipts),}
+  \DataTypeTok{CumulativeProjectedNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativeProjectedNetReceipts),}
+  \DataTypeTok{CumulativeProjectedNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativeProjectedNetReceipts),}
+  \DataTypeTok{CumulativeDifference =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativeDifference),}
+  \DataTypeTok{CumulativeDifference =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativeDifference),}
+  \DataTypeTok{CumulativePercentDifference =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{%"}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativePercentDifference)}
+\NormalTok{  ) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate_at}\NormalTok{(}\KeywordTok{vars}\NormalTok{(}\OperatorTok{-}\NormalTok{Month), as.numeric) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{ReportMonth =} \StringTok{"December 2019"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Parsed with column specification:
+## cols(
+##   Month = col_character(),
+##   TotalActualNetReceipts = col_character(),
+##   TotalProjectedNetReceipts = col_character(),
+##   Difference = col_character(),
+##   PercentDifference = col_character(),
+##   CumulativeActualNetReceipts = col_character(),
+##   CumulativeProjectedNetReceipts = col_character(),
+##   CumulativeDifference = col_character(),
+##   CumulativePercentDifference = col_character()
+## )
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{receiptsNov19 <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"~/Downloads/tabula-General_Fund_Receipts_November_12-13-2019.csv"}\NormalTok{, }\DataTypeTok{skip =} \DecValTok{3}\NormalTok{, }\DataTypeTok{col_names =} \KeywordTok{c}\NormalTok{(}\StringTok{"Month"}\NormalTok{, }\StringTok{"TotalActualNetReceipts"}\NormalTok{, }\StringTok{"TotalProjectedNetReceipts"}\NormalTok{, }\StringTok{"Difference"}\NormalTok{, }\StringTok{"PercentDifference"}\NormalTok{, }\StringTok{"CumulativeActualNetReceipts"}\NormalTok{, }\StringTok{"CumulativeProjectedNetReceipts"}\NormalTok{, }\StringTok{"CumulativeDifference"}\NormalTok{,}\StringTok{"CumulativePercentDifference"}\NormalTok{), }\DataTypeTok{skip_empty_rows =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}
+  \DataTypeTok{TotalActualNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,TotalActualNetReceipts),}
+  \DataTypeTok{TotalActualNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,TotalActualNetReceipts),}
+  \DataTypeTok{TotalProjectedNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,TotalProjectedNetReceipts),}
+  \DataTypeTok{TotalProjectedNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,TotalProjectedNetReceipts),}
+  \DataTypeTok{Difference =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,Difference),}
+  \DataTypeTok{Difference =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,Difference),}
+  \DataTypeTok{PercentDifference =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{%"}\NormalTok{,}\StringTok{""}\NormalTok{,PercentDifference),}
+  \DataTypeTok{CumulativeActualNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativeActualNetReceipts),}
+  \DataTypeTok{CumulativeActualNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativeActualNetReceipts),}
+  \DataTypeTok{CumulativeProjectedNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativeProjectedNetReceipts),}
+  \DataTypeTok{CumulativeProjectedNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativeProjectedNetReceipts),}
+  \DataTypeTok{CumulativeDifference =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativeDifference),}
+  \DataTypeTok{CumulativeDifference =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativeDifference),}
+  \DataTypeTok{CumulativePercentDifference =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{%"}\NormalTok{,}\StringTok{""}\NormalTok{,CumulativePercentDifference)}
+\NormalTok{  ) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate_at}\NormalTok{(}\KeywordTok{vars}\NormalTok{(}\OperatorTok{-}\NormalTok{Month), as.numeric) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{ReportMonth =} \StringTok{"November 2019"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Parsed with column specification:
+## cols(
+##   Month = col_character(),
+##   TotalActualNetReceipts = col_character(),
+##   TotalProjectedNetReceipts = col_character(),
+##   Difference = col_character(),
+##   PercentDifference = col_character(),
+##   CumulativeActualNetReceipts = col_character(),
+##   CumulativeProjectedNetReceipts = col_character(),
+##   CumulativeDifference = col_character(),
+##   CumulativePercentDifference = col_character()
+## )
+\end{verbatim}
+
+All three of these datasets have the same number of columns, all with the same names, so if we want to merge them together to compare them over time, we need to stack them together. The verb here, in R, is \texttt{rbind}. The good news about \texttt{rbind} is that it is very simple. The bad news -- you can only merge two things at a time.
+
+Since we have three things, we're going to do this in steps. First, we'll create a dataframe that will hold it all and we'll populate it with two of our revenue dataframes rbinded together. Then, we'll overwrite our new dataframe with the results of that dataframe with the third revenue dataframe.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{predictions <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(receiptsJan20, receiptsDec19)}
+
+\NormalTok{predictions <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(predictions, receiptsNov19)}
+
+\NormalTok{predictions}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 18 x 10
+##    Month TotalActualNetR~ TotalProjectedN~ Difference PercentDifferen~
+##    <chr>            <dbl>            <dbl>      <dbl>            <dbl>
+##  1 July         284883132        271473079   13410054              4.9
+##  2 Augu~        462019974        440504016   21515958              4.9
+##  3 Sept~        551908013        510286143   41621870              8.2
+##  4 Octo~        289723434        266204529   23518905              8.8
+##  5 Nove~        431787603        404934524   26853079              6.6
+##  6 Dece~        472926836        421455999   51470837             12.2
+##  7 Janu~        467698460        412661036   55037424             13.3
+##  8 July         284883132        271473079   13410054              4.9
+##  9 Augu~        462019974        440504016   21515958              4.9
+## 10 Sept~        551908013        510286143   41621870              8.2
+## 11 Octo~        289723434        266204529   23518905              8.8
+## 12 Nove~        431787603        404934524   26853079              6.6
+## 13 Dece~        472926836        421455999   51470837             12.2
+## 14 July         284883132        271473079   13410054              4.9
+## 15 Augu~        462019974        440504016   21515958              4.9
+## 16 Sept~        551908013        510286143   41621870              8.2
+## 17 Octo~        289723434        266204529   23518905              8.8
+## 18 Nove~        431787603        404934524   26853079              6.6
+## # ... with 5 more variables: CumulativeActualNetReceipts <dbl>,
+## #   CumulativeProjectedNetReceipts <dbl>, CumulativeDifference <dbl>,
+## #   CumulativePercentDifference <dbl>, ReportMonth <chr>
+\end{verbatim}
+
+And boom, like that, we have 18 rows of data instead of three dataframes of 5, 6, and 7 respectively.
+
+\hypertarget{joining-data}{%
+\section{Joining data}\label{joining-data}}
+
+More difficult is when you have two separate tables that are connected by a common element or elements.
+
+Let's return to our fatal accident data. In reality, the Fatality Analysis Reporting System data has 27 tables in it -- everything from details about the damage to the paperwork done.
+
+Let's just merge two of them and just for the state of Nebraska -- download \href{https://unl.box.com/s/1h79r809xsmu1vcsszcobvf3fj9ect8k}{the accidents} and \href{https://unl.box.com/s/5rp7li8ukq4e8eoy5ymjuzs1a21ba7bv}{the people}.
+
+Often, when talking about relational data files like this, there's substantial amounts of documentation that go with it to tell you how these things are related and what codes mean. \href{https://crashstats.nhtsa.dot.gov/Api/Public/ViewPublication/812827}{The FARS data is no different}. You should open it and click on the PERSON Data File.
+
+\begin{quote}
+ST\_CASE should be used to merge the Person data file with the Accident data file for a set of all motorists and non-motorists.
+\end{quote}
+
+So that's what we're going to do.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{accidents <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"data/neaccidents.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Parsed with column specification:
+## cols(
+##   .default = col_double(),
+##   TWAY_ID = col_character(),
+##   TWAY_ID2 = col_character(),
+##   RAIL = col_character()
+## )
+\end{verbatim}
+
+\begin{verbatim}
+## See spec(...) for full column specifications.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{persons <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"data/nepersons.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Parsed with column specification:
+## cols(
+##   .default = col_double()
+## )
+\end{verbatim}
+
+\begin{verbatim}
+## See spec(...) for full column specifications.
+\end{verbatim}
+
+First, notice something in the environment about your dataset: there are 201 accidents but 553 persons. That means there's not quite 3 people involved in every accident on average between drivers and passengers. Some are single car, single person crashes. Some involve a lot of people.
+
+To put these two tables together, we need to use something called a join. There are different kinds of join. It's better if you think of two tables sitting next to each other. A \texttt{left\_join} takes all the records from the left table and only the records that match in the right one. A \texttt{right\_join} does the same thing. An \texttt{inner\_join} takes only the records where they are equal. There's one other join -- a \texttt{full\_join} which returns all rows of both, regardless of if there's a match -- but I've never once had a use for a full join.
+
+In the PERSON Data File documentation, we see that column that connects these two tables together is the ST\_CASE column.
+
+So we can do this join multiple ways and get a similar result. We can put the person file on the left and the accident on the right and use a left join to get them all together. And we use \texttt{by=} to join by the right column. And to avoid rendering hundreds of rows of data, I'm going to count the rows at the end. The reason I'm going this is important: \textbf{Rule 1 in joining data is having an idea of what you are expecting to get}. So with a left join with people on the left, I have 553 people, so I expect to get 553 rows when I'm done.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{persons }\OperatorTok{%>%}\StringTok{ }\KeywordTok{left_join}\NormalTok{(accidents, }\DataTypeTok{by=}\StringTok{"ST_CASE"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{nrow}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 553
+\end{verbatim}
+
+Remove the nrow and run it again for yourself. See how there are several columns that end with .X? That means they're duplicates. There's a solid chance they are the same in both tables. By default, \texttt{dplyr} will do a ``natural'' join, where it'll match all the matching columns in both tables. So if we take out the by, it'll use all the common columns between the tables. That may not be right -- our documentation says ST\_CASE is how they are related -- but let's try it. If it works, we should get 553 rows.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{persons }\OperatorTok{%>%}\StringTok{ }\KeywordTok{left_join}\NormalTok{(accidents) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{nrow}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining, by = c("STATE", "ST_CASE", "VE_FORMS", "COUNTY", "DAY", "MONTH",
+## "HOUR", "MINUTE", "RUR_URB", "FUNC_SYS", "HARM_EV", "MAN_COLL", "SCH_BUS")
+\end{verbatim}
+
+\begin{verbatim}
+## [1] 553
+\end{verbatim}
+
+So instead of just one column, it used 13. And we got the same answer. And we don't have any columns with .X after it anymore. So we're good to move forward.
+
+Let's save our joined data to a new dataframe.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{personaccidents <-}\StringTok{ }\NormalTok{persons }\OperatorTok{%>%}\StringTok{ }\KeywordTok{left_join}\NormalTok{(accidents)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining, by = c("STATE", "ST_CASE", "VE_FORMS", "COUNTY", "DAY", "MONTH",
+## "HOUR", "MINUTE", "RUR_URB", "FUNC_SYS", "HARM_EV", "MAN_COLL", "SCH_BUS")
+\end{verbatim}
+
+Now, with our joined data, we can answer questions that come from both datasets. So what if we looked at median age of drivers who died broken down by what kind of roadway the accident happened on?
+
+We can do this now because the accident data has the roadway information information and the age and who was driving and what type of injury they sustained comes from the person table.
+
+We get this by using filters followed by a group by and summarize. In the data documentation linked above, look in the PERSON Data File to get the appropriate filters. In this case, we want PER\_TYPE of 1 (the driver) and an INJ\_SEV of 4, which means death. In the ACCCIDENT Data File section, we learn it's the ROUTE we want to group by.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{personaccidents }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(PER_TYP }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(INJ_SEV }\OperatorTok{==}\StringTok{ }\DecValTok{4}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(ROUTE) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{summarize}\NormalTok{(}
+    \DataTypeTok{count =} \KeywordTok{n}\NormalTok{(), }
+    \DataTypeTok{avgage =} \KeywordTok{mean}\NormalTok{(AGE), }
+    \DataTypeTok{medage =} \KeywordTok{median}\NormalTok{(AGE))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 4
+##   ROUTE count avgage medage
+##   <dbl> <int>  <dbl>  <dbl>
+## 1     1    15   40.5     33
+## 2     2    51   53.1     51
+## 3     3    31   42.3     42
+## 4     4    37   37.3     36
+## 5     6    18   40.4     35
+\end{verbatim}
+
+According to our query, 15 accidents happened on interstates, and the median age of those was the lowest of all at 33. The most accidents were on US Highways, which makes sense because there's a lot more lane miles of US Highways than Interstates in Nebraska and pretty much every other state. But the second most common is county roads. And the median age of drivers there was quite low at 36.
+
+Let's break this down one more step. What if we added RUR\_URB -- if the accident happened in rural or urban place. A common feeling in a rural state like Nebraska is that urban interstate is a ribbon of insanity. But is it?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{personaccidents }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(PER_TYP }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(INJ_SEV }\OperatorTok{==}\StringTok{ }\DecValTok{4}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(RUR_URB, ROUTE) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{summarize}\NormalTok{(}
+    \DataTypeTok{count =} \KeywordTok{n}\NormalTok{(), }
+    \DataTypeTok{avgage =} \KeywordTok{mean}\NormalTok{(AGE), }
+    \DataTypeTok{medage =} \KeywordTok{median}\NormalTok{(AGE))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 8 x 5
+## # Groups:   RUR_URB [2]
+##   RUR_URB ROUTE count avgage medage
+##     <dbl> <dbl> <int>  <dbl>  <dbl>
+## 1       1     1    12   45.3   42.5
+## 2       1     2    41   52.5   51  
+## 3       1     3    27   41.9   42  
+## 4       1     4    37   37.3   36  
+## 5       2     1     3   21.3   21  
+## 6       2     2    10   55.3   54.5
+## 7       2     3     4   45     35  
+## 8       2     6    18   40.4   35
+\end{verbatim}
+
+In 2018, only 3 of the 15 deaths on interestates were in urban areas. All the rest were in rural areas. And all 37 drivers who died in accidents on county roads were in rural areas. Most of the driver deaths on US Highways were in rural places as well.
 
 \end{document}
