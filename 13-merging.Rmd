@@ -1,4 +1,4 @@
-# Merging and joining
+# Combining and joining
 
 Often, as data journalists, we're looking at data across time or at data stored in multiple tables. And to do that, we need to often need to merge that data together. 
 
@@ -6,11 +6,11 @@ Depending on what we have, we may just need to stack data on top of each other t
 
 Let's explore.
 
-## Merging data
+## Combining data
 
 In the last assignment, we harvested data out of PDFs. Let's reuse what we did there and merge three months of reports from the Department of Revenue together. For mine, I have [January 2020](https://unl.box.com/s/nd1yaroltsy161pqgbges9xrtav2qdqp), [December 2019](https://unl.box.com/s/jfdtqffty1vb2zbil8z5qalu18yg0590), and [November 2019](https://unl.box.com/s/g1dc0mibxxutsitqssv2uf75pmb7avle). 
 
-Let's do what we need to import them properly. I've merged it all into one step for each of the three datasets.
+Let's do what we need to import them properly. Unlike the last example, I've merged it all into one step for each of the three datasets.
 
 ```{r}
 library(tidyverse)
