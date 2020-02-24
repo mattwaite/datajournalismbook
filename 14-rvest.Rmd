@@ -1,0 +1,170 @@
+# Scraping data with Rvest
+
+Sometimes, governments put data online on a page or in a searchable database. And when you ask them for a copy of the data underneath the website, they say no. Why? Because they have a website. That's it. That's their reason. We don't have to give you the data because we've already given you the data, never mind that they haven't. 
+One of the most powerful tools you can learn as a data journalist is how to scrape data. Scraping is the process of programming a computer to act like a browser, go to a website, injest the HTML from that website and turn it into data. 
+
+The degree of difficulty here goes from Easy to So Hard You Want To Throw Your Laptop Out A Window. And the curve between the two steep. You can learn how to scrape Easy in a day. The hard ones take months to years of programming experience. 
+
+So.
+
+Let's try an easy one. 
+
+We're going to use a library called `rvest`, which you can install it the same way we've done all installs: go to the console and `install.packages("rvest")`. 
+
+We'll load them first:
+
+```{r}
+library(rvest)
+library(tidyverse)
+```
+
+The first thing we need to do is define a URL. What URL are we going to scrape? This is where paying attention to URLs pays off. Some search urls are addressable -- meaning you can copy the url of your search and go to it again and again. Or is the search term invisible? 
+
+Let's take an example from the Nebraska Legislature. The Legislature publishes a daily agenda that tells you what bills will be debated on the floor that day. Here's [an example from Feb. 3](https://nebraskalegislature.gov/calendar/agenda.php?day=2020-02-03). Go that page. You'll see multiple sections -- a reports section, and the General File section. General File is the first stage of floor debate. Those are the bills to be debated. 
+
+Let's grab them with rvest. 
+
+First, we create a url variable and set it equal to that url.
+
+```{r}
+url <- "https://nebraskalegislature.gov/calendar/agenda.php?day=2020-02-03"
+```
+
+Now we're going to do a handful of things at once. We're going to take that url, pass it to a `read_html` command, which does what you think it does. We're then going to search that HTML for a specific node, the node that contains our data. 
+
+The most difficult part of scraping data from any website is knowing what exact HTML tag you need to grab. In this case, we want a `<table>` tag that has all of our data table in it. But how do you tell R which one that is? Well, it's easy, once you know what to do. But it's not simple. So I've made a short video to show you how to find it. 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kYkSE3zWa9Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Using that same trick on the Legislature page, we find the table with those general file bills and it's in something called `agenda_table_4464`. With that, we can turn it into a table.
+
+```{r}
+agenda <- url %>%
+  read_html() %>%
+  html_nodes(xpath = '//*[@id="agenda_table_4464"]') %>%
+  html_table()
+```
+
+After doing that, looking at the environment for your agenda. And you'll see ... not a dataframe. You'll see a list. With one thing in it. That one thing? A dataframe. So we need to grab that first element. We get it by doing this: 
+
+```{r}
+agenda <- agenda[[1]]
+```
+
+And now we can take a look:
+
+```{r}
+agenda
+```
+
+And as you can see, it's ... not perfect. But we can fix that with a little `gsub` magic. 
+
+```{r}
+agenda %>% mutate(Document = gsub("Currently or Pendingon Floor\n ","",Document))
+```
+
+## A more difficult example
+
+The Nebraska Legislature, with it's unique unicameral or one house structure, does some things a little differently than other legislatures. Example: Bills have to go through three rounds of debate before getting passed. There's General File (round 1), Select File (round 2), and Final Reading (round 3). 
+
+So what does a day where they do more than general file look like? [Like this](https://nebraskalegislature.gov/calendar/agenda.php?day=2020-02-21).
+
+How do we scrape that? 
+
+```{r}
+harderurl <- "https://nebraskalegislature.gov/calendar/agenda.php?day=2020-02-21"
+```
+
+```{r}
+harderagenda <- harderurl %>%
+  read_html() %>%
+  html_nodes("table") %>%
+  html_table()
+```
+
+You can see that `harderagenda` has a list of four instead of a list of one. We can see each item in the list has a dataframe. We can see them individually. Here's the first:  
+
+```{r}
+harderagenda[[1]]
+```
+
+Here's the second: 
+
+```{r}
+harderagenda[[2]]
+```
+
+So we can merge those together no problem, but how would we know what stage each bill is at? 
+
+Look at the page -- we can see that the bills are separated by a big headline like "SELECT FILE:  2020 PRIORITY BILLS". To separate these, we need to grab those and then add them to each bill using mutate. 
+
+Here's how we grab them: 
+
+```{r}
+labels <- harderurl %>%
+  read_html() %>%
+  html_nodes(".card-header") %>%
+  html_text()
+```
+
+Another list. If you look at the first, it's at the top of the page with no bills. Here's the second: 
+
+```{r}
+labels[[2]]
+```
+
+So we know can see there's some garbage in there we want to clean out. We can use a new library called `stringr` to trim the excess spaces and `gsub` to strip the newline character: `\n`. 
+
+```{r}
+harderagenda[[1]] %>% 
+  mutate(Document = gsub("Currently or Pendingon Floor\n ","",Document)) %>%
+  mutate(Stage = labels[[2]]) %>%
+  mutate(Stage = gsub("\n","",Stage)) %>%
+  mutate(Stage = str_trim(Stage, side = "both"))
+```
+
+Now it's just a matter grinding through the items in the list.
+
+NOTE: This is grossly inefficient and very manual. And, we'd have to change this for every day we want to scrape. As such, this is not the "right" way to do this. We'll cover that in the next chapter.
+
+```{r}
+harderagenda1 <- harderagenda[[1]] %>% 
+  mutate(Document = gsub("Currently or Pendingon Floor\n ","",Document)) %>%
+  mutate(Stage = labels[[2]]) %>% mutate(Stage = gsub("\n","",Stage)) %>%
+  mutate(Stage = str_trim(Stage, side = "both"))
+```
+
+```{r}
+harderagenda2 <- harderagenda[[2]] %>% 
+  mutate(Document = gsub("Currently or Pendingon Floor\n ","",Document)) %>%
+  mutate(Stage = labels[[3]]) %>% mutate(Stage = gsub("\n","",Stage)) %>%
+  mutate(Stage = str_trim(Stage, side = "both"))
+```
+
+```{r}
+harderagenda3 <- harderagenda[[3]] %>% 
+  mutate(Document = gsub("Currently or Pendingon Floor\n ","",Document)) %>%
+  mutate(Stage = labels[[4]]) %>% mutate(Stage = gsub("\n","",Stage)) %>%
+  mutate(Stage = str_trim(Stage, side = "both"))
+```
+
+```{r}
+harderagenda4 <- harderagenda[[4]] %>% 
+  mutate(Document = gsub("Currently or Pendingon Floor\n ","",Document)) %>%
+  mutate(Stage = labels[[5]]) %>% mutate(Stage = gsub("\n","",Stage)) %>%
+  mutate(Stage = str_trim(Stage, side = "both"))
+```
+
+Now we merge: 
+
+```{r}
+largeragenda <- rbind(harderagenda1, harderagenda2)
+largeragenda <- rbind(largeragenda, harderagenda3)
+largeragenda <- rbind(largeragenda, harderagenda4)
+```
+
+And now we have a dataset of all bills and what stage they're at for that day.
+
+```{r}
+largeragenda
+```

@@ -17,7 +17,7 @@ library(tidyverse)
 ```
 
 ```{r}
-receiptsJan20 <- read_csv("~/Downloads/tabula-General_Fund_Receipts_January_2020.csv", skip = 3, col_names = c("Month", "TotalActualNetReceipts", "TotalProjectedNetReceipts", "Difference", "PercentDifference", "CumulativeActualNetReceipts", "CumulativeProjectedNetReceipts", "CumulativeDifference","CumulativePercentDifference"), skip_empty_rows = TRUE) %>% mutate(
+receiptsJan20 <- read_csv("data/tabula-General_Fund_Receipts_January_2020.csv", skip = 3, col_names = c("Month", "TotalActualNetReceipts", "TotalProjectedNetReceipts", "Difference", "PercentDifference", "CumulativeActualNetReceipts", "CumulativeProjectedNetReceipts", "CumulativeDifference","CumulativePercentDifference"), skip_empty_rows = TRUE) %>% mutate(
   TotalActualNetReceipts = gsub(",","",TotalActualNetReceipts),
   TotalActualNetReceipts = gsub("\\$","",TotalActualNetReceipts),
   TotalProjectedNetReceipts = gsub(",","",TotalProjectedNetReceipts),
@@ -36,7 +36,7 @@ receiptsJan20 <- read_csv("~/Downloads/tabula-General_Fund_Receipts_January_2020
 ```
 
 ```{r}
-receiptsDec19 <- read_csv("~/Downloads/tabula-General_Fund_Receipts_December_2019.csv", skip = 3, col_names = c("Month", "TotalActualNetReceipts", "TotalProjectedNetReceipts", "Difference", "PercentDifference", "CumulativeActualNetReceipts", "CumulativeProjectedNetReceipts", "CumulativeDifference","CumulativePercentDifference"), skip_empty_rows = TRUE) %>% mutate(
+receiptsDec19 <- read_csv("data/tabula-General_Fund_Receipts_December_2019.csv", skip = 3, col_names = c("Month", "TotalActualNetReceipts", "TotalProjectedNetReceipts", "Difference", "PercentDifference", "CumulativeActualNetReceipts", "CumulativeProjectedNetReceipts", "CumulativeDifference","CumulativePercentDifference"), skip_empty_rows = TRUE) %>% mutate(
   TotalActualNetReceipts = gsub(",","",TotalActualNetReceipts),
   TotalActualNetReceipts = gsub("\\$","",TotalActualNetReceipts),
   TotalProjectedNetReceipts = gsub(",","",TotalProjectedNetReceipts),
@@ -55,7 +55,7 @@ receiptsDec19 <- read_csv("~/Downloads/tabula-General_Fund_Receipts_December_201
 ```
 
 ```{r}
-receiptsNov19 <- read_csv("~/Downloads/tabula-General_Fund_Receipts_November_12-13-2019.csv", skip = 3, col_names = c("Month", "TotalActualNetReceipts", "TotalProjectedNetReceipts", "Difference", "PercentDifference", "CumulativeActualNetReceipts", "CumulativeProjectedNetReceipts", "CumulativeDifference","CumulativePercentDifference"), skip_empty_rows = TRUE) %>% mutate(
+receiptsNov19 <- read_csv("data/tabula-General_Fund_Receipts_November_12-13-2019.csv", skip = 3, col_names = c("Month", "TotalActualNetReceipts", "TotalProjectedNetReceipts", "Difference", "PercentDifference", "CumulativeActualNetReceipts", "CumulativeProjectedNetReceipts", "CumulativeDifference","CumulativePercentDifference"), skip_empty_rows = TRUE) %>% mutate(
   TotalActualNetReceipts = gsub(",","",TotalActualNetReceipts),
   TotalActualNetReceipts = gsub("\\$","",TotalActualNetReceipts),
   TotalProjectedNetReceipts = gsub(",","",TotalProjectedNetReceipts),
@@ -78,11 +78,11 @@ All three of these datasets have the same number of columns, all with the same n
 Since we have three things, we're going to do this in steps. First, we'll create a dataframe that will hold it all and we'll populate it with two of our revenue dataframes rbinded together. Then, we'll overwrite our new dataframe with the results of that dataframe with the third revenue dataframe. 
 
 ```{r}
-predictions <- rbind(receiptsJan20, receiptsDec19)
+predictions1 <- rbind(receiptsJan20, receiptsDec19)
 
-predictions <- rbind(predictions, receiptsNov19)
+predictions2 <- rbind(predictions1, receiptsNov19)
 
-predictions
+predictions2
 ```
 
 And boom, like that, we have 18 rows of data instead of three dataframes of 5, 6, and 7 respectively. 
@@ -124,7 +124,7 @@ persons %>% left_join(accidents, by="ST_CASE") %>% nrow()
 Remove the nrow and run it again for yourself. See how there are several columns that end with .X? That means they're duplicates. There's a solid chance they are the same in both tables. By default, `dplyr` will do a "natural" join, where it'll match all the matching columns in both tables. So if we take out the by, it'll use all the common columns between the tables. That may not be right -- our documentation says ST_CASE is how they are related -- but let's try it. If it works, we should get 553 rows.
 
 ```{r}
-persons %>% left_join(accidents) %>% nrow()
+persons %>% left_join(accidents) 
 ```
 
 So instead of just one column, it used 13. And we got the same answer. And we don't have any columns with .X after it anymore. So we're good to move forward.
@@ -136,7 +136,6 @@ personaccidents <- persons %>% left_join(accidents)
 ```
 
 Now, with our joined data, we can answer questions that come from both datasets. So what if we looked at median age of drivers who died broken down by what kind of roadway the accident happened on? 
-
 We can do this now because the accident data has the roadway information information and the age and who was driving and what type of injury they sustained comes from the person table.
 
 We get this by using filters followed by a group by and summarize. In the data documentation linked above, look in the PERSON Data File to get the appropriate filters. In this case, we want PER_TYPE of 1 (the driver) and an INJ_SEV of 4, which means death. In the ACCCIDENT Data File section, we learn it's the ROUTE we want to group by. 

@@ -99,18 +99,18 @@ This book is the collection of class materials for the author's Data Journalism 
 * Cleaning III: Open Refine
 * Cleaning IV: Pulling Data from PDFs
 * Joins
-* Advanced analysis: Correlations and regressions
-* Advanced analysis: Logistic regression
 * Basic data scraping
 * Intermediate data scraping
 * Getting data from APIs: Census
-* Visualizing for reporting: Basics
-* Visualizing for reporting: More forms
-* Visualizing for reporting: Faceting
 * Geographic data basics
 * Geographic queries
 * Geographic visualization
+* Visualizing for reporting: Basics
+* Visualizing for reporting: More forms
+* Visualizing for reporting: Faceting
 * Text analysis basics
 * Text analysis
+* Advanced analysis: Correlations and regressions
+* Advanced analysis: Logistic regression
 * Writing with and about data
 * Data journalism ethics
