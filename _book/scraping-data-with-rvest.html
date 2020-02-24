@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 15 Scraping data with Rvest | Data Journalism with R and the Tidyverse</title>
+  <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 15 Scraping data with Rvest | Data Journalism with R and the Tidyverse" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 15 Scraping data with Rvest | Data Journalism with R and the Tidyverse" />
+  
+  <meta name="twitter:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  
+
+<meta name="author" content="Matt Waite" />
+
+
+<meta name="date" content="2020-02-24" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="combining-and-joining.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="http://mattwaite.github.io/datajournalism/">Data Journalism With R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#modern-data-journalism"><i class="fa fa-check"></i><b>1.1</b> Modern data journalism</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installations"><i class="fa fa-check"></i><b>1.2</b> Installations</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#about-this-book"><i class="fa fa-check"></i><b>1.3</b> About this book</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#what-well-cover"><i class="fa fa-check"></i><b>1.4</b> What we’ll cover</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="public-records.html"><a href="public-records.html"><i class="fa fa-check"></i><b>2</b> Public records</a><ul>
+<li class="chapter" data-level="2.1" data-path="public-records.html"><a href="public-records.html#federal-law"><i class="fa fa-check"></i><b>2.1</b> Federal law</a></li>
+<li class="chapter" data-level="2.2" data-path="public-records.html"><a href="public-records.html#state-law"><i class="fa fa-check"></i><b>2.2</b> State law</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>3</b> R basics</a><ul>
+<li class="chapter" data-level="3.1" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-1"><i class="fa fa-check"></i><b>3.1</b> Adding libraries, part 1</a></li>
+<li class="chapter" data-level="3.2" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-2"><i class="fa fa-check"></i><b>3.2</b> Adding libraries, part 2</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html"><i class="fa fa-check"></i><b>4</b> Data journalism in the age of replication</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#the-stylebook"><i class="fa fa-check"></i><b>4.1</b> The stylebook</a></li>
+<li class="chapter" data-level="4.2" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication"><i class="fa fa-check"></i><b>4.2</b> Replication</a></li>
+<li class="chapter" data-level="4.3" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#goodbye-excel"><i class="fa fa-check"></i><b>4.3</b> Goodbye Excel?</a></li>
+<li class="chapter" data-level="4.4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#receptivity-is-high"><i class="fa fa-check"></i><b>4.4</b> “Receptivity … is high”</a></li>
+<li class="chapter" data-level="4.5" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication-in-notebooks"><i class="fa fa-check"></i><b>4.5</b> Replication in notebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html"><i class="fa fa-check"></i><b>5</b> Data, structures and types</a><ul>
+<li class="chapter" data-level="5.1" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#rows-and-columns"><i class="fa fa-check"></i><b>5.1</b> Rows and columns</a></li>
+<li class="chapter" data-level="5.2" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#types"><i class="fa fa-check"></i><b>5.2</b> Types</a></li>
+<li class="chapter" data-level="5.3" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#a-simple-way-to-get-data"><i class="fa fa-check"></i><b>5.3</b> A simple way to get data</a></li>
+<li class="chapter" data-level="5.4" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#cleaning-the-data"><i class="fa fa-check"></i><b>5.4</b> Cleaning the data</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="aggregates.html"><a href="aggregates.html"><i class="fa fa-check"></i><b>6</b> Aggregates</a><ul>
+<li class="chapter" data-level="6.1" data-path="aggregates.html"><a href="aggregates.html#importing-data"><i class="fa fa-check"></i><b>6.1</b> Importing data</a></li>
+<li class="chapter" data-level="6.2" data-path="aggregates.html"><a href="aggregates.html#group-by-and-count"><i class="fa fa-check"></i><b>6.2</b> Group by and count</a></li>
+<li class="chapter" data-level="6.3" data-path="aggregates.html"><a href="aggregates.html#other-aggregates-mean-and-median"><i class="fa fa-check"></i><b>6.3</b> Other aggregates: Mean and median</a></li>
+<li class="chapter" data-level="6.4" data-path="aggregates.html"><a href="aggregates.html#even-more-aggregates"><i class="fa fa-check"></i><b>6.4</b> Even more aggregates</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>7</b> Mutating data</a><ul>
+<li class="chapter" data-level="7.1" data-path="mutating-data.html"><a href="mutating-data.html#another-use-of-mutate"><i class="fa fa-check"></i><b>7.1</b> Another use of mutate</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>8</b> Working with dates</a><ul>
+<li class="chapter" data-level="8.1" data-path="working-with-dates.html"><a href="working-with-dates.html#the-hard-way"><i class="fa fa-check"></i><b>8.1</b> The hard way</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="filters-and-selections.html"><a href="filters-and-selections.html"><i class="fa fa-check"></i><b>9</b> Filters and selections</a><ul>
+<li class="chapter" data-level="9.1" data-path="filters-and-selections.html"><a href="filters-and-selections.html#combining-filters"><i class="fa fa-check"></i><b>9.1</b> Combining filters</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html"><i class="fa fa-check"></i><b>10</b> Data Cleaning Part I: Data smells</a><ul>
+<li class="chapter" data-level="10.1" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#wrong-type"><i class="fa fa-check"></i><b>10.1</b> Wrong Type</a></li>
+<li class="chapter" data-level="10.2" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#missing-data"><i class="fa fa-check"></i><b>10.2</b> Missing Data</a></li>
+<li class="chapter" data-level="10.3" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#gaps-in-data"><i class="fa fa-check"></i><b>10.3</b> Gaps in data</a></li>
+<li class="chapter" data-level="10.4" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#internal-inconsistency"><i class="fa fa-check"></i><b>10.4</b> Internal inconsistency</a></li>
+<li class="chapter" data-level="10.5" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#a-shortcut-summary"><i class="fa fa-check"></i><b>10.5</b> A Shortcut: Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html"><i class="fa fa-check"></i><b>11</b> Data Cleaning Part II: Janitor</a><ul>
+<li class="chapter" data-level="11.1" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#cleaning-headers"><i class="fa fa-check"></i><b>11.1</b> Cleaning headers</a></li>
+<li class="chapter" data-level="11.2" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#duplicates"><i class="fa fa-check"></i><b>11.2</b> Duplicates</a></li>
+<li class="chapter" data-level="11.3" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#inconsistency"><i class="fa fa-check"></i><b>11.3</b> Inconsistency</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html"><i class="fa fa-check"></i><b>12</b> Data Cleaning Part III: Open Refine</a><ul>
+<li class="chapter" data-level="12.1" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#refinr-open-refine-in-r"><i class="fa fa-check"></i><b>12.1</b> Refinr, Open Refine in R</a></li>
+<li class="chapter" data-level="12.2" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#more-complex-issues"><i class="fa fa-check"></i><b>12.2</b> More complex issues</a></li>
+<li class="chapter" data-level="12.3" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#manually-cleaning-data-with-open-refine"><i class="fa fa-check"></i><b>12.3</b> Manually cleaning data with Open Refine</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html"><i class="fa fa-check"></i><b>13</b> Cleaning Data Part IV: PDFs</a><ul>
+<li class="chapter" data-level="13.1" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-looks-good-but-goes-wrong"><i class="fa fa-check"></i><b>13.1</b> When it looks good, but goes wrong</a></li>
+<li class="chapter" data-level="13.2" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-works-well."><i class="fa fa-check"></i><b>13.2</b> When it works well.</a></li>
+<li class="chapter" data-level="13.3" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#cleaning-up-the-data-in-r"><i class="fa fa-check"></i><b>13.3</b> Cleaning up the data in R</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="combining-and-joining.html"><a href="combining-and-joining.html"><i class="fa fa-check"></i><b>14</b> Combining and joining</a><ul>
+<li class="chapter" data-level="14.1" data-path="combining-and-joining.html"><a href="combining-and-joining.html#combining-data"><i class="fa fa-check"></i><b>14.1</b> Combining data</a></li>
+<li class="chapter" data-level="14.2" data-path="combining-and-joining.html"><a href="combining-and-joining.html#joining-data"><i class="fa fa-check"></i><b>14.2</b> Joining data</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html"><i class="fa fa-check"></i><b>15</b> Scraping data with Rvest</a><ul>
+<li class="chapter" data-level="15.1" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html#a-more-difficult-example"><i class="fa fa-check"></i><b>15.1</b> A more difficult example</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Journalism with R and the Tidyverse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="scraping-data-with-rvest" class="section level1">
+<h1><span class="header-section-number">Chapter 15</span> Scraping data with Rvest</h1>
+<p>Sometimes, governments put data online on a page or in a searchable database. And when you ask them for a copy of the data underneath the website, they say no. Why? Because they have a website. That’s it. That’s their reason. We don’t have to give you the data because we’ve already given you the data, never mind that they haven’t.
+One of the most powerful tools you can learn as a data journalist is how to scrape data. Scraping is the process of programming a computer to act like a browser, go to a website, injest the HTML from that website and turn it into data.</p>
+<p>The degree of difficulty here goes from Easy to So Hard You Want To Throw Your Laptop Out A Window. And the curve between the two steep. You can learn how to scrape Easy in a day. The hard ones take months to years of programming experience.</p>
+<p>So.</p>
+<p>Let’s try an easy one.</p>
+<p>We’re going to use a library called <code>rvest</code>, which you can install it the same way we’ve done all installs: go to the console and <code>install.packages(&quot;rvest&quot;)</code>.</p>
+<p>We’ll load them first:</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" data-line-number="1"><span class="kw">library</span>(rvest)</a></code></pre></div>
+<pre><code>## Warning: package &#39;rvest&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## Loading required package: xml2</code></pre>
+<pre><code>## Warning: package &#39;xml2&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;rvest&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     pluck</code></pre>
+<pre><code>## The following object is masked from &#39;package:readr&#39;:
+## 
+##     guess_encoding</code></pre>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<p>The first thing we need to do is define a URL. What URL are we going to scrape? This is where paying attention to URLs pays off. Some search urls are addressable – meaning you can copy the url of your search and go to it again and again. Or is the search term invisible?</p>
+<p>Let’s take an example from the Nebraska Legislature. The Legislature publishes a daily agenda that tells you what bills will be debated on the floor that day. Here’s <a href="https://nebraskalegislature.gov/calendar/agenda.php?day=2020-02-03">an example from Feb. 3</a>. Go that page. You’ll see multiple sections – a reports section, and the General File section. General File is the first stage of floor debate. Those are the bills to be debated.</p>
+<p>Let’s grab them with rvest.</p>
+<p>First, we create a url variable and set it equal to that url.</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" data-line-number="1">url &lt;-<span class="st"> &quot;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-02-03&quot;</span></a></code></pre></div>
+<p>Now we’re going to do a handful of things at once. We’re going to take that url, pass it to a <code>read_html</code> command, which does what you think it does. We’re then going to search that HTML for a specific node, the node that contains our data.</p>
+<p>The most difficult part of scraping data from any website is knowing what exact HTML tag you need to grab. In this case, we want a <code>&lt;table&gt;</code> tag that has all of our data table in it. But how do you tell R which one that is? Well, it’s easy, once you know what to do. But it’s not simple. So I’ve made a short video to show you how to find it.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kYkSE3zWa9Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>Using that same trick on the Legislature page, we find the table with those general file bills and it’s in something called <code>agenda_table_4464</code>. With that, we can turn it into a table.</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1">agenda &lt;-<span class="st"> </span>url <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb194-2" data-line-number="2"><span class="st">  </span><span class="kw">read_html</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb194-3" data-line-number="3"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="dt">xpath =</span> <span class="st">&#39;//*[@id=&quot;agenda_table_4464&quot;]&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb194-4" data-line-number="4"><span class="st">  </span><span class="kw">html_table</span>()</a></code></pre></div>
+<p>After doing that, looking at the environment for your agenda. And you’ll see … not a dataframe. You’ll see a list. With one thing in it. That one thing? A dataframe. So we need to grab that first element. We get it by doing this:</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" data-line-number="1">agenda &lt;-<span class="st"> </span>agenda[[<span class="dv">1</span>]]</a></code></pre></div>
+<p>And now we can take a look:</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" data-line-number="1">agenda</a></code></pre></div>
+<pre><code>##                                                                                                Document
+## 1   Currently or Pendingon Floor\n                                                                LB267
+## 2   Currently or Pendingon Floor\n                                                                LB205
+## 3  Currently or Pendingon Floor\n                                                                LB205A
+## 4   Currently or Pendingon Floor\n                                                                LB329
+## 5   Currently or Pendingon Floor\n                                                                LB607
+## 6  Currently or Pendingon Floor\n                                                                LB607A
+## 7   Currently or Pendingon Floor\n                                                                LB106
+## 8   Currently or Pendingon Floor\n                                                                LB219
+## 9   Currently or Pendingon Floor\n                                                                LB448
+## 10  Currently or Pendingon Floor\n                                                                LB515
+##    Introducer
+## 1        Bolz
+## 2   Kolterman
+## 3   Kolterman
+## 4        Bolz
+## 5   Kolterman
+## 6   Kolterman
+## 7        Dorn
+## 8     Wishart
+## 9   McDonnell
+## 10     Vargas
+##                                                                                                          Description
+## 1                         Provide a duty for the county board relating to deficient bridges and authorize a tax levy
+## 2                                                                   Adopt the Surgical Technologist Registration Act
+## 3                                                                                                 Appropriation Bill
+## 4  Change eligibility provisions for transitional child care assistance under the federal child care subsidy program
+## 5                                                         Change provisions relating to nail technology and body art
+## 6                                                                                                 Appropriation Bill
+## 7               Change provisions relating to disclosure of DNA records under the DNA Identification Information Act
+## 8                                                           Change requirements for foster care transition proposals
+## 9        Change provisions relating to compensation for burial expenses under the Nebraska Workers&#39; Compensation Act
+## 10                                                          Change provisions relating to the Student Discipline Act</code></pre>
+<p>And as you can see, it’s … not perfect. But we can fix that with a little <code>gsub</code> magic.</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" data-line-number="1">agenda <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Document =</span> <span class="kw">gsub</span>(<span class="st">&quot;Currently or Pendingon Floor</span><span class="ch">\n</span><span class="st"> &quot;</span>,<span class="st">&quot;&quot;</span>,Document))</a></code></pre></div>
+<pre><code>##                                                                 Document
+## 1                                                                  LB267
+## 2                                                                  LB205
+## 3                                                                 LB205A
+## 4                                                                  LB329
+## 5                                                                  LB607
+## 6                                                                 LB607A
+## 7                                                                  LB106
+## 8                                                                  LB219
+## 9                                                                  LB448
+## 10                                                                 LB515
+##    Introducer
+## 1        Bolz
+## 2   Kolterman
+## 3   Kolterman
+## 4        Bolz
+## 5   Kolterman
+## 6   Kolterman
+## 7        Dorn
+## 8     Wishart
+## 9   McDonnell
+## 10     Vargas
+##                                                                                                          Description
+## 1                         Provide a duty for the county board relating to deficient bridges and authorize a tax levy
+## 2                                                                   Adopt the Surgical Technologist Registration Act
+## 3                                                                                                 Appropriation Bill
+## 4  Change eligibility provisions for transitional child care assistance under the federal child care subsidy program
+## 5                                                         Change provisions relating to nail technology and body art
+## 6                                                                                                 Appropriation Bill
+## 7               Change provisions relating to disclosure of DNA records under the DNA Identification Information Act
+## 8                                                           Change requirements for foster care transition proposals
+## 9        Change provisions relating to compensation for burial expenses under the Nebraska Workers&#39; Compensation Act
+## 10                                                          Change provisions relating to the Student Discipline Act</code></pre>
+<div id="a-more-difficult-example" class="section level2">
+<h2><span class="header-section-number">15.1</span> A more difficult example</h2>
+<p>The Nebraska Legislature, with it’s unique unicameral or one house structure, does some things a little differently than other legislatures. Example: Bills have to go through three rounds of debate before getting passed. There’s General File (round 1), Select File (round 2), and Final Reading (round 3).</p>
+<p>So what does a day where they do more than general file look like? <a href="https://nebraskalegislature.gov/calendar/agenda.php?day=2020-02-21">Like this</a>.</p>
+<p>How do we scrape that?</p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" data-line-number="1">harderurl &lt;-<span class="st"> &quot;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-02-21&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" data-line-number="1">harderagenda &lt;-<span class="st"> </span>harderurl <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb201-2" data-line-number="2"><span class="st">  </span><span class="kw">read_html</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb201-3" data-line-number="3"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;table&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb201-4" data-line-number="4"><span class="st">  </span><span class="kw">html_table</span>()</a></code></pre></div>
+<p>You can see that <code>harderagenda</code> has a list of four instead of a list of one. We can see each item in the list has a dataframe. We can see them individually. Here’s the first:</p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" data-line-number="1">harderagenda[[<span class="dv">1</span>]]</a></code></pre></div>
+<pre><code>##                                                                                               Document
+## 1 Currently or Pendingon Floor\n                                                                LB1054
+## 2  Currently or Pendingon Floor\n                                                                LB944
+## 3  Currently or Pendingon Floor\n                                                                LB924
+## 4  Currently or Pendingon Floor\n                                                                LB770
+##   Introducer
+## 1  Kolterman
+## 2      Geist
+## 3   Chambers
+## 4    Gragert
+##                                                                                                    Description
+## 1 Define the required beginning date and change deferment of payment provisions under certain retirement plans
+## 2                                                                 Change provisions relating to motor vehicles
+## 3                          Change provisions relating to racial profiling and require law enforcement training
+## 4     Provide for state park permits  for disabled veterans and change nonresident fees for state park permits</code></pre>
+<p>Here’s the second:</p>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" data-line-number="1">harderagenda[[<span class="dv">2</span>]]</a></code></pre></div>
+<pre><code>##                                                                                               Document
+## 1 Currently or Pendingon Floor\n                                                                LB1061
+## 2 Currently or Pendingon Floor\n                                                                LB1014
+## 3  Currently or Pendingon Floor\n                                                                LB424
+## 4  Currently or Pendingon Floor\n                                                                LB962
+##   Introducer
+## 1   Crawford
+## 2  Lindstrom
+## 3      Quick
+## 4       Hunt
+##                                                                               Description
+## 1 Change provisions relating to alternative response to reports of child abuse or neglect
+## 2                      Change provisions of the Multiple Employer Welfare Arrangement Act
+## 3                                             Change the Nebraska Municipal Land Bank Act
+## 4                                                 Adopt the Nebraska Fair Pay to Play Act</code></pre>
+<p>So we can merge those together no problem, but how would we know what stage each bill is at?</p>
+<p>Look at the page – we can see that the bills are separated by a big headline like “SELECT FILE: 2020 PRIORITY BILLS”. To separate these, we need to grab those and then add them to each bill using mutate.</p>
+<p>Here’s how we grab them:</p>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb206-1" data-line-number="1">labels &lt;-<span class="st"> </span>harderurl <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb206-2" data-line-number="2"><span class="st">  </span><span class="kw">read_html</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb206-3" data-line-number="3"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;.card-header&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb206-4" data-line-number="4"><span class="st">  </span><span class="kw">html_text</span>()</a></code></pre></div>
+<p>Another list. If you look at the first, it’s at the top of the page with no bills. Here’s the second:</p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" data-line-number="1">labels[[<span class="dv">2</span>]]</a></code></pre></div>
+<pre><code>## [1] &quot;\n                    SELECT FILE:  2020 PRIORITY BILLS\n                &quot;</code></pre>
+<p>So we know can see there’s some garbage in there we want to clean out. We can use a new library called <code>stringr</code> to trim the excess spaces and <code>gsub</code> to strip the newline character: <code>\n</code>.</p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" data-line-number="1">harderagenda[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb209-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Document =</span> <span class="kw">gsub</span>(<span class="st">&quot;Currently or Pendingon Floor</span><span class="ch">\n</span><span class="st"> &quot;</span>,<span class="st">&quot;&quot;</span>,Document)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb209-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> labels[[<span class="dv">2</span>]]) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb209-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="st">&quot;&quot;</span>,Stage)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb209-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">str_trim</span>(Stage, <span class="dt">side =</span> <span class="st">&quot;both&quot;</span>))</a></code></pre></div>
+<pre><code>##                                                                Document
+## 1                                                                LB1054
+## 2                                                                 LB944
+## 3                                                                 LB924
+## 4                                                                 LB770
+##   Introducer
+## 1  Kolterman
+## 2      Geist
+## 3   Chambers
+## 4    Gragert
+##                                                                                                    Description
+## 1 Define the required beginning date and change deferment of payment provisions under certain retirement plans
+## 2                                                                 Change provisions relating to motor vehicles
+## 3                          Change provisions relating to racial profiling and require law enforcement training
+## 4     Provide for state park permits  for disabled veterans and change nonresident fees for state park permits
+##                               Stage
+## 1 SELECT FILE:  2020 PRIORITY BILLS
+## 2 SELECT FILE:  2020 PRIORITY BILLS
+## 3 SELECT FILE:  2020 PRIORITY BILLS
+## 4 SELECT FILE:  2020 PRIORITY BILLS</code></pre>
+<p>Now it’s just a matter grinding through the items in the list.</p>
+<p>NOTE: This is grossly inefficient and very manual. And, we’d have to change this for every day we want to scrape. As such, this is not the “right” way to do this. We’ll cover that in the next chapter.</p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" data-line-number="1">harderagenda1 &lt;-<span class="st"> </span>harderagenda[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb211-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Document =</span> <span class="kw">gsub</span>(<span class="st">&quot;Currently or Pendingon Floor</span><span class="ch">\n</span><span class="st"> &quot;</span>,<span class="st">&quot;&quot;</span>,Document)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb211-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> labels[[<span class="dv">2</span>]]) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="st">&quot;&quot;</span>,Stage)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb211-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">str_trim</span>(Stage, <span class="dt">side =</span> <span class="st">&quot;both&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb212-1" data-line-number="1">harderagenda2 &lt;-<span class="st"> </span>harderagenda[[<span class="dv">2</span>]] <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb212-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Document =</span> <span class="kw">gsub</span>(<span class="st">&quot;Currently or Pendingon Floor</span><span class="ch">\n</span><span class="st"> &quot;</span>,<span class="st">&quot;&quot;</span>,Document)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb212-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> labels[[<span class="dv">3</span>]]) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="st">&quot;&quot;</span>,Stage)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb212-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">str_trim</span>(Stage, <span class="dt">side =</span> <span class="st">&quot;both&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1">harderagenda3 &lt;-<span class="st"> </span>harderagenda[[<span class="dv">3</span>]] <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb213-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Document =</span> <span class="kw">gsub</span>(<span class="st">&quot;Currently or Pendingon Floor</span><span class="ch">\n</span><span class="st"> &quot;</span>,<span class="st">&quot;&quot;</span>,Document)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb213-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> labels[[<span class="dv">4</span>]]) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="st">&quot;&quot;</span>,Stage)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb213-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">str_trim</span>(Stage, <span class="dt">side =</span> <span class="st">&quot;both&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" data-line-number="1">harderagenda4 &lt;-<span class="st"> </span>harderagenda[[<span class="dv">4</span>]] <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb214-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Document =</span> <span class="kw">gsub</span>(<span class="st">&quot;Currently or Pendingon Floor</span><span class="ch">\n</span><span class="st"> &quot;</span>,<span class="st">&quot;&quot;</span>,Document)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb214-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> labels[[<span class="dv">5</span>]]) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="st">&quot;&quot;</span>,Stage)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb214-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">str_trim</span>(Stage, <span class="dt">side =</span> <span class="st">&quot;both&quot;</span>))</a></code></pre></div>
+<p>Now we merge:</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1">largeragenda &lt;-<span class="st"> </span><span class="kw">rbind</span>(harderagenda1, harderagenda2)</a>
+<a class="sourceLine" id="cb215-2" data-line-number="2">largeragenda &lt;-<span class="st"> </span><span class="kw">rbind</span>(largeragenda, harderagenda3)</a>
+<a class="sourceLine" id="cb215-3" data-line-number="3">largeragenda &lt;-<span class="st"> </span><span class="kw">rbind</span>(largeragenda, harderagenda4)</a></code></pre></div>
+<p>And now we have a dataset of all bills and what stage they’re at for that day.</p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" data-line-number="1">largeragenda</a></code></pre></div>
+<pre><code>##                                                                 Document
+## 1                                                                 LB1054
+## 2                                                                  LB944
+## 3                                                                  LB924
+## 4                                                                  LB770
+## 5                                                                 LB1061
+## 6                                                                 LB1014
+## 7                                                                  LB424
+## 8                                                                  LB962
+## 9                                                                  LB344
+## 10                                                                 LR325
+##               Introducer
+## 1              Kolterman
+## 2                  Geist
+## 3               Chambers
+## 4                Gragert
+## 5               Crawford
+## 6              Lindstrom
+## 7                  Quick
+## 8                   Hunt
+## 9  Agriculture Committee
+## 10                Howard
+##                                                                                                                                                                                                            Description
+## 1                                                                                                         Define the required beginning date and change deferment of payment provisions under certain retirement plans
+## 2                                                                                                                                                                         Change provisions relating to motor vehicles
+## 3                                                                                                                                  Change provisions relating to racial profiling and require law enforcement training
+## 4                                                                                                             Provide for state park permits  for disabled veterans and change nonresident fees for state park permits
+## 5                                                                                                                              Change provisions relating to alternative response to reports of child abuse or neglect
+## 6                                                                                                                                                   Change provisions of the Multiple Employer Welfare Arrangement Act
+## 7                                                                                                                                                                          Change the Nebraska Municipal Land Bank Act
+## 8                                                                                                                                                                              Adopt the Nebraska Fair Pay to Play Act
+## 9  Adopt the Animal Health and Disease Control Act, eliminate and provide duties for the Department of Agriculture, eliminate various acts, terminate and transfer certain funds, create a fund, and provide penalties
+## 10                                                                                                                                                                    Congratulate Leona R. Doll on her 100th birthday
+##                                                                               Stage
+## 1                                                 SELECT FILE:  2020 PRIORITY BILLS
+## 2                                                 SELECT FILE:  2020 PRIORITY BILLS
+## 3                                                 SELECT FILE:  2020 PRIORITY BILLS
+## 4                                                 SELECT FILE:  2020 PRIORITY BILLS
+## 5                       GENERAL FILE: 2020 SENATOR PRIORITY BILLS - &quot;Hunt Division&quot;
+## 6                       GENERAL FILE: 2020 SENATOR PRIORITY BILLS - &quot;Hunt Division&quot;
+## 7                       GENERAL FILE: 2020 SENATOR PRIORITY BILLS - &quot;Hunt Division&quot;
+## 8                       GENERAL FILE: 2020 SENATOR PRIORITY BILLS - &quot;Hunt Division&quot;
+## 9                                          GENERAL FILE: 2020 SENATOR PRIORITY BILL
+## 10 LEGISLATIVE RESOLUTION(s) Eligible For Adoption Pursuant to Rule 4, Section 5(b)</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="combining-and-joining.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/14-rvest.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["datajournalism.pdf", "datajournalism.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

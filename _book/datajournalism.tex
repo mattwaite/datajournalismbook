@@ -118,7 +118,7 @@
 
 \title{Data Journalism with R and the Tidyverse}
 \author{Matt Waite}
-\date{2020-02-19}
+\date{2020-02-24}
 
 \begin{document}
 \maketitle
@@ -253,21 +253,11 @@ This book is the collection of class materials for the author's Data Journalism 
 \item
   Joins
 \item
-  Advanced analysis: Correlations and regressions
-\item
-  Advanced analysis: Logistic regression
-\item
   Basic data scraping
 \item
   Intermediate data scraping
 \item
   Getting data from APIs: Census
-\item
-  Visualizing for reporting: Basics
-\item
-  Visualizing for reporting: More forms
-\item
-  Visualizing for reporting: Faceting
 \item
   Geographic data basics
 \item
@@ -275,9 +265,19 @@ This book is the collection of class materials for the author's Data Journalism 
 \item
   Geographic visualization
 \item
+  Visualizing for reporting: Basics
+\item
+  Visualizing for reporting: More forms
+\item
+  Visualizing for reporting: Faceting
+\item
   Text analysis basics
 \item
   Text analysis
+\item
+  Advanced analysis: Correlations and regressions
+\item
+  Advanced analysis: Logistic regression
 \item
   Writing with and about data
 \item
@@ -2351,7 +2351,7 @@ Here's an example using sensible defaults for weighting -- unfortunately \href{h
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3035
+## [1] 3034
 \end{verbatim}
 
 Cuts it down by almost 1000. That seems pretty good. Here's a different method, using a method that turns words into phonetic spellings called soundex.
@@ -2561,7 +2561,7 @@ We can spell these out in the import step. First, we'll use \texttt{skip} to ski
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{receipts <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"~/Downloads/tabula-General_Fund_Receipts_January_2020.csv"}\NormalTok{, }\DataTypeTok{skip =} \DecValTok{3}\NormalTok{, }\DataTypeTok{col_names =} \KeywordTok{c}\NormalTok{(}\StringTok{"Month"}\NormalTok{, }\StringTok{"TotalActualNetReceipts"}\NormalTok{, }\StringTok{"TotalProjectedNetReceipts"}\NormalTok{, }\StringTok{"Difference"}\NormalTok{, }\StringTok{"PercentDifference"}\NormalTok{, }\StringTok{"CumulativeActualNetReceipts"}\NormalTok{, }\StringTok{"CumulativeProjectedNetReceipts"}\NormalTok{, }\StringTok{"CumulativeDifference"}\NormalTok{,}\StringTok{"CumulativePercentDifference"}\NormalTok{), }\DataTypeTok{skip_empty_rows =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{receipts <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"data/tabula-General_Fund_Receipts_January_2020.csv"}\NormalTok{, }\DataTypeTok{skip =} \DecValTok{3}\NormalTok{, }\DataTypeTok{col_names =} \KeywordTok{c}\NormalTok{(}\StringTok{"Month"}\NormalTok{, }\StringTok{"TotalActualNetReceipts"}\NormalTok{, }\StringTok{"TotalProjectedNetReceipts"}\NormalTok{, }\StringTok{"Difference"}\NormalTok{, }\StringTok{"PercentDifference"}\NormalTok{, }\StringTok{"CumulativeActualNetReceipts"}\NormalTok{, }\StringTok{"CumulativeProjectedNetReceipts"}\NormalTok{, }\StringTok{"CumulativeDifference"}\NormalTok{,}\StringTok{"CumulativePercentDifference"}\NormalTok{), }\DataTypeTok{skip_empty_rows =} \OtherTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2653,7 +2653,7 @@ Let's do what we need to import them properly. Unlike the last example, I've mer
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{receiptsJan20 <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"~/Downloads/tabula-General_Fund_Receipts_January_2020.csv"}\NormalTok{, }\DataTypeTok{skip =} \DecValTok{3}\NormalTok{, }\DataTypeTok{col_names =} \KeywordTok{c}\NormalTok{(}\StringTok{"Month"}\NormalTok{, }\StringTok{"TotalActualNetReceipts"}\NormalTok{, }\StringTok{"TotalProjectedNetReceipts"}\NormalTok{, }\StringTok{"Difference"}\NormalTok{, }\StringTok{"PercentDifference"}\NormalTok{, }\StringTok{"CumulativeActualNetReceipts"}\NormalTok{, }\StringTok{"CumulativeProjectedNetReceipts"}\NormalTok{, }\StringTok{"CumulativeDifference"}\NormalTok{,}\StringTok{"CumulativePercentDifference"}\NormalTok{), }\DataTypeTok{skip_empty_rows =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}
+\NormalTok{receiptsJan20 <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"data/tabula-General_Fund_Receipts_January_2020.csv"}\NormalTok{, }\DataTypeTok{skip =} \DecValTok{3}\NormalTok{, }\DataTypeTok{col_names =} \KeywordTok{c}\NormalTok{(}\StringTok{"Month"}\NormalTok{, }\StringTok{"TotalActualNetReceipts"}\NormalTok{, }\StringTok{"TotalProjectedNetReceipts"}\NormalTok{, }\StringTok{"Difference"}\NormalTok{, }\StringTok{"PercentDifference"}\NormalTok{, }\StringTok{"CumulativeActualNetReceipts"}\NormalTok{, }\StringTok{"CumulativeProjectedNetReceipts"}\NormalTok{, }\StringTok{"CumulativeDifference"}\NormalTok{,}\StringTok{"CumulativePercentDifference"}\NormalTok{), }\DataTypeTok{skip_empty_rows =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}
   \DataTypeTok{TotalActualNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,TotalActualNetReceipts),}
   \DataTypeTok{TotalActualNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,TotalActualNetReceipts),}
   \DataTypeTok{TotalProjectedNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,TotalProjectedNetReceipts),}
@@ -2689,7 +2689,7 @@ Let's do what we need to import them properly. Unlike the last example, I've mer
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{receiptsDec19 <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"~/Downloads/tabula-General_Fund_Receipts_December_2019.csv"}\NormalTok{, }\DataTypeTok{skip =} \DecValTok{3}\NormalTok{, }\DataTypeTok{col_names =} \KeywordTok{c}\NormalTok{(}\StringTok{"Month"}\NormalTok{, }\StringTok{"TotalActualNetReceipts"}\NormalTok{, }\StringTok{"TotalProjectedNetReceipts"}\NormalTok{, }\StringTok{"Difference"}\NormalTok{, }\StringTok{"PercentDifference"}\NormalTok{, }\StringTok{"CumulativeActualNetReceipts"}\NormalTok{, }\StringTok{"CumulativeProjectedNetReceipts"}\NormalTok{, }\StringTok{"CumulativeDifference"}\NormalTok{,}\StringTok{"CumulativePercentDifference"}\NormalTok{), }\DataTypeTok{skip_empty_rows =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}
+\NormalTok{receiptsDec19 <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"data/tabula-General_Fund_Receipts_December_2019.csv"}\NormalTok{, }\DataTypeTok{skip =} \DecValTok{3}\NormalTok{, }\DataTypeTok{col_names =} \KeywordTok{c}\NormalTok{(}\StringTok{"Month"}\NormalTok{, }\StringTok{"TotalActualNetReceipts"}\NormalTok{, }\StringTok{"TotalProjectedNetReceipts"}\NormalTok{, }\StringTok{"Difference"}\NormalTok{, }\StringTok{"PercentDifference"}\NormalTok{, }\StringTok{"CumulativeActualNetReceipts"}\NormalTok{, }\StringTok{"CumulativeProjectedNetReceipts"}\NormalTok{, }\StringTok{"CumulativeDifference"}\NormalTok{,}\StringTok{"CumulativePercentDifference"}\NormalTok{), }\DataTypeTok{skip_empty_rows =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}
   \DataTypeTok{TotalActualNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,TotalActualNetReceipts),}
   \DataTypeTok{TotalActualNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,TotalActualNetReceipts),}
   \DataTypeTok{TotalProjectedNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,TotalProjectedNetReceipts),}
@@ -2725,7 +2725,7 @@ Let's do what we need to import them properly. Unlike the last example, I've mer
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{receiptsNov19 <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"~/Downloads/tabula-General_Fund_Receipts_November_12-13-2019.csv"}\NormalTok{, }\DataTypeTok{skip =} \DecValTok{3}\NormalTok{, }\DataTypeTok{col_names =} \KeywordTok{c}\NormalTok{(}\StringTok{"Month"}\NormalTok{, }\StringTok{"TotalActualNetReceipts"}\NormalTok{, }\StringTok{"TotalProjectedNetReceipts"}\NormalTok{, }\StringTok{"Difference"}\NormalTok{, }\StringTok{"PercentDifference"}\NormalTok{, }\StringTok{"CumulativeActualNetReceipts"}\NormalTok{, }\StringTok{"CumulativeProjectedNetReceipts"}\NormalTok{, }\StringTok{"CumulativeDifference"}\NormalTok{,}\StringTok{"CumulativePercentDifference"}\NormalTok{), }\DataTypeTok{skip_empty_rows =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}
+\NormalTok{receiptsNov19 <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"data/tabula-General_Fund_Receipts_November_12-13-2019.csv"}\NormalTok{, }\DataTypeTok{skip =} \DecValTok{3}\NormalTok{, }\DataTypeTok{col_names =} \KeywordTok{c}\NormalTok{(}\StringTok{"Month"}\NormalTok{, }\StringTok{"TotalActualNetReceipts"}\NormalTok{, }\StringTok{"TotalProjectedNetReceipts"}\NormalTok{, }\StringTok{"Difference"}\NormalTok{, }\StringTok{"PercentDifference"}\NormalTok{, }\StringTok{"CumulativeActualNetReceipts"}\NormalTok{, }\StringTok{"CumulativeProjectedNetReceipts"}\NormalTok{, }\StringTok{"CumulativeDifference"}\NormalTok{,}\StringTok{"CumulativePercentDifference"}\NormalTok{), }\DataTypeTok{skip_empty_rows =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}
   \DataTypeTok{TotalActualNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,TotalActualNetReceipts),}
   \DataTypeTok{TotalActualNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{$"}\NormalTok{,}\StringTok{""}\NormalTok{,TotalActualNetReceipts),}
   \DataTypeTok{TotalProjectedNetReceipts =} \KeywordTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{""}\NormalTok{,TotalProjectedNetReceipts),}
@@ -2765,11 +2765,11 @@ Since we have three things, we're going to do this in steps. First, we'll create
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{predictions <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(receiptsJan20, receiptsDec19)}
+\NormalTok{predictions1 <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(receiptsJan20, receiptsDec19)}
 
-\NormalTok{predictions <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(predictions, receiptsNov19)}
+\NormalTok{predictions2 <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(predictions1, receiptsNov19)}
 
-\NormalTok{predictions}
+\NormalTok{predictions2}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2878,7 +2878,7 @@ Remove the nrow and run it again for yourself. See how there are several columns
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{persons }\OperatorTok{%>%}\StringTok{ }\KeywordTok{left_join}\NormalTok{(accidents) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{nrow}\NormalTok{()}
+\NormalTok{persons }\OperatorTok{%>%}\StringTok{ }\KeywordTok{left_join}\NormalTok{(accidents) }
 \end{Highlighting}
 \end{Shaded}
 
@@ -2888,7 +2888,39 @@ Remove the nrow and run it again for yourself. See how there are several columns
 \end{verbatim}
 
 \begin{verbatim}
-## [1] 553
+## # A tibble: 553 x 101
+##    STATE ST_CASE VE_FORMS VEH_NO PER_NO STR_VEH COUNTY   DAY MONTH  HOUR MINUTE
+##    <dbl>   <dbl>    <dbl>  <dbl>  <dbl>   <dbl>  <dbl> <dbl> <dbl> <dbl>  <dbl>
+##  1    31  310001        2      1      1       0     55     1     1     0     20
+##  2    31  310001        2      2      1       0     55     1     1     0     20
+##  3    31  310002        1      1      1       0    157     7     1    22      0
+##  4    31  310003        1      0      1       1     55    10     1     6     57
+##  5    31  310003        1      1      1       0     55    10     1     6     57
+##  6    31  310004        2      1      1       0     79    10     1    16     55
+##  7    31  310004        2      2      1       0     79    10     1    16     55
+##  8    31  310005        2      1      1       0    119    10     1     4     30
+##  9    31  310005        2      2      1       0    119    10     1     4     30
+## 10    31  310006        1      0      1       1    109    11     1     6     25
+## # ... with 543 more rows, and 90 more variables: RUR_URB <dbl>, FUNC_SYS <dbl>,
+## #   HARM_EV <dbl>, MAN_COLL <dbl>, SCH_BUS <dbl>, MAKE <dbl>, MAK_MOD <dbl>,
+## #   BODY_TYP <dbl>, MOD_YEAR <dbl>, TOW_VEH <dbl>, SPEC_USE <dbl>,
+## #   EMER_USE <dbl>, ROLLOVER <dbl>, IMPACT1 <dbl>, FIRE_EXP <dbl>, AGE <dbl>,
+## #   SEX <dbl>, PER_TYP <dbl>, INJ_SEV <dbl>, SEAT_POS <dbl>, REST_USE <dbl>,
+## #   REST_MIS <dbl>, AIR_BAG <dbl>, EJECTION <dbl>, EJ_PATH <dbl>,
+## #   EXTRICAT <dbl>, DRINKING <dbl>, ALC_DET <dbl>, ALC_STATUS <dbl>,
+## #   ATST_TYP <dbl>, ALC_RES <dbl>, DRUGS <dbl>, DRUG_DET <dbl>, DSTATUS <dbl>,
+## #   HOSPITAL <dbl>, DOA <dbl>, DEATH_DA <dbl>, DEATH_MO <dbl>, DEATH_YR <dbl>,
+## #   DEATH_HR <dbl>, DEATH_MN <dbl>, DEATH_TM <dbl>, LAG_HRS <dbl>,
+## #   LAG_MINS <dbl>, P_SF1 <dbl>, P_SF2 <dbl>, P_SF3 <dbl>, WORK_INJ <dbl>,
+## #   HISPANIC <dbl>, RACE <dbl>, LOCATION <dbl>, VE_TOTAL <dbl>, PVH_INVL <dbl>,
+## #   PEDS <dbl>, PERNOTMVIT <dbl>, PERMVIT <dbl>, PERSONS <dbl>, CITY <dbl>,
+## #   YEAR <dbl>, DAY_WEEK <dbl>, NHS <dbl>, RD_OWNER <dbl>, ROUTE <dbl>,
+## #   TWAY_ID <chr>, TWAY_ID2 <chr>, MILEPT <dbl>, LATITUDE <dbl>,
+## #   LONGITUD <dbl>, SP_JUR <dbl>, RELJCT1 <dbl>, RELJCT2 <dbl>, TYP_INT <dbl>,
+## #   WRK_ZONE <dbl>, REL_ROAD <dbl>, LGT_COND <dbl>, WEATHER1 <dbl>,
+## #   WEATHER2 <dbl>, WEATHER <dbl>, RAIL <chr>, NOT_HOUR <dbl>, NOT_MIN <dbl>,
+## #   ARR_HOUR <dbl>, ARR_MIN <dbl>, HOSP_HR <dbl>, HOSP_MN <dbl>, CF1 <dbl>,
+## #   CF2 <dbl>, CF3 <dbl>, FATALS <dbl>, DRUNK_DR <dbl>
 \end{verbatim}
 
 So instead of just one column, it used 13. And we got the same answer. And we don't have any columns with .X after it anymore. So we're good to move forward.
@@ -2907,7 +2939,6 @@ Let's save our joined data to a new dataframe.
 \end{verbatim}
 
 Now, with our joined data, we can answer questions that come from both datasets. So what if we looked at median age of drivers who died broken down by what kind of roadway the accident happened on?
-
 We can do this now because the accident data has the roadway information information and the age and who was driving and what type of injury they sustained comes from the person table.
 
 We get this by using filters followed by a group by and summarize. In the data documentation linked above, look in the PERSON Data File to get the appropriate filters. In this case, we want PER\_TYPE of 1 (the driver) and an INJ\_SEV of 4, which means death. In the ACCCIDENT Data File section, we learn it's the ROUTE we want to group by.
@@ -2969,5 +3000,396 @@ Let's break this down one more step. What if we added RUR\_URB -- if the acciden
 \end{verbatim}
 
 In 2018, only 3 of the 15 deaths on interestates were in urban areas. All the rest were in rural areas. And all 37 drivers who died in accidents on county roads were in rural areas. Most of the driver deaths on US Highways were in rural places as well.
+
+\hypertarget{scraping-data-with-rvest}{%
+\chapter{Scraping data with Rvest}\label{scraping-data-with-rvest}}
+
+Sometimes, governments put data online on a page or in a searchable database. And when you ask them for a copy of the data underneath the website, they say no. Why? Because they have a website. That's it. That's their reason. We don't have to give you the data because we've already given you the data, never mind that they haven't.
+One of the most powerful tools you can learn as a data journalist is how to scrape data. Scraping is the process of programming a computer to act like a browser, go to a website, injest the HTML from that website and turn it into data.
+
+The degree of difficulty here goes from Easy to So Hard You Want To Throw Your Laptop Out A Window. And the curve between the two steep. You can learn how to scrape Easy in a day. The hard ones take months to years of programming experience.
+
+So.
+
+Let's try an easy one.
+
+We're going to use a library called \texttt{rvest}, which you can install it the same way we've done all installs: go to the console and \texttt{install.packages("rvest")}.
+
+We'll load them first:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(rvest)}
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+The first thing we need to do is define a URL. What URL are we going to scrape? This is where paying attention to URLs pays off. Some search urls are addressable -- meaning you can copy the url of your search and go to it again and again. Or is the search term invisible?
+
+Let's take an example from the Nebraska Legislature. The Legislature publishes a daily agenda that tells you what bills will be debated on the floor that day. Here's \href{https://nebraskalegislature.gov/calendar/agenda.php?day=2020-02-03}{an example from Feb.~3}. Go that page. You'll see multiple sections -- a reports section, and the General File section. General File is the first stage of floor debate. Those are the bills to be debated.
+
+Let's grab them with rvest.
+
+First, we create a url variable and set it equal to that url.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{url <-}\StringTok{ "https://nebraskalegislature.gov/calendar/agenda.php?day=2020-02-03"}
+\end{Highlighting}
+\end{Shaded}
+
+Now we're going to do a handful of things at once. We're going to take that url, pass it to a \texttt{read\_html} command, which does what you think it does. We're then going to search that HTML for a specific node, the node that contains our data.
+
+The most difficult part of scraping data from any website is knowing what exact HTML tag you need to grab. In this case, we want a \texttt{\textless{}table\textgreater{}} tag that has all of our data table in it. But how do you tell R which one that is? Well, it's easy, once you know what to do. But it's not simple. So I've made a short video to show you how to find it.
+
+Using that same trick on the Legislature page, we find the table with those general file bills and it's in something called \texttt{agenda\_table\_4464}. With that, we can turn it into a table.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{agenda <-}\StringTok{ }\NormalTok{url }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{read_html}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{html_nodes}\NormalTok{(}\DataTypeTok{xpath =} \StringTok{'//*[@id="agenda_table_4464"]'}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{html_table}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+After doing that, looking at the environment for your agenda. And you'll see \ldots{} not a dataframe. You'll see a list. With one thing in it. That one thing? A dataframe. So we need to grab that first element. We get it by doing this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{agenda <-}\StringTok{ }\NormalTok{agenda[[}\DecValTok{1}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+And now we can take a look:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{agenda}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                                                                                Document
+## 1   Currently or Pendingon Floor\n                                                                LB267
+## 2   Currently or Pendingon Floor\n                                                                LB205
+## 3  Currently or Pendingon Floor\n                                                                LB205A
+## 4   Currently or Pendingon Floor\n                                                                LB329
+## 5   Currently or Pendingon Floor\n                                                                LB607
+## 6  Currently or Pendingon Floor\n                                                                LB607A
+## 7   Currently or Pendingon Floor\n                                                                LB106
+## 8   Currently or Pendingon Floor\n                                                                LB219
+## 9   Currently or Pendingon Floor\n                                                                LB448
+## 10  Currently or Pendingon Floor\n                                                                LB515
+##    Introducer
+## 1        Bolz
+## 2   Kolterman
+## 3   Kolterman
+## 4        Bolz
+## 5   Kolterman
+## 6   Kolterman
+## 7        Dorn
+## 8     Wishart
+## 9   McDonnell
+## 10     Vargas
+##                                                                                                          Description
+## 1                         Provide a duty for the county board relating to deficient bridges and authorize a tax levy
+## 2                                                                   Adopt the Surgical Technologist Registration Act
+## 3                                                                                                 Appropriation Bill
+## 4  Change eligibility provisions for transitional child care assistance under the federal child care subsidy program
+## 5                                                         Change provisions relating to nail technology and body art
+## 6                                                                                                 Appropriation Bill
+## 7               Change provisions relating to disclosure of DNA records under the DNA Identification Information Act
+## 8                                                           Change requirements for foster care transition proposals
+## 9        Change provisions relating to compensation for burial expenses under the Nebraska Workers' Compensation Act
+## 10                                                          Change provisions relating to the Student Discipline Act
+\end{verbatim}
+
+And as you can see, it's \ldots{} not perfect. But we can fix that with a little \texttt{gsub} magic.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{agenda }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Document =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"Currently or Pendingon Floor}\CharTok{\textbackslash{}n}\StringTok{ "}\NormalTok{,}\StringTok{""}\NormalTok{,Document))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                                                 Document
+## 1                                                                  LB267
+## 2                                                                  LB205
+## 3                                                                 LB205A
+## 4                                                                  LB329
+## 5                                                                  LB607
+## 6                                                                 LB607A
+## 7                                                                  LB106
+## 8                                                                  LB219
+## 9                                                                  LB448
+## 10                                                                 LB515
+##    Introducer
+## 1        Bolz
+## 2   Kolterman
+## 3   Kolterman
+## 4        Bolz
+## 5   Kolterman
+## 6   Kolterman
+## 7        Dorn
+## 8     Wishart
+## 9   McDonnell
+## 10     Vargas
+##                                                                                                          Description
+## 1                         Provide a duty for the county board relating to deficient bridges and authorize a tax levy
+## 2                                                                   Adopt the Surgical Technologist Registration Act
+## 3                                                                                                 Appropriation Bill
+## 4  Change eligibility provisions for transitional child care assistance under the federal child care subsidy program
+## 5                                                         Change provisions relating to nail technology and body art
+## 6                                                                                                 Appropriation Bill
+## 7               Change provisions relating to disclosure of DNA records under the DNA Identification Information Act
+## 8                                                           Change requirements for foster care transition proposals
+## 9        Change provisions relating to compensation for burial expenses under the Nebraska Workers' Compensation Act
+## 10                                                          Change provisions relating to the Student Discipline Act
+\end{verbatim}
+
+\hypertarget{a-more-difficult-example}{%
+\section{A more difficult example}\label{a-more-difficult-example}}
+
+The Nebraska Legislature, with it's unique unicameral or one house structure, does some things a little differently than other legislatures. Example: Bills have to go through three rounds of debate before getting passed. There's General File (round 1), Select File (round 2), and Final Reading (round 3).
+
+So what does a day where they do more than general file look like? \href{https://nebraskalegislature.gov/calendar/agenda.php?day=2020-02-21}{Like this}.
+
+How do we scrape that?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{harderurl <-}\StringTok{ "https://nebraskalegislature.gov/calendar/agenda.php?day=2020-02-21"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{harderagenda <-}\StringTok{ }\NormalTok{harderurl }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{read_html}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{html_nodes}\NormalTok{(}\StringTok{"table"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{html_table}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+You can see that \texttt{harderagenda} has a list of four instead of a list of one. We can see each item in the list has a dataframe. We can see them individually. Here's the first:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{harderagenda[[}\DecValTok{1}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                                                                               Document
+## 1 Currently or Pendingon Floor\n                                                                LB1054
+## 2  Currently or Pendingon Floor\n                                                                LB944
+## 3  Currently or Pendingon Floor\n                                                                LB924
+## 4  Currently or Pendingon Floor\n                                                                LB770
+##   Introducer
+## 1  Kolterman
+## 2      Geist
+## 3   Chambers
+## 4    Gragert
+##                                                                                                    Description
+## 1 Define the required beginning date and change deferment of payment provisions under certain retirement plans
+## 2                                                                 Change provisions relating to motor vehicles
+## 3                          Change provisions relating to racial profiling and require law enforcement training
+## 4     Provide for state park permits  for disabled veterans and change nonresident fees for state park permits
+\end{verbatim}
+
+Here's the second:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{harderagenda[[}\DecValTok{2}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                                                                               Document
+## 1 Currently or Pendingon Floor\n                                                                LB1061
+## 2 Currently or Pendingon Floor\n                                                                LB1014
+## 3  Currently or Pendingon Floor\n                                                                LB424
+## 4  Currently or Pendingon Floor\n                                                                LB962
+##   Introducer
+## 1   Crawford
+## 2  Lindstrom
+## 3      Quick
+## 4       Hunt
+##                                                                               Description
+## 1 Change provisions relating to alternative response to reports of child abuse or neglect
+## 2                      Change provisions of the Multiple Employer Welfare Arrangement Act
+## 3                                             Change the Nebraska Municipal Land Bank Act
+## 4                                                 Adopt the Nebraska Fair Pay to Play Act
+\end{verbatim}
+
+So we can merge those together no problem, but how would we know what stage each bill is at?
+
+Look at the page -- we can see that the bills are separated by a big headline like ``SELECT FILE: 2020 PRIORITY BILLS''. To separate these, we need to grab those and then add them to each bill using mutate.
+
+Here's how we grab them:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{labels <-}\StringTok{ }\NormalTok{harderurl }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{read_html}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{html_nodes}\NormalTok{(}\StringTok{".card-header"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{html_text}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+Another list. If you look at the first, it's at the top of the page with no bills. Here's the second:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{labels[[}\DecValTok{2}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "\n                    SELECT FILE:  2020 PRIORITY BILLS\n                "
+\end{verbatim}
+
+So we know can see there's some garbage in there we want to clean out. We can use a new library called \texttt{stringr} to trim the excess spaces and \texttt{gsub} to strip the newline character: \texttt{\textbackslash{}n}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{harderagenda[[}\DecValTok{1}\NormalTok{]] }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Document =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"Currently or Pendingon Floor}\CharTok{\textbackslash{}n}\StringTok{ "}\NormalTok{,}\StringTok{""}\NormalTok{,Document)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Stage =}\NormalTok{ labels[[}\DecValTok{2}\NormalTok{]]) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Stage =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{,}\StringTok{""}\NormalTok{,Stage)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Stage =} \KeywordTok{str_trim}\NormalTok{(Stage, }\DataTypeTok{side =} \StringTok{"both"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                                                Document
+## 1                                                                LB1054
+## 2                                                                 LB944
+## 3                                                                 LB924
+## 4                                                                 LB770
+##   Introducer
+## 1  Kolterman
+## 2      Geist
+## 3   Chambers
+## 4    Gragert
+##                                                                                                    Description
+## 1 Define the required beginning date and change deferment of payment provisions under certain retirement plans
+## 2                                                                 Change provisions relating to motor vehicles
+## 3                          Change provisions relating to racial profiling and require law enforcement training
+## 4     Provide for state park permits  for disabled veterans and change nonresident fees for state park permits
+##                               Stage
+## 1 SELECT FILE:  2020 PRIORITY BILLS
+## 2 SELECT FILE:  2020 PRIORITY BILLS
+## 3 SELECT FILE:  2020 PRIORITY BILLS
+## 4 SELECT FILE:  2020 PRIORITY BILLS
+\end{verbatim}
+
+Now it's just a matter grinding through the items in the list.
+
+NOTE: This is grossly inefficient and very manual. And, we'd have to change this for every day we want to scrape. As such, this is not the ``right'' way to do this. We'll cover that in the next chapter.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{harderagenda1 <-}\StringTok{ }\NormalTok{harderagenda[[}\DecValTok{1}\NormalTok{]] }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Document =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"Currently or Pendingon Floor}\CharTok{\textbackslash{}n}\StringTok{ "}\NormalTok{,}\StringTok{""}\NormalTok{,Document)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Stage =}\NormalTok{ labels[[}\DecValTok{2}\NormalTok{]]) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Stage =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{,}\StringTok{""}\NormalTok{,Stage)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Stage =} \KeywordTok{str_trim}\NormalTok{(Stage, }\DataTypeTok{side =} \StringTok{"both"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{harderagenda2 <-}\StringTok{ }\NormalTok{harderagenda[[}\DecValTok{2}\NormalTok{]] }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Document =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"Currently or Pendingon Floor}\CharTok{\textbackslash{}n}\StringTok{ "}\NormalTok{,}\StringTok{""}\NormalTok{,Document)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Stage =}\NormalTok{ labels[[}\DecValTok{3}\NormalTok{]]) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Stage =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{,}\StringTok{""}\NormalTok{,Stage)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Stage =} \KeywordTok{str_trim}\NormalTok{(Stage, }\DataTypeTok{side =} \StringTok{"both"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{harderagenda3 <-}\StringTok{ }\NormalTok{harderagenda[[}\DecValTok{3}\NormalTok{]] }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Document =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"Currently or Pendingon Floor}\CharTok{\textbackslash{}n}\StringTok{ "}\NormalTok{,}\StringTok{""}\NormalTok{,Document)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Stage =}\NormalTok{ labels[[}\DecValTok{4}\NormalTok{]]) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Stage =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{,}\StringTok{""}\NormalTok{,Stage)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Stage =} \KeywordTok{str_trim}\NormalTok{(Stage, }\DataTypeTok{side =} \StringTok{"both"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{harderagenda4 <-}\StringTok{ }\NormalTok{harderagenda[[}\DecValTok{4}\NormalTok{]] }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Document =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"Currently or Pendingon Floor}\CharTok{\textbackslash{}n}\StringTok{ "}\NormalTok{,}\StringTok{""}\NormalTok{,Document)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Stage =}\NormalTok{ labels[[}\DecValTok{5}\NormalTok{]]) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Stage =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{,}\StringTok{""}\NormalTok{,Stage)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Stage =} \KeywordTok{str_trim}\NormalTok{(Stage, }\DataTypeTok{side =} \StringTok{"both"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Now we merge:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{largeragenda <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(harderagenda1, harderagenda2)}
+\NormalTok{largeragenda <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(largeragenda, harderagenda3)}
+\NormalTok{largeragenda <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(largeragenda, harderagenda4)}
+\end{Highlighting}
+\end{Shaded}
+
+And now we have a dataset of all bills and what stage they're at for that day.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{largeragenda}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                                                 Document
+## 1                                                                 LB1054
+## 2                                                                  LB944
+## 3                                                                  LB924
+## 4                                                                  LB770
+## 5                                                                 LB1061
+## 6                                                                 LB1014
+## 7                                                                  LB424
+## 8                                                                  LB962
+## 9                                                                  LB344
+## 10                                                                 LR325
+##               Introducer
+## 1              Kolterman
+## 2                  Geist
+## 3               Chambers
+## 4                Gragert
+## 5               Crawford
+## 6              Lindstrom
+## 7                  Quick
+## 8                   Hunt
+## 9  Agriculture Committee
+## 10                Howard
+##                                                                                                                                                                                                            Description
+## 1                                                                                                         Define the required beginning date and change deferment of payment provisions under certain retirement plans
+## 2                                                                                                                                                                         Change provisions relating to motor vehicles
+## 3                                                                                                                                  Change provisions relating to racial profiling and require law enforcement training
+## 4                                                                                                             Provide for state park permits  for disabled veterans and change nonresident fees for state park permits
+## 5                                                                                                                              Change provisions relating to alternative response to reports of child abuse or neglect
+## 6                                                                                                                                                   Change provisions of the Multiple Employer Welfare Arrangement Act
+## 7                                                                                                                                                                          Change the Nebraska Municipal Land Bank Act
+## 8                                                                                                                                                                              Adopt the Nebraska Fair Pay to Play Act
+## 9  Adopt the Animal Health and Disease Control Act, eliminate and provide duties for the Department of Agriculture, eliminate various acts, terminate and transfer certain funds, create a fund, and provide penalties
+## 10                                                                                                                                                                    Congratulate Leona R. Doll on her 100th birthday
+##                                                                               Stage
+## 1                                                 SELECT FILE:  2020 PRIORITY BILLS
+## 2                                                 SELECT FILE:  2020 PRIORITY BILLS
+## 3                                                 SELECT FILE:  2020 PRIORITY BILLS
+## 4                                                 SELECT FILE:  2020 PRIORITY BILLS
+## 5                       GENERAL FILE: 2020 SENATOR PRIORITY BILLS - "Hunt Division"
+## 6                       GENERAL FILE: 2020 SENATOR PRIORITY BILLS - "Hunt Division"
+## 7                       GENERAL FILE: 2020 SENATOR PRIORITY BILLS - "Hunt Division"
+## 8                       GENERAL FILE: 2020 SENATOR PRIORITY BILLS - "Hunt Division"
+## 9                                          GENERAL FILE: 2020 SENATOR PRIORITY BILL
+## 10 LEGISLATIVE RESOLUTION(s) Eligible For Adoption Pursuant to Rule 4, Section 5(b)
+\end{verbatim}
 
 \end{document}

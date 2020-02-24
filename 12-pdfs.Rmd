@@ -96,7 +96,7 @@ To import this, we need one row of headers. We have three. And we need headers t
 We can spell these out in the import step. First, we'll use `skip` to skip the first three lines. Then we'll spell out the column names by hand in a `col_names` bit. Here's how it looks.
 
 ```{r}
-receipts <- read_csv("~/Downloads/tabula-General_Fund_Receipts_January_2020.csv", skip = 3, col_names = c("Month", "TotalActualNetReceipts", "TotalProjectedNetReceipts", "Difference", "PercentDifference", "CumulativeActualNetReceipts", "CumulativeProjectedNetReceipts", "CumulativeDifference","CumulativePercentDifference"), skip_empty_rows = TRUE)
+receipts <- read_csv("data/tabula-General_Fund_Receipts_January_2020.csv", skip = 3, col_names = c("Month", "TotalActualNetReceipts", "TotalProjectedNetReceipts", "Difference", "PercentDifference", "CumulativeActualNetReceipts", "CumulativeProjectedNetReceipts", "CumulativeDifference","CumulativePercentDifference"), skip_empty_rows = TRUE)
 ```
 
 Now we have a harder part. 

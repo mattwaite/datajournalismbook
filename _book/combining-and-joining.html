@@ -24,7 +24,7 @@
 <meta name="author" content="Matt Waite" />
 
 
-<meta name="date" content="2020-02-19" />
+<meta name="date" content="2020-02-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="cleaning-data-part-iv-pdfs.html"/>
-
+<link rel="next" href="scraping-data-with-rvest.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -199,6 +199,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.1" data-path="combining-and-joining.html"><a href="combining-and-joining.html#combining-data"><i class="fa fa-check"></i><b>14.1</b> Combining data</a></li>
 <li class="chapter" data-level="14.2" data-path="combining-and-joining.html"><a href="combining-and-joining.html#joining-data"><i class="fa fa-check"></i><b>14.2</b> Joining data</a></li>
 </ul></li>
+<li class="chapter" data-level="15" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html"><i class="fa fa-check"></i><b>15</b> Scraping data with Rvest</a><ul>
+<li class="chapter" data-level="15.1" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html#a-more-difficult-example"><i class="fa fa-check"></i><b>15.1</b> A more difficult example</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -229,7 +232,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In the last assignment, we harvested data out of PDFs. Let’s reuse what we did there and merge three months of reports from the Department of Revenue together. For mine, I have <a href="https://unl.box.com/s/nd1yaroltsy161pqgbges9xrtav2qdqp">January 2020</a>, <a href="https://unl.box.com/s/jfdtqffty1vb2zbil8z5qalu18yg0590">December 2019</a>, and <a href="https://unl.box.com/s/g1dc0mibxxutsitqssv2uf75pmb7avle">November 2019</a>.</p>
 <p>Let’s do what we need to import them properly. Unlike the last example, I’ve merged it all into one step for each of the three datasets.</p>
 <div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" data-line-number="1">receiptsJan20 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;~/Downloads/tabula-General_Fund_Receipts_January_2020.csv&quot;</span>, <span class="dt">skip =</span> <span class="dv">3</span>, <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;Month&quot;</span>, <span class="st">&quot;TotalActualNetReceipts&quot;</span>, <span class="st">&quot;TotalProjectedNetReceipts&quot;</span>, <span class="st">&quot;Difference&quot;</span>, <span class="st">&quot;PercentDifference&quot;</span>, <span class="st">&quot;CumulativeActualNetReceipts&quot;</span>, <span class="st">&quot;CumulativeProjectedNetReceipts&quot;</span>, <span class="st">&quot;CumulativeDifference&quot;</span>,<span class="st">&quot;CumulativePercentDifference&quot;</span>), <span class="dt">skip_empty_rows =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(</a>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" data-line-number="1">receiptsJan20 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/tabula-General_Fund_Receipts_January_2020.csv&quot;</span>, <span class="dt">skip =</span> <span class="dv">3</span>, <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;Month&quot;</span>, <span class="st">&quot;TotalActualNetReceipts&quot;</span>, <span class="st">&quot;TotalProjectedNetReceipts&quot;</span>, <span class="st">&quot;Difference&quot;</span>, <span class="st">&quot;PercentDifference&quot;</span>, <span class="st">&quot;CumulativeActualNetReceipts&quot;</span>, <span class="st">&quot;CumulativeProjectedNetReceipts&quot;</span>, <span class="st">&quot;CumulativeDifference&quot;</span>,<span class="st">&quot;CumulativePercentDifference&quot;</span>), <span class="dt">skip_empty_rows =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(</a>
 <a class="sourceLine" id="cb160-2" data-line-number="2">  <span class="dt">TotalActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,TotalActualNetReceipts),</a>
 <a class="sourceLine" id="cb160-3" data-line-number="3">  <span class="dt">TotalActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,TotalActualNetReceipts),</a>
 <a class="sourceLine" id="cb160-4" data-line-number="4">  <span class="dt">TotalProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,TotalProjectedNetReceipts),</a>
@@ -257,7 +260,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   CumulativeDifference = col_character(),
 ##   CumulativePercentDifference = col_character()
 ## )</code></pre>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" data-line-number="1">receiptsDec19 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;~/Downloads/tabula-General_Fund_Receipts_December_2019.csv&quot;</span>, <span class="dt">skip =</span> <span class="dv">3</span>, <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;Month&quot;</span>, <span class="st">&quot;TotalActualNetReceipts&quot;</span>, <span class="st">&quot;TotalProjectedNetReceipts&quot;</span>, <span class="st">&quot;Difference&quot;</span>, <span class="st">&quot;PercentDifference&quot;</span>, <span class="st">&quot;CumulativeActualNetReceipts&quot;</span>, <span class="st">&quot;CumulativeProjectedNetReceipts&quot;</span>, <span class="st">&quot;CumulativeDifference&quot;</span>,<span class="st">&quot;CumulativePercentDifference&quot;</span>), <span class="dt">skip_empty_rows =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(</a>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" data-line-number="1">receiptsDec19 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/tabula-General_Fund_Receipts_December_2019.csv&quot;</span>, <span class="dt">skip =</span> <span class="dv">3</span>, <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;Month&quot;</span>, <span class="st">&quot;TotalActualNetReceipts&quot;</span>, <span class="st">&quot;TotalProjectedNetReceipts&quot;</span>, <span class="st">&quot;Difference&quot;</span>, <span class="st">&quot;PercentDifference&quot;</span>, <span class="st">&quot;CumulativeActualNetReceipts&quot;</span>, <span class="st">&quot;CumulativeProjectedNetReceipts&quot;</span>, <span class="st">&quot;CumulativeDifference&quot;</span>,<span class="st">&quot;CumulativePercentDifference&quot;</span>), <span class="dt">skip_empty_rows =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(</a>
 <a class="sourceLine" id="cb162-2" data-line-number="2">  <span class="dt">TotalActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,TotalActualNetReceipts),</a>
 <a class="sourceLine" id="cb162-3" data-line-number="3">  <span class="dt">TotalActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,TotalActualNetReceipts),</a>
 <a class="sourceLine" id="cb162-4" data-line-number="4">  <span class="dt">TotalProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,TotalProjectedNetReceipts),</a>
@@ -285,7 +288,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   CumulativeDifference = col_character(),
 ##   CumulativePercentDifference = col_character()
 ## )</code></pre>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" data-line-number="1">receiptsNov19 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;~/Downloads/tabula-General_Fund_Receipts_November_12-13-2019.csv&quot;</span>, <span class="dt">skip =</span> <span class="dv">3</span>, <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;Month&quot;</span>, <span class="st">&quot;TotalActualNetReceipts&quot;</span>, <span class="st">&quot;TotalProjectedNetReceipts&quot;</span>, <span class="st">&quot;Difference&quot;</span>, <span class="st">&quot;PercentDifference&quot;</span>, <span class="st">&quot;CumulativeActualNetReceipts&quot;</span>, <span class="st">&quot;CumulativeProjectedNetReceipts&quot;</span>, <span class="st">&quot;CumulativeDifference&quot;</span>,<span class="st">&quot;CumulativePercentDifference&quot;</span>), <span class="dt">skip_empty_rows =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(</a>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" data-line-number="1">receiptsNov19 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/tabula-General_Fund_Receipts_November_12-13-2019.csv&quot;</span>, <span class="dt">skip =</span> <span class="dv">3</span>, <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;Month&quot;</span>, <span class="st">&quot;TotalActualNetReceipts&quot;</span>, <span class="st">&quot;TotalProjectedNetReceipts&quot;</span>, <span class="st">&quot;Difference&quot;</span>, <span class="st">&quot;PercentDifference&quot;</span>, <span class="st">&quot;CumulativeActualNetReceipts&quot;</span>, <span class="st">&quot;CumulativeProjectedNetReceipts&quot;</span>, <span class="st">&quot;CumulativeDifference&quot;</span>,<span class="st">&quot;CumulativePercentDifference&quot;</span>), <span class="dt">skip_empty_rows =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(</a>
 <a class="sourceLine" id="cb164-2" data-line-number="2">  <span class="dt">TotalActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,TotalActualNetReceipts),</a>
 <a class="sourceLine" id="cb164-3" data-line-number="3">  <span class="dt">TotalActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,TotalActualNetReceipts),</a>
 <a class="sourceLine" id="cb164-4" data-line-number="4">  <span class="dt">TotalProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,TotalProjectedNetReceipts),</a>
@@ -315,11 +318,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## )</code></pre>
 <p>All three of these datasets have the same number of columns, all with the same names, so if we want to merge them together to compare them over time, we need to stack them together. The verb here, in R, is <code>rbind</code>. The good news about <code>rbind</code> is that it is very simple. The bad news – you can only merge two things at a time.</p>
 <p>Since we have three things, we’re going to do this in steps. First, we’ll create a dataframe that will hold it all and we’ll populate it with two of our revenue dataframes rbinded together. Then, we’ll overwrite our new dataframe with the results of that dataframe with the third revenue dataframe.</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" data-line-number="1">predictions &lt;-<span class="st"> </span><span class="kw">rbind</span>(receiptsJan20, receiptsDec19)</a>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" data-line-number="1">predictions1 &lt;-<span class="st"> </span><span class="kw">rbind</span>(receiptsJan20, receiptsDec19)</a>
 <a class="sourceLine" id="cb166-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb166-3" data-line-number="3">predictions &lt;-<span class="st"> </span><span class="kw">rbind</span>(predictions, receiptsNov19)</a>
+<a class="sourceLine" id="cb166-3" data-line-number="3">predictions2 &lt;-<span class="st"> </span><span class="kw">rbind</span>(predictions1, receiptsNov19)</a>
 <a class="sourceLine" id="cb166-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb166-5" data-line-number="5">predictions</a></code></pre></div>
+<a class="sourceLine" id="cb166-5" data-line-number="5">predictions2</a></code></pre></div>
 <pre><code>## # A tibble: 18 x 10
 ##    Month TotalActualNetR… TotalProjectedN… Difference PercentDifferen…
 ##    &lt;chr&gt;            &lt;dbl&gt;            &lt;dbl&gt;      &lt;dbl&gt;            &lt;dbl&gt;
@@ -378,17 +381,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" data-line-number="1">persons <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(accidents, <span class="dt">by=</span><span class="st">&quot;ST_CASE&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">nrow</span>()</a></code></pre></div>
 <pre><code>## [1] 553</code></pre>
 <p>Remove the nrow and run it again for yourself. See how there are several columns that end with .X? That means they’re duplicates. There’s a solid chance they are the same in both tables. By default, <code>dplyr</code> will do a “natural” join, where it’ll match all the matching columns in both tables. So if we take out the by, it’ll use all the common columns between the tables. That may not be right – our documentation says ST_CASE is how they are related – but let’s try it. If it works, we should get 553 rows.</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" data-line-number="1">persons <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(accidents) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">nrow</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" data-line-number="1">persons <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(accidents) </a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;STATE&quot;, &quot;ST_CASE&quot;, &quot;VE_FORMS&quot;, &quot;COUNTY&quot;, &quot;DAY&quot;, &quot;MONTH&quot;,
 ## &quot;HOUR&quot;, &quot;MINUTE&quot;, &quot;RUR_URB&quot;, &quot;FUNC_SYS&quot;, &quot;HARM_EV&quot;, &quot;MAN_COLL&quot;, &quot;SCH_BUS&quot;)</code></pre>
-<pre><code>## [1] 553</code></pre>
+<pre><code>## # A tibble: 553 x 101
+##    STATE ST_CASE VE_FORMS VEH_NO PER_NO STR_VEH COUNTY   DAY MONTH  HOUR MINUTE
+##    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+##  1    31  310001        2      1      1       0     55     1     1     0     20
+##  2    31  310001        2      2      1       0     55     1     1     0     20
+##  3    31  310002        1      1      1       0    157     7     1    22      0
+##  4    31  310003        1      0      1       1     55    10     1     6     57
+##  5    31  310003        1      1      1       0     55    10     1     6     57
+##  6    31  310004        2      1      1       0     79    10     1    16     55
+##  7    31  310004        2      2      1       0     79    10     1    16     55
+##  8    31  310005        2      1      1       0    119    10     1     4     30
+##  9    31  310005        2      2      1       0    119    10     1     4     30
+## 10    31  310006        1      0      1       1    109    11     1     6     25
+## # … with 543 more rows, and 90 more variables: RUR_URB &lt;dbl&gt;, FUNC_SYS &lt;dbl&gt;,
+## #   HARM_EV &lt;dbl&gt;, MAN_COLL &lt;dbl&gt;, SCH_BUS &lt;dbl&gt;, MAKE &lt;dbl&gt;, MAK_MOD &lt;dbl&gt;,
+## #   BODY_TYP &lt;dbl&gt;, MOD_YEAR &lt;dbl&gt;, TOW_VEH &lt;dbl&gt;, SPEC_USE &lt;dbl&gt;,
+## #   EMER_USE &lt;dbl&gt;, ROLLOVER &lt;dbl&gt;, IMPACT1 &lt;dbl&gt;, FIRE_EXP &lt;dbl&gt;, AGE &lt;dbl&gt;,
+## #   SEX &lt;dbl&gt;, PER_TYP &lt;dbl&gt;, INJ_SEV &lt;dbl&gt;, SEAT_POS &lt;dbl&gt;, REST_USE &lt;dbl&gt;,
+## #   REST_MIS &lt;dbl&gt;, AIR_BAG &lt;dbl&gt;, EJECTION &lt;dbl&gt;, EJ_PATH &lt;dbl&gt;,
+## #   EXTRICAT &lt;dbl&gt;, DRINKING &lt;dbl&gt;, ALC_DET &lt;dbl&gt;, ALC_STATUS &lt;dbl&gt;,
+## #   ATST_TYP &lt;dbl&gt;, ALC_RES &lt;dbl&gt;, DRUGS &lt;dbl&gt;, DRUG_DET &lt;dbl&gt;, DSTATUS &lt;dbl&gt;,
+## #   HOSPITAL &lt;dbl&gt;, DOA &lt;dbl&gt;, DEATH_DA &lt;dbl&gt;, DEATH_MO &lt;dbl&gt;, DEATH_YR &lt;dbl&gt;,
+## #   DEATH_HR &lt;dbl&gt;, DEATH_MN &lt;dbl&gt;, DEATH_TM &lt;dbl&gt;, LAG_HRS &lt;dbl&gt;,
+## #   LAG_MINS &lt;dbl&gt;, P_SF1 &lt;dbl&gt;, P_SF2 &lt;dbl&gt;, P_SF3 &lt;dbl&gt;, WORK_INJ &lt;dbl&gt;,
+## #   HISPANIC &lt;dbl&gt;, RACE &lt;dbl&gt;, LOCATION &lt;dbl&gt;, VE_TOTAL &lt;dbl&gt;, PVH_INVL &lt;dbl&gt;,
+## #   PEDS &lt;dbl&gt;, PERNOTMVIT &lt;dbl&gt;, PERMVIT &lt;dbl&gt;, PERSONS &lt;dbl&gt;, CITY &lt;dbl&gt;,
+## #   YEAR &lt;dbl&gt;, DAY_WEEK &lt;dbl&gt;, NHS &lt;dbl&gt;, RD_OWNER &lt;dbl&gt;, ROUTE &lt;dbl&gt;,
+## #   TWAY_ID &lt;chr&gt;, TWAY_ID2 &lt;chr&gt;, MILEPT &lt;dbl&gt;, LATITUDE &lt;dbl&gt;,
+## #   LONGITUD &lt;dbl&gt;, SP_JUR &lt;dbl&gt;, RELJCT1 &lt;dbl&gt;, RELJCT2 &lt;dbl&gt;, TYP_INT &lt;dbl&gt;,
+## #   WRK_ZONE &lt;dbl&gt;, REL_ROAD &lt;dbl&gt;, LGT_COND &lt;dbl&gt;, WEATHER1 &lt;dbl&gt;,
+## #   WEATHER2 &lt;dbl&gt;, WEATHER &lt;dbl&gt;, RAIL &lt;chr&gt;, NOT_HOUR &lt;dbl&gt;, NOT_MIN &lt;dbl&gt;,
+## #   ARR_HOUR &lt;dbl&gt;, ARR_MIN &lt;dbl&gt;, HOSP_HR &lt;dbl&gt;, HOSP_MN &lt;dbl&gt;, CF1 &lt;dbl&gt;,
+## #   CF2 &lt;dbl&gt;, CF3 &lt;dbl&gt;, FATALS &lt;dbl&gt;, DRUNK_DR &lt;dbl&gt;</code></pre>
 <p>So instead of just one column, it used 13. And we got the same answer. And we don’t have any columns with .X after it anymore. So we’re good to move forward.</p>
 <p>Let’s save our joined data to a new dataframe.</p>
 <div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" data-line-number="1">personaccidents &lt;-<span class="st"> </span>persons <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(accidents)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;STATE&quot;, &quot;ST_CASE&quot;, &quot;VE_FORMS&quot;, &quot;COUNTY&quot;, &quot;DAY&quot;, &quot;MONTH&quot;,
 ## &quot;HOUR&quot;, &quot;MINUTE&quot;, &quot;RUR_URB&quot;, &quot;FUNC_SYS&quot;, &quot;HARM_EV&quot;, &quot;MAN_COLL&quot;, &quot;SCH_BUS&quot;)</code></pre>
-<p>Now, with our joined data, we can answer questions that come from both datasets. So what if we looked at median age of drivers who died broken down by what kind of roadway the accident happened on?</p>
-<p>We can do this now because the accident data has the roadway information information and the age and who was driving and what type of injury they sustained comes from the person table.</p>
+<p>Now, with our joined data, we can answer questions that come from both datasets. So what if we looked at median age of drivers who died broken down by what kind of roadway the accident happened on?
+We can do this now because the accident data has the roadway information information and the age and who was driving and what type of injury they sustained comes from the person table.</p>
 <p>We get this by using filters followed by a group by and summarize. In the data documentation linked above, look in the PERSON Data File to get the appropriate filters. In this case, we want PER_TYPE of 1 (the driver) and an INJ_SEV of 4, which means death. In the ACCCIDENT Data File section, we learn it’s the ROUTE we want to group by.</p>
 <div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" data-line-number="1">personaccidents <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb181-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(PER_TYP <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -437,8 +472,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="cleaning-data-part-iv-pdfs.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="cleaning-data-part-iv-pdfs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="scraping-data-with-rvest.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
