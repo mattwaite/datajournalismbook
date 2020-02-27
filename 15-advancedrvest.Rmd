@@ -93,5 +93,4 @@ allbills %>% group_by(Introducer) %>% tally(sort=TRUE) %>% na.omit() %>% top_n(5
 
 Senator Kolterman, collect your prize. 
 
-
-
+A note about advanced scraping -- every site is different. Every time you want to scrape a site, you'll be puzzling over different problems. But the steps remain the same: find a pattern, exploit it, clean the data on the fly and put it into a place to store it. 
