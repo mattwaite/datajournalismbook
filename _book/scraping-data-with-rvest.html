@@ -24,7 +24,7 @@
 <meta name="author" content="Matt Waite" />
 
 
-<meta name="date" content="2020-02-24" />
+<meta name="date" content="2020-02-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="combining-and-joining.html"/>
-
+<link rel="next" href="advanced-rvest.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -202,6 +202,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html"><i class="fa fa-check"></i><b>15</b> Scraping data with Rvest</a><ul>
 <li class="chapter" data-level="15.1" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html#a-more-difficult-example"><i class="fa fa-check"></i><b>15.1</b> A more difficult example</a></li>
 </ul></li>
+<li class="chapter" data-level="16" data-path="advanced-rvest.html"><a href="advanced-rvest.html"><i class="fa fa-check"></i><b>16</b> Advanced rvest</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -369,11 +370,11 @@ One of the most powerful tools you can learn as a data journalist is how to scra
 ## 2  Lindstrom
 ## 3      Quick
 ## 4       Hunt
-##                                                                               Description
-## 1 Change provisions relating to alternative response to reports of child abuse or neglect
-## 2                      Change provisions of the Multiple Employer Welfare Arrangement Act
-## 3                                             Change the Nebraska Municipal Land Bank Act
-## 4                                                 Adopt the Nebraska Fair Pay to Play Act</code></pre>
+##                                                                   Description
+## 1 Change the Child Protection and Family Safety Act and eliminate a committee
+## 2          Change provisions of the Multiple Employer Welfare Arrangement Act
+## 3                                 Change the Nebraska Municipal Land Bank Act
+## 4                                     Adopt the Nebraska Fair Pay to Play Act</code></pre>
 <p>So we can merge those together no problem, but how would we know what stage each bill is at?</p>
 <p>Look at the page – we can see that the bills are separated by a big headline like “SELECT FILE: 2020 PRIORITY BILLS”. To separate these, we need to grab those and then add them to each bill using mutate.</p>
 <p>Here’s how we grab them:</p>
@@ -461,7 +462,7 @@ One of the most powerful tools you can learn as a data journalist is how to scra
 ## 2                                                                                                                                                                         Change provisions relating to motor vehicles
 ## 3                                                                                                                                  Change provisions relating to racial profiling and require law enforcement training
 ## 4                                                                                                             Provide for state park permits  for disabled veterans and change nonresident fees for state park permits
-## 5                                                                                                                              Change provisions relating to alternative response to reports of child abuse or neglect
+## 5                                                                                                                                          Change the Child Protection and Family Safety Act and eliminate a committee
 ## 6                                                                                                                                                   Change provisions of the Multiple Employer Welfare Arrangement Act
 ## 7                                                                                                                                                                          Change the Nebraska Municipal Land Bank Act
 ## 8                                                                                                                                                                              Adopt the Nebraska Fair Pay to Play Act
@@ -486,8 +487,8 @@ One of the most powerful tools you can learn as a data journalist is how to scra
           </div>
         </div>
       </div>
-<a href="combining-and-joining.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="combining-and-joining.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="advanced-rvest.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

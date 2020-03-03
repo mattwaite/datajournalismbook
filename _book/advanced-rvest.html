@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 16 Advanced rvest | Data Journalism with R and the Tidyverse</title>
+  <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 16 Advanced rvest | Data Journalism with R and the Tidyverse" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 16 Advanced rvest | Data Journalism with R and the Tidyverse" />
+  
+  <meta name="twitter:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  
+
+<meta name="author" content="Matt Waite" />
+
+
+<meta name="date" content="2020-02-26" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="scraping-data-with-rvest.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="http://mattwaite.github.io/datajournalism/">Data Journalism With R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#modern-data-journalism"><i class="fa fa-check"></i><b>1.1</b> Modern data journalism</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installations"><i class="fa fa-check"></i><b>1.2</b> Installations</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#about-this-book"><i class="fa fa-check"></i><b>1.3</b> About this book</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#what-well-cover"><i class="fa fa-check"></i><b>1.4</b> What we’ll cover</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="public-records.html"><a href="public-records.html"><i class="fa fa-check"></i><b>2</b> Public records</a><ul>
+<li class="chapter" data-level="2.1" data-path="public-records.html"><a href="public-records.html#federal-law"><i class="fa fa-check"></i><b>2.1</b> Federal law</a></li>
+<li class="chapter" data-level="2.2" data-path="public-records.html"><a href="public-records.html#state-law"><i class="fa fa-check"></i><b>2.2</b> State law</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>3</b> R basics</a><ul>
+<li class="chapter" data-level="3.1" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-1"><i class="fa fa-check"></i><b>3.1</b> Adding libraries, part 1</a></li>
+<li class="chapter" data-level="3.2" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-2"><i class="fa fa-check"></i><b>3.2</b> Adding libraries, part 2</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html"><i class="fa fa-check"></i><b>4</b> Data journalism in the age of replication</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#the-stylebook"><i class="fa fa-check"></i><b>4.1</b> The stylebook</a></li>
+<li class="chapter" data-level="4.2" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication"><i class="fa fa-check"></i><b>4.2</b> Replication</a></li>
+<li class="chapter" data-level="4.3" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#goodbye-excel"><i class="fa fa-check"></i><b>4.3</b> Goodbye Excel?</a></li>
+<li class="chapter" data-level="4.4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#receptivity-is-high"><i class="fa fa-check"></i><b>4.4</b> “Receptivity … is high”</a></li>
+<li class="chapter" data-level="4.5" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication-in-notebooks"><i class="fa fa-check"></i><b>4.5</b> Replication in notebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html"><i class="fa fa-check"></i><b>5</b> Data, structures and types</a><ul>
+<li class="chapter" data-level="5.1" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#rows-and-columns"><i class="fa fa-check"></i><b>5.1</b> Rows and columns</a></li>
+<li class="chapter" data-level="5.2" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#types"><i class="fa fa-check"></i><b>5.2</b> Types</a></li>
+<li class="chapter" data-level="5.3" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#a-simple-way-to-get-data"><i class="fa fa-check"></i><b>5.3</b> A simple way to get data</a></li>
+<li class="chapter" data-level="5.4" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#cleaning-the-data"><i class="fa fa-check"></i><b>5.4</b> Cleaning the data</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="aggregates.html"><a href="aggregates.html"><i class="fa fa-check"></i><b>6</b> Aggregates</a><ul>
+<li class="chapter" data-level="6.1" data-path="aggregates.html"><a href="aggregates.html#importing-data"><i class="fa fa-check"></i><b>6.1</b> Importing data</a></li>
+<li class="chapter" data-level="6.2" data-path="aggregates.html"><a href="aggregates.html#group-by-and-count"><i class="fa fa-check"></i><b>6.2</b> Group by and count</a></li>
+<li class="chapter" data-level="6.3" data-path="aggregates.html"><a href="aggregates.html#other-aggregates-mean-and-median"><i class="fa fa-check"></i><b>6.3</b> Other aggregates: Mean and median</a></li>
+<li class="chapter" data-level="6.4" data-path="aggregates.html"><a href="aggregates.html#even-more-aggregates"><i class="fa fa-check"></i><b>6.4</b> Even more aggregates</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>7</b> Mutating data</a><ul>
+<li class="chapter" data-level="7.1" data-path="mutating-data.html"><a href="mutating-data.html#another-use-of-mutate"><i class="fa fa-check"></i><b>7.1</b> Another use of mutate</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>8</b> Working with dates</a><ul>
+<li class="chapter" data-level="8.1" data-path="working-with-dates.html"><a href="working-with-dates.html#the-hard-way"><i class="fa fa-check"></i><b>8.1</b> The hard way</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="filters-and-selections.html"><a href="filters-and-selections.html"><i class="fa fa-check"></i><b>9</b> Filters and selections</a><ul>
+<li class="chapter" data-level="9.1" data-path="filters-and-selections.html"><a href="filters-and-selections.html#combining-filters"><i class="fa fa-check"></i><b>9.1</b> Combining filters</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html"><i class="fa fa-check"></i><b>10</b> Data Cleaning Part I: Data smells</a><ul>
+<li class="chapter" data-level="10.1" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#wrong-type"><i class="fa fa-check"></i><b>10.1</b> Wrong Type</a></li>
+<li class="chapter" data-level="10.2" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#missing-data"><i class="fa fa-check"></i><b>10.2</b> Missing Data</a></li>
+<li class="chapter" data-level="10.3" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#gaps-in-data"><i class="fa fa-check"></i><b>10.3</b> Gaps in data</a></li>
+<li class="chapter" data-level="10.4" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#internal-inconsistency"><i class="fa fa-check"></i><b>10.4</b> Internal inconsistency</a></li>
+<li class="chapter" data-level="10.5" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#a-shortcut-summary"><i class="fa fa-check"></i><b>10.5</b> A Shortcut: Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html"><i class="fa fa-check"></i><b>11</b> Data Cleaning Part II: Janitor</a><ul>
+<li class="chapter" data-level="11.1" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#cleaning-headers"><i class="fa fa-check"></i><b>11.1</b> Cleaning headers</a></li>
+<li class="chapter" data-level="11.2" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#duplicates"><i class="fa fa-check"></i><b>11.2</b> Duplicates</a></li>
+<li class="chapter" data-level="11.3" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#inconsistency"><i class="fa fa-check"></i><b>11.3</b> Inconsistency</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html"><i class="fa fa-check"></i><b>12</b> Data Cleaning Part III: Open Refine</a><ul>
+<li class="chapter" data-level="12.1" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#refinr-open-refine-in-r"><i class="fa fa-check"></i><b>12.1</b> Refinr, Open Refine in R</a></li>
+<li class="chapter" data-level="12.2" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#more-complex-issues"><i class="fa fa-check"></i><b>12.2</b> More complex issues</a></li>
+<li class="chapter" data-level="12.3" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#manually-cleaning-data-with-open-refine"><i class="fa fa-check"></i><b>12.3</b> Manually cleaning data with Open Refine</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html"><i class="fa fa-check"></i><b>13</b> Cleaning Data Part IV: PDFs</a><ul>
+<li class="chapter" data-level="13.1" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-looks-good-but-goes-wrong"><i class="fa fa-check"></i><b>13.1</b> When it looks good, but goes wrong</a></li>
+<li class="chapter" data-level="13.2" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-works-well."><i class="fa fa-check"></i><b>13.2</b> When it works well.</a></li>
+<li class="chapter" data-level="13.3" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#cleaning-up-the-data-in-r"><i class="fa fa-check"></i><b>13.3</b> Cleaning up the data in R</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="combining-and-joining.html"><a href="combining-and-joining.html"><i class="fa fa-check"></i><b>14</b> Combining and joining</a><ul>
+<li class="chapter" data-level="14.1" data-path="combining-and-joining.html"><a href="combining-and-joining.html#combining-data"><i class="fa fa-check"></i><b>14.1</b> Combining data</a></li>
+<li class="chapter" data-level="14.2" data-path="combining-and-joining.html"><a href="combining-and-joining.html#joining-data"><i class="fa fa-check"></i><b>14.2</b> Joining data</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html"><i class="fa fa-check"></i><b>15</b> Scraping data with Rvest</a><ul>
+<li class="chapter" data-level="15.1" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html#a-more-difficult-example"><i class="fa fa-check"></i><b>15.1</b> A more difficult example</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="advanced-rvest.html"><a href="advanced-rvest.html"><i class="fa fa-check"></i><b>16</b> Advanced rvest</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Journalism with R and the Tidyverse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="advanced-rvest" class="section level1">
+<h1><span class="header-section-number">Chapter 16</span> Advanced rvest</h1>
+<p>Continuing a discussion from the last chapter, this is an example of when it goes from Easy to Moderately Difficult.</p>
+<p>In the last exercise, we scraped bills out of one day of floor activity in the Nebraska Legislature. What if we wanted all of them? Let’s say we wanted to keep a running scoreboard of who has introduced the most bills that have seen the floor?</p>
+<p>Here’s how to use some programming knowledge with R to grab all days and merge them together. First we start with libraries, as we always do.</p>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb218-2" data-line-number="2"><span class="kw">library</span>(rvest)</a></code></pre></div>
+<p>Now we’ll start the trickery. So we need to know what days the legislature is in session. Fortunately, the legislature tells us that in a drop down menu. Inspect <a href="https://nebraskalegislature.gov/calendar/dayview.php?day=2020-02-03">the dropdown menu of this page</a>. See the list?</p>
+<p><img src="images/advrvest1.png" width="946" /></p>
+<p>If it’s HTML in the page, we can grab it, so let’s do that. We start with the URL to any day, really.</p>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1">url &lt;-<span class="st"> &quot;https://nebraskalegislature.gov/calendar/dayview.php?day=2020-02-03&quot;</span></a></code></pre></div>
+<p>I’m going to create a thing called a calendar and store the list of option values in there. So when I’m done, I’ll have a list of dates.</p>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" data-line-number="1">calendar &lt;-<span class="st"> </span>url <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb220-2" data-line-number="2"><span class="st">  </span><span class="kw">read_html</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb220-3" data-line-number="3"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="dt">xpath =</span> <span class="st">&#39;//*[@id=&quot;leg_day&quot;]&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb220-4" data-line-number="4"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;option&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb220-5" data-line-number="5"><span class="st">  </span><span class="kw">html_attrs</span>()</a></code></pre></div>
+<p>Now this part gets tough, but if you follow, it’s logical. It’s step by step, really.</p>
+<p>First, I noticed at the top of the agenda pages is a link to the daily agenda in csv format. Convenient, that.</p>
+<p><img src="images/advrvest2.png" width="950" /></p>
+<p>If you look at that url, it looks like this:</p>
+<pre><code>https://nebraskalegislature.gov/calendar/agenda.php?day=2020-01-14&amp;print=csv</code></pre>
+<p>If we can change the date in that url to each day of the session, we’d get a csv file for each day of the session that we can merge together.</p>
+<p>Let’s break down the steps to do that.</p>
+<ol style="list-style-type: decimal">
+<li>I need a place to store this. A lazy way? Just import a day, filter everything out of it, and I’ve got an empty table I can <code>rbind</code> stuff into.</li>
+<li>I need to set up a loop. For each day in the calendar, do some stuff.</li>
+<li>I need to clean out the word selected (an HTML thing) from one of the dates.</li>
+<li>I need to just scrape days that have business pending on the floor. So I can skip the first few days and I can skip any days into the future.</li>
+<li>I need to take my date from calendar and add them to the url. Then I need to take that agenda url and add the csv parts.</li>
+<li>Then I can use read_csv like we have been to read the CSV url directly.</li>
+<li>Then I just rbind my new csv to the one I created.</li>
+<li>This isn’t going to work perfectly every time, so I’m going to add some <code>tryCatch</code> statements that say try this, and if it doesn’t work, do nothing.</li>
+<li>Then, because I’m a decent fellow, I’m going to pause my query for three seconds to give their servers a break.</li>
+</ol>
+<p>Let’s run it.</p>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" data-line-number="1">allbills &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-01-14&amp;print=csv&quot;</span>, <span class="dt">col_types =</span> <span class="kw">cols</span>()) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Date =</span> <span class="kw">as.Date</span>(<span class="st">&quot;2020-01-01&quot;</span>))<span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="st">`</span><span class="dt">Section Header</span><span class="st">`</span> <span class="op">==</span><span class="st"> &quot;Blah&quot;</span>)</a>
+<a class="sourceLine" id="cb222-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb222-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> calendar){</a>
+<a class="sourceLine" id="cb222-4" data-line-number="4">  date &lt;-<span class="st"> </span><span class="kw">gsub</span>(<span class="st">&quot;selected&quot;</span>, <span class="st">&quot;&quot;</span>, i)</a>
+<a class="sourceLine" id="cb222-5" data-line-number="5">  checkdate &lt;-<span class="st"> </span><span class="kw">as.Date</span>(date)</a>
+<a class="sourceLine" id="cb222-6" data-line-number="6">  </a>
+<a class="sourceLine" id="cb222-7" data-line-number="7">  <span class="cf">if</span> (checkdate <span class="op">&lt;</span><span class="st"> </span><span class="kw">Sys.Date</span>() <span class="op">&amp;</span><span class="st"> </span>checkdate <span class="op">&gt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-01-13&quot;</span>)) {</a>
+<a class="sourceLine" id="cb222-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb222-9" data-line-number="9">    agendaurl &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;https://nebraskalegislature.gov/calendar/agenda.php?day=&quot;</span>, i, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb222-10" data-line-number="10">    csvurl &lt;-<span class="kw">paste</span>(agendaurl, <span class="st">&quot;&amp;print=csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb222-11" data-line-number="11">  <span class="kw">tryCatch</span>(</a>
+<a class="sourceLine" id="cb222-12" data-line-number="12">    agenda &lt;-<span class="st"> </span><span class="kw">read_csv</span>(csvurl, <span class="dt">col_types =</span> <span class="kw">cols</span>()) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Date =</span> checkdate), </a>
+<a class="sourceLine" id="cb222-13" data-line-number="13">    <span class="dt">error =</span> <span class="cf">function</span>(e){<span class="ot">NA</span>})</a>
+<a class="sourceLine" id="cb222-14" data-line-number="14">  <span class="kw">tryCatch</span>(</a>
+<a class="sourceLine" id="cb222-15" data-line-number="15">    allbills &lt;-<span class="st"> </span><span class="kw">rbind</span>(allbills, agenda), </a>
+<a class="sourceLine" id="cb222-16" data-line-number="16">    <span class="dt">error =</span> <span class="cf">function</span>(e){<span class="ot">NA</span>})</a>
+<a class="sourceLine" id="cb222-17" data-line-number="17">  <span class="kw">Sys.sleep</span>(<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb222-18" data-line-number="18">  }</a>
+<a class="sourceLine" id="cb222-19" data-line-number="19">}</a></code></pre></div>
+<pre><code>## Warning in if (checkdate &lt; Sys.Date() &amp; checkdate &gt; as.Date(&quot;2020-01-13&quot;)) {:
+## the condition has length &gt; 1 and only the first element will be used</code></pre>
+<p>And after that, I have a dataset of entries of bills on the floor. So if I want to see who has had the most bills on the floor – including repeats – I could answer that now.</p>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" data-line-number="1">allbills <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Introducer) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>(<span class="dt">sort=</span><span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">top_n</span>(<span class="dv">5</span>)</a></code></pre></div>
+<pre><code>## Selecting by n</code></pre>
+<pre><code>## # A tibble: 5 x 2
+##   Introducer         n
+##   &lt;chr&gt;          &lt;int&gt;
+## 1 Kolterman         47
+## 2 Vargas            34
+## 3 Pansing Brooks    28
+## 4 Bolz              22
+## 5 Hunt              19</code></pre>
+<p>Senator Kolterman, collect your prize.</p>
+<p>A note about advanced scraping – every site is different. Every time you want to scrape a site, you’ll be puzzling over different problems. But the steps remain the same: find a pattern, exploit it, clean the data on the fly and put it into a place to store it.</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="scraping-data-with-rvest.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/15-advancedrvest.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["datajournalism.pdf", "datajournalism.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

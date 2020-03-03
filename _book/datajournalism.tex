@@ -118,7 +118,7 @@
 
 \title{Data Journalism with R and the Tidyverse}
 \author{Matt Waite}
-\date{2020-02-24}
+\date{2020-02-26}
 
 \begin{document}
 \maketitle
@@ -2351,7 +2351,7 @@ Here's an example using sensible defaults for weighting -- unfortunately \href{h
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3034
+## [1] 3032
 \end{verbatim}
 
 Cuts it down by almost 1000. That seems pretty good. Here's a different method, using a method that turns words into phonetic spellings called soundex.
@@ -3218,11 +3218,11 @@ Here's the second:
 ## 2  Lindstrom
 ## 3      Quick
 ## 4       Hunt
-##                                                                               Description
-## 1 Change provisions relating to alternative response to reports of child abuse or neglect
-## 2                      Change provisions of the Multiple Employer Welfare Arrangement Act
-## 3                                             Change the Nebraska Municipal Land Bank Act
-## 4                                                 Adopt the Nebraska Fair Pay to Play Act
+##                                                                   Description
+## 1 Change the Child Protection and Family Safety Act and eliminate a committee
+## 2          Change provisions of the Multiple Employer Welfare Arrangement Act
+## 3                                 Change the Nebraska Municipal Land Bank Act
+## 4                                     Adopt the Nebraska Fair Pay to Play Act
 \end{verbatim}
 
 So we can merge those together no problem, but how would we know what stage each bill is at?
@@ -3373,7 +3373,7 @@ And now we have a dataset of all bills and what stage they're at for that day.
 ## 2                                                                                                                                                                         Change provisions relating to motor vehicles
 ## 3                                                                                                                                  Change provisions relating to racial profiling and require law enforcement training
 ## 4                                                                                                             Provide for state park permits  for disabled veterans and change nonresident fees for state park permits
-## 5                                                                                                                              Change provisions relating to alternative response to reports of child abuse or neglect
+## 5                                                                                                                                          Change the Child Protection and Family Safety Act and eliminate a committee
 ## 6                                                                                                                                                   Change provisions of the Multiple Employer Welfare Arrangement Act
 ## 7                                                                                                                                                                          Change the Nebraska Municipal Land Bank Act
 ## 8                                                                                                                                                                              Adopt the Nebraska Fair Pay to Play Act
@@ -3391,5 +3391,142 @@ And now we have a dataset of all bills and what stage they're at for that day.
 ## 9                                          GENERAL FILE: 2020 SENATOR PRIORITY BILL
 ## 10 LEGISLATIVE RESOLUTION(s) Eligible For Adoption Pursuant to Rule 4, Section 5(b)
 \end{verbatim}
+
+\hypertarget{advanced-rvest}{%
+\chapter{Advanced rvest}\label{advanced-rvest}}
+
+Continuing a discussion from the last chapter, this is an example of when it goes from Easy to Moderately Difficult.
+
+In the last exercise, we scraped bills out of one day of floor activity in the Nebraska Legislature. What if we wanted all of them? Let's say we wanted to keep a running scoreboard of who has introduced the most bills that have seen the floor?
+
+Here's how to use some programming knowledge with R to grab all days and merge them together. First we start with libraries, as we always do.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\KeywordTok{library}\NormalTok{(rvest)}
+\end{Highlighting}
+\end{Shaded}
+
+Now we'll start the trickery. So we need to know what days the legislature is in session. Fortunately, the legislature tells us that in a drop down menu. Inspect \href{https://nebraskalegislature.gov/calendar/dayview.php?day=2020-02-03}{the dropdown menu of this page}. See the list?
+
+\includegraphics[width=26.28in]{images/advrvest1}
+
+If it's HTML in the page, we can grab it, so let's do that. We start with the URL to any day, really.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{url <-}\StringTok{ "https://nebraskalegislature.gov/calendar/dayview.php?day=2020-02-03"}
+\end{Highlighting}
+\end{Shaded}
+
+I'm going to create a thing called a calendar and store the list of option values in there. So when I'm done, I'll have a list of dates.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{calendar <-}\StringTok{ }\NormalTok{url }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{read_html}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{html_nodes}\NormalTok{(}\DataTypeTok{xpath =} \StringTok{'//*[@id="leg_day"]'}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{html_nodes}\NormalTok{(}\StringTok{"option"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{html_attrs}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+Now this part gets tough, but if you follow, it's logical. It's step by step, really.
+
+First, I noticed at the top of the agenda pages is a link to the daily agenda in csv format. Convenient, that.
+
+\includegraphics[width=26.39in]{images/advrvest2}
+
+If you look at that url, it looks like this:
+
+\begin{verbatim}
+https://nebraskalegislature.gov/calendar/agenda.php?day=2020-01-14&print=csv
+\end{verbatim}
+
+If we can change the date in that url to each day of the session, we'd get a csv file for each day of the session that we can merge together.
+
+Let's break down the steps to do that.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  I need a place to store this. A lazy way? Just import a day, filter everything out of it, and I've got an empty table I can \texttt{rbind} stuff into.
+\item
+  I need to set up a loop. For each day in the calendar, do some stuff.
+\item
+  I need to clean out the word selected (an HTML thing) from one of the dates.
+\item
+  I need to just scrape days that have business pending on the floor. So I can skip the first few days and I can skip any days into the future.
+\item
+  I need to take my date from calendar and add them to the url. Then I need to take that agenda url and add the csv parts.
+\item
+  Then I can use read\_csv like we have been to read the CSV url directly.
+\item
+  Then I just rbind my new csv to the one I created.
+\item
+  This isn't going to work perfectly every time, so I'm going to add some \texttt{tryCatch} statements that say try this, and if it doesn't work, do nothing.
+\item
+  Then, because I'm a decent fellow, I'm going to pause my query for three seconds to give their servers a break.
+\end{enumerate}
+
+Let's run it.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{allbills <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"https://nebraskalegislature.gov/calendar/agenda.php?day=2020-01-14&print=csv"}\NormalTok{, }\DataTypeTok{col_types =} \KeywordTok{cols}\NormalTok{()) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Date =} \KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-01-01"}\NormalTok{))}\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(}\StringTok{`}\DataTypeTok{Section Header}\StringTok{`} \OperatorTok{==}\StringTok{ "Blah"}\NormalTok{)}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ calendar)\{}
+\NormalTok{  date <-}\StringTok{ }\KeywordTok{gsub}\NormalTok{(}\StringTok{"selected"}\NormalTok{, }\StringTok{""}\NormalTok{, i)}
+\NormalTok{  checkdate <-}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(date)}
+  
+  \ControlFlowTok{if}\NormalTok{ (checkdate }\OperatorTok{<}\StringTok{ }\KeywordTok{Sys.Date}\NormalTok{() }\OperatorTok{&}\StringTok{ }\NormalTok{checkdate }\OperatorTok{>}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-01-13"}\NormalTok{)) \{}
+
+\NormalTok{    agendaurl <-}\StringTok{ }\KeywordTok{paste}\NormalTok{(}\StringTok{"https://nebraskalegislature.gov/calendar/agenda.php?day="}\NormalTok{, i, }\DataTypeTok{sep=}\StringTok{""}\NormalTok{)}
+\NormalTok{    csvurl <-}\KeywordTok{paste}\NormalTok{(agendaurl, }\StringTok{"&print=csv"}\NormalTok{, }\DataTypeTok{sep=}\StringTok{""}\NormalTok{)}
+  \KeywordTok{tryCatch}\NormalTok{(}
+\NormalTok{    agenda <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(csvurl, }\DataTypeTok{col_types =} \KeywordTok{cols}\NormalTok{()) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Date =}\NormalTok{ checkdate), }
+    \DataTypeTok{error =} \ControlFlowTok{function}\NormalTok{(e)\{}\OtherTok{NA}\NormalTok{\})}
+  \KeywordTok{tryCatch}\NormalTok{(}
+\NormalTok{    allbills <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(allbills, agenda), }
+    \DataTypeTok{error =} \ControlFlowTok{function}\NormalTok{(e)\{}\OtherTok{NA}\NormalTok{\})}
+  \KeywordTok{Sys.sleep}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in if (checkdate < Sys.Date() & checkdate > as.Date("2020-01-13")) {:
+## the condition has length > 1 and only the first element will be used
+\end{verbatim}
+
+And after that, I have a dataset of entries of bills on the floor. So if I want to see who has had the most bills on the floor -- including repeats -- I could answer that now.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{allbills }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{(Introducer) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{tally}\NormalTok{(}\DataTypeTok{sort=}\OtherTok{TRUE}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{na.omit}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }\KeywordTok{top_n}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Selecting by n
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 5 x 2
+##   Introducer         n
+##   <chr>          <int>
+## 1 Kolterman         47
+## 2 Vargas            34
+## 3 Pansing Brooks    28
+## 4 Bolz              22
+## 5 Hunt              19
+\end{verbatim}
+
+Senator Kolterman, collect your prize.
+
+A note about advanced scraping -- every site is different. Every time you want to scrape a site, you'll be puzzling over different problems. But the steps remain the same: find a pattern, exploit it, clean the data on the fly and put it into a place to store it.
 
 \end{document}
