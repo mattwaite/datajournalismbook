@@ -33,6 +33,11 @@ calendar <- url %>%
   html_attrs()
 ```
 
+
+```{r}
+calendar[1][1]
+```
+
 Now this part gets tough, but if you follow, it's logical. It's step by step, really.
 
 First, I noticed at the top of the agenda pages is a link to the daily agenda in csv format. Convenient, that.
@@ -67,10 +72,10 @@ Let's run it.
 allbills <- read_csv("https://nebraskalegislature.gov/calendar/agenda.php?day=2020-01-14&print=csv", col_types = cols()) %>% mutate(Date = as.Date("2020-01-01"))%>% filter(`Section Header` == "Blah")
 
 for (i in calendar){
-  date <- gsub("selected", "", i)
+  date <- i[1]
   checkdate <- as.Date(date)
   
-  if (checkdate < Sys.Date() & checkdate > as.Date("2020-01-13")) {
+  if (checkdate <= Sys.Date() & checkdate > as.Date("2020-01-13")) {
 
     agendaurl <- paste("https://nebraskalegislature.gov/calendar/agenda.php?day=", i, sep="")
     csvurl <-paste(agendaurl, "&print=csv", sep="")
