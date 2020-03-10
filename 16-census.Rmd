@@ -24,7 +24,7 @@ census_api_key("YOUR KEY HERE")
 Just FYI: Your key is your key. Do not share it around. 
 
 ```{r echo=FALSE}
-census_api_key(Sys.getenv("CENSUS_API_KEY"))
+census_api_key("a398e3144d92d0eb7cd4ede7526cec98bffe9933")
 ```
 
 So to give you some idea of how complicated the data is, let's pull up just one file from the decennial Census. We'll use Summary File 1, or SF1. That has the major population and housing stuff. 
@@ -41,7 +41,7 @@ If you think that's crazy, try the SF3 file from 2000.
 sf3 <- load_variables(2000, "sf3", cache = TRUE)
 ```
 
-Yes. That's 16,528 variables to choose from. I told you. Astonishing. 
+Yes. That's 5,555 variables to choose from. I told you. Astonishing. 
 
 So let's try to answer a question using the Census. What is the fastest growing state since 1990? 
 
@@ -73,7 +73,9 @@ As you can see, we have a GEOID, NAME, then variable and value. Variable and val
 
 ```{r}
 p10 %>% select(GEOID, NAME, value) %>% rename(Population2010=value) -> p2010
+
 p00 %>% select(GEOID, NAME, value) %>% rename(Population2000=value) -> p2000
+
 p90 %>% select(GEOID, NAME, value) %>% rename(Population1990=value) -> p1990
 ```
 
@@ -109,6 +111,7 @@ ne <- get_acs(geography = "county",
 ne <- ne %>% arrange(desc(estimate)) %>% top_n(20, estimate)
 
 ne
+
 ```
 
 Sarpy, Cass, Washington. What do they all have in common? They ring Douglas County -- Omaha. So lots of suburban flight. But do the margins of error let us say one county is richer than the other. We can find this out visually using error bars. Don't worry much about the code here --  we'll cover that soon enough. 

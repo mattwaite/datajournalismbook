@@ -102,12 +102,11 @@ This book is the collection of class materials for the author's Data Journalism 
 * Basic data scraping
 * Intermediate data scraping
 * Getting data from APIs: Census
+* Visualizing for reporting: Basics
+* Visualizing for reporting: Publishing
 * Geographic data basics
 * Geographic queries
 * Geographic visualization
-* Visualizing for reporting: Basics
-* Visualizing for reporting: More forms
-* Visualizing for reporting: Faceting
 * Text analysis basics
 * Text analysis
 * Advanced analysis: Correlations and regressions

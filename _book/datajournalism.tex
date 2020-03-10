@@ -118,7 +118,7 @@
 
 \title{Data Journalism with R and the Tidyverse}
 \author{Matt Waite}
-\date{2020-02-26}
+\date{2020-03-02}
 
 \begin{document}
 \maketitle
@@ -2351,7 +2351,7 @@ Here's an example using sensible defaults for weighting -- unfortunately \href{h
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3032
+## [1] 3037
 \end{verbatim}
 
 Cuts it down by almost 1000. That seems pretty good. Here's a different method, using a method that turns words into phonetic spellings called soundex.
@@ -3432,6 +3432,18 @@ I'm going to create a thing called a calendar and store the list of option value
 \end{Highlighting}
 \end{Shaded}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{calendar[}\DecValTok{1}\NormalTok{][}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+##        value 
+## "2020-01-08"
+\end{verbatim}
+
 Now this part gets tough, but if you follow, it's logical. It's step by step, really.
 
 First, I noticed at the top of the agenda pages is a link to the daily agenda in csv format. Convenient, that.
@@ -3478,10 +3490,10 @@ Let's run it.
 \NormalTok{allbills <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"https://nebraskalegislature.gov/calendar/agenda.php?day=2020-01-14&print=csv"}\NormalTok{, }\DataTypeTok{col_types =} \KeywordTok{cols}\NormalTok{()) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Date =} \KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-01-01"}\NormalTok{))}\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(}\StringTok{`}\DataTypeTok{Section Header}\StringTok{`} \OperatorTok{==}\StringTok{ "Blah"}\NormalTok{)}
 
 \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ calendar)\{}
-\NormalTok{  date <-}\StringTok{ }\KeywordTok{gsub}\NormalTok{(}\StringTok{"selected"}\NormalTok{, }\StringTok{""}\NormalTok{, i)}
+\NormalTok{  date <-}\StringTok{ }\NormalTok{i[}\DecValTok{1}\NormalTok{]}
 \NormalTok{  checkdate <-}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(date)}
   
-  \ControlFlowTok{if}\NormalTok{ (checkdate }\OperatorTok{<}\StringTok{ }\KeywordTok{Sys.Date}\NormalTok{() }\OperatorTok{&}\StringTok{ }\NormalTok{checkdate }\OperatorTok{>}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-01-13"}\NormalTok{)) \{}
+  \ControlFlowTok{if}\NormalTok{ (checkdate }\OperatorTok{<=}\StringTok{ }\KeywordTok{Sys.Date}\NormalTok{() }\OperatorTok{&}\StringTok{ }\NormalTok{checkdate }\OperatorTok{>}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-01-13"}\NormalTok{)) \{}
 
 \NormalTok{    agendaurl <-}\StringTok{ }\KeywordTok{paste}\NormalTok{(}\StringTok{"https://nebraskalegislature.gov/calendar/agenda.php?day="}\NormalTok{, i, }\DataTypeTok{sep=}\StringTok{""}\NormalTok{)}
 \NormalTok{    csvurl <-}\KeywordTok{paste}\NormalTok{(agendaurl, }\StringTok{"&print=csv"}\NormalTok{, }\DataTypeTok{sep=}\StringTok{""}\NormalTok{)}
@@ -3496,11 +3508,6 @@ Let's run it.
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## Warning in if (checkdate < Sys.Date() & checkdate > as.Date("2020-01-13")) {:
-## the condition has length > 1 and only the first element will be used
-\end{verbatim}
 
 And after that, I have a dataset of entries of bills on the floor. So if I want to see who has had the most bills on the floor -- including repeats -- I could answer that now.
 
@@ -3518,15 +3525,397 @@ And after that, I have a dataset of entries of bills on the floor. So if I want 
 ## # A tibble: 5 x 2
 ##   Introducer         n
 ##   <chr>          <int>
-## 1 Kolterman         47
-## 2 Vargas            34
+## 1 Kolterman         44
+## 2 Vargas            32
 ## 3 Pansing Brooks    28
-## 4 Bolz              22
-## 5 Hunt              19
+## 4 Bolz              20
+## 5 Hunt              18
 \end{verbatim}
 
 Senator Kolterman, collect your prize.
 
 A note about advanced scraping -- every site is different. Every time you want to scrape a site, you'll be puzzling over different problems. But the steps remain the same: find a pattern, exploit it, clean the data on the fly and put it into a place to store it.
+
+\hypertarget{intro-to-apis-the-census}{%
+\chapter{Intro to APIs: The Census}\label{intro-to-apis-the-census}}
+
+There is truly an astonishing amount of data collected by the US Census Bureau. First, there's the Census that most people know -- the every 10 year census. That's the one mandated by the Constitution where the government attempts to count every person in the US. It's a mind-boggling feat to even try, and billions get spent on it. That data is used first for determining how many representatives each state gets in Congress. From there, the Census gets used to divide up billions of dollars of federal spending.
+
+To answer the questions the government needs to do that, a ton of data gets collected. That, unfortunately, means the Census is exceedingly complicated to work with. The good news is, the Census has an API -- an application programming interface. What that means is we can get data directly through the Census Bureau via calls over the internet.
+
+Let's demonstrate.
+
+We're going to use a library called \texttt{tidycensus} which makes calls to the Census API in a very tidy way, and gives you back tidy data. That means we don't have to go through the process of importing the data from a file. I can't tell you how amazing this is, speaking from experience.
+
+First we need to install \texttt{tidycensus} using the console: \texttt{install.packages("tidycensus")}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\KeywordTok{library}\NormalTok{(tidycensus)}
+\end{Highlighting}
+\end{Shaded}
+
+To use the API, you need an API key. To get that, you need to \href{https://api.census.gov/data/key_signup.html}{apply for an API key with the Census Bureau}. It takes a few minutes and you need to activate your key via email. Once you have your key, you need to set that for this session:
+
+\begin{verbatim}
+census_api_key("YOUR KEY HERE")
+\end{verbatim}
+
+Just FYI: Your key is your key. Do not share it around.
+
+\begin{verbatim}
+## To install your API key for use in future sessions, run this function with `install = TRUE`.
+\end{verbatim}
+
+So to give you some idea of how complicated the data is, let's pull up just one file from the decennial Census. We'll use Summary File 1, or SF1. That has the major population and housing stuff.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sf1 <-}\StringTok{ }\KeywordTok{load_variables}\NormalTok{(}\DecValTok{2010}\NormalTok{, }\StringTok{"sf1"}\NormalTok{, }\DataTypeTok{cache =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Note: There are 3,346 variables in SF1. That's not a typo. Open it in your environment by double clicking. As you scroll down, you'll get an idea of what you've got to choose from.
+
+If you think that's crazy, try the SF3 file from 2000.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sf3 <-}\StringTok{ }\KeywordTok{load_variables}\NormalTok{(}\DecValTok{2000}\NormalTok{, }\StringTok{"sf3"}\NormalTok{, }\DataTypeTok{cache =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Yes. That's 16,528 variables to choose from. I told you. Astonishing.
+
+So let's try to answer a question using the Census. What is the fastest growing state since 1990?
+
+To answer this, we need to pull the total population by state in each of the decennial census. Here's 1990.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p90 <-}\StringTok{ }\KeywordTok{get_decennial}\NormalTok{(}\DataTypeTok{geography =} \StringTok{"state"}\NormalTok{, }\DataTypeTok{variables =} \StringTok{"P0010001"}\NormalTok{, }\DataTypeTok{year =} \DecValTok{1990}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Getting data from the 1990 decennial Census
+\end{verbatim}
+
+Now 2000.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p00 <-}\StringTok{ }\KeywordTok{get_decennial}\NormalTok{(}\DataTypeTok{geography =} \StringTok{"state"}\NormalTok{, }\DataTypeTok{variables =} \StringTok{"P001001"}\NormalTok{, }\DataTypeTok{year =} \DecValTok{2000}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Getting data from the 2000 decennial Census
+\end{verbatim}
+
+Now 2010.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p10 <-}\StringTok{ }\KeywordTok{get_decennial}\NormalTok{(}\DataTypeTok{geography =} \StringTok{"state"}\NormalTok{, }\DataTypeTok{variables =} \StringTok{"P001001"}\NormalTok{, }\DataTypeTok{year =} \DecValTok{2010}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Getting data from the 2010 decennial Census
+\end{verbatim}
+
+Let's take a peek at 2010.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p10}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 52 x 4
+##    GEOID NAME        variable    value
+##    <chr> <chr>       <chr>       <dbl>
+##  1 01    Alabama     P001001   4779736
+##  2 02    Alaska      P001001    710231
+##  3 04    Arizona     P001001   6392017
+##  4 05    Arkansas    P001001   2915918
+##  5 06    California  P001001  37253956
+##  6 22    Louisiana   P001001   4533372
+##  7 21    Kentucky    P001001   4339367
+##  8 08    Colorado    P001001   5029196
+##  9 09    Connecticut P001001   3574097
+## 10 10    Delaware    P001001    897934
+## # ... with 42 more rows
+\end{verbatim}
+
+As you can see, we have a GEOID, NAME, then variable and value. Variable and value are going to be the same. Because those are named the same thing, to merge them together, we need to rename them.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p10 }\OperatorTok{%>%}\StringTok{ }\KeywordTok{select}\NormalTok{(GEOID, NAME, value) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{Population2010=}\NormalTok{value) ->}\StringTok{ }\NormalTok{p2010}
+\NormalTok{p00 }\OperatorTok{%>%}\StringTok{ }\KeywordTok{select}\NormalTok{(GEOID, NAME, value) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{Population2000=}\NormalTok{value) ->}\StringTok{ }\NormalTok{p2000}
+\NormalTok{p90 }\OperatorTok{%>%}\StringTok{ }\KeywordTok{select}\NormalTok{(GEOID, NAME, value) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{Population1990=}\NormalTok{value) ->}\StringTok{ }\NormalTok{p1990}
+\end{Highlighting}
+\end{Shaded}
+
+Now we join the data together.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{alldata <-}\StringTok{ }\NormalTok{p1990 }\OperatorTok{%>%}\StringTok{ }\KeywordTok{inner_join}\NormalTok{(p2000) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{inner_join}\NormalTok{(p2010)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining, by = c("GEOID", "NAME")Joining, by = c("GEOID", "NAME")
+\end{verbatim}
+
+And now we calculate the percent change.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{alldata }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{change =}\NormalTok{ ((Population2010}\OperatorTok{-}\NormalTok{Population1990)}\OperatorTok{/}\NormalTok{Population1990)}\OperatorTok{*}\DecValTok{100}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(change))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 51 x 6
+##    GEOID NAME           Population1990 Population2000 Population2010 change
+##    <chr> <chr>                   <dbl>          <dbl>          <dbl>  <dbl>
+##  1 32    Nevada                1201833        1998257        2700551  125. 
+##  2 04    Arizona               3665228        5130632        6392017   74.4
+##  3 49    Utah                  1722850        2233169        2763885   60.4
+##  4 16    Idaho                 1006749        1293953        1567582   55.7
+##  5 08    Colorado              3294394        4301261        5029196   52.7
+##  6 13    Georgia               6478216        8186453        9687653   49.5
+##  7 48    Texas                16986510       20851820       25145561   48.0
+##  8 12    Florida              12937926       15982378       18801310   45.3
+##  9 37    North Carolina        6628637        8049313        9535483   43.9
+## 10 53    Washington            4866692        5894121        6724540   38.2
+## # ... with 41 more rows
+\end{verbatim}
+
+And just like that: Nevada. Nebraska is 33rd fastest growing.
+
+\hypertarget{the-acs}{%
+\section{The ACS}\label{the-acs}}
+
+In 2010, the Census Bureau replaced SF3 with the American Community Survey. The Good News is that the data would be updated on a rolling basis. The bad news is that it's more complicated because it's more like survey data with a large sample. That means there's margins of error and confidence intervals to worry about.
+
+Here's an example:
+
+What is Nebraska's richest county?
+
+We can measure this by median household income. That variable is \texttt{B19013\_001}, so we can get that data like this (I'm narrowing it to the top 20 for simplicity):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ne <-}\StringTok{ }\KeywordTok{get_acs}\NormalTok{(}\DataTypeTok{geography =} \StringTok{"county"}\NormalTok{, }
+              \DataTypeTok{variables =} \KeywordTok{c}\NormalTok{(}\DataTypeTok{medincome =} \StringTok{"B19013_001"}\NormalTok{), }
+              \DataTypeTok{state =} \StringTok{"NE"}\NormalTok{, }
+              \DataTypeTok{year =} \DecValTok{2018}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ne <-}\StringTok{ }\NormalTok{ne }\OperatorTok{%>%}\StringTok{ }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(estimate)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{top_n}\NormalTok{(}\DecValTok{20}\NormalTok{, estimate)}
+
+\NormalTok{ne}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 21 x 5
+##    GEOID NAME                        variable  estimate   moe
+##    <chr> <chr>                       <chr>        <dbl> <dbl>
+##  1 31153 Sarpy County, Nebraska      medincome    79549  1419
+##  2 31025 Cass County, Nebraska       medincome    71139  2310
+##  3 31177 Washington County, Nebraska medincome    70753  3504
+##  4 31159 Seward County, Nebraska     medincome    67591  3082
+##  5 31155 Saunders County, Nebraska   medincome    66718  3394
+##  6 31081 Hamilton County, Nebraska   medincome    64042  3775
+##  7 31167 Stanton County, Nebraska    medincome    62687  4761
+##  8 31179 Wayne County, Nebraska      medincome    62623  8752
+##  9 31141 Platte County, Nebraska     medincome    62617  3413
+## 10 31073 Gosper County, Nebraska     medincome    62545  3065
+## # ... with 11 more rows
+\end{verbatim}
+
+Sarpy, Cass, Washington. What do they all have in common? They ring Douglas County -- Omaha. So lots of suburban flight. But do the margins of error let us say one county is richer than the other. We can find this out visually using error bars. Don't worry much about the code here -- we'll cover that soon enough.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ne }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{NAME =} \KeywordTok{gsub}\NormalTok{(}\StringTok{" County, Nebraska"}\NormalTok{, }\StringTok{""}\NormalTok{, NAME)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ estimate, }\DataTypeTok{y =} \KeywordTok{reorder}\NormalTok{(NAME, estimate))) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_errorbarh}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{xmin =}\NormalTok{ estimate }\OperatorTok{-}\StringTok{ }\NormalTok{moe, }\DataTypeTok{xmax =}\NormalTok{ estimate }\OperatorTok{+}\StringTok{ }\NormalTok{moe)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{color =} \StringTok{"red"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Household income by county in Nebraska"}\NormalTok{,}
+       \DataTypeTok{subtitle =} \StringTok{"2013-2017 American Community Survey"}\NormalTok{,}
+       \DataTypeTok{y =} \StringTok{""}\NormalTok{,}
+       \DataTypeTok{x =} \StringTok{"ACS estimate (bars represent margin of error)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-139-1.pdf}
+
+As you can see, some of the error bars are quite wide. Some are narrow. But if the bars overlap, it means the difference between the two counties is within the margin of error, and the differences aren't statistically significant. So is the difference between Cass and Washington significant? Nope. Is the difference between Sarpy and everyone else significant? Yes it is.
+
+Let's ask another question of the ACS -- did any counties lose income from the time of the global financial crisis to the current 5-year window?
+
+Let's re-label our first household income data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ne18 <-}\StringTok{ }\KeywordTok{get_acs}\NormalTok{(}\DataTypeTok{geography =} \StringTok{"county"}\NormalTok{, }
+              \DataTypeTok{variables =} \KeywordTok{c}\NormalTok{(}\DataTypeTok{medincome =} \StringTok{"B19013_001"}\NormalTok{), }
+              \DataTypeTok{state =} \StringTok{"NE"}\NormalTok{, }
+              \DataTypeTok{year =} \DecValTok{2018}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+And now we grab the 2010 median household income.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ne10 <-}\StringTok{ }\KeywordTok{get_acs}\NormalTok{(}\DataTypeTok{geography =} \StringTok{"county"}\NormalTok{, }
+              \DataTypeTok{variables =} \KeywordTok{c}\NormalTok{(}\DataTypeTok{medincome =} \StringTok{"B19013_001"}\NormalTok{), }
+              \DataTypeTok{state =} \StringTok{"NE"}\NormalTok{, }
+              \DataTypeTok{year =} \DecValTok{2010}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Getting data from the 2006-2010 5-year ACS
+\end{verbatim}
+
+What I'm going to do next is a lot, but each step is simple. I'm going to join the data together, so each county has one line of data. Then I'm going to rename some fields that repeat. Then I'm going to calculate the minimium and maximum value of the estimate using the margin of error. That'll help me later. After that, I'm going to calculate a perent change and sort it by that change.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ne10 }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{inner_join}\NormalTok{(ne18, }\DataTypeTok{by=}\KeywordTok{c}\NormalTok{(}\StringTok{"GEOID"}\NormalTok{, }\StringTok{"NAME"}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{estimate2010=}\NormalTok{estimate.x, }\DataTypeTok{estimate2018=}\NormalTok{estimate.y) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{min2010 =}\NormalTok{ estimate2010}\OperatorTok{-}\NormalTok{moe.x, }\DataTypeTok{max2010 =}\NormalTok{ estimate2010}\OperatorTok{+}\NormalTok{moe.x, }\DataTypeTok{min2018 =}\NormalTok{ estimate2018}\OperatorTok{-}\NormalTok{moe.y, }\DataTypeTok{max2018 =}\NormalTok{ estimate2018}\OperatorTok{+}\NormalTok{moe.y) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{variable.x, }\OperatorTok{-}\NormalTok{variable.y, }\OperatorTok{-}\NormalTok{moe.x, }\OperatorTok{-}\NormalTok{moe.y) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{change =}\NormalTok{ ((estimate2018}\OperatorTok{-}\NormalTok{estimate2010)}\OperatorTok{/}\NormalTok{estimate2010)}\OperatorTok{*}\DecValTok{100}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{arrange}\NormalTok{(change)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 93 x 9
+##    GEOID NAME   estimate2010 estimate2018 min2010 max2010 min2018 max2018 change
+##    <chr> <chr>         <dbl>        <dbl>   <dbl>   <dbl>   <dbl>   <dbl>  <dbl>
+##  1 31117 McPhe~        50625        48882   38979   62271   41666   56098 -3.44 
+##  2 31085 Hayes~        45595        45515   41833   49357   38687   52343 -0.175
+##  3 31075 Grant~        39261        39479   35341   43181   27482   51476  0.555
+##  4 31091 Hooke~        38750        39115   28329   49171   33409   44821  0.942
+##  5 31005 Arthu~        43250        43854   33524   52976   40943   46765  1.40 
+##  6 31095 Jeffe~        42665        43295   38489   46841   39615   46975  1.48 
+##  7 31105 Kimba~        42010        43856   36672   47348   39378   48334  4.39 
+##  8 31099 Kearn~        54518        56952   50397   58639   51557   62347  4.46 
+##  9 31171 Thoma~        48250        50682   41698   54802   43155   58209  5.04 
+## 10 31125 Nance~        41610        45833   39073   44147   40753   50913 10.1  
+## # ... with 83 more rows
+\end{verbatim}
+
+So according to this, McPherson and Hayes counties lost ground from the financial meltdown to now.
+
+But did they?
+
+Look at the min and max values for both. Is the change statistically significant?
+
+\hypertarget{bonus-api-example-coronavirus}{%
+\section{Bonus API example: Coronavirus}\label{bonus-api-example-coronavirus}}
+
+As I'm writing this, there is a growing level of fear about the novel coronavirus, COVID-19. And, as I'm writing this, I was alerted to a new R package that pulls daily updates of coronavirus reports daily. You install it with \texttt{install.packages("coronavirus")}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(coronavirus)}
+
+\KeywordTok{data}\NormalTok{(}\StringTok{"coronavirus"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+What just happened, without you having to do anything, is the library just made a call to servers at Johns Hopkins University and got the latest coronavirus numbers from around the world.
+
+Check it out:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{view}\NormalTok{(coronavirus)}
+\end{Highlighting}
+\end{Shaded}
+
+So now we can start using it for data analysis. How about cases in the US?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{coronavirus }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(Country.Region }\OperatorTok{==}\StringTok{ "US"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 16 x 7
+##    Province.State       Country.Region   Lat   Long date       cases type     
+##    <chr>                <chr>          <dbl>  <dbl> <date>     <int> <chr>    
+##  1 Seattle, WA          US              47.8 -121.  2020-01-22     1 confirmed
+##  2 Chicago, IL          US              40.6  -89.4 2020-01-24     1 confirmed
+##  3 Los Angeles, CA      US              34.1 -118.  2020-01-26     1 confirmed
+##  4 Orange, CA           US              33.8 -118.  2020-01-26     1 confirmed
+##  5 Tempe, AZ            US              34.0 -111.  2020-01-26     1 confirmed
+##  6 Chicago, IL          US              40.6  -89.4 2020-01-31     1 confirmed
+##  7 Santa Clara, CA      US              37.4 -122.  2020-01-31     1 confirmed
+##  8 Boston, MA           US              42.4  -71.1 2020-02-01     1 confirmed
+##  9 San Benito, CA       US              36.6 -121.  2020-02-03     2 confirmed
+## 10 Santa Clara, CA      US              37.4 -122.  2020-02-03     1 confirmed
+## 11 Madison, WI          US              43.1  -89.4 2020-02-05     1 confirmed
+## 12 Chicago, IL          US              40.6  -89.4 2020-02-09     2 recovered
+## 13 Seattle, WA          US              47.8 -121.  2020-02-09     1 recovered
+## 14 San Diego County, CA US              32.7 -117.  2020-02-11     1 confirmed
+## 15 San Antonio, TX      US              29.4  -98.5 2020-02-13     1 confirmed
+## 16 San Diego County, CA US              32.7 -117.  2020-02-13     1 confirmed
+\end{verbatim}
+
+How about confirmed cases by country?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{coronavirus }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(type }\OperatorTok{==}\StringTok{ "confirmed"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{(Country.Region) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{total=}\KeywordTok{sum}\NormalTok{(cases)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(total))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 30 x 2
+##    Country.Region total
+##    <chr>          <int>
+##  1 Mainland China 70446
+##  2 Others           355
+##  3 Singapore         75
+##  4 Japan             59
+##  5 Hong Kong         57
+##  6 Thailand          34
+##  7 South Korea       29
+##  8 Malaysia          22
+##  9 Taiwan            20
+## 10 Germany           16
+## # ... with 20 more rows
+\end{verbatim}
+
+With this library, you could track this every day. Pretty neat, if you ask me.
 
 \end{document}

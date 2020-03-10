@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 17 Intro to APIs: The Census | Data Journalism with R and the Tidyverse</title>
+  <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 17 Intro to APIs: The Census | Data Journalism with R and the Tidyverse" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 17 Intro to APIs: The Census | Data Journalism with R and the Tidyverse" />
+  
+  <meta name="twitter:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  
+
+<meta name="author" content="Matt Waite" />
+
+
+<meta name="date" content="2020-03-02" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="advanced-rvest.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="http://mattwaite.github.io/datajournalism/">Data Journalism With R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#modern-data-journalism"><i class="fa fa-check"></i><b>1.1</b> Modern data journalism</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installations"><i class="fa fa-check"></i><b>1.2</b> Installations</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#about-this-book"><i class="fa fa-check"></i><b>1.3</b> About this book</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#what-well-cover"><i class="fa fa-check"></i><b>1.4</b> What we’ll cover</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="public-records.html"><a href="public-records.html"><i class="fa fa-check"></i><b>2</b> Public records</a><ul>
+<li class="chapter" data-level="2.1" data-path="public-records.html"><a href="public-records.html#federal-law"><i class="fa fa-check"></i><b>2.1</b> Federal law</a></li>
+<li class="chapter" data-level="2.2" data-path="public-records.html"><a href="public-records.html#state-law"><i class="fa fa-check"></i><b>2.2</b> State law</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>3</b> R basics</a><ul>
+<li class="chapter" data-level="3.1" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-1"><i class="fa fa-check"></i><b>3.1</b> Adding libraries, part 1</a></li>
+<li class="chapter" data-level="3.2" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-2"><i class="fa fa-check"></i><b>3.2</b> Adding libraries, part 2</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html"><i class="fa fa-check"></i><b>4</b> Data journalism in the age of replication</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#the-stylebook"><i class="fa fa-check"></i><b>4.1</b> The stylebook</a></li>
+<li class="chapter" data-level="4.2" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication"><i class="fa fa-check"></i><b>4.2</b> Replication</a></li>
+<li class="chapter" data-level="4.3" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#goodbye-excel"><i class="fa fa-check"></i><b>4.3</b> Goodbye Excel?</a></li>
+<li class="chapter" data-level="4.4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#receptivity-is-high"><i class="fa fa-check"></i><b>4.4</b> “Receptivity … is high”</a></li>
+<li class="chapter" data-level="4.5" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication-in-notebooks"><i class="fa fa-check"></i><b>4.5</b> Replication in notebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html"><i class="fa fa-check"></i><b>5</b> Data, structures and types</a><ul>
+<li class="chapter" data-level="5.1" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#rows-and-columns"><i class="fa fa-check"></i><b>5.1</b> Rows and columns</a></li>
+<li class="chapter" data-level="5.2" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#types"><i class="fa fa-check"></i><b>5.2</b> Types</a></li>
+<li class="chapter" data-level="5.3" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#a-simple-way-to-get-data"><i class="fa fa-check"></i><b>5.3</b> A simple way to get data</a></li>
+<li class="chapter" data-level="5.4" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#cleaning-the-data"><i class="fa fa-check"></i><b>5.4</b> Cleaning the data</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="aggregates.html"><a href="aggregates.html"><i class="fa fa-check"></i><b>6</b> Aggregates</a><ul>
+<li class="chapter" data-level="6.1" data-path="aggregates.html"><a href="aggregates.html#importing-data"><i class="fa fa-check"></i><b>6.1</b> Importing data</a></li>
+<li class="chapter" data-level="6.2" data-path="aggregates.html"><a href="aggregates.html#group-by-and-count"><i class="fa fa-check"></i><b>6.2</b> Group by and count</a></li>
+<li class="chapter" data-level="6.3" data-path="aggregates.html"><a href="aggregates.html#other-aggregates-mean-and-median"><i class="fa fa-check"></i><b>6.3</b> Other aggregates: Mean and median</a></li>
+<li class="chapter" data-level="6.4" data-path="aggregates.html"><a href="aggregates.html#even-more-aggregates"><i class="fa fa-check"></i><b>6.4</b> Even more aggregates</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>7</b> Mutating data</a><ul>
+<li class="chapter" data-level="7.1" data-path="mutating-data.html"><a href="mutating-data.html#another-use-of-mutate"><i class="fa fa-check"></i><b>7.1</b> Another use of mutate</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>8</b> Working with dates</a><ul>
+<li class="chapter" data-level="8.1" data-path="working-with-dates.html"><a href="working-with-dates.html#the-hard-way"><i class="fa fa-check"></i><b>8.1</b> The hard way</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="filters-and-selections.html"><a href="filters-and-selections.html"><i class="fa fa-check"></i><b>9</b> Filters and selections</a><ul>
+<li class="chapter" data-level="9.1" data-path="filters-and-selections.html"><a href="filters-and-selections.html#combining-filters"><i class="fa fa-check"></i><b>9.1</b> Combining filters</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html"><i class="fa fa-check"></i><b>10</b> Data Cleaning Part I: Data smells</a><ul>
+<li class="chapter" data-level="10.1" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#wrong-type"><i class="fa fa-check"></i><b>10.1</b> Wrong Type</a></li>
+<li class="chapter" data-level="10.2" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#missing-data"><i class="fa fa-check"></i><b>10.2</b> Missing Data</a></li>
+<li class="chapter" data-level="10.3" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#gaps-in-data"><i class="fa fa-check"></i><b>10.3</b> Gaps in data</a></li>
+<li class="chapter" data-level="10.4" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#internal-inconsistency"><i class="fa fa-check"></i><b>10.4</b> Internal inconsistency</a></li>
+<li class="chapter" data-level="10.5" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#a-shortcut-summary"><i class="fa fa-check"></i><b>10.5</b> A Shortcut: Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html"><i class="fa fa-check"></i><b>11</b> Data Cleaning Part II: Janitor</a><ul>
+<li class="chapter" data-level="11.1" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#cleaning-headers"><i class="fa fa-check"></i><b>11.1</b> Cleaning headers</a></li>
+<li class="chapter" data-level="11.2" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#duplicates"><i class="fa fa-check"></i><b>11.2</b> Duplicates</a></li>
+<li class="chapter" data-level="11.3" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#inconsistency"><i class="fa fa-check"></i><b>11.3</b> Inconsistency</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html"><i class="fa fa-check"></i><b>12</b> Data Cleaning Part III: Open Refine</a><ul>
+<li class="chapter" data-level="12.1" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#refinr-open-refine-in-r"><i class="fa fa-check"></i><b>12.1</b> Refinr, Open Refine in R</a></li>
+<li class="chapter" data-level="12.2" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#more-complex-issues"><i class="fa fa-check"></i><b>12.2</b> More complex issues</a></li>
+<li class="chapter" data-level="12.3" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#manually-cleaning-data-with-open-refine"><i class="fa fa-check"></i><b>12.3</b> Manually cleaning data with Open Refine</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html"><i class="fa fa-check"></i><b>13</b> Cleaning Data Part IV: PDFs</a><ul>
+<li class="chapter" data-level="13.1" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-looks-good-but-goes-wrong"><i class="fa fa-check"></i><b>13.1</b> When it looks good, but goes wrong</a></li>
+<li class="chapter" data-level="13.2" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-works-well."><i class="fa fa-check"></i><b>13.2</b> When it works well.</a></li>
+<li class="chapter" data-level="13.3" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#cleaning-up-the-data-in-r"><i class="fa fa-check"></i><b>13.3</b> Cleaning up the data in R</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="combining-and-joining.html"><a href="combining-and-joining.html"><i class="fa fa-check"></i><b>14</b> Combining and joining</a><ul>
+<li class="chapter" data-level="14.1" data-path="combining-and-joining.html"><a href="combining-and-joining.html#combining-data"><i class="fa fa-check"></i><b>14.1</b> Combining data</a></li>
+<li class="chapter" data-level="14.2" data-path="combining-and-joining.html"><a href="combining-and-joining.html#joining-data"><i class="fa fa-check"></i><b>14.2</b> Joining data</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html"><i class="fa fa-check"></i><b>15</b> Scraping data with Rvest</a><ul>
+<li class="chapter" data-level="15.1" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html#a-more-difficult-example"><i class="fa fa-check"></i><b>15.1</b> A more difficult example</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="advanced-rvest.html"><a href="advanced-rvest.html"><i class="fa fa-check"></i><b>16</b> Advanced rvest</a></li>
+<li class="chapter" data-level="17" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html"><i class="fa fa-check"></i><b>17</b> Intro to APIs: The Census</a><ul>
+<li class="chapter" data-level="17.1" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html#the-acs"><i class="fa fa-check"></i><b>17.1</b> The ACS</a></li>
+<li class="chapter" data-level="17.2" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html#bonus-api-example-coronavirus"><i class="fa fa-check"></i><b>17.2</b> Bonus API example: Coronavirus</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Journalism with R and the Tidyverse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro-to-apis-the-census" class="section level1">
+<h1><span class="header-section-number">Chapter 17</span> Intro to APIs: The Census</h1>
+<p>There is truly an astonishing amount of data collected by the US Census Bureau. First, there’s the Census that most people know – the every 10 year census. That’s the one mandated by the Constitution where the government attempts to count every person in the US. It’s a mind-boggling feat to even try, and billions get spent on it. That data is used first for determining how many representatives each state gets in Congress. From there, the Census gets used to divide up billions of dollars of federal spending.</p>
+<p>To answer the questions the government needs to do that, a ton of data gets collected. That, unfortunately, means the Census is exceedingly complicated to work with. The good news is, the Census has an API – an application programming interface. What that means is we can get data directly through the Census Bureau via calls over the internet.</p>
+<p>Let’s demonstrate.</p>
+<p>We’re going to use a library called <code>tidycensus</code> which makes calls to the Census API in a very tidy way, and gives you back tidy data. That means we don’t have to go through the process of importing the data from a file. I can’t tell you how amazing this is, speaking from experience.</p>
+<p>First we need to install <code>tidycensus</code> using the console: <code>install.packages(&quot;tidycensus&quot;)</code></p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb228-2" data-line-number="2"><span class="kw">library</span>(tidycensus)</a></code></pre></div>
+<pre><code>## Warning: package &#39;tidycensus&#39; was built under R version 3.5.2</code></pre>
+<p>To use the API, you need an API key. To get that, you need to <a href="https://api.census.gov/data/key_signup.html">apply for an API key with the Census Bureau</a>. It takes a few minutes and you need to activate your key via email. Once you have your key, you need to set that for this session:</p>
+<pre><code>census_api_key(&quot;YOUR KEY HERE&quot;)</code></pre>
+<p>Just FYI: Your key is your key. Do not share it around.</p>
+<pre><code>## To install your API key for use in future sessions, run this function with `install = TRUE`.</code></pre>
+<p>So to give you some idea of how complicated the data is, let’s pull up just one file from the decennial Census. We’ll use Summary File 1, or SF1. That has the major population and housing stuff.</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" data-line-number="1">sf1 &lt;-<span class="st"> </span><span class="kw">load_variables</span>(<span class="dv">2010</span>, <span class="st">&quot;sf1&quot;</span>, <span class="dt">cache =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p>Note: There are 3,346 variables in SF1. That’s not a typo. Open it in your environment by double clicking. As you scroll down, you’ll get an idea of what you’ve got to choose from.</p>
+<p>If you think that’s crazy, try the SF3 file from 2000.</p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" data-line-number="1">sf3 &lt;-<span class="st"> </span><span class="kw">load_variables</span>(<span class="dv">2000</span>, <span class="st">&quot;sf3&quot;</span>, <span class="dt">cache =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p>Yes. That’s 16,528 variables to choose from. I told you. Astonishing.</p>
+<p>So let’s try to answer a question using the Census. What is the fastest growing state since 1990?</p>
+<p>To answer this, we need to pull the total population by state in each of the decennial census. Here’s 1990.</p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" data-line-number="1">p90 &lt;-<span class="st"> </span><span class="kw">get_decennial</span>(<span class="dt">geography =</span> <span class="st">&quot;state&quot;</span>, <span class="dt">variables =</span> <span class="st">&quot;P0010001&quot;</span>, <span class="dt">year =</span> <span class="dv">1990</span>)</a></code></pre></div>
+<pre><code>## Getting data from the 1990 decennial Census</code></pre>
+<p>Now 2000.</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" data-line-number="1">p00 &lt;-<span class="st"> </span><span class="kw">get_decennial</span>(<span class="dt">geography =</span> <span class="st">&quot;state&quot;</span>, <span class="dt">variables =</span> <span class="st">&quot;P001001&quot;</span>, <span class="dt">year =</span> <span class="dv">2000</span>)</a></code></pre></div>
+<pre><code>## Getting data from the 2000 decennial Census</code></pre>
+<p>Now 2010.</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" data-line-number="1">p10 &lt;-<span class="st"> </span><span class="kw">get_decennial</span>(<span class="dt">geography =</span> <span class="st">&quot;state&quot;</span>, <span class="dt">variables =</span> <span class="st">&quot;P001001&quot;</span>, <span class="dt">year =</span> <span class="dv">2010</span>)</a></code></pre></div>
+<pre><code>## Getting data from the 2010 decennial Census</code></pre>
+<p>Let’s take a peek at 2010.</p>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" data-line-number="1">p10</a></code></pre></div>
+<pre><code>## # A tibble: 52 x 4
+##    GEOID NAME        variable    value
+##    &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;dbl&gt;
+##  1 01    Alabama     P001001   4779736
+##  2 02    Alaska      P001001    710231
+##  3 04    Arizona     P001001   6392017
+##  4 05    Arkansas    P001001   2915918
+##  5 06    California  P001001  37253956
+##  6 22    Louisiana   P001001   4533372
+##  7 21    Kentucky    P001001   4339367
+##  8 08    Colorado    P001001   5029196
+##  9 09    Connecticut P001001   3574097
+## 10 10    Delaware    P001001    897934
+## # … with 42 more rows</code></pre>
+<p>As you can see, we have a GEOID, NAME, then variable and value. Variable and value are going to be the same. Because those are named the same thing, to merge them together, we need to rename them.</p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb242-1" data-line-number="1">p10 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(GEOID, NAME, value) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rename</span>(<span class="dt">Population2010=</span>value) -&gt;<span class="st"> </span>p2010</a>
+<a class="sourceLine" id="cb242-2" data-line-number="2">p00 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(GEOID, NAME, value) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rename</span>(<span class="dt">Population2000=</span>value) -&gt;<span class="st"> </span>p2000</a>
+<a class="sourceLine" id="cb242-3" data-line-number="3">p90 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(GEOID, NAME, value) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rename</span>(<span class="dt">Population1990=</span>value) -&gt;<span class="st"> </span>p1990</a></code></pre></div>
+<p>Now we join the data together.</p>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" data-line-number="1">alldata &lt;-<span class="st"> </span>p1990 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(p2000) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(p2010)</a></code></pre></div>
+<pre><code>## Joining, by = c(&quot;GEOID&quot;, &quot;NAME&quot;)Joining, by = c(&quot;GEOID&quot;, &quot;NAME&quot;)</code></pre>
+<p>And now we calculate the percent change.</p>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" data-line-number="1">alldata <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">change =</span> ((Population2010<span class="op">-</span>Population1990)<span class="op">/</span>Population1990)<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(change))</a></code></pre></div>
+<pre><code>## # A tibble: 51 x 6
+##    GEOID NAME           Population1990 Population2000 Population2010 change
+##    &lt;chr&gt; &lt;chr&gt;                   &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt;  &lt;dbl&gt;
+##  1 32    Nevada                1201833        1998257        2700551  125. 
+##  2 04    Arizona               3665228        5130632        6392017   74.4
+##  3 49    Utah                  1722850        2233169        2763885   60.4
+##  4 16    Idaho                 1006749        1293953        1567582   55.7
+##  5 08    Colorado              3294394        4301261        5029196   52.7
+##  6 13    Georgia               6478216        8186453        9687653   49.5
+##  7 48    Texas                16986510       20851820       25145561   48.0
+##  8 12    Florida              12937926       15982378       18801310   45.3
+##  9 37    North Carolina        6628637        8049313        9535483   43.9
+## 10 53    Washington            4866692        5894121        6724540   38.2
+## # … with 41 more rows</code></pre>
+<p>And just like that: Nevada. Nebraska is 33rd fastest growing.</p>
+<div id="the-acs" class="section level2">
+<h2><span class="header-section-number">17.1</span> The ACS</h2>
+<p>In 2010, the Census Bureau replaced SF3 with the American Community Survey. The Good News is that the data would be updated on a rolling basis. The bad news is that it’s more complicated because it’s more like survey data with a large sample. That means there’s margins of error and confidence intervals to worry about.</p>
+<p>Here’s an example:</p>
+<p>What is Nebraska’s richest county?</p>
+<p>We can measure this by median household income. That variable is <code>B19013_001</code>, so we can get that data like this (I’m narrowing it to the top 20 for simplicity):</p>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" data-line-number="1">ne &lt;-<span class="st"> </span><span class="kw">get_acs</span>(<span class="dt">geography =</span> <span class="st">&quot;county&quot;</span>, </a>
+<a class="sourceLine" id="cb247-2" data-line-number="2">              <span class="dt">variables =</span> <span class="kw">c</span>(<span class="dt">medincome =</span> <span class="st">&quot;B19013_001&quot;</span>), </a>
+<a class="sourceLine" id="cb247-3" data-line-number="3">              <span class="dt">state =</span> <span class="st">&quot;NE&quot;</span>, </a>
+<a class="sourceLine" id="cb247-4" data-line-number="4">              <span class="dt">year =</span> <span class="dv">2018</span>)</a></code></pre></div>
+<pre><code>## Getting data from the 2014-2018 5-year ACS</code></pre>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" data-line-number="1">ne &lt;-<span class="st"> </span>ne <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(estimate)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">top_n</span>(<span class="dv">20</span>, estimate)</a>
+<a class="sourceLine" id="cb249-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb249-3" data-line-number="3">ne</a></code></pre></div>
+<pre><code>## # A tibble: 21 x 5
+##    GEOID NAME                        variable  estimate   moe
+##    &lt;chr&gt; &lt;chr&gt;                       &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;
+##  1 31153 Sarpy County, Nebraska      medincome    79549  1419
+##  2 31025 Cass County, Nebraska       medincome    71139  2310
+##  3 31177 Washington County, Nebraska medincome    70753  3504
+##  4 31159 Seward County, Nebraska     medincome    67591  3082
+##  5 31155 Saunders County, Nebraska   medincome    66718  3394
+##  6 31081 Hamilton County, Nebraska   medincome    64042  3775
+##  7 31167 Stanton County, Nebraska    medincome    62687  4761
+##  8 31179 Wayne County, Nebraska      medincome    62623  8752
+##  9 31141 Platte County, Nebraska     medincome    62617  3413
+## 10 31073 Gosper County, Nebraska     medincome    62545  3065
+## # … with 11 more rows</code></pre>
+<p>Sarpy, Cass, Washington. What do they all have in common? They ring Douglas County – Omaha. So lots of suburban flight. But do the margins of error let us say one county is richer than the other. We can find this out visually using error bars. Don’t worry much about the code here – we’ll cover that soon enough.</p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" data-line-number="1">ne <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb251-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">NAME =</span> <span class="kw">gsub</span>(<span class="st">&quot; County, Nebraska&quot;</span>, <span class="st">&quot;&quot;</span>, NAME)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb251-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> estimate, <span class="dt">y =</span> <span class="kw">reorder</span>(NAME, estimate))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb251-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_errorbarh</span>(<span class="kw">aes</span>(<span class="dt">xmin =</span> estimate <span class="op">-</span><span class="st"> </span>moe, <span class="dt">xmax =</span> estimate <span class="op">+</span><span class="st"> </span>moe)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb251-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb251-6" data-line-number="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Household income by county in Nebraska&quot;</span>,</a>
+<a class="sourceLine" id="cb251-7" data-line-number="7">       <span class="dt">subtitle =</span> <span class="st">&quot;2013-2017 American Community Survey&quot;</span>,</a>
+<a class="sourceLine" id="cb251-8" data-line-number="8">       <span class="dt">y =</span> <span class="st">&quot;&quot;</span>,</a>
+<a class="sourceLine" id="cb251-9" data-line-number="9">       <span class="dt">x =</span> <span class="st">&quot;ACS estimate (bars represent margin of error)&quot;</span>)</a></code></pre></div>
+<p><img src="datajournalism_files/figure-html/unnamed-chunk-139-1.png" width="672" /></p>
+<p>As you can see, some of the error bars are quite wide. Some are narrow. But if the bars overlap, it means the difference between the two counties is within the margin of error, and the differences aren’t statistically significant. So is the difference between Cass and Washington significant? Nope. Is the difference between Sarpy and everyone else significant? Yes it is.</p>
+<p>Let’s ask another question of the ACS – did any counties lose income from the time of the global financial crisis to the current 5-year window?</p>
+<p>Let’s re-label our first household income data.</p>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" data-line-number="1">ne18 &lt;-<span class="st"> </span><span class="kw">get_acs</span>(<span class="dt">geography =</span> <span class="st">&quot;county&quot;</span>, </a>
+<a class="sourceLine" id="cb252-2" data-line-number="2">              <span class="dt">variables =</span> <span class="kw">c</span>(<span class="dt">medincome =</span> <span class="st">&quot;B19013_001&quot;</span>), </a>
+<a class="sourceLine" id="cb252-3" data-line-number="3">              <span class="dt">state =</span> <span class="st">&quot;NE&quot;</span>, </a>
+<a class="sourceLine" id="cb252-4" data-line-number="4">              <span class="dt">year =</span> <span class="dv">2018</span>)</a></code></pre></div>
+<pre><code>## Getting data from the 2014-2018 5-year ACS</code></pre>
+<p>And now we grab the 2010 median household income.</p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" data-line-number="1">ne10 &lt;-<span class="st"> </span><span class="kw">get_acs</span>(<span class="dt">geography =</span> <span class="st">&quot;county&quot;</span>, </a>
+<a class="sourceLine" id="cb254-2" data-line-number="2">              <span class="dt">variables =</span> <span class="kw">c</span>(<span class="dt">medincome =</span> <span class="st">&quot;B19013_001&quot;</span>), </a>
+<a class="sourceLine" id="cb254-3" data-line-number="3">              <span class="dt">state =</span> <span class="st">&quot;NE&quot;</span>, </a>
+<a class="sourceLine" id="cb254-4" data-line-number="4">              <span class="dt">year =</span> <span class="dv">2010</span>)</a></code></pre></div>
+<pre><code>## Getting data from the 2006-2010 5-year ACS</code></pre>
+<p>What I’m going to do next is a lot, but each step is simple. I’m going to join the data together, so each county has one line of data. Then I’m going to rename some fields that repeat. Then I’m going to calculate the minimium and maximum value of the estimate using the margin of error. That’ll help me later. After that, I’m going to calculate a perent change and sort it by that change.</p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" data-line-number="1">ne10 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb256-2" data-line-number="2"><span class="st">  </span><span class="kw">inner_join</span>(ne18, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;GEOID&quot;</span>, <span class="st">&quot;NAME&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb256-3" data-line-number="3"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">estimate2010=</span>estimate.x, <span class="dt">estimate2018=</span>estimate.y) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb256-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">min2010 =</span> estimate2010<span class="op">-</span>moe.x, <span class="dt">max2010 =</span> estimate2010<span class="op">+</span>moe.x, <span class="dt">min2018 =</span> estimate2018<span class="op">-</span>moe.y, <span class="dt">max2018 =</span> estimate2018<span class="op">+</span>moe.y) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb256-5" data-line-number="5"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>variable.x, <span class="op">-</span>variable.y, <span class="op">-</span>moe.x, <span class="op">-</span>moe.y) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb256-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">change =</span> ((estimate2018<span class="op">-</span>estimate2010)<span class="op">/</span>estimate2010)<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb256-7" data-line-number="7"><span class="st">  </span><span class="kw">arrange</span>(change)</a></code></pre></div>
+<pre><code>## # A tibble: 93 x 9
+##    GEOID NAME   estimate2010 estimate2018 min2010 max2010 min2018 max2018 change
+##    &lt;chr&gt; &lt;chr&gt;         &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+##  1 31117 McPhe…        50625        48882   38979   62271   41666   56098 -3.44 
+##  2 31085 Hayes…        45595        45515   41833   49357   38687   52343 -0.175
+##  3 31075 Grant…        39261        39479   35341   43181   27482   51476  0.555
+##  4 31091 Hooke…        38750        39115   28329   49171   33409   44821  0.942
+##  5 31005 Arthu…        43250        43854   33524   52976   40943   46765  1.40 
+##  6 31095 Jeffe…        42665        43295   38489   46841   39615   46975  1.48 
+##  7 31105 Kimba…        42010        43856   36672   47348   39378   48334  4.39 
+##  8 31099 Kearn…        54518        56952   50397   58639   51557   62347  4.46 
+##  9 31171 Thoma…        48250        50682   41698   54802   43155   58209  5.04 
+## 10 31125 Nance…        41610        45833   39073   44147   40753   50913 10.1  
+## # … with 83 more rows</code></pre>
+<p>So according to this, McPherson and Hayes counties lost ground from the financial meltdown to now.</p>
+<p>But did they?</p>
+<p>Look at the min and max values for both. Is the change statistically significant?</p>
+</div>
+<div id="bonus-api-example-coronavirus" class="section level2">
+<h2><span class="header-section-number">17.2</span> Bonus API example: Coronavirus</h2>
+<p>As I’m writing this, there is a growing level of fear about the novel coronavirus, COVID-19. And, as I’m writing this, I was alerted to a new R package that pulls daily updates of coronavirus reports daily. You install it with <code>install.packages(&quot;coronavirus&quot;)</code></p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" data-line-number="1"><span class="kw">library</span>(coronavirus)</a></code></pre></div>
+<pre><code>## Warning: package &#39;coronavirus&#39; was built under R version 3.5.2</code></pre>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" data-line-number="1"><span class="kw">data</span>(<span class="st">&quot;coronavirus&quot;</span>) </a></code></pre></div>
+<p>What just happened, without you having to do anything, is the library just made a call to servers at Johns Hopkins University and got the latest coronavirus numbers from around the world.</p>
+<p>Check it out:</p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" data-line-number="1"><span class="kw">view</span>(coronavirus)</a></code></pre></div>
+<p>So now we can start using it for data analysis. How about cases in the US?</p>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" data-line-number="1">coronavirus <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Country.Region <span class="op">==</span><span class="st"> &quot;US&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 16 x 7
+##    Province.State       Country.Region   Lat   Long date       cases type     
+##    &lt;chr&gt;                &lt;chr&gt;          &lt;dbl&gt;  &lt;dbl&gt; &lt;date&gt;     &lt;int&gt; &lt;chr&gt;    
+##  1 Seattle, WA          US              47.8 -121.  2020-01-22     1 confirmed
+##  2 Chicago, IL          US              40.6  -89.4 2020-01-24     1 confirmed
+##  3 Los Angeles, CA      US              34.1 -118.  2020-01-26     1 confirmed
+##  4 Orange, CA           US              33.8 -118.  2020-01-26     1 confirmed
+##  5 Tempe, AZ            US              34.0 -111.  2020-01-26     1 confirmed
+##  6 Chicago, IL          US              40.6  -89.4 2020-01-31     1 confirmed
+##  7 Santa Clara, CA      US              37.4 -122.  2020-01-31     1 confirmed
+##  8 Boston, MA           US              42.4  -71.1 2020-02-01     1 confirmed
+##  9 San Benito, CA       US              36.6 -121.  2020-02-03     2 confirmed
+## 10 Santa Clara, CA      US              37.4 -122.  2020-02-03     1 confirmed
+## 11 Madison, WI          US              43.1  -89.4 2020-02-05     1 confirmed
+## 12 Chicago, IL          US              40.6  -89.4 2020-02-09     2 recovered
+## 13 Seattle, WA          US              47.8 -121.  2020-02-09     1 recovered
+## 14 San Diego County, CA US              32.7 -117.  2020-02-11     1 confirmed
+## 15 San Antonio, TX      US              29.4  -98.5 2020-02-13     1 confirmed
+## 16 San Diego County, CA US              32.7 -117.  2020-02-13     1 confirmed</code></pre>
+<p>How about confirmed cases by country?</p>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb264-1" data-line-number="1">coronavirus <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(type <span class="op">==</span><span class="st"> &quot;confirmed&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Country.Region) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="dt">total=</span><span class="kw">sum</span>(cases)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(total))</a></code></pre></div>
+<pre><code>## # A tibble: 30 x 2
+##    Country.Region total
+##    &lt;chr&gt;          &lt;int&gt;
+##  1 Mainland China 70446
+##  2 Others           355
+##  3 Singapore         75
+##  4 Japan             59
+##  5 Hong Kong         57
+##  6 Thailand          34
+##  7 South Korea       29
+##  8 Malaysia          22
+##  9 Taiwan            20
+## 10 Germany           16
+## # … with 20 more rows</code></pre>
+<p>With this library, you could track this every day. Pretty neat, if you ask me.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="advanced-rvest.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/16-census.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["datajournalism.pdf", "datajournalism.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

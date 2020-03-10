@@ -24,7 +24,7 @@
 <meta name="author" content="Matt Waite" />
 
 
-<meta name="date" content="2020-02-26" />
+<meta name="date" content="2020-03-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="scraping-data-with-rvest.html"/>
-
+<link rel="next" href="intro-to-apis-the-census.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -203,6 +203,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.1" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html#a-more-difficult-example"><i class="fa fa-check"></i><b>15.1</b> A more difficult example</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="advanced-rvest.html"><a href="advanced-rvest.html"><i class="fa fa-check"></i><b>16</b> Advanced rvest</a></li>
+<li class="chapter" data-level="17" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html"><i class="fa fa-check"></i><b>17</b> Intro to APIs: The Census</a><ul>
+<li class="chapter" data-level="17.1" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html#the-acs"><i class="fa fa-check"></i><b>17.1</b> The ACS</a></li>
+<li class="chapter" data-level="17.2" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html#bonus-api-example-coronavirus"><i class="fa fa-check"></i><b>17.2</b> Bonus API example: Coronavirus</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -240,6 +244,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb220-3" data-line-number="3"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="dt">xpath =</span> <span class="st">&#39;//*[@id=&quot;leg_day&quot;]&#39;</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb220-4" data-line-number="4"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;option&quot;</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb220-5" data-line-number="5"><span class="st">  </span><span class="kw">html_attrs</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" data-line-number="1">calendar[<span class="dv">1</span>][<span class="dv">1</span>]</a></code></pre></div>
+<pre><code>## [[1]]
+##        value 
+## &quot;2020-01-08&quot;</code></pre>
 <p>Now this part gets tough, but if you follow, it’s logical. It’s step by step, really.</p>
 <p>First, I noticed at the top of the agenda pages is a link to the daily agenda in csv format. Convenient, that.</p>
 <p><img src="images/advrvest2.png" width="950" /></p>
@@ -259,38 +267,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Then, because I’m a decent fellow, I’m going to pause my query for three seconds to give their servers a break.</li>
 </ol>
 <p>Let’s run it.</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" data-line-number="1">allbills &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-01-14&amp;print=csv&quot;</span>, <span class="dt">col_types =</span> <span class="kw">cols</span>()) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Date =</span> <span class="kw">as.Date</span>(<span class="st">&quot;2020-01-01&quot;</span>))<span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="st">`</span><span class="dt">Section Header</span><span class="st">`</span> <span class="op">==</span><span class="st"> &quot;Blah&quot;</span>)</a>
-<a class="sourceLine" id="cb222-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb222-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> calendar){</a>
-<a class="sourceLine" id="cb222-4" data-line-number="4">  date &lt;-<span class="st"> </span><span class="kw">gsub</span>(<span class="st">&quot;selected&quot;</span>, <span class="st">&quot;&quot;</span>, i)</a>
-<a class="sourceLine" id="cb222-5" data-line-number="5">  checkdate &lt;-<span class="st"> </span><span class="kw">as.Date</span>(date)</a>
-<a class="sourceLine" id="cb222-6" data-line-number="6">  </a>
-<a class="sourceLine" id="cb222-7" data-line-number="7">  <span class="cf">if</span> (checkdate <span class="op">&lt;</span><span class="st"> </span><span class="kw">Sys.Date</span>() <span class="op">&amp;</span><span class="st"> </span>checkdate <span class="op">&gt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-01-13&quot;</span>)) {</a>
-<a class="sourceLine" id="cb222-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb222-9" data-line-number="9">    agendaurl &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;https://nebraskalegislature.gov/calendar/agenda.php?day=&quot;</span>, i, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb222-10" data-line-number="10">    csvurl &lt;-<span class="kw">paste</span>(agendaurl, <span class="st">&quot;&amp;print=csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb222-11" data-line-number="11">  <span class="kw">tryCatch</span>(</a>
-<a class="sourceLine" id="cb222-12" data-line-number="12">    agenda &lt;-<span class="st"> </span><span class="kw">read_csv</span>(csvurl, <span class="dt">col_types =</span> <span class="kw">cols</span>()) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Date =</span> checkdate), </a>
-<a class="sourceLine" id="cb222-13" data-line-number="13">    <span class="dt">error =</span> <span class="cf">function</span>(e){<span class="ot">NA</span>})</a>
-<a class="sourceLine" id="cb222-14" data-line-number="14">  <span class="kw">tryCatch</span>(</a>
-<a class="sourceLine" id="cb222-15" data-line-number="15">    allbills &lt;-<span class="st"> </span><span class="kw">rbind</span>(allbills, agenda), </a>
-<a class="sourceLine" id="cb222-16" data-line-number="16">    <span class="dt">error =</span> <span class="cf">function</span>(e){<span class="ot">NA</span>})</a>
-<a class="sourceLine" id="cb222-17" data-line-number="17">  <span class="kw">Sys.sleep</span>(<span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb222-18" data-line-number="18">  }</a>
-<a class="sourceLine" id="cb222-19" data-line-number="19">}</a></code></pre></div>
-<pre><code>## Warning in if (checkdate &lt; Sys.Date() &amp; checkdate &gt; as.Date(&quot;2020-01-13&quot;)) {:
-## the condition has length &gt; 1 and only the first element will be used</code></pre>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" data-line-number="1">allbills &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-01-14&amp;print=csv&quot;</span>, <span class="dt">col_types =</span> <span class="kw">cols</span>()) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Date =</span> <span class="kw">as.Date</span>(<span class="st">&quot;2020-01-01&quot;</span>))<span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="st">`</span><span class="dt">Section Header</span><span class="st">`</span> <span class="op">==</span><span class="st"> &quot;Blah&quot;</span>)</a>
+<a class="sourceLine" id="cb224-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb224-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> calendar){</a>
+<a class="sourceLine" id="cb224-4" data-line-number="4">  date &lt;-<span class="st"> </span>i[<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb224-5" data-line-number="5">  checkdate &lt;-<span class="st"> </span><span class="kw">as.Date</span>(date)</a>
+<a class="sourceLine" id="cb224-6" data-line-number="6">  </a>
+<a class="sourceLine" id="cb224-7" data-line-number="7">  <span class="cf">if</span> (checkdate <span class="op">&lt;=</span><span class="st"> </span><span class="kw">Sys.Date</span>() <span class="op">&amp;</span><span class="st"> </span>checkdate <span class="op">&gt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-01-13&quot;</span>)) {</a>
+<a class="sourceLine" id="cb224-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb224-9" data-line-number="9">    agendaurl &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;https://nebraskalegislature.gov/calendar/agenda.php?day=&quot;</span>, i, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb224-10" data-line-number="10">    csvurl &lt;-<span class="kw">paste</span>(agendaurl, <span class="st">&quot;&amp;print=csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb224-11" data-line-number="11">  <span class="kw">tryCatch</span>(</a>
+<a class="sourceLine" id="cb224-12" data-line-number="12">    agenda &lt;-<span class="st"> </span><span class="kw">read_csv</span>(csvurl, <span class="dt">col_types =</span> <span class="kw">cols</span>()) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Date =</span> checkdate), </a>
+<a class="sourceLine" id="cb224-13" data-line-number="13">    <span class="dt">error =</span> <span class="cf">function</span>(e){<span class="ot">NA</span>})</a>
+<a class="sourceLine" id="cb224-14" data-line-number="14">  <span class="kw">tryCatch</span>(</a>
+<a class="sourceLine" id="cb224-15" data-line-number="15">    allbills &lt;-<span class="st"> </span><span class="kw">rbind</span>(allbills, agenda), </a>
+<a class="sourceLine" id="cb224-16" data-line-number="16">    <span class="dt">error =</span> <span class="cf">function</span>(e){<span class="ot">NA</span>})</a>
+<a class="sourceLine" id="cb224-17" data-line-number="17">  <span class="kw">Sys.sleep</span>(<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb224-18" data-line-number="18">  }</a>
+<a class="sourceLine" id="cb224-19" data-line-number="19">}</a></code></pre></div>
 <p>And after that, I have a dataset of entries of bills on the floor. So if I want to see who has had the most bills on the floor – including repeats – I could answer that now.</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" data-line-number="1">allbills <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Introducer) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>(<span class="dt">sort=</span><span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">top_n</span>(<span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1">allbills <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Introducer) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>(<span class="dt">sort=</span><span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">top_n</span>(<span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## Selecting by n</code></pre>
 <pre><code>## # A tibble: 5 x 2
 ##   Introducer         n
 ##   &lt;chr&gt;          &lt;int&gt;
-## 1 Kolterman         47
-## 2 Vargas            34
+## 1 Kolterman         44
+## 2 Vargas            32
 ## 3 Pansing Brooks    28
-## 4 Bolz              22
-## 5 Hunt              19</code></pre>
+## 4 Bolz              20
+## 5 Hunt              18</code></pre>
 <p>Senator Kolterman, collect your prize.</p>
 <p>A note about advanced scraping – every site is different. Every time you want to scrape a site, you’ll be puzzling over different problems. But the steps remain the same: find a pattern, exploit it, clean the data on the fly and put it into a place to store it.</p>
 
@@ -300,8 +306,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="scraping-data-with-rvest.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="scraping-data-with-rvest.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="intro-to-apis-the-census.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
