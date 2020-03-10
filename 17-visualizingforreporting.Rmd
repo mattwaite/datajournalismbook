@@ -44,13 +44,13 @@ ggplot() + geom_bar(data=topsightings, aes(x=COUNTY, weight=total))
 The bars look good, but he order makes no sense. In ggplot, we use reorder, and we reorder the x value based on the weight, like this:
 
 ```{r}
-ggplot() + geom_bar(data=totalsightings, aes(x=reorder(COUNTY, total), weight=total))
+ggplot() + geom_bar(data=topsightings, aes(x=reorder(COUNTY, total), weight=total))
 ```
 
 Better, but it looks ... not great on the bottom. We can fix that by flipping the coordinates. 
 
 ```{r}
-ggplot() + geom_bar(data=totalsightings, aes(x=reorder(COUNTY, total), weight=total)) + coord_flip()
+ggplot() + geom_bar(data=topsightings, aes(x=reorder(COUNTY, total), weight=total)) + coord_flip()
 ```
 
 Art? No. Tells you the story? Yep. And for reporting purposes, that's enough. 
