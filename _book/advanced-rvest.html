@@ -24,7 +24,7 @@
 <meta name="author" content="Matt Waite" />
 
 
-<meta name="date" content="2020-03-02" />
+<meta name="date" content="2020-03-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -207,6 +207,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17.1" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html#the-acs"><i class="fa fa-check"></i><b>17.1</b> The ACS</a></li>
 <li class="chapter" data-level="17.2" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html#bonus-api-example-coronavirus"><i class="fa fa-check"></i><b>17.2</b> Bonus API example: Coronavirus</a></li>
 </ul></li>
+<li class="chapter" data-level="18" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html"><i class="fa fa-check"></i><b>18</b> Visualizing your data for reporting</a><ul>
+<li class="chapter" data-level="18.1" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html#bar-charts"><i class="fa fa-check"></i><b>18.1</b> Bar charts</a></li>
+<li class="chapter" data-level="18.2" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html#line-charts"><i class="fa fa-check"></i><b>18.2</b> Line charts</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -286,17 +290,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb224-17" data-line-number="17">  <span class="kw">Sys.sleep</span>(<span class="dv">3</span>)</a>
 <a class="sourceLine" id="cb224-18" data-line-number="18">  }</a>
 <a class="sourceLine" id="cb224-19" data-line-number="19">}</a></code></pre></div>
+<pre><code>## Warning: 2 parsing failures.
+## row      col           expected actual                                                                           file
+##  31 Oneliner delimiter or quote      C &#39;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-06&amp;print=csv&#39;
+##  31 Oneliner delimiter or quote        &#39;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-06&amp;print=csv&#39;</code></pre>
 <p>And after that, I have a dataset of entries of bills on the floor. So if I want to see who has had the most bills on the floor – including repeats – I could answer that now.</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1">allbills <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Introducer) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>(<span class="dt">sort=</span><span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">top_n</span>(<span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" data-line-number="1">allbills <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Introducer) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>(<span class="dt">sort=</span><span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">top_n</span>(<span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## Selecting by n</code></pre>
-<pre><code>## # A tibble: 5 x 2
+<pre><code>## # A tibble: 6 x 2
 ##   Introducer         n
 ##   &lt;chr&gt;          &lt;int&gt;
-## 1 Kolterman         44
-## 2 Vargas            32
-## 3 Pansing Brooks    28
-## 4 Bolz              20
-## 5 Hunt              18</code></pre>
+## 1 Kolterman         46
+## 2 Vargas            34
+## 3 Pansing Brooks    33
+## 4 Bolz              23
+## 5 Brewer            19
+## 6 Hunt              19</code></pre>
 <p>Senator Kolterman, collect your prize.</p>
 <p>A note about advanced scraping – every site is different. Every time you want to scrape a site, you’ll be puzzling over different problems. But the steps remain the same: find a pattern, exploit it, clean the data on the fly and put it into a place to store it.</p>
 
