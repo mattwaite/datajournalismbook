@@ -1,0 +1,100 @@
+# Geographic data basics
+
+Up to now, we've been looking at patterns in data for what is more than this, or what's the middle look like. We've calculated metrics like per capita rates, or looked at how data changes over time. 
+
+Another way we can look at the data is geographically. Is there a spatial pattern to our data? Can we learn anything by using distance as a metric? What if we merge non-geographic data into geographic data? 
+
+The bad news is that there isn't a One Library To Rule Them All when it comes to geo queries in R. But there's one emerging, called Simple Features, that is very good. 
+
+Go to the console and install it with `install.packages("sf")`
+
+To understand geographic queries, you have to get a few things in your head first: 
+
+1. Your query is using planar space. Usually that's some kind of projection of the world. If you're lucky, your data is projected, and the software will handle projection differences under the hood without you knowing anything about it.
+2. Projections are cartographers making opinionated decisions about what the world should look like when you take a spheroid -- the earth isn't perfectly round -- and flatten it. Believe it or not, every state in the US has their own geographic projection. There's dozens upon dozens of them. 
+3. Geographic queries work in layers. In most geographic applications, you'll have muliple layers. You'll have a boundary file, and a river file, and a road file, and a flood file and combined together they make the map. But you have to think in layers. 
+4. See 1. With layers, they're all joined together by the planar space. So you don't need to join one to the other like we did earlier -- the space has done that. So you can query how many X are within the boundaries on layer Y. And it's the plane that holds them together. 
+
+```{r, echo=FALSE}
+knitr::include_graphics(rep("images/geolayers.jpg"))
+```
+
+## Importing and viewing data
+
+Let's start with the absolute basics of geographic data: loading and viewing.
+
+```{r}
+library(tidyverse)
+library(sf)
+library(janitor)
+```
+
+First: an aside on geographic data. There are many formats for geographic data, but data type you'll see the most is called the shapefile. It comes from a company named ERSI, which created the most widely used GIS software in the world. For years, they were the only game in town, really, and the shapefile became ubiquitous, especially so in government and utilities. So more often than not, you'll be dealing with a shapefile. But a shapefile isn't just a shapefile -- it's a series of files that combined make up all the data. There's a .shp file -- that's the main file that pulls it all together -- but it's important to note if your shapefiles has a .prj file, which indicates that the projection is specified. 
+
+The data we're going to be working with is a file from the Department of Homeland Security that is every hospital in the US and the number of beds they have. I'm writing this during the days of coronavirus, and suddenly the number of hospital beds is a top concern. So let's look at where hospital beds are and how many of them are there. [Download this zipped file and expand it](https://unl.box.com/s/o7seh9xqks7gknatihukbdyg6fgbihey).
+
+When you do, it should look something like this:
+
+```{r, echo=FALSE}
+knitr::include_graphics(rep("images/geolayers2.png"))
+```
+
+Simlar to `readr`, the `sf` library has functions to read geographic data. In this case, we're going to use `st_read` to read in our hospitals data.
+
+```{r}
+hospitals <- st_read("data/Hospitals/Hospitals.shp")
+```
+
+From this, we can see that there's 7,581 "features", which is the geographic way of saying rows, observations or things. We can see the geometry type is a POINT, which means if we map this we'll see dots where our hospitals are.
+
+But let's not do that. Really, 7500 dots on a map tells you nothing. Let's look at just Nebraska. Good news -- `sf` plays very nicely with the tidyverse, so we can filter data the way we are accustomed. 
+
+```{r}
+ne <- hospitals %>% filter(STATE == "NE")
+```
+
+What kind of hospitals do we have? 
+
+```{r}
+ne %>% tabyl(TYPE)
+```
+
+Okay, we can safely say that psychiatric, rehabilitation, special, long term care and other types of hospitals are not exactly going to be helpful in this pandemic. We just want CRITICAL ACCESS and GENERAL ACUTE CARE hospitals, which is what we usually associate with a hospital. 
+
+```{r}
+nehospitals <- ne %>% filter(TYPE == "CRITICAL ACCESS" | TYPE == "GENERAL ACUTE CARE")
+```
+
+That gives us 93 hospitals in Nebraska. Where are they? We can simply plot them using ggplot.
+
+```{r}
+ggplot() + geom_sf(data=nehospitals) + theme_minimal()
+```
+
+If you know anything about the state of Nebraska, you can kinda pick out the shape of the state there. But that's not exactly ideal. 
+
+This is where layering becomes more clear. 
+
+Download [this file of county boundaries](https://unl.box.com/s/bgvm2x2wzu66mp5o6qykx1flxzz765dj). We can read it the same way. 
+
+
+```{r}
+counties <- st_read("data/cb_2018_us_county_5m/cb_2018_us_county_5m.shp")
+```
+
+And we can filter it the same way. Remember Nebraska's FIPS code from the fatal accident data earlier in the book? 
+
+```{r}
+necounties <- counties %>% filter(STATEFP == "31")
+```
+
+And now we can layer them in. Something to note: The layers are rendered in the order they appear. So the first geom_sf is rendered first. The second geom_sf is rendered ON TOP OF the first one. 
+
+So if we want to see where hospitals are in Nebraska, we add the counties, then the hospitals.
+
+```{r}
+ggplot() + geom_sf(data=necounties) + geom_sf(data=nehospitals) + theme_minimal()
+```
+
+And with that, we can see some questions already arising. How many counties don't have hospitals at all? How many beds are there in each county? What if we had towns as points. Could we find the town that's the farthest from a hospital?
+
