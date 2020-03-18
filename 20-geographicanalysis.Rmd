@@ -1,0 +1,164 @@
+# Geographic analysis
+
+In the previous chapter, we looked at Nebraska's hospitals and used layers to show where hospitals on a map of Nebraska's counties. Let's go little further. 
+
+First, we get caught up to where we were last time. 
+
+```{r}
+library(tidyverse)
+library(sf)
+library(janitor)
+library(scales)
+```
+
+```{r}
+hospitals <- st_read("data/Hospitals/Hospitals.shp")
+```
+
+```{r}
+ne <- hospitals %>% filter(STATE == "NE")
+```
+
+```{r}
+nehospitals <- ne %>% filter(TYPE == "CRITICAL ACCESS" | TYPE == "GENERAL ACUTE CARE")
+```
+
+```{r}
+counties <- st_read("data/cb_2018_us_county_5m/cb_2018_us_county_5m.shp")
+```
+
+```{r}
+necounties <- counties %>% filter(STATEFP == "31")
+```
+
+Now that we're in the same place as last time, let's start asking questions of this data. For starters: how many hopsital beds are there in each county? 
+
+At first, we can look at the `nehospitals` data and see there's a `COUNTY` field that would make for an easy group and summarize.
+
+```{r}
+nehospitals %>% group_by(COUNTY) %>% summarize(total_beds=sum(BEDS))
+```
+
+But look at Thurston County. How does a county have a negative number of hospital beds? When DHS doesn't know and can't find it, they put in -999 to indicate unknown. That's ... obivously not good for us, so we need to filter that. 
+
+Also, notice we still get a geometry? That's because `nehospitals` isn't a dataframe -- it's a simple features file. So that geometry is coming with, regardless. Except in this case, it's useless. It's a collection of points. It does us no good. 
+
+What we really want to do with this data is join the number of beds in each county to the county map, and then shade those counties by the number of beds. It's a style of map called a cloropleth map. You've seen them before. 
+
+To do that, we need to make a dataframe. In our our hospitals data, we have a field called COUNTYFIPS that is identical to the GEOID in the counties data -- it's the merging of the state fips and the county fips to make a unique number for each county. So in one query, we need to convert our `sf` file to a dataframe, filter out the -999 hospital, group it by the COUNTY and COUNTYFIPS and then, to save us some hassle, we're going to rename that COUNTYFIPS field to GEOID which makes our join easier. And, as one last convenience, we're going to drop the geometry, because that too will cause confusion. 
+
+Follow? No worries if you didn't. Each step by itself is simple, and they add up together.
+
+```{r}
+nebedcount <- 
+  as.data.frame(
+    nehospitals %>% 
+      filter(BEDS != -999) %>% 
+      group_by(COUNTY, COUNTYFIPS) %>% 
+      summarize(total_beds = sum(BEDS)
+  ) %>% 
+    rename(GEOID = COUNTYFIPS)) %>% 
+  select(-geometry)
+```
+
+Let's take a look at what we got:
+
+```{r}
+head(nebedcount)
+```
+
+Pretty simple. Three columns: COUNTY, GEOID and total_beds. 
+
+Now using what we learned in the joining chapter, we can combine them with our counties data. 
+
+```{r}
+nehospbycounty <- necounties %>% left_join(nebedcount, by="GEOID")
+```
+
+We can ignore that warning. 
+
+Now we can map it. What's going to change here is we're going to add a fill to our aes in our geom_sf.
+
+```{r}
+ggplot() + 
+  geom_sf(data=nehospbycounty, aes(fill=total_beds)) + 
+  theme_minimal()
+```
+
+We get what we expect ... it's not ideal. We can't really tell a difference between anything outside of Douglas and Lancaster counties. So we can add a scale in here. This one is called viridis, and it makes a more visibile color ramp. And since we have a large disparity between Douglas County and pretty much everywhere else, we'll make the scale exponential.
+
+```{r}
+ggplot() + 
+  geom_sf(data=nehospbycounty, aes(fill=total_beds)) + 
+  theme_minimal() + 
+  scale_fill_viridis_c(option = "plasma", trans = "sqrt")
+```
+
+So there's the map. How about a list:
+
+```{r}
+nebedcount %>% select(COUNTY, total_beds) %>% arrange(desc(total_beds)) 
+```
+
+So there's a lot of hosptial beds in Omaha (DOUGLAS) and Lincoln (LANCASTER). Some quick math shows there 3,463 beds in those two counties. How many beds are in the rest of the state combined? 
+
+```{r}
+nebedcount %>% filter(COUNTY != "DOUGLAS" & COUNTY != "LANCASTER") %>% summarize(sum(total_beds))
+```
+
+How many total beds? 
+
+```{r}
+nebedcount %>% summarize(sum(total_beds))
+```
+
+So there's 6,104 beds in the state and 3,463 of them are in Omaha and Lincoln. What perent is that? 
+
+```{r}
+3463/6104
+```
+
+According to this data, 57 percent of the state's hospital beds are in two counties. What about population?
+
+## Why tidycensus is so useful
+
+Most of the time when we're looking at population questions, we're looking at Census data. So what percent of people live in Lancaster and Douglas counties? 
+
+```{r}
+library(tidycensus)
+```
+
+In this case, the population variable we're looking for is Total Population, which is `B01003_001` and we're looking at the county geography. Here's what that looks like:
+
+```{r}
+nepop <- get_acs(geography = "county", 
+              variables = c(population = "B01003_001"), 
+              state = "NE", 
+              year = 2018)
+```
+
+First we can filter FOR Douglas OR Lancaster using the | character: 
+
+```{r}
+nepop %>% filter(NAME == "Lancaster County, Nebraska" | NAME == "Douglas County, Nebraska") %>% summarize(sum(estimate))
+```
+
+Now without them: 
+
+```{r}
+nepop %>% filter(NAME != "Lancaster County, Nebraska" | NAME != "Douglas County, Nebraska") %>% summarize(sum(estimate))
+```
+
+All together now:
+
+```{r}
+nepop %>% summarize(sum(estimate))
+```
+
+And the percentage:
+
+```{r}
+865086/1904760
+```
+
+So Omaha and Lincoln represent 57 percent of the hospital beds, but only 45 percent of the population.

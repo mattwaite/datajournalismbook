@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 20 Geographic data basics | Data Journalism with R and the Tidyverse</title>
+  <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 20 Geographic data basics | Data Journalism with R and the Tidyverse" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 20 Geographic data basics | Data Journalism with R and the Tidyverse" />
+  
+  <meta name="twitter:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  
+
+<meta name="author" content="Matt Waite" />
+
+
+<meta name="date" content="2020-03-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="visualizing-your-data-for-publication.html"/>
+<link rel="next" href="geographic-queries.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-160712129-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-160712129-1');
+</script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="http://mattwaite.github.io/datajournalism/">Data Journalism With R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#modern-data-journalism"><i class="fa fa-check"></i><b>1.1</b> Modern data journalism</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installations"><i class="fa fa-check"></i><b>1.2</b> Installations</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#about-this-book"><i class="fa fa-check"></i><b>1.3</b> About this book</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#what-well-cover"><i class="fa fa-check"></i><b>1.4</b> What we’ll cover</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="public-records.html"><a href="public-records.html"><i class="fa fa-check"></i><b>2</b> Public records</a><ul>
+<li class="chapter" data-level="2.1" data-path="public-records.html"><a href="public-records.html#federal-law"><i class="fa fa-check"></i><b>2.1</b> Federal law</a></li>
+<li class="chapter" data-level="2.2" data-path="public-records.html"><a href="public-records.html#state-law"><i class="fa fa-check"></i><b>2.2</b> State law</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>3</b> R basics</a><ul>
+<li class="chapter" data-level="3.1" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-1"><i class="fa fa-check"></i><b>3.1</b> Adding libraries, part 1</a></li>
+<li class="chapter" data-level="3.2" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-2"><i class="fa fa-check"></i><b>3.2</b> Adding libraries, part 2</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html"><i class="fa fa-check"></i><b>4</b> Data journalism in the age of replication</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#the-stylebook"><i class="fa fa-check"></i><b>4.1</b> The stylebook</a></li>
+<li class="chapter" data-level="4.2" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication"><i class="fa fa-check"></i><b>4.2</b> Replication</a></li>
+<li class="chapter" data-level="4.3" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#goodbye-excel"><i class="fa fa-check"></i><b>4.3</b> Goodbye Excel?</a></li>
+<li class="chapter" data-level="4.4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#receptivity-is-high"><i class="fa fa-check"></i><b>4.4</b> “Receptivity … is high”</a></li>
+<li class="chapter" data-level="4.5" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication-in-notebooks"><i class="fa fa-check"></i><b>4.5</b> Replication in notebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html"><i class="fa fa-check"></i><b>5</b> Data, structures and types</a><ul>
+<li class="chapter" data-level="5.1" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#rows-and-columns"><i class="fa fa-check"></i><b>5.1</b> Rows and columns</a></li>
+<li class="chapter" data-level="5.2" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#types"><i class="fa fa-check"></i><b>5.2</b> Types</a></li>
+<li class="chapter" data-level="5.3" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#a-simple-way-to-get-data"><i class="fa fa-check"></i><b>5.3</b> A simple way to get data</a></li>
+<li class="chapter" data-level="5.4" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#cleaning-the-data"><i class="fa fa-check"></i><b>5.4</b> Cleaning the data</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="aggregates.html"><a href="aggregates.html"><i class="fa fa-check"></i><b>6</b> Aggregates</a><ul>
+<li class="chapter" data-level="6.1" data-path="aggregates.html"><a href="aggregates.html#importing-data"><i class="fa fa-check"></i><b>6.1</b> Importing data</a></li>
+<li class="chapter" data-level="6.2" data-path="aggregates.html"><a href="aggregates.html#group-by-and-count"><i class="fa fa-check"></i><b>6.2</b> Group by and count</a></li>
+<li class="chapter" data-level="6.3" data-path="aggregates.html"><a href="aggregates.html#other-aggregates-mean-and-median"><i class="fa fa-check"></i><b>6.3</b> Other aggregates: Mean and median</a></li>
+<li class="chapter" data-level="6.4" data-path="aggregates.html"><a href="aggregates.html#even-more-aggregates"><i class="fa fa-check"></i><b>6.4</b> Even more aggregates</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>7</b> Mutating data</a><ul>
+<li class="chapter" data-level="7.1" data-path="mutating-data.html"><a href="mutating-data.html#another-use-of-mutate"><i class="fa fa-check"></i><b>7.1</b> Another use of mutate</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>8</b> Working with dates</a><ul>
+<li class="chapter" data-level="8.1" data-path="working-with-dates.html"><a href="working-with-dates.html#the-hard-way"><i class="fa fa-check"></i><b>8.1</b> The hard way</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="filters-and-selections.html"><a href="filters-and-selections.html"><i class="fa fa-check"></i><b>9</b> Filters and selections</a><ul>
+<li class="chapter" data-level="9.1" data-path="filters-and-selections.html"><a href="filters-and-selections.html#combining-filters"><i class="fa fa-check"></i><b>9.1</b> Combining filters</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html"><i class="fa fa-check"></i><b>10</b> Data Cleaning Part I: Data smells</a><ul>
+<li class="chapter" data-level="10.1" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#wrong-type"><i class="fa fa-check"></i><b>10.1</b> Wrong Type</a></li>
+<li class="chapter" data-level="10.2" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#missing-data"><i class="fa fa-check"></i><b>10.2</b> Missing Data</a></li>
+<li class="chapter" data-level="10.3" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#gaps-in-data"><i class="fa fa-check"></i><b>10.3</b> Gaps in data</a></li>
+<li class="chapter" data-level="10.4" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#internal-inconsistency"><i class="fa fa-check"></i><b>10.4</b> Internal inconsistency</a></li>
+<li class="chapter" data-level="10.5" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#a-shortcut-summary"><i class="fa fa-check"></i><b>10.5</b> A Shortcut: Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html"><i class="fa fa-check"></i><b>11</b> Data Cleaning Part II: Janitor</a><ul>
+<li class="chapter" data-level="11.1" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#cleaning-headers"><i class="fa fa-check"></i><b>11.1</b> Cleaning headers</a></li>
+<li class="chapter" data-level="11.2" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#duplicates"><i class="fa fa-check"></i><b>11.2</b> Duplicates</a></li>
+<li class="chapter" data-level="11.3" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#inconsistency"><i class="fa fa-check"></i><b>11.3</b> Inconsistency</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html"><i class="fa fa-check"></i><b>12</b> Data Cleaning Part III: Open Refine</a><ul>
+<li class="chapter" data-level="12.1" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#refinr-open-refine-in-r"><i class="fa fa-check"></i><b>12.1</b> Refinr, Open Refine in R</a></li>
+<li class="chapter" data-level="12.2" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#more-complex-issues"><i class="fa fa-check"></i><b>12.2</b> More complex issues</a></li>
+<li class="chapter" data-level="12.3" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#manually-cleaning-data-with-open-refine"><i class="fa fa-check"></i><b>12.3</b> Manually cleaning data with Open Refine</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html"><i class="fa fa-check"></i><b>13</b> Cleaning Data Part IV: PDFs</a><ul>
+<li class="chapter" data-level="13.1" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-looks-good-but-goes-wrong"><i class="fa fa-check"></i><b>13.1</b> When it looks good, but goes wrong</a></li>
+<li class="chapter" data-level="13.2" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-works-well."><i class="fa fa-check"></i><b>13.2</b> When it works well.</a></li>
+<li class="chapter" data-level="13.3" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#cleaning-up-the-data-in-r"><i class="fa fa-check"></i><b>13.3</b> Cleaning up the data in R</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="combining-and-joining.html"><a href="combining-and-joining.html"><i class="fa fa-check"></i><b>14</b> Combining and joining</a><ul>
+<li class="chapter" data-level="14.1" data-path="combining-and-joining.html"><a href="combining-and-joining.html#combining-data"><i class="fa fa-check"></i><b>14.1</b> Combining data</a></li>
+<li class="chapter" data-level="14.2" data-path="combining-and-joining.html"><a href="combining-and-joining.html#joining-data"><i class="fa fa-check"></i><b>14.2</b> Joining data</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html"><i class="fa fa-check"></i><b>15</b> Scraping data with Rvest</a><ul>
+<li class="chapter" data-level="15.1" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html#a-more-difficult-example"><i class="fa fa-check"></i><b>15.1</b> A more difficult example</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="advanced-rvest.html"><a href="advanced-rvest.html"><i class="fa fa-check"></i><b>16</b> Advanced rvest</a></li>
+<li class="chapter" data-level="17" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html"><i class="fa fa-check"></i><b>17</b> Intro to APIs: The Census</a><ul>
+<li class="chapter" data-level="17.1" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html#the-acs"><i class="fa fa-check"></i><b>17.1</b> The ACS</a></li>
+<li class="chapter" data-level="17.2" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html#bonus-api-example-coronavirus"><i class="fa fa-check"></i><b>17.2</b> Bonus API example: Coronavirus</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html"><i class="fa fa-check"></i><b>18</b> Visualizing your data for reporting</a><ul>
+<li class="chapter" data-level="18.1" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html#bar-charts"><i class="fa fa-check"></i><b>18.1</b> Bar charts</a></li>
+<li class="chapter" data-level="18.2" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html#line-charts"><i class="fa fa-check"></i><b>18.2</b> Line charts</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="visualizing-your-data-for-publication.html"><a href="visualizing-your-data-for-publication.html"><i class="fa fa-check"></i><b>19</b> Visualizing your data for publication</a><ul>
+<li class="chapter" data-level="19.1" data-path="visualizing-your-data-for-publication.html"><a href="visualizing-your-data-for-publication.html#datawrapper"><i class="fa fa-check"></i><b>19.1</b> Datawrapper</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html"><i class="fa fa-check"></i><b>20</b> Geographic data basics</a><ul>
+<li class="chapter" data-level="20.1" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html#importing-and-viewing-data"><i class="fa fa-check"></i><b>20.1</b> Importing and viewing data</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="geographic-queries.html"><a href="geographic-queries.html"><i class="fa fa-check"></i><b>21</b> Geographic queries</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Journalism with R and the Tidyverse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="geographic-data-basics" class="section level1">
+<h1><span class="header-section-number">Chapter 20</span> Geographic data basics</h1>
+<p>Up to now, we’ve been looking at patterns in data for what is more than this, or what’s the middle look like. We’ve calculated metrics like per capita rates, or looked at how data changes over time.</p>
+<p>Another way we can look at the data is geographically. Is there a spatial pattern to our data? Can we learn anything by using distance as a metric? What if we merge non-geographic data into geographic data?</p>
+<p>The bad news is that there isn’t a One Library To Rule Them All when it comes to geo queries in R. But there’s one emerging, called Simple Features, that is very good.</p>
+<p>Go to the console and install it with <code>install.packages(&quot;sf&quot;)</code></p>
+<p>To understand geographic queries, you have to get a few things in your head first:</p>
+<ol style="list-style-type: decimal">
+<li>Your query is using planar space. Usually that’s some kind of projection of the world. If you’re lucky, your data is projected, and the software will handle projection differences under the hood without you knowing anything about it.</li>
+<li>Projections are cartographers making opinionated decisions about what the world should look like when you take a spheroid – the earth isn’t perfectly round – and flatten it. Believe it or not, every state in the US has their own geographic projection. There’s dozens upon dozens of them.</li>
+<li>Geographic queries work in layers. In most geographic applications, you’ll have muliple layers. You’ll have a boundary file, and a river file, and a road file, and a flood file and combined together they make the map. But you have to think in layers.</li>
+<li>See 1. With layers, they’re all joined together by the planar space. So you don’t need to join one to the other like we did earlier – the space has done that. So you can query how many X are within the boundaries on layer Y. And it’s the plane that holds them together.</li>
+</ol>
+<p><img src="images/geolayers.jpg" width="512" /></p>
+<div id="importing-and-viewing-data" class="section level2">
+<h2><span class="header-section-number">20.1</span> Importing and viewing data</h2>
+<p>Let’s start with the absolute basics of geographic data: loading and viewing.</p>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb288-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb288-2" data-line-number="2"><span class="kw">library</span>(sf)</a></code></pre></div>
+<pre><code>## Warning: package &#39;sf&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## Linking to GEOS 3.7.2, GDAL 2.4.2, PROJ 5.2.0</code></pre>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb291-1" data-line-number="1"><span class="kw">library</span>(janitor)</a></code></pre></div>
+<p>First: an aside on geographic data. There are many formats for geographic data, but data type you’ll see the most is called the shapefile. It comes from a company named ERSI, which created the most widely used GIS software in the world. For years, they were the only game in town, really, and the shapefile became ubiquitous, especially so in government and utilities. So more often than not, you’ll be dealing with a shapefile. But a shapefile isn’t just a shapefile – it’s a series of files that combined make up all the data. There’s a .shp file – that’s the main file that pulls it all together – but it’s important to note if your shapefiles has a .prj file, which indicates that the projection is specified.</p>
+<p>The data we’re going to be working with is a file from the Department of Homeland Security that is every hospital in the US and the number of beds they have. I’m writing this during the days of coronavirus, and suddenly the number of hospital beds is a top concern. So let’s look at where hospital beds are and how many of them are there. <a href="https://unl.box.com/s/o7seh9xqks7gknatihukbdyg6fgbihey">Download this zipped file and expand it</a>.</p>
+<p>When you do, it should look something like this:</p>
+<p><img src="images/geolayers2.png" width="718" /></p>
+<p>Simlar to <code>readr</code>, the <code>sf</code> library has functions to read geographic data. In this case, we’re going to use <code>st_read</code> to read in our hospitals data.</p>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb292-1" data-line-number="1">hospitals &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;data/Hospitals/Hospitals.shp&quot;</span>)</a></code></pre></div>
+<pre><code>## Reading layer `Hospitals&#39; from data source `/Users/mwaite3/Box/BookProjects/DataJournalismWithR/data/Hospitals/Hospitals.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 7581 features and 32 fields
+## geometry type:  POINT
+## dimension:      XY
+## bbox:           xmin: -176.6403 ymin: -14.29024 xmax: 145.7245 ymax: 71.29285
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs</code></pre>
+<p>From this, we can see that there’s 7,581 “features”, which is the geographic way of saying rows, observations or things. We can see the geometry type is a POINT, which means if we map this we’ll see dots where our hospitals are.</p>
+<p>But let’s not do that. Really, 7500 dots on a map tells you nothing. Let’s look at just Nebraska. Good news – <code>sf</code> plays very nicely with the tidyverse, so we can filter data the way we are accustomed.</p>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb294-1" data-line-number="1">ne &lt;-<span class="st"> </span>hospitals <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(STATE <span class="op">==</span><span class="st"> &quot;NE&quot;</span>)</a></code></pre></div>
+<p>What kind of hospitals do we have?</p>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb295-1" data-line-number="1">ne <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tabyl</span>(TYPE)</a></code></pre></div>
+<pre><code>##        TYPEgeometry  n     percent
+##            CHILDREN  3 0.027027027
+##     CHRONIC DISEASE  0 0.000000000
+##     CRITICAL ACCESS 67 0.603603604
+##  GENERAL ACUTE CARE 26 0.234234234
+##      LONG TERM CARE  3 0.027027027
+##            MILITARY  2 0.018018018
+##         PSYCHIATRIC  5 0.045045045
+##      REHABILITATION  2 0.018018018
+##             SPECIAL  2 0.018018018
+##               WOMEN  1 0.009009009</code></pre>
+<p>Okay, we can safely say that psychiatric, rehabilitation, special, long term care and other types of hospitals are not exactly going to be helpful in this pandemic. We just want CRITICAL ACCESS and GENERAL ACUTE CARE hospitals, which is what we usually associate with a hospital.</p>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb297-1" data-line-number="1">nehospitals &lt;-<span class="st"> </span>ne <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(TYPE <span class="op">==</span><span class="st"> &quot;CRITICAL ACCESS&quot;</span> <span class="op">|</span><span class="st"> </span>TYPE <span class="op">==</span><span class="st"> &quot;GENERAL ACUTE CARE&quot;</span>)</a></code></pre></div>
+<p>That gives us 93 hospitals in Nebraska. Where are they? We can simply plot them using ggplot.</p>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb298-1" data-line-number="1"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>(<span class="dt">data=</span>nehospitals) <span class="op">+</span><span class="st"> </span><span class="kw">theme_minimal</span>()</a></code></pre></div>
+<p><img src="datajournalism_files/figure-html/unnamed-chunk-178-1.png" width="672" /></p>
+<p>If you know anything about the state of Nebraska, you can kinda pick out the shape of the state there. But that’s not exactly ideal.</p>
+<p>This is where layering becomes more clear.</p>
+<p>Download <a href="https://unl.box.com/s/bgvm2x2wzu66mp5o6qykx1flxzz765dj">this file of county boundaries</a>. We can read it the same way.</p>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb299-1" data-line-number="1">counties &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;data/cb_2018_us_county_5m/cb_2018_us_county_5m.shp&quot;</span>)</a></code></pre></div>
+<pre><code>## Reading layer `cb_2018_us_county_5m&#39; from data source `/Users/mwaite3/Box/BookProjects/DataJournalismWithR/data/cb_2018_us_county_5m/cb_2018_us_county_5m.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 3233 features and 9 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -179.1473 ymin: -14.55255 xmax: 179.7785 ymax: 71.35256
+## epsg (SRID):    4269
+## proj4string:    +proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs</code></pre>
+<p>And we can filter it the same way. Remember Nebraska’s FIPS code from the fatal accident data earlier in the book?</p>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb301-1" data-line-number="1">necounties &lt;-<span class="st"> </span>counties <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(STATEFP <span class="op">==</span><span class="st"> &quot;31&quot;</span>)</a></code></pre></div>
+<p>And now we can layer them in. Something to note: The layers are rendered in the order they appear. So the first geom_sf is rendered first. The second geom_sf is rendered ON TOP OF the first one.</p>
+<p>So if we want to see where hospitals are in Nebraska, we add the counties, then the hospitals.</p>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb302-1" data-line-number="1"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>(<span class="dt">data=</span>necounties) <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>(<span class="dt">data=</span>nehospitals) <span class="op">+</span><span class="st"> </span><span class="kw">theme_minimal</span>()</a></code></pre></div>
+<p><img src="datajournalism_files/figure-html/unnamed-chunk-181-1.png" width="672" /></p>
+<p>And with that, we can see some questions already arising. How many counties don’t have hospitals at all? How many beds are there in each county? What if we had towns as points. Could we find the town that’s the farthest from a hospital?</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="visualizing-your-data-for-publication.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="geographic-queries.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/19-geographicbasics.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["datajournalism.pdf", "datajournalism.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

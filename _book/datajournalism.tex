@@ -118,7 +118,7 @@
 
 \title{Data Journalism with R and the Tidyverse}
 \author{Matt Waite}
-\date{2020-03-09}
+\date{2020-03-16}
 
 \begin{document}
 \maketitle
@@ -2349,7 +2349,7 @@ Here's an example using sensible defaults for weighting -- unfortunately \href{h
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3032
+## [1] 3035
 \end{verbatim}
 
 Cuts it down by almost 1000. That seems pretty good. Here's a different method, using a method that turns words into phonetic spellings called soundex.
@@ -3190,11 +3190,11 @@ You can see that \texttt{harderagenda} has a list of four instead of a list of o
 ## 2      Geist
 ## 3   Chambers
 ## 4    Gragert
-##                                                                                                    Description
-## 1 Define the required beginning date and change deferment of payment provisions under certain retirement plans
-## 2                                                                 Change provisions relating to motor vehicles
-## 3                          Change provisions relating to racial profiling and require law enforcement training
-## 4     Provide for state park permits  for disabled veterans and change nonresident fees for state park permits
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                           Description
+## 1                                                                                                                                                                                                                                                                                                                                                        Define the required beginning date and change deferment of payment provisions under certain retirement plans
+## 2 Change and provide provisions for REAL ID, motor vehicle fees, federal references, handicapped parking permits, junked vehicles, odometers, destroyed vehicles, the International Registration Plan, license plates, electronic delivery of operator’s licenses and ID cards, CDL’s, point system, vehicle length and weight limits; ATV’s and UTV’s, the International Tax Agreement Act, the unified carrier registration plan and agreement, and civil penalties
+## 3                                                                                                                                                                                                                                                                                                                                                                                 Change provisions relating to racial profiling and require law enforcement training
+## 4                                                                                                                                                                                                                                                                                                                                                            Provide for state park permits  for disabled veterans and change nonresident fees for state park permits
 \end{verbatim}
 
 Here's the second:
@@ -3273,11 +3273,11 @@ So we know can see there's some garbage in there we want to clean out. We can us
 ## 2      Geist
 ## 3   Chambers
 ## 4    Gragert
-##                                                                                                    Description
-## 1 Define the required beginning date and change deferment of payment provisions under certain retirement plans
-## 2                                                                 Change provisions relating to motor vehicles
-## 3                          Change provisions relating to racial profiling and require law enforcement training
-## 4     Provide for state park permits  for disabled veterans and change nonresident fees for state park permits
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                           Description
+## 1                                                                                                                                                                                                                                                                                                                                                        Define the required beginning date and change deferment of payment provisions under certain retirement plans
+## 2 Change and provide provisions for REAL ID, motor vehicle fees, federal references, handicapped parking permits, junked vehicles, odometers, destroyed vehicles, the International Registration Plan, license plates, electronic delivery of operator’s licenses and ID cards, CDL’s, point system, vehicle length and weight limits; ATV’s and UTV’s, the International Tax Agreement Act, the unified carrier registration plan and agreement, and civil penalties
+## 3                                                                                                                                                                                                                                                                                                                                                                                 Change provisions relating to racial profiling and require law enforcement training
+## 4                                                                                                                                                                                                                                                                                                                                                            Provide for state park permits  for disabled veterans and change nonresident fees for state park permits
 ##                               Stage
 ## 1 SELECT FILE:  2020 PRIORITY BILLS
 ## 2 SELECT FILE:  2020 PRIORITY BILLS
@@ -3366,17 +3366,17 @@ And now we have a dataset of all bills and what stage they're at for that day.
 ## 8                   Hunt
 ## 9  Agriculture Committee
 ## 10                Howard
-##                                                                                                                                                                                                            Description
-## 1                                                                                                         Define the required beginning date and change deferment of payment provisions under certain retirement plans
-## 2                                                                                                                                                                         Change provisions relating to motor vehicles
-## 3                                                                                                                                  Change provisions relating to racial profiling and require law enforcement training
-## 4                                                                                                             Provide for state park permits  for disabled veterans and change nonresident fees for state park permits
-## 5                                                                                                                                          Change the Child Protection and Family Safety Act and eliminate a committee
-## 6                                                                                                                                                   Change provisions of the Multiple Employer Welfare Arrangement Act
-## 7                                                                                                                                                                          Change the Nebraska Municipal Land Bank Act
-## 8                                                                                                                                                                              Adopt the Nebraska Fair Pay to Play Act
-## 9  Adopt the Animal Health and Disease Control Act, eliminate and provide duties for the Department of Agriculture, eliminate various acts, terminate and transfer certain funds, create a fund, and provide penalties
-## 10                                                                                                                                                                    Congratulate Leona R. Doll on her 100th birthday
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                            Description
+## 1                                                                                                                                                                                                                                                                                                                                                         Define the required beginning date and change deferment of payment provisions under certain retirement plans
+## 2  Change and provide provisions for REAL ID, motor vehicle fees, federal references, handicapped parking permits, junked vehicles, odometers, destroyed vehicles, the International Registration Plan, license plates, electronic delivery of operator’s licenses and ID cards, CDL’s, point system, vehicle length and weight limits; ATV’s and UTV’s, the International Tax Agreement Act, the unified carrier registration plan and agreement, and civil penalties
+## 3                                                                                                                                                                                                                                                                                                                                                                                  Change provisions relating to racial profiling and require law enforcement training
+## 4                                                                                                                                                                                                                                                                                                                                                             Provide for state park permits  for disabled veterans and change nonresident fees for state park permits
+## 5                                                                                                                                                                                                                                                                                                                                                                                          Change the Child Protection and Family Safety Act and eliminate a committee
+## 6                                                                                                                                                                                                                                                                                                                                                                                                   Change provisions of the Multiple Employer Welfare Arrangement Act
+## 7                                                                                                                                                                                                                                                                                                                                                                                                                          Change the Nebraska Municipal Land Bank Act
+## 8                                                                                                                                                                                                                                                                                                                                                                                                                              Adopt the Nebraska Fair Pay to Play Act
+## 9                                                                                                                                                                                                                                                  Adopt the Animal Health and Disease Control Act, eliminate and provide duties for the Department of Agriculture, eliminate various acts, terminate and transfer certain funds, create a fund, and provide penalties
+## 10                                                                                                                                                                                                                                                                                                                                                                                                                    Congratulate Leona R. Doll on her 100th birthday
 ##                                                                               Stage
 ## 1                                                 SELECT FILE:  2020 PRIORITY BILLS
 ## 2                                                 SELECT FILE:  2020 PRIORITY BILLS
@@ -3527,15 +3527,14 @@ And after that, I have a dataset of entries of bills on the floor. So if I want 
 \end{verbatim}
 
 \begin{verbatim}
-## # A tibble: 6 x 2
+## # A tibble: 5 x 2
 ##   Introducer         n
 ##   <chr>          <int>
 ## 1 Kolterman         46
-## 2 Vargas            34
-## 3 Pansing Brooks    33
+## 2 Pansing Brooks    35
+## 3 Vargas            35
 ## 4 Bolz              23
-## 5 Brewer            19
-## 6 Hunt              19
+## 5 Hughes            21
 \end{verbatim}
 
 Senator Kolterman, collect your prize.
@@ -4102,5 +4101,579 @@ With that, we just add another geom\_line. We will also need to adjust our y axi
 \includegraphics{datajournalism_files/figure-latex/unnamed-chunk-159-1.pdf}
 
 So both counties are growing, but from the line we can see that Omaha is growing just ever so slightly faster. No accounting for taste.
+
+\hypertarget{visualizing-your-data-for-publication}{%
+\chapter{Visualizing your data for publication}\label{visualizing-your-data-for-publication}}
+
+Doing data visualization well, and at professional level, takes time, skill and practice to perfect. Understanding it and doing it at a complex level is an entire class on it's own. It uses some of the same skills here -- grouping, filtering, calculating -- but then takes that data and turns it into data pictures.
+
+But simple stuff -- and even some slightly complicated stuff -- can be done with tools made for people who aren't data viz pros.
+
+The tool we're going to use is called \href{https://www.datawrapper.de/}{Datawrapper}.
+
+First, let's get some data and work with it. \href{https://ourworldindata.org/coronavirus-source-data}{The WHO is publishing corona data as a CSV daily}. Let's look at it.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{coronavirus <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"https://covid.ourworldindata.org/data/full_data.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Parsed with column specification:
+## cols(
+##   date = col_date(format = ""),
+##   location = col_character(),
+##   new_cases = col_double(),
+##   new_deaths = col_double(),
+##   total_cases = col_double(),
+##   total_deaths = col_double()
+## )
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(coronavirus)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 6
+##   date       location    new_cases new_deaths total_cases total_deaths
+##   <date>     <chr>           <dbl>      <dbl>       <dbl>        <dbl>
+## 1 2020-02-25 Afghanistan        NA         NA           1           NA
+## 2 2020-02-26 Afghanistan         0         NA           1           NA
+## 3 2020-02-27 Afghanistan         0         NA           1           NA
+## 4 2020-02-28 Afghanistan         0         NA           1           NA
+## 5 2020-02-29 Afghanistan         0         NA           1           NA
+## 6 2020-03-01 Afghanistan         0         NA           1           NA
+\end{verbatim}
+
+Let's make a CSV of data from the United States. We can do that quickly by adding \texttt{write\_csv} to the end of a filter query.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{coronavirus }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(location }\OperatorTok{==}\StringTok{ "United States"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{write_csv}\NormalTok{(}\StringTok{"uscorona.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{datawrapper}{%
+\section{Datawrapper}\label{datawrapper}}
+
+Making charts in Datawrapper is preposterously simple, which is the point. There are dozens of chart types, and dozens of options. To get from a csv to a chart to publication is very, very easy.
+
+First, go to \href{https://www.datawrapper.de/}{datawrapper.de} and sign up for an account. It's free.
+
+Once logged in, you'll click on New Chart.
+
+\includegraphics[width=32.44in]{images/datawrapper1}
+
+The first thing we'll do is upload our CSV that we created before. Click on XLS/CSV and upload the file.
+
+\includegraphics[width=28.14in]{images/datawrapper2}
+
+Next up is to check and see what Datawrappper did with our data when we upoaded it. As you can see from the text on the left, if it's blue, it's a number. If it's green, it's a date. If it's black, it's text. Red means there's a problem. This data is very clean, so it imports cleanly.
+
+\includegraphics[width=43.64in]{images/datawrapper3}
+
+Now we make a chart. Line chart comes up by default, which is good, because with date based data, that's what we have.
+
+Click on Refine. The first option we want to change is the Tick format. Since we have only so many days of data, change it to months like below.
+
+\includegraphics[width=22.64in]{images/datawrapper4}
+
+Now we need to annotate our charts. Every chart needs a title, a source line and a credit line. Most need chatter (called description here).
+
+\includegraphics[width=42.14in]{images/datawrapper5}
+
+The next thing is we can fix the labels at the ends of the line, to make them readable. Click on them, and a cursor should come up. Change them from the very data-y total\_cases to Total cases along with the rest.
+
+\includegraphics[width=24.97in]{images/datawrapper6}
+
+Now we publish. Some publication systems allow for the embedding of HTML into a post or a story. Some don't. The only way to know is to ask someone at your publication. Every publication system on the planet, though, can publish an image. So there's always a way to export your chart as a PNG file, which you can upload like any photo.
+
+\includegraphics[width=25.31in]{images/datawrapper7}
+
+\hypertarget{geographic-data-basics}{%
+\chapter{Geographic data basics}\label{geographic-data-basics}}
+
+Up to now, we've been looking at patterns in data for what is more than this, or what's the middle look like. We've calculated metrics like per capita rates, or looked at how data changes over time.
+
+Another way we can look at the data is geographically. Is there a spatial pattern to our data? Can we learn anything by using distance as a metric? What if we merge non-geographic data into geographic data?
+
+The bad news is that there isn't a One Library To Rule Them All when it comes to geo queries in R. But there's one emerging, called Simple Features, that is very good.
+
+Go to the console and install it with \texttt{install.packages("sf")}
+
+To understand geographic queries, you have to get a few things in your head first:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Your query is using planar space. Usually that's some kind of projection of the world. If you're lucky, your data is projected, and the software will handle projection differences under the hood without you knowing anything about it.
+\item
+  Projections are cartographers making opinionated decisions about what the world should look like when you take a spheroid -- the earth isn't perfectly round -- and flatten it. Believe it or not, every state in the US has their own geographic projection. There's dozens upon dozens of them.
+\item
+  Geographic queries work in layers. In most geographic applications, you'll have muliple layers. You'll have a boundary file, and a river file, and a road file, and a flood file and combined together they make the map. But you have to think in layers.
+\item
+  See 1. With layers, they're all joined together by the planar space. So you don't need to join one to the other like we did earlier -- the space has done that. So you can query how many X are within the boundaries on layer Y. And it's the plane that holds them together.
+\end{enumerate}
+
+\includegraphics[width=14.22in]{images/geolayers}
+
+\hypertarget{importing-and-viewing-data}{%
+\section{Importing and viewing data}\label{importing-and-viewing-data}}
+
+Let's start with the absolute basics of geographic data: loading and viewing.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\KeywordTok{library}\NormalTok{(sf)}
+\KeywordTok{library}\NormalTok{(janitor)}
+\end{Highlighting}
+\end{Shaded}
+
+First: an aside on geographic data. There are many formats for geographic data, but data type you'll see the most is called the shapefile. It comes from a company named ERSI, which created the most widely used GIS software in the world. For years, they were the only game in town, really, and the shapefile became ubiquitous, especially so in government and utilities. So more often than not, you'll be dealing with a shapefile. But a shapefile isn't just a shapefile -- it's a series of files that combined make up all the data. There's a .shp file -- that's the main file that pulls it all together -- but it's important to note if your shapefiles has a .prj file, which indicates that the projection is specified.
+
+The data we're going to be working with is a file from the Department of Homeland Security that is every hospital in the US and the number of beds they have. I'm writing this during the days of coronavirus, and suddenly the number of hospital beds is a top concern. So let's look at where hospital beds are and how many of them are there. \href{https://unl.box.com/s/o7seh9xqks7gknatihukbdyg6fgbihey}{Download this zipped file and expand it}.
+
+When you do, it should look something like this:
+
+\includegraphics[width=19.94in]{images/geolayers2}
+
+Simlar to \texttt{readr}, the \texttt{sf} library has functions to read geographic data. In this case, we're going to use \texttt{st\_read} to read in our hospitals data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hospitals <-}\StringTok{ }\KeywordTok{st_read}\NormalTok{(}\StringTok{"data/Hospitals/Hospitals.shp"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Reading layer `Hospitals' from data source `/Users/mwaite3/Box/BookProjects/DataJournalismWithR/data/Hospitals/Hospitals.shp' using driver `ESRI Shapefile'
+## Simple feature collection with 7581 features and 32 fields
+## geometry type:  POINT
+## dimension:      XY
+## bbox:           xmin: -176.6403 ymin: -14.29024 xmax: 145.7245 ymax: 71.29285
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs
+\end{verbatim}
+
+From this, we can see that there's 7,581 ``features'', which is the geographic way of saying rows, observations or things. We can see the geometry type is a POINT, which means if we map this we'll see dots where our hospitals are.
+
+But let's not do that. Really, 7500 dots on a map tells you nothing. Let's look at just Nebraska. Good news -- \texttt{sf} plays very nicely with the tidyverse, so we can filter data the way we are accustomed.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ne <-}\StringTok{ }\NormalTok{hospitals }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(STATE }\OperatorTok{==}\StringTok{ "NE"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+What kind of hospitals do we have?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ne }\OperatorTok{%>%}\StringTok{ }\KeywordTok{tabyl}\NormalTok{(TYPE)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        TYPEgeometry  n     percent
+##            CHILDREN  3 0.027027027
+##     CHRONIC DISEASE  0 0.000000000
+##     CRITICAL ACCESS 67 0.603603604
+##  GENERAL ACUTE CARE 26 0.234234234
+##      LONG TERM CARE  3 0.027027027
+##            MILITARY  2 0.018018018
+##         PSYCHIATRIC  5 0.045045045
+##      REHABILITATION  2 0.018018018
+##             SPECIAL  2 0.018018018
+##               WOMEN  1 0.009009009
+\end{verbatim}
+
+Okay, we can safely say that psychiatric, rehabilitation, special, long term care and other types of hospitals are not exactly going to be helpful in this pandemic. We just want CRITICAL ACCESS and GENERAL ACUTE CARE hospitals, which is what we usually associate with a hospital.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nehospitals <-}\StringTok{ }\NormalTok{ne }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(TYPE }\OperatorTok{==}\StringTok{ "CRITICAL ACCESS"} \OperatorTok{|}\StringTok{ }\NormalTok{TYPE }\OperatorTok{==}\StringTok{ "GENERAL ACUTE CARE"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+That gives us 93 hospitals in Nebraska. Where are they? We can simply plot them using ggplot.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_sf}\NormalTok{(}\DataTypeTok{data=}\NormalTok{nehospitals) }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-178-1.pdf}
+
+If you know anything about the state of Nebraska, you can kinda pick out the shape of the state there. But that's not exactly ideal.
+
+This is where layering becomes more clear.
+
+Download \href{https://unl.box.com/s/bgvm2x2wzu66mp5o6qykx1flxzz765dj}{this file of county boundaries}. We can read it the same way.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{counties <-}\StringTok{ }\KeywordTok{st_read}\NormalTok{(}\StringTok{"data/cb_2018_us_county_5m/cb_2018_us_county_5m.shp"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Reading layer `cb_2018_us_county_5m' from data source `/Users/mwaite3/Box/BookProjects/DataJournalismWithR/data/cb_2018_us_county_5m/cb_2018_us_county_5m.shp' using driver `ESRI Shapefile'
+## Simple feature collection with 3233 features and 9 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -179.1473 ymin: -14.55255 xmax: 179.7785 ymax: 71.35256
+## epsg (SRID):    4269
+## proj4string:    +proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs
+\end{verbatim}
+
+And we can filter it the same way. Remember Nebraska's FIPS code from the fatal accident data earlier in the book?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{necounties <-}\StringTok{ }\NormalTok{counties }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(STATEFP }\OperatorTok{==}\StringTok{ "31"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+And now we can layer them in. Something to note: The layers are rendered in the order they appear. So the first geom\_sf is rendered first. The second geom\_sf is rendered ON TOP OF the first one.
+
+So if we want to see where hospitals are in Nebraska, we add the counties, then the hospitals.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_sf}\NormalTok{(}\DataTypeTok{data=}\NormalTok{necounties) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_sf}\NormalTok{(}\DataTypeTok{data=}\NormalTok{nehospitals) }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-181-1.pdf}
+
+And with that, we can see some questions already arising. How many counties don't have hospitals at all? How many beds are there in each county? What if we had towns as points. Could we find the town that's the farthest from a hospital?
+
+\hypertarget{geographic-queries}{%
+\chapter{Geographic queries}\label{geographic-queries}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\KeywordTok{library}\NormalTok{(sf)}
+\KeywordTok{library}\NormalTok{(janitor)}
+\KeywordTok{library}\NormalTok{(scales)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hospitals <-}\StringTok{ }\KeywordTok{st_read}\NormalTok{(}\StringTok{"data/Hospitals/Hospitals.shp"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Reading layer `Hospitals' from data source `/Users/mwaite3/Box/BookProjects/DataJournalismWithR/data/Hospitals/Hospitals.shp' using driver `ESRI Shapefile'
+## Simple feature collection with 7581 features and 32 fields
+## geometry type:  POINT
+## dimension:      XY
+## bbox:           xmin: -176.6403 ymin: -14.29024 xmax: 145.7245 ymax: 71.29285
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ne <-}\StringTok{ }\NormalTok{hospitals }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(STATE }\OperatorTok{==}\StringTok{ "NE"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nehospitals <-}\StringTok{ }\NormalTok{ne }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(TYPE }\OperatorTok{==}\StringTok{ "CRITICAL ACCESS"} \OperatorTok{|}\StringTok{ }\NormalTok{TYPE }\OperatorTok{==}\StringTok{ "GENERAL ACUTE CARE"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{counties <-}\StringTok{ }\KeywordTok{st_read}\NormalTok{(}\StringTok{"data/cb_2018_us_county_5m/cb_2018_us_county_5m.shp"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Reading layer `cb_2018_us_county_5m' from data source `/Users/mwaite3/Box/BookProjects/DataJournalismWithR/data/cb_2018_us_county_5m/cb_2018_us_county_5m.shp' using driver `ESRI Shapefile'
+## Simple feature collection with 3233 features and 9 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -179.1473 ymin: -14.55255 xmax: 179.7785 ymax: 71.35256
+## epsg (SRID):    4269
+## proj4string:    +proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{necounties <-}\StringTok{ }\NormalTok{counties }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(STATEFP }\OperatorTok{==}\StringTok{ "31"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nebedcount <-}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(nehospitals }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(BEDS }\OperatorTok{!=}\StringTok{ }\DecValTok{-999}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{(COUNTY, COUNTYFIPS) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{total_beds =} \KeywordTok{sum}\NormalTok{(BEDS)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{GEOID =}\NormalTok{ COUNTYFIPS)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{geometry)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nehospbycounty <-}\StringTok{ }\NormalTok{necounties }\OperatorTok{%>%}\StringTok{ }\KeywordTok{left_join}\NormalTok{(nebedcount)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining, by = "GEOID"
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Column `GEOID` joining factors with different levels, coercing to
+## character vector
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_sf}\NormalTok{(}\DataTypeTok{data=}\NormalTok{nehospbycounty, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill=}\NormalTok{total_beds)) }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_minimal}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_viridis_c}\NormalTok{(}\DataTypeTok{option =} \StringTok{"plasma"}\NormalTok{, }\DataTypeTok{trans =} \StringTok{"sqrt"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-190-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nebedcount }\OperatorTok{%>%}\StringTok{ }\KeywordTok{select}\NormalTok{(COUNTY, total_beds) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(total_beds)) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          COUNTY total_beds
+## 1       DOUGLAS       2479
+## 2     LANCASTER        984
+## 3       BUFFALO        261
+## 4         SARPY        176
+## 5  SCOTTS BLUFF        166
+## 6         ADAMS        161
+## 7          HALL        159
+## 8       MADISON        131
+## 9       LINCOLN        116
+## 10        DODGE         81
+## 11       DAWSON         58
+## 12         OTOE         54
+## 13       PLATTE         51
+## 14         GAGE         50
+## 15         HOLT         43
+## 16       SALINE         43
+## 17       PIERCE         40
+## 18         YORK         38
+## 19     ANTELOPE         37
+## 20       CUSTER         35
+## 21        BOONE         25
+## 22    BOX BUTTE         25
+## 23       CHERRY         25
+## 24     CHEYENNE         25
+## 25       COLFAX         25
+## 26       CUMING         25
+## 27        DAWES         25
+## 28       HOWARD         25
+## 29     NUCKOLLS         25
+## 30       PHELPS         25
+## 31   RED WILLOW         25
+## 32     SHERIDAN         25
+## 33   WASHINGTON         25
+## 34        WAYNE         25
+## 35   RICHARDSON         24
+## 36         ROCK         24
+## 37       SEWARD         24
+## 38        BROWN         23
+## 39         KNOX         23
+## 40        CHASE         22
+## 41     THURSTON         21
+## 42         BOYD         20
+## 43       BUTLER         20
+## 44     FILLMORE         20
+## 45       FURNAS         20
+## 46      MERRICK         20
+## 47      MORRILL         20
+## 48      PERKINS         20
+## 49       HARLAN         19
+## 50        NANCE         19
+## 51       THAYER         19
+## 52         BURT         18
+## 53      JOHNSON         18
+## 54        KEITH         18
+## 55    JEFFERSON         17
+## 56       NEMAHA         16
+## 57         POLK         16
+## 58     SAUNDERS         16
+## 59       VALLEY         16
+## 60        DUNDY         14
+## 61     FRANKLIN         14
+## 62     HAMILTON         14
+## 63      WEBSTER         13
+## 64      KIMBALL         12
+## 65       PAWNEE         11
+## 66       GARDEN         10
+## 67      KEARNEY         10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nebedcount }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(COUNTY }\OperatorTok{!=}\StringTok{ "DOUGLAS"} \OperatorTok{&}\StringTok{ }\NormalTok{COUNTY }\OperatorTok{!=}\StringTok{ "LANCASTER"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\KeywordTok{sum}\NormalTok{(total_beds))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   sum(total_beds)
+## 1            2641
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidycensus)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nepop <-}\StringTok{ }\KeywordTok{get_acs}\NormalTok{(}\DataTypeTok{geography =} \StringTok{"county"}\NormalTok{, }
+              \DataTypeTok{variables =} \KeywordTok{c}\NormalTok{(}\DataTypeTok{population =} \StringTok{"B01003_001"}\NormalTok{), }
+              \DataTypeTok{state =} \StringTok{"NE"}\NormalTok{, }
+              \DataTypeTok{year =} \DecValTok{2018}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Getting data from the 2014-2018 5-year ACS
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nehospbycounty <-}\StringTok{ }\NormalTok{nehospbycounty }\OperatorTok{%>%}\StringTok{ }\KeywordTok{inner_join}\NormalTok{(nepop, }\DataTypeTok{by=}\StringTok{"GEOID"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{bedper1000 =}\NormalTok{ (total_beds}\OperatorTok{/}\NormalTok{estimate)}\OperatorTok{*}\DecValTok{1000}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_sf}\NormalTok{(}\DataTypeTok{data=}\NormalTok{nehospbycounty, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill=}\NormalTok{bedper1000)) }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_minimal}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_viridis_c}\NormalTok{(}\DataTypeTok{option =} \StringTok{"plasma"}\NormalTok{, }\DataTypeTok{trans =} \StringTok{"sqrt"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-196-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{as.data.frame}\NormalTok{(nehospbycounty }\OperatorTok{%>%}\StringTok{ }\KeywordTok{select}\NormalTok{(NAME.x, bedper1000) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(bedper1000)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          NAME.x bedper1000                       geometry
+## 1          Rock 17.7777778 MULTIPOLYGON (((-99.67768 4...
+## 2          Boyd  9.7943193 MULTIPOLYGON (((-99.25396 4...
+## 3         Brown  7.6974565 MULTIPOLYGON (((-100.1985 4...
+## 4         Dundy  6.9204152 MULTIPOLYGON (((-102.0519 4...
+## 5       Perkins  6.8799450 MULTIPOLYGON (((-102.0518 4...
+## 6         Chase  5.8918050 MULTIPOLYGON (((-102.0518 4...
+## 7      Nuckolls  5.8479532 MULTIPOLYGON (((-98.27357 4...
+## 8      Antelope  5.8066541 MULTIPOLYGON (((-98.30024 4...
+## 9        Pierce  5.5889339 MULTIPOLYGON (((-97.83443 4...
+## 10       Harlan  5.5264689 MULTIPOLYGON (((-99.63046 4...
+## 11       Garden  5.3763441 MULTIPOLYGON (((-102.6776 4...
+## 12        Nance  5.3460889 MULTIPOLYGON (((-98.29134 4...
+## 13      Buffalo  5.3232715 MULTIPOLYGON (((-99.42576 4...
+## 14        Adams  5.0976791 MULTIPOLYGON (((-98.72439 4...
+## 15     Sheridan  4.7764616 MULTIPOLYGON (((-102.7921 4...
+## 16        Boone  4.7054395 MULTIPOLYGON (((-98.2956 41...
+## 17     Franklin  4.6573520 MULTIPOLYGON (((-99.1794 40...
+## 18 Scotts Bluff  4.5786788 MULTIPOLYGON (((-104.0529 4...
+## 19      Douglas  4.4667311 MULTIPOLYGON (((-96.47072 4...
+## 20       Cherry  4.3177893 MULTIPOLYGON (((-102.0825 4...
+## 21         Holt  4.1971694 MULTIPOLYGON (((-99.25704 4...
+## 22       Furnas  4.1788550 MULTIPOLYGON (((-100.1978 4...
+## 23      Morrill  4.1313778 MULTIPOLYGON (((-103.3704 4...
+## 24       Pawnee  4.1106129 MULTIPOLYGON (((-96.46367 4...
+## 25       Howard  3.9032006 MULTIPOLYGON (((-98.74433 4...
+## 26       Valley  3.7878788 MULTIPOLYGON (((-99.21202 4...
+## 27       Thayer  3.7269517 MULTIPOLYGON (((-97.82082 4...
+## 28      Madison  3.7254010 MULTIPOLYGON (((-97.83454 4...
+## 29      Webster  3.6404369 MULTIPOLYGON (((-98.72683 4...
+## 30     Fillmore  3.5880875 MULTIPOLYGON (((-97.82478 4...
+## 31      Johnson  3.4635367 MULTIPOLYGON (((-96.46363 4...
+## 32         Otoe  3.3970810 MULTIPOLYGON (((-96.46376 4...
+## 33      Lincoln  3.2737843 MULTIPOLYGON (((-101.2697 4...
+## 34      Kimball  3.2724298 MULTIPOLYGON (((-104.0535 4...
+## 35       Custer  3.2317636 MULTIPOLYGON (((-100.2512 4...
+## 36    Lancaster  3.1732313 MULTIPOLYGON (((-96.91349 4...
+## 37         Polk  3.0447193 MULTIPOLYGON (((-97.82826 4...
+## 38       Saline  3.0095185 MULTIPOLYGON (((-97.3684 40...
+## 39   Richardson  2.9966288 MULTIPOLYGON (((-96.01018 4...
+## 40     Thurston  2.9411765 MULTIPOLYGON (((-96.8225 42...
+## 41        Dawes  2.8102518 MULTIPOLYGON (((-103.5051 4...
+## 42       Cuming  2.7805583 MULTIPOLYGON (((-97.01936 4...
+## 43         Burt  2.7573529 MULTIPOLYGON (((-96.55487 4...
+## 44         York  2.7538227 MULTIPOLYGON (((-97.82629 4...
+## 45       Phelps  2.7412281 MULTIPOLYGON (((-99.64346 4...
+## 46         Knox  2.7186761 MULTIPOLYGON (((-98.30977 4...
+## 47        Wayne  2.6689442 MULTIPOLYGON (((-97.36772 4...
+## 48         Hall  2.5919828 MULTIPOLYGON (((-98.72198 4...
+## 49      Merrick  2.5631167 MULTIPOLYGON (((-98.28658 4...
+## 50     Cheyenne  2.5375558 MULTIPOLYGON (((-103.3823 4...
+## 51       Butler  2.4792364 MULTIPOLYGON (((-97.36819 4...
+## 52       Dawson  2.4365653 MULTIPOLYGON (((-100.2242 4...
+## 53    Jefferson  2.3650529 MULTIPOLYGON (((-97.3692 40...
+## 54       Colfax  2.3234201 MULTIPOLYGON (((-97.25258 4...
+## 55         Gage  2.3153508 MULTIPOLYGON (((-96.91641 4...
+## 56   Red Willow  2.3135295 MULTIPOLYGON (((-100.761 40...
+## 57       Nemaha  2.2844089 MULTIPOLYGON (((-96.06701 4...
+## 58    Box Butte  2.2544864 MULTIPOLYGON (((-103.4445 4...
+## 59        Keith  2.2224966 MULTIPOLYGON (((-102.0555 4...
+## 60        Dodge  2.2081073 MULTIPOLYGON (((-96.90592 4...
+## 61       Platte  1.5425098 MULTIPOLYGON (((-97.83049 4...
+## 62      Kearney  1.5262515 MULTIPOLYGON (((-99.17925 4...
+## 63     Hamilton  1.5253868 MULTIPOLYGON (((-98.28258 4...
+## 64       Seward  1.4012962 MULTIPOLYGON (((-97.36812 4...
+## 65   Washington  1.2364608 MULTIPOLYGON (((-96.44478 4...
+## 66        Sarpy  0.9868181 MULTIPOLYGON (((-96.33287 4...
+## 67     Saunders  0.7610350 MULTIPOLYGON (((-96.90823 4...
+## 68       Blaine         NA MULTIPOLYGON (((-100.2676 4...
+## 69    McPherson         NA MULTIPOLYGON (((-101.4065 4...
+## 70       Arthur         NA MULTIPOLYGON (((-101.9855 4...
+## 71       Thomas         NA MULTIPOLYGON (((-100.8461 4...
+## 72         Clay         NA MULTIPOLYGON (((-98.2781 40...
+## 73      Stanton         NA MULTIPOLYGON (((-97.3684 42...
+## 74    Hitchcock         NA MULTIPOLYGON (((-101.3255 4...
+## 75        Hayes         NA MULTIPOLYGON (((-101.3454 4...
+## 76       Hooker         NA MULTIPOLYGON (((-101.4266 4...
+## 77        Grant         NA MULTIPOLYGON (((-102.0666 4...
+## 78      Sherman         NA MULTIPOLYGON (((-99.20326 4...
+## 79      Wheeler         NA MULTIPOLYGON (((-98.76116 4...
+## 80        Logan         NA MULTIPOLYGON (((-100.7148 4...
+## 81      Greeley         NA MULTIPOLYGON (((-98.75222 4...
+## 82         Cass         NA MULTIPOLYGON (((-96.46386 4...
+## 83    Keya Paha         NA MULTIPOLYGON (((-100.1984 4...
+## 84         Loup         NA MULTIPOLYGON (((-99.68696 4...
+## 85        Sioux         NA MULTIPOLYGON (((-104.0531 4...
+## 86       Dakota         NA MULTIPOLYGON (((-96.72662 4...
+## 87        Dixon         NA MULTIPOLYGON (((-97.01779 4...
+## 88        Deuel         NA MULTIPOLYGON (((-102.6209 4...
+## 89     Frontier         NA MULTIPOLYGON (((-100.7812 4...
+## 90       Gosper         NA MULTIPOLYGON (((-100.0951 4...
+## 91        Cedar         NA MULTIPOLYGON (((-97.48492 4...
+## 92       Banner         NA MULTIPOLYGON (((-104.0529 4...
+## 93     Garfield         NA MULTIPOLYGON (((-99.22273 4...
+\end{verbatim}
 
 \end{document}

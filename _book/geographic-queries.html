@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 21 Geographic queries | Data Journalism with R and the Tidyverse</title>
+  <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 21 Geographic queries | Data Journalism with R and the Tidyverse" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 21 Geographic queries | Data Journalism with R and the Tidyverse" />
+  
+  <meta name="twitter:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  
+
+<meta name="author" content="Matt Waite" />
+
+
+<meta name="date" content="2020-03-16" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="geographic-data-basics.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-160712129-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-160712129-1');
+</script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="http://mattwaite.github.io/datajournalism/">Data Journalism With R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#modern-data-journalism"><i class="fa fa-check"></i><b>1.1</b> Modern data journalism</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installations"><i class="fa fa-check"></i><b>1.2</b> Installations</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#about-this-book"><i class="fa fa-check"></i><b>1.3</b> About this book</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#what-well-cover"><i class="fa fa-check"></i><b>1.4</b> What we’ll cover</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="public-records.html"><a href="public-records.html"><i class="fa fa-check"></i><b>2</b> Public records</a><ul>
+<li class="chapter" data-level="2.1" data-path="public-records.html"><a href="public-records.html#federal-law"><i class="fa fa-check"></i><b>2.1</b> Federal law</a></li>
+<li class="chapter" data-level="2.2" data-path="public-records.html"><a href="public-records.html#state-law"><i class="fa fa-check"></i><b>2.2</b> State law</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>3</b> R basics</a><ul>
+<li class="chapter" data-level="3.1" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-1"><i class="fa fa-check"></i><b>3.1</b> Adding libraries, part 1</a></li>
+<li class="chapter" data-level="3.2" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-2"><i class="fa fa-check"></i><b>3.2</b> Adding libraries, part 2</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html"><i class="fa fa-check"></i><b>4</b> Data journalism in the age of replication</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#the-stylebook"><i class="fa fa-check"></i><b>4.1</b> The stylebook</a></li>
+<li class="chapter" data-level="4.2" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication"><i class="fa fa-check"></i><b>4.2</b> Replication</a></li>
+<li class="chapter" data-level="4.3" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#goodbye-excel"><i class="fa fa-check"></i><b>4.3</b> Goodbye Excel?</a></li>
+<li class="chapter" data-level="4.4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#receptivity-is-high"><i class="fa fa-check"></i><b>4.4</b> “Receptivity … is high”</a></li>
+<li class="chapter" data-level="4.5" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication-in-notebooks"><i class="fa fa-check"></i><b>4.5</b> Replication in notebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html"><i class="fa fa-check"></i><b>5</b> Data, structures and types</a><ul>
+<li class="chapter" data-level="5.1" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#rows-and-columns"><i class="fa fa-check"></i><b>5.1</b> Rows and columns</a></li>
+<li class="chapter" data-level="5.2" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#types"><i class="fa fa-check"></i><b>5.2</b> Types</a></li>
+<li class="chapter" data-level="5.3" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#a-simple-way-to-get-data"><i class="fa fa-check"></i><b>5.3</b> A simple way to get data</a></li>
+<li class="chapter" data-level="5.4" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#cleaning-the-data"><i class="fa fa-check"></i><b>5.4</b> Cleaning the data</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="aggregates.html"><a href="aggregates.html"><i class="fa fa-check"></i><b>6</b> Aggregates</a><ul>
+<li class="chapter" data-level="6.1" data-path="aggregates.html"><a href="aggregates.html#importing-data"><i class="fa fa-check"></i><b>6.1</b> Importing data</a></li>
+<li class="chapter" data-level="6.2" data-path="aggregates.html"><a href="aggregates.html#group-by-and-count"><i class="fa fa-check"></i><b>6.2</b> Group by and count</a></li>
+<li class="chapter" data-level="6.3" data-path="aggregates.html"><a href="aggregates.html#other-aggregates-mean-and-median"><i class="fa fa-check"></i><b>6.3</b> Other aggregates: Mean and median</a></li>
+<li class="chapter" data-level="6.4" data-path="aggregates.html"><a href="aggregates.html#even-more-aggregates"><i class="fa fa-check"></i><b>6.4</b> Even more aggregates</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>7</b> Mutating data</a><ul>
+<li class="chapter" data-level="7.1" data-path="mutating-data.html"><a href="mutating-data.html#another-use-of-mutate"><i class="fa fa-check"></i><b>7.1</b> Another use of mutate</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>8</b> Working with dates</a><ul>
+<li class="chapter" data-level="8.1" data-path="working-with-dates.html"><a href="working-with-dates.html#the-hard-way"><i class="fa fa-check"></i><b>8.1</b> The hard way</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="filters-and-selections.html"><a href="filters-and-selections.html"><i class="fa fa-check"></i><b>9</b> Filters and selections</a><ul>
+<li class="chapter" data-level="9.1" data-path="filters-and-selections.html"><a href="filters-and-selections.html#combining-filters"><i class="fa fa-check"></i><b>9.1</b> Combining filters</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html"><i class="fa fa-check"></i><b>10</b> Data Cleaning Part I: Data smells</a><ul>
+<li class="chapter" data-level="10.1" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#wrong-type"><i class="fa fa-check"></i><b>10.1</b> Wrong Type</a></li>
+<li class="chapter" data-level="10.2" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#missing-data"><i class="fa fa-check"></i><b>10.2</b> Missing Data</a></li>
+<li class="chapter" data-level="10.3" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#gaps-in-data"><i class="fa fa-check"></i><b>10.3</b> Gaps in data</a></li>
+<li class="chapter" data-level="10.4" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#internal-inconsistency"><i class="fa fa-check"></i><b>10.4</b> Internal inconsistency</a></li>
+<li class="chapter" data-level="10.5" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#a-shortcut-summary"><i class="fa fa-check"></i><b>10.5</b> A Shortcut: Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html"><i class="fa fa-check"></i><b>11</b> Data Cleaning Part II: Janitor</a><ul>
+<li class="chapter" data-level="11.1" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#cleaning-headers"><i class="fa fa-check"></i><b>11.1</b> Cleaning headers</a></li>
+<li class="chapter" data-level="11.2" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#duplicates"><i class="fa fa-check"></i><b>11.2</b> Duplicates</a></li>
+<li class="chapter" data-level="11.3" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#inconsistency"><i class="fa fa-check"></i><b>11.3</b> Inconsistency</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html"><i class="fa fa-check"></i><b>12</b> Data Cleaning Part III: Open Refine</a><ul>
+<li class="chapter" data-level="12.1" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#refinr-open-refine-in-r"><i class="fa fa-check"></i><b>12.1</b> Refinr, Open Refine in R</a></li>
+<li class="chapter" data-level="12.2" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#more-complex-issues"><i class="fa fa-check"></i><b>12.2</b> More complex issues</a></li>
+<li class="chapter" data-level="12.3" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#manually-cleaning-data-with-open-refine"><i class="fa fa-check"></i><b>12.3</b> Manually cleaning data with Open Refine</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html"><i class="fa fa-check"></i><b>13</b> Cleaning Data Part IV: PDFs</a><ul>
+<li class="chapter" data-level="13.1" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-looks-good-but-goes-wrong"><i class="fa fa-check"></i><b>13.1</b> When it looks good, but goes wrong</a></li>
+<li class="chapter" data-level="13.2" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-works-well."><i class="fa fa-check"></i><b>13.2</b> When it works well.</a></li>
+<li class="chapter" data-level="13.3" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#cleaning-up-the-data-in-r"><i class="fa fa-check"></i><b>13.3</b> Cleaning up the data in R</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="combining-and-joining.html"><a href="combining-and-joining.html"><i class="fa fa-check"></i><b>14</b> Combining and joining</a><ul>
+<li class="chapter" data-level="14.1" data-path="combining-and-joining.html"><a href="combining-and-joining.html#combining-data"><i class="fa fa-check"></i><b>14.1</b> Combining data</a></li>
+<li class="chapter" data-level="14.2" data-path="combining-and-joining.html"><a href="combining-and-joining.html#joining-data"><i class="fa fa-check"></i><b>14.2</b> Joining data</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html"><i class="fa fa-check"></i><b>15</b> Scraping data with Rvest</a><ul>
+<li class="chapter" data-level="15.1" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html#a-more-difficult-example"><i class="fa fa-check"></i><b>15.1</b> A more difficult example</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="advanced-rvest.html"><a href="advanced-rvest.html"><i class="fa fa-check"></i><b>16</b> Advanced rvest</a></li>
+<li class="chapter" data-level="17" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html"><i class="fa fa-check"></i><b>17</b> Intro to APIs: The Census</a><ul>
+<li class="chapter" data-level="17.1" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html#the-acs"><i class="fa fa-check"></i><b>17.1</b> The ACS</a></li>
+<li class="chapter" data-level="17.2" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html#bonus-api-example-coronavirus"><i class="fa fa-check"></i><b>17.2</b> Bonus API example: Coronavirus</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html"><i class="fa fa-check"></i><b>18</b> Visualizing your data for reporting</a><ul>
+<li class="chapter" data-level="18.1" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html#bar-charts"><i class="fa fa-check"></i><b>18.1</b> Bar charts</a></li>
+<li class="chapter" data-level="18.2" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html#line-charts"><i class="fa fa-check"></i><b>18.2</b> Line charts</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="visualizing-your-data-for-publication.html"><a href="visualizing-your-data-for-publication.html"><i class="fa fa-check"></i><b>19</b> Visualizing your data for publication</a><ul>
+<li class="chapter" data-level="19.1" data-path="visualizing-your-data-for-publication.html"><a href="visualizing-your-data-for-publication.html#datawrapper"><i class="fa fa-check"></i><b>19.1</b> Datawrapper</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html"><i class="fa fa-check"></i><b>20</b> Geographic data basics</a><ul>
+<li class="chapter" data-level="20.1" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html#importing-and-viewing-data"><i class="fa fa-check"></i><b>20.1</b> Importing and viewing data</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="geographic-queries.html"><a href="geographic-queries.html"><i class="fa fa-check"></i><b>21</b> Geographic queries</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Journalism with R and the Tidyverse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="geographic-queries" class="section level1">
+<h1><span class="header-section-number">Chapter 21</span> Geographic queries</h1>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb303-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb303-2" data-line-number="2"><span class="kw">library</span>(sf)</a>
+<a class="sourceLine" id="cb303-3" data-line-number="3"><span class="kw">library</span>(janitor)</a>
+<a class="sourceLine" id="cb303-4" data-line-number="4"><span class="kw">library</span>(scales)</a></code></pre></div>
+<pre><code>## Warning: package &#39;scales&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;scales&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     discard</code></pre>
+<pre><code>## The following object is masked from &#39;package:readr&#39;:
+## 
+##     col_factor</code></pre>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb308-1" data-line-number="1">hospitals &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;data/Hospitals/Hospitals.shp&quot;</span>)</a></code></pre></div>
+<pre><code>## Reading layer `Hospitals&#39; from data source `/Users/mwaite3/Box/BookProjects/DataJournalismWithR/data/Hospitals/Hospitals.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 7581 features and 32 fields
+## geometry type:  POINT
+## dimension:      XY
+## bbox:           xmin: -176.6403 ymin: -14.29024 xmax: 145.7245 ymax: 71.29285
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs</code></pre>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb310-1" data-line-number="1">ne &lt;-<span class="st"> </span>hospitals <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(STATE <span class="op">==</span><span class="st"> &quot;NE&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb311-1" data-line-number="1">nehospitals &lt;-<span class="st"> </span>ne <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(TYPE <span class="op">==</span><span class="st"> &quot;CRITICAL ACCESS&quot;</span> <span class="op">|</span><span class="st"> </span>TYPE <span class="op">==</span><span class="st"> &quot;GENERAL ACUTE CARE&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb312-1" data-line-number="1">counties &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;data/cb_2018_us_county_5m/cb_2018_us_county_5m.shp&quot;</span>)</a></code></pre></div>
+<pre><code>## Reading layer `cb_2018_us_county_5m&#39; from data source `/Users/mwaite3/Box/BookProjects/DataJournalismWithR/data/cb_2018_us_county_5m/cb_2018_us_county_5m.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 3233 features and 9 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -179.1473 ymin: -14.55255 xmax: 179.7785 ymax: 71.35256
+## epsg (SRID):    4269
+## proj4string:    +proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs</code></pre>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb314-1" data-line-number="1">necounties &lt;-<span class="st"> </span>counties <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(STATEFP <span class="op">==</span><span class="st"> &quot;31&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb315-1" data-line-number="1">nebedcount &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(nehospitals <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(BEDS <span class="op">!=</span><span class="st"> </span><span class="dv">-999</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(COUNTY, COUNTYFIPS) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="dt">total_beds =</span> <span class="kw">sum</span>(BEDS)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rename</span>(<span class="dt">GEOID =</span> COUNTYFIPS)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>geometry)</a></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb316-1" data-line-number="1">nehospbycounty &lt;-<span class="st"> </span>necounties <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(nebedcount)</a></code></pre></div>
+<pre><code>## Joining, by = &quot;GEOID&quot;</code></pre>
+<pre><code>## Warning: Column `GEOID` joining factors with different levels, coercing to
+## character vector</code></pre>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb319-1" data-line-number="1"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>(<span class="dt">data=</span>nehospbycounty, <span class="kw">aes</span>(<span class="dt">fill=</span>total_beds)) <span class="op">+</span><span class="st"> </span><span class="kw">theme_minimal</span>() <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_viridis_c</span>(<span class="dt">option =</span> <span class="st">&quot;plasma&quot;</span>, <span class="dt">trans =</span> <span class="st">&quot;sqrt&quot;</span>)</a></code></pre></div>
+<p><img src="datajournalism_files/figure-html/unnamed-chunk-190-1.png" width="672" /></p>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb320-1" data-line-number="1">nebedcount <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(COUNTY, total_beds) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(total_beds)) </a></code></pre></div>
+<pre><code>##          COUNTY total_beds
+## 1       DOUGLAS       2479
+## 2     LANCASTER        984
+## 3       BUFFALO        261
+## 4         SARPY        176
+## 5  SCOTTS BLUFF        166
+## 6         ADAMS        161
+## 7          HALL        159
+## 8       MADISON        131
+## 9       LINCOLN        116
+## 10        DODGE         81
+## 11       DAWSON         58
+## 12         OTOE         54
+## 13       PLATTE         51
+## 14         GAGE         50
+## 15         HOLT         43
+## 16       SALINE         43
+## 17       PIERCE         40
+## 18         YORK         38
+## 19     ANTELOPE         37
+## 20       CUSTER         35
+## 21        BOONE         25
+## 22    BOX BUTTE         25
+## 23       CHERRY         25
+## 24     CHEYENNE         25
+## 25       COLFAX         25
+## 26       CUMING         25
+## 27        DAWES         25
+## 28       HOWARD         25
+## 29     NUCKOLLS         25
+## 30       PHELPS         25
+## 31   RED WILLOW         25
+## 32     SHERIDAN         25
+## 33   WASHINGTON         25
+## 34        WAYNE         25
+## 35   RICHARDSON         24
+## 36         ROCK         24
+## 37       SEWARD         24
+## 38        BROWN         23
+## 39         KNOX         23
+## 40        CHASE         22
+## 41     THURSTON         21
+## 42         BOYD         20
+## 43       BUTLER         20
+## 44     FILLMORE         20
+## 45       FURNAS         20
+## 46      MERRICK         20
+## 47      MORRILL         20
+## 48      PERKINS         20
+## 49       HARLAN         19
+## 50        NANCE         19
+## 51       THAYER         19
+## 52         BURT         18
+## 53      JOHNSON         18
+## 54        KEITH         18
+## 55    JEFFERSON         17
+## 56       NEMAHA         16
+## 57         POLK         16
+## 58     SAUNDERS         16
+## 59       VALLEY         16
+## 60        DUNDY         14
+## 61     FRANKLIN         14
+## 62     HAMILTON         14
+## 63      WEBSTER         13
+## 64      KIMBALL         12
+## 65       PAWNEE         11
+## 66       GARDEN         10
+## 67      KEARNEY         10</code></pre>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" data-line-number="1">nebedcount <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(COUNTY <span class="op">!=</span><span class="st"> &quot;DOUGLAS&quot;</span> <span class="op">&amp;</span><span class="st"> </span>COUNTY <span class="op">!=</span><span class="st"> &quot;LANCASTER&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="kw">sum</span>(total_beds))</a></code></pre></div>
+<pre><code>##   sum(total_beds)
+## 1            2641</code></pre>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb324-1" data-line-number="1"><span class="kw">library</span>(tidycensus)</a></code></pre></div>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb325-1" data-line-number="1">nepop &lt;-<span class="st"> </span><span class="kw">get_acs</span>(<span class="dt">geography =</span> <span class="st">&quot;county&quot;</span>, </a>
+<a class="sourceLine" id="cb325-2" data-line-number="2">              <span class="dt">variables =</span> <span class="kw">c</span>(<span class="dt">population =</span> <span class="st">&quot;B01003_001&quot;</span>), </a>
+<a class="sourceLine" id="cb325-3" data-line-number="3">              <span class="dt">state =</span> <span class="st">&quot;NE&quot;</span>, </a>
+<a class="sourceLine" id="cb325-4" data-line-number="4">              <span class="dt">year =</span> <span class="dv">2018</span>)</a></code></pre></div>
+<pre><code>## Getting data from the 2014-2018 5-year ACS</code></pre>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb327-1" data-line-number="1">nehospbycounty &lt;-<span class="st"> </span>nehospbycounty <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(nepop, <span class="dt">by=</span><span class="st">&quot;GEOID&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">bedper1000 =</span> (total_beds<span class="op">/</span>estimate)<span class="op">*</span><span class="dv">1000</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb328-1" data-line-number="1"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>(<span class="dt">data=</span>nehospbycounty, <span class="kw">aes</span>(<span class="dt">fill=</span>bedper1000)) <span class="op">+</span><span class="st"> </span><span class="kw">theme_minimal</span>() <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_viridis_c</span>(<span class="dt">option =</span> <span class="st">&quot;plasma&quot;</span>, <span class="dt">trans =</span> <span class="st">&quot;sqrt&quot;</span>)</a></code></pre></div>
+<p><img src="datajournalism_files/figure-html/unnamed-chunk-196-1.png" width="672" /></p>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb329-1" data-line-number="1"><span class="kw">as.data.frame</span>(nehospbycounty <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(NAME.x, bedper1000) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(bedper1000)))</a></code></pre></div>
+<pre><code>##          NAME.x bedper1000                       geometry
+## 1          Rock 17.7777778 MULTIPOLYGON (((-99.67768 4...
+## 2          Boyd  9.7943193 MULTIPOLYGON (((-99.25396 4...
+## 3         Brown  7.6974565 MULTIPOLYGON (((-100.1985 4...
+## 4         Dundy  6.9204152 MULTIPOLYGON (((-102.0519 4...
+## 5       Perkins  6.8799450 MULTIPOLYGON (((-102.0518 4...
+## 6         Chase  5.8918050 MULTIPOLYGON (((-102.0518 4...
+## 7      Nuckolls  5.8479532 MULTIPOLYGON (((-98.27357 4...
+## 8      Antelope  5.8066541 MULTIPOLYGON (((-98.30024 4...
+## 9        Pierce  5.5889339 MULTIPOLYGON (((-97.83443 4...
+## 10       Harlan  5.5264689 MULTIPOLYGON (((-99.63046 4...
+## 11       Garden  5.3763441 MULTIPOLYGON (((-102.6776 4...
+## 12        Nance  5.3460889 MULTIPOLYGON (((-98.29134 4...
+## 13      Buffalo  5.3232715 MULTIPOLYGON (((-99.42576 4...
+## 14        Adams  5.0976791 MULTIPOLYGON (((-98.72439 4...
+## 15     Sheridan  4.7764616 MULTIPOLYGON (((-102.7921 4...
+## 16        Boone  4.7054395 MULTIPOLYGON (((-98.2956 41...
+## 17     Franklin  4.6573520 MULTIPOLYGON (((-99.1794 40...
+## 18 Scotts Bluff  4.5786788 MULTIPOLYGON (((-104.0529 4...
+## 19      Douglas  4.4667311 MULTIPOLYGON (((-96.47072 4...
+## 20       Cherry  4.3177893 MULTIPOLYGON (((-102.0825 4...
+## 21         Holt  4.1971694 MULTIPOLYGON (((-99.25704 4...
+## 22       Furnas  4.1788550 MULTIPOLYGON (((-100.1978 4...
+## 23      Morrill  4.1313778 MULTIPOLYGON (((-103.3704 4...
+## 24       Pawnee  4.1106129 MULTIPOLYGON (((-96.46367 4...
+## 25       Howard  3.9032006 MULTIPOLYGON (((-98.74433 4...
+## 26       Valley  3.7878788 MULTIPOLYGON (((-99.21202 4...
+## 27       Thayer  3.7269517 MULTIPOLYGON (((-97.82082 4...
+## 28      Madison  3.7254010 MULTIPOLYGON (((-97.83454 4...
+## 29      Webster  3.6404369 MULTIPOLYGON (((-98.72683 4...
+## 30     Fillmore  3.5880875 MULTIPOLYGON (((-97.82478 4...
+## 31      Johnson  3.4635367 MULTIPOLYGON (((-96.46363 4...
+## 32         Otoe  3.3970810 MULTIPOLYGON (((-96.46376 4...
+## 33      Lincoln  3.2737843 MULTIPOLYGON (((-101.2697 4...
+## 34      Kimball  3.2724298 MULTIPOLYGON (((-104.0535 4...
+## 35       Custer  3.2317636 MULTIPOLYGON (((-100.2512 4...
+## 36    Lancaster  3.1732313 MULTIPOLYGON (((-96.91349 4...
+## 37         Polk  3.0447193 MULTIPOLYGON (((-97.82826 4...
+## 38       Saline  3.0095185 MULTIPOLYGON (((-97.3684 40...
+## 39   Richardson  2.9966288 MULTIPOLYGON (((-96.01018 4...
+## 40     Thurston  2.9411765 MULTIPOLYGON (((-96.8225 42...
+## 41        Dawes  2.8102518 MULTIPOLYGON (((-103.5051 4...
+## 42       Cuming  2.7805583 MULTIPOLYGON (((-97.01936 4...
+## 43         Burt  2.7573529 MULTIPOLYGON (((-96.55487 4...
+## 44         York  2.7538227 MULTIPOLYGON (((-97.82629 4...
+## 45       Phelps  2.7412281 MULTIPOLYGON (((-99.64346 4...
+## 46         Knox  2.7186761 MULTIPOLYGON (((-98.30977 4...
+## 47        Wayne  2.6689442 MULTIPOLYGON (((-97.36772 4...
+## 48         Hall  2.5919828 MULTIPOLYGON (((-98.72198 4...
+## 49      Merrick  2.5631167 MULTIPOLYGON (((-98.28658 4...
+## 50     Cheyenne  2.5375558 MULTIPOLYGON (((-103.3823 4...
+## 51       Butler  2.4792364 MULTIPOLYGON (((-97.36819 4...
+## 52       Dawson  2.4365653 MULTIPOLYGON (((-100.2242 4...
+## 53    Jefferson  2.3650529 MULTIPOLYGON (((-97.3692 40...
+## 54       Colfax  2.3234201 MULTIPOLYGON (((-97.25258 4...
+## 55         Gage  2.3153508 MULTIPOLYGON (((-96.91641 4...
+## 56   Red Willow  2.3135295 MULTIPOLYGON (((-100.761 40...
+## 57       Nemaha  2.2844089 MULTIPOLYGON (((-96.06701 4...
+## 58    Box Butte  2.2544864 MULTIPOLYGON (((-103.4445 4...
+## 59        Keith  2.2224966 MULTIPOLYGON (((-102.0555 4...
+## 60        Dodge  2.2081073 MULTIPOLYGON (((-96.90592 4...
+## 61       Platte  1.5425098 MULTIPOLYGON (((-97.83049 4...
+## 62      Kearney  1.5262515 MULTIPOLYGON (((-99.17925 4...
+## 63     Hamilton  1.5253868 MULTIPOLYGON (((-98.28258 4...
+## 64       Seward  1.4012962 MULTIPOLYGON (((-97.36812 4...
+## 65   Washington  1.2364608 MULTIPOLYGON (((-96.44478 4...
+## 66        Sarpy  0.9868181 MULTIPOLYGON (((-96.33287 4...
+## 67     Saunders  0.7610350 MULTIPOLYGON (((-96.90823 4...
+## 68       Blaine         NA MULTIPOLYGON (((-100.2676 4...
+## 69    McPherson         NA MULTIPOLYGON (((-101.4065 4...
+## 70       Arthur         NA MULTIPOLYGON (((-101.9855 4...
+## 71       Thomas         NA MULTIPOLYGON (((-100.8461 4...
+## 72         Clay         NA MULTIPOLYGON (((-98.2781 40...
+## 73      Stanton         NA MULTIPOLYGON (((-97.3684 42...
+## 74    Hitchcock         NA MULTIPOLYGON (((-101.3255 4...
+## 75        Hayes         NA MULTIPOLYGON (((-101.3454 4...
+## 76       Hooker         NA MULTIPOLYGON (((-101.4266 4...
+## 77        Grant         NA MULTIPOLYGON (((-102.0666 4...
+## 78      Sherman         NA MULTIPOLYGON (((-99.20326 4...
+## 79      Wheeler         NA MULTIPOLYGON (((-98.76116 4...
+## 80        Logan         NA MULTIPOLYGON (((-100.7148 4...
+## 81      Greeley         NA MULTIPOLYGON (((-98.75222 4...
+## 82         Cass         NA MULTIPOLYGON (((-96.46386 4...
+## 83    Keya Paha         NA MULTIPOLYGON (((-100.1984 4...
+## 84         Loup         NA MULTIPOLYGON (((-99.68696 4...
+## 85        Sioux         NA MULTIPOLYGON (((-104.0531 4...
+## 86       Dakota         NA MULTIPOLYGON (((-96.72662 4...
+## 87        Dixon         NA MULTIPOLYGON (((-97.01779 4...
+## 88        Deuel         NA MULTIPOLYGON (((-102.6209 4...
+## 89     Frontier         NA MULTIPOLYGON (((-100.7812 4...
+## 90       Gosper         NA MULTIPOLYGON (((-100.0951 4...
+## 91        Cedar         NA MULTIPOLYGON (((-97.48492 4...
+## 92       Banner         NA MULTIPOLYGON (((-104.0529 4...
+## 93     Garfield         NA MULTIPOLYGON (((-99.22273 4...</code></pre>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="geographic-data-basics.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/20-geographicqueries.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["datajournalism.pdf", "datajournalism.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

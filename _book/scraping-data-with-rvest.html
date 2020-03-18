@@ -24,7 +24,7 @@
 <meta name="author" content="Matt Waite" />
 
 
-<meta name="date" content="2020-03-09" />
+<meta name="date" content="2020-03-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,6 +50,15 @@
 
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-160712129-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-160712129-1');
+</script>
 
 
 <style type="text/css">
@@ -211,6 +220,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18.1" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html#bar-charts"><i class="fa fa-check"></i><b>18.1</b> Bar charts</a></li>
 <li class="chapter" data-level="18.2" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html#line-charts"><i class="fa fa-check"></i><b>18.2</b> Line charts</a></li>
 </ul></li>
+<li class="chapter" data-level="19" data-path="visualizing-your-data-for-publication.html"><a href="visualizing-your-data-for-publication.html"><i class="fa fa-check"></i><b>19</b> Visualizing your data for publication</a><ul>
+<li class="chapter" data-level="19.1" data-path="visualizing-your-data-for-publication.html"><a href="visualizing-your-data-for-publication.html#datawrapper"><i class="fa fa-check"></i><b>19.1</b> Datawrapper</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html"><i class="fa fa-check"></i><b>20</b> Geographic data basics</a><ul>
+<li class="chapter" data-level="20.1" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html#importing-and-viewing-data"><i class="fa fa-check"></i><b>20.1</b> Importing and viewing data</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="geographic-queries.html"><a href="geographic-queries.html"><i class="fa fa-check"></i><b>21</b> Geographic queries</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -361,11 +377,11 @@ One of the most powerful tools you can learn as a data journalist is how to scra
 ## 2      Geist
 ## 3   Chambers
 ## 4    Gragert
-##                                                                                                    Description
-## 1 Define the required beginning date and change deferment of payment provisions under certain retirement plans
-## 2                                                                 Change provisions relating to motor vehicles
-## 3                          Change provisions relating to racial profiling and require law enforcement training
-## 4     Provide for state park permits  for disabled veterans and change nonresident fees for state park permits</code></pre>
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                           Description
+## 1                                                                                                                                                                                                                                                                                                                                                        Define the required beginning date and change deferment of payment provisions under certain retirement plans
+## 2 Change and provide provisions for REAL ID, motor vehicle fees, federal references, handicapped parking permits, junked vehicles, odometers, destroyed vehicles, the International Registration Plan, license plates, electronic delivery of operator’s licenses and ID cards, CDL’s, point system, vehicle length and weight limits; ATV’s and UTV’s, the International Tax Agreement Act, the unified carrier registration plan and agreement, and civil penalties
+## 3                                                                                                                                                                                                                                                                                                                                                                                 Change provisions relating to racial profiling and require law enforcement training
+## 4                                                                                                                                                                                                                                                                                                                                                            Provide for state park permits  for disabled veterans and change nonresident fees for state park permits</code></pre>
 <p>Here’s the second:</p>
 <div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" data-line-number="1">harderagenda[[<span class="dv">2</span>]]</a></code></pre></div>
 <pre><code>##                                                                                               Document
@@ -409,11 +425,11 @@ One of the most powerful tools you can learn as a data journalist is how to scra
 ## 2      Geist
 ## 3   Chambers
 ## 4    Gragert
-##                                                                                                    Description
-## 1 Define the required beginning date and change deferment of payment provisions under certain retirement plans
-## 2                                                                 Change provisions relating to motor vehicles
-## 3                          Change provisions relating to racial profiling and require law enforcement training
-## 4     Provide for state park permits  for disabled veterans and change nonresident fees for state park permits
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                           Description
+## 1                                                                                                                                                                                                                                                                                                                                                        Define the required beginning date and change deferment of payment provisions under certain retirement plans
+## 2 Change and provide provisions for REAL ID, motor vehicle fees, federal references, handicapped parking permits, junked vehicles, odometers, destroyed vehicles, the International Registration Plan, license plates, electronic delivery of operator’s licenses and ID cards, CDL’s, point system, vehicle length and weight limits; ATV’s and UTV’s, the International Tax Agreement Act, the unified carrier registration plan and agreement, and civil penalties
+## 3                                                                                                                                                                                                                                                                                                                                                                                 Change provisions relating to racial profiling and require law enforcement training
+## 4                                                                                                                                                                                                                                                                                                                                                            Provide for state park permits  for disabled veterans and change nonresident fees for state park permits
 ##                               Stage
 ## 1 SELECT FILE:  2020 PRIORITY BILLS
 ## 2 SELECT FILE:  2020 PRIORITY BILLS
@@ -465,17 +481,17 @@ One of the most powerful tools you can learn as a data journalist is how to scra
 ## 8                   Hunt
 ## 9  Agriculture Committee
 ## 10                Howard
-##                                                                                                                                                                                                            Description
-## 1                                                                                                         Define the required beginning date and change deferment of payment provisions under certain retirement plans
-## 2                                                                                                                                                                         Change provisions relating to motor vehicles
-## 3                                                                                                                                  Change provisions relating to racial profiling and require law enforcement training
-## 4                                                                                                             Provide for state park permits  for disabled veterans and change nonresident fees for state park permits
-## 5                                                                                                                                          Change the Child Protection and Family Safety Act and eliminate a committee
-## 6                                                                                                                                                   Change provisions of the Multiple Employer Welfare Arrangement Act
-## 7                                                                                                                                                                          Change the Nebraska Municipal Land Bank Act
-## 8                                                                                                                                                                              Adopt the Nebraska Fair Pay to Play Act
-## 9  Adopt the Animal Health and Disease Control Act, eliminate and provide duties for the Department of Agriculture, eliminate various acts, terminate and transfer certain funds, create a fund, and provide penalties
-## 10                                                                                                                                                                    Congratulate Leona R. Doll on her 100th birthday
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                            Description
+## 1                                                                                                                                                                                                                                                                                                                                                         Define the required beginning date and change deferment of payment provisions under certain retirement plans
+## 2  Change and provide provisions for REAL ID, motor vehicle fees, federal references, handicapped parking permits, junked vehicles, odometers, destroyed vehicles, the International Registration Plan, license plates, electronic delivery of operator’s licenses and ID cards, CDL’s, point system, vehicle length and weight limits; ATV’s and UTV’s, the International Tax Agreement Act, the unified carrier registration plan and agreement, and civil penalties
+## 3                                                                                                                                                                                                                                                                                                                                                                                  Change provisions relating to racial profiling and require law enforcement training
+## 4                                                                                                                                                                                                                                                                                                                                                             Provide for state park permits  for disabled veterans and change nonresident fees for state park permits
+## 5                                                                                                                                                                                                                                                                                                                                                                                          Change the Child Protection and Family Safety Act and eliminate a committee
+## 6                                                                                                                                                                                                                                                                                                                                                                                                   Change provisions of the Multiple Employer Welfare Arrangement Act
+## 7                                                                                                                                                                                                                                                                                                                                                                                                                          Change the Nebraska Municipal Land Bank Act
+## 8                                                                                                                                                                                                                                                                                                                                                                                                                              Adopt the Nebraska Fair Pay to Play Act
+## 9                                                                                                                                                                                                                                                  Adopt the Animal Health and Disease Control Act, eliminate and provide duties for the Department of Agriculture, eliminate various acts, terminate and transfer certain funds, create a fund, and provide penalties
+## 10                                                                                                                                                                                                                                                                                                                                                                                                                    Congratulate Leona R. Doll on her 100th birthday
 ##                                                                               Stage
 ## 1                                                 SELECT FILE:  2020 PRIORITY BILLS
 ## 2                                                 SELECT FILE:  2020 PRIORITY BILLS
