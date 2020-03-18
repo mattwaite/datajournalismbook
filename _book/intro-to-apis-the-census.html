@@ -24,7 +24,7 @@
 <meta name="author" content="Matt Waite" />
 
 
-<meta name="date" content="2020-03-16" />
+<meta name="date" content="2020-03-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -226,7 +226,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html"><i class="fa fa-check"></i><b>20</b> Geographic data basics</a><ul>
 <li class="chapter" data-level="20.1" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html#importing-and-viewing-data"><i class="fa fa-check"></i><b>20.1</b> Importing and viewing data</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="geographic-queries.html"><a href="geographic-queries.html"><i class="fa fa-check"></i><b>21</b> Geographic queries</a></li>
+<li class="chapter" data-level="21" data-path="geographic-analysis.html"><a href="geographic-analysis.html"><i class="fa fa-check"></i><b>21</b> Geographic analysis</a><ul>
+<li class="chapter" data-level="21.1" data-path="geographic-analysis.html"><a href="geographic-analysis.html#why-tidycensus-is-so-useful"><i class="fa fa-check"></i><b>21.1</b> Why tidycensus is so useful</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -254,31 +256,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Let’s demonstrate.</p>
 <p>We’re going to use a library called <code>tidycensus</code> which makes calls to the Census API in a very tidy way, and gives you back tidy data. That means we don’t have to go through the process of importing the data from a file. I can’t tell you how amazing this is, speaking from experience.</p>
 <p>First we need to install <code>tidycensus</code> using the console: <code>install.packages(&quot;tidycensus&quot;)</code></p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb229-2" data-line-number="2"><span class="kw">library</span>(tidycensus)</a></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb230-2" data-line-number="2"><span class="kw">library</span>(tidycensus)</a></code></pre></div>
 <pre><code>## Warning: package &#39;tidycensus&#39; was built under R version 3.5.2</code></pre>
 <p>To use the API, you need an API key. To get that, you need to <a href="https://api.census.gov/data/key_signup.html">apply for an API key with the Census Bureau</a>. It takes a few minutes and you need to activate your key via email. Once you have your key, you need to set that for this session:</p>
 <pre><code>census_api_key(&quot;YOUR KEY HERE&quot;)</code></pre>
 <p>Just FYI: Your key is your key. Do not share it around.</p>
 <pre><code>## To install your API key for use in future sessions, run this function with `install = TRUE`.</code></pre>
 <p>So to give you some idea of how complicated the data is, let’s pull up just one file from the decennial Census. We’ll use Summary File 1, or SF1. That has the major population and housing stuff.</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" data-line-number="1">sf1 &lt;-<span class="st"> </span><span class="kw">load_variables</span>(<span class="dv">2010</span>, <span class="st">&quot;sf1&quot;</span>, <span class="dt">cache =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" data-line-number="1">sf1 &lt;-<span class="st"> </span><span class="kw">load_variables</span>(<span class="dv">2010</span>, <span class="st">&quot;sf1&quot;</span>, <span class="dt">cache =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <p>Note: There are 3,346 variables in SF1. That’s not a typo. Open it in your environment by double clicking. As you scroll down, you’ll get an idea of what you’ve got to choose from.</p>
 <p>If you think that’s crazy, try the SF3 file from 2000.</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" data-line-number="1">sf3 &lt;-<span class="st"> </span><span class="kw">load_variables</span>(<span class="dv">2000</span>, <span class="st">&quot;sf3&quot;</span>, <span class="dt">cache =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" data-line-number="1">sf3 &lt;-<span class="st"> </span><span class="kw">load_variables</span>(<span class="dv">2000</span>, <span class="st">&quot;sf3&quot;</span>, <span class="dt">cache =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <p>Yes. That’s 5,555 variables to choose from. I told you. Astonishing.</p>
 <p>So let’s try to answer a question using the Census. What is the fastest growing state since 1990?</p>
 <p>To answer this, we need to pull the total population by state in each of the decennial census. Here’s 1990.</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" data-line-number="1">p90 &lt;-<span class="st"> </span><span class="kw">get_decennial</span>(<span class="dt">geography =</span> <span class="st">&quot;state&quot;</span>, <span class="dt">variables =</span> <span class="st">&quot;P0010001&quot;</span>, <span class="dt">year =</span> <span class="dv">1990</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" data-line-number="1">p90 &lt;-<span class="st"> </span><span class="kw">get_decennial</span>(<span class="dt">geography =</span> <span class="st">&quot;state&quot;</span>, <span class="dt">variables =</span> <span class="st">&quot;P0010001&quot;</span>, <span class="dt">year =</span> <span class="dv">1990</span>)</a></code></pre></div>
 <pre><code>## Getting data from the 1990 decennial Census</code></pre>
 <p>Now 2000.</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb237-1" data-line-number="1">p00 &lt;-<span class="st"> </span><span class="kw">get_decennial</span>(<span class="dt">geography =</span> <span class="st">&quot;state&quot;</span>, <span class="dt">variables =</span> <span class="st">&quot;P001001&quot;</span>, <span class="dt">year =</span> <span class="dv">2000</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" data-line-number="1">p00 &lt;-<span class="st"> </span><span class="kw">get_decennial</span>(<span class="dt">geography =</span> <span class="st">&quot;state&quot;</span>, <span class="dt">variables =</span> <span class="st">&quot;P001001&quot;</span>, <span class="dt">year =</span> <span class="dv">2000</span>)</a></code></pre></div>
 <pre><code>## Getting data from the 2000 decennial Census</code></pre>
 <p>Now 2010.</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" data-line-number="1">p10 &lt;-<span class="st"> </span><span class="kw">get_decennial</span>(<span class="dt">geography =</span> <span class="st">&quot;state&quot;</span>, <span class="dt">variables =</span> <span class="st">&quot;P001001&quot;</span>, <span class="dt">year =</span> <span class="dv">2010</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" data-line-number="1">p10 &lt;-<span class="st"> </span><span class="kw">get_decennial</span>(<span class="dt">geography =</span> <span class="st">&quot;state&quot;</span>, <span class="dt">variables =</span> <span class="st">&quot;P001001&quot;</span>, <span class="dt">year =</span> <span class="dv">2010</span>)</a></code></pre></div>
 <pre><code>## Getting data from the 2010 decennial Census</code></pre>
 <p>Let’s take a peek at 2010.</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" data-line-number="1">p10</a></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb242-1" data-line-number="1">p10</a></code></pre></div>
 <pre><code>## # A tibble: 52 x 4
 ##    GEOID NAME        variable    value
 ##    &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;dbl&gt;
@@ -294,16 +296,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 10    Delaware    P001001    897934
 ## # … with 42 more rows</code></pre>
 <p>As you can see, we have a GEOID, NAME, then variable and value. Variable and value are going to be the same. Because those are named the same thing, to merge them together, we need to rename them.</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" data-line-number="1">p10 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(GEOID, NAME, value) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rename</span>(<span class="dt">Population2010=</span>value) -&gt;<span class="st"> </span>p2010</a>
-<a class="sourceLine" id="cb243-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb243-3" data-line-number="3">p00 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(GEOID, NAME, value) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rename</span>(<span class="dt">Population2000=</span>value) -&gt;<span class="st"> </span>p2000</a>
-<a class="sourceLine" id="cb243-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb243-5" data-line-number="5">p90 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(GEOID, NAME, value) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rename</span>(<span class="dt">Population1990=</span>value) -&gt;<span class="st"> </span>p1990</a></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb244-1" data-line-number="1">p10 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(GEOID, NAME, value) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rename</span>(<span class="dt">Population2010=</span>value) -&gt;<span class="st"> </span>p2010</a>
+<a class="sourceLine" id="cb244-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb244-3" data-line-number="3">p00 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(GEOID, NAME, value) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rename</span>(<span class="dt">Population2000=</span>value) -&gt;<span class="st"> </span>p2000</a>
+<a class="sourceLine" id="cb244-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb244-5" data-line-number="5">p90 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(GEOID, NAME, value) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rename</span>(<span class="dt">Population1990=</span>value) -&gt;<span class="st"> </span>p1990</a></code></pre></div>
 <p>Now we join the data together.</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb244-1" data-line-number="1">alldata &lt;-<span class="st"> </span>p1990 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(p2000) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(p2010)</a></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" data-line-number="1">alldata &lt;-<span class="st"> </span>p1990 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(p2000) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(p2010)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;GEOID&quot;, &quot;NAME&quot;)Joining, by = c(&quot;GEOID&quot;, &quot;NAME&quot;)</code></pre>
 <p>And now we calculate the percent change.</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb246-1" data-line-number="1">alldata <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">change =</span> ((Population2010<span class="op">-</span>Population1990)<span class="op">/</span>Population1990)<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(change))</a></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" data-line-number="1">alldata <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">change =</span> ((Population2010<span class="op">-</span>Population1990)<span class="op">/</span>Population1990)<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(change))</a></code></pre></div>
 <pre><code>## # A tibble: 51 x 6
 ##    GEOID NAME           Population1990 Population2000 Population2010 change
 ##    &lt;chr&gt; &lt;chr&gt;                   &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt;  &lt;dbl&gt;
@@ -325,14 +327,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Here’s an example:</p>
 <p>What is Nebraska’s richest county?</p>
 <p>We can measure this by median household income. That variable is <code>B19013_001</code>, so we can get that data like this (I’m narrowing it to the top 20 for simplicity):</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" data-line-number="1">ne &lt;-<span class="st"> </span><span class="kw">get_acs</span>(<span class="dt">geography =</span> <span class="st">&quot;county&quot;</span>, </a>
-<a class="sourceLine" id="cb248-2" data-line-number="2">              <span class="dt">variables =</span> <span class="kw">c</span>(<span class="dt">medincome =</span> <span class="st">&quot;B19013_001&quot;</span>), </a>
-<a class="sourceLine" id="cb248-3" data-line-number="3">              <span class="dt">state =</span> <span class="st">&quot;NE&quot;</span>, </a>
-<a class="sourceLine" id="cb248-4" data-line-number="4">              <span class="dt">year =</span> <span class="dv">2018</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" data-line-number="1">ne &lt;-<span class="st"> </span><span class="kw">get_acs</span>(<span class="dt">geography =</span> <span class="st">&quot;county&quot;</span>, </a>
+<a class="sourceLine" id="cb249-2" data-line-number="2">              <span class="dt">variables =</span> <span class="kw">c</span>(<span class="dt">medincome =</span> <span class="st">&quot;B19013_001&quot;</span>), </a>
+<a class="sourceLine" id="cb249-3" data-line-number="3">              <span class="dt">state =</span> <span class="st">&quot;NE&quot;</span>, </a>
+<a class="sourceLine" id="cb249-4" data-line-number="4">              <span class="dt">year =</span> <span class="dv">2018</span>)</a></code></pre></div>
 <pre><code>## Getting data from the 2014-2018 5-year ACS</code></pre>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" data-line-number="1">ne &lt;-<span class="st"> </span>ne <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(estimate)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">top_n</span>(<span class="dv">20</span>, estimate)</a>
-<a class="sourceLine" id="cb250-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb250-3" data-line-number="3">ne</a></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" data-line-number="1">ne &lt;-<span class="st"> </span>ne <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(estimate)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">top_n</span>(<span class="dv">20</span>, estimate)</a>
+<a class="sourceLine" id="cb251-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb251-3" data-line-number="3">ne</a></code></pre></div>
 <pre><code>## # A tibble: 21 x 5
 ##    GEOID NAME                        variable  estimate   moe
 ##    &lt;chr&gt; &lt;chr&gt;                       &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;
@@ -348,38 +350,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 31073 Gosper County, Nebraska     medincome    62545  3065
 ## # … with 11 more rows</code></pre>
 <p>Sarpy, Cass, Washington. What do they all have in common? They ring Douglas County – Omaha. So lots of suburban flight. But do the margins of error let us say one county is richer than the other. We can find this out visually using error bars. Don’t worry much about the code here – we’ll cover that soon enough.</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" data-line-number="1">ne <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb252-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">NAME =</span> <span class="kw">gsub</span>(<span class="st">&quot; County, Nebraska&quot;</span>, <span class="st">&quot;&quot;</span>, NAME)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb252-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> estimate, <span class="dt">y =</span> <span class="kw">reorder</span>(NAME, estimate))) <span class="op">+</span></a>
-<a class="sourceLine" id="cb252-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_errorbarh</span>(<span class="kw">aes</span>(<span class="dt">xmin =</span> estimate <span class="op">-</span><span class="st"> </span>moe, <span class="dt">xmax =</span> estimate <span class="op">+</span><span class="st"> </span>moe)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb252-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb252-6" data-line-number="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Household income by county in Nebraska&quot;</span>,</a>
-<a class="sourceLine" id="cb252-7" data-line-number="7">       <span class="dt">subtitle =</span> <span class="st">&quot;2013-2017 American Community Survey&quot;</span>,</a>
-<a class="sourceLine" id="cb252-8" data-line-number="8">       <span class="dt">y =</span> <span class="st">&quot;&quot;</span>,</a>
-<a class="sourceLine" id="cb252-9" data-line-number="9">       <span class="dt">x =</span> <span class="st">&quot;ACS estimate (bars represent margin of error)&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" data-line-number="1">ne <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb253-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">NAME =</span> <span class="kw">gsub</span>(<span class="st">&quot; County, Nebraska&quot;</span>, <span class="st">&quot;&quot;</span>, NAME)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb253-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> estimate, <span class="dt">y =</span> <span class="kw">reorder</span>(NAME, estimate))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb253-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_errorbarh</span>(<span class="kw">aes</span>(<span class="dt">xmin =</span> estimate <span class="op">-</span><span class="st"> </span>moe, <span class="dt">xmax =</span> estimate <span class="op">+</span><span class="st"> </span>moe)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb253-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb253-6" data-line-number="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Household income by county in Nebraska&quot;</span>,</a>
+<a class="sourceLine" id="cb253-7" data-line-number="7">       <span class="dt">subtitle =</span> <span class="st">&quot;2013-2017 American Community Survey&quot;</span>,</a>
+<a class="sourceLine" id="cb253-8" data-line-number="8">       <span class="dt">y =</span> <span class="st">&quot;&quot;</span>,</a>
+<a class="sourceLine" id="cb253-9" data-line-number="9">       <span class="dt">x =</span> <span class="st">&quot;ACS estimate (bars represent margin of error)&quot;</span>)</a></code></pre></div>
 <p><img src="datajournalism_files/figure-html/unnamed-chunk-139-1.png" width="672" /></p>
 <p>As you can see, some of the error bars are quite wide. Some are narrow. But if the bars overlap, it means the difference between the two counties is within the margin of error, and the differences aren’t statistically significant. So is the difference between Cass and Washington significant? Nope. Is the difference between Sarpy and everyone else significant? Yes it is.</p>
 <p>Let’s ask another question of the ACS – did any counties lose income from the time of the global financial crisis to the current 5-year window?</p>
 <p>Let’s re-label our first household income data.</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" data-line-number="1">ne18 &lt;-<span class="st"> </span><span class="kw">get_acs</span>(<span class="dt">geography =</span> <span class="st">&quot;county&quot;</span>, </a>
-<a class="sourceLine" id="cb253-2" data-line-number="2">              <span class="dt">variables =</span> <span class="kw">c</span>(<span class="dt">medincome =</span> <span class="st">&quot;B19013_001&quot;</span>), </a>
-<a class="sourceLine" id="cb253-3" data-line-number="3">              <span class="dt">state =</span> <span class="st">&quot;NE&quot;</span>, </a>
-<a class="sourceLine" id="cb253-4" data-line-number="4">              <span class="dt">year =</span> <span class="dv">2018</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" data-line-number="1">ne18 &lt;-<span class="st"> </span><span class="kw">get_acs</span>(<span class="dt">geography =</span> <span class="st">&quot;county&quot;</span>, </a>
+<a class="sourceLine" id="cb254-2" data-line-number="2">              <span class="dt">variables =</span> <span class="kw">c</span>(<span class="dt">medincome =</span> <span class="st">&quot;B19013_001&quot;</span>), </a>
+<a class="sourceLine" id="cb254-3" data-line-number="3">              <span class="dt">state =</span> <span class="st">&quot;NE&quot;</span>, </a>
+<a class="sourceLine" id="cb254-4" data-line-number="4">              <span class="dt">year =</span> <span class="dv">2018</span>)</a></code></pre></div>
 <pre><code>## Getting data from the 2014-2018 5-year ACS</code></pre>
 <p>And now we grab the 2010 median household income.</p>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" data-line-number="1">ne10 &lt;-<span class="st"> </span><span class="kw">get_acs</span>(<span class="dt">geography =</span> <span class="st">&quot;county&quot;</span>, </a>
-<a class="sourceLine" id="cb255-2" data-line-number="2">              <span class="dt">variables =</span> <span class="kw">c</span>(<span class="dt">medincome =</span> <span class="st">&quot;B19013_001&quot;</span>), </a>
-<a class="sourceLine" id="cb255-3" data-line-number="3">              <span class="dt">state =</span> <span class="st">&quot;NE&quot;</span>, </a>
-<a class="sourceLine" id="cb255-4" data-line-number="4">              <span class="dt">year =</span> <span class="dv">2010</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" data-line-number="1">ne10 &lt;-<span class="st"> </span><span class="kw">get_acs</span>(<span class="dt">geography =</span> <span class="st">&quot;county&quot;</span>, </a>
+<a class="sourceLine" id="cb256-2" data-line-number="2">              <span class="dt">variables =</span> <span class="kw">c</span>(<span class="dt">medincome =</span> <span class="st">&quot;B19013_001&quot;</span>), </a>
+<a class="sourceLine" id="cb256-3" data-line-number="3">              <span class="dt">state =</span> <span class="st">&quot;NE&quot;</span>, </a>
+<a class="sourceLine" id="cb256-4" data-line-number="4">              <span class="dt">year =</span> <span class="dv">2010</span>)</a></code></pre></div>
 <pre><code>## Getting data from the 2006-2010 5-year ACS</code></pre>
 <p>What I’m going to do next is a lot, but each step is simple. I’m going to join the data together, so each county has one line of data. Then I’m going to rename some fields that repeat. Then I’m going to calculate the minimium and maximum value of the estimate using the margin of error. That’ll help me later. After that, I’m going to calculate a perent change and sort it by that change.</p>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" data-line-number="1">ne10 <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb257-2" data-line-number="2"><span class="st">  </span><span class="kw">inner_join</span>(ne18, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;GEOID&quot;</span>, <span class="st">&quot;NAME&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb257-3" data-line-number="3"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">estimate2010=</span>estimate.x, <span class="dt">estimate2018=</span>estimate.y) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb257-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">min2010 =</span> estimate2010<span class="op">-</span>moe.x, <span class="dt">max2010 =</span> estimate2010<span class="op">+</span>moe.x, <span class="dt">min2018 =</span> estimate2018<span class="op">-</span>moe.y, <span class="dt">max2018 =</span> estimate2018<span class="op">+</span>moe.y) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb257-5" data-line-number="5"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>variable.x, <span class="op">-</span>variable.y, <span class="op">-</span>moe.x, <span class="op">-</span>moe.y) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb257-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">change =</span> ((estimate2018<span class="op">-</span>estimate2010)<span class="op">/</span>estimate2010)<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb257-7" data-line-number="7"><span class="st">  </span><span class="kw">arrange</span>(change)</a></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" data-line-number="1">ne10 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb258-2" data-line-number="2"><span class="st">  </span><span class="kw">inner_join</span>(ne18, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;GEOID&quot;</span>, <span class="st">&quot;NAME&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb258-3" data-line-number="3"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">estimate2010=</span>estimate.x, <span class="dt">estimate2018=</span>estimate.y) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb258-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">min2010 =</span> estimate2010<span class="op">-</span>moe.x, <span class="dt">max2010 =</span> estimate2010<span class="op">+</span>moe.x, <span class="dt">min2018 =</span> estimate2018<span class="op">-</span>moe.y, <span class="dt">max2018 =</span> estimate2018<span class="op">+</span>moe.y) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb258-5" data-line-number="5"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>variable.x, <span class="op">-</span>variable.y, <span class="op">-</span>moe.x, <span class="op">-</span>moe.y) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb258-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">change =</span> ((estimate2018<span class="op">-</span>estimate2010)<span class="op">/</span>estimate2010)<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb258-7" data-line-number="7"><span class="st">  </span><span class="kw">arrange</span>(change)</a></code></pre></div>
 <pre><code>## # A tibble: 93 x 9
 ##    GEOID NAME   estimate2010 estimate2018 min2010 max2010 min2018 max2018 change
 ##    &lt;chr&gt; &lt;chr&gt;         &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
@@ -401,14 +403,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="bonus-api-example-coronavirus" class="section level2">
 <h2><span class="header-section-number">17.2</span> Bonus API example: Coronavirus</h2>
 <p>As I’m writing this, there is a growing level of fear about the novel coronavirus, COVID-19. And, as I’m writing this, I was alerted to a new R package that pulls daily updates of coronavirus reports daily. You install it with <code>install.packages(&quot;coronavirus&quot;)</code></p>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb259-1" data-line-number="1"><span class="kw">library</span>(coronavirus)</a></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" data-line-number="1"><span class="kw">library</span>(coronavirus)</a></code></pre></div>
 <pre><code>## Warning: package &#39;coronavirus&#39; was built under R version 3.5.2</code></pre>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" data-line-number="1"><span class="kw">data</span>(<span class="st">&quot;coronavirus&quot;</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" data-line-number="1"><span class="kw">data</span>(<span class="st">&quot;coronavirus&quot;</span>) </a></code></pre></div>
 <p>What just happened, without you having to do anything, is the library just made a call to servers at Johns Hopkins University and got the latest coronavirus numbers from around the world.</p>
 <p>Check it out:</p>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" data-line-number="1"><span class="kw">view</span>(coronavirus)</a></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" data-line-number="1"><span class="kw">view</span>(coronavirus)</a></code></pre></div>
 <p>So now we can start using it for data analysis. How about cases in the US?</p>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" data-line-number="1">coronavirus <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Country.Region <span class="op">==</span><span class="st"> &quot;US&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb264-1" data-line-number="1">coronavirus <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Country.Region <span class="op">==</span><span class="st"> &quot;US&quot;</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 16 x 7
 ##    Province.State       Country.Region   Lat   Long date       cases type     
 ##    &lt;chr&gt;                &lt;chr&gt;          &lt;dbl&gt;  &lt;dbl&gt; &lt;date&gt;     &lt;int&gt; &lt;chr&gt;    
@@ -429,7 +431,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 15 San Antonio, TX      US              29.4  -98.5 2020-02-13     1 confirmed
 ## 16 San Diego County, CA US              32.7 -117.  2020-02-13     1 confirmed</code></pre>
 <p>How about confirmed cases by country?</p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" data-line-number="1">coronavirus <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(type <span class="op">==</span><span class="st"> &quot;confirmed&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Country.Region) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="dt">total=</span><span class="kw">sum</span>(cases)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(total))</a></code></pre></div>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb266-1" data-line-number="1">coronavirus <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(type <span class="op">==</span><span class="st"> &quot;confirmed&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Country.Region) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="dt">total=</span><span class="kw">sum</span>(cases)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(total))</a></code></pre></div>
 <pre><code>## # A tibble: 30 x 2
 ##    Country.Region total
 ##    &lt;chr&gt;          &lt;int&gt;

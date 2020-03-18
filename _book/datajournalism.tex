@@ -118,7 +118,7 @@
 
 \title{Data Journalism with R and the Tidyverse}
 \author{Matt Waite}
-\date{2020-03-16}
+\date{2020-03-18}
 
 \begin{document}
 \maketitle
@@ -2349,7 +2349,7 @@ Here's an example using sensible defaults for weighting -- unfortunately \href{h
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3035
+## [1] 3033
 \end{verbatim}
 
 Cuts it down by almost 1000. That seems pretty good. Here's a different method, using a method that turns words into phonetic spellings called soundex.
@@ -3514,6 +3514,18 @@ Let's run it.
 ##  31 Oneliner delimiter or quote        'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-06&print=csv'
 \end{verbatim}
 
+\begin{verbatim}
+## Warning: 35 parsing failures.
+## row col  expected    actual                                                                           file
+##   3  -- 1 columns 3 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-18&print=csv'
+##   4  -- 1 columns 4 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-18&print=csv'
+##  10  -- 1 columns 3 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-18&print=csv'
+##  20  -- 1 columns 7 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-18&print=csv'
+##  21  -- 1 columns 3 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-18&print=csv'
+## ... ... ......... ......... ..............................................................................
+## See problems(...) for more details.
+\end{verbatim}
+
 And after that, I have a dataset of entries of bills on the floor. So if I want to see who has had the most bills on the floor -- including repeats -- I could answer that now.
 
 \begin{Shaded}
@@ -3534,7 +3546,7 @@ And after that, I have a dataset of entries of bills on the floor. So if I want 
 ## 2 Pansing Brooks    35
 ## 3 Vargas            35
 ## 4 Bolz              23
-## 5 Hughes            21
+## 5 Hughes            22
 \end{verbatim}
 
 Senator Kolterman, collect your prize.
@@ -4361,8 +4373,12 @@ So if we want to see where hospitals are in Nebraska, we add the counties, then 
 
 And with that, we can see some questions already arising. How many counties don't have hospitals at all? How many beds are there in each county? What if we had towns as points. Could we find the town that's the farthest from a hospital?
 
-\hypertarget{geographic-queries}{%
-\chapter{Geographic queries}\label{geographic-queries}}
+\hypertarget{geographic-analysis}{%
+\chapter{Geographic analysis}\label{geographic-analysis}}
+
+In the previous chapter, we looked at Nebraska's hospitals and used layers to show where hospitals on a map of Nebraska's counties. Let's go little further.
+
+First, we get caught up to where we were last time.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4423,34 +4439,124 @@ And with that, we can see some questions already arising. How many counties don'
 \end{Highlighting}
 \end{Shaded}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{nebedcount <-}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(nehospitals }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(BEDS }\OperatorTok{!=}\StringTok{ }\DecValTok{-999}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{(COUNTY, COUNTYFIPS) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{total_beds =} \KeywordTok{sum}\NormalTok{(BEDS)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{GEOID =}\NormalTok{ COUNTYFIPS)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{geometry)}
-\end{Highlighting}
-\end{Shaded}
+Now that we're in the same place as last time, let's start asking questions of this data. For starters: how many hopsital beds are there in each county?
+
+At first, we can look at the \texttt{nehospitals} data and see there's a \texttt{COUNTY} field that would make for an easy group and summarize.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{nehospbycounty <-}\StringTok{ }\NormalTok{necounties }\OperatorTok{%>%}\StringTok{ }\KeywordTok{left_join}\NormalTok{(nebedcount)}
+\NormalTok{nehospitals }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{(COUNTY) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{total_beds=}\KeywordTok{sum}\NormalTok{(BEDS))}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## Joining, by = "GEOID"
+## Simple feature collection with 67 features and 2 fields
+## geometry type:  GEOMETRY
+## dimension:      XY
+## bbox:           xmin: -103.6668 ymin: 40.02644 xmax: -95.60789 ymax: 42.87939
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs
+## # A tibble: 67 x 3
+##    COUNTY    total_beds                                            geometry
+##  * <fct>          <dbl>                                      <GEOMETRY [°]>
+##  1 ADAMS            161                          POINT (-98.38807 40.59091)
+##  2 ANTELOPE          37 MULTIPOINT (-98.03064 42.13475, -97.83785 42.04735)
+##  3 BOONE             25                          POINT (-98.00574 41.68304)
+##  4 BOX BUTTE         25                          POINT (-102.8699 42.11684)
+##  5 BOYD              20                          POINT (-98.46849 42.82457)
+##  6 BROWN             23                          POINT (-99.84956 42.54451)
+##  7 BUFFALO          261 MULTIPOINT (-99.11259 40.68205, -99.08158 40.70766)
+##  8 BURT              18                          POINT (-96.45918 41.83485)
+##  9 BUTLER            20                          POINT (-97.12253 41.24669)
+## 10 CHASE             22                          POINT (-101.6507 40.52413)
+## # ... with 57 more rows
 \end{verbatim}
+
+But look at Thurston County. How does a county have a negative number of hospital beds? When DHS doesn't know and can't find it, they put in -999 to indicate unknown. That's \ldots{} obivously not good for us, so we need to filter that.
+
+Also, notice we still get a geometry? That's because \texttt{nehospitals} isn't a dataframe -- it's a simple features file. So that geometry is coming with, regardless. Except in this case, it's useless. It's a collection of points. It does us no good.
+
+What we really want to do with this data is join the number of beds in each county to the county map, and then shade those counties by the number of beds. It's a style of map called a cloropleth map. You've seen them before.
+
+To do that, we need to make a dataframe. In our our hospitals data, we have a field called COUNTYFIPS that is identical to the GEOID in the counties data -- it's the merging of the state fips and the county fips to make a unique number for each county. So in one query, we need to convert our \texttt{sf} file to a dataframe, filter out the -999 hospital, group it by the COUNTY and COUNTYFIPS and then, to save us some hassle, we're going to rename that COUNTYFIPS field to GEOID which makes our join easier. And, as one last convenience, we're going to drop the geometry, because that too will cause confusion.
+
+Follow? No worries if you didn't. Each step by itself is simple, and they add up together.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nebedcount <-}\StringTok{ }
+\StringTok{  }\KeywordTok{as.data.frame}\NormalTok{(}
+\NormalTok{    nehospitals }\OperatorTok{%>%}\StringTok{ }
+\StringTok{      }\KeywordTok{filter}\NormalTok{(BEDS }\OperatorTok{!=}\StringTok{ }\DecValTok{-999}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{      }\KeywordTok{group_by}\NormalTok{(COUNTY, COUNTYFIPS) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{      }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{total_beds =} \KeywordTok{sum}\NormalTok{(BEDS)}
+\NormalTok{  ) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{GEOID =}\NormalTok{ COUNTYFIPS)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{geometry)}
+\end{Highlighting}
+\end{Shaded}
+
+Let's take a look at what we got:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(nebedcount)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      COUNTY GEOID total_beds
+## 1     ADAMS 31001        161
+## 2  ANTELOPE 31003         37
+## 3     BOONE 31011         25
+## 4 BOX BUTTE 31013         25
+## 5      BOYD 31015         20
+## 6     BROWN 31017         23
+\end{verbatim}
+
+Pretty simple. Three columns: COUNTY, GEOID and total\_beds.
+
+Now using what we learned in the joining chapter, we can combine them with our counties data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nehospbycounty <-}\StringTok{ }\NormalTok{necounties }\OperatorTok{%>%}\StringTok{ }\KeywordTok{left_join}\NormalTok{(nebedcount, }\DataTypeTok{by=}\StringTok{"GEOID"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{verbatim}
 ## Warning: Column `GEOID` joining factors with different levels, coercing to
 ## character vector
 \end{verbatim}
 
+We can ignore that warning.
+
+Now we can map it. What's going to change here is we're going to add a fill to our aes in our geom\_sf.
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_sf}\NormalTok{(}\DataTypeTok{data=}\NormalTok{nehospbycounty, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill=}\NormalTok{total_beds)) }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_minimal}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_viridis_c}\NormalTok{(}\DataTypeTok{option =} \StringTok{"plasma"}\NormalTok{, }\DataTypeTok{trans =} \StringTok{"sqrt"}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_sf}\NormalTok{(}\DataTypeTok{data=}\NormalTok{nehospbycounty, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill=}\NormalTok{total_beds)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme_minimal}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-190-1.pdf}
+\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-192-1.pdf}
+
+We get what we expect \ldots{} it's not ideal. We can't really tell a difference between anything outside of Douglas and Lancaster counties. So we can add a scale in here. This one is called viridis, and it makes a more visibile color ramp. And since we have a large disparity between Douglas County and pretty much everywhere else, we'll make the scale exponential.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_sf}\NormalTok{(}\DataTypeTok{data=}\NormalTok{nehospbycounty, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill=}\NormalTok{total_beds)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme_minimal}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{scale_fill_viridis_c}\NormalTok{(}\DataTypeTok{option =} \StringTok{"plasma"}\NormalTok{, }\DataTypeTok{trans =} \StringTok{"sqrt"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-193-1.pdf}
+
+So there's the map. How about a list:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4529,6 +4635,8 @@ And with that, we can see some questions already arising. How many counties don'
 ## 67      KEARNEY         10
 \end{verbatim}
 
+So there's a lot of hosptial beds in Omaha (DOUGLAS) and Lincoln (LANCASTER). Some quick math shows there 3,463 beds in those two counties. How many beds are in the rest of the state combined?
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{nebedcount }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(COUNTY }\OperatorTok{!=}\StringTok{ "DOUGLAS"} \OperatorTok{&}\StringTok{ }\NormalTok{COUNTY }\OperatorTok{!=}\StringTok{ "LANCASTER"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\KeywordTok{sum}\NormalTok{(total_beds))}
@@ -4540,11 +4648,45 @@ And with that, we can see some questions already arising. How many counties don'
 ## 1            2641
 \end{verbatim}
 
+How many total beds?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nebedcount }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\KeywordTok{sum}\NormalTok{(total_beds))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   sum(total_beds)
+## 1            6104
+\end{verbatim}
+
+So there's 6,104 beds in the state and 3,463 of them are in Omaha and Lincoln. What perent is that?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{3463}\OperatorTok{/}\DecValTok{6104}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.5673329
+\end{verbatim}
+
+According to this data, 57 percent of the state's hospital beds are in two counties. What about population?
+
+\hypertarget{why-tidycensus-is-so-useful}{%
+\section{Why tidycensus is so useful}\label{why-tidycensus-is-so-useful}}
+
+Most of the time when we're looking at population questions, we're looking at Census data. So what percent of people live in Lancaster and Douglas counties?
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(tidycensus)}
 \end{Highlighting}
 \end{Shaded}
+
+In this case, the population variable we're looking for is Total Population, which is \texttt{B01003\_001} and we're looking at the county geography. Here's what that looks like:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4559,121 +4701,63 @@ And with that, we can see some questions already arising. How many counties don'
 ## Getting data from the 2014-2018 5-year ACS
 \end{verbatim}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{nehospbycounty <-}\StringTok{ }\NormalTok{nehospbycounty }\OperatorTok{%>%}\StringTok{ }\KeywordTok{inner_join}\NormalTok{(nepop, }\DataTypeTok{by=}\StringTok{"GEOID"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{bedper1000 =}\NormalTok{ (total_beds}\OperatorTok{/}\NormalTok{estimate)}\OperatorTok{*}\DecValTok{1000}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+First we can filter FOR Douglas OR Lancaster using the \textbar{} character:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_sf}\NormalTok{(}\DataTypeTok{data=}\NormalTok{nehospbycounty, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill=}\NormalTok{bedper1000)) }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_minimal}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_viridis_c}\NormalTok{(}\DataTypeTok{option =} \StringTok{"plasma"}\NormalTok{, }\DataTypeTok{trans =} \StringTok{"sqrt"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-196-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{as.data.frame}\NormalTok{(nehospbycounty }\OperatorTok{%>%}\StringTok{ }\KeywordTok{select}\NormalTok{(NAME.x, bedper1000) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(bedper1000)))}
+\NormalTok{nepop }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(NAME }\OperatorTok{==}\StringTok{ "Lancaster County, Nebraska"} \OperatorTok{|}\StringTok{ }\NormalTok{NAME }\OperatorTok{==}\StringTok{ "Douglas County, Nebraska"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\KeywordTok{sum}\NormalTok{(estimate))}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-##          NAME.x bedper1000                       geometry
-## 1          Rock 17.7777778 MULTIPOLYGON (((-99.67768 4...
-## 2          Boyd  9.7943193 MULTIPOLYGON (((-99.25396 4...
-## 3         Brown  7.6974565 MULTIPOLYGON (((-100.1985 4...
-## 4         Dundy  6.9204152 MULTIPOLYGON (((-102.0519 4...
-## 5       Perkins  6.8799450 MULTIPOLYGON (((-102.0518 4...
-## 6         Chase  5.8918050 MULTIPOLYGON (((-102.0518 4...
-## 7      Nuckolls  5.8479532 MULTIPOLYGON (((-98.27357 4...
-## 8      Antelope  5.8066541 MULTIPOLYGON (((-98.30024 4...
-## 9        Pierce  5.5889339 MULTIPOLYGON (((-97.83443 4...
-## 10       Harlan  5.5264689 MULTIPOLYGON (((-99.63046 4...
-## 11       Garden  5.3763441 MULTIPOLYGON (((-102.6776 4...
-## 12        Nance  5.3460889 MULTIPOLYGON (((-98.29134 4...
-## 13      Buffalo  5.3232715 MULTIPOLYGON (((-99.42576 4...
-## 14        Adams  5.0976791 MULTIPOLYGON (((-98.72439 4...
-## 15     Sheridan  4.7764616 MULTIPOLYGON (((-102.7921 4...
-## 16        Boone  4.7054395 MULTIPOLYGON (((-98.2956 41...
-## 17     Franklin  4.6573520 MULTIPOLYGON (((-99.1794 40...
-## 18 Scotts Bluff  4.5786788 MULTIPOLYGON (((-104.0529 4...
-## 19      Douglas  4.4667311 MULTIPOLYGON (((-96.47072 4...
-## 20       Cherry  4.3177893 MULTIPOLYGON (((-102.0825 4...
-## 21         Holt  4.1971694 MULTIPOLYGON (((-99.25704 4...
-## 22       Furnas  4.1788550 MULTIPOLYGON (((-100.1978 4...
-## 23      Morrill  4.1313778 MULTIPOLYGON (((-103.3704 4...
-## 24       Pawnee  4.1106129 MULTIPOLYGON (((-96.46367 4...
-## 25       Howard  3.9032006 MULTIPOLYGON (((-98.74433 4...
-## 26       Valley  3.7878788 MULTIPOLYGON (((-99.21202 4...
-## 27       Thayer  3.7269517 MULTIPOLYGON (((-97.82082 4...
-## 28      Madison  3.7254010 MULTIPOLYGON (((-97.83454 4...
-## 29      Webster  3.6404369 MULTIPOLYGON (((-98.72683 4...
-## 30     Fillmore  3.5880875 MULTIPOLYGON (((-97.82478 4...
-## 31      Johnson  3.4635367 MULTIPOLYGON (((-96.46363 4...
-## 32         Otoe  3.3970810 MULTIPOLYGON (((-96.46376 4...
-## 33      Lincoln  3.2737843 MULTIPOLYGON (((-101.2697 4...
-## 34      Kimball  3.2724298 MULTIPOLYGON (((-104.0535 4...
-## 35       Custer  3.2317636 MULTIPOLYGON (((-100.2512 4...
-## 36    Lancaster  3.1732313 MULTIPOLYGON (((-96.91349 4...
-## 37         Polk  3.0447193 MULTIPOLYGON (((-97.82826 4...
-## 38       Saline  3.0095185 MULTIPOLYGON (((-97.3684 40...
-## 39   Richardson  2.9966288 MULTIPOLYGON (((-96.01018 4...
-## 40     Thurston  2.9411765 MULTIPOLYGON (((-96.8225 42...
-## 41        Dawes  2.8102518 MULTIPOLYGON (((-103.5051 4...
-## 42       Cuming  2.7805583 MULTIPOLYGON (((-97.01936 4...
-## 43         Burt  2.7573529 MULTIPOLYGON (((-96.55487 4...
-## 44         York  2.7538227 MULTIPOLYGON (((-97.82629 4...
-## 45       Phelps  2.7412281 MULTIPOLYGON (((-99.64346 4...
-## 46         Knox  2.7186761 MULTIPOLYGON (((-98.30977 4...
-## 47        Wayne  2.6689442 MULTIPOLYGON (((-97.36772 4...
-## 48         Hall  2.5919828 MULTIPOLYGON (((-98.72198 4...
-## 49      Merrick  2.5631167 MULTIPOLYGON (((-98.28658 4...
-## 50     Cheyenne  2.5375558 MULTIPOLYGON (((-103.3823 4...
-## 51       Butler  2.4792364 MULTIPOLYGON (((-97.36819 4...
-## 52       Dawson  2.4365653 MULTIPOLYGON (((-100.2242 4...
-## 53    Jefferson  2.3650529 MULTIPOLYGON (((-97.3692 40...
-## 54       Colfax  2.3234201 MULTIPOLYGON (((-97.25258 4...
-## 55         Gage  2.3153508 MULTIPOLYGON (((-96.91641 4...
-## 56   Red Willow  2.3135295 MULTIPOLYGON (((-100.761 40...
-## 57       Nemaha  2.2844089 MULTIPOLYGON (((-96.06701 4...
-## 58    Box Butte  2.2544864 MULTIPOLYGON (((-103.4445 4...
-## 59        Keith  2.2224966 MULTIPOLYGON (((-102.0555 4...
-## 60        Dodge  2.2081073 MULTIPOLYGON (((-96.90592 4...
-## 61       Platte  1.5425098 MULTIPOLYGON (((-97.83049 4...
-## 62      Kearney  1.5262515 MULTIPOLYGON (((-99.17925 4...
-## 63     Hamilton  1.5253868 MULTIPOLYGON (((-98.28258 4...
-## 64       Seward  1.4012962 MULTIPOLYGON (((-97.36812 4...
-## 65   Washington  1.2364608 MULTIPOLYGON (((-96.44478 4...
-## 66        Sarpy  0.9868181 MULTIPOLYGON (((-96.33287 4...
-## 67     Saunders  0.7610350 MULTIPOLYGON (((-96.90823 4...
-## 68       Blaine         NA MULTIPOLYGON (((-100.2676 4...
-## 69    McPherson         NA MULTIPOLYGON (((-101.4065 4...
-## 70       Arthur         NA MULTIPOLYGON (((-101.9855 4...
-## 71       Thomas         NA MULTIPOLYGON (((-100.8461 4...
-## 72         Clay         NA MULTIPOLYGON (((-98.2781 40...
-## 73      Stanton         NA MULTIPOLYGON (((-97.3684 42...
-## 74    Hitchcock         NA MULTIPOLYGON (((-101.3255 4...
-## 75        Hayes         NA MULTIPOLYGON (((-101.3454 4...
-## 76       Hooker         NA MULTIPOLYGON (((-101.4266 4...
-## 77        Grant         NA MULTIPOLYGON (((-102.0666 4...
-## 78      Sherman         NA MULTIPOLYGON (((-99.20326 4...
-## 79      Wheeler         NA MULTIPOLYGON (((-98.76116 4...
-## 80        Logan         NA MULTIPOLYGON (((-100.7148 4...
-## 81      Greeley         NA MULTIPOLYGON (((-98.75222 4...
-## 82         Cass         NA MULTIPOLYGON (((-96.46386 4...
-## 83    Keya Paha         NA MULTIPOLYGON (((-100.1984 4...
-## 84         Loup         NA MULTIPOLYGON (((-99.68696 4...
-## 85        Sioux         NA MULTIPOLYGON (((-104.0531 4...
-## 86       Dakota         NA MULTIPOLYGON (((-96.72662 4...
-## 87        Dixon         NA MULTIPOLYGON (((-97.01779 4...
-## 88        Deuel         NA MULTIPOLYGON (((-102.6209 4...
-## 89     Frontier         NA MULTIPOLYGON (((-100.7812 4...
-## 90       Gosper         NA MULTIPOLYGON (((-100.0951 4...
-## 91        Cedar         NA MULTIPOLYGON (((-97.48492 4...
-## 92       Banner         NA MULTIPOLYGON (((-104.0529 4...
-## 93     Garfield         NA MULTIPOLYGON (((-99.22273 4...
+## # A tibble: 1 x 1
+##   `sum(estimate)`
+##             <dbl>
+## 1          865086
 \end{verbatim}
+
+Now without them:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nepop }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(NAME }\OperatorTok{!=}\StringTok{ "Lancaster County, Nebraska"} \OperatorTok{|}\StringTok{ }\NormalTok{NAME }\OperatorTok{!=}\StringTok{ "Douglas County, Nebraska"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\KeywordTok{sum}\NormalTok{(estimate))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 1
+##   `sum(estimate)`
+##             <dbl>
+## 1         1904760
+\end{verbatim}
+
+All together now:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nepop }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\KeywordTok{sum}\NormalTok{(estimate))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 1
+##   `sum(estimate)`
+##             <dbl>
+## 1         1904760
+\end{verbatim}
+
+And the percentage:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{865086}\OperatorTok{/}\DecValTok{1904760}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.4541706
+\end{verbatim}
+
+So Omaha and Lincoln represent 57 percent of the hospital beds, but only 45 percent of the population.
 
 \end{document}
