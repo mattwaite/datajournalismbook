@@ -24,7 +24,7 @@
 <meta name="author" content="Matt Waite" />
 
 
-<meta name="date" content="2020-03-18" />
+<meta name="date" content="2020-03-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,6 +50,14 @@
 
 
 
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.12/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160712129-1"></script>
 <script>
@@ -229,6 +237,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21" data-path="geographic-analysis.html"><a href="geographic-analysis.html"><i class="fa fa-check"></i><b>21</b> Geographic analysis</a><ul>
 <li class="chapter" data-level="21.1" data-path="geographic-analysis.html"><a href="geographic-analysis.html#why-tidycensus-is-so-useful"><i class="fa fa-check"></i><b>21.1</b> Why tidycensus is so useful</a></li>
 </ul></li>
+<li class="chapter" data-level="22" data-path="automating-analysis.html"><a href="automating-analysis.html"><i class="fa fa-check"></i><b>22</b> Automating analysis</a><ul>
+<li class="chapter" data-level="22.1" data-path="automating-analysis.html"><a href="automating-analysis.html#automating-downloads-an-imports"><i class="fa fa-check"></i><b>22.1</b> Automating downloads an imports</a></li>
+<li class="chapter" data-level="22.2" data-path="automating-analysis.html"><a href="automating-analysis.html#exploring-the-data"><i class="fa fa-check"></i><b>22.2</b> Exploring the data</a></li>
+<li class="chapter" data-level="22.3" data-path="automating-analysis.html"><a href="automating-analysis.html#analysis"><i class="fa fa-check"></i><b>22.3</b> Analysis</a></li>
+<li class="chapter" data-level="22.4" data-path="automating-analysis.html"><a href="automating-analysis.html#making-updating-graphics"><i class="fa fa-check"></i><b>22.4</b> Making updating graphics</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -312,7 +326,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## row      col           expected actual                                                                           file
 ##  31 Oneliner delimiter or quote      C &#39;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-06&amp;print=csv&#39;
 ##  31 Oneliner delimiter or quote        &#39;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-06&amp;print=csv&#39;</code></pre>
-<pre><code>## Warning: 35 parsing failures.
+<pre><code>## Warning: 34 parsing failures.
 ## row col  expected    actual                                                                           file
 ##   3  -- 1 columns 3 columns &#39;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-18&amp;print=csv&#39;
 ##   4  -- 1 columns 4 columns &#39;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-18&amp;print=csv&#39;
@@ -321,8 +335,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  21  -- 1 columns 3 columns &#39;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-18&amp;print=csv&#39;
 ## ... ... ......... ......... ..............................................................................
 ## See problems(...) for more details.</code></pre>
+<pre><code>## Warning: 35 parsing failures.
+## row col  expected    actual                                                                           file
+##   3  -- 1 columns 3 columns &#39;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-19&amp;print=csv&#39;
+##   4  -- 1 columns 4 columns &#39;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-19&amp;print=csv&#39;
+##  10  -- 1 columns 3 columns &#39;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-19&amp;print=csv&#39;
+##  20  -- 1 columns 7 columns &#39;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-19&amp;print=csv&#39;
+##  21  -- 1 columns 3 columns &#39;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-19&amp;print=csv&#39;
+## ... ... ......... ......... ..............................................................................
+## See problems(...) for more details.</code></pre>
 <p>And after that, I have a dataset of entries of bills on the floor. So if I want to see who has had the most bills on the floor – including repeats – I could answer that now.</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" data-line-number="1">allbills <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Introducer) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>(<span class="dt">sort=</span><span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">top_n</span>(<span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1">allbills <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Introducer) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>(<span class="dt">sort=</span><span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">top_n</span>(<span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## Selecting by n</code></pre>
 <pre><code>## # A tibble: 5 x 2
 ##   Introducer         n

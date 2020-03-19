@@ -118,7 +118,7 @@
 
 \title{Data Journalism with R and the Tidyverse}
 \author{Matt Waite}
-\date{2020-03-18}
+\date{2020-03-19}
 
 \begin{document}
 \maketitle
@@ -3515,13 +3515,25 @@ Let's run it.
 \end{verbatim}
 
 \begin{verbatim}
-## Warning: 35 parsing failures.
+## Warning: 34 parsing failures.
 ## row col  expected    actual                                                                           file
 ##   3  -- 1 columns 3 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-18&print=csv'
 ##   4  -- 1 columns 4 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-18&print=csv'
 ##  10  -- 1 columns 3 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-18&print=csv'
 ##  20  -- 1 columns 7 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-18&print=csv'
 ##  21  -- 1 columns 3 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-18&print=csv'
+## ... ... ......... ......... ..............................................................................
+## See problems(...) for more details.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: 35 parsing failures.
+## row col  expected    actual                                                                           file
+##   3  -- 1 columns 3 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-19&print=csv'
+##   4  -- 1 columns 4 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-19&print=csv'
+##  10  -- 1 columns 3 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-19&print=csv'
+##  20  -- 1 columns 7 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-19&print=csv'
+##  21  -- 1 columns 3 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-19&print=csv'
 ## ... ... ......... ......... ..............................................................................
 ## See problems(...) for more details.
 \end{verbatim}
@@ -4759,5 +4771,393 @@ And the percentage:
 \end{verbatim}
 
 So Omaha and Lincoln represent 57 percent of the hospital beds, but only 45 percent of the population.
+
+\hypertarget{automating-analysis}{%
+\chapter{Automating analysis}\label{automating-analysis}}
+
+Many of the data analyses that you do will be largely one-off efforts -- you're going to do the analysis and write the story and be done. Maybe you'll come back to it in a couple of months or years, but really you're just doing it once.
+
+But what happens when you have a long-running story, where you're going to update it every day, or every week? What changes when you're writing that code?
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  How will this run again without changing anything?
+\item
+  What questions do you have that have to be answered each time?
+\item
+  What changes when you have to repeat questions to changing data?
+\end{enumerate}
+
+The global COVID-19 pandemic is something we're going to be writing about and covering for some time. One element of it -- one that hasn't materialized in Nebraska as of this writing -- is a tsunami of first time joblessness claims for unemployment assistance. That data is regularly published, and we're going to be talking about it weekly for a long time. So it's the ideal candidate for repeating analysis -- scripting the questions we want to answer every week and doing so in a way that we can just load it without having to change anything.
+
+Let's get some new libraries to our typical tidyverse import. First, I'm going to add a library called \texttt{readxl}, which does what you think it does. It reads Microsoft Excel files. The next one I'm going to add is \texttt{DT}. It stands for datatables, and it makes your dataframes into html tables that are browsable and searchable. This is a bigger issue for me -- the author who is turning these into html pages -- than you, working in your notebooks. We're also going to add a library called ggrepel, which assists in putting tables on dots in charts.
+
+You install them the same way you do anything else -- \texttt{install.packages("readxl")} and \texttt{install.packages("DT")} and \texttt{install.packages("ggrepel")}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\KeywordTok{library}\NormalTok{(janitor)}
+\KeywordTok{library}\NormalTok{(readxl)}
+\KeywordTok{library}\NormalTok{(DT)}
+\KeywordTok{library}\NormalTok{(ggrepel)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{automating-downloads-an-imports}{%
+\section{Automating downloads an imports}\label{automating-downloads-an-imports}}
+
+Nebraska \href{https://neworks.nebraska.gov/gsipub/index.asp?docid=710}{publishes data weekly on first time unemployment claims on a Department of Labor website}.
+
+There's four datasets. We're looking at the weekly initial claims from 2012 to present. If you click it, you'll get an Excel spreadsheet. That's a problem, given that we've been working with CSVs all along. So the problem we have before us is this: Have to download it first, then open an Excel file with multiple sheets and lots of header and footers.
+
+There's a multitude of ways to get data from a website, but base R has a simple function to just download a file and name it. Couldn't be easier. Right or control click on the link for the 2012 to 2020 initial claims data and copy the link location. Then use this function:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{download.file}\NormalTok{(}\StringTok{"https://neworks.nebraska.gov/admin/gsipub/htmlarea/uploads/NE%20UI%20Weekly%20Initial%20Claims.xlsx"}\NormalTok{, }\DataTypeTok{destfile =} \StringTok{"weeklyinitialclaims.xlsx"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Open the file in Excel so you can see what we're working with. The first sheet is just definitions and explanations. Then each sheet is a year (or year to date) of data. Some have footers. Some don't. Some have a headline. Some don't. So we have some work ahead of us.
+
+There are better ways to do this, and if your author was better at this, I'd tell you about it. But for beginners and people who aren't totally sure of themselves, explicit is better than implicit. So instead of using programming magic, we're going to use copy and paste. My programmer friends just died inside a little, but done is better than clever.
+
+What we need to do, in words, is this:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Read a specific sheet
+\item
+  Skip the top row
+\item
+  Clean the column names with janitor.
+\item
+  Select just the first two rows, which will help us chop out some garbage.
+\item
+  We need to find if the sheet has that source line at the end of the data, so we'll use \texttt{str\_detect} in \texttt{stringr}
+\item
+  We'll use janitor to remove any empty rows and columns
+\item
+  And lastly, we'll convert all the numbers in initial\_claims to actual numbers, because the Source line made them character on import.
+\end{enumerate}
+
+It's a lot, but not really. Each step is very simple, and is designed to solve one problem. And after we do it with one, we'll do it with the next, and the next, and the next, so on and so forth.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{weeklyclaims20 <-}\StringTok{ }\KeywordTok{read_excel}\NormalTok{(}\StringTok{"weeklyinitialclaims.xlsx"}\NormalTok{, }\DataTypeTok{sheet=}\DecValTok{2}\NormalTok{, }\DataTypeTok{skip=}\DecValTok{1}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{clean_names}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\KeywordTok{str_detect}\NormalTok{(initial_claims, }\StringTok{"Source"}\NormalTok{)) }\OperatorTok{%>%}\StringTok{  }
+\StringTok{  }\KeywordTok{remove_empty}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"cols"}\NormalTok{, }\StringTok{"rows"}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{initial_claims =} \KeywordTok{as.numeric}\NormalTok{(initial_claims))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## New names:
+## * `` -> ...3
+## * `` -> ...4
+## * `` -> ...5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{weeklyclaims19 <-}\StringTok{ }\KeywordTok{read_excel}\NormalTok{(}\StringTok{"weeklyinitialclaims.xlsx"}\NormalTok{, }\DataTypeTok{sheet=}\DecValTok{3}\NormalTok{, }\DataTypeTok{skip=}\DecValTok{1}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{clean_names}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }\KeywordTok{select}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\KeywordTok{str_detect}\NormalTok{(initial_claims, }\StringTok{"Source"}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{remove_empty}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"cols"}\NormalTok{, }\StringTok{"rows"}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{initial_claims =} \KeywordTok{as.numeric}\NormalTok{(initial_claims))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## New names:
+## * `` -> ...3
+## * `` -> ...4
+## * `` -> ...5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{weeklyclaims18 <-}\StringTok{ }\KeywordTok{read_excel}\NormalTok{(}\StringTok{"weeklyinitialclaims.xlsx"}\NormalTok{, }\DataTypeTok{sheet=}\DecValTok{4}\NormalTok{, }\DataTypeTok{skip=}\DecValTok{1}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{clean_names}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\KeywordTok{str_detect}\NormalTok{(initial_claims, }\StringTok{"Source"}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{remove_empty}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"cols"}\NormalTok{, }\StringTok{"rows"}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{initial_claims =} \KeywordTok{as.numeric}\NormalTok{(initial_claims))}
+
+\NormalTok{weeklyclaims17 <-}\StringTok{ }\KeywordTok{read_excel}\NormalTok{(}\StringTok{"weeklyinitialclaims.xlsx"}\NormalTok{, }\DataTypeTok{sheet=}\DecValTok{5}\NormalTok{, }\DataTypeTok{skip=}\DecValTok{1}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{clean_names}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\KeywordTok{str_detect}\NormalTok{(initial_claims, }\StringTok{"Source"}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{remove_empty}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"cols"}\NormalTok{, }\StringTok{"rows"}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{initial_claims =} \KeywordTok{as.numeric}\NormalTok{(initial_claims))}
+
+\NormalTok{weeklyclaims16 <-}\StringTok{ }\KeywordTok{read_excel}\NormalTok{(}\StringTok{"weeklyinitialclaims.xlsx"}\NormalTok{, }\DataTypeTok{sheet=}\DecValTok{6}\NormalTok{, }\DataTypeTok{skip=}\DecValTok{1}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{clean_names}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\KeywordTok{str_detect}\NormalTok{(initial_claims, }\StringTok{"Source"}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{remove_empty}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"cols"}\NormalTok{, }\StringTok{"rows"}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{initial_claims =} \KeywordTok{as.numeric}\NormalTok{(initial_claims))}
+
+\NormalTok{weeklyclaims15 <-}\StringTok{ }\KeywordTok{read_excel}\NormalTok{(}\StringTok{"weeklyinitialclaims.xlsx"}\NormalTok{, }\DataTypeTok{sheet=}\DecValTok{7}\NormalTok{, }\DataTypeTok{skip=}\DecValTok{1}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{clean_names}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\KeywordTok{str_detect}\NormalTok{(initial_claims, }\StringTok{"Source"}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{remove_empty}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"cols"}\NormalTok{, }\StringTok{"rows"}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{initial_claims =} \KeywordTok{as.numeric}\NormalTok{(initial_claims))}
+
+\NormalTok{weeklyclaims14 <-}\StringTok{ }\KeywordTok{read_excel}\NormalTok{(}\StringTok{"weeklyinitialclaims.xlsx"}\NormalTok{, }\DataTypeTok{sheet=}\DecValTok{8}\NormalTok{, }\DataTypeTok{skip=}\DecValTok{1}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{clean_names}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\KeywordTok{str_detect}\NormalTok{(initial_claims, }\StringTok{"Source"}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{remove_empty}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"cols"}\NormalTok{, }\StringTok{"rows"}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{initial_claims =} \KeywordTok{as.numeric}\NormalTok{(initial_claims))}
+
+\NormalTok{weeklyclaims13 <-}\StringTok{ }\KeywordTok{read_excel}\NormalTok{(}\StringTok{"weeklyinitialclaims.xlsx"}\NormalTok{, }\DataTypeTok{sheet=}\DecValTok{9}\NormalTok{, }\DataTypeTok{skip=}\DecValTok{1}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{clean_names}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\KeywordTok{str_detect}\NormalTok{(initial_claims, }\StringTok{"Source"}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{remove_empty}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"cols"}\NormalTok{, }\StringTok{"rows"}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{initial_claims =} \KeywordTok{as.numeric}\NormalTok{(initial_claims))}
+
+\NormalTok{weeklyclaims12 <-}\StringTok{ }\KeywordTok{read_excel}\NormalTok{(}\StringTok{"weeklyinitialclaims.xlsx"}\NormalTok{, }\DataTypeTok{sheet=}\DecValTok{10}\NormalTok{, }\DataTypeTok{skip=}\DecValTok{1}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{clean_names}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\KeywordTok{str_detect}\NormalTok{(initial_claims, }\StringTok{"Source"}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{remove_empty}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"cols"}\NormalTok{, }\StringTok{"rows"}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{initial_claims =} \KeywordTok{as.numeric}\NormalTok{(initial_claims))}
+\end{Highlighting}
+\end{Shaded}
+
+Now we need to combine all those tables together. We can do that with rbind and some convenient overwriting of a dataframe to add new data each time.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{weeklyclaims <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(weeklyclaims12, weeklyclaims13)}
+\NormalTok{weeklyclaims <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(weeklyclaims, weeklyclaims14)}
+\NormalTok{weeklyclaims <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(weeklyclaims, weeklyclaims15)}
+\NormalTok{weeklyclaims <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(weeklyclaims, weeklyclaims16)}
+\NormalTok{weeklyclaims <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(weeklyclaims, weeklyclaims17)}
+\NormalTok{weeklyclaims <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(weeklyclaims, weeklyclaims18)}
+\NormalTok{weeklyclaims <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(weeklyclaims, weeklyclaims19)}
+\NormalTok{weeklyclaims <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(weeklyclaims, weeklyclaims20)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exploring-the-data}{%
+\section{Exploring the data}\label{exploring-the-data}}
+
+Let's take a look at what we have, using datatables. The formatDate business just makes the date look nicer.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{datatable}\NormalTok{(weeklyclaims) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{formatDate}\NormalTok{(}\DecValTok{1}\NormalTok{, }\StringTok{"toLocaleDateString"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-208-1.pdf}
+
+Let's just look at the most recent week, and that's something that takes on different meaning when we're talking about updating data. We need to make this generic so that every time we pull this up and run it, it's the most recent week at the top. This time, it's very simple.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{weeklyclaims20 }\OperatorTok{%>%}\StringTok{ }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(week_ending_date))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 11 x 2
+##    week_ending_date    initial_claims
+##    <dttm>                       <dbl>
+##  1 2020-03-14 00:00:00            763
+##  2 2020-03-07 00:00:00            498
+##  3 2020-02-29 00:00:00            496
+##  4 2020-02-22 00:00:00            476
+##  5 2020-02-15 00:00:00            527
+##  6 2020-02-08 00:00:00            653
+##  7 2020-02-01 00:00:00            796
+##  8 2020-01-25 00:00:00            916
+##  9 2020-01-18 00:00:00            913
+## 10 2020-01-11 00:00:00           1036
+## 11 2020-01-04 00:00:00           1089
+\end{verbatim}
+
+\hypertarget{analysis}{%
+\section{Analysis}\label{analysis}}
+
+Now is when we need to start asking ourselves -- what are the questions that are going to come up week after week. What about how this most current week compares to all weeks going back to 2012? What if we just ranked them? Where does this week rank? For that, we'll create a new column called Rank using mutate and we'll use a function called \texttt{min\_rank} to rank them. I'm going to save them to a dataframe and use data
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ranked <-}\StringTok{ }\NormalTok{weeklyclaims }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Rank =} \KeywordTok{min_rank}\NormalTok{(}\KeywordTok{desc}\NormalTok{(initial_claims))) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(week_ending_date)) }
+
+\KeywordTok{datatable}\NormalTok{(ranked) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{formatDate}\NormalTok{(}\DecValTok{1}\NormalTok{, }\StringTok{"toLocaleDateString"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-210-1.pdf}
+
+Let's think about this a little more. What else could we do with this. What are the recurring questions? How about the percent change between this week and last week?
+
+To do that, we need our dates to be next to each other -- side by side. Then we can do new minus old divided by old. To do that, we're going to use a function from \texttt{tidyr} called pivot\_wider, which will transform our data from one row per week to one row, with the weeks as columns.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{change <-}\StringTok{ }\NormalTok{weeklyclaims20 }\OperatorTok{%>%}\StringTok{ }\KeywordTok{pivot_wider}\NormalTok{(}\DataTypeTok{names_from =}\NormalTok{ week_ending_date, }\DataTypeTok{values_from =}\NormalTok{ initial_claims)}
+
+\KeywordTok{head}\NormalTok{(change)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 11
+##   `2020-01-04` `2020-01-11` `2020-01-18` `2020-01-25` `2020-02-01` `2020-02-08`
+##          <dbl>        <dbl>        <dbl>        <dbl>        <dbl>        <dbl>
+## 1         1089         1036          913          916          796          653
+## # ... with 5 more variables: `2020-02-15` <dbl>, `2020-02-22` <dbl>,
+## #   `2020-02-29` <dbl>, `2020-03-07` <dbl>, `2020-03-14` <dbl>
+\end{verbatim}
+
+Now the problem we have is \ldots{} which column is the last one, and which one is the previous one? I'll be honest, this isn't easy in r. But the trick is to reverse the order of the columns. Then, your newest one is column 1 and the next newest is 2.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{changecalc <-}\StringTok{ }\NormalTok{((}\KeywordTok{rev}\NormalTok{(change)[}\DecValTok{1}\NormalTok{] }\OperatorTok{-}\StringTok{ }\KeywordTok{rev}\NormalTok{(change)[}\DecValTok{2}\NormalTok{])}\OperatorTok{/}\KeywordTok{rev}\NormalTok{(change)[}\DecValTok{2}\NormalTok{])}\OperatorTok{*}\DecValTok{100}
+
+\NormalTok{changecalc}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   2020-03-14
+## 1   53.21285
+\end{verbatim}
+
+So whatever the date, that'll always return the percent change between the most recent date and the previous week. At the time of writing, there was a 53 percent jump week over week. That's big. But it's going to get much, much bigger.
+
+\hypertarget{making-updating-graphics}{%
+\section{Making updating graphics}\label{making-updating-graphics}}
+
+More than numbers, we are going to want to see this data. We can build this in steps. First, let's just make a big bar chart.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{data=}\NormalTok{ranked, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{week_ending_date, }\DataTypeTok{weight=}\NormalTok{initial_claims)) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-213-1.pdf}
+
+So that shows us that the trend is going down over time, and that there's some regular spikes around the holidays. Which tells us this data is seasonal, but we knew that going in.
+
+Let's build up some more layers to highlight trends and the most recent spot.
+
+First, we'll slice out a dataframe that's just the most recent data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{latest <-}\StringTok{ }\NormalTok{ranked }\OperatorTok{%>%}\StringTok{ }\KeywordTok{slice}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Now, in ggplot, we can add multiple layers.
+
+The first layer will be all the bars.
+
+The second layer will just be the latest.
+
+Then we'll add a point to the top of that line to really draw attention to it.
+
+Then we'll use ggprepel to label it.
+
+Then I'm going to add a smoothing line. That'll illustrate the trend clearly.
+
+The rest is labeling and adjusting the text to make it look more like a news graphic.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{data=}\NormalTok{ranked, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{week_ending_date, }\DataTypeTok{weight=}\NormalTok{initial_claims)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{data=}\NormalTok{latest, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{week_ending_date, }\DataTypeTok{weight=}\NormalTok{initial_claims), }\DataTypeTok{fill=}\StringTok{"red"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data=}\NormalTok{latest, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{week_ending_date, }\DataTypeTok{y=}\NormalTok{initial_claims)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_text_repel}\NormalTok{(}\DataTypeTok{data=}\NormalTok{latest, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{week_ending_date, }\DataTypeTok{y=}\NormalTok{initial_claims }\OperatorTok{+}\StringTok{ }\DecValTok{150}\NormalTok{, }\DataTypeTok{label=}\StringTok{"This week"}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{data=}\NormalTok{ranked, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{week_ending_date, }\DataTypeTok{y=}\NormalTok{initial_claims), }\DataTypeTok{method=}\NormalTok{loess, }\DataTypeTok{se=}\OtherTok{FALSE}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title=}\StringTok{"Nebraska jobless claims on the rise"}\NormalTok{, }\DataTypeTok{x=}\StringTok{"Date"}\NormalTok{, }\DataTypeTok{y=}\StringTok{"Claims"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme_minimal}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}
+    \DataTypeTok{plot.title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{16}\NormalTok{, }\DataTypeTok{face =} \StringTok{"bold"}\NormalTok{),}
+    \DataTypeTok{axis.title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{8}\NormalTok{), }
+    \DataTypeTok{plot.subtitle =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{10}\NormalTok{), }
+    \DataTypeTok{panel.grid.minor =} \KeywordTok{element_blank}\NormalTok{()}
+\NormalTok{    )}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-215-1.pdf}
+
+One thing we are missing? Context. What if we programmatically wrote the chatter for this chart using the percent change calculation we did before?
+
+First, we format the change to look more news graphic like and not with 7 significant digits.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{changetext <-}\StringTok{ }\KeywordTok{round}\NormalTok{(changecalc[[}\DecValTok{1}\NormalTok{]], }\DataTypeTok{digits=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Now we're going to use a function called paste to merge some text together. We're going to paste together a sentence fragment, the percent change number and another sentence fragment together to form a sentence. We'll save it as sub, because that's what it's called in ggplot -- a subtitle.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sub <-}\StringTok{ }\KeywordTok{paste}\NormalTok{(}\StringTok{"First time unemployment claims rose by "}\NormalTok{, changetext, }\StringTok{" percent over last week"}\NormalTok{, }\DataTypeTok{sep=}\StringTok{""}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Heres's our sentence:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sub}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "First time unemployment claims rose by 53.21 percent over last week"
+\end{verbatim}
+
+Now we can add that to our labels.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{data=}\NormalTok{ranked, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{week_ending_date, }\DataTypeTok{weight=}\NormalTok{initial_claims)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{data=}\NormalTok{latest, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{week_ending_date, }\DataTypeTok{weight=}\NormalTok{initial_claims), }\DataTypeTok{fill=}\StringTok{"red"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data=}\NormalTok{latest, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{week_ending_date, }\DataTypeTok{y=}\NormalTok{initial_claims)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_text_repel}\NormalTok{(}\DataTypeTok{data=}\NormalTok{latest, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{week_ending_date, }\DataTypeTok{y=}\NormalTok{initial_claims }\OperatorTok{+}\StringTok{ }\DecValTok{150}\NormalTok{, }\DataTypeTok{label=}\StringTok{"This week"}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{data=}\NormalTok{ranked, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{week_ending_date, }\DataTypeTok{y=}\NormalTok{initial_claims), }\DataTypeTok{method=}\NormalTok{loess, }\DataTypeTok{se=}\OtherTok{FALSE}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title=}\StringTok{"Nebraska jobless claims on the rise"}\NormalTok{, }\DataTypeTok{subtitle=}\NormalTok{sub, }\DataTypeTok{x=}\StringTok{"Date"}\NormalTok{, }\DataTypeTok{y=}\StringTok{"Claims"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme_minimal}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}
+    \DataTypeTok{plot.title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{16}\NormalTok{, }\DataTypeTok{face =} \StringTok{"bold"}\NormalTok{),}
+    \DataTypeTok{axis.title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{8}\NormalTok{), }
+    \DataTypeTok{plot.subtitle =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{10}\NormalTok{), }
+    \DataTypeTok{panel.grid.minor =} \KeywordTok{element_blank}\NormalTok{()}
+\NormalTok{    )}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-219-1.pdf}
+
+This is going to be a story for months, if not years. So repeating this analysis is a must for a reporter covering the economy in Nebraska. We've set ourselves up to do this every week when the data comes out. We just open our notebook, go to Run \textgreater{} Restart R and Run All Chunks and sit back and watch as it does it all again.
+
+Then we go report.
 
 \end{document}

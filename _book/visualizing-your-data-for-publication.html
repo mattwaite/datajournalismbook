@@ -24,7 +24,7 @@
 <meta name="author" content="Matt Waite" />
 
 
-<meta name="date" content="2020-03-18" />
+<meta name="date" content="2020-03-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,6 +50,14 @@
 
 
 
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.12/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160712129-1"></script>
 <script>
@@ -229,6 +237,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21" data-path="geographic-analysis.html"><a href="geographic-analysis.html"><i class="fa fa-check"></i><b>21</b> Geographic analysis</a><ul>
 <li class="chapter" data-level="21.1" data-path="geographic-analysis.html"><a href="geographic-analysis.html#why-tidycensus-is-so-useful"><i class="fa fa-check"></i><b>21.1</b> Why tidycensus is so useful</a></li>
 </ul></li>
+<li class="chapter" data-level="22" data-path="automating-analysis.html"><a href="automating-analysis.html"><i class="fa fa-check"></i><b>22</b> Automating analysis</a><ul>
+<li class="chapter" data-level="22.1" data-path="automating-analysis.html"><a href="automating-analysis.html#automating-downloads-an-imports"><i class="fa fa-check"></i><b>22.1</b> Automating downloads an imports</a></li>
+<li class="chapter" data-level="22.2" data-path="automating-analysis.html"><a href="automating-analysis.html#exploring-the-data"><i class="fa fa-check"></i><b>22.2</b> Exploring the data</a></li>
+<li class="chapter" data-level="22.3" data-path="automating-analysis.html"><a href="automating-analysis.html#analysis"><i class="fa fa-check"></i><b>22.3</b> Analysis</a></li>
+<li class="chapter" data-level="22.4" data-path="automating-analysis.html"><a href="automating-analysis.html#making-updating-graphics"><i class="fa fa-check"></i><b>22.4</b> Making updating graphics</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -255,8 +269,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>But simple stuff – and even some slightly complicated stuff – can be done with tools made for people who aren’t data viz pros.</p>
 <p>The tool we’re going to use is called <a href="https://www.datawrapper.de/">Datawrapper</a>.</p>
 <p>First, let’s get some data and work with it. <a href="https://ourworldindata.org/coronavirus-source-data">The WHO is publishing corona data as a CSV daily</a>. Let’s look at it.</p>
-<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb283-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb284-1" data-line-number="1">coronavirus &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://covid.ourworldindata.org/data/full_data.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb284-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb285-1" data-line-number="1">coronavirus &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://covid.ourworldindata.org/data/full_data.csv&quot;</span>)</a></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   date = col_date(format = &quot;&quot;),
@@ -266,7 +280,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   total_cases = col_double(),
 ##   total_deaths = col_double()
 ## )</code></pre>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" data-line-number="1"><span class="kw">head</span>(coronavirus)</a></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb287-1" data-line-number="1"><span class="kw">head</span>(coronavirus)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 6
 ##   date       location    new_cases new_deaths total_cases total_deaths
 ##   &lt;date&gt;     &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;
@@ -277,7 +291,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 2020-02-29 Afghanistan         0         NA           1           NA
 ## 6 2020-03-01 Afghanistan         0         NA           1           NA</code></pre>
 <p>Let’s make a CSV of data from the United States. We can do that quickly by adding <code>write_csv</code> to the end of a filter query.</p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb288-1" data-line-number="1">coronavirus <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(location <span class="op">==</span><span class="st"> &quot;United States&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">write_csv</span>(<span class="st">&quot;uscorona.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb289-1" data-line-number="1">coronavirus <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(location <span class="op">==</span><span class="st"> &quot;United States&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">write_csv</span>(<span class="st">&quot;uscorona.csv&quot;</span>)</a></code></pre></div>
 <div id="datawrapper" class="section level2">
 <h2><span class="header-section-number">19.1</span> Datawrapper</h2>
 <p>Making charts in Datawrapper is preposterously simple, which is the point. There are dozens of chart types, and dozens of options. To get from a csv to a chart to publication is very, very easy.</p>
