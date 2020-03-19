@@ -163,7 +163,7 @@ change <- weeklyclaims20 %>% pivot_wider(names_from = week_ending_date, values_f
 head(change)
 ```
 
-Now the problem we have is ... which column is the last one, and which one is the previous one? I'll be honest, this isn't easy in r. But the trick is to reverse the order of the columns. Then, your newest one is column 1 and the next newest is 2.  
+Now the problem we have is ... which column is the last one, and which one is the previous one? I'll be honest, this isn't easy in R. But the trick is to reverse the order of the columns. Then, your newest one is column 1 and the next newest is 2.  
 
 ```{r}
 changecalc <- ((rev(change)[1] - rev(change)[2])/rev(change)[2])*100
@@ -177,7 +177,7 @@ So whatever the date, that'll always return the percent change between the most 
 
 More than numbers, we are going to want to see this data. We can build this in steps. First, let's just make a big bar chart.
 
-```{r fig.width=3}
+```{r fig.width=9}
 ggplot() + 
   geom_bar(data=ranked, aes(x=week_ending_date, weight=initial_claims)) 
 ```
