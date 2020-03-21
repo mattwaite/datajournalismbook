@@ -206,7 +206,7 @@ Then I'm going to add a smoothing line. That'll illustrate the trend clearly.
 
 The rest is labeling and adjusting the text to make it look more like a news graphic. 
 
-```{r fig.width=3}
+```{r fig.width=9}
 ggplot() + 
   geom_bar(data=ranked, aes(x=week_ending_date, weight=initial_claims)) +
   geom_bar(data=latest, aes(x=week_ending_date, weight=initial_claims), fill="red") +
@@ -245,7 +245,7 @@ sub
 
 Now we can add that to our labels. 
 
-```{r fig.width=3}
+```{r fig.width=9}
 ggplot() + 
   geom_bar(data=ranked, aes(x=week_ending_date, weight=initial_claims)) +
   geom_bar(data=latest, aes(x=week_ending_date, weight=initial_claims), fill="red") +
