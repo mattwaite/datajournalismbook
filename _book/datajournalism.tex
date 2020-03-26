@@ -118,7 +118,7 @@
 
 \title{Data Journalism with R and the Tidyverse}
 \author{Matt Waite}
-\date{2020-03-19}
+\date{2020-03-26}
 
 \begin{document}
 \maketitle
@@ -2349,7 +2349,7 @@ Here's an example using sensible defaults for weighting -- unfortunately \href{h
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3036
+## [1] 3033
 \end{verbatim}
 
 Cuts it down by almost 1000. That seems pretty good. Here's a different method, using a method that turns words into phonetic spellings called soundex.
@@ -3514,30 +3514,6 @@ Let's run it.
 ##  31 Oneliner delimiter or quote        'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-06&print=csv'
 \end{verbatim}
 
-\begin{verbatim}
-## Warning: 34 parsing failures.
-## row col  expected    actual                                                                           file
-##   3  -- 1 columns 3 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-18&print=csv'
-##   4  -- 1 columns 4 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-18&print=csv'
-##  10  -- 1 columns 3 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-18&print=csv'
-##  20  -- 1 columns 7 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-18&print=csv'
-##  21  -- 1 columns 3 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-18&print=csv'
-## ... ... ......... ......... ..............................................................................
-## See problems(...) for more details.
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: 35 parsing failures.
-## row col  expected    actual                                                                           file
-##   3  -- 1 columns 3 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-19&print=csv'
-##   4  -- 1 columns 4 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-19&print=csv'
-##  10  -- 1 columns 3 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-19&print=csv'
-##  20  -- 1 columns 7 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-19&print=csv'
-##  21  -- 1 columns 3 columns 'https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-19&print=csv'
-## ... ... ......... ......... ..............................................................................
-## See problems(...) for more details.
-\end{verbatim}
-
 And after that, I have a dataset of entries of bills on the floor. So if I want to see who has had the most bills on the floor -- including repeats -- I could answer that now.
 
 \begin{Shaded}
@@ -3558,7 +3534,7 @@ And after that, I have a dataset of entries of bills on the floor. So if I want 
 ## 2 Pansing Brooks    35
 ## 3 Vargas            35
 ## 4 Bolz              23
-## 5 Hughes            22
+## 5 Stinner           22
 \end{verbatim}
 
 Senator Kolterman, collect your prize.
@@ -4323,15 +4299,15 @@ What kind of hospitals do we have?
 ##               WOMEN  1 0.009009009
 \end{verbatim}
 
-Okay, we can safely say that psychiatric, rehabilitation, special, long term care and other types of hospitals are not exactly going to be helpful in this pandemic. We just want CRITICAL ACCESS and GENERAL ACUTE CARE hospitals, which is what we usually associate with a hospital.
+Okay, we can safely say that psychiatric, rehabilitation, special, long term care and other types of hospitals are not exactly going to be helpful in this pandemic. We just want CRITICAL ACCESS and GENERAL ACUTE CARE hospitals, which is what we usually associate with a hospital, and are open..
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{nehospitals <-}\StringTok{ }\NormalTok{ne }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(TYPE }\OperatorTok{==}\StringTok{ "CRITICAL ACCESS"} \OperatorTok{|}\StringTok{ }\NormalTok{TYPE }\OperatorTok{==}\StringTok{ "GENERAL ACUTE CARE"}\NormalTok{)}
+\NormalTok{nehospitals <-}\StringTok{ }\NormalTok{ne }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(TYPE }\OperatorTok{==}\StringTok{ "CRITICAL ACCESS"} \OperatorTok{|}\StringTok{ }\NormalTok{TYPE }\OperatorTok{==}\StringTok{ "GENERAL ACUTE CARE"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(STATUS }\OperatorTok{==}\StringTok{ "OPEN"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-That gives us 93 hospitals in Nebraska. Where are they? We can simply plot them using ggplot.
+That gives us 90 hospitals in Nebraska. Where are they? We can simply plot them using ggplot.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4425,7 +4401,7 @@ First, we get caught up to where we were last time.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{nehospitals <-}\StringTok{ }\NormalTok{ne }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(TYPE }\OperatorTok{==}\StringTok{ "CRITICAL ACCESS"} \OperatorTok{|}\StringTok{ }\NormalTok{TYPE }\OperatorTok{==}\StringTok{ "GENERAL ACUTE CARE"}\NormalTok{)}
+\NormalTok{nehospitals <-}\StringTok{ }\NormalTok{ne }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(TYPE }\OperatorTok{==}\StringTok{ "CRITICAL ACCESS"} \OperatorTok{|}\StringTok{ }\NormalTok{TYPE }\OperatorTok{==}\StringTok{ "GENERAL ACUTE CARE"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(STATUS }\OperatorTok{==}\StringTok{ "OPEN"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4472,7 +4448,7 @@ At first, we can look at the \texttt{nehospitals} data and see there's a \texttt
 ##    COUNTY    total_beds                                            geometry
 ##  * <fct>          <dbl>                                      <GEOMETRY [°]>
 ##  1 ADAMS            161                          POINT (-98.38807 40.59091)
-##  2 ANTELOPE          37 MULTIPOINT (-98.03064 42.13475, -97.83785 42.04735)
+##  2 ANTELOPE          25                          POINT (-98.03064 42.13475)
 ##  3 BOONE             25                          POINT (-98.00574 41.68304)
 ##  4 BOX BUTTE         25                          POINT (-102.8699 42.11684)
 ##  5 BOYD              20                          POINT (-98.46849 42.82457)
@@ -4519,7 +4495,7 @@ Let's take a look at what we got:
 \begin{verbatim}
 ##      COUNTY GEOID total_beds
 ## 1     ADAMS 31001        161
-## 2  ANTELOPE 31003         37
+## 2  ANTELOPE 31003         25
 ## 3     BOONE 31011         25
 ## 4 BOX BUTTE 31013         25
 ## 5      BOYD 31015         20
@@ -4589,22 +4565,22 @@ So there's the map. How about a list:
 ## 9       LINCOLN        116
 ## 10        DODGE         81
 ## 11       DAWSON         58
-## 12         OTOE         54
-## 13       PLATTE         51
-## 14         GAGE         50
-## 15         HOLT         43
-## 16       SALINE         43
-## 17       PIERCE         40
-## 18         YORK         38
-## 19     ANTELOPE         37
-## 20       CUSTER         35
-## 21        BOONE         25
-## 22    BOX BUTTE         25
-## 23       CHERRY         25
-## 24     CHEYENNE         25
-## 25       COLFAX         25
-## 26       CUMING         25
-## 27        DAWES         25
+## 12       PLATTE         51
+## 13         HOLT         43
+## 14       SALINE         43
+## 15       PIERCE         40
+## 16         YORK         38
+## 17         OTOE         36
+## 18       CUSTER         35
+## 19     ANTELOPE         25
+## 20        BOONE         25
+## 21    BOX BUTTE         25
+## 22       CHERRY         25
+## 23     CHEYENNE         25
+## 24       COLFAX         25
+## 25       CUMING         25
+## 26        DAWES         25
+## 27         GAGE         25
 ## 28       HOWARD         25
 ## 29     NUCKOLLS         25
 ## 30       PHELPS         25
@@ -4657,7 +4633,7 @@ So there's a lot of hosptial beds in Omaha (DOUGLAS) and Lincoln (LANCASTER). So
 
 \begin{verbatim}
 ##   sum(total_beds)
-## 1            2641
+## 1            2586
 \end{verbatim}
 
 How many total beds?
@@ -4670,7 +4646,7 @@ How many total beds?
 
 \begin{verbatim}
 ##   sum(total_beds)
-## 1            6104
+## 1            6049
 \end{verbatim}
 
 So there's 6,104 beds in the state and 3,463 of them are in Omaha and Lincoln. What perent is that?
@@ -5159,5 +5135,141 @@ Now we can add that to our labels.
 This is going to be a story for months, if not years. So repeating this analysis is a must for a reporter covering the economy in Nebraska. We've set ourselves up to do this every week when the data comes out. We just open our notebook, go to Run \textgreater{} Restart R and Run All Chunks and sit back and watch as it does it all again.
 
 Then we go report.
+
+\hypertarget{the-state-vs-the-feds}{%
+\section{The State vs the Feds}\label{the-state-vs-the-feds}}
+
+As I write this, the state hasn't updated their data but the feds have, and the feds have more. The problem? It's a mess. And it's not automatable. So to get more data, you need to go to \href{https://oui.doleta.gov/unemploy/claims.asp}{the Department of Labor website} and fill out the form.
+
+Select Spreadsheet, but know that it's a lie. If you try to load it using read\_excel, you'll get an error. Why? Because what is being downloaded is an HTML file. So you can use \texttt{rvest} to read and parse it.
+
+However, that isn't so simple.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(rvest)}
+\KeywordTok{library}\NormalTok{(lubridate)}
+\end{Highlighting}
+\end{Shaded}
+
+First, read the file you downloaded. You'll need to add the \texttt{fill=TRUE} to html\_table() to solve a problem with some of the data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{claims <-}\StringTok{ }\KeywordTok{read_html}\NormalTok{(}\StringTok{"~/Downloads/r539cy.xls"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{html_nodes}\NormalTok{(}\StringTok{"table"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{html_table}\NormalTok{(}\DataTypeTok{fill=}\OtherTok{TRUE}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+Similar to previous efforts, we get a list. The first element is a dataframe, so let's get that.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{claims <-}\StringTok{ }\NormalTok{claims[[}\DecValTok{1}\NormalTok{]] }
+\end{Highlighting}
+\end{Shaded}
+
+Now if you look at this data, you'll see that the header row is empty, and the header names are in the first row. Also, none of this data is formatted correctly. We need to fix that.
+
+To do this, we're going to fix this in steps after we create a new dataframe called \texttt{cleanclaims}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  We'll remove empty columns.
+\item
+  We'll rename the columns with what they are, using \texttt{janitor} style naming conventions.
+\item
+  We'll filter out the old header row.
+\item
+  We'll mutate each field to format them correctly. The date columns will use \texttt{lubridate}'s \texttt{mdy} function. Numbers will use \texttt{readr}'s \texttt{parse\_number} function to solve the comma separator issue.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cleanclaims <-}\StringTok{ }\NormalTok{claims }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{remove_empty}\NormalTok{(}\StringTok{"cols"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{rename}\NormalTok{(}\StringTok{"state"}\NormalTok{ =}\StringTok{ }\DecValTok{1}\NormalTok{, }\StringTok{"filed_week_ended"}\NormalTok{=}\StringTok{ }\DecValTok{2}\NormalTok{, }\StringTok{"initial_claims"}\NormalTok{=}\DecValTok{3}\NormalTok{, }\StringTok{"reflecting_week_ended"}\NormalTok{=}\DecValTok{4}\NormalTok{, }\StringTok{"continued_claims"}\NormalTok{=}\DecValTok{5}\NormalTok{, }\StringTok{"covered_employment"}\NormalTok{=}\DecValTok{6}\NormalTok{, }\StringTok{"insured_unemployment_rate"}\NormalTok{=}\DecValTok{7}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(state }\OperatorTok{!=}\StringTok{ "State"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{filed_week_ended =} \KeywordTok{mdy}\NormalTok{(filed_week_ended), }\DataTypeTok{initial_claims=}\KeywordTok{parse_number}\NormalTok{(initial_claims), }\DataTypeTok{reflecting_week_ended=}\KeywordTok{mdy}\NormalTok{(reflecting_week_ended), }\DataTypeTok{continued_claims=}\KeywordTok{parse_number}\NormalTok{(continued_claims), }\DataTypeTok{covered_employment=}\KeywordTok{parse_number}\NormalTok{(covered_employment), }\DataTypeTok{insured_unemployment_rate=}\KeywordTok{parse_number}\NormalTok{(insured_unemployment_rate))}
+\end{Highlighting}
+\end{Shaded}
+
+If you open \texttt{cleanclaims}, you'll notice something:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cleanclaims }\OperatorTok{%>%}\StringTok{ }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(filed_week_ended)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{head}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      state filed_week_ended initial_claims reflecting_week_ended
+## 1 Nebraska       2020-03-14            795            2020-03-07
+## 2 Nebraska       2020-03-07            501            2020-02-29
+## 3 Nebraska       2020-02-29            502            2020-02-22
+## 4 Nebraska       2020-02-22            493            2020-02-15
+## 5 Nebraska       2020-02-15            537            2020-02-08
+## 6 Nebraska       2020-02-08            675            2020-02-01
+##   continued_claims covered_employment insured_unemployment_rate
+## 1             5076             962725                      0.53
+## 2             5581             962725                      0.58
+## 3             6286             962725                      0.65
+## 4             5780             962725                      0.60
+## 5             5804             962725                      0.60
+## 6             5693             962725                      0.59
+\end{verbatim}
+
+See it? The latest data isn't in there. \href{https://www.dol.gov/sites/dolgov/files/OPA/newsreleases/ui-claims/20200510.pdf}{It's in a press release}.
+
+So how do we add it? We use \texttt{add\_row} from the tidyverse (specifically the \texttt{tibble} library).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{updatedcleanclaims <-}\StringTok{ }\NormalTok{cleanclaims }\OperatorTok{%>%}\StringTok{ }\KeywordTok{add_row}\NormalTok{(}\DataTypeTok{state=}\StringTok{"Nebraska"}\NormalTok{, }\DataTypeTok{filed_week_ended=}\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-21"}\NormalTok{), }\DataTypeTok{initial_claims=}\DecValTok{15688}\NormalTok{, }\DataTypeTok{reflecting_week_ended=}\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-14"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Now we can repeat the analysis from above.
+
+First we rank.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fedranked <-}\StringTok{ }\NormalTok{updatedcleanclaims }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{Rank =} \KeywordTok{min_rank}\NormalTok{(}\KeywordTok{desc}\NormalTok{(initial_claims))) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(filed_week_ended))}
+\end{Highlighting}
+\end{Shaded}
+
+We get the latest week.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fedlatest <-}\StringTok{ }\NormalTok{fedranked }\OperatorTok{%>%}\StringTok{ }\KeywordTok{slice}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+And we make the graphic.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{data=}\NormalTok{fedranked, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{filed_week_ended, }\DataTypeTok{y=}\NormalTok{initial_claims, }\DataTypeTok{group=}\DecValTok{1}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data=}\NormalTok{fedlatest, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{filed_week_ended, }\DataTypeTok{y=}\NormalTok{initial_claims)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\DataTypeTok{data=}\NormalTok{fedlatest, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{filed_week_ended}\DecValTok{-200}\NormalTok{, }\DataTypeTok{y=}\NormalTok{initial_claims }\OperatorTok{+}\StringTok{ }\DecValTok{500}\NormalTok{, }\DataTypeTok{label=}\StringTok{"15,668"}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{data=}\NormalTok{fedranked, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{filed_week_ended, }\DataTypeTok{y=}\NormalTok{initial_claims), }\DataTypeTok{method=}\NormalTok{loess, }\DataTypeTok{se=}\OtherTok{FALSE}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title=}\StringTok{"A record for jobless claims in Nebraska"}\NormalTok{, }\DataTypeTok{subtitle=}\StringTok{"Applications for unemployment jumped 1,871 percent from the week ending March 14 to the 21st. The worst is yet to come."}\NormalTok{, }\DataTypeTok{x=}\StringTok{"Date"}\NormalTok{, }\DataTypeTok{y=}\StringTok{"Claims"}\NormalTok{, }\DataTypeTok{caption =} \StringTok{"Source: US Dept. of Labor  |  Graphic by Matt Waite"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme_minimal}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}
+    \DataTypeTok{plot.title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{16}\NormalTok{, }\DataTypeTok{face =} \StringTok{"bold"}\NormalTok{),}
+    \DataTypeTok{axis.title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{8}\NormalTok{), }
+    \DataTypeTok{plot.subtitle =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{10}\NormalTok{), }
+    \DataTypeTok{panel.grid.minor =} \KeywordTok{element_blank}\NormalTok{()}
+\NormalTok{    )}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-228-1.pdf}
 
 \end{document}

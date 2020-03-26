@@ -24,7 +24,7 @@
 <meta name="author" content="Matt Waite" />
 
 
-<meta name="date" content="2020-03-19" />
+<meta name="date" content="2020-03-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -242,6 +242,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="22.2" data-path="automating-analysis.html"><a href="automating-analysis.html#exploring-the-data"><i class="fa fa-check"></i><b>22.2</b> Exploring the data</a></li>
 <li class="chapter" data-level="22.3" data-path="automating-analysis.html"><a href="automating-analysis.html#analysis"><i class="fa fa-check"></i><b>22.3</b> Analysis</a></li>
 <li class="chapter" data-level="22.4" data-path="automating-analysis.html"><a href="automating-analysis.html#making-updating-graphics"><i class="fa fa-check"></i><b>22.4</b> Making updating graphics</a></li>
+<li class="chapter" data-level="22.5" data-path="automating-analysis.html"><a href="automating-analysis.html#the-state-vs-the-feds"><i class="fa fa-check"></i><b>22.5</b> The State vs the Feds</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -373,7 +374,7 @@ Every time I talk about Open Refine, I remember this, and I get mad.</p>
 <a class="sourceLine" id="cb148-5" data-line-number="5"><span class="st">  </span><span class="kw">group_by</span>(clean_charges) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb148-6" data-line-number="6"><span class="st">  </span><span class="kw">tally</span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb148-7" data-line-number="7"><span class="st">  </span><span class="kw">nrow</span>()</a></code></pre></div>
-<pre><code>## [1] 3035</code></pre>
+<pre><code>## [1] 3033</code></pre>
 <p>Cuts it down by almost 1000. That seems pretty good. Here’s a different method, using a method that turns words into phonetic spellings called soundex.</p>
 <div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1">charges <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb150-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(</a>
