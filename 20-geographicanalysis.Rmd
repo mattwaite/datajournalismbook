@@ -20,7 +20,7 @@ ne <- hospitals %>% filter(STATE == "NE")
 ```
 
 ```{r}
-nehospitals <- ne %>% filter(TYPE == "CRITICAL ACCESS" | TYPE == "GENERAL ACUTE CARE")
+nehospitals <- ne %>% filter(TYPE == "CRITICAL ACCESS" | TYPE == "GENERAL ACUTE CARE") %>% filter(STATUS == "OPEN")
 ```
 
 ```{r}

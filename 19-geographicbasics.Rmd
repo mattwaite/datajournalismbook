@@ -59,13 +59,13 @@ What kind of hospitals do we have?
 ne %>% tabyl(TYPE)
 ```
 
-Okay, we can safely say that psychiatric, rehabilitation, special, long term care and other types of hospitals are not exactly going to be helpful in this pandemic. We just want CRITICAL ACCESS and GENERAL ACUTE CARE hospitals, which is what we usually associate with a hospital. 
+Okay, we can safely say that psychiatric, rehabilitation, special, long term care and other types of hospitals are not exactly going to be helpful in this pandemic. We just want CRITICAL ACCESS and GENERAL ACUTE CARE hospitals, which is what we usually associate with a hospital, and are open.. 
 
 ```{r}
-nehospitals <- ne %>% filter(TYPE == "CRITICAL ACCESS" | TYPE == "GENERAL ACUTE CARE")
+nehospitals <- ne %>% filter(TYPE == "CRITICAL ACCESS" | TYPE == "GENERAL ACUTE CARE") %>% filter(STATUS == "OPEN")
 ```
 
-That gives us 93 hospitals in Nebraska. Where are they? We can simply plot them using ggplot.
+That gives us 90 hospitals in Nebraska. Where are they? We can simply plot them using ggplot.
 
 ```{r}
 ggplot() + geom_sf(data=nehospitals) + theme_minimal()

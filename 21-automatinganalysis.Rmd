@@ -266,3 +266,92 @@ This is going to be a story for months, if not years. So repeating this analysis
 
 Then we go report.
 
+## The State vs the Feds
+
+As I write this, the state hasn't updated their data but the feds have, and the feds have more. The problem? It's a mess. And it's not automatable. So to get more data, you need to go to [the Department of Labor website](https://oui.doleta.gov/unemploy/claims.asp) and fill out the form.
+
+Select Spreadsheet, but know that it's a lie. If you try to load it using read_excel, you'll get an error. Why? Because what is being downloaded is an HTML file. So you can use `rvest` to read and parse it.
+
+However, that isn't so simple.
+
+```{r}
+library(rvest)
+library(lubridate)
+```
+
+First, read the file you downloaded. You'll need to add the `fill=TRUE` to html_table() to solve a problem with some of the data.
+
+```{r}
+claims <- read_html("~/Downloads/r539cy.xls") %>% 
+  html_nodes("table") %>%
+  html_table(fill=TRUE) 
+```
+
+Similar to previous efforts, we get a list. The first element is a dataframe, so let's get that.
+
+```{r}
+claims <- claims[[1]] 
+```
+
+Now if you look at this data, you'll see that the header row is empty, and the header names are in the first row. Also, none of this data is formatted correctly. We need to fix that.
+
+To do this, we're going to fix this in steps after we create a new dataframe called `cleanclaims`
+
+1. We'll remove empty columns. 
+2. We'll rename the columns with what they are, using `janitor` style naming conventions.
+3. We'll filter out the old header row.
+4. We'll mutate each field to format them correctly. The date columns will use `lubridate`'s `mdy` function. Numbers will use `readr`'s `parse_number` function to solve the comma separator issue.
+
+```{r}
+cleanclaims <- claims %>% 
+  remove_empty("cols") %>% 
+  rename("state" = 1, "filed_week_ended"= 2, "initial_claims"=3, "reflecting_week_ended"=4, "continued_claims"=5, "covered_employment"=6, "insured_unemployment_rate"=7) %>%
+  filter(state != "State") %>% 
+  mutate(filed_week_ended = mdy(filed_week_ended), initial_claims=parse_number(initial_claims), reflecting_week_ended=mdy(reflecting_week_ended), continued_claims=parse_number(continued_claims), covered_employment=parse_number(covered_employment), insured_unemployment_rate=parse_number(insured_unemployment_rate))
+```
+
+If you open `cleanclaims`, you'll notice something:
+
+```{r}
+cleanclaims %>% arrange(desc(filed_week_ended)) %>% head()
+```
+
+See it? The latest data isn't in there. [It's in a press release](https://www.dol.gov/sites/dolgov/files/OPA/newsreleases/ui-claims/20200510.pdf).
+
+So how do we add it? We use `add_row` from the tidyverse (specifically the `tibble` library). 
+
+```{r}
+updatedcleanclaims <- cleanclaims %>% add_row(state="Nebraska", filed_week_ended=as.Date("2020-03-21"), initial_claims=15688, reflecting_week_ended=as.Date("2020-03-14"))
+```
+
+Now we can repeat the analysis from above.
+
+First we rank.
+
+```{r}
+fedranked <- updatedcleanclaims %>% mutate(Rank = min_rank(desc(initial_claims))) %>% arrange(desc(filed_week_ended))
+```
+
+We get the latest week.
+
+```{r}
+fedlatest <- fedranked %>% slice(1)
+```
+
+And we make the graphic. 
+
+```{r fig.width=9}
+ggplot() + 
+  geom_line(data=fedranked, aes(x=filed_week_ended, y=initial_claims, group=1)) +
+  geom_point(data=fedlatest, aes(x=filed_week_ended, y=initial_claims)) + 
+  geom_text(data=fedlatest, aes(x=filed_week_ended-200, y=initial_claims + 500, label="15,668")) + 
+  geom_smooth(data=fedranked, aes(x=filed_week_ended, y=initial_claims), method=loess, se=FALSE) + 
+  labs(title="A record for jobless claims in Nebraska", subtitle="Applications for unemployment jumped 1,871 percent from the week ending March 14 to the 21st. The worst is yet to come.", x="Date", y="Claims", caption = "Source: US Dept. of Labor  |  Graphic by Matt Waite") +
+  theme_minimal() + 
+  theme(
+    plot.title = element_text(size = 16, face = "bold"),
+    axis.title = element_text(size = 8), 
+    plot.subtitle = element_text(size=10), 
+    panel.grid.minor = element_blank()
+    )
+```
