@@ -8,7 +8,7 @@ But what happens when you have a long-running story, where you're going to updat
 2. What questions do you have that have to be answered each time?
 3. What changes when you have to repeat questions to changing data? 
 
-The global COVID-19 pandemic is something we're going to be writing about and covering for some time. One element of it -- one that hasn't materialized in Nebraska as of this writing -- is a tsunami of first time joblessness claims for unemployment assistance. That data is regularly published, and we're going to be talking about it weekly for a long time. So it's the ideal candidate for repeating analysis -- scripting the questions we want to answer every week and doing so in a way that we can just load it without having to change anything. 
+The global COVID-19 pandemic is something we're going to be writing about and covering for some time. One element of it -- one that materialized in Nebraska as I am writing this -- is a tsunami of first time joblessness claims for unemployment assistance. That data is regularly published, and we're going to be talking about it weekly for a long time. So it's the ideal candidate for repeating analysis -- scripting the questions we want to answer every week and doing so in a way that we can just load it without having to change anything. 
 
 Let's get some new libraries to our typical tidyverse import. First, I'm going to add a library called `readxl`, which does what you think it does. It reads Microsoft Excel files. The next one I'm going to add is `DT`. It stands for datatables, and it makes your dataframes into html tables that are browsable and searchable. This is a bigger issue for me -- the author who is turning these into html pages -- than you, working in your notebooks. We're also going to add a library called ggrepel, which assists in putting tables on dots in charts. 
 
@@ -45,7 +45,7 @@ What we need to do, in words, is this:
 2. Skip the top row
 3. Clean the column names with janitor.
 4. Select just the first two rows, which will help us chop out some garbage.
-5. We need to find if the sheet has that source line at the end of the data, so we'll use `str_detect` in `stringr`
+5. We need to find if the sheet has that source line at the end of the data, so we'll use `str_detect` in `stringr` and filter it out.
 6. We'll use janitor to remove any empty rows and columns
 7. And lastly, we'll convert all the numbers in initial_claims to actual numbers, because the Source line made them character on import.
 
@@ -171,7 +171,7 @@ changecalc <- ((rev(change)[1] - rev(change)[2])/rev(change)[2])*100
 changecalc
 ```
 
-So whatever the date, that'll always return the percent change between the most recent date and the previous week. At the time of writing, there was a 53 percent jump week over week. That's big. But it's going to get much, much bigger. 
+So whatever the date, that'll always return the percent change between the most recent date and the previous week. 
 
 ## Making updating graphics
 
@@ -310,13 +310,13 @@ cleanclaims <- claims %>%
   mutate(filed_week_ended = mdy(filed_week_ended), initial_claims=parse_number(initial_claims), reflecting_week_ended=mdy(reflecting_week_ended), continued_claims=parse_number(continued_claims), covered_employment=parse_number(covered_employment), insured_unemployment_rate=parse_number(insured_unemployment_rate))
 ```
 
-If you open `cleanclaims`, you'll notice something:
+If you open `cleanclaims`, you may notice something, depending on when you do this analysis:
 
 ```{r}
 cleanclaims %>% arrange(desc(filed_week_ended)) %>% head()
 ```
 
-See it? The latest data isn't in there. [It's in a press release](https://www.dol.gov/sites/dolgov/files/OPA/newsreleases/ui-claims/20200510.pdf).
+See it? The latest data isn't in there in my version. [It's in a press release](https://www.dol.gov/sites/dolgov/files/OPA/newsreleases/ui-claims/20200510.pdf).
 
 So how do we add it? We use `add_row` from the tidyverse (specifically the `tibble` library). 
 
@@ -355,3 +355,4 @@ ggplot() +
     panel.grid.minor = element_blank()
     )
 ```
+

@@ -1,0 +1,96 @@
+# Automating geographic analysis
+
+One thing that has been very apparent with the coronavirus outbreak is that this is a very geographic story. Where cases are being found and how fast is news, so it would be a good idea for us to have updating maps. But to have that, we need to have updating data. 
+
+Good news.
+
+The New York Times is making the data behind [their interactive trackers](https://www.nytimes.com/interactive/2020/us/coronavirus-us-cases.html) [available to others for free](https://github.com/nytimes/covid-19-data). 
+
+So we have a constantly updating data stream on Github, so that means we can make this work. 
+
+Let's get our libraries first: 
+
+```{r}
+library(tidyverse)
+library(sf)
+```
+
+We can use `read_csv` to read a URL if that URL is to a csv file. And Github just happens to provide a direct link to the CSV of county COVID-19 reports. Here's what that looks like: 
+
+```{r}
+covid <- read_csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv")
+```
+
+Let's look at what the New York Times is providing us:
+
+```{r}
+head(covid)
+```
+
+If you look, we have a county and a date -- how many cases are reported in that county on that day. That means we can do some interesting progression charts. 
+
+Let's filter out Nebraska first.
+
+```{r}
+nebraska <- covid %>% filter(state == "Nebraska")
+```
+
+And we can create line chart like this:
+
+```{r}
+ggplot() + geom_line(data=nebraska, aes(x=date, y=cases, group=county, color=county))
+```
+
+The little county on the bottom that curves sharply up? That's my home county, Washington County. One day of this writing, they added 10 cases in one day in one nursing home. Grim stuff.
+
+The curve you see for Douglas County is a classic exponential curve. Because the number of cases here are small, we can get away with it for a little while. But when looking at much larger places, you'd use a log scale. [YOU REALLY SHOULD WATCH THIS](https://www.ft.com/video/9a72a9d4-8db1-4615-8333-4b73ae3ddff8). You've no doubt seen the Financial Times coronavirus trajectory tracker. Hear why they are using a log scale. And here's what our chart looks like with it. Note the y-axis scale.
+
+```{r}
+ggplot() + geom_line(data=nebraska, aes(x=date, y=cases, group=county, color=county)) + scale_y_continuous(trans="log10")
+```
+
+## Mapping continuously
+
+But for a map, we can't have multiple days. We need a single day. Ideally, it would be the most recent date. We can get it using the `max` function. 
+
+```{r}
+current <- nebraska %>% summarize(max(date))
+```
+
+That will give us the most recent date in Nebraska in a variable called `current`. And now we can filter the most recent data for Nebraska, regardless of when this runs.
+
+I'm adding one piece to the end to make joining this to a map easier and just renaming fips to GEOID, because they are identical in both datasets and can be used for joining. 
+
+```{r}
+nebraskacurrent <- nebraska %>% filter(date == current[[1]]) %>% rename(GEOID = fips)
+```
+
+Now we can read in our counties map layer. 
+
+```{r}
+counties <- st_read("data/cb_2018_us_county_5m/cb_2018_us_county_5m.shp")
+```
+
+And join the two together. 
+
+```{r}
+counties <- counties %>% left_join(nebraskacurrent)
+```
+
+Since we have every county in the United States in our counties map layer, we can filter just Nebraska like this:
+
+```{r}
+necounties <- counties %>% filter(STATEFP == 31)
+```
+
+So now, we have a geographic dataframe that has both the county shapes and the number of cases in the most recent data update. We just need to see it now:
+
+```{r}
+ggplot() + 
+  geom_sf(data=necounties, aes(fill=cases)) + 
+  scale_fill_viridis_c(option = "plasma", trans = "sqrt") + 
+  theme_void() + 
+  labs(title = paste("COVID-19 cases as of ", current[[1]], sep=""))
+```
+
+As it stands, we can run this every day and get an up-to-date map.
