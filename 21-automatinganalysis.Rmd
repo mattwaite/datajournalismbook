@@ -25,7 +25,7 @@ library(ggrepel)
 
 ## Automating downloads an imports
 
-Nebraska [publishes data weekly on first time unemployment claims on a Department of Labor website](https://neworks.nebraska.gov/gsipub/index.asp?docid=710).
+Nebraska [publishes data weekly on first time unemployment claims on the state Department of Labor website](https://neworks.nebraska.gov/gsipub/index.asp?docid=710).
 
 There's four datasets. We're looking at the weekly initial claims from 2012 to present. If you click it, you'll get an Excel spreadsheet. That's a problem, given that we've been working with CSVs all along. So the problem we have before us is this: Have to download it first, then open an Excel file with multiple sheets and lots of header and footers. 
 
@@ -50,7 +50,6 @@ What we need to do, in words, is this:
 7. And lastly, we'll convert all the numbers in initial_claims to actual numbers, because the Source line made them character on import.
 
 It's a lot, but not really. Each step is very simple, and is designed to solve one problem. And after we do it with one, we'll do it with the next, and the next, and the next, so on and so forth. 
-
 
 ```{r}
 weeklyclaims20 <- read_excel("weeklyinitialclaims.xlsx", sheet=2, skip=1) %>% 
@@ -237,7 +236,7 @@ Now we're going to use a function called paste to merge some text together. We'r
 sub <- paste("First time unemployment claims rose by ", changetext, " percent over last week", sep="")
 ```
 
-Heres's our sentence:
+Here's our sentence:
 
 ```{r}
 sub
@@ -268,9 +267,9 @@ Then we go report.
 
 ## The State vs the Feds
 
-As I write this, the state hasn't updated their data but the feds have, and the feds have more. The problem? It's a mess. And it's not automatable. So to get more data, you need to go to [the Department of Labor website](https://oui.doleta.gov/unemploy/claims.asp) and fill out the form.
+As I write this, the state hasn't updated their data but the feds have, and the feds have more. The problem? It's a mess. And it's not automatable. So to get more data, you need to go to [the Department of Labor website](https://oui.doleta.gov/unemploy/claims.asp) and fill out the form. 
 
-Select Spreadsheet, but know that it's a lie. If you try to load it using read_excel, you'll get an error. Why? Because what is being downloaded is an HTML file. So you can use `rvest` to read and parse it.
+Leave the years, select state, pick yours (I'm taking Nebraska) and select spreadsheet, but know that it's a lie. If you try to load it using read_excel, you'll get an error. Why? Because what is being downloaded is an HTML file. So you can use `rvest` to read and parse it.
 
 However, that isn't so simple.
 
@@ -310,18 +309,18 @@ cleanclaims <- claims %>%
   mutate(filed_week_ended = mdy(filed_week_ended), initial_claims=parse_number(initial_claims), reflecting_week_ended=mdy(reflecting_week_ended), continued_claims=parse_number(continued_claims), covered_employment=parse_number(covered_employment), insured_unemployment_rate=parse_number(insured_unemployment_rate))
 ```
 
-If you open `cleanclaims`, you may notice something, depending on when you do this analysis:
+If you open `cleanclaims`, you may notice something:
 
 ```{r}
 cleanclaims %>% arrange(desc(filed_week_ended)) %>% head()
 ```
 
-See it? The latest data isn't in there in my version. [It's in a press release](https://www.dol.gov/sites/dolgov/files/OPA/newsreleases/ui-claims/20200510.pdf).
+See it? The latest data isn't in there in my version. [It's in a press release](https://www.dol.gov/sites/dolgov/files/OPA/newsreleases/ui-claims/20200551.pdf).
 
 So how do we add it? We use `add_row` from the tidyverse (specifically the `tibble` library). 
 
 ```{r}
-updatedcleanclaims <- cleanclaims %>% add_row(state="Nebraska", filed_week_ended=as.Date("2020-03-21"), initial_claims=15688, reflecting_week_ended=as.Date("2020-03-14"))
+updatedcleanclaims <- cleanclaims %>% add_row(state="Nebraska", filed_week_ended=as.Date("2020-03-28"), initial_claims=24572, reflecting_week_ended=as.Date("2020-03-21"))
 ```
 
 Now we can repeat the analysis from above.
@@ -338,15 +337,47 @@ We get the latest week.
 fedlatest <- fedranked %>% slice(1)
 ```
 
+The previous week ... 
+
+```{r}
+fedprevious <- fedranked %>% slice(2)
+```
+
+And for this one, let's grab the pre-crisis number as well as a basis point. 
+
+```{r}
+pre <- fedranked %>% filter(filed_week_ended==as.Date("2020-03-14"))
+```
+
+Now we can do some percent change math similar to above. First we calculate the current change. 
+
+```{r}
+change <- round((((fedlatest$initial_claims - fedprevious$initial_claims)/fedprevious$initial_claims)*100), digits=2)
+```
+
+Then the change from the pre-crisis week.
+
+```{r}
+prechange <- round((((fedlatest$initial_claims - pre$initial_claims)/pre$initial_claims)*100), digits=2)
+```
+
+And we roll it all into a subhead that we can use in the chart with a little paste-fu.
+
+```{r}
+subhed <- paste("Applications for unemployment jumped ", change, " percent from last week to this week and are up ", prechange, " percent since March 14.", sep="")
+```
+
 And we make the graphic. 
 
 ```{r fig.width=9}
 ggplot() + 
   geom_line(data=fedranked, aes(x=filed_week_ended, y=initial_claims, group=1)) +
   geom_point(data=fedlatest, aes(x=filed_week_ended, y=initial_claims)) + 
-  geom_text(data=fedlatest, aes(x=filed_week_ended-200, y=initial_claims + 500, label="15,668")) + 
+  geom_text(data=fedlatest, aes(x=filed_week_ended-200, y=initial_claims + 500, label=initial_claims)) + 
+  geom_point(data=fedprevious, aes(x=filed_week_ended, y=initial_claims)) + 
+  geom_text(data=fedprevious, aes(x=filed_week_ended-500, y=initial_claims + 500, label=initial_claims)) + 
   geom_smooth(data=fedranked, aes(x=filed_week_ended, y=initial_claims), method=loess, se=FALSE) + 
-  labs(title="A record for jobless claims in Nebraska", subtitle="Applications for unemployment jumped 1,871 percent from the week ending March 14 to the 21st. The worst is yet to come.", x="Date", y="Claims", caption = "Source: US Dept. of Labor  |  Graphic by Matt Waite") +
+  labs(title="Another record for jobless claims in Nebraska", subtitle=subhed, x="Date", y="Claims", caption = "Source: US Dept. of Labor  |  Graphic by Matt Waite") +
   theme_minimal() + 
   theme(
     plot.title = element_text(size = 16, face = "bold"),
@@ -355,4 +386,5 @@ ggplot() +
     panel.grid.minor = element_blank()
     )
 ```
+
 
