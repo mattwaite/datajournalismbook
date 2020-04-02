@@ -118,7 +118,7 @@
 
 \title{Data Journalism with R and the Tidyverse}
 \author{Matt Waite}
-\date{2020-03-26}
+\date{2020-03-31}
 
 \begin{document}
 \maketitle
@@ -2349,7 +2349,7 @@ Here's an example using sensible defaults for weighting -- unfortunately \href{h
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3033
+## [1] 3036
 \end{verbatim}
 
 Cuts it down by almost 1000. That seems pretty good. Here's a different method, using a method that turns words into phonetic spellings called soundex.
@@ -4766,7 +4766,7 @@ But what happens when you have a long-running story, where you're going to updat
   What changes when you have to repeat questions to changing data?
 \end{enumerate}
 
-The global COVID-19 pandemic is something we're going to be writing about and covering for some time. One element of it -- one that hasn't materialized in Nebraska as of this writing -- is a tsunami of first time joblessness claims for unemployment assistance. That data is regularly published, and we're going to be talking about it weekly for a long time. So it's the ideal candidate for repeating analysis -- scripting the questions we want to answer every week and doing so in a way that we can just load it without having to change anything.
+The global COVID-19 pandemic is something we're going to be writing about and covering for some time. One element of it -- one that materialized in Nebraska as I am writing this -- is a tsunami of first time joblessness claims for unemployment assistance. That data is regularly published, and we're going to be talking about it weekly for a long time. So it's the ideal candidate for repeating analysis -- scripting the questions we want to answer every week and doing so in a way that we can just load it without having to change anything.
 
 Let's get some new libraries to our typical tidyverse import. First, I'm going to add a library called \texttt{readxl}, which does what you think it does. It reads Microsoft Excel files. The next one I'm going to add is \texttt{DT}. It stands for datatables, and it makes your dataframes into html tables that are browsable and searchable. This is a bigger issue for me -- the author who is turning these into html pages -- than you, working in your notebooks. We're also going to add a library called ggrepel, which assists in putting tables on dots in charts.
 
@@ -4815,7 +4815,7 @@ What we need to do, in words, is this:
 \item
   Select just the first two rows, which will help us chop out some garbage.
 \item
-  We need to find if the sheet has that source line at the end of the data, so we'll use \texttt{str\_detect} in \texttt{stringr}
+  We need to find if the sheet has that source line at the end of the data, so we'll use \texttt{str\_detect} in \texttt{stringr} and filter it out.
 \item
   We'll use janitor to remove any empty rows and columns
 \item
@@ -5016,7 +5016,7 @@ Now the problem we have is \ldots{} which column is the last one, and which one 
 ## 1   53.21285
 \end{verbatim}
 
-So whatever the date, that'll always return the percent change between the most recent date and the previous week. At the time of writing, there was a 53 percent jump week over week. That's big. But it's going to get much, much bigger.
+So whatever the date, that'll always return the percent change between the most recent date and the previous week.
 
 \hypertarget{making-updating-graphics}{%
 \section{Making updating graphics}\label{making-updating-graphics}}
@@ -5197,7 +5197,7 @@ To do this, we're going to fix this in steps after we create a new dataframe cal
 \end{Highlighting}
 \end{Shaded}
 
-If you open \texttt{cleanclaims}, you'll notice something:
+If you open \texttt{cleanclaims}, you may notice something, depending on when you do this analysis:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5222,7 +5222,7 @@ If you open \texttt{cleanclaims}, you'll notice something:
 ## 6             5693             962725                      0.59
 \end{verbatim}
 
-See it? The latest data isn't in there. \href{https://www.dol.gov/sites/dolgov/files/OPA/newsreleases/ui-claims/20200510.pdf}{It's in a press release}.
+See it? The latest data isn't in there in my version. \href{https://www.dol.gov/sites/dolgov/files/OPA/newsreleases/ui-claims/20200510.pdf}{It's in a press release}.
 
 So how do we add it? We use \texttt{add\_row} from the tidyverse (specifically the \texttt{tibble} library).
 
@@ -5271,5 +5271,177 @@ And we make the graphic.
 \end{Shaded}
 
 \includegraphics{datajournalism_files/figure-latex/unnamed-chunk-228-1.pdf}
+
+\hypertarget{automating-geographic-analysis}{%
+\chapter{Automating geographic analysis}\label{automating-geographic-analysis}}
+
+One thing that has been very apparent with the coronavirus outbreak is that this is a very geographic story. Where cases are being found and how fast is news, so it would be a good idea for us to have updating maps. But to have that, we need to have updating data.
+
+Good news.
+
+The New York Times is making the data behind \href{https://www.nytimes.com/interactive/2020/us/coronavirus-us-cases.html}{their interactive trackers} \href{https://github.com/nytimes/covid-19-data}{available to others for free}.
+
+So we have a constantly updating data stream on Github, so that means we can make this work.
+
+Let's get our libraries first:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\KeywordTok{library}\NormalTok{(sf)}
+\end{Highlighting}
+\end{Shaded}
+
+We can use \texttt{read\_csv} to read a URL if that URL is to a csv file. And Github just happens to provide a direct link to the CSV of county COVID-19 reports. Here's what that looks like:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{covid <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Parsed with column specification:
+## cols(
+##   date = col_date(format = ""),
+##   county = col_character(),
+##   state = col_character(),
+##   fips = col_character(),
+##   cases = col_double(),
+##   deaths = col_double()
+## )
+\end{verbatim}
+
+Let's look at what the New York Times is providing us:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(covid)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 6
+##   date       county    state      fips  cases deaths
+##   <date>     <chr>     <chr>      <chr> <dbl>  <dbl>
+## 1 2020-01-21 Snohomish Washington 53061     1      0
+## 2 2020-01-22 Snohomish Washington 53061     1      0
+## 3 2020-01-23 Snohomish Washington 53061     1      0
+## 4 2020-01-24 Cook      Illinois   17031     1      0
+## 5 2020-01-24 Snohomish Washington 53061     1      0
+## 6 2020-01-25 Orange    California 06059     1      0
+\end{verbatim}
+
+If you look, we have a county and a date -- how many cases are reported in that county on that day. That means we can do some interesting progression charts.
+
+Let's filter out Nebraska first.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nebraska <-}\StringTok{ }\NormalTok{covid }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(state }\OperatorTok{==}\StringTok{ "Nebraska"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+And we can create line chart like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{data=}\NormalTok{nebraska, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{date, }\DataTypeTok{y=}\NormalTok{cases, }\DataTypeTok{group=}\NormalTok{county, }\DataTypeTok{color=}\NormalTok{county))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-233-1.pdf}
+
+The little county on the bottom that curves sharply up? That's my home county, Washington County. One day of this writing, they added 10 cases in one day in one nursing home. Grim stuff.
+
+The curve you see for Douglas County is a classic exponential curve. Because the number of cases here are small, we can get away with it for a little while. But when looking at much larger places, you'd use a log scale. \href{https://www.ft.com/video/9a72a9d4-8db1-4615-8333-4b73ae3ddff8}{YOU REALLY SHOULD WATCH THIS}. You've no doubt seen the Financial Times coronavirus trajectory tracker. Hear why they are using a log scale. And here's what our chart looks like with it. Note the y-axis scale.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{data=}\NormalTok{nebraska, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{date, }\DataTypeTok{y=}\NormalTok{cases, }\DataTypeTok{group=}\NormalTok{county, }\DataTypeTok{color=}\NormalTok{county)) }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{trans=}\StringTok{"log10"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-234-1.pdf}
+
+\hypertarget{mapping-continuously}{%
+\section{Mapping continuously}\label{mapping-continuously}}
+
+But for a map, we can't have multiple days. We need a single day. Ideally, it would be the most recent date. We can get it using the \texttt{max} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{current <-}\StringTok{ }\NormalTok{nebraska }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\KeywordTok{max}\NormalTok{(date))}
+\end{Highlighting}
+\end{Shaded}
+
+That will give us the most recent date in Nebraska in a variable called \texttt{current}. And now we can filter the most recent data for Nebraska, regardless of when this runs.
+
+I'm adding one piece to the end to make joining this to a map easier and just renaming fips to GEOID, because they are identical in both datasets and can be used for joining.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nebraskacurrent <-}\StringTok{ }\NormalTok{nebraska }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(date }\OperatorTok{==}\StringTok{ }\NormalTok{current[[}\DecValTok{1}\NormalTok{]]) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{GEOID =}\NormalTok{ fips)}
+\end{Highlighting}
+\end{Shaded}
+
+Now we can read in our counties map layer.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{counties <-}\StringTok{ }\KeywordTok{st_read}\NormalTok{(}\StringTok{"data/cb_2018_us_county_5m/cb_2018_us_county_5m.shp"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Reading layer `cb_2018_us_county_5m' from data source `/Users/mwaite3/Box/BookProjects/DataJournalismWithR/data/cb_2018_us_county_5m/cb_2018_us_county_5m.shp' using driver `ESRI Shapefile'
+## Simple feature collection with 3233 features and 9 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: -179.1473 ymin: -14.55255 xmax: 179.7785 ymax: 71.35256
+## epsg (SRID):    4269
+## proj4string:    +proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs
+\end{verbatim}
+
+And join the two together.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{counties <-}\StringTok{ }\NormalTok{counties }\OperatorTok{%>%}\StringTok{ }\KeywordTok{left_join}\NormalTok{(nebraskacurrent)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining, by = "GEOID"
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Column `GEOID` joining factor and character vector, coercing into
+## character vector
+\end{verbatim}
+
+Since we have every county in the United States in our counties map layer, we can filter just Nebraska like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{necounties <-}\StringTok{ }\NormalTok{counties }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(STATEFP }\OperatorTok{==}\StringTok{ }\DecValTok{31}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+So now, we have a geographic dataframe that has both the county shapes and the number of cases in the most recent data update. We just need to see it now:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_sf}\NormalTok{(}\DataTypeTok{data=}\NormalTok{necounties, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill=}\NormalTok{cases)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{scale_fill_viridis_c}\NormalTok{(}\DataTypeTok{option =} \StringTok{"plasma"}\NormalTok{, }\DataTypeTok{trans =} \StringTok{"sqrt"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme_void}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \KeywordTok{paste}\NormalTok{(}\StringTok{"COVID-19 cases as of "}\NormalTok{, current[[}\DecValTok{1}\NormalTok{]], }\DataTypeTok{sep=}\StringTok{""}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-240-1.pdf}
+
+As it stands, we can run this every day and get an up-to-date map.
 
 \end{document}
