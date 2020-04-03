@@ -321,13 +321,13 @@ If you’re interested I how effective social distancing is working, a good surr
 <li>First, filter days in March.</li>
 <li>Then, group calls by day.</li>
 <li>Then, count them. How many happened that day?</li>
-<li>Then we’re going to do some mutate magic. <code>case_when</code> is if/else logic. So what this says is if the date is less than March 8, 2020, then it’s in the Previous group. After and equal to March 8, 2020, it’s in the Current group.</li>
+<li>Then we’re going to do some mutate magic. <code>case_when</code> is if/else logic. So what this says is if the date is less than March 16, 2020 – the day Lincoln’s mayor declared a local emergency – then it’s in the Previous group. After and equal to March 16, 2020, it’s in the Current group.</li>
 <li>Last, but not least, cutting out April dates in this dataset. Just going to look at March.</li>
 </ol>
 <p>And we’ll put it all in a dataframe called <code>calldays</code>.</p>
 <div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb411-1" data-line-number="1">calldays &lt;-<span class="st"> </span>calls <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">month</span>(RPT_Date) <span class="op">==</span><span class="st"> </span><span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(RPT_Date) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="dt">total_calls =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">TimePeriod =</span> <span class="kw">case_when</span>(</a>
-<a class="sourceLine" id="cb411-2" data-line-number="2">  RPT_Date <span class="op">&lt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-03-08&quot;</span>) <span class="op">~</span><span class="st"> &quot;Previous&quot;</span>,</a>
-<a class="sourceLine" id="cb411-3" data-line-number="3">  RPT_Date <span class="op">&gt;=</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-03-08&quot;</span>) <span class="op">~</span><span class="st"> &quot;Current&quot;</span>,</a>
+<a class="sourceLine" id="cb411-2" data-line-number="2">  RPT_Date <span class="op">&lt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-03-16&quot;</span>) <span class="op">~</span><span class="st"> &quot;Previous&quot;</span>,</a>
+<a class="sourceLine" id="cb411-3" data-line-number="3">  RPT_Date <span class="op">&gt;=</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-03-16&quot;</span>) <span class="op">~</span><span class="st"> &quot;Current&quot;</span>,</a>
 <a class="sourceLine" id="cb411-4" data-line-number="4">)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(RPT_Date <span class="op">&lt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-04-01&quot;</span>))</a></code></pre></div>
 <p>To test if the current period of time is different from previous March days, we’re going to use something called a t-test. A t-test simply asks if two sample means are different – is the average between sample A different from the mean of sample B. It looks at the variability in the data and boils it down to a p-value. The p-value tells us if it’s statistically significant or not. Simply put: If our value is below .05, it’s statistically significant and the two means are different. If it’s above .05, then the differences between the two numbers are not meaningful – it could just be random chance that they’re different.</p>
 <p><a href="https://conjointly.com/kb/statistical-student-t-test/">More on the t-test here</a>. Worth reading.</p>
@@ -337,15 +337,15 @@ If you’re interested I how effective social distancing is working, a good surr
 ##  Welch Two Sample t-test
 ## 
 ## data:  total_calls by TimePeriod
-## t = -0.69299, df = 47.771, p-value = 0.4917
+## t = -0.30291, df = 24.691, p-value = 0.7645
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -17.284804   8.424804
+##  -16.60408  12.34852
 ## sample estimates:
 ##  mean in group Current mean in group Previous 
-##                 294.00                 298.43</code></pre>
-<p>First, look at the two means on the bottom. On the left, it says the daily call average in the current group – March 8 to March 31 – is 294.00 calls per day. On the right, in previous March days, it’s 298.43. So about 4.5 calls diffrence. Is that a sigificant difference? Look above to the p-value for that answer. At 0.4917, that’s considerably higher than .05.</p>
-<p>So, statistically speaking, these numbers are the same. There’s no real difference between them. A bad reporter would write a story – or a bad mayor would hold a press conference and shout from the heavens – that crime is down 4.5 calls per day on average! This is good! But it’s not real. It’s statistically meaningless. It’s just random noise.</p>
+##               295.7333               297.8611</code></pre>
+<p>First, look at the two means on the bottom. On the left, it says the daily call average in the current group – March 16 to March 31 – is 295.73 calls per day. On the right, in previous March days, it’s 297.86. So about 2.3 calls diffrence. Is that a sigificant difference? Look above to the p-value for that answer. At 0.7645, that’s considerably higher than .05.</p>
+<p>So, statistically speaking, these numbers are the same. There’s no real difference between them. A bad reporter would write a story – or a bad mayor would hold a press conference and shout from the heavens – that crime is down 2.3 calls per day on average! This is good! But it’s not real. It’s statistically meaningless. It’s just random noise.</p>
 <div id="specific-call-types" class="section level2">
 <h2><span class="header-section-number">24.1</span> Specific call types</h2>
 <p>But you need only look outside your house to realize the world is different. So how is it that calls to Lincoln police aren’t?</p>
@@ -392,8 +392,8 @@ If you’re interested I how effective social distancing is working, a good surr
 <p>Let’s first look at disturbances, one of the first big call types on that list. Disturbances, for those of you who have always stayed on the right side of the law, are anything where the police get called out to and people are acting the fool. Arguments between neighbors? Disturbance. Terrible racket coming from the back yard down the way? Disturbance. So it’s pretty generic and it happens a lot.</p>
 <p>To look specifically at a crime, we’re going to take what we did before and add a filter into it, and we’ll name the dataframe what we’re looking at.</p>
 <div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb416-1" data-line-number="1">disturbance &lt;-<span class="st"> </span>calls <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(CFS_LEGEND <span class="op">==</span><span class="st"> &quot;DISTURBANCE&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">month</span>(RPT_Date) <span class="op">==</span><span class="st"> </span><span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(RPT_Date) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="dt">total_calls =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">TimePeriod =</span> <span class="kw">case_when</span>(</a>
-<a class="sourceLine" id="cb416-2" data-line-number="2">  RPT_Date <span class="op">&lt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-03-08&quot;</span>) <span class="op">~</span><span class="st"> &quot;Previous&quot;</span>,</a>
-<a class="sourceLine" id="cb416-3" data-line-number="3">  RPT_Date <span class="op">&gt;=</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-03-08&quot;</span>) <span class="op">~</span><span class="st"> &quot;Current&quot;</span>,</a>
+<a class="sourceLine" id="cb416-2" data-line-number="2">  RPT_Date <span class="op">&lt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-03-16&quot;</span>) <span class="op">~</span><span class="st"> &quot;Previous&quot;</span>,</a>
+<a class="sourceLine" id="cb416-3" data-line-number="3">  RPT_Date <span class="op">&gt;=</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-03-16&quot;</span>) <span class="op">~</span><span class="st"> &quot;Current&quot;</span>,</a>
 <a class="sourceLine" id="cb416-4" data-line-number="4">)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(RPT_Date <span class="op">&lt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-04-01&quot;</span>))</a></code></pre></div>
 <p>Then we can do our t-test.</p>
 <div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb417-1" data-line-number="1"><span class="kw">t.test</span>(total_calls <span class="op">~</span><span class="st"> </span>TimePeriod, <span class="dt">data =</span> disturbance)</a></code></pre></div>
@@ -401,74 +401,74 @@ If you’re interested I how effective social distancing is working, a good surr
 ##  Welch Two Sample t-test
 ## 
 ## data:  total_calls by TimePeriod
-## t = 2.8621, df = 37.162, p-value = 0.006875
+## t = 2.7026, df = 19.753, p-value = 0.0138
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##   1.908816 11.158141
+##   1.641788 12.787842
 ## sample estimates:
 ##  mean in group Current mean in group Previous 
-##               55.04348               48.51000</code></pre>
-<p>So what does this say? Typically, you’d see 48.5 disturbances a day on average before coronavirus. Now? 55. Is that a sigificant difference? According to our p-value of .006875, it is. So police are going to more disturbances than usual.</p>
+##               56.06667               48.85185</code></pre>
+<p>So what does this say? Typically, you’d see 48.85 disturbances a day on average before coronavirus. Now? 56. Is that a sigificant difference? According to our p-value of 0.0138, it is. So police are going to more disturbances than usual.</p>
 <p>What about traffic calls?</p>
 <div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb419-1" data-line-number="1">traffic &lt;-<span class="st"> </span>calls <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(CFS_LEGEND <span class="op">==</span><span class="st"> &quot;TRAFFIC&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">month</span>(RPT_Date) <span class="op">==</span><span class="st"> </span><span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(RPT_Date) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="dt">total_calls =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">TimePeriod =</span> <span class="kw">case_when</span>(</a>
-<a class="sourceLine" id="cb419-2" data-line-number="2">  RPT_Date <span class="op">&lt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-03-08&quot;</span>) <span class="op">~</span><span class="st"> &quot;Previous&quot;</span>,</a>
-<a class="sourceLine" id="cb419-3" data-line-number="3">  RPT_Date <span class="op">&gt;=</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-03-08&quot;</span>) <span class="op">~</span><span class="st"> &quot;Current&quot;</span>,</a>
+<a class="sourceLine" id="cb419-2" data-line-number="2">  RPT_Date <span class="op">&lt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-03-16&quot;</span>) <span class="op">~</span><span class="st"> &quot;Previous&quot;</span>,</a>
+<a class="sourceLine" id="cb419-3" data-line-number="3">  RPT_Date <span class="op">&gt;=</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-03-16&quot;</span>) <span class="op">~</span><span class="st"> &quot;Current&quot;</span>,</a>
 <a class="sourceLine" id="cb419-4" data-line-number="4">)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(RPT_Date <span class="op">&lt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-04-01&quot;</span>))</a></code></pre></div>
 <div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb420-1" data-line-number="1"><span class="kw">t.test</span>(total_calls <span class="op">~</span><span class="st"> </span>TimePeriod, <span class="dt">data =</span> traffic)</a></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
 ## data:  total_calls by TimePeriod
-## t = -5.351, df = 77.714, p-value = 8.572e-07
+## t = -3.8869, df = 29.404, p-value = 0.0005338
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -13.487462  -6.172538
+##  -13.308937  -4.135507
 ## sample estimates:
 ##  mean in group Current mean in group Previous 
-##                  23.00                  32.83</code></pre>
-<p>Typically get about 33 calls a day, now 23. That’s a big difference, and a statistically significant one.</p>
+##               23.33333               32.05556</code></pre>
+<p>Typically get about 32 calls a day, now 23. That’s a big difference, and a statistically significant one.</p>
 <p>How about car accidents?</p>
 <div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb422-1" data-line-number="1">accident &lt;-<span class="st"> </span>calls <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(CFS_LEGEND <span class="op">==</span><span class="st"> &quot;ACCIDENT&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">month</span>(RPT_Date) <span class="op">==</span><span class="st"> </span><span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(RPT_Date) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="dt">total_calls =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">TimePeriod =</span> <span class="kw">case_when</span>(</a>
-<a class="sourceLine" id="cb422-2" data-line-number="2">  RPT_Date <span class="op">&lt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-03-08&quot;</span>) <span class="op">~</span><span class="st"> &quot;Previous&quot;</span>,</a>
-<a class="sourceLine" id="cb422-3" data-line-number="3">  RPT_Date <span class="op">&gt;=</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-03-08&quot;</span>) <span class="op">~</span><span class="st"> &quot;Current&quot;</span>,</a>
+<a class="sourceLine" id="cb422-2" data-line-number="2">  RPT_Date <span class="op">&lt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-03-16&quot;</span>) <span class="op">~</span><span class="st"> &quot;Previous&quot;</span>,</a>
+<a class="sourceLine" id="cb422-3" data-line-number="3">  RPT_Date <span class="op">&gt;=</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-03-16&quot;</span>) <span class="op">~</span><span class="st"> &quot;Current&quot;</span>,</a>
 <a class="sourceLine" id="cb422-4" data-line-number="4">)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(RPT_Date <span class="op">&lt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-04-01&quot;</span>))</a></code></pre></div>
 <div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb423-1" data-line-number="1"><span class="kw">t.test</span>(total_calls <span class="op">~</span><span class="st"> </span>TimePeriod, <span class="dt">data =</span> accident)</a></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
 ## data:  total_calls by TimePeriod
-## t = -5.2963, df = 52.907, p-value = 2.33e-06
+## t = -7.4616, df = 37.921, p-value = 5.964e-09
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -11.622648  -5.237352
+##  -13.687940  -7.845393
 ## sample estimates:
 ##  mean in group Current mean in group Previous 
-##                  17.00                  25.43</code></pre>
-<p>Typically get a little more than 25 accident calls a day. Now, it’s 17. Insurance companies are making out like bandits right now.</p>
+##               14.40000               25.16667</code></pre>
+<p>Typically get a little more than 25 accident calls a day. Now, it’s 14.4. Insurance companies are making out like bandits right now.</p>
 </div>
 <div id="what-else-should-we-look-at" class="section level2">
 <h2><span class="header-section-number">24.2</span> What else should we look at?</h2>
 <p>With a little magic using <code>tidyr</code> to transform the data (<a href="http://mattwaite.github.io/sports/transforming-data.html">learn more about that here</a>), we can get a peek at other call groups worth exploring.</p>
 <div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb425-1" data-line-number="1">calls <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">month</span>(RPT_Date) <span class="op">==</span><span class="st"> </span><span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(RPT_Date, CFS_LEGEND) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="dt">total_calls =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">TimePeriod =</span> <span class="kw">case_when</span>(</a>
-<a class="sourceLine" id="cb425-2" data-line-number="2">  RPT_Date <span class="op">&lt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-03-08&quot;</span>) <span class="op">~</span><span class="st"> &quot;Previous&quot;</span>,</a>
-<a class="sourceLine" id="cb425-3" data-line-number="3">  RPT_Date <span class="op">&gt;=</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-03-08&quot;</span>) <span class="op">~</span><span class="st"> &quot;Current&quot;</span>,</a>
+<a class="sourceLine" id="cb425-2" data-line-number="2">  RPT_Date <span class="op">&lt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-03-16&quot;</span>) <span class="op">~</span><span class="st"> &quot;Previous&quot;</span>,</a>
+<a class="sourceLine" id="cb425-3" data-line-number="3">  RPT_Date <span class="op">&gt;=</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-03-16&quot;</span>) <span class="op">~</span><span class="st"> &quot;Current&quot;</span>,</a>
 <a class="sourceLine" id="cb425-4" data-line-number="4">)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(RPT_Date <span class="op">&lt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-04-01&quot;</span>)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb425-5" data-line-number="5"><span class="st">  </span><span class="kw">group_by</span>(TimePeriod, CFS_LEGEND) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="dt">avg_calls =</span> <span class="kw">mean</span>(total_calls)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> <span class="st">&quot;TimePeriod&quot;</span>, <span class="dt">values_from =</span> <span class="st">&quot;avg_calls&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>()</a></code></pre></div>
-<pre><code>## # A tibble: 36 x 3
+<pre><code>## # A tibble: 35 x 3
 ##    CFS_LEGEND   Current Previous
 ##    &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;
-##  1 ACCIDENT       17       25.4 
-##  2 ALARM           7.70     7.57
-##  3 ALCOHOL         4.39     6.14
+##  1 ACCIDENT       14.4     25.2 
+##  2 ALARM           7.87     7.56
+##  3 ALCOHOL         4.33     6.02
 ##  4 ARSON           1        1.2 
-##  5 ASSAULT         8.52    10.4 
-##  6 BURGLARY        3.26     3.06
-##  7 DISTURBANCE    55.0     48.5 
-##  8 DRUGS           7.30    10.1 
-##  9 DUI             1.83     3.03
-## 10 EMBEZZLEMENT    1.14     1.43
-## # … with 26 more rows</code></pre>
-<p>Other interesting stories here? DUI is almost half of what it normally is. Thefts from vehicles is up way up. Also: trespassing?</p>
+##  5 ASSAULT         8.8     10.2 
+##  6 BURGLARY        3.33     3.06
+##  7 DISTURBANCE    56.1     48.9 
+##  8 DRUGS           7.8      9.85
+##  9 DUI             1.55     2.98
+## 10 EMBEZZLEMENT    1.5      1.35
+## # … with 25 more rows</code></pre>
+<p>Other interesting stories here? DUI is almost half of what it normally is. Thefts from vehicles are up way up. Also: trespassing? What’s that about?</p>
 <p>But are they meaningful differences? Put them to the test.</p>
 
 </div>

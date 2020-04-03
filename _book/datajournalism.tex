@@ -2349,7 +2349,7 @@ Here's an example using sensible defaults for weighting -- unfortunately \href{h
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3033
+## [1] 3034
 \end{verbatim}
 
 Cuts it down by almost 1000. That seems pretty good. Here's a different method, using a method that turns words into phonetic spellings called soundex.
@@ -5591,7 +5591,7 @@ So we're going to do some filtering here. The following block is broken down lik
 \item
   Then, count them. How many happened that day?
 \item
-  Then we're going to do some mutate magic. \texttt{case\_when} is if/else logic. So what this says is if the date is less than March 8, 2020, then it's in the Previous group. After and equal to March 8, 2020, it's in the Current group.
+  Then we're going to do some mutate magic. \texttt{case\_when} is if/else logic. So what this says is if the date is less than March 16, 2020 -- the day Lincoln's mayor declared a local emergency -- then it's in the Previous group. After and equal to March 16, 2020, it's in the Current group.
 \item
   Last, but not least, cutting out April dates in this dataset. Just going to look at March.
 \end{enumerate}
@@ -5601,8 +5601,8 @@ And we'll put it all in a dataframe called \texttt{calldays}.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{calldays <-}\StringTok{ }\NormalTok{calls }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(}\KeywordTok{month}\NormalTok{(RPT_Date) }\OperatorTok{==}\StringTok{ }\DecValTok{3}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{(RPT_Date) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{total_calls =} \KeywordTok{n}\NormalTok{()) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{TimePeriod =} \KeywordTok{case_when}\NormalTok{(}
-\NormalTok{  RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-08"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Previous"}\NormalTok{,}
-\NormalTok{  RPT_Date }\OperatorTok{>=}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-08"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Current"}\NormalTok{,}
+\NormalTok{  RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-16"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Previous"}\NormalTok{,}
+\NormalTok{  RPT_Date }\OperatorTok{>=}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-16"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Current"}\NormalTok{,}
 \NormalTok{)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-04-01"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -5624,18 +5624,18 @@ In R, a \texttt{t.test} is a base R function, owing to it being a statistical la
 ##  Welch Two Sample t-test
 ## 
 ## data:  total_calls by TimePeriod
-## t = -0.69299, df = 47.771, p-value = 0.4917
+## t = -0.30291, df = 24.691, p-value = 0.7645
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -17.284804   8.424804
+##  -16.60408  12.34852
 ## sample estimates:
 ##  mean in group Current mean in group Previous 
-##                 294.00                 298.43
+##               295.7333               297.8611
 \end{verbatim}
 
-First, look at the two means on the bottom. On the left, it says the daily call average in the current group -- March 8 to March 31 -- is 294.00 calls per day. On the right, in previous March days, it's 298.43. So about 4.5 calls diffrence. Is that a sigificant difference? Look above to the p-value for that answer. At 0.4917, that's considerably higher than .05.
+First, look at the two means on the bottom. On the left, it says the daily call average in the current group -- March 16 to March 31 -- is 295.73 calls per day. On the right, in previous March days, it's 297.86. So about 2.3 calls diffrence. Is that a sigificant difference? Look above to the p-value for that answer. At 0.7645, that's considerably higher than .05.
 
-So, statistically speaking, these numbers are the same. There's no real difference between them. A bad reporter would write a story -- or a bad mayor would hold a press conference and shout from the heavens -- that crime is down 4.5 calls per day on average! This is good! But it's not real. It's statistically meaningless. It's just random noise.
+So, statistically speaking, these numbers are the same. There's no real difference between them. A bad reporter would write a story -- or a bad mayor would hold a press conference and shout from the heavens -- that crime is down 2.3 calls per day on average! This is good! But it's not real. It's statistically meaningless. It's just random noise.
 
 \hypertarget{specific-call-types}{%
 \section{Specific call types}\label{specific-call-types}}
@@ -5699,8 +5699,8 @@ To look specifically at a crime, we're going to take what we did before and add 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{disturbance <-}\StringTok{ }\NormalTok{calls }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(CFS_LEGEND }\OperatorTok{==}\StringTok{ "DISTURBANCE"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(}\KeywordTok{month}\NormalTok{(RPT_Date) }\OperatorTok{==}\StringTok{ }\DecValTok{3}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{(RPT_Date) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{total_calls =} \KeywordTok{n}\NormalTok{()) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{TimePeriod =} \KeywordTok{case_when}\NormalTok{(}
-\NormalTok{  RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-08"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Previous"}\NormalTok{,}
-\NormalTok{  RPT_Date }\OperatorTok{>=}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-08"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Current"}\NormalTok{,}
+\NormalTok{  RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-16"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Previous"}\NormalTok{,}
+\NormalTok{  RPT_Date }\OperatorTok{>=}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-16"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Current"}\NormalTok{,}
 \NormalTok{)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-04-01"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -5718,24 +5718,24 @@ Then we can do our t-test.
 ##  Welch Two Sample t-test
 ## 
 ## data:  total_calls by TimePeriod
-## t = 2.8621, df = 37.162, p-value = 0.006875
+## t = 2.7026, df = 19.753, p-value = 0.0138
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##   1.908816 11.158141
+##   1.641788 12.787842
 ## sample estimates:
 ##  mean in group Current mean in group Previous 
-##               55.04348               48.51000
+##               56.06667               48.85185
 \end{verbatim}
 
-So what does this say? Typically, you'd see 48.5 disturbances a day on average before coronavirus. Now? 55. Is that a sigificant difference? According to our p-value of .006875, it is. So police are going to more disturbances than usual.
+So what does this say? Typically, you'd see 48.85 disturbances a day on average before coronavirus. Now? 56. Is that a sigificant difference? According to our p-value of 0.0138, it is. So police are going to more disturbances than usual.
 
 What about traffic calls?
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{traffic <-}\StringTok{ }\NormalTok{calls }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(CFS_LEGEND }\OperatorTok{==}\StringTok{ "TRAFFIC"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(}\KeywordTok{month}\NormalTok{(RPT_Date) }\OperatorTok{==}\StringTok{ }\DecValTok{3}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{(RPT_Date) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{total_calls =} \KeywordTok{n}\NormalTok{()) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{TimePeriod =} \KeywordTok{case_when}\NormalTok{(}
-\NormalTok{  RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-08"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Previous"}\NormalTok{,}
-\NormalTok{  RPT_Date }\OperatorTok{>=}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-08"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Current"}\NormalTok{,}
+\NormalTok{  RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-16"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Previous"}\NormalTok{,}
+\NormalTok{  RPT_Date }\OperatorTok{>=}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-16"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Current"}\NormalTok{,}
 \NormalTok{)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-04-01"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -5751,24 +5751,24 @@ What about traffic calls?
 ##  Welch Two Sample t-test
 ## 
 ## data:  total_calls by TimePeriod
-## t = -5.351, df = 77.714, p-value = 8.572e-07
+## t = -3.8869, df = 29.404, p-value = 0.0005338
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -13.487462  -6.172538
+##  -13.308937  -4.135507
 ## sample estimates:
 ##  mean in group Current mean in group Previous 
-##                  23.00                  32.83
+##               23.33333               32.05556
 \end{verbatim}
 
-Typically get about 33 calls a day, now 23. That's a big difference, and a statistically significant one.
+Typically get about 32 calls a day, now 23. That's a big difference, and a statistically significant one.
 
 How about car accidents?
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{accident <-}\StringTok{ }\NormalTok{calls }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(CFS_LEGEND }\OperatorTok{==}\StringTok{ "ACCIDENT"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(}\KeywordTok{month}\NormalTok{(RPT_Date) }\OperatorTok{==}\StringTok{ }\DecValTok{3}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{(RPT_Date) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{total_calls =} \KeywordTok{n}\NormalTok{()) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{TimePeriod =} \KeywordTok{case_when}\NormalTok{(}
-\NormalTok{  RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-08"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Previous"}\NormalTok{,}
-\NormalTok{  RPT_Date }\OperatorTok{>=}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-08"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Current"}\NormalTok{,}
+\NormalTok{  RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-16"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Previous"}\NormalTok{,}
+\NormalTok{  RPT_Date }\OperatorTok{>=}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-16"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Current"}\NormalTok{,}
 \NormalTok{)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-04-01"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -5784,16 +5784,16 @@ How about car accidents?
 ##  Welch Two Sample t-test
 ## 
 ## data:  total_calls by TimePeriod
-## t = -5.2963, df = 52.907, p-value = 2.33e-06
+## t = -7.4616, df = 37.921, p-value = 5.964e-09
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -11.622648  -5.237352
+##  -13.687940  -7.845393
 ## sample estimates:
 ##  mean in group Current mean in group Previous 
-##                  17.00                  25.43
+##               14.40000               25.16667
 \end{verbatim}
 
-Typically get a little more than 25 accident calls a day. Now, it's 17. Insurance companies are making out like bandits right now.
+Typically get a little more than 25 accident calls a day. Now, it's 14.4. Insurance companies are making out like bandits right now.
 
 \hypertarget{what-else-should-we-look-at}{%
 \section{What else should we look at?}\label{what-else-should-we-look-at}}
@@ -5803,31 +5803,31 @@ With a little magic using \texttt{tidyr} to transform the data (\href{http://mat
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{calls }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(}\KeywordTok{month}\NormalTok{(RPT_Date) }\OperatorTok{==}\StringTok{ }\DecValTok{3}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{(RPT_Date, CFS_LEGEND) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{total_calls =} \KeywordTok{n}\NormalTok{()) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{TimePeriod =} \KeywordTok{case_when}\NormalTok{(}
-\NormalTok{  RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-08"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Previous"}\NormalTok{,}
-\NormalTok{  RPT_Date }\OperatorTok{>=}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-08"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Current"}\NormalTok{,}
+\NormalTok{  RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-16"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Previous"}\NormalTok{,}
+\NormalTok{  RPT_Date }\OperatorTok{>=}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-16"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Current"}\NormalTok{,}
 \NormalTok{)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-04-01"}\NormalTok{)) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{group_by}\NormalTok{(TimePeriod, CFS_LEGEND) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{avg_calls =} \KeywordTok{mean}\NormalTok{(total_calls)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{pivot_wider}\NormalTok{(}\DataTypeTok{names_from =} \StringTok{"TimePeriod"}\NormalTok{, }\DataTypeTok{values_from =} \StringTok{"avg_calls"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{na.omit}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## # A tibble: 36 x 3
+## # A tibble: 35 x 3
 ##    CFS_LEGEND   Current Previous
 ##    <chr>          <dbl>    <dbl>
-##  1 ACCIDENT       17       25.4 
-##  2 ALARM           7.70     7.57
-##  3 ALCOHOL         4.39     6.14
+##  1 ACCIDENT       14.4     25.2 
+##  2 ALARM           7.87     7.56
+##  3 ALCOHOL         4.33     6.02
 ##  4 ARSON           1        1.2 
-##  5 ASSAULT         8.52    10.4 
-##  6 BURGLARY        3.26     3.06
-##  7 DISTURBANCE    55.0     48.5 
-##  8 DRUGS           7.30    10.1 
-##  9 DUI             1.83     3.03
-## 10 EMBEZZLEMENT    1.14     1.43
-## # ... with 26 more rows
+##  5 ASSAULT         8.8     10.2 
+##  6 BURGLARY        3.33     3.06
+##  7 DISTURBANCE    56.1     48.9 
+##  8 DRUGS           7.8      9.85
+##  9 DUI             1.55     2.98
+## 10 EMBEZZLEMENT    1.5      1.35
+## # ... with 25 more rows
 \end{verbatim}
 
-Other interesting stories here? DUI is almost half of what it normally is. Thefts from vehicles is up way up. Also: trespassing?
+Other interesting stories here? DUI is almost half of what it normally is. Thefts from vehicles are up way up. Also: trespassing? What's that about?
 
 But are they meaningful differences? Put them to the test.
 
