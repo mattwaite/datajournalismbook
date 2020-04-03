@@ -43,15 +43,15 @@ So we're going to do some filtering here. The following block is broken down lik
 1. First, filter days in March.
 2. Then, group calls by day.
 3. Then, count them. How many happened that day?
-4. Then we're going to do some mutate magic. `case_when` is if/else logic. So what this says is if the date is less than March 8, 2020, then it's in the Previous group. After and equal to March 8, 2020, it's in the Current group. 
+4. Then we're going to do some mutate magic. `case_when` is if/else logic. So what this says is if the date is less than March 16, 2020 -- the day Lincoln's mayor declared a local emergency -- then it's in the Previous group. After and equal to March 16, 2020, it's in the Current group. 
 5. Last, but not least, cutting out April dates in this dataset. Just going to look at March.
 
 And we'll put it all in a dataframe called `calldays`.
 
 ```{r}
 calldays <- calls %>% filter(month(RPT_Date) == 3) %>% group_by(RPT_Date) %>% summarize(total_calls = n()) %>% mutate(TimePeriod = case_when(
-  RPT_Date < as.Date("2020-03-08") ~ "Previous",
-  RPT_Date >= as.Date("2020-03-08") ~ "Current",
+  RPT_Date < as.Date("2020-03-16") ~ "Previous",
+  RPT_Date >= as.Date("2020-03-16") ~ "Current",
 )) %>% filter(RPT_Date < as.Date("2020-04-01"))
 ```
 
@@ -65,9 +65,9 @@ In R, a `t.test` is a base R function, owing to it being a statistical langauge.
 t.test(total_calls ~ TimePeriod, data = calldays)
 ```
 
-First, look at the two means on the bottom. On the left, it says the daily call average in the current group -- March 8 to March 31 -- is 294.00 calls per day. On the right, in previous March days, it's 298.43. So about 4.5 calls diffrence. Is that a sigificant difference? Look above to the p-value for that answer. At 0.4917, that's considerably higher than .05. 
+First, look at the two means on the bottom. On the left, it says the daily call average in the current group -- March 16 to March 31 -- is 295.73 calls per day. On the right, in previous March days, it's 297.86. So about 2.3 calls diffrence. Is that a sigificant difference? Look above to the p-value for that answer. At 0.7645, that's considerably higher than .05. 
 
-So, statistically speaking, these numbers are the same. There's no real difference between them. A bad reporter would write a story -- or a bad mayor would hold a press conference and shout from the heavens -- that crime is down 4.5 calls per day on average! This is good! But it's not real. It's statistically meaningless. It's just random noise.
+So, statistically speaking, these numbers are the same. There's no real difference between them. A bad reporter would write a story -- or a bad mayor would hold a press conference and shout from the heavens -- that crime is down 2.3 calls per day on average! This is good! But it's not real. It's statistically meaningless. It's just random noise.
 
 ## Specific call types
 
@@ -87,8 +87,8 @@ To look specifically at a crime, we're going to take what we did before and add 
 
 ```{r}
 disturbance <- calls %>% filter(CFS_LEGEND == "DISTURBANCE") %>% filter(month(RPT_Date) == 3) %>% group_by(RPT_Date) %>% summarize(total_calls = n()) %>% mutate(TimePeriod = case_when(
-  RPT_Date < as.Date("2020-03-08") ~ "Previous",
-  RPT_Date >= as.Date("2020-03-08") ~ "Current",
+  RPT_Date < as.Date("2020-03-16") ~ "Previous",
+  RPT_Date >= as.Date("2020-03-16") ~ "Current",
 )) %>% filter(RPT_Date < as.Date("2020-04-01"))
 ```
 
@@ -98,14 +98,14 @@ Then we can do our t-test.
 t.test(total_calls ~ TimePeriod, data = disturbance)
 ```
 
-So what does this say? Typically, you'd see 48.5 disturbances a day on average before coronavirus. Now? 55. Is that a sigificant difference? According to our p-value of .006875, it is. So police are going to more disturbances than usual. 
+So what does this say? Typically, you'd see 48.85 disturbances a day on average before coronavirus. Now? 56. Is that a sigificant difference? According to our p-value of 0.0138, it is. So police are going to more disturbances than usual. 
 
 What about traffic calls? 
 
 ```{r}
 traffic <- calls %>% filter(CFS_LEGEND == "TRAFFIC") %>% filter(month(RPT_Date) == 3) %>% group_by(RPT_Date) %>% summarize(total_calls = n()) %>% mutate(TimePeriod = case_when(
-  RPT_Date < as.Date("2020-03-08") ~ "Previous",
-  RPT_Date >= as.Date("2020-03-08") ~ "Current",
+  RPT_Date < as.Date("2020-03-16") ~ "Previous",
+  RPT_Date >= as.Date("2020-03-16") ~ "Current",
 )) %>% filter(RPT_Date < as.Date("2020-04-01"))
 ```
 
@@ -113,14 +113,14 @@ traffic <- calls %>% filter(CFS_LEGEND == "TRAFFIC") %>% filter(month(RPT_Date) 
 t.test(total_calls ~ TimePeriod, data = traffic)
 ```
 
-Typically get about 33 calls a day, now 23. That's a big difference, and a statistically significant one.
+Typically get about 32 calls a day, now 23. That's a big difference, and a statistically significant one.
 
 How about car accidents?
 
 ```{r}
 accident <- calls %>% filter(CFS_LEGEND == "ACCIDENT") %>% filter(month(RPT_Date) == 3) %>% group_by(RPT_Date) %>% summarize(total_calls = n()) %>% mutate(TimePeriod = case_when(
-  RPT_Date < as.Date("2020-03-08") ~ "Previous",
-  RPT_Date >= as.Date("2020-03-08") ~ "Current",
+  RPT_Date < as.Date("2020-03-16") ~ "Previous",
+  RPT_Date >= as.Date("2020-03-16") ~ "Current",
 )) %>% filter(RPT_Date < as.Date("2020-04-01"))
 ```
 
@@ -128,7 +128,7 @@ accident <- calls %>% filter(CFS_LEGEND == "ACCIDENT") %>% filter(month(RPT_Date
 t.test(total_calls ~ TimePeriod, data = accident)
 ```
 
-Typically get a little more than 25 accident calls a day. Now, it's 17. Insurance companies are making out like bandits right now.
+Typically get a little more than 25 accident calls a day. Now, it's 14.4. Insurance companies are making out like bandits right now.
 
 ## What else should we look at?
 
@@ -136,12 +136,12 @@ With a little magic using `tidyr` to transform the data ([learn more about that 
 
 ```{r}
 calls %>% filter(month(RPT_Date) == 3) %>% group_by(RPT_Date, CFS_LEGEND) %>% summarize(total_calls = n()) %>% mutate(TimePeriod = case_when(
-  RPT_Date < as.Date("2020-03-08") ~ "Previous",
-  RPT_Date >= as.Date("2020-03-08") ~ "Current",
+  RPT_Date < as.Date("2020-03-16") ~ "Previous",
+  RPT_Date >= as.Date("2020-03-16") ~ "Current",
 )) %>% filter(RPT_Date < as.Date("2020-04-01")) %>%
   group_by(TimePeriod, CFS_LEGEND) %>% summarize(avg_calls = mean(total_calls)) %>% pivot_wider(names_from = "TimePeriod", values_from = "avg_calls") %>% na.omit()
 ```
 
-Other interesting stories here? DUI is almost half of what it normally is. Thefts from vehicles is up way up. Also: trespassing?
+Other interesting stories here? DUI is almost half of what it normally is. Thefts from vehicles are up way up. Also: trespassing? What's that about?
 
 But are they meaningful differences? Put them to the test. 
