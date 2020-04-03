@@ -1,0 +1,4431 @@
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.5.8)  2 APR 2020 19:15
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**datajournalism.tex
+(./datajournalism.tex
+LaTeX2e <2018-12-01>
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2018/09/03 v1.4i Standard LaTeX document class
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/bk10.clo
+File: bk10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@chapter=\count81
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\c@figure=\count87
+\c@table=\count88
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/lmodern.sty
+Package: lmodern 2009/10/30 v1.6 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+(/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks14
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2018/12/01 v2.17b AMS math features
+\@mathmargin=\skip43
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+(/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks15
+\ex@=\dimen103
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen104
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count89
+LaTeX Info: Redefining \frac on input line 223.
+\uproot@=\count90
+\leftroot@=\count91
+LaTeX Info: Redefining \overline on input line 385.
+\classnum@=\count92
+\DOTSCASE@=\count93
+LaTeX Info: Redefining \ldots on input line 482.
+LaTeX Info: Redefining \dots on input line 485.
+LaTeX Info: Redefining \cdots on input line 606.
+\Mathstrutbox@=\box27
+\strutbox@=\box28
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 729.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
+\macc@depth=\count94
+\c@MaxMatrixCols=\count95
+\dotsspace@=\muskip10
+\c@parentequation=\count96
+\dspbrk@lvl=\count97
+\tag@help=\toks16
+\row@=\count98
+\column@=\count99
+\maxfields@=\count100
+\andhelp@=\toks17
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks18
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks19
+LaTeX Info: Redefining \[ on input line 2844.
+LaTeX Info: Redefining \] on input line 2845.
+) (/usr/local/texlive/2019/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+) (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/base/fixltx2e.sty
+Package: fixltx2e 2016/12/29 v2.1a fixes to LaTeX (obsolete)
+Applying: [2015/01/01] Old fixltx2e package on input line 46.
+
+Package fixltx2e Warning: fixltx2e is not required with releases after 2015
+(fixltx2e)                All fixes are now in the LaTeX kernel.
+(fixltx2e)                See the latexrelease package for details.
+
+Already applied: [0000/00/00] Old fixltx2e package on input line 53.
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/unicode-math/unicode-math.sty (
+/usr/local/texlive/2019/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2019-05-07 L3 programming layer (loader) 
+(/usr/local/texlive/2019/texmf-dist/tex/latex/l3kernel/expl3-code.tex
+Package: expl3 2019-05-07 L3 programming layer (code)
+\c_max_int=\count101
+\l_tmpa_int=\count102
+\l_tmpb_int=\count103
+\g_tmpa_int=\count104
+\g_tmpb_int=\count105
+\g__kernel_prg_map_int=\count106
+\c__ior_term_ior=\count107
+\c_log_iow=\count108
+\l_iow_line_count_int=\count109
+\l__iow_line_target_int=\count110
+\l__iow_one_indent_int=\count111
+\l__iow_indent_int=\count112
+\c_zero_dim=\dimen112
+\c_max_dim=\dimen113
+\l_tmpa_dim=\dimen114
+\l_tmpb_dim=\dimen115
+\g_tmpa_dim=\dimen116
+\g_tmpb_dim=\dimen117
+\c_zero_skip=\skip46
+\c_max_skip=\skip47
+\l_tmpa_skip=\skip48
+\l_tmpb_skip=\skip49
+\g_tmpa_skip=\skip50
+\g_tmpb_skip=\skip51
+\c_zero_muskip=\muskip11
+\c_max_muskip=\muskip12
+\l_tmpa_muskip=\muskip13
+\l_tmpb_muskip=\muskip14
+\g_tmpa_muskip=\muskip15
+\g_tmpb_muskip=\muskip16
+\l_keys_choice_int=\count113
+\l__intarray_loop_int=\count114
+\c__intarray_sp_dim=\dimen118
+\g__intarray_font_int=\count115
+\c__fp_leading_shift_int=\count116
+\c__fp_middle_shift_int=\count117
+\c__fp_trailing_shift_int=\count118
+\c__fp_big_leading_shift_int=\count119
+\c__fp_big_middle_shift_int=\count120
+\c__fp_big_trailing_shift_int=\count121
+\c__fp_Bigg_leading_shift_int=\count122
+\c__fp_Bigg_middle_shift_int=\count123
+\c__fp_Bigg_trailing_shift_int=\count124
+\g__fp_array_int=\count125
+\l__fp_array_loop_int=\count126
+\l__sort_length_int=\count127
+\l__sort_min_int=\count128
+\l__sort_top_int=\count129
+\l__sort_max_int=\count130
+\l__sort_true_max_int=\count131
+\l__sort_block_int=\count132
+\l__sort_begin_int=\count133
+\l__sort_end_int=\count134
+\l__sort_A_int=\count135
+\l__sort_B_int=\count136
+\l__sort_C_int=\count137
+\l__tl_analysis_normal_int=\count138
+\l__tl_analysis_index_int=\count139
+\l__tl_analysis_nesting_int=\count140
+\l__tl_analysis_type_int=\count141
+\l__regex_internal_a_int=\count142
+\l__regex_internal_b_int=\count143
+\l__regex_internal_c_int=\count144
+\l__regex_balance_int=\count145
+\l__regex_group_level_int=\count146
+\l__regex_mode_int=\count147
+\c__regex_cs_in_class_mode_int=\count148
+\c__regex_cs_mode_int=\count149
+\l__regex_catcodes_int=\count150
+\l__regex_default_catcodes_int=\count151
+\c__regex_catcode_L_int=\count152
+\c__regex_catcode_O_int=\count153
+\c__regex_catcode_A_int=\count154
+\c__regex_all_catcodes_int=\count155
+\l__regex_show_lines_int=\count156
+\l__regex_min_state_int=\count157
+\l__regex_max_state_int=\count158
+\l__regex_left_state_int=\count159
+\l__regex_right_state_int=\count160
+\l__regex_capturing_group_int=\count161
+\l__regex_min_pos_int=\count162
+\l__regex_max_pos_int=\count163
+\l__regex_curr_pos_int=\count164
+\l__regex_start_pos_int=\count165
+\l__regex_success_pos_int=\count166
+\l__regex_curr_char_int=\count167
+\l__regex_curr_catcode_int=\count168
+\l__regex_last_char_int=\count169
+\l__regex_case_changed_char_int=\count170
+\l__regex_curr_state_int=\count171
+\l__regex_step_int=\count172
+\l__regex_min_active_int=\count173
+\l__regex_max_active_int=\count174
+\l__regex_replacement_csnames_int=\count175
+\l__regex_match_count_int=\count176
+\l__regex_min_submatch_int=\count177
+\l__regex_submatch_int=\count178
+\l__regex_zeroth_submatch_int=\count179
+\g__regex_trace_regex_int=\count180
+\c_empty_box=\box29
+\l_tmpa_box=\box30
+\l_tmpb_box=\box31
+\g_tmpa_box=\box32
+\g_tmpb_box=\box33
+\l__box_top_dim=\dimen119
+\l__box_bottom_dim=\dimen120
+\l__box_left_dim=\dimen121
+\l__box_right_dim=\dimen122
+\l__box_top_new_dim=\dimen123
+\l__box_bottom_new_dim=\dimen124
+\l__box_left_new_dim=\dimen125
+\l__box_right_new_dim=\dimen126
+\l__box_internal_box=\box34
+\l__coffin_internal_box=\box35
+\l__coffin_internal_dim=\dimen127
+\l__coffin_offset_x_dim=\dimen128
+\l__coffin_offset_y_dim=\dimen129
+\l__coffin_x_dim=\dimen130
+\l__coffin_y_dim=\dimen131
+\l__coffin_x_prime_dim=\dimen132
+\l__coffin_y_prime_dim=\dimen133
+\c_empty_coffin=\box36
+\l__coffin_aligned_coffin=\box37
+\l__coffin_aligned_internal_coffin=\box38
+\l_tmpa_coffin=\box39
+\l_tmpb_coffin=\box40
+\g_tmpa_coffin=\box41
+\g_tmpb_coffin=\box42
+\l__coffin_bounding_shift_dim=\dimen134
+\l__coffin_left_corner_dim=\dimen135
+\l__coffin_right_corner_dim=\dimen136
+\l__coffin_bottom_corner_dim=\dimen137
+\l__coffin_top_corner_dim=\dimen138
+\l__coffin_scaled_total_height_dim=\dimen139
+\l__coffin_scaled_width_dim=\dimen140
+\c__coffin_empty_coffin=\box43
+\l__coffin_display_coffin=\box44
+\l__coffin_display_coord_coffin=\box45
+\l__coffin_display_pole_coffin=\box46
+\l__coffin_display_offset_dim=\dimen141
+\l__coffin_display_x_dim=\dimen142
+\l__coffin_display_y_dim=\dimen143
+\g__file_internal_ior=\read1
+\l__seq_internal_a_int=\count181
+\l__seq_internal_b_int=\count182
+\c__deprecation_minus_one=\count183
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/l3kernel/l3xdvipdfmx.def
+File: l3xdvipdfmx.def 2019-04-06 v L3 Experimental driver: xdvipdfmx
+\g__driver_image_int=\count184
+\l__driver_pdf_tmp_box=\box47
+\g__driver_pdf_object_int=\count185
+\g__driver_pdf_annotation_int=\count186
+))
+Package: unicode-math 2019/03/04 v0.8o Unicode maths in XeLaTeX and LuaLaTeX
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/unicode-math/unicode-math-xetex.s
+ty
+Package: unicode-math-xetex 2019/03/04 v0.8o Unicode maths in XeLaTeX and LuaLa
+TeX
+(/usr/local/texlive/2019/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+Package: xparse 2019-05-03 L3 Experimental document command parser
+\l__xparse_current_arg_int=\count187
+\g__xparse_grabber_int=\count188
+\l__xparse_m_args_int=\count189
+\l__xparse_v_nesting_int=\count190
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.st
+y
+Package: l3keys2e 2019-05-03 LaTeX2e option processing using LaTeX3 keys
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/fontspec/fontspec.sty
+Package: fontspec 2019/03/15 v2.7c Font selection for XeLaTeX and LuaLaTeX
+(/usr/local/texlive/2019/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+Package: fontspec-xetex 2019/03/15 v2.7c Font selection for XeLaTeX and LuaLaTe
+X
+\l__fontspec_script_int=\count191
+\l__fontspec_language_int=\count192
+\l__fontspec_strnum_int=\count193
+\l__fontspec_tmp_int=\count194
+\l__fontspec_tmpa_int=\count195
+\l__fontspec_tmpb_int=\count196
+\l__fontspec_tmpc_int=\count197
+\l__fontspec_em_int=\count198
+\l__fontspec_emdef_int=\count199
+\l__fontspec_strong_int=\count266
+\l__fontspec_strongdef_int=\count267
+\l__fontspec_tmpa_dim=\dimen144
+\l__fontspec_tmpb_dim=\dimen145
+\l__fontspec_tmpc_dim=\dimen146
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/tuenc.def
+File: tuenc.def 2018/08/11 v2.0j Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding TU on input line 82.
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/fontspec/fontspec.cfg)
+LaTeX Info: Redefining \itshape on input line 4051.
+LaTeX Info: Redefining \slshape on input line 4056.
+LaTeX Info: Redefining \scshape on input line 4061.
+LaTeX Info: Redefining \upshape on input line 4066.
+LaTeX Info: Redefining \em on input line 4096.
+LaTeX Info: Redefining \emph on input line 4121.
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/filehook/filehook.sty
+Package: filehook 2011/10/12 v0.5d Hooks for input files
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/base/fix-cm.sty
+Package: fix-cm 2015/01/14 v1.1t fixes to LaTeX
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+))
+\g__um_fam_int=\count268
+\g__um_fonts_used_int=\count269
+\l__um_primecount_int=\count270
+\g__um_primekern_muskip=\muskip17
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/unicode-math/unicode-math-table.t
+ex)
+
+Package unicode-math Info: I'm going to patch macro \subarray.
+
+
+Package unicode-math Info: I'm going to patch macro \r@@t.
+
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/upquote/upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
+tim
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2018/08/11 v2.0j Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
+)
+LaTeX Info: Redefining \oldstylenums on input line 334.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 351.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 352.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 353.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 354.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 355.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 356.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 357.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 358.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 359.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 360.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 361.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 362.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 363.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 364.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 365.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 366.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 367.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 368.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 376.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 377.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 378.
+Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 379.
+Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 380.
+Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 381.
+Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 382.
+Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 383.
+Package textcomp Info: Setting lmtt sub-encoding to TS1/0 on input line 384.
+Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 385.
+Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 386.
+Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 387.
+Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 388.
+Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 389.
+Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 390.
+Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 391.
+Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 392.
+Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 393.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 394.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 395.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 396.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 397.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 398.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 399.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 400.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 401.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 402.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 403.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 404.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 405.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/microtype.sty
+Package: microtype 2019/02/28 v2.7b Micro-typographical refinements (RS)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks20
+)
+\MT@toks=\toks21
+\MT@count=\count271
+LaTeX Info: Redefining \textls on input line 790.
+\MT@outer@kern=\dimen147
+LaTeX Info: Redefining \textmicrotypecontext on input line 1336.
+\MT@listname@count=\count272
+(/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/microtype-xetex.def
+File: microtype-xetex.def 2019/02/28 v2.7b Definitions specific to xetex (RS)
+LaTeX Info: Redefining \lsstyle on input line 258.
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2019/02/28 v2.7b microtype main configuration file (RS)
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/parskip/parskip.sty
+Package: parskip 2019-01-16 v2.0c non-zero parskip adjustments
+(/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+) (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+) (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+))) (/usr/local/texlive/2019/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count273
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2018/11/30 v6.88e Hypertext links for LaTeX
+(/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package hobsub Info: Skipping package `ifluatex' (already loaded).
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+Package hobsub Info: Skipping package `etexcmds' (already loaded).
+Package hobsub Info: Skipping package `kvsetkeys' (already loaded).
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: pdfTeX >= 1.30 not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode not found.
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+)
+\@linkdim=\dimen148
+\Hy@linkcounter=\count274
+\Hy@pagecounter=\count275
+(/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2018/11/30 v6.88e Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count276
+(/usr/local/texlive/2019/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Option `unicode' set `true' on input line 4393.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2018/11/30 v6.88e Hyperref: PDF Unicode definition (HO)
+)
+Package hyperref Info: Hyper figures OFF on input line 4519.
+Package hyperref Info: Link nesting OFF on input line 4524.
+Package hyperref Info: Hyper index ON on input line 4527.
+Package hyperref Info: Plain pages OFF on input line 4534.
+Package hyperref Info: Backreferencing OFF on input line 4539.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4772.
+\c@Hy@tempcnt=\count277
+(/usr/local/texlive/2019/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5125.
+\XeTeXLinkMargin=\dimen149
+\Fld@menulength=\count278
+\Field@Width=\dimen150
+\Fld@charsize=\dimen151
+Package hyperref Info: Hyper figures OFF on input line 6380.
+Package hyperref Info: Link nesting OFF on input line 6385.
+Package hyperref Info: Hyper index ON on input line 6388.
+Package hyperref Info: backreferencing OFF on input line 6395.
+Package hyperref Info: Link coloring OFF on input line 6400.
+Package hyperref Info: Link coloring with OCG OFF on input line 6405.
+Package hyperref Info: PDF/A mode OFF on input line 6410.
+LaTeX Info: Redefining \ref on input line 6450.
+LaTeX Info: Redefining \pageref on input line 6454.
+\Hy@abspage=\count279
+\c@Item=\count280
+\c@Hfootnote=\count281
+)
+Package hyperref Info: Driver (autodetected): hxetex.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/hxetex.def
+File: hxetex.def 2018/11/30 v6.88e Hyperref driver for XeTeX
+(/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/stringenc.sty
+Package: stringenc 2016/05/16 v1.11 Convert strings between diff. encodings (HO
+)
+)
+\pdfm@box=\box48
+\c@Hy@AnnotLevel=\count282
+\HyField@AnnotCount=\count283
+\Fld@listcount=\count284
+\c@bookmark@seq@number=\count285
+(/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip52
+)
+Package hyperref Info: Option `breaklinks' set `true' on input line 35.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: xetex.def on input line 147.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-def/xetex.def
+File: xetex.def 2017/06/24 v5.0h Graphics/color driver for xetex
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2019/01/15
+Style option: `fancyvrb' v3.2a <2019/01/15> (tvz)
+\FV@CodeLineNo=\count286
+\FV@InFile=\read2
+\FV@TabBox=\box49
+\c@FancyVerbLine=\count287
+\FV@StepNumber=\count288
+\FV@OutFile=\write3
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip53
+\fb@frw=\dimen152
+\fb@frh=\dimen153
+\FrameRule=\dimen154
+\FrameSep=\dimen155
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)+ FMi change
+\LTleft=\skip54
+\LTright=\skip55
+\LTpre=\skip56
+\LTpost=\skip57
+\LTchunksize=\count289
+\LTcapwidth=\dimen156
+\LT@head=\box50
+\LT@firsthead=\box51
+\LT@foot=\box52
+\LT@lastfoot=\box53
+\LT@cols=\count290
+\LT@rows=\count291
+\c@LT@tables=\count292
+\c@LT@chunks=\count293
+\LT@p@ftn=\toks22
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2016/04/27 v1.618033 publication quality tables
+\heavyrulewidth=\dimen157
+\lightrulewidth=\dimen158
+\cmidrulewidth=\dimen159
+\belowrulesep=\dimen160
+\belowbottomsep=\dimen161
+\aboverulesep=\dimen162
+\abovetopsep=\dimen163
+\cmidrulesep=\dimen164
+\cmidrulekern=\dimen165
+\defaultaddspace=\dimen166
+\@cmidla=\count294
+\@cmidlb=\count295
+\@aboverulesep=\dimen167
+\@belowrulesep=\dimen168
+\@thisruleclass=\count296
+\@lastruleclass=\count297
+\@thisrulewidth=\dimen169
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/mdwtools/footnote.sty
+Package: footnote 1997/01/28 1.13 Save footnotes around boxes
+\fn@notes=\box54
+\fn@width=\dimen170
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: xetex.def on input line 99.
+)
+\Gin@req@height=\dimen171
+\Gin@req@width=\dimen172
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/grffile.sty
+Package: grffile 2017/06/30 v1.18 Extended file name support for graphics (HO)
+Package grffile Info: Option `multidot' is set to `true'.
+Package grffile Info: Option `extendedchars' is set to `false'.
+Package grffile Info: Option `space' is set to `true'.
+Package grffile Info: \Gin@ii of package `graphicx' fixed on input line 494.
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2017/10/31 v2.20.4
+\thm@style=\toks23
+\thm@bodyfont=\toks24
+\thm@headfont=\toks25
+\thm@notefont=\toks26
+\thm@headpunct=\toks27
+\thm@preskip=\skip58
+\thm@postskip=\skip59
+\thm@headsep=\skip60
+\dth@everypar=\toks28
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip61
+\bibsep=\skip62
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count298
+) (./datajournalism.aux)
+\openout1 = `datajournalism.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 123.
+LaTeX Font Info:    ... okay on input line 123.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 123.
+LaTeX Font Info:    ... okay on input line 123.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 123.
+LaTeX Font Info:    ... okay on input line 123.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 123.
+LaTeX Font Info:    ... okay on input line 123.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 123.
+LaTeX Font Info:    ... okay on input line 123.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 123.
+LaTeX Font Info:    ... okay on input line 123.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 123.
+LaTeX Font Info:    ... okay on input line 123.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 123.
+LaTeX Font Info:    ... okay on input line 123.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 123.
+LaTeX Font Info:    ... okay on input line 123.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 123.
+LaTeX Font Info:    ... okay on input line 123.
+LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 123.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 123.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 123.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 123.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 123.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 123.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 123.
+
+Package fontspec Info: latinmodern-math scale = 1.
+
+
+Package fontspec Info: latinmodern-math scale = 1.
+
+
+Package fontspec Info: latinmodern-math scale = 1.
+
+
+Package fontspec Info: Font family 'latinmodern-math.otf(0)' created for font
+(fontspec)             'latinmodern-math.otf' with options
+(fontspec)             [Ligatures=TeX,Scale=MatchLowercase,BoldItalicFont={},It
+alicFont={},SmallCapsFont={},Script=Math,BoldFont={latinmodern-math.otf}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[latinmodern-math.otf]/OT:script=math;language=
+DFLT;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (bx/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[latinmodern-math.otf]/OT:script=math;language=
+DFLT;mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
+
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
+(Font)              scaled to size 10.0pt on input line 123.
+
+Package fontspec Info: latinmodern-math scale = 1.
+
+
+Package fontspec Info: latinmodern-math scale = 1.
+
+
+Package fontspec Info: latinmodern-math scale = 1.
+
+
+Package fontspec Info: latinmodern-math scale = 1.
+
+
+Package fontspec Info: latinmodern-math scale = 1.
+
+
+Package fontspec Info: Font family 'latinmodern-math.otf(1)' created for font
+(fontspec)             'latinmodern-math.otf' with options
+(fontspec)             [Ligatures=TeX,Scale=MatchLowercase,BoldItalicFont={},It
+alicFont={},SmallCapsFont={},Script=Math,SizeFeatures={{Size=8.5-},{Size=6-8.5,
+Font=latinmodern-math.otf,Style=MathScript},{Size=-6,Font=latinmodern-math.otf,
+Style=MathScriptScript}},BoldFont={latinmodern-math.otf}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <8.5->s*[1]"[latinmodern-math.otf]/OT:script=math;langua
+ge=DFLT;mapping=tex-text;"<6-8.5>s*[1]"[latinmodern-math.otf]/OT:script=math;la
+nguage=DFLT;+ssty=0;mapping=tex-text;"<-6>s*[1]"[latinmodern-math.otf]/OT:scrip
+t=math;language=DFLT;+ssty=1;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (bx/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[latinmodern-math.otf]/OT:script=math;language=
+DFLT;mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
+
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 10.0pt on input line 123.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `normal' on input line 123.
+
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input
+ line 123.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `bold' on input line 123.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/bx/n on inp
+ut line 123.
+
+Package fontspec Info: latinmodern-math scale = 1.
+
+
+Package fontspec Info: latinmodern-math scale = 1.0001.
+
+
+Package fontspec Info: latinmodern-math scale = 1.
+
+
+Package fontspec Info: latinmodern-math scale = 1.0001.
+
+
+Package fontspec Info: latinmodern-math scale = 1.
+
+
+Package fontspec Info: latinmodern-math scale = 1.0001.
+
+
+Package fontspec Info: latinmodern-math scale = 1.
+
+
+Package fontspec Info: latinmodern-math scale = 1.0001.
+
+
+Package fontspec Info: latinmodern-math scale = 1.
+
+
+Package fontspec Info: latinmodern-math scale = 1.0001.
+
+
+Package fontspec Info: Font family 'latinmodern-math.otf(2)' created for font
+(fontspec)             'latinmodern-math.otf' with options
+(fontspec)             [Ligatures=TeX,Scale=MatchLowercase,BoldItalicFont={},It
+alicFont={},SmallCapsFont={},Script=Math,SizeFeatures={{Size=8.5-},{Size=6-8.5,
+Font=latinmodern-math.otf,Style=MathScript},{Size=-6,Font=latinmodern-math.otf,
+Style=MathScriptScript}},BoldFont={latinmodern-math.otf},ScaleAgain=1.0001,Font
+Adjustment={\fontdimen
+(fontspec)             8\font =6.77pt\relax \fontdimen 9\font =3.94pt\relax
+(fontspec)             \fontdimen 10\font =4.44pt\relax \fontdimen 11\font
+(fontspec)             =6.86pt\relax \fontdimen 12\font =3.45pt\relax
+(fontspec)             \fontdimen 13\font =3.63pt\relax \fontdimen 14\font
+(fontspec)             =3.63pt\relax \fontdimen 15\font =2.89pt\relax
+(fontspec)             \fontdimen 16\font =2.47pt\relax \fontdimen 17\font
+(fontspec)             =2.47pt\relax \fontdimen 18\font =2.5pt\relax
+(fontspec)             \fontdimen 19\font =2.0pt\relax \fontdimen 22\font
+(fontspec)             =2.5pt\relax \fontdimen 20\font =0pt\relax \fontdimen
+(fontspec)             21\font =0pt\relax }].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <8.5->s*[1.0001]"[latinmodern-math.otf]/OT:script=math;l
+anguage=DFLT;mapping=tex-text;"<6-8.5>s*[1.0001]"[latinmodern-math.otf]/OT:scri
+pt=math;language=DFLT;+ssty=0;mapping=tex-text;"<-6>s*[1.0001]"[latinmodern-mat
+h.otf]/OT:script=math;language=DFLT;+ssty=1;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 8\font =6.77pt\relax \fontdimen 9\font
+(fontspec)             =3.94pt\relax \fontdimen 10\font =4.44pt\relax
+(fontspec)             \fontdimen 11\font =6.86pt\relax \fontdimen 12\font
+(fontspec)             =3.45pt\relax \fontdimen 13\font =3.63pt\relax
+(fontspec)             \fontdimen 14\font =3.63pt\relax \fontdimen 15\font
+(fontspec)             =2.89pt\relax \fontdimen 16\font =2.47pt\relax
+(fontspec)             \fontdimen 17\font =2.47pt\relax \fontdimen 18\font
+(fontspec)             =2.5pt\relax \fontdimen 19\font =2.0pt\relax \fontdimen
+(fontspec)             22\font =2.5pt\relax \fontdimen 20\font =0pt\relax
+(fontspec)             \fontdimen 21\font =0pt\relax 
+(fontspec)             - 'bold' (bx/n) with NFSS spec.:
+(fontspec)             <->s*[1.0001]"[latinmodern-math.otf]/OT:script=math;lang
+uage=DFLT;mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 8\font =6.77pt\relax \fontdimen 9\font
+(fontspec)             =3.94pt\relax \fontdimen 10\font =4.44pt\relax
+(fontspec)             \fontdimen 11\font =6.86pt\relax \fontdimen 12\font
+(fontspec)             =3.45pt\relax \fontdimen 13\font =3.63pt\relax
+(fontspec)             \fontdimen 14\font =3.63pt\relax \fontdimen 15\font
+(fontspec)             =2.89pt\relax \fontdimen 16\font =2.47pt\relax
+(fontspec)             \fontdimen 17\font =2.47pt\relax \fontdimen 18\font
+(fontspec)             =2.5pt\relax \fontdimen 19\font =2.0pt\relax \fontdimen
+(fontspec)             22\font =2.5pt\relax \fontdimen 20\font =0pt\relax
+(fontspec)             \fontdimen 21\font =0pt\relax 
+
+LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
+(Font)              `symbols' in the math version `normal' on input line 123.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on inpu
+t line 123.
+LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
+(Font)              `symbols' in the math version `bold' on input line 123.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/bx/n on inp
+ut line 123.
+
+Package fontspec Info: latinmodern-math scale = 1.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9999.
+
+
+Package fontspec Info: latinmodern-math scale = 1.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9999.
+
+
+Package fontspec Info: latinmodern-math scale = 1.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9999.
+
+
+Package fontspec Info: latinmodern-math scale = 1.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9999.
+
+
+Package fontspec Info: latinmodern-math scale = 1.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9999.
+
+
+Package fontspec Info: Font family 'latinmodern-math.otf(3)' created for font
+(fontspec)             'latinmodern-math.otf' with options
+(fontspec)             [Ligatures=TeX,Scale=MatchLowercase,BoldItalicFont={},It
+alicFont={},SmallCapsFont={},Script=Math,SizeFeatures={{Size=8.5-},{Size=6-8.5,
+Font=latinmodern-math.otf,Style=MathScript},{Size=-6,Font=latinmodern-math.otf,
+Style=MathScriptScript}},BoldFont={latinmodern-math.otf},ScaleAgain=0.9999,Font
+Adjustment={\fontdimen
+(fontspec)             8\font =0.4pt\relax \fontdimen 9\font =2.0pt\relax
+(fontspec)             \fontdimen 10\font =1.67pt\relax \fontdimen 11\font
+(fontspec)             =1.11pt\relax \fontdimen 12\font =6.0pt\relax
+(fontspec)             \fontdimen 13\font =0pt\relax }].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <8.5->s*[0.9999]"[latinmodern-math.otf]/OT:script=math;l
+anguage=DFLT;mapping=tex-text;"<6-8.5>s*[0.9999]"[latinmodern-math.otf]/OT:scri
+pt=math;language=DFLT;+ssty=0;mapping=tex-text;"<-6>s*[0.9999]"[latinmodern-mat
+h.otf]/OT:script=math;language=DFLT;+ssty=1;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 8\font =0.4pt\relax \fontdimen 9\font
+(fontspec)             =2.0pt\relax \fontdimen 10\font =1.67pt\relax
+(fontspec)             \fontdimen 11\font =1.11pt\relax \fontdimen 12\font
+(fontspec)             =6.0pt\relax \fontdimen 13\font =0pt\relax 
+(fontspec)             - 'bold' (bx/n) with NFSS spec.:
+(fontspec)             <->s*[0.9999]"[latinmodern-math.otf]/OT:script=math;lang
+uage=DFLT;mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 8\font =0.4pt\relax \fontdimen 9\font
+(fontspec)             =2.0pt\relax \fontdimen 10\font =1.67pt\relax
+(fontspec)             \fontdimen 11\font =1.11pt\relax \fontdimen 12\font
+(fontspec)             =6.0pt\relax \fontdimen 13\font =0pt\relax 
+
+LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
+(Font)              `largesymbols' in the math version `normal' on input line 1
+23.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on inpu
+t line 123.
+LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
+(Font)              `largesymbols' in the math version `bold' on input line 123
+.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/bx/n on inp
+ut line 123.
+LaTeX Info: Redefining \microtypecontext on input line 123.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using protrusion set `basicmath'.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of spacing.
+Package microtype Info: No adjustment of kerning.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-LatinModernRoman.cfg
+File: mt-LatinModernRoman.cfg 2013/03/13 v1.0 microtype config. file: Latin Mod
+ern Roman (RS)
+)
+\AtBeginShipoutBox=\box55
+Package hyperref Info: Link coloring OFF on input line 123.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+(/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count299
+)
+LaTeX Info: Redefining \ref on input line 123.
+LaTeX Info: Redefining \pageref on input line 123.
+LaTeX Info: Redefining \nameref on input line 123.
+(./datajournalism.out) (./datajournalism.out)
+\@outlinefile=\write4
+\openout4 = `datajournalism.out'.
+
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 12.0pt on input line 125.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 8.0pt on input line 125.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 6.0pt on input line 125.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 125.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 12.00128pt on input line 125.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 8.00085pt on input line 125.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 6.00064pt on input line 125.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 11.99872pt on input line 125.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 7.99915pt on input line 125.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 5.99936pt on input line 125.
+LaTeX Font Info:    Try loading font information for U+msa on input line 125.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 125.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+) [1
+
+
+] [2
+
+] (./datajournalism.toc
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 7.0pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.0pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.00107pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 7.00075pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.00053pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 9.99893pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 6.99925pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 4.99947pt on input line 2.
+[3] [4])
+\tf@toc=\write5
+\openout5 = `datajournalism.toc'.
+
+[5] [6
+
+]
+Chapter 1.
+[7] [8]
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 199.
+
+Underfull \hbox (badness 1082) in paragraph at lines 219--221
+[]\TU/lmr/m/n/10 The text is []Attribution-NonCommercial-ShareAlike 4.0 Interna
+tional[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 219--221
+
+ []
+
+[9] [10]
+Chapter 2.
+[11
+
+] [12] [13] [14
+
+]
+Chapter 3.
+File: images/verybasics1.png Graphic file (type bmp)
+<images/verybasics1.png>
+
+Overfull \hbox (633.25305pt too wide) in paragraph at lines 373--374
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[15]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[16] [17]
+Underfull \hbox (badness 1033) in paragraph at lines 438--439
+\TU/lmr/m/n/10 We’ll mostly use two libraries for analysis – \TU/lmtt/m/n/10 dp
+lyr \TU/lmr/m/n/10 and \TU/lmtt/m/n/10 ggplot2\TU/lmr/m/n/10 . To
+ []
+
+
+Underfull \hbox (badness 1558) in paragraph at lines 438--439
+\TU/lmr/m/n/10 lection of libraries called the tidyverse. Type this into your c
+onsole:
+ []
+
+[18]
+Chapter 4.
+[19
+
+] [20]
+Underfull \vbox (badness 5417) has occurred while \output is active []
+
+[21] [22] [23] [24] [25]
+File: images/verybasics2.png Graphic file (type bmp)
+<images/verybasics2.png>
+
+Overfull \hbox (455.75601pt too wide) in paragraph at lines 626--627
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[26]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[27] [28]
+Chapter 5.
+File: images/data1.png Graphic file (type bmp)
+<images/data1.png>
+
+Overfull \hbox (450.03319pt too wide) in paragraph at lines 666--667
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[29
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[30] [31]
+Overfull \hbox (17.25pt too wide) in paragraph at lines 708--708
+[]\TU/lmtt/m/n/10 =importHTML("http://cjis.lincoln.ne.gov/~lpd/cfstoday.htm","t
+able",1)[] 
+ []
+
+File: images/clean1.png Graphic file (type bmp)
+<images/clean1.png>
+
+Overfull \hbox (592.54839pt too wide) in paragraph at lines 721--722
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[32]
+File: images/clean2.png Graphic file (type bmp)
+<images/clean2.png>
+
+Overfull \hbox (580.53105pt too wide) in paragraph at lines 731--732
+[][] 
+ []
+
+[33]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[34] [35] [36
+
+]
+Chapter 6.
+[37] [38] [39]
+Underfull \hbox (badness 10000) in paragraph at lines 869--870
+\TU/lmtt/m/n/10 group_by(FIELD NAME) %>% summarize(VARIABLE NAME = AGGREGATE
+ []
+
+[40]
+Overfull \vbox (0.29996pt too high) detected at line 941
+ []
+
+[41]
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1006--1006
+[]\TU/lmtt/m/n/10 ##   Employee Position Campus Department []Budgeted Annua~ []
+Salary from St~[] 
+ []
+
+[42]
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1006--1006
+[]\TU/lmtt/m/n/10 ##   <chr>    <chr>    <chr>  <chr>                 <dbl>    
+        <dbl>[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1006--1006
+[]\TU/lmtt/m/n/10 ## 1 Abbey, ~ Associa~ UNK    Kinesiolo~            61276    
+        61276[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1006--1006
+[]\TU/lmtt/m/n/10 ## 2 Abbott,~ Staff S~ UNL    FM&P Faci~            37318    
+           NA[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1006--1006
+[]\TU/lmtt/m/n/10 ## 3 Abboud,~ Adminis~ UNMC   Surgery-U~            76400    
+        76400[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1006--1006
+[]\TU/lmtt/m/n/10 ## 4 Abdalla~ Asst Pr~ UNMC   Pathology~            74774    
+        71884[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1006--1006
+[]\TU/lmtt/m/n/10 ## 5 Abdelka~ Post-Do~ UNMC   Surgery-T~            43516    
+           NA[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1006--1006
+[]\TU/lmtt/m/n/10 ## 6 Abdel-M~ Researc~ UNL    Public Po~            58502    
+           NA[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1056--1056
+[]\TU/lmtt/m/n/10 ##    Employee Position Campus Department []Budgeted Annua~ [
+]Salary from St~[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1056--1056
+[]\TU/lmtt/m/n/10 ##    <chr>    <chr>    <chr>  <chr>                 <dbl>   
+         <dbl>[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1056--1056
+[]\TU/lmtt/m/n/10 ##  1 Frost, ~ Head Co~ UNL    Athletics           5000000   
+            NA[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1056--1056
+[]\TU/lmtt/m/n/10 ##  2 Miles, ~ Head Co~ UNL    Athletics           2375000   
+            NA[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1056--1056
+[]\TU/lmtt/m/n/10 ##  3 Moos, W~ Athleti~ UNL    Athletics           1000000   
+            NA[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1056--1056
+[]\TU/lmtt/m/n/10 ##  4 Gold, J~ Chancel~ UNMC   Office of~           853338   
+        853338[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1056--1056
+[]\TU/lmtt/m/n/10 ##  5 Chinand~ Assista~ UNL    Athletics            800000   
+            NA[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1056--1056
+[]\TU/lmtt/m/n/10 ##  6 Walters~ Assista~ UNL    Athletics            700000   
+            NA[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1056--1056
+[]\TU/lmtt/m/n/10 ##  7 Cook, J~ Head Co~ UNL    Athletics            675000   
+            NA[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1056--1056
+[]\TU/lmtt/m/n/10 ##  8 William~ Head Co~ UNL    Athletics            626750   
+            NA[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1056--1056
+[]\TU/lmtt/m/n/10 ##  9 Bounds,~ Preside~ UNCA   Office of~           540000   
+        540000[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1056--1056
+[]\TU/lmtt/m/n/10 ## 10 Austin ~ Assista~ UNL    Athletics            475000   
+            NA[] 
+ []
+
+
+Overfull \hbox (27.75pt too wide) in paragraph at lines 1056--1056
+[]\TU/lmtt/m/n/10 ## # ... with 13,029 more rows, and 1 more variable: []Salary
+ from Other[] 
+ []
+
+[43]
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1098--1098
+[]\TU/lmtt/m/n/10 ##    Campus Department                  total avgsalary mins
+alary maxsalary  stdev[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1098--1098
+[]\TU/lmtt/m/n/10 ##    <chr>  <chr>                       <dbl>     <dbl>     
+<dbl>     <dbl>  <dbl>[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1098--1098
+[]\TU/lmtt/m/n/10 ##  1 UNL    Athletics                  3.56e7   118508.     
+12925   5000000 3.33e5[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1098--1098
+[]\TU/lmtt/m/n/10 ##  2 UNMC   Pathology/Microbiology     1.36e7    63158.     
+ 1994    186925 3.41e4[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1098--1098
+[]\TU/lmtt/m/n/10 ##  3 UNL    Agronomy & Horticulture    8.98e6    66496.     
+ 5000    208156 4.01e4[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1098--1098
+[]\TU/lmtt/m/n/10 ##  4 UNMC   Anesthesiology             7.90e6    78237.     
+10000    245174 3.59e4[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1098--1098
+[]\TU/lmtt/m/n/10 ##  5 UNL    School of Natural Resour~  6.86e6    65995.     
+ 2400    194254 3.28e4[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1098--1098
+[]\TU/lmtt/m/n/10 ##  6 UNL    College of Law             6.70e6    77953.     
+ 1000    326400 7.23e4[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1098--1098
+[]\TU/lmtt/m/n/10 ##  7 UNL    University Television      6.44e6    55542.     
+16500    221954 2.75e4[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1098--1098
+[]\TU/lmtt/m/n/10 ##  8 UNL    University Libraries       6.27e6    51390.     
+ 1200    215917 2.68e4[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1098--1098
+[]\TU/lmtt/m/n/10 ##  9 UNMC   Pharmacology/Exp Neurosc~  6.24e6    58911.     
+ 2118    248139 4.29e4[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1098--1098
+[]\TU/lmtt/m/n/10 ## 10 UNMC   CON-Omaha Division         6.11e6    78304.     
+ 3000    172522 4.48e4[] 
+ []
+
+[44] [45] [46
+
+]
+Chapter 7.
+[47]
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1176--1176
+[]\TU/lmtt/m/n/10 ##    STNAME CTYNAME CENSUS2010POP ESTIMATESBASE20~ POPESTIMA
+TE2010 POPESTIMATE2011[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1176--1176
+[]\TU/lmtt/m/n/10 ##    <chr>  <chr>           <dbl>            <dbl>          
+ <dbl>           <dbl>[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1176--1176
+[]\TU/lmtt/m/n/10 ##  1 Alaba~ Autaug~         54571            54574          
+ 54754           55208[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1176--1176
+[]\TU/lmtt/m/n/10 ##  2 Alaba~ Baldwi~        182265           182264          
+183111          186540[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1176--1176
+[]\TU/lmtt/m/n/10 ##  3 Alaba~ Barbou~         27457            27457          
+ 27330           27350[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1176--1176
+[]\TU/lmtt/m/n/10 ##  4 Alaba~ Bibb C~         22915            22920          
+ 22872           22747[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1176--1176
+[]\TU/lmtt/m/n/10 ##  5 Alaba~ Blount~         57322            57321          
+ 57373           57554[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1176--1176
+[]\TU/lmtt/m/n/10 ##  6 Alaba~ Bulloc~         10914            10911          
+ 10878           10677[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1176--1176
+[]\TU/lmtt/m/n/10 ##  7 Alaba~ Butler~         20947            20943          
+ 20942           20878[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1176--1176
+[]\TU/lmtt/m/n/10 ##  8 Alaba~ Calhou~        118572           118594          
+118477          117797[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1176--1176
+[]\TU/lmtt/m/n/10 ##  9 Alaba~ Chambe~         34215            34171          
+ 34122           34030[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1176--1176
+[]\TU/lmtt/m/n/10 ## 10 Alaba~ Cherok~         25989            25989          
+ 25974           25994[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1176--1176
+[]\TU/lmtt/m/n/10 ## # ... with 3,132 more rows, and 8 more variables: POPESTIM
+ATE2012 <dbl>,[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1176--1176
+[]\TU/lmtt/m/n/10 ## #   POPESTIMATE2013 <dbl>, POPESTIMATE2014 <dbl>, POPESTIM
+ATE2015 <dbl>,[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1176--1176
+[]\TU/lmtt/m/n/10 ## #   POPESTIMATE2016 <dbl>, POPESTIMATE2017 <dbl>, POPESTIM
+ATE2018 <dbl>,[] 
+ []
+
+[48]
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1206--1206
+[]\TU/lmtt/m/n/10 ##    STNAME CTYNAME CENSUS2010POP ESTIMATESBASE20~ POPESTIMA
+TE2010 POPESTIMATE2011[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1206--1206
+[]\TU/lmtt/m/n/10 ##    <chr>  <chr>           <dbl>            <dbl>          
+ <dbl>           <dbl>[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1206--1206
+[]\TU/lmtt/m/n/10 ##  1 Alaba~ Autaug~         54571            54574          
+ 54754           55208[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1206--1206
+[]\TU/lmtt/m/n/10 ##  2 Alaba~ Baldwi~        182265           182264          
+183111          186540[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1206--1206
+[]\TU/lmtt/m/n/10 ##  3 Alaba~ Barbou~         27457            27457          
+ 27330           27350[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1206--1206
+[]\TU/lmtt/m/n/10 ##  4 Alaba~ Bibb C~         22915            22920          
+ 22872           22747[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1206--1206
+[]\TU/lmtt/m/n/10 ##  5 Alaba~ Blount~         57322            57321          
+ 57373           57554[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1206--1206
+[]\TU/lmtt/m/n/10 ##  6 Alaba~ Bulloc~         10914            10911          
+ 10878           10677[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1206--1206
+[]\TU/lmtt/m/n/10 ##  7 Alaba~ Butler~         20947            20943          
+ 20942           20878[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1206--1206
+[]\TU/lmtt/m/n/10 ##  8 Alaba~ Calhou~        118572           118594          
+118477          117797[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1206--1206
+[]\TU/lmtt/m/n/10 ##  9 Alaba~ Chambe~         34215            34171          
+ 34122           34030[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1206--1206
+[]\TU/lmtt/m/n/10 ## 10 Alaba~ Cherok~         25989            25989          
+ 25974           25994[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1206--1206
+[]\TU/lmtt/m/n/10 ## # ... with 3,132 more rows, and 8 more variables: POPESTIM
+ATE2012 <dbl>,[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1206--1206
+[]\TU/lmtt/m/n/10 ## #   POPESTIMATE2013 <dbl>, POPESTIMATE2014 <dbl>, POPESTIM
+ATE2015 <dbl>,[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1206--1206
+[]\TU/lmtt/m/n/10 ## #   POPESTIMATE2016 <dbl>, POPESTIMATE2017 <dbl>, POPESTIM
+ATE2018 <dbl>,[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1236--1236
+[]\TU/lmtt/m/n/10 ##    STNAME CTYNAME CENSUS2010POP ESTIMATESBASE20~ POPESTIMA
+TE2010 POPESTIMATE2011[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1236--1236
+[]\TU/lmtt/m/n/10 ##    <chr>  <chr>           <dbl>            <dbl>          
+ <dbl>           <dbl>[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1236--1236
+[]\TU/lmtt/m/n/10 ##  1 Texas  Loving~            82               82          
+    84              95[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1236--1236
+[]\TU/lmtt/m/n/10 ##  2 Color~ San Ju~           699              699          
+   708             690[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1236--1236
+[]\TU/lmtt/m/n/10 ##  3 North~ McKenz~          6360             6359          
+  6411            7007[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1236--1236
+[]\TU/lmtt/m/n/10 ##  4 Kentu~ Lee Co~          7887             7887          
+  7718            7708[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1236--1236
+[]\TU/lmtt/m/n/10 ##  5 North~ Willia~         22398            22399          
+ 22588           24402[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1236--1236
+[]\TU/lmtt/m/n/10 ##  6 Texas  Comal ~        108472           108485          
+109270          112072[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1236--1236
+[]\TU/lmtt/m/n/10 ##  7 Texas  Kenedy~           416              413          
+   417             438[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1236--1236
+[]\TU/lmtt/m/n/10 ##  8 Texas  Kaufma~        103350           103363          
+103890          105213[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1236--1236
+[]\TU/lmtt/m/n/10 ##  9 North~ Brunsw~        107431           107429          
+108065          110167[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1236--1236
+[]\TU/lmtt/m/n/10 ## 10 Flori~ Walton~         55043            55043          
+ 55211           55590[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1236--1236
+[]\TU/lmtt/m/n/10 ## # ... with 3,132 more rows, and 8 more variables: POPESTIM
+ATE2012 <dbl>,[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1236--1236
+[]\TU/lmtt/m/n/10 ## #   POPESTIMATE2013 <dbl>, POPESTIMATE2014 <dbl>, POPESTIM
+ATE2015 <dbl>,[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1236--1236
+[]\TU/lmtt/m/n/10 ## #   POPESTIMATE2016 <dbl>, POPESTIMATE2017 <dbl>, POPESTIM
+ATE2018 <dbl>,[] 
+ []
+
+[49]
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1275--1275
+[]\TU/lmtt/m/n/10 ##    STNAME CTYNAME CENSUS2010POP ESTIMATESBASE20~ POPESTIMA
+TE2010 POPESTIMATE2011[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1275--1275
+[]\TU/lmtt/m/n/10 ##    <chr>  <chr>           <dbl>            <dbl>          
+ <dbl>           <dbl>[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1275--1275
+[]\TU/lmtt/m/n/10 ##  1 Texas  Loving~            82               82          
+    84              95[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1275--1275
+[]\TU/lmtt/m/n/10 ##  2 Color~ San Ju~           699              699          
+   708             690[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1275--1275
+[]\TU/lmtt/m/n/10 ##  3 North~ McKenz~          6360             6359          
+  6411            7007[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1275--1275
+[]\TU/lmtt/m/n/10 ##  4 Kentu~ Lee Co~          7887             7887          
+  7718            7708[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1275--1275
+[]\TU/lmtt/m/n/10 ##  5 North~ Willia~         22398            22399          
+ 22588           24402[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1275--1275
+[]\TU/lmtt/m/n/10 ##  6 Texas  Comal ~        108472           108485          
+109270          112072[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1275--1275
+[]\TU/lmtt/m/n/10 ##  7 Texas  Kenedy~           416              413          
+   417             438[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1275--1275
+[]\TU/lmtt/m/n/10 ##  8 Texas  Kaufma~        103350           103363          
+103890          105213[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1275--1275
+[]\TU/lmtt/m/n/10 ##  9 North~ Brunsw~        107431           107429          
+108065          110167[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1275--1275
+[]\TU/lmtt/m/n/10 ## 10 Flori~ Walton~         55043            55043          
+ 55211           55590[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1275--1275
+[]\TU/lmtt/m/n/10 ## # ... with 3,132 more rows, and 9 more variables: POPESTIM
+ATE2012 <dbl>,[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1275--1275
+[]\TU/lmtt/m/n/10 ## #   POPESTIMATE2013 <dbl>, POPESTIMATE2014 <dbl>, POPESTIM
+ATE2015 <dbl>,[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1275--1275
+[]\TU/lmtt/m/n/10 ## #   POPESTIMATE2016 <dbl>, POPESTIMATE2017 <dbl>, POPESTIM
+ATE2018 <dbl>,[] 
+ []
+
+[50]
+Chapter 8.
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 1316--1316
+[]\TU/lmtt/m/n/10 ##   Citation                Date        Location            
+        Violation[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 1316--1316
+[]\TU/lmtt/m/n/10 ## 1 15078429 2012-04-02 07:15:00   North Stadium            
+    Expired Meter[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 1316--1316
+[]\TU/lmtt/m/n/10 ## 2 24048318 2012-04-02 07:22:00         Housing    No Valid
+ Permit Displayed[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 1316--1316
+[]\TU/lmtt/m/n/10 ## 3 24048320 2012-04-02 07:26:00 14th & W Street    No Valid
+ Permit Displayed[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 1316--1316
+[]\TU/lmtt/m/n/10 ## 4 15078430 2012-04-02 07:36:00  Champions Club Parking in 
+Unauthorized Area[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 1316--1316
+[]\TU/lmtt/m/n/10 ## 5 18074937 2012-04-02 07:39:00          Sandoz            
+    Expired Meter[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 1316--1316
+[]\TU/lmtt/m/n/10 ## 6 18074938 2012-04-02 07:40:00          Sandoz            
+    Expired Meter[] 
+ []
+
+[51
+
+]
+Overfull \hbox (64.5pt too wide) in paragraph at lines 1345--1345
+[]\TU/lmtt/m/n/10 ##   Citation                Date        Location            
+        Violation[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 1345--1345
+[]\TU/lmtt/m/n/10 ## 1 15078429 2012-04-02 07:15:00   North Stadium            
+    Expired Meter[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 1345--1345
+[]\TU/lmtt/m/n/10 ## 2 24048318 2012-04-02 07:22:00         Housing    No Valid
+ Permit Displayed[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 1345--1345
+[]\TU/lmtt/m/n/10 ## 3 24048320 2012-04-02 07:26:00 14th & W Street    No Valid
+ Permit Displayed[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 1345--1345
+[]\TU/lmtt/m/n/10 ## 4 15078430 2012-04-02 07:36:00  Champions Club Parking in 
+Unauthorized Area[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 1345--1345
+[]\TU/lmtt/m/n/10 ## 5 18074937 2012-04-02 07:39:00          Sandoz            
+    Expired Meter[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 1345--1345
+[]\TU/lmtt/m/n/10 ## 6 18074938 2012-04-02 07:40:00          Sandoz            
+    Expired Meter[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 1386--1386
+[]\TU/lmtt/m/n/10 ##   Citation                Date        Location            
+        Violation[] 
+ []
+
+[52]
+Overfull \hbox (64.5pt too wide) in paragraph at lines 1386--1386
+[]\TU/lmtt/m/n/10 ## 1 15078429 2012-04-02 07:15:00   North Stadium            
+    Expired Meter[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 1386--1386
+[]\TU/lmtt/m/n/10 ## 2 24048318 2012-04-02 07:22:00         Housing    No Valid
+ Permit Displayed[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 1386--1386
+[]\TU/lmtt/m/n/10 ## 3 24048320 2012-04-02 07:26:00 14th & W Street    No Valid
+ Permit Displayed[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 1386--1386
+[]\TU/lmtt/m/n/10 ## 4 15078430 2012-04-02 07:36:00  Champions Club Parking in 
+Unauthorized Area[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 1386--1386
+[]\TU/lmtt/m/n/10 ## 5 18074937 2012-04-02 07:39:00          Sandoz            
+    Expired Meter[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 1386--1386
+[]\TU/lmtt/m/n/10 ## 6 18074938 2012-04-02 07:40:00          Sandoz            
+    Expired Meter[] 
+ []
+
+[53]
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1440--1440
+[]\TU/lmtt/m/n/10 ## 2 24048318 2012-04-02 07:22:00 Housing         No Valid Pe
+rmit Displayed[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1440--1440
+[]\TU/lmtt/m/n/10 ## 3 24048320 2012-04-02 07:26:00 14th & W Street No Valid Pe
+rmit Displayed[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 1440--1440
+[]\TU/lmtt/m/n/10 ## 4 15078430 2012-04-02 07:36:00 Champions Club  Parking in 
+Unauthorized Area[] 
+ []
+
+[54] [55] [56
+
+]
+Chapter 9.
+[57]
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1544--1544
+[]\TU/lmtt/m/n/10 ##   Employee Position Campus Department []Budgeted Annua~ []
+Salary from St~[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1544--1544
+[]\TU/lmtt/m/n/10 ##   <chr>    <chr>    <chr>  <chr>                 <dbl>    
+        <dbl>[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1544--1544
+[]\TU/lmtt/m/n/10 ## 1 Abbott,~ Staff S~ UNL    FM&P Faci~            37318    
+           NA[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1544--1544
+[]\TU/lmtt/m/n/10 ## 2 Abdel-M~ Researc~ UNL    Public Po~            58502    
+           NA[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1544--1544
+[]\TU/lmtt/m/n/10 ## 3 Abel, M~ Chairpe~ UNL    English               64470    
+        64470[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1544--1544
+[]\TU/lmtt/m/n/10 ## 4 Abel, M~ Profess~ UNL    English               39647    
+        39647[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1544--1544
+[]\TU/lmtt/m/n/10 ## 5 Abel, R~ Control~ UNL    FM&P Buil~            57178    
+        57178[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1544--1544
+[]\TU/lmtt/m/n/10 ## 6 Abendro~ Asst Di~ UNL    Housing F~            79037    
+           NA[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1570--1570
+[]\TU/lmtt/m/n/10 ##   Employee           Position                      Campus 
+[]Budgeted Annual Sala~[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1570--1570
+[]\TU/lmtt/m/n/10 ##   <chr>              <chr>                         <chr>  
+                 <dbl>[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1570--1570
+[]\TU/lmtt/m/n/10 ## 1 Abbott, Frances M  Staff Secy III                UNL    
+                 37318[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1570--1570
+[]\TU/lmtt/m/n/10 ## 2 Abdel-Monem, Tari~ Research Specialist           UNL    
+                 58502[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1570--1570
+[]\TU/lmtt/m/n/10 ## 3 Abel, Marco        Chairperson                   UNL    
+                 64470[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1570--1570
+[]\TU/lmtt/m/n/10 ## 4 Abel, Marco        Professor                     UNL    
+                 39647[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1570--1570
+[]\TU/lmtt/m/n/10 ## 5 Abel, Rick A       Control Systems Tech/Alarm S~ UNL    
+                 57178[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 1570--1570
+[]\TU/lmtt/m/n/10 ## 6 Abendroth, Curtis~ Asst Dir Facilities Mgt/Main~ UNL    
+                 79037[] 
+ []
+
+[58] [59] [60
+
+]
+Chapter 10.
+[61] [62] [63] [64]
+Overfull \hbox (1.5pt too wide) in paragraph at lines 1886--1886
+[]\TU/lmtt/m/n/10 ##  Length:161315      Min.   :2012-04-02 07:15:00   Length:1
+61315[] 
+ []
+
+
+Overfull \hbox (17.25pt too wide) in paragraph at lines 1886--1886
+[]\TU/lmtt/m/n/10 ##  Class :character   1st Qu.:2013-05-06 09:42:30   Class :c
+haracter[] 
+ []
+
+
+Overfull \hbox (17.25pt too wide) in paragraph at lines 1886--1886
+[]\TU/lmtt/m/n/10 ##  Mode  :character   Median :2014-10-17 12:03:00   Mode  :c
+haracter[] 
+ []
+
+[65] [66]
+Chapter 11.
+[67
+
+]
+Overfull \hbox (1.5pt too wide) in paragraph at lines 1929--1929
+[]\TU/lmtt/m/n/10 ## Warning: Missing column names filled in: []X31[] [31], []X
+32[] [32][] 
+ []
+
+
+Overfull \hbox (33.0pt too wide) in paragraph at lines 1935--1935
+[]\TU/lmtt/m/n/10 ## Warning: Duplicated column names deduplicated: []FIRST NAM
+E[] => []FIRST[] 
+ []
+
+
+Overfull \hbox (69.75pt too wide) in paragraph at lines 1935--1935
+[]\TU/lmtt/m/n/10 ## NAME_1[] [7], []MIDDLE NAME[] => []MIDDLE NAME_1[] [8], []
+NAME EXTENSION[] => []NAME[] 
+ []
+
+
+Overfull \hbox (22.5pt too wide) in paragraph at lines 1992--1992
+[]\TU/lmtt/m/n/10 ##    id_number committed_last_~ first_name middle_name name_
+extension[] 
+ []
+
+[68]
+Overfull \hbox (54.0pt too wide) in paragraph at lines 1992--1992
+[]\TU/lmtt/m/n/10 ## # ... with 7,664 more rows, and 27 more variables: legal_l
+ast_name <chr>,[] 
+ []
+
+
+Overfull \hbox (27.75pt too wide) in paragraph at lines 1992--1992
+[]\TU/lmtt/m/n/10 ## #   first_name_1 <chr>, middle_name_1 <chr>, name_extensio
+n_1 <chr>,[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1992--1992
+[]\TU/lmtt/m/n/10 ## #   date_of_birth <chr>, race_desc <chr>, gender <chr>, fa
+cility <chr>,[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1992--1992
+[]\TU/lmtt/m/n/10 ## #   current_sentence_pardoned_or_commuted_date <chr>, gun_
+clause <lgl>,[] 
+ []
+
+
+Overfull \hbox (27.75pt too wide) in paragraph at lines 1992--1992
+[]\TU/lmtt/m/n/10 ## #   sentence_begin_date <chr>, min_term_year <chr>, min_mo
+nth <dbl>,[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 1992--1992
+[]\TU/lmtt/m/n/10 ## #   min_day <dbl>, max_term_year <chr>, max_month <dbl>, m
+ax_day <dbl>,[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 1992--1992
+[]\TU/lmtt/m/n/10 ## #   parole_eligibility_date <chr>, earliest_possible_relea
+se_date <chr>,[] 
+ []
+
+
+Overfull \hbox (59.25pt too wide) in paragraph at lines 1992--1992
+[]\TU/lmtt/m/n/10 ## #   good_time_law <dbl>, inst_release_date <chr>, inst_rel
+ease_type <chr>,[] 
+ []
+
+[69]
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2063--2063
+[]\TU/lmtt/m/n/10 ##   committed_last_~ first_name date_of_birth dupe_count id_
+number middle_name[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2063--2063
+[]\TU/lmtt/m/n/10 ##   <chr>            <chr>      <chr>              <int>    
+ <dbl> <chr>[] 
+ []
+
+
+Overfull \hbox (33.0pt too wide) in paragraph at lines 2063--2063
+[]\TU/lmtt/m/n/10 ## 1 WALLACE          PAMELA     7/11/1966              2    
+ 99240 <NA>[] 
+ []
+
+
+Overfull \hbox (33.0pt too wide) in paragraph at lines 2063--2063
+[]\TU/lmtt/m/n/10 ## 2 WALLACE          PAMELA     7/11/1966              2    
+ 99955 <NA>[] 
+ []
+
+
+Overfull \hbox (59.25pt too wide) in paragraph at lines 2063--2063
+[]\TU/lmtt/m/n/10 ## # ... with 24 more variables: name_extension <chr>, legal_
+last_name <chr>,[] 
+ []
+
+
+Overfull \hbox (27.75pt too wide) in paragraph at lines 2063--2063
+[]\TU/lmtt/m/n/10 ## #   first_name_1 <chr>, middle_name_1 <chr>, name_extensio
+n_1 <chr>,[] 
+ []
+
+
+Overfull \hbox (27.75pt too wide) in paragraph at lines 2063--2063
+[]\TU/lmtt/m/n/10 ## #   sentence_begin_date <chr>, min_term_year <chr>, min_mo
+nth <dbl>,[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 2063--2063
+[]\TU/lmtt/m/n/10 ## #   min_day <dbl>, max_term_year <chr>, max_month <dbl>, m
+ax_day <dbl>,[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 2063--2063
+[]\TU/lmtt/m/n/10 ## #   parole_eligibility_date <chr>, earliest_possible_relea
+se_date <chr>,[] 
+ []
+
+
+Overfull \hbox (59.25pt too wide) in paragraph at lines 2063--2063
+[]\TU/lmtt/m/n/10 ## #   good_time_law <dbl>, inst_release_date <chr>, inst_rel
+ease_type <chr>,[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2063--2063
+[]\TU/lmtt/m/n/10 ## #   parole_board_final_hearing_date_month_year <chr>, paro
+le_board_status <chr>[] 
+ []
+
+[70] [71] [72]
+Chapter 12.
+[73
+
+] [74] [75] [76]
+Overfull \hbox (6.75pt too wide) in paragraph at lines 2408--2408
+[]\TU/lmtt/m/n/10 ##  1 ASSLT WI INFLICT BODILY INJURY ASSLT W/I INFLCT BODILY 
+INJURY[] 
+ []
+
+
+Overfull \hbox (1.5pt too wide) in paragraph at lines 2408--2408
+[]\TU/lmtt/m/n/10 ##  2 STAB W/I TO KILL WOUND OR MAIM STAB W/I KILL, WOUND, OR
+ MAIM[] 
+ []
+
+
+Overfull \hbox (1.5pt too wide) in paragraph at lines 2408--2408
+[]\TU/lmtt/m/n/10 ##  4 3RD DEGREE ASSAULT ON OFFICER  ASSAULT ON OFFICER 3RD D
+EGREE[] 
+ []
+
+
+Overfull \hbox (1.5pt too wide) in paragraph at lines 2408--2408
+[]\TU/lmtt/m/n/10 ##  5 3RD DEGREE ASSAULT ON OFFICER  ASSAULT ON OFFICER 3RD D
+EGREE[] 
+ []
+
+
+Overfull \hbox (1.5pt too wide) in paragraph at lines 2408--2408
+[]\TU/lmtt/m/n/10 ##  7 MANUF/DIST CONT SUBST - MARIJ. DISTRIBUTION OF C/S-MARI
+JUANA[] 
+ []
+
+
+Overfull \hbox (6.75pt too wide) in paragraph at lines 2408--2408
+[]\TU/lmtt/m/n/10 ##  8 POSS DEADLY WEAP BY FELON      POSSESS DEADLY WEAPON BY
+ FELON[] 
+ []
+
+[77]
+Overfull \hbox (6.75pt too wide) in paragraph at lines 2408--2408
+[]\TU/lmtt/m/n/10 ## 10 3RD DGR ASSAULT ON AN OFFICER  ASSAULT ON AN OFFICER 3R
+D DEGR[] 
+ []
+
+File: images/open1.png Graphic file (type bmp)
+<images/open1.png>
+
+Overfull \hbox (935.96498pt too wide) in paragraph at lines 2429--2430
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[78]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[79]
+File: images/open2.png Graphic file (type bmp)
+<images/open2.png>
+
+Overfull \hbox (783.9692pt too wide) in paragraph at lines 2433--2434
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[80] [81]
+File: images/open3.png Graphic file (type bmp)
+<images/open3.png>
+
+Overfull \hbox (185.02214pt too wide) in paragraph at lines 2437--2438
+[][] 
+ []
+
+File: images/open4.png Graphic file (type bmp)
+<images/open4.png>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[82]
+File: images/open6.png Graphic file (type bmp)
+<images/open6.png>
+
+Overfull \hbox (522.54123pt too wide) in paragraph at lines 2447--2448
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[83] [84]
+File: images/open7.png Graphic file (type bmp)
+<images/open7.png>
+
+Overfull \hbox (514.92577pt too wide) in paragraph at lines 2459--2460
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[85] [86]
+File: images/open8.png Graphic file (type bmp)
+<images/open8.png>
+
+Overfull \hbox (520.69498pt too wide) in paragraph at lines 2461--2462
+[][] 
+ []
+
+[87] [88]
+Chapter 13.
+[89
+
+]
+File: images/pdfs1.png Graphic file (type bmp)
+<images/pdfs1.png>
+
+Overfull \hbox (651.81816pt too wide) in paragraph at lines 2485--2486
+[][] 
+ []
+
+File: images/pdfs2.png Graphic file (type bmp)
+<images/pdfs2.png>
+
+Overfull \hbox (644.33917pt too wide) in paragraph at lines 2494--2495
+[][] 
+ []
+
+[90] [91]
+File: images/pdfs3.png Graphic file (type bmp)
+<images/pdfs3.png>
+
+Overfull \hbox (650.81601pt too wide) in paragraph at lines 2502--2503
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[92] [93]
+File: images/pdfs4.png Graphic file (type bmp)
+<images/pdfs4.png>
+
+Overfull \hbox (522.46295pt too wide) in paragraph at lines 2512--2513
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[94] [95]
+File: images/pdfs5.png Graphic file (type bmp)
+<images/pdfs5.png>
+
+Overfull \hbox (705.0059pt too wide) in paragraph at lines 2535--2536
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[96]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[97] [98]
+Overfull \hbox (33.0pt too wide) in paragraph at lines 2626--2626
+[]\TU/lmtt/m/n/10 ##   Month TotalActualNetR~ TotalProjectedN~ Difference Perce
+ntDifferen~[] 
+ []
+
+
+Overfull \hbox (33.0pt too wide) in paragraph at lines 2626--2626
+[]\TU/lmtt/m/n/10 ##   <chr>            <dbl>            <dbl>      <dbl>      
+      <dbl>[] 
+ []
+
+
+Overfull \hbox (33.0pt too wide) in paragraph at lines 2626--2626
+[]\TU/lmtt/m/n/10 ## 1 July         284883132        271473079   13410054      
+        4.9[] 
+ []
+
+
+Overfull \hbox (33.0pt too wide) in paragraph at lines 2626--2626
+[]\TU/lmtt/m/n/10 ## 2 Augu~        462019974        440504016   21515958      
+        4.9[] 
+ []
+
+
+Overfull \hbox (33.0pt too wide) in paragraph at lines 2626--2626
+[]\TU/lmtt/m/n/10 ## 3 Sept~        551908013        510286143   41621870      
+        8.2[] 
+ []
+
+
+Overfull \hbox (33.0pt too wide) in paragraph at lines 2626--2626
+[]\TU/lmtt/m/n/10 ## 4 Octo~        289723434        266204529   23518905      
+        8.8[] 
+ []
+
+
+Overfull \hbox (33.0pt too wide) in paragraph at lines 2626--2626
+[]\TU/lmtt/m/n/10 ## 5 Nove~        431787603        404934524   26853079      
+        6.6[] 
+ []
+
+
+Overfull \hbox (33.0pt too wide) in paragraph at lines 2626--2626
+[]\TU/lmtt/m/n/10 ## 6 Dece~        472926836        421455999   51470837      
+       12.2[] 
+ []
+
+
+Overfull \hbox (33.0pt too wide) in paragraph at lines 2626--2626
+[]\TU/lmtt/m/n/10 ## 7 Janu~        467698460        412661036   55037424      
+       13.3[] 
+ []
+
+
+Overfull \hbox (1.5pt too wide) in paragraph at lines 2626--2626
+[]\TU/lmtt/m/n/10 ## # ... with 5 more variables: CumulativeActualNetReceipts <
+dbl>,[] 
+ []
+
+
+Overfull \hbox (33.0pt too wide) in paragraph at lines 2626--2626
+[]\TU/lmtt/m/n/10 ## #   CumulativeProjectedNetReceipts <dbl>, CumulativeDiffer
+ence <dbl>,[] 
+ []
+
+[99] [100
+
+]
+Chapter 14.
+[101] [102] [103]
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2799--2799
+[]\TU/lmtt/m/n/10 ##    Month TotalActualNetR~ TotalProjectedN~ Difference Perc
+entDifferen~[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2799--2799
+[]\TU/lmtt/m/n/10 ##    <chr>            <dbl>            <dbl>      <dbl>     
+       <dbl>[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2799--2799
+[]\TU/lmtt/m/n/10 ##  1 July         284883132        271473079   13410054     
+         4.9[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2799--2799
+[]\TU/lmtt/m/n/10 ##  2 Augu~        462019974        440504016   21515958     
+         4.9[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2799--2799
+[]\TU/lmtt/m/n/10 ##  3 Sept~        551908013        510286143   41621870     
+         8.2[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2799--2799
+[]\TU/lmtt/m/n/10 ##  4 Octo~        289723434        266204529   23518905     
+         8.8[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2799--2799
+[]\TU/lmtt/m/n/10 ##  5 Nove~        431787603        404934524   26853079     
+         6.6[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2799--2799
+[]\TU/lmtt/m/n/10 ##  6 Dece~        472926836        421455999   51470837     
+        12.2[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2799--2799
+[]\TU/lmtt/m/n/10 ##  7 Janu~        467698460        412661036   55037424     
+        13.3[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2799--2799
+[]\TU/lmtt/m/n/10 ##  8 July         284883132        271473079   13410054     
+         4.9[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2799--2799
+[]\TU/lmtt/m/n/10 ##  9 Augu~        462019974        440504016   21515958     
+         4.9[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2799--2799
+[]\TU/lmtt/m/n/10 ## 10 Sept~        551908013        510286143   41621870     
+         8.2[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2799--2799
+[]\TU/lmtt/m/n/10 ## 11 Octo~        289723434        266204529   23518905     
+         8.8[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2799--2799
+[]\TU/lmtt/m/n/10 ## 12 Nove~        431787603        404934524   26853079     
+         6.6[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2799--2799
+[]\TU/lmtt/m/n/10 ## 13 Dece~        472926836        421455999   51470837     
+        12.2[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2799--2799
+[]\TU/lmtt/m/n/10 ## 14 July         284883132        271473079   13410054     
+         4.9[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2799--2799
+[]\TU/lmtt/m/n/10 ## 15 Augu~        462019974        440504016   21515958     
+         4.9[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2799--2799
+[]\TU/lmtt/m/n/10 ## 16 Sept~        551908013        510286143   41621870     
+         8.2[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2799--2799
+[]\TU/lmtt/m/n/10 ## 17 Octo~        289723434        266204529   23518905     
+         8.8[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 2799--2799
+[]\TU/lmtt/m/n/10 ## 18 Nove~        431787603        404934524   26853079     
+         6.6[] 
+ []
+
+
+Overfull \hbox (1.5pt too wide) in paragraph at lines 2799--2799
+[]\TU/lmtt/m/n/10 ## # ... with 5 more variables: CumulativeActualNetReceipts <
+dbl>,[] 
+ []
+
+
+Overfull \hbox (33.0pt too wide) in paragraph at lines 2799--2799
+[]\TU/lmtt/m/n/10 ## #   CumulativeProjectedNetReceipts <dbl>, CumulativeDiffer
+ence <dbl>,[] 
+ []
+
+[104] [105]
+Overfull \hbox (447.75pt too wide) in paragraph at lines 2885--2885
+[]\TU/lmtt/m/n/10 ## Joining, by = c("STATE", "ST_CASE", "VE_FORMS", "COUNTY", 
+"DAY", "MONTH", "HOUR", "MINUTE", "RUR_URB", "FUNC_SYS", "HARM_EV", "MAN_COLL",
+ "SCH_BUS")[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ##    STATE ST_CASE VE_FORMS VEH_NO PER_NO STR_VEH COUNTY   D
+AY MONTH  HOUR MINUTE[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ##    <dbl>   <dbl>    <dbl>  <dbl>  <dbl>   <dbl>  <dbl> <db
+l> <dbl> <dbl>  <dbl>[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ##  1    31  310001        2      1      1       0     55    
+ 1     1     0     20[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ##  2    31  310001        2      2      1       0     55    
+ 1     1     0     20[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ##  3    31  310002        1      1      1       0    157    
+ 7     1    22      0[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ##  4    31  310003        1      0      1       1     55    
+10     1     6     57[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ##  5    31  310003        1      1      1       0     55    
+10     1     6     57[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ##  6    31  310004        2      1      1       0     79    
+10     1    16     55[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ##  7    31  310004        2      2      1       0     79    
+10     1    16     55[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ##  8    31  310005        2      1      1       0    119    
+10     1     4     30[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ##  9    31  310005        2      2      1       0    119    
+10     1     4     30[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ## 10    31  310006        1      0      1       1    109    
+11     1     6     25[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ## # ... with 543 more rows, and 90 more variables: RUR_URB <
+dbl>, FUNC_SYS <dbl>,[] 
+ []
+
+
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ## #   HARM_EV <dbl>, MAN_COLL <dbl>, SCH_BUS <dbl>, MAKE <db
+l>, MAK_MOD <dbl>,[] 
+ []
+
+
+Overfull \hbox (17.25pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ## #   BODY_TYP <dbl>, MOD_YEAR <dbl>, TOW_VEH <dbl>, SPEC_US
+E <dbl>,[] 
+ []
+
+
+Overfull \hbox (75.0pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ## #   EMER_USE <dbl>, ROLLOVER <dbl>, IMPACT1 <dbl>, FIRE_EX
+P <dbl>, AGE <dbl>,[] 
+ []
+
+
+Overfull \hbox (69.75pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ## #   SEX <dbl>, PER_TYP <dbl>, INJ_SEV <dbl>, SEAT_POS <dbl
+>, REST_USE <dbl>,[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ## #   REST_MIS <dbl>, AIR_BAG <dbl>, EJECTION <dbl>, EJ_PATH
+ <dbl>,[] 
+ []
+
+
+Overfull \hbox (27.75pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ## #   EXTRICAT <dbl>, DRINKING <dbl>, ALC_DET <dbl>, ALC_STA
+TUS <dbl>,[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ## #   ATST_TYP <dbl>, ALC_RES <dbl>, DRUGS <dbl>, DRUG_DET <
+dbl>, DSTATUS <dbl>,[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ## #   HOSPITAL <dbl>, DOA <dbl>, DEATH_DA <dbl>, DEATH_MO <d
+bl>, DEATH_YR <dbl>,[] 
+ []
+
+
+Overfull \hbox (17.25pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ## #   DEATH_HR <dbl>, DEATH_MN <dbl>, DEATH_TM <dbl>, LAG_HR
+S <dbl>,[] 
+ []
+
+
+Overfull \hbox (59.25pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ## #   LAG_MINS <dbl>, P_SF1 <dbl>, P_SF2 <dbl>, P_SF3 <dbl>,
+ WORK_INJ <dbl>,[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ## #   HISPANIC <dbl>, RACE <dbl>, LOCATION <dbl>, VE_TOTAL <
+dbl>, PVH_INVL <dbl>,[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ## #   PEDS <dbl>, PERNOTMVIT <dbl>, PERMVIT <dbl>, PERSONS <
+dbl>, CITY <dbl>,[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ## #   YEAR <dbl>, DAY_WEEK <dbl>, NHS <dbl>, RD_OWNER <dbl>,
+ ROUTE <dbl>,[] 
+ []
+
+
+Overfull \hbox (6.75pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ## #   TWAY_ID <chr>, TWAY_ID2 <chr>, MILEPT <dbl>, LATITUDE 
+<dbl>,[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ## #   LONGITUD <dbl>, SP_JUR <dbl>, RELJCT1 <dbl>, RELJCT2 <
+dbl>, TYP_INT <dbl>,[] 
+ []
+
+
+Overfull \hbox (22.5pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ## #   WRK_ZONE <dbl>, REL_ROAD <dbl>, LGT_COND <dbl>, WEATHE
+R1 <dbl>,[] 
+ []
+
+[106]
+Overfull \hbox (75.0pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ## #   WEATHER2 <dbl>, WEATHER <dbl>, RAIL <chr>, NOT_HOUR <d
+bl>, NOT_MIN <dbl>,[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 2921--2921
+[]\TU/lmtt/m/n/10 ## #   ARR_HOUR <dbl>, ARR_MIN <dbl>, HOSP_HR <dbl>, HOSP_MN 
+<dbl>, CF1 <dbl>,[] 
+ []
+
+
+Overfull \hbox (447.75pt too wide) in paragraph at lines 2935--2935
+[]\TU/lmtt/m/n/10 ## Joining, by = c("STATE", "ST_CASE", "VE_FORMS", "COUNTY", 
+"DAY", "MONTH", "HOUR", "MINUTE", "RUR_URB", "FUNC_SYS", "HARM_EV", "MAN_COLL",
+ "SCH_BUS")[] 
+ []
+
+[107] [108]
+Chapter 15.
+[109
+
+]
+Overfull \hbox (211.5pt too wide) in paragraph at lines 3102--3102
+[]\TU/lmtt/m/n/10 ##                                                           
+                                     Document[] 
+ []
+
+
+Overfull \hbox (211.5pt too wide) in paragraph at lines 3102--3102
+[]\TU/lmtt/m/n/10 ## 1   Currently or Pendingon Floor\n                        
+                                        LB267[] 
+ []
+
+
+Overfull \hbox (211.5pt too wide) in paragraph at lines 3102--3102
+[]\TU/lmtt/m/n/10 ## 2   Currently or Pendingon Floor\n                        
+                                        LB205[] 
+ []
+
+
+Overfull \hbox (211.5pt too wide) in paragraph at lines 3102--3102
+[]\TU/lmtt/m/n/10 ## 3  Currently or Pendingon Floor\n                         
+                                       LB205A[] 
+ []
+
+
+Overfull \hbox (211.5pt too wide) in paragraph at lines 3102--3102
+[]\TU/lmtt/m/n/10 ## 4   Currently or Pendingon Floor\n                        
+                                        LB329[] 
+ []
+
+
+Overfull \hbox (211.5pt too wide) in paragraph at lines 3102--3102
+[]\TU/lmtt/m/n/10 ## 5   Currently or Pendingon Floor\n                        
+                                        LB607[] 
+ []
+
+
+Overfull \hbox (211.5pt too wide) in paragraph at lines 3102--3102
+[]\TU/lmtt/m/n/10 ## 6  Currently or Pendingon Floor\n                         
+                                       LB607A[] 
+ []
+
+
+Overfull \hbox (211.5pt too wide) in paragraph at lines 3102--3102
+[]\TU/lmtt/m/n/10 ## 7   Currently or Pendingon Floor\n                        
+                                        LB106[] 
+ []
+
+
+Overfull \hbox (211.5pt too wide) in paragraph at lines 3102--3102
+[]\TU/lmtt/m/n/10 ## 8   Currently or Pendingon Floor\n                        
+                                        LB219[] 
+ []
+
+
+Overfull \hbox (211.5pt too wide) in paragraph at lines 3102--3102
+[]\TU/lmtt/m/n/10 ## 9   Currently or Pendingon Floor\n                        
+                                        LB448[] 
+ []
+
+
+Overfull \hbox (211.5pt too wide) in paragraph at lines 3102--3102
+[]\TU/lmtt/m/n/10 ## 10  Currently or Pendingon Floor\n                        
+                                        LB515[] 
+ []
+
+[110]
+Overfull \hbox (279.75pt too wide) in paragraph at lines 3102--3102
+[]\TU/lmtt/m/n/10 ##                                                           
+                                               Description[] 
+ []
+
+
+Overfull \hbox (279.75pt too wide) in paragraph at lines 3102--3102
+[]\TU/lmtt/m/n/10 ## 1                         Provide a duty for the county bo
+ard relating to deficient bridges and authorize a tax levy[] 
+ []
+
+
+Overfull \hbox (279.75pt too wide) in paragraph at lines 3102--3102
+[]\TU/lmtt/m/n/10 ## 2                                                         
+          Adopt the Surgical Technologist Registration Act[] 
+ []
+
+
+Overfull \hbox (279.75pt too wide) in paragraph at lines 3102--3102
+[]\TU/lmtt/m/n/10 ## 3                                                         
+                                        Appropriation Bill[] 
+ []
+
+
+Overfull \hbox (279.75pt too wide) in paragraph at lines 3102--3102
+[]\TU/lmtt/m/n/10 ## 4  Change eligibility provisions for transitional child ca
+re assistance under the federal child care subsidy program[] 
+ []
+
+
+Overfull \hbox (279.75pt too wide) in paragraph at lines 3102--3102
+[]\TU/lmtt/m/n/10 ## 5                                                         
+Change provisions relating to nail technology and body art[] 
+ []
+
+
+Overfull \hbox (279.75pt too wide) in paragraph at lines 3102--3102
+[]\TU/lmtt/m/n/10 ## 6                                                         
+                                        Appropriation Bill[] 
+ []
+
+
+Overfull \hbox (279.75pt too wide) in paragraph at lines 3102--3102
+[]\TU/lmtt/m/n/10 ## 7               Change provisions relating to disclosure o
+f DNA records under the DNA Identification Information Act[] 
+ []
+
+
+Overfull \hbox (279.75pt too wide) in paragraph at lines 3102--3102
+[]\TU/lmtt/m/n/10 ## 8                                                         
+  Change requirements for foster care transition proposals[] 
+ []
+
+
+Overfull \hbox (279.75pt too wide) in paragraph at lines 3102--3102
+[]\TU/lmtt/m/n/10 ## 9        Change provisions relating to compensation for bu
+rial expenses under the Nebraska Workers[] Compensation Act[] 
+ []
+
+
+Overfull \hbox (279.75pt too wide) in paragraph at lines 3102--3102
+[]\TU/lmtt/m/n/10 ## 10                                                        
+  Change provisions relating to the Student Discipline Act[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 3146--3146
+[]\TU/lmtt/m/n/10 ##                                                           
+      Document[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 3146--3146
+[]\TU/lmtt/m/n/10 ## 1                                                         
+         LB267[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 3146--3146
+[]\TU/lmtt/m/n/10 ## 2                                                         
+         LB205[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 3146--3146
+[]\TU/lmtt/m/n/10 ## 3                                                         
+        LB205A[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 3146--3146
+[]\TU/lmtt/m/n/10 ## 4                                                         
+         LB329[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 3146--3146
+[]\TU/lmtt/m/n/10 ## 5                                                         
+         LB607[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 3146--3146
+[]\TU/lmtt/m/n/10 ## 6                                                         
+        LB607A[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 3146--3146
+[]\TU/lmtt/m/n/10 ## 7                                                         
+         LB106[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 3146--3146
+[]\TU/lmtt/m/n/10 ## 8                                                         
+         LB219[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 3146--3146
+[]\TU/lmtt/m/n/10 ## 9                                                         
+         LB448[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 3146--3146
+[]\TU/lmtt/m/n/10 ## 10                                                        
+         LB515[] 
+ []
+
+[111]
+Overfull \hbox (279.75pt too wide) in paragraph at lines 3146--3146
+[]\TU/lmtt/m/n/10 ##                                                           
+                                               Description[] 
+ []
+
+
+Overfull \hbox (279.75pt too wide) in paragraph at lines 3146--3146
+[]\TU/lmtt/m/n/10 ## 1                         Provide a duty for the county bo
+ard relating to deficient bridges and authorize a tax levy[] 
+ []
+
+
+Overfull \hbox (279.75pt too wide) in paragraph at lines 3146--3146
+[]\TU/lmtt/m/n/10 ## 2                                                         
+          Adopt the Surgical Technologist Registration Act[] 
+ []
+
+
+Overfull \hbox (279.75pt too wide) in paragraph at lines 3146--3146
+[]\TU/lmtt/m/n/10 ## 3                                                         
+                                        Appropriation Bill[] 
+ []
+
+
+Overfull \hbox (279.75pt too wide) in paragraph at lines 3146--3146
+[]\TU/lmtt/m/n/10 ## 4  Change eligibility provisions for transitional child ca
+re assistance under the federal child care subsidy program[] 
+ []
+
+
+Overfull \hbox (279.75pt too wide) in paragraph at lines 3146--3146
+[]\TU/lmtt/m/n/10 ## 5                                                         
+Change provisions relating to nail technology and body art[] 
+ []
+
+
+Overfull \hbox (279.75pt too wide) in paragraph at lines 3146--3146
+[]\TU/lmtt/m/n/10 ## 6                                                         
+                                        Appropriation Bill[] 
+ []
+
+
+Overfull \hbox (279.75pt too wide) in paragraph at lines 3146--3146
+[]\TU/lmtt/m/n/10 ## 7               Change provisions relating to disclosure o
+f DNA records under the DNA Identification Information Act[] 
+ []
+
+
+Overfull \hbox (279.75pt too wide) in paragraph at lines 3146--3146
+[]\TU/lmtt/m/n/10 ## 8                                                         
+  Change requirements for foster care transition proposals[] 
+ []
+
+
+Overfull \hbox (279.75pt too wide) in paragraph at lines 3146--3146
+[]\TU/lmtt/m/n/10 ## 9        Change provisions relating to compensation for bu
+rial expenses under the Nebraska Workers[] Compensation Act[] 
+ []
+
+
+Overfull \hbox (279.75pt too wide) in paragraph at lines 3146--3146
+[]\TU/lmtt/m/n/10 ## 10                                                        
+  Change provisions relating to the Student Discipline Act[] 
+ []
+
+
+Overfull \hbox (206.25pt too wide) in paragraph at lines 3196--3196
+[]\TU/lmtt/m/n/10 ##                                                           
+                                    Document[] 
+ []
+
+
+Overfull \hbox (206.25pt too wide) in paragraph at lines 3196--3196
+[]\TU/lmtt/m/n/10 ## 1 Currently or Pendingon Floor\n                          
+                                      LB1054[] 
+ []
+
+
+Overfull \hbox (206.25pt too wide) in paragraph at lines 3196--3196
+[]\TU/lmtt/m/n/10 ## 2  Currently or Pendingon Floor\n                         
+                                       LB944[] 
+ []
+
+
+Overfull \hbox (206.25pt too wide) in paragraph at lines 3196--3196
+[]\TU/lmtt/m/n/10 ## 3  Currently or Pendingon Floor\n                         
+                                       LB924[] 
+ []
+
+
+Overfull \hbox (206.25pt too wide) in paragraph at lines 3196--3196
+[]\TU/lmtt/m/n/10 ## 4  Currently or Pendingon Floor\n                         
+                                       LB770[] 
+ []
+
+[112]
+Overfull \hbox (2049.0pt too wide) in paragraph at lines 3196--3196
+[]\TU/lmtt/m/n/10 ##                                                           
+                                                                               
+                                                                               
+                                                                               
+                                                                               
+                                                                    Description
+[] 
+ []
+
+
+Overfull \hbox (2049.0pt too wide) in paragraph at lines 3196--3196
+[]\TU/lmtt/m/n/10 ## 1                                                         
+                                                                               
+                                                                               
+                                                                               
+                                                  Define the required beginning
+ date and change deferment of payment provisions under certain retirement plans
+[] 
+ []
+
+
+Overfull \hbox (2049.0pt too wide) in paragraph at lines 3196--3196
+[]\TU/lmtt/m/n/10 ## 2 Change and provide provisions for REAL ID, motor vehicle
+ fees, federal references, handicapped parking permits, junked vehicles, odomet
+ers, destroyed vehicles, the International Registration Plan, license plates, e
+lectronic delivery of operator’s licenses and ID cards, CDL’s, point system, ve
+hicle length and weight limits; ATV’s and UTV’s, the International Tax Agreemen
+t Act, the unified carrier registration plan and agreement, and civil penalties
+[] 
+ []
+
+
+Overfull \hbox (2049.0pt too wide) in paragraph at lines 3196--3196
+[]\TU/lmtt/m/n/10 ## 3                                                         
+                                                                               
+                                                                               
+                                                                               
+                                                                           Chan
+ge provisions relating to racial profiling and require law enforcement training
+[] 
+ []
+
+
+Overfull \hbox (2049.0pt too wide) in paragraph at lines 3196--3196
+[]\TU/lmtt/m/n/10 ## 4                                                         
+                                                                               
+                                                                               
+                                                                               
+                                                      Provide for state park pe
+rmits  for disabled veterans and change nonresident fees for state park permits
+[] 
+ []
+
+
+Overfull \hbox (206.25pt too wide) in paragraph at lines 3222--3222
+[]\TU/lmtt/m/n/10 ##                                                           
+                                    Document[] 
+ []
+
+
+Overfull \hbox (206.25pt too wide) in paragraph at lines 3222--3222
+[]\TU/lmtt/m/n/10 ## 1 Currently or Pendingon Floor\n                          
+                                      LB1061[] 
+ []
+
+
+Overfull \hbox (206.25pt too wide) in paragraph at lines 3222--3222
+[]\TU/lmtt/m/n/10 ## 2 Currently or Pendingon Floor\n                          
+                                      LB1014[] 
+ []
+
+
+Overfull \hbox (206.25pt too wide) in paragraph at lines 3222--3222
+[]\TU/lmtt/m/n/10 ## 3  Currently or Pendingon Floor\n                         
+                                       LB424[] 
+ []
+
+
+Overfull \hbox (206.25pt too wide) in paragraph at lines 3222--3222
+[]\TU/lmtt/m/n/10 ## 4  Currently or Pendingon Floor\n                         
+                                       LB962[] 
+ []
+
+
+Overfull \hbox (75.0pt too wide) in paragraph at lines 3222--3222
+[]\TU/lmtt/m/n/10 ##                                                           
+        Description[] 
+ []
+
+
+Overfull \hbox (75.0pt too wide) in paragraph at lines 3222--3222
+[]\TU/lmtt/m/n/10 ## 1 Change the Child Protection and Family Safety Act and el
+iminate a committee[] 
+ []
+
+
+Overfull \hbox (75.0pt too wide) in paragraph at lines 3222--3222
+[]\TU/lmtt/m/n/10 ## 2          Change provisions of the Multiple Employer Welf
+are Arrangement Act[] 
+ []
+
+
+Overfull \hbox (75.0pt too wide) in paragraph at lines 3222--3222
+[]\TU/lmtt/m/n/10 ## 3                                 Change the Nebraska Muni
+cipal Land Bank Act[] 
+ []
+
+
+Overfull \hbox (75.0pt too wide) in paragraph at lines 3222--3222
+[]\TU/lmtt/m/n/10 ## 4                                     Adopt the Nebraska F
+air Pay to Play Act[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 3249--3249
+[]\TU/lmtt/m/n/10 ## [1] "\n                    SELECT FILE:  2020 PRIORITY BIL
+LS\n                "[] 
+ []
+
+[113]
+Overfull \hbox (43.5pt too wide) in paragraph at lines 3284--3284
+[]\TU/lmtt/m/n/10 ##                                                           
+     Document[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 3284--3284
+[]\TU/lmtt/m/n/10 ## 1                                                         
+       LB1054[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 3284--3284
+[]\TU/lmtt/m/n/10 ## 2                                                         
+        LB944[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 3284--3284
+[]\TU/lmtt/m/n/10 ## 3                                                         
+        LB924[] 
+ []
+
+
+Overfull \hbox (43.5pt too wide) in paragraph at lines 3284--3284
+[]\TU/lmtt/m/n/10 ## 4                                                         
+        LB770[] 
+ []
+
+
+Overfull \hbox (2049.0pt too wide) in paragraph at lines 3284--3284
+[]\TU/lmtt/m/n/10 ##                                                           
+                                                                               
+                                                                               
+                                                                               
+                                                                               
+                                                                    Description
+[] 
+ []
+
+
+Overfull \hbox (2049.0pt too wide) in paragraph at lines 3284--3284
+[]\TU/lmtt/m/n/10 ## 1                                                         
+                                                                               
+                                                                               
+                                                                               
+                                                  Define the required beginning
+ date and change deferment of payment provisions under certain retirement plans
+[] 
+ []
+
+
+Overfull \hbox (2049.0pt too wide) in paragraph at lines 3284--3284
+[]\TU/lmtt/m/n/10 ## 2 Change and provide provisions for REAL ID, motor vehicle
+ fees, federal references, handicapped parking permits, junked vehicles, odomet
+ers, destroyed vehicles, the International Registration Plan, license plates, e
+lectronic delivery of operator’s licenses and ID cards, CDL’s, point system, ve
+hicle length and weight limits; ATV’s and UTV’s, the International Tax Agreemen
+t Act, the unified carrier registration plan and agreement, and civil penalties
+[] 
+ []
+
+
+Overfull \hbox (2049.0pt too wide) in paragraph at lines 3284--3284
+[]\TU/lmtt/m/n/10 ## 3                                                         
+                                                                               
+                                                                               
+                                                                               
+                                                                           Chan
+ge provisions relating to racial profiling and require law enforcement training
+[] 
+ []
+
+
+Overfull \hbox (2049.0pt too wide) in paragraph at lines 3284--3284
+[]\TU/lmtt/m/n/10 ## 4                                                         
+                                                                               
+                                                                               
+                                                                               
+                                                      Provide for state park pe
+rmits  for disabled veterans and change nonresident fees for state park permits
+[] 
+ []
+
+[114]
+Overfull \hbox (48.75pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ##                                                           
+      Document[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 1                                                         
+        LB1054[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 2                                                         
+         LB944[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 3                                                         
+         LB924[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 4                                                         
+         LB770[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 5                                                         
+        LB1061[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 6                                                         
+        LB1014[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 7                                                         
+         LB424[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 8                                                         
+         LB962[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 9                                                         
+         LB344[] 
+ []
+
+
+Overfull \hbox (48.75pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 10                                                        
+         LR325[] 
+ []
+
+
+Overfull \hbox (2054.25pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ##                                                           
+                                                                               
+                                                                               
+                                                                               
+                                                                               
+                                                                     Descriptio
+n[] 
+ []
+
+
+Overfull \hbox (2054.25pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 1                                                         
+                                                                               
+                                                                               
+                                                                               
+                                                   Define the required beginnin
+g date and change deferment of payment provisions under certain retirement plan
+s[] 
+ []
+
+
+Overfull \hbox (2054.25pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 2  Change and provide provisions for REAL ID, motor vehicl
+e fees, federal references, handicapped parking permits, junked vehicles, odome
+ters, destroyed vehicles, the International Registration Plan, license plates, 
+electronic delivery of operator’s licenses and ID cards, CDL’s, point system, v
+ehicle length and weight limits; ATV’s and UTV’s, the International Tax Agreeme
+nt Act, the unified carrier registration plan and agreement, and civil penaltie
+s[] 
+ []
+
+
+Overfull \hbox (2054.25pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 3                                                         
+                                                                               
+                                                                               
+                                                                               
+                                                                            Cha
+nge provisions relating to racial profiling and require law enforcement trainin
+g[] 
+ []
+
+
+Overfull \hbox (2054.25pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 4                                                         
+                                                                               
+                                                                               
+                                                                               
+                                                       Provide for state park p
+ermits  for disabled veterans and change nonresident fees for state park permit
+s[] 
+ []
+
+
+Overfull \hbox (2054.25pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 5                                                         
+                                                                               
+                                                                               
+                                                                               
+                                                                               
+     Change the Child Protection and Family Safety Act and eliminate a committe
+e[] 
+ []
+
+
+Overfull \hbox (2054.25pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 6                                                         
+                                                                               
+                                                                               
+                                                                               
+                                                                               
+              Change provisions of the Multiple Employer Welfare Arrangement Ac
+t[] 
+ []
+
+
+Overfull \hbox (2054.25pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 7                                                         
+                                                                               
+                                                                               
+                                                                               
+                                                                               
+                                     Change the Nebraska Municipal Land Bank Ac
+t[] 
+ []
+
+
+Overfull \hbox (2054.25pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 8                                                         
+                                                                               
+                                                                               
+                                                                               
+                                                                               
+                                         Adopt the Nebraska Fair Pay to Play Ac
+t[] 
+ []
+
+[115]
+Overfull \hbox (2054.25pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 9                                                         
+                                                                               
+                                                                               
+                           Adopt the Animal Health and Disease Control Act, eli
+minate and provide duties for the Department of Agriculture, eliminate various 
+acts, terminate and transfer certain funds, create a fund, and provide penaltie
+s[] 
+ []
+
+
+Overfull \hbox (2054.25pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 10                                                        
+                                                                               
+                                                                               
+                                                                               
+                                                                               
+                                Congratulate Leona R. Doll on her 100th birthda
+y[] 
+ []
+
+
+Overfull \hbox (106.5pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ##                                                           
+                    Stage[] 
+ []
+
+
+Overfull \hbox (106.5pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 1                                                 SELECT F
+ILE:  2020 PRIORITY BILLS[] 
+ []
+
+
+Overfull \hbox (106.5pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 2                                                 SELECT F
+ILE:  2020 PRIORITY BILLS[] 
+ []
+
+
+Overfull \hbox (106.5pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 3                                                 SELECT F
+ILE:  2020 PRIORITY BILLS[] 
+ []
+
+
+Overfull \hbox (106.5pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 4                                                 SELECT F
+ILE:  2020 PRIORITY BILLS[] 
+ []
+
+
+Overfull \hbox (106.5pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 5                       GENERAL FILE: 2020 SENATOR PRIORIT
+Y BILLS - "Hunt Division"[] 
+ []
+
+
+Overfull \hbox (106.5pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 6                       GENERAL FILE: 2020 SENATOR PRIORIT
+Y BILLS - "Hunt Division"[] 
+ []
+
+
+Overfull \hbox (106.5pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 7                       GENERAL FILE: 2020 SENATOR PRIORIT
+Y BILLS - "Hunt Division"[] 
+ []
+
+
+Overfull \hbox (106.5pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 8                       GENERAL FILE: 2020 SENATOR PRIORIT
+Y BILLS - "Hunt Division"[] 
+ []
+
+
+Overfull \hbox (106.5pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 9                                          GENERAL FILE: 2
+020 SENATOR PRIORITY BILL[] 
+ []
+
+
+Overfull \hbox (106.5pt too wide) in paragraph at lines 3389--3389
+[]\TU/lmtt/m/n/10 ## 10 LEGISLATIVE RESOLUTION(s) Eligible For Adoption Pursuan
+t to Rule 4, Section 5(b)[] 
+ []
+
+[116]
+Chapter 16.
+File: images/advrvest1.png Graphic file (type bmp)
+<images/advrvest1.png>
+
+Overfull \hbox (529.46513pt too wide) in paragraph at lines 3409--3410
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[117
+
+] [118]
+File: images/advrvest2.png Graphic file (type bmp)
+<images/advrvest2.png>
+
+Overfull \hbox (608.60919pt too wide) in paragraph at lines 3447--3448
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[119]
+Overfull \hbox (54.0pt too wide) in paragraph at lines 3453--3453
+[]\TU/lmtt/m/n/10 https://nebraskalegislature.gov/calendar/agenda.php?day=2020-
+01-14&print=csv[] 
+ []
+
+[120]
+Overfull \hbox (285.0pt too wide) in paragraph at lines 3513--3513
+[]\TU/lmtt/m/n/10 ## row      col           expected actual                    
+                                                       file[] 
+ []
+
+
+Overfull \hbox (285.0pt too wide) in paragraph at lines 3513--3513
+[]\TU/lmtt/m/n/10 ##  31 Oneliner delimiter or quote      C []https://nebraskal
+egislature.gov/calendar/agenda.php?day=2020-03-06&print=csv[][] 
+ []
+
+
+Overfull \hbox (285.0pt too wide) in paragraph at lines 3513--3513
+[]\TU/lmtt/m/n/10 ##  31 Oneliner delimiter or quote        []https://nebraskal
+egislature.gov/calendar/agenda.php?day=2020-03-06&print=csv[][] 
+ []
+
+[121] [122]
+Chapter 17.
+
+Overfull \hbox (45.37502pt too wide) in paragraph at lines 3553--3554
+[]\TU/lmr/m/n/10 First we need to install \TU/lmtt/m/n/10 tidycensus \TU/lmr/m/
+n/10 using the console: \TU/lmtt/m/n/10 install.packages("tidycensus") 
+ []
+
+
+Overfull \hbox (153.75pt too wide) in paragraph at lines 3572--3572
+[]\TU/lmtt/m/n/10 ## To install your API key for use in future sessions, run th
+is function with []install = TRUE[].[] 
+ []
+
+[123
+
+] [124]
+Overfull \hbox (64.5pt too wide) in paragraph at lines 3705--3705
+[]\TU/lmtt/m/n/10 ##    GEOID NAME           Population1990 Population2000 Popu
+lation2010 change[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 3705--3705
+[]\TU/lmtt/m/n/10 ##    <chr> <chr>                   <dbl>          <dbl>     
+     <dbl>  <dbl>[] 
+ []
+
+
+Overfull \hbox (59.25pt too wide) in paragraph at lines 3705--3705
+[]\TU/lmtt/m/n/10 ##  1 32    Nevada                1201833        1998257     
+   2700551  125.[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 3705--3705
+[]\TU/lmtt/m/n/10 ##  2 04    Arizona               3665228        5130632     
+   6392017   74.4[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 3705--3705
+[]\TU/lmtt/m/n/10 ##  3 49    Utah                  1722850        2233169     
+   2763885   60.4[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 3705--3705
+[]\TU/lmtt/m/n/10 ##  4 16    Idaho                 1006749        1293953     
+   1567582   55.7[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 3705--3705
+[]\TU/lmtt/m/n/10 ##  5 08    Colorado              3294394        4301261     
+   5029196   52.7[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 3705--3705
+[]\TU/lmtt/m/n/10 ##  6 13    Georgia               6478216        8186453     
+   9687653   49.5[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 3705--3705
+[]\TU/lmtt/m/n/10 ##  7 48    Texas                16986510       20851820     
+  25145561   48.0[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 3705--3705
+[]\TU/lmtt/m/n/10 ##  8 12    Florida              12937926       15982378     
+  18801310   45.3[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 3705--3705
+[]\TU/lmtt/m/n/10 ##  9 37    North Carolina        6628637        8049313     
+   9535483   43.9[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 3705--3705
+[]\TU/lmtt/m/n/10 ## 10 53    Washington            4866692        5894121     
+   6724540   38.2[] 
+ []
+
+[125]
+Overfull \vbox (1.42995pt too high) detected at line 3772
+ []
+
+[126]
+File: datajournalism_files/figure-latex/unnamed-chunk-139-1.pdf Graphic file (t
+ype pdf)
+<use datajournalism_files/figure-latex/unnamed-chunk-139-1.pdf>
+[127]
+Overfull \hbox (90.75pt too wide) in paragraph at lines 3839--3839
+[]\TU/lmtt/m/n/10 ##    GEOID NAME   estimate2010 estimate2018 min2010 max2010 
+min2018 max2018 change[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 3839--3839
+[]\TU/lmtt/m/n/10 ##    <chr> <chr>         <dbl>        <dbl>   <dbl>   <dbl> 
+  <dbl>   <dbl>  <dbl>[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 3839--3839
+[]\TU/lmtt/m/n/10 ##  1 31117 McPhe~        50625        48882   38979   62271 
+  41666   56098 -3.44[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 3839--3839
+[]\TU/lmtt/m/n/10 ##  2 31085 Hayes~        45595        45515   41833   49357 
+  38687   52343 -0.175[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 3839--3839
+[]\TU/lmtt/m/n/10 ##  3 31075 Grant~        39261        39479   35341   43181 
+  27482   51476  0.555[] 
+ []
+
+
+Overfull \hbox (90.75pt too wide) in paragraph at lines 3839--3839
+[]\TU/lmtt/m/n/10 ##  4 31091 Hooke~        38750        39115   28329   49171 
+  33409   44821  0.942[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 3839--3839
+[]\TU/lmtt/m/n/10 ##  5 31005 Arthu~        43250        43854   33524   52976 
+  40943   46765  1.40[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 3839--3839
+[]\TU/lmtt/m/n/10 ##  6 31095 Jeffe~        42665        43295   38489   46841 
+  39615   46975  1.48[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 3839--3839
+[]\TU/lmtt/m/n/10 ##  7 31105 Kimba~        42010        43856   36672   47348 
+  39378   48334  4.39[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 3839--3839
+[]\TU/lmtt/m/n/10 ##  8 31099 Kearn~        54518        56952   50397   58639 
+  51557   62347  4.46[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 3839--3839
+[]\TU/lmtt/m/n/10 ##  9 31171 Thoma~        48250        50682   41698   54802 
+  43155   58209  5.04[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 3839--3839
+[]\TU/lmtt/m/n/10 ## 10 31125 Nance~        41610        45833   39073   44147 
+  40753   50913 10.1[] 
+ []
+
+[128]
+Overfull \hbox (54.0pt too wide) in paragraph at lines 3898--3898
+[]\TU/lmtt/m/n/10 ##    Province.State       Country.Region   Lat   Long date  
+     cases type[] 
+ []
+
+
+Overfull \hbox (59.25pt too wide) in paragraph at lines 3898--3898
+[]\TU/lmtt/m/n/10 ##    <chr>                <chr>          <dbl>  <dbl> <date>
+     <int> <chr>[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 3898--3898
+[]\TU/lmtt/m/n/10 ##  1 Seattle, WA          US              47.8 -121.  2020-0
+1-22     1 confirmed[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 3898--3898
+[]\TU/lmtt/m/n/10 ##  2 Chicago, IL          US              40.6  -89.4 2020-0
+1-24     1 confirmed[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 3898--3898
+[]\TU/lmtt/m/n/10 ##  3 Los Angeles, CA      US              34.1 -118.  2020-0
+1-26     1 confirmed[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 3898--3898
+[]\TU/lmtt/m/n/10 ##  4 Orange, CA           US              33.8 -118.  2020-0
+1-26     1 confirmed[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 3898--3898
+[]\TU/lmtt/m/n/10 ##  5 Tempe, AZ            US              34.0 -111.  2020-0
+1-26     1 confirmed[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 3898--3898
+[]\TU/lmtt/m/n/10 ##  6 Chicago, IL          US              40.6  -89.4 2020-0
+1-31     1 confirmed[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 3898--3898
+[]\TU/lmtt/m/n/10 ##  7 Santa Clara, CA      US              37.4 -122.  2020-0
+1-31     1 confirmed[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 3898--3898
+[]\TU/lmtt/m/n/10 ##  8 Boston, MA           US              42.4  -71.1 2020-0
+2-01     1 confirmed[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 3898--3898
+[]\TU/lmtt/m/n/10 ##  9 San Benito, CA       US              36.6 -121.  2020-0
+2-03     2 confirmed[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 3898--3898
+[]\TU/lmtt/m/n/10 ## 10 Santa Clara, CA      US              37.4 -122.  2020-0
+2-03     1 confirmed[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 3898--3898
+[]\TU/lmtt/m/n/10 ## 11 Madison, WI          US              43.1  -89.4 2020-0
+2-05     1 confirmed[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 3898--3898
+[]\TU/lmtt/m/n/10 ## 12 Chicago, IL          US              40.6  -89.4 2020-0
+2-09     2 recovered[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 3898--3898
+[]\TU/lmtt/m/n/10 ## 13 Seattle, WA          US              47.8 -121.  2020-0
+2-09     1 recovered[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 3898--3898
+[]\TU/lmtt/m/n/10 ## 14 San Diego County, CA US              32.7 -117.  2020-0
+2-11     1 confirmed[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 3898--3898
+[]\TU/lmtt/m/n/10 ## 15 San Antonio, TX      US              29.4  -98.5 2020-0
+2-13     1 confirmed[] 
+ []
+
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 3898--3898
+[]\TU/lmtt/m/n/10 ## 16 San Diego County, CA US              32.7 -117.  2020-0
+2-13     1 confirmed[] 
+ []
+
+[129] [130]
+Chapter 18.
+
+Underfull \vbox (badness 2932) has occurred while \output is active []
+
+[131
+
+]
+File: datajournalism_files/figure-latex/unnamed-chunk-150-1.pdf Graphic file (t
+ype pdf)
+<use datajournalism_files/figure-latex/unnamed-chunk-150-1.pdf>
+[132]
+File: datajournalism_files/figure-latex/unnamed-chunk-151-1.pdf Graphic file (t
+ype pdf)
+<use datajournalism_files/figure-latex/unnamed-chunk-151-1.pdf>
+File: datajournalism_files/figure-latex/unnamed-chunk-152-1.pdf Graphic file (t
+ype pdf)
+<use datajournalism_files/figure-latex/unnamed-chunk-152-1.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[133] [134]
+File: datajournalism_files/figure-latex/unnamed-chunk-154-1.pdf Graphic file (t
+ype pdf)
+<use datajournalism_files/figure-latex/unnamed-chunk-154-1.pdf>
+File: datajournalism_files/figure-latex/unnamed-chunk-156-1.pdf Graphic file (t
+ype pdf)
+<use datajournalism_files/figure-latex/unnamed-chunk-156-1.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[135]
+File: datajournalism_files/figure-latex/unnamed-chunk-157-1.pdf Graphic file (t
+ype pdf)
+<use datajournalism_files/figure-latex/unnamed-chunk-157-1.pdf>
+[136]
+File: datajournalism_files/figure-latex/unnamed-chunk-159-1.pdf Graphic file (t
+ype pdf)
+<use datajournalism_files/figure-latex/unnamed-chunk-159-1.pdf>
+[137] [138
+
+]
+Chapter 19.
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 4155--4155
+[]\TU/lmtt/m/n/10 ##   date       location    new_cases new_deaths total_cases 
+total_deaths[] 
+ []
+
+[139]
+Overfull \hbox (38.25pt too wide) in paragraph at lines 4155--4155
+[]\TU/lmtt/m/n/10 ##   <date>     <chr>           <dbl>      <dbl>       <dbl> 
+       <dbl>[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 4155--4155
+[]\TU/lmtt/m/n/10 ## 1 2020-02-25 Afghanistan        NA         NA           1 
+          NA[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 4155--4155
+[]\TU/lmtt/m/n/10 ## 2 2020-02-26 Afghanistan         0         NA           1 
+          NA[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 4155--4155
+[]\TU/lmtt/m/n/10 ## 3 2020-02-27 Afghanistan         0         NA           1 
+          NA[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 4155--4155
+[]\TU/lmtt/m/n/10 ## 4 2020-02-28 Afghanistan         0         NA           1 
+          NA[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 4155--4155
+[]\TU/lmtt/m/n/10 ## 5 2020-02-29 Afghanistan         0         NA           1 
+          NA[] 
+ []
+
+
+Overfull \hbox (38.25pt too wide) in paragraph at lines 4155--4155
+[]\TU/lmtt/m/n/10 ## 6 2020-03-01 Afghanistan         0         NA           1 
+          NA[] 
+ []
+
+File: images/datawrapper1.png Graphic file (type bmp)
+<images/datawrapper1.png>
+
+Overfull \hbox (827.45534pt too wide) in paragraph at lines 4174--4175
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[140]
+File: images/datawrapper2.png Graphic file (type bmp)
+<images/datawrapper2.png>
+
+Overfull \hbox (577.49649pt too wide) in paragraph at lines 4178--4179
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[141] [142]
+File: images/datawrapper3.png Graphic file (type bmp)
+<images/datawrapper3.png>
+
+Overfull \hbox (1160.4543pt too wide) in paragraph at lines 4182--4183
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[143] [144]
+File: images/datawrapper4.png Graphic file (type bmp)
+<images/datawrapper4.png>
+
+Overfull \hbox (222.39699pt too wide) in paragraph at lines 4188--4189
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[145]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[146]
+File: images/datawrapper5.png Graphic file (type bmp)
+<images/datawrapper5.png>
+
+Overfull \hbox (923.12517pt too wide) in paragraph at lines 4192--4193
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[147] [148]
+File: images/datawrapper6.png Graphic file (type bmp)
+<images/datawrapper6.png>
+
+Overfull \hbox (494.54265pt too wide) in paragraph at lines 4196--4197
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[149] [150]
+File: images/datawrapper7.png Graphic file (type bmp)
+<images/datawrapper7.png>
+
+Overfull \hbox (529.498pt too wide) in paragraph at lines 4200--4201
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[151] [152]
+Chapter 20.
+[153
+
+]
+File: images/geolayers.jpg Graphic file (type bmp)
+<images/geolayers.jpg>
+[154]
+File: images/geolayers2.png Graphic file (type bmp)
+<images/geolayers2.png>
+
+Overfull \hbox (375.77177pt too wide) in paragraph at lines 4249--4250
+[][] 
+ []
+
+
+Overfull \hbox (484.5pt too wide) in paragraph at lines 4267--4267
+[]\TU/lmtt/m/n/10 ## Reading layer []Hospitals[] from data source []/Users/mwai
+te3/Box/BookProjects/DataJournalismWithR/data/Hospitals/Hospitals.shp[] using d
+river []ESRI Shapefile[][] 
+ []
+
+
+Overfull \hbox (75.0pt too wide) in paragraph at lines 4267--4267
+[]\TU/lmtt/m/n/10 ## bbox:           xmin: -176.6403 ymin: -14.29024 xmax: 145.
+7245 ymax: 71.29285[] 
+ []
+
+[155]
+File: datajournalism_files/figure-latex/unnamed-chunk-178-1.pdf Graphic file (t
+ype pdf)
+<use datajournalism_files/figure-latex/unnamed-chunk-178-1.pdf>
+
+Overfull \hbox (657.75pt too wide) in paragraph at lines 4339--4339
+[]\TU/lmtt/m/n/10 ## Reading layer []cb_2018_us_county_5m[] from data source []
+/Users/mwaite3/Box/BookProjects/DataJournalismWithR/data/cb_2018_us_county_5m/c
+b_2018_us_county_5m.shp[] using driver []ESRI Shapefile[][] 
+ []
+
+
+Overfull \hbox (75.0pt too wide) in paragraph at lines 4339--4339
+[]\TU/lmtt/m/n/10 ## bbox:           xmin: -179.1473 ymin: -14.55255 xmax: 179.
+7785 ymax: 71.35256[] 
+ []
+
+
+Overfull \hbox (59.25pt too wide) in paragraph at lines 4339--4339
+[]\TU/lmtt/m/n/10 ## proj4string:    +proj=longlat +ellps=GRS80 +towgs84=0,0,0,
+0,0,0,0 +no_defs[] 
+ []
+
+[156]
+File: datajournalism_files/figure-latex/unnamed-chunk-181-1.pdf Graphic file (t
+ype pdf)
+<use datajournalism_files/figure-latex/unnamed-chunk-181-1.pdf>
+[157] [158
+
+]
+Chapter 21.
+
+Overfull \hbox (484.5pt too wide) in paragraph at lines 4393--4393
+[]\TU/lmtt/m/n/10 ## Reading layer []Hospitals[] from data source []/Users/mwai
+te3/Box/BookProjects/DataJournalismWithR/data/Hospitals/Hospitals.shp[] using d
+river []ESRI Shapefile[][] 
+ []
+
+
+Overfull \hbox (75.0pt too wide) in paragraph at lines 4393--4393
+[]\TU/lmtt/m/n/10 ## bbox:           xmin: -176.6403 ymin: -14.29024 xmax: 145.
+7245 ymax: 71.29285[] 
+ []
+
+
+Overfull \hbox (657.75pt too wide) in paragraph at lines 4421--4421
+[]\TU/lmtt/m/n/10 ## Reading layer []cb_2018_us_county_5m[] from data source []
+/Users/mwaite3/Box/BookProjects/DataJournalismWithR/data/cb_2018_us_county_5m/c
+b_2018_us_county_5m.shp[] using driver []ESRI Shapefile[][] 
+ []
+
+
+Overfull \hbox (75.0pt too wide) in paragraph at lines 4421--4421
+[]\TU/lmtt/m/n/10 ## bbox:           xmin: -179.1473 ymin: -14.55255 xmax: 179.
+7785 ymax: 71.35256[] 
+ []
+
+
+Overfull \hbox (59.25pt too wide) in paragraph at lines 4421--4421
+[]\TU/lmtt/m/n/10 ## proj4string:    +proj=longlat +ellps=GRS80 +towgs84=0,0,0,
+0,0,0,0 +no_defs[] 
+ []
+
+[159]
+Overfull \hbox (75.0pt too wide) in paragraph at lines 4460--4460
+[]\TU/lmtt/m/n/10 ## bbox:           xmin: -103.6668 ymin: 40.02644 xmax: -95.6
+0789 ymax: 42.87939[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 4460--4460
+[]\TU/lmtt/m/n/10 ##    COUNTY    total_beds                                   
+         geometry[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 4460--4460
+[]\TU/lmtt/m/n/10 ##    <fct>          <dbl>                                   
+   <GEOMETRY [°]>[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 4460--4460
+[]\TU/lmtt/m/n/10 ##  1 ADAMS            161                          POINT (-9
+8.38807 40.59091)[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 4460--4460
+[]\TU/lmtt/m/n/10 ##  2 ANTELOPE          25                          POINT (-9
+8.03064 42.13475)[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 4460--4460
+[]\TU/lmtt/m/n/10 ##  3 BOONE             25                          POINT (-9
+8.00574 41.68304)[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 4460--4460
+[]\TU/lmtt/m/n/10 ##  4 BOX BUTTE         25                          POINT (-1
+02.8699 42.11684)[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 4460--4460
+[]\TU/lmtt/m/n/10 ##  5 BOYD              20                          POINT (-9
+8.46849 42.82457)[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 4460--4460
+[]\TU/lmtt/m/n/10 ##  6 BROWN             23                          POINT (-9
+9.84956 42.54451)[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 4460--4460
+[]\TU/lmtt/m/n/10 ##  7 BUFFALO          261 MULTIPOINT (-99.11259 40.68205, -9
+9.08158 40.70766)[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 4460--4460
+[]\TU/lmtt/m/n/10 ##  8 BURT              18                          POINT (-9
+6.45918 41.83485)[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 4460--4460
+[]\TU/lmtt/m/n/10 ##  9 BUTLER            20                          POINT (-9
+7.12253 41.24669)[] 
+ []
+
+
+Overfull \hbox (64.5pt too wide) in paragraph at lines 4460--4460
+[]\TU/lmtt/m/n/10 ## 10 CHASE             22                          POINT (-1
+01.6507 40.52413)[] 
+ []
+
+[160]
+Overfull \hbox (59.25pt too wide) in paragraph at lines 4517--4517
+[]\TU/lmtt/m/n/10 ## Warning: Column []GEOID[] joining factors with different l
+evels, coercing to[] 
+ []
+
+File: datajournalism_files/figure-latex/unnamed-chunk-192-1.pdf Graphic file (t
+ype pdf)
+<use datajournalism_files/figure-latex/unnamed-chunk-192-1.pdf>
+
+Underfull \vbox (badness 1348) has occurred while \output is active []
+
+[161]
+File: datajournalism_files/figure-latex/unnamed-chunk-193-1.pdf Graphic file (t
+ype pdf)
+<use datajournalism_files/figure-latex/unnamed-chunk-193-1.pdf>
+[162] [163] [164] [165] [166
+
+]
+Chapter 22.
+
+Overfull \hbox (19.33002pt too wide) in paragraph at lines 4772--4773
+[]\TU/lmr/m/n/10 You install them the same way you do anything else – \TU/lmtt/
+m/n/10 install.packages("readxl")
+ []
+
+[167] [168]
+Underfull \vbox (badness 2591) detected at line 4912
+ []
+
+
+Underfull \vbox (badness 2591) has occurred while \output is active []
+
+[169]
+Underfull \vbox (badness 1371) has occurred while \output is active []
+
+[170]
+File: datajournalism_files/figure-latex/unnamed-chunk-208-1.pdf Graphic file (t
+ype pdf)
+<use datajournalism_files/figure-latex/unnamed-chunk-208-1.pdf>
+[171]
+File: datajournalism_files/figure-latex/unnamed-chunk-210-1.pdf Graphic file (t
+ype pdf)
+<use datajournalism_files/figure-latex/unnamed-chunk-210-1.pdf>
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5001--5001
+[]\TU/lmtt/m/n/10 ##   []2020-01-04[] []2020-01-11[] []2020-01-18[] []2020-01-2
+5[] []2020-02-01[] []2020-02-08[][] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5001--5001
+[]\TU/lmtt/m/n/10 ##          <dbl>        <dbl>        <dbl>        <dbl>     
+   <dbl>        <dbl>[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5001--5001
+[]\TU/lmtt/m/n/10 ## 1         1089         1036          913          916     
+     796          653[] 
+ []
+
+
+Overfull \hbox (27.75pt too wide) in paragraph at lines 5001--5001
+[]\TU/lmtt/m/n/10 ## # ... with 5 more variables: []2020-02-15[] <dbl>, []2020-
+02-22[] <dbl>,[] 
+ []
+
+[172]
+File: datajournalism_files/figure-latex/unnamed-chunk-213-1.pdf Graphic file (t
+ype pdf)
+<use datajournalism_files/figure-latex/unnamed-chunk-213-1.pdf>
+[173]
+File: datajournalism_files/figure-latex/unnamed-chunk-215-1.pdf Graphic file (t
+ype pdf)
+<use datajournalism_files/figure-latex/unnamed-chunk-215-1.pdf>
+[174]
+Overfull \hbox (54.0pt too wide) in paragraph at lines 5113--5113
+[]\TU/lmtt/m/n/10 ## [1] "First time unemployment claims rose by 53.21 percent 
+over last week"[] 
+ []
+
+File: datajournalism_files/figure-latex/unnamed-chunk-219-1.pdf Graphic file (t
+ype pdf)
+<use datajournalism_files/figure-latex/unnamed-chunk-219-1.pdf>
+[175] [176]
+Overfull \hbox (6.75pt too wide) in paragraph at lines 5230--5230
+[]\TU/lmtt/m/n/10 ##      state filed_week_ended initial_claims reflecting_week
+_ended[] 
+ []
+
+
+Overfull \hbox (6.75pt too wide) in paragraph at lines 5230--5230
+[]\TU/lmtt/m/n/10 ## 1 Nebraska       2020-03-21          15700            2020
+-03-14[] 
+ []
+
+
+Overfull \hbox (6.75pt too wide) in paragraph at lines 5230--5230
+[]\TU/lmtt/m/n/10 ## 2 Nebraska       2020-03-14            795            2020
+-03-07[] 
+ []
+
+
+Overfull \hbox (6.75pt too wide) in paragraph at lines 5230--5230
+[]\TU/lmtt/m/n/10 ## 3 Nebraska       2020-03-07            501            2020
+-02-29[] 
+ []
+
+
+Overfull \hbox (6.75pt too wide) in paragraph at lines 5230--5230
+[]\TU/lmtt/m/n/10 ## 4 Nebraska       2020-02-29            502            2020
+-02-22[] 
+ []
+
+
+Overfull \hbox (6.75pt too wide) in paragraph at lines 5230--5230
+[]\TU/lmtt/m/n/10 ## 5 Nebraska       2020-02-22            493            2020
+-02-15[] 
+ []
+
+
+Overfull \hbox (6.75pt too wide) in paragraph at lines 5230--5230
+[]\TU/lmtt/m/n/10 ## 6 Nebraska       2020-02-15            537            2020
+-02-08[] 
+ []
+
+
+Overfull \hbox (1.5pt too wide) in paragraph at lines 5230--5230
+[]\TU/lmtt/m/n/10 ##   continued_claims covered_employment insured_unemployment
+_rate[] 
+ []
+
+
+Overfull \hbox (1.5pt too wide) in paragraph at lines 5230--5230
+[]\TU/lmtt/m/n/10 ## 1             4859             962725                     
+ 0.50[] 
+ []
+
+
+Overfull \hbox (1.5pt too wide) in paragraph at lines 5230--5230
+[]\TU/lmtt/m/n/10 ## 2             5076             962725                     
+ 0.53[] 
+ []
+
+
+Overfull \hbox (1.5pt too wide) in paragraph at lines 5230--5230
+[]\TU/lmtt/m/n/10 ## 3             5581             962725                     
+ 0.58[] 
+ []
+
+
+Overfull \hbox (1.5pt too wide) in paragraph at lines 5230--5230
+[]\TU/lmtt/m/n/10 ## 4             6286             962725                     
+ 0.65[] 
+ []
+
+
+Overfull \hbox (1.5pt too wide) in paragraph at lines 5230--5230
+[]\TU/lmtt/m/n/10 ## 5             5780             962725                     
+ 0.60[] 
+ []
+
+
+Overfull \hbox (1.5pt too wide) in paragraph at lines 5230--5230
+[]\TU/lmtt/m/n/10 ## 6             5804             962725                     
+ 0.60[] 
+ []
+
+[177]
+File: datajournalism_files/figure-latex/unnamed-chunk-233-1.pdf Graphic file (t
+ype pdf)
+<use datajournalism_files/figure-latex/unnamed-chunk-233-1.pdf>
+[178]
+Chapter 23.
+[179
+
+]
+File: datajournalism_files/figure-latex/unnamed-chunk-238-1.pdf Graphic file (t
+ype pdf)
+<use datajournalism_files/figure-latex/unnamed-chunk-238-1.pdf>
+[180]
+File: datajournalism_files/figure-latex/unnamed-chunk-239-1.pdf Graphic file (t
+ype pdf)
+<use datajournalism_files/figure-latex/unnamed-chunk-239-1.pdf>
+[181]
+Overfull \hbox (657.75pt too wide) in paragraph at lines 5457--5457
+[]\TU/lmtt/m/n/10 ## Reading layer []cb_2018_us_county_5m[] from data source []
+/Users/mwaite3/Box/BookProjects/DataJournalismWithR/data/cb_2018_us_county_5m/c
+b_2018_us_county_5m.shp[] using driver []ESRI Shapefile[][] 
+ []
+
+
+Overfull \hbox (75.0pt too wide) in paragraph at lines 5457--5457
+[]\TU/lmtt/m/n/10 ## bbox:           xmin: -179.1473 ymin: -14.55255 xmax: 179.
+7785 ymax: 71.35256[] 
+ []
+
+
+Overfull \hbox (59.25pt too wide) in paragraph at lines 5457--5457
+[]\TU/lmtt/m/n/10 ## proj4string:    +proj=longlat +ellps=GRS80 +towgs84=0,0,0,
+0,0,0,0 +no_defs[] 
+ []
+
+
+Overfull \hbox (59.25pt too wide) in paragraph at lines 5474--5474
+[]\TU/lmtt/m/n/10 ## Warning: Column []GEOID[] joining factor and character vec
+tor, coercing into[] 
+ []
+
+File: datajournalism_files/figure-latex/unnamed-chunk-245-1.pdf Graphic file (t
+ype pdf)
+<use datajournalism_files/figure-latex/unnamed-chunk-245-1.pdf>
+[182] [183] [184
+
+]
+Chapter 24.
+
+Package natbib Warning: Citation `TCasady304' on page 185 undefined on input li
+ne 5507.
+
+[185]
+Overfull \hbox (6.75pt too wide) in paragraph at lines 5576--5576
+[]\TU/lmtt/m/n/10 ## Warning: Removed 1 row(s) containing missing values (geom_
+path).[] 
+ []
+
+File: datajournalism_files/figure-latex/unnamed-chunk-249-1.pdf Graphic file (t
+ype pdf)
+<use datajournalism_files/figure-latex/unnamed-chunk-249-1.pdf>
+[186]
+Overfull \hbox (17.25pt too wide) in paragraph at lines 5634--5634
+[]\TU/lmtt/m/n/10 ## alternative hypothesis: true difference in means is not eq
+ual to 0[] 
+ []
+
+[187] [188]
+Overfull \hbox (17.25pt too wide) in paragraph at lines 5728--5728
+[]\TU/lmtt/m/n/10 ## alternative hypothesis: true difference in means is not eq
+ual to 0[] 
+ []
+
+[189]
+Overfull \hbox (17.25pt too wide) in paragraph at lines 5761--5761
+[]\TU/lmtt/m/n/10 ## alternative hypothesis: true difference in means is not eq
+ual to 0[] 
+ []
+
+
+Overfull \hbox (17.25pt too wide) in paragraph at lines 5794--5794
+[]\TU/lmtt/m/n/10 ## alternative hypothesis: true difference in means is not eq
+ual to 0[] 
+ []
+
+[190]
+
+Package natbib Warning: There were undefined citations.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5834.
+[191]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 5834.
+(./datajournalism.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 5834.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 5834.
+
+Package rerunfilecheck Info: File `datajournalism.out' has not changed.
+(rerunfilecheck)             Checksum: A2BBFA7702DD820A5726554338D6CDD9.
+ ) 
+Here is how much of TeX's memory you used:
+ 27596 strings out of 492916
+ 508854 string characters out of 6133346
+ 751315 words of memory out of 5000000
+ 31341 multiletter control sequences out of 15000+600000
+ 538732 words of font info for 77 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 58i,6n,115p,1006b,455s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on datajournalism.pdf (191 pages).

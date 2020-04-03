@@ -5277,7 +5277,7 @@ Now we can do some percent change math similar to above. First we calculate the 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{change <-}\StringTok{ }\KeywordTok{round}\NormalTok{((((fedlatest}\OperatorTok{$}\NormalTok{initial_claims }\OperatorTok{-}\StringTok{ }\NormalTok{fedprevious}\OperatorTok{$}\NormalTok{initial_claims)}\OperatorTok{/}\NormalTok{fedprevious}\OperatorTok{$}\NormalTok{initial_claims)}\OperatorTok{*}\DecValTok{100}\NormalTok{), }\DataTypeTok{digits=}\DecValTok{2}\NormalTok{)}
+\NormalTok{change <-}\StringTok{ }\KeywordTok{round}\NormalTok{((((fedlatest}\OperatorTok{$}\NormalTok{initial_claims }\OperatorTok{-}\StringTok{ }\NormalTok{fedprevious}\OperatorTok{$}\NormalTok{initial_claims)}\OperatorTok{/}\NormalTok{fedprevious}\OperatorTok{$}\NormalTok{initial_claims)}\OperatorTok{*}\DecValTok{100}\NormalTok{), }\DataTypeTok{digits=}\DecValTok{0}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5285,7 +5285,7 @@ Then the change from the pre-crisis week.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{prechange <-}\StringTok{ }\KeywordTok{round}\NormalTok{((((fedlatest}\OperatorTok{$}\NormalTok{initial_claims }\OperatorTok{-}\StringTok{ }\NormalTok{pre}\OperatorTok{$}\NormalTok{initial_claims)}\OperatorTok{/}\NormalTok{pre}\OperatorTok{$}\NormalTok{initial_claims)}\OperatorTok{*}\DecValTok{100}\NormalTok{), }\DataTypeTok{digits=}\DecValTok{2}\NormalTok{)}
+\NormalTok{prechange <-}\StringTok{ }\KeywordTok{round}\NormalTok{((((fedlatest}\OperatorTok{$}\NormalTok{initial_claims }\OperatorTok{-}\StringTok{ }\NormalTok{pre}\OperatorTok{$}\NormalTok{initial_claims)}\OperatorTok{/}\NormalTok{pre}\OperatorTok{$}\NormalTok{initial_claims)}\OperatorTok{*}\DecValTok{100}\NormalTok{), }\DataTypeTok{digits=}\DecValTok{0}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5304,7 +5304,7 @@ And we make the graphic.
 \KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{data=}\NormalTok{fedranked, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{filed_week_ended, }\DataTypeTok{y=}\NormalTok{initial_claims, }\DataTypeTok{group=}\DecValTok{1}\NormalTok{)) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data=}\NormalTok{fedlatest, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{filed_week_ended, }\DataTypeTok{y=}\NormalTok{initial_claims)) }\OperatorTok{+}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\DataTypeTok{data=}\NormalTok{fedlatest, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{filed_week_ended}\DecValTok{-200}\NormalTok{, }\DataTypeTok{y=}\NormalTok{initial_claims }\OperatorTok{+}\StringTok{ }\DecValTok{500}\NormalTok{, }\DataTypeTok{label=}\NormalTok{initial_claims)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\DataTypeTok{data=}\NormalTok{fedlatest, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{filed_week_ended}\DecValTok{-500}\NormalTok{, }\DataTypeTok{y=}\NormalTok{initial_claims }\OperatorTok{+}\StringTok{ }\DecValTok{500}\NormalTok{, }\DataTypeTok{label=}\NormalTok{initial_claims)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data=}\NormalTok{fedprevious, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{filed_week_ended, }\DataTypeTok{y=}\NormalTok{initial_claims)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\DataTypeTok{data=}\NormalTok{fedprevious, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{filed_week_ended}\DecValTok{-500}\NormalTok{, }\DataTypeTok{y=}\NormalTok{initial_claims }\OperatorTok{+}\StringTok{ }\DecValTok{500}\NormalTok{, }\DataTypeTok{label=}\NormalTok{initial_claims)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{data=}\NormalTok{fedranked, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{filed_week_ended, }\DataTypeTok{y=}\NormalTok{initial_claims), }\DataTypeTok{method=}\NormalTok{loess, }\DataTypeTok{se=}\OtherTok{FALSE}\NormalTok{) }\OperatorTok{+}\StringTok{ }
@@ -5496,5 +5496,339 @@ So now, we have a geographic dataframe that has both the county shapes and the n
 \includegraphics{datajournalism_files/figure-latex/unnamed-chunk-245-1.pdf}
 
 As it stands, we can run this every day and get an up-to-date map.
+
+\hypertarget{basic-stats-the-t-test}{%
+\chapter{Basic Stats: The T-Test}\label{basic-stats-the-t-test}}
+
+During the coronavirus social distancing, former Lincoln Police Chief and Director of Public Safety Tom Casady tweeted the following:
+
+If you're interested I how effective social distancing is working, a good surrogate measure would be the number of police incidents. Lincoln averages about 329 per day. https://t.co/tQAo7CN82r
+
+--- Tom Casady (\citet{TCasady304}) March 16, 2020
+
+So, is it?
+
+Let's find out. Can we see signs of Lincoln hunkering down in LPD data?
+
+We're fortunate here. We can get \href{http://opendata.lincoln.ne.gov/datasets/lpd-dispatch-records}{daily updated calls for service data from the Lincoln Open Data Portal}. So download the spreadsheet version (which is really a csv) and load some libraries.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\KeywordTok{library}\NormalTok{(lubridate)}
+\KeywordTok{library}\NormalTok{(janitor)}
+\end{Highlighting}
+\end{Shaded}
+
+And now load the data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{calls <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"data/LPD_Dispatch_Records.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Parsed with column specification:
+## cols(
+##   X = col_double(),
+##   Y = col_double(),
+##   OBJECTID = col_double(),
+##   LOC_CODE = col_double(),
+##   CASE_ = col_character(),
+##   RD = col_character(),
+##   OFFICER = col_character(),
+##   INC_ = col_character(),
+##   RPT_Date = col_double(),
+##   RPT_DOW = col_double(),
+##   RPT_Time = col_character(),
+##   NEIGHBOR = col_character(),
+##   TEAM_AREA = col_character(),
+##   CFS_LEGEND = col_character(),
+##   BLOCK_ADDRESS = col_character()
+## )
+\end{verbatim}
+
+The first issue we need to address is that the dates don't import as dates. So we need to fix RPT\_Date to make it a date. Lubridate to the rescue.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{calls <-}\StringTok{ }\NormalTok{calls }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{RPT_Date =} \KeywordTok{ymd}\NormalTok{(RPT_Date))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: 13 failed to parse.
+\end{verbatim}
+
+For purposes of this work, we can live without the 13 (they don't occur when we're interested in).
+
+First, let's just visualize regular call volumes and see: Does the end of the line drop sharply, indicating people are socially distancing?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{calls }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{(RPT_Date) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{total=}\KeywordTok{n}\NormalTok{()) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{RPT_Date, }\DataTypeTok{y=}\NormalTok{total))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 1 row(s) containing missing values (geom_path).
+\end{verbatim}
+
+\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-249-1.pdf}
+
+Short answer? No.~Longer answer? It's obivous that Lincoln has a seasonality to crime. It generally is low over the dead of winter and rises as it gets warmer, peaking during early football season (no surprise there) and dropping back down as winter sets in. So to make this useful, we should only compare dates in this March to previous March dates. Then we eliminate the seasonality issue.
+
+So we're going to do some filtering here. The following block is broken down like this:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  First, filter days in March.
+\item
+  Then, group calls by day.
+\item
+  Then, count them. How many happened that day?
+\item
+  Then we're going to do some mutate magic. \texttt{case\_when} is if/else logic. So what this says is if the date is less than March 8, 2020, then it's in the Previous group. After and equal to March 8, 2020, it's in the Current group.
+\item
+  Last, but not least, cutting out April dates in this dataset. Just going to look at March.
+\end{enumerate}
+
+And we'll put it all in a dataframe called \texttt{calldays}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{calldays <-}\StringTok{ }\NormalTok{calls }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(}\KeywordTok{month}\NormalTok{(RPT_Date) }\OperatorTok{==}\StringTok{ }\DecValTok{3}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{(RPT_Date) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{total_calls =} \KeywordTok{n}\NormalTok{()) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{TimePeriod =} \KeywordTok{case_when}\NormalTok{(}
+\NormalTok{  RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-08"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Previous"}\NormalTok{,}
+\NormalTok{  RPT_Date }\OperatorTok{>=}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-08"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Current"}\NormalTok{,}
+\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-04-01"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+To test if the current period of time is different from previous March days, we're going to use something called a t-test. A t-test simply asks if two sample means are different -- is the average between sample A different from the mean of sample B. It looks at the variability in the data and boils it down to a p-value. The p-value tells us if it's statistically significant or not. Simply put: If our value is below .05, it's statistically significant and the two means are different. If it's above .05, then the differences between the two numbers are not meaningful -- it could just be random chance that they're different.
+
+\href{https://conjointly.com/kb/statistical-student-t-test/}{More on the t-test here}. Worth reading.
+
+In R, a \texttt{t.test} is a base R function, owing to it being a statistical langauge. So were going to look at \texttt{total\_calls} split between \texttt{TimePeriod}s. Here's the code. We'll interpret the output below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t.test}\NormalTok{(total_calls }\OperatorTok{~}\StringTok{ }\NormalTok{TimePeriod, }\DataTypeTok{data =}\NormalTok{ calldays)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  total_calls by TimePeriod
+## t = -0.69299, df = 47.771, p-value = 0.4917
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -17.284804   8.424804
+## sample estimates:
+##  mean in group Current mean in group Previous 
+##                 294.00                 298.43
+\end{verbatim}
+
+First, look at the two means on the bottom. On the left, it says the daily call average in the current group -- March 8 to March 31 -- is 294.00 calls per day. On the right, in previous March days, it's 298.43. So about 4.5 calls diffrence. Is that a sigificant difference? Look above to the p-value for that answer. At 0.4917, that's considerably higher than .05.
+
+So, statistically speaking, these numbers are the same. There's no real difference between them. A bad reporter would write a story -- or a bad mayor would hold a press conference and shout from the heavens -- that crime is down 4.5 calls per day on average! This is good! But it's not real. It's statistically meaningless. It's just random noise.
+
+\hypertarget{specific-call-types}{%
+\section{Specific call types}\label{specific-call-types}}
+
+But you need only look outside your house to realize the world is different. So how is it that calls to Lincoln police aren't?
+
+As they say, the devil is in the details.
+
+Let's use \texttt{janitor}'s \texttt{tabyl} function to get a look at what kind of call groups we can look at.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{calls }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(RPT_Date }\OperatorTok{>=}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-01"}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{tabyl}\NormalTok{(CFS_LEGEND)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                  CFS_LEGEND    n      percent
+##                    ACCIDENT  585 0.0641166155
+##                       ALARM  221 0.0242218325
+##                     ALCOHOL  143 0.0156729505
+##                       ARSON    2 0.0002192021
+##                     ASSAULT  282 0.0309074967
+##                    BURGLARY   98 0.0107409031
+##                 DISTURBANCE 1654 0.1812801403
+##                       DRUGS  232 0.0254274441
+##                         DUI   47 0.0051512495
+##                EMBEZZLEMENT    9 0.0009864095
+##                        FIRE   36 0.0039456379
+##                     FORGERY   47 0.0051512495
+##                       FRAUD  161 0.0176457694
+##                      HAZARD   97 0.0106313021
+##           INDECENT EXPOSURE    4 0.0004384042
+##                     MEDICAL  146 0.0160017536
+##              MISSING PERSON  188 0.0206049978
+##         MOTOR VEHICLE THEFT   48 0.0052608505
+##                       OTHER 2629 0.2881411662
+##                      PATROL    5 0.0005480053
+##                 PORNOGRAPHY   11 0.0012056116
+##           RECOVERED VEHICLE    2 0.0002192021
+##                     ROBBERY   12 0.0013152126
+##                  SUSPICIOUS  566 0.0620341955
+##                       THEFT   94 0.0103024989
+##          THEFT - AUTO PARTS   36 0.0039456379
+##       THEFT - FROM BUILDING   82 0.0089872863
+##  THEFT - FROM COIN OPERATED    3 0.0003288032
+##        THEFT - FROM VEHICLE  266 0.0291538799
+##      THEFT - POCKET PICKING    1 0.0001096011
+##         THEFT - SHOPLIFTING  113 0.0123849189
+##                     TRAFFIC  730 0.0800087681
+##                 TRESPASSING  263 0.0288250767
+##                   VANDALISM  203 0.0222490136
+##                     WARRANT   91 0.0099736957
+##             WEAPONS OFFENSE   17 0.0018632179
+\end{verbatim}
+
+Let's first look at disturbances, one of the first big call types on that list. Disturbances, for those of you who have always stayed on the right side of the law, are anything where the police get called out to and people are acting the fool. Arguments between neighbors? Disturbance. Terrible racket coming from the back yard down the way? Disturbance. So it's pretty generic and it happens a lot.
+
+To look specifically at a crime, we're going to take what we did before and add a filter into it, and we'll name the dataframe what we're looking at.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{disturbance <-}\StringTok{ }\NormalTok{calls }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(CFS_LEGEND }\OperatorTok{==}\StringTok{ "DISTURBANCE"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(}\KeywordTok{month}\NormalTok{(RPT_Date) }\OperatorTok{==}\StringTok{ }\DecValTok{3}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{(RPT_Date) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{total_calls =} \KeywordTok{n}\NormalTok{()) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{TimePeriod =} \KeywordTok{case_when}\NormalTok{(}
+\NormalTok{  RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-08"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Previous"}\NormalTok{,}
+\NormalTok{  RPT_Date }\OperatorTok{>=}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-08"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Current"}\NormalTok{,}
+\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-04-01"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Then we can do our t-test.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t.test}\NormalTok{(total_calls }\OperatorTok{~}\StringTok{ }\NormalTok{TimePeriod, }\DataTypeTok{data =}\NormalTok{ disturbance)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  total_calls by TimePeriod
+## t = 2.8621, df = 37.162, p-value = 0.006875
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##   1.908816 11.158141
+## sample estimates:
+##  mean in group Current mean in group Previous 
+##               55.04348               48.51000
+\end{verbatim}
+
+So what does this say? Typically, you'd see 48.5 disturbances a day on average before coronavirus. Now? 55. Is that a sigificant difference? According to our p-value of .006875, it is. So police are going to more disturbances than usual.
+
+What about traffic calls?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{traffic <-}\StringTok{ }\NormalTok{calls }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(CFS_LEGEND }\OperatorTok{==}\StringTok{ "TRAFFIC"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(}\KeywordTok{month}\NormalTok{(RPT_Date) }\OperatorTok{==}\StringTok{ }\DecValTok{3}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{(RPT_Date) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{total_calls =} \KeywordTok{n}\NormalTok{()) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{TimePeriod =} \KeywordTok{case_when}\NormalTok{(}
+\NormalTok{  RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-08"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Previous"}\NormalTok{,}
+\NormalTok{  RPT_Date }\OperatorTok{>=}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-08"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Current"}\NormalTok{,}
+\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-04-01"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t.test}\NormalTok{(total_calls }\OperatorTok{~}\StringTok{ }\NormalTok{TimePeriod, }\DataTypeTok{data =}\NormalTok{ traffic)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  total_calls by TimePeriod
+## t = -5.351, df = 77.714, p-value = 8.572e-07
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -13.487462  -6.172538
+## sample estimates:
+##  mean in group Current mean in group Previous 
+##                  23.00                  32.83
+\end{verbatim}
+
+Typically get about 33 calls a day, now 23. That's a big difference, and a statistically significant one.
+
+How about car accidents?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{accident <-}\StringTok{ }\NormalTok{calls }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(CFS_LEGEND }\OperatorTok{==}\StringTok{ "ACCIDENT"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(}\KeywordTok{month}\NormalTok{(RPT_Date) }\OperatorTok{==}\StringTok{ }\DecValTok{3}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{(RPT_Date) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{total_calls =} \KeywordTok{n}\NormalTok{()) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{TimePeriod =} \KeywordTok{case_when}\NormalTok{(}
+\NormalTok{  RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-08"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Previous"}\NormalTok{,}
+\NormalTok{  RPT_Date }\OperatorTok{>=}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-08"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Current"}\NormalTok{,}
+\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-04-01"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t.test}\NormalTok{(total_calls }\OperatorTok{~}\StringTok{ }\NormalTok{TimePeriod, }\DataTypeTok{data =}\NormalTok{ accident)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  total_calls by TimePeriod
+## t = -5.2963, df = 52.907, p-value = 2.33e-06
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -11.622648  -5.237352
+## sample estimates:
+##  mean in group Current mean in group Previous 
+##                  17.00                  25.43
+\end{verbatim}
+
+Typically get a little more than 25 accident calls a day. Now, it's 17. Insurance companies are making out like bandits right now.
+
+\hypertarget{what-else-should-we-look-at}{%
+\section{What else should we look at?}\label{what-else-should-we-look-at}}
+
+With a little magic using \texttt{tidyr} to transform the data (\href{http://mattwaite.github.io/sports/transforming-data.html}{learn more about that here}), we can get a peek at other call groups worth exploring.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{calls }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(}\KeywordTok{month}\NormalTok{(RPT_Date) }\OperatorTok{==}\StringTok{ }\DecValTok{3}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{group_by}\NormalTok{(RPT_Date, CFS_LEGEND) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{total_calls =} \KeywordTok{n}\NormalTok{()) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{TimePeriod =} \KeywordTok{case_when}\NormalTok{(}
+\NormalTok{  RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-08"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Previous"}\NormalTok{,}
+\NormalTok{  RPT_Date }\OperatorTok{>=}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-08"}\NormalTok{) }\OperatorTok{~}\StringTok{ "Current"}\NormalTok{,}
+\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(RPT_Date }\OperatorTok{<}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-04-01"}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(TimePeriod, CFS_LEGEND) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{avg_calls =} \KeywordTok{mean}\NormalTok{(total_calls)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{pivot_wider}\NormalTok{(}\DataTypeTok{names_from =} \StringTok{"TimePeriod"}\NormalTok{, }\DataTypeTok{values_from =} \StringTok{"avg_calls"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{na.omit}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 36 x 3
+##    CFS_LEGEND   Current Previous
+##    <chr>          <dbl>    <dbl>
+##  1 ACCIDENT       17       25.4 
+##  2 ALARM           7.70     7.57
+##  3 ALCOHOL         4.39     6.14
+##  4 ARSON           1        1.2 
+##  5 ASSAULT         8.52    10.4 
+##  6 BURGLARY        3.26     3.06
+##  7 DISTURBANCE    55.0     48.5 
+##  8 DRUGS           7.30    10.1 
+##  9 DUI             1.83     3.03
+## 10 EMBEZZLEMENT    1.14     1.43
+## # ... with 26 more rows
+\end{verbatim}
+
+Other interesting stories here? DUI is almost half of what it normally is. Thefts from vehicles is up way up. Also: trespassing?
+
+But are they meaningful differences? Put them to the test.
 
 \end{document}
