@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Aggregates | Data Journalism with R and the Tidyverse</title>
   <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Aggregates | Data Journalism with R and the Tidyverse" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Matt Waite" />
 
 
-<meta name="date" content="2020-03-31" />
+<meta name="date" content="2020-04-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,12 +52,12 @@
 
 <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.12/datatables.js"></script>
+<script src="libs/datatables-binding-0.13/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160712129-1"></script>
 <script>
@@ -291,17 +291,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>But, because those two libraries – and several others that we’re going to use over the course of this class – are so commonly used, there’s a shortcut to loading all of the libraries we’ll need:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.5.2</code></pre>
-<pre><code>## ── Attaching packages ──── tidyverse 1.3.0 ──</code></pre>
-<pre><code>## ✓ ggplot2 3.2.1     ✓ purrr   0.3.3
-## ✓ tibble  2.1.3     ✓ stringr 1.4.0
-## ✓ tidyr   1.0.0     ✓ forcats 0.4.0</code></pre>
+<pre><code>## ── Attaching packages ────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.0     ✓ purrr   0.3.3
+## ✓ tibble  3.0.0     ✓ stringr 1.4.0
+## ✓ tidyr   1.0.2     ✓ forcats 0.5.0</code></pre>
 <pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.5.2</code></pre>
-<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.5.2</code></pre>
 <pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.5.2</code></pre>
 <pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.5.2</code></pre>
 <pre><code>## Warning: package &#39;stringr&#39; was built under R version 3.5.2</code></pre>
 <pre><code>## Warning: package &#39;forcats&#39; was built under R version 3.5.2</code></pre>
-<pre><code>## ── Conflicts ─────── tidyverse_conflicts() ──
+<pre><code>## ── Conflicts ───────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <p>You can keep doing that for as many libraries as you need. I’ve seen notebooks with 10 or more library imports.</p>
@@ -324,7 +323,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <iframe width="560" height="315" src="https://www.youtube.com/embed/BZit27dLwbo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
 <p><strong>So what you put in your import step will be different from mine</strong>. Your first task is to import the data. Here’s mine. Use the tab key to find your data file and get the correct path.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">mountainlions &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/mountainlions.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">mountainlions &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/mountainlions.csv&quot;</span>)</a></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   ID = col_double(),
@@ -334,7 +333,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## )</code></pre>
 <p>Now we can inspect the data we imported. What does it look like? To do that, we use <code>head(mountainlions)</code> to <strong>show the headers and the first six rows of data</strong>. If we wanted to see them all, we could just simply enter <code>mountainlions</code> and run it.</p>
 <p>To get the number of records in our dataset, we run <code>nrow(mountainlions)</code></p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw">head</span>(mountainlions)</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">head</span>(mountainlions)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 4
 ##      ID `Cofirm Type` COUNTY       Date    
 ##   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;        &lt;chr&gt;   
@@ -344,7 +343,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4     4 Mortality     Sioux        5/9/99  
 ## 5     5 Mortality     Box Butte    9/29/99 
 ## 6     6 Track         Scotts Bluff 11/12/99</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">nrow</span>(mountainlions)</a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">nrow</span>(mountainlions)</a></code></pre></div>
 <pre><code>## [1] 393</code></pre>
 </div>
 <div id="group-by-and-count" class="section level2">
@@ -356,11 +355,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We’re going to establish a pattern that will come up again and again throughout this book: <code>data %&gt;% function</code>. The first step of every analysis starts with the data being used. Then we apply functions to the data.</p>
 <p>In our case, the pattern that you’ll use many, many times is: <code>data %&gt;% group_by(FIELD NAME) %&gt;% summarize(VARIABLE NAME = AGGREGATE FUNCTION(FIELD NAME))</code></p>
 <p>Here’s the code:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">mountainlions <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(COUNTY) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb34-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb34-4" data-line-number="4">    <span class="dt">total =</span> <span class="kw">n</span>()</a>
-<a class="sourceLine" id="cb34-5" data-line-number="5">  )</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">mountainlions <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(COUNTY) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb33-4" data-line-number="4">    <span class="dt">total =</span> <span class="kw">n</span>()</a>
+<a class="sourceLine" id="cb33-5" data-line-number="5">  )</a></code></pre></div>
 <pre><code>## # A tibble: 42 x 2
 ##    COUNTY    total
 ##    &lt;chr&gt;     &lt;int&gt;
@@ -377,11 +376,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## # … with 32 more rows</code></pre>
 <p>So let’s walk through that. We start with our dataset – <code>mountainlions</code> – and then we tell it to group the data by a given field in the data. In this case, we wanted to group together all the counties, signified by the field name COUNTY, which you could get from looking at <code>head(mountainlions)</code>. After we group the data, we need to count them up. In dplyr, we use <code>summarize</code> <a href="http://dplyr.tidyverse.org/reference/summarise.html">which can do more than just count things</a>. Inside the parentheses in summarize, we set up the summaries we want. In this case, we just want a count of the counties: <code>total = n(),</code> says create a new field, called <code>total</code> and set it equal to <code>n()</code>, which might look weird, but it’s common in stats. The number of things in a dataset? Statisticians call in n. There are n number of incidents in this dataset. So <code>n()</code> is a function that counts the number of things there are.</p>
 <p>And when we run that, we get a list of counties with a count next to them. But it’s not in any order. So we’ll add another And Then Do This %&gt;% and use <code>arrange</code>. Arrange does what you think it does – it arranges data in order. By default, it’s in ascending order – smallest to largest. But if we want to know the county with the most mountain lion sightings, we need to sort it in descending order. That looks like this:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">mountainlions <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(COUNTY) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb36-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb36-4" data-line-number="4">    <span class="dt">count =</span> <span class="kw">n</span>()</a>
-<a class="sourceLine" id="cb36-5" data-line-number="5">  ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(count))</a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">mountainlions <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(COUNTY) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb35-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb35-4" data-line-number="4">    <span class="dt">count =</span> <span class="kw">n</span>()</a>
+<a class="sourceLine" id="cb35-5" data-line-number="5">  ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(count))</a></code></pre></div>
 <pre><code>## # A tibble: 42 x 2
 ##    COUNTY       count
 ##    &lt;chr&gt;        &lt;int&gt;
@@ -397,11 +396,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 Custer           8
 ## # … with 32 more rows</code></pre>
 <p>We can, if we want, group by more than one thing. So how are these sightings being confirmed? To do that, we can group by County and “Cofirm Type”, which is how the state misspelled Confirm. But note something in this example below:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">mountainlions <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb38-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(COUNTY, <span class="st">`</span><span class="dt">Cofirm Type</span><span class="st">`</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb38-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb38-4" data-line-number="4">    <span class="dt">count =</span> <span class="kw">n</span>()</a>
-<a class="sourceLine" id="cb38-5" data-line-number="5">  ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(count))</a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">mountainlions <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb37-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(COUNTY, <span class="st">`</span><span class="dt">Cofirm Type</span><span class="st">`</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb37-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb37-4" data-line-number="4">    <span class="dt">count =</span> <span class="kw">n</span>()</a>
+<a class="sourceLine" id="cb37-5" data-line-number="5">  ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(count))</a></code></pre></div>
 <pre><code>## # A tibble: 93 x 3
 ## # Groups:   COUNTY [42]
 ##    COUNTY       `Cofirm Type`      count
@@ -423,7 +422,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.3</span> Other aggregates: Mean and median</h2>
 <p>In the last example, we grouped some data together and counted it up, but there’s so much more you can do. You can do multiple measures in a single step as well.</p>
 <p>Let’s look at some <a href="https://unl.box.com/s/09t2u4qoncfh6qlv2156flzlxb8ruzpq">salary data from the University of Nebraska</a>.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">salaries &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/nusalaries1819.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">salaries &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/nusalaries1819.csv&quot;</span>)</a></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   Employee = col_character(),
@@ -434,7 +433,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   `Salary from State Aided Funds` = col_number(),
 ##   `Salary from Other Funds` = col_number()
 ## )</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw">head</span>(salaries)</a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw">head</span>(salaries)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 7
 ##   Employee Position Campus Department `Budgeted Annua… `Salary from St…
 ##   &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;                 &lt;dbl&gt;            &lt;dbl&gt;
@@ -446,12 +445,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6 Abdel-M… Researc… UNL    Public Po…            58502               NA
 ## # … with 1 more variable: `Salary from Other Funds` &lt;dbl&gt;</code></pre>
 <p>In summarize, we can calculate any number of measures. Here, we’ll use R’s built in mean and median functions to calculate … well, you get the idea.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">salaries <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb44-2" data-line-number="2"><span class="st">  </span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb44-3" data-line-number="3">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
-<a class="sourceLine" id="cb44-4" data-line-number="4">    <span class="dt">mean_salary =</span> <span class="kw">mean</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>),</a>
-<a class="sourceLine" id="cb44-5" data-line-number="5">    <span class="dt">median_salary =</span> <span class="kw">median</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>)</a>
-<a class="sourceLine" id="cb44-6" data-line-number="6">  )</a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">salaries <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb43-2" data-line-number="2"><span class="st">  </span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb43-3" data-line-number="3">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb43-4" data-line-number="4">    <span class="dt">mean_salary =</span> <span class="kw">mean</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>),</a>
+<a class="sourceLine" id="cb43-5" data-line-number="5">    <span class="dt">median_salary =</span> <span class="kw">median</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>)</a>
+<a class="sourceLine" id="cb43-6" data-line-number="6">  )</a></code></pre></div>
 <pre><code>## # A tibble: 1 x 3
 ##   count mean_salary median_salary
 ##   &lt;int&gt;       &lt;dbl&gt;         &lt;dbl&gt;
@@ -459,7 +458,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>So there’s 13,039 employees in the database, spread across four campuses plus the system office. The mean or average salary is about $62,000, but the median salary is slightly more than $51,000.</p>
 <p>Why?</p>
 <p>Let’s let sort help us.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1">salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1">salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 13,039 x 7
 ##    Employee Position Campus Department `Budgeted Annua… `Salary from St…
 ##    &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;                 &lt;dbl&gt;            &lt;dbl&gt;
@@ -481,14 +480,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.4</span> Even more aggregates</h2>
 <p>There’s a ton of things we can do in summarize – we’ll work with more of them as the course progresses – but here’s a few other questions you can ask.</p>
 <p>Which department on campus has the highest wage bill? And what is the highest and lowest salary in the department? And how wide is the spread between salaries? We can find that with <code>sum</code> to add up the salaries to get the total wage bill, <code>min</code> to find the minumum salary, <code>max</code> to find the maximum salary and <code>sd</code> to find the standard deviation in the numbers.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1">salaries <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb48-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(Campus, Department) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb48-3" data-line-number="3"><span class="st">  </span><span class="kw">summarize</span>(</a>
-<a class="sourceLine" id="cb48-4" data-line-number="4">    <span class="dt">total =</span> <span class="kw">sum</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>), </a>
-<a class="sourceLine" id="cb48-5" data-line-number="5">    <span class="dt">avgsalary =</span> <span class="kw">mean</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>), </a>
-<a class="sourceLine" id="cb48-6" data-line-number="6">    <span class="dt">minsalary =</span> <span class="kw">min</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>),</a>
-<a class="sourceLine" id="cb48-7" data-line-number="7">    <span class="dt">maxsalary =</span> <span class="kw">max</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>),</a>
-<a class="sourceLine" id="cb48-8" data-line-number="8">    <span class="dt">stdev =</span> <span class="kw">sd</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(total))</a></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1">salaries <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb47-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(Campus, Department) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb47-3" data-line-number="3"><span class="st">  </span><span class="kw">summarize</span>(</a>
+<a class="sourceLine" id="cb47-4" data-line-number="4">    <span class="dt">total =</span> <span class="kw">sum</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>), </a>
+<a class="sourceLine" id="cb47-5" data-line-number="5">    <span class="dt">avgsalary =</span> <span class="kw">mean</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>), </a>
+<a class="sourceLine" id="cb47-6" data-line-number="6">    <span class="dt">minsalary =</span> <span class="kw">min</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>),</a>
+<a class="sourceLine" id="cb47-7" data-line-number="7">    <span class="dt">maxsalary =</span> <span class="kw">max</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>),</a>
+<a class="sourceLine" id="cb47-8" data-line-number="8">    <span class="dt">stdev =</span> <span class="kw">sd</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(total))</a></code></pre></div>
 <pre><code>## # A tibble: 804 x 7
 ## # Groups:   Campus [5]
 ##    Campus Department                  total avgsalary minsalary maxsalary  stdev

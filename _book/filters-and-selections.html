@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Filters and selections | Data Journalism with R and the Tidyverse</title>
   <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Filters and selections | Data Journalism with R and the Tidyverse" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Matt Waite" />
 
 
-<meta name="date" content="2020-03-31" />
+<meta name="date" content="2020-04-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,12 +52,12 @@
 
 <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.12/datatables.js"></script>
+<script src="libs/datatables-binding-0.13/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160712129-1"></script>
 <script>
@@ -273,8 +273,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Filtering creates a subset of the data based on criteria</strong>. All records where the count is greater than 10. All records that match “Nebraska”. Something like that. <strong>Filtering works with rows – when we filter, we get fewer rows back than we start with.</strong></p>
 <p><strong>Selecting simply returns only the fields named</strong>. So if you only want to see Year and County, you select those fields. When you look at your data again, you’ll have two columns. If you try to use one of your columns that you had before you used select, you’ll get an error. <strong>Selecting works with columns. You will have the same number of records when you are done, but fewer columns of data to work with.</strong></p>
 <p>Let’s work with the <a href="https://unl.box.com/s/9826nisk29fztlc1xhup988eah0mqdby">salaries data from the University of Nebraska</a>. It has data from all NU campuses, but only one of them is our campus, so let’s filter out everyone else.</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1">salaries &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/nusalaries1819.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1">salaries &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/nusalaries1819.csv&quot;</span>)</a></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   Employee = col_character(),
@@ -287,9 +287,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## )</code></pre>
 <p>The data we want to filter on is in <code>Campus</code>. So we’re going to use filter and something called a comparison operator. We need to filter all records equal to UNL. The comparison operators in R, like most programming languages, are == for equal to, != for not equal to, &gt; for greater than, &gt;= for greater than or equal to and so on.</p>
 <p><strong>Be careful: <code>=</code> is not <code>==</code> and <code>=</code> is not “equal to”. <code>=</code> is an assignment operator in most languages – how things get named.</strong></p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1">unl &lt;-<span class="st"> </span>salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Campus <span class="op">==</span><span class="st"> &quot;UNL&quot;</span>)</a>
-<a class="sourceLine" id="cb81-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb81-3" data-line-number="3"><span class="kw">head</span>(unl)</a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1">unl &lt;-<span class="st"> </span>salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Campus <span class="op">==</span><span class="st"> &quot;UNL&quot;</span>)</a>
+<a class="sourceLine" id="cb80-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb80-3" data-line-number="3"><span class="kw">head</span>(unl)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 7
 ##   Employee Position Campus Department `Budgeted Annua… `Salary from St…
 ##   &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;                 &lt;dbl&gt;            &lt;dbl&gt;
@@ -303,9 +303,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>And just like that, we have just UNL, which we can verify looking at the head, the first six rows.</p>
 <p>We also have more data than we might want. For example, the salary data is only in the Budgeted Annual Salary column. The other two salary fields are useless detail.</p>
 <p>To simplify our dataset, we can use select.</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1">selected_unl &lt;-<span class="st"> </span>unl <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(Employee, Position, Campus, <span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>)</a>
-<a class="sourceLine" id="cb83-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb83-3" data-line-number="3"><span class="kw">head</span>(selected_unl)</a></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1">selected_unl &lt;-<span class="st"> </span>unl <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(Employee, Position, Campus, <span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>)</a>
+<a class="sourceLine" id="cb82-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb82-3" data-line-number="3"><span class="kw">head</span>(selected_unl)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 4
 ##   Employee           Position                      Campus `Budgeted Annual Sala…
 ##   &lt;chr&gt;              &lt;chr&gt;                         &lt;chr&gt;                   &lt;dbl&gt;
@@ -319,21 +319,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="combining-filters" class="section level2">
 <h2><span class="header-section-number">9.1</span> Combining filters</h2>
 <p>So let’s say we wanted to know how many full professors make more than $100,000. We can do this a number of ways. The first is we can chain together a whole lot of filters.</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1">profs &lt;-<span class="st"> </span>salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Campus <span class="op">==</span><span class="st"> &quot;UNL&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Position <span class="op">==</span><span class="st"> &quot;Professor&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">100000</span>)</a>
-<a class="sourceLine" id="cb85-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb85-3" data-line-number="3"><span class="kw">nrow</span>(profs)</a></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1">profs &lt;-<span class="st"> </span>salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Campus <span class="op">==</span><span class="st"> &quot;UNL&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Position <span class="op">==</span><span class="st"> &quot;Professor&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">100000</span>)</a>
+<a class="sourceLine" id="cb84-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb84-3" data-line-number="3"><span class="kw">nrow</span>(profs)</a></code></pre></div>
 <pre><code>## [1] 312</code></pre>
 <p>So that gives us 312 full professors – that’s the top rank of tenured professors – who make more than $100,000. But that’s silly and repetitive, no? We can do better using boolean operators – AND and OR. In this case, AND is <code>&amp;</code> and OR is <code>|</code>.</p>
 <p>The difference? With AND, all three things must be true to be included. With OR, any of those three things can be true and it will be included. An assistant professor making $100k at UNO will get included because they make $100k. One of the conditions is true.</p>
 <p>Here’s the difference.</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1">andprofs &lt;-<span class="st"> </span>salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Campus <span class="op">==</span><span class="st"> &quot;UNL&quot;</span> <span class="op">&amp;</span><span class="st"> </span>Position <span class="op">==</span><span class="st"> &quot;Professor&quot;</span> <span class="op">&amp;</span><span class="st"> `</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">100000</span>)</a>
-<a class="sourceLine" id="cb87-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb87-3" data-line-number="3"><span class="kw">nrow</span>(andprofs)</a></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1">andprofs &lt;-<span class="st"> </span>salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Campus <span class="op">==</span><span class="st"> &quot;UNL&quot;</span> <span class="op">&amp;</span><span class="st"> </span>Position <span class="op">==</span><span class="st"> &quot;Professor&quot;</span> <span class="op">&amp;</span><span class="st"> `</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">100000</span>)</a>
+<a class="sourceLine" id="cb86-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb86-3" data-line-number="3"><span class="kw">nrow</span>(andprofs)</a></code></pre></div>
 <pre><code>## [1] 312</code></pre>
 <p>So AND gives us the same answer we got before. What does OR give us?</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1">orprofs &lt;-<span class="st"> </span>salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Campus <span class="op">==</span><span class="st"> &quot;UNL&quot;</span> <span class="op">|</span><span class="st"> </span>Position <span class="op">==</span><span class="st"> &quot;Professor&quot;</span> <span class="op">|</span><span class="st"> `</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">100000</span>)</a>
-<a class="sourceLine" id="cb89-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb89-3" data-line-number="3"><span class="kw">nrow</span>(orprofs)</a></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1">orprofs &lt;-<span class="st"> </span>salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Campus <span class="op">==</span><span class="st"> &quot;UNL&quot;</span> <span class="op">|</span><span class="st"> </span>Position <span class="op">==</span><span class="st"> &quot;Professor&quot;</span> <span class="op">|</span><span class="st"> `</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">100000</span>)</a>
+<a class="sourceLine" id="cb88-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb88-3" data-line-number="3"><span class="kw">nrow</span>(orprofs)</a></code></pre></div>
 <pre><code>## [1] 7248</code></pre>
 <p>So there’s 7,248 unique people in the NU system who are at UNL (6,079 to be exact), are full Professors (1,086 of them), or make more than $100,000 (1,604) of them. Included in that list? Football coach Scott Frost, who makes … ahem … more than $100,000. A smidge more.</p>
 

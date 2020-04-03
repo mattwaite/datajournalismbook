@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 13 Cleaning Data Part IV: PDFs | Data Journalism with R and the Tidyverse</title>
   <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 13 Cleaning Data Part IV: PDFs | Data Journalism with R and the Tidyverse" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Matt Waite" />
 
 
-<meta name="date" content="2020-03-31" />
+<meta name="date" content="2020-04-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,12 +52,12 @@
 
 <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.12/datatables.js"></script>
+<script src="libs/datatables-binding-0.13/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160712129-1"></script>
 <script>
@@ -313,10 +313,10 @@ your computer.</p>
 <h2><span class="header-section-number">13.3</span> Cleaning up the data in R</h2>
 <p>The good news is that we have data we don’t have to retype. The bad news is, it’s hardly in importable shape.</p>
 <p>Let’s load libraries.</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <p>To import this, we need one row of headers. We have three. And we need headers that make sense.</p>
 <p>We can spell these out in the import step. First, we’ll use <code>skip</code> to skip the first three lines. Then we’ll spell out the column names by hand in a <code>col_names</code> bit. Here’s how it looks.</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1">receipts &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/tabula-General_Fund_Receipts_January_2020.csv&quot;</span>, <span class="dt">skip =</span> <span class="dv">3</span>, <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;Month&quot;</span>, <span class="st">&quot;TotalActualNetReceipts&quot;</span>, <span class="st">&quot;TotalProjectedNetReceipts&quot;</span>, <span class="st">&quot;Difference&quot;</span>, <span class="st">&quot;PercentDifference&quot;</span>, <span class="st">&quot;CumulativeActualNetReceipts&quot;</span>, <span class="st">&quot;CumulativeProjectedNetReceipts&quot;</span>, <span class="st">&quot;CumulativeDifference&quot;</span>,<span class="st">&quot;CumulativePercentDifference&quot;</span>), <span class="dt">skip_empty_rows =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1">receipts &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/tabula-General_Fund_Receipts_January_2020.csv&quot;</span>, <span class="dt">skip =</span> <span class="dv">3</span>, <span class="dt">col_names =</span> <span class="kw">c</span>(<span class="st">&quot;Month&quot;</span>, <span class="st">&quot;TotalActualNetReceipts&quot;</span>, <span class="st">&quot;TotalProjectedNetReceipts&quot;</span>, <span class="st">&quot;Difference&quot;</span>, <span class="st">&quot;PercentDifference&quot;</span>, <span class="st">&quot;CumulativeActualNetReceipts&quot;</span>, <span class="st">&quot;CumulativeProjectedNetReceipts&quot;</span>, <span class="st">&quot;CumulativeDifference&quot;</span>,<span class="st">&quot;CumulativePercentDifference&quot;</span>), <span class="dt">skip_empty_rows =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   Month = col_character(),
@@ -334,22 +334,22 @@ your computer.</p>
 <p>At the end, we need to use a function called <code>mutate_at</code> and convert the columns that aren’t text into numbers.</p>
 <p>And one last thing: If we do many months of this, we should note which report this comes from. We can do this with mutate as well.</p>
 <p>Here’s what that looks like:</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" data-line-number="1">receipts <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(</a>
-<a class="sourceLine" id="cb157-2" data-line-number="2">  <span class="dt">TotalActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,TotalActualNetReceipts),</a>
-<a class="sourceLine" id="cb157-3" data-line-number="3">  <span class="dt">TotalActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,TotalActualNetReceipts),</a>
-<a class="sourceLine" id="cb157-4" data-line-number="4">  <span class="dt">TotalProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,TotalProjectedNetReceipts),</a>
-<a class="sourceLine" id="cb157-5" data-line-number="5">  <span class="dt">TotalProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,TotalProjectedNetReceipts),</a>
-<a class="sourceLine" id="cb157-6" data-line-number="6">  <span class="dt">Difference =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,Difference),</a>
-<a class="sourceLine" id="cb157-7" data-line-number="7">  <span class="dt">Difference =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,Difference),</a>
-<a class="sourceLine" id="cb157-8" data-line-number="8">  <span class="dt">PercentDifference =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">%&quot;</span>,<span class="st">&quot;&quot;</span>,PercentDifference),</a>
-<a class="sourceLine" id="cb157-9" data-line-number="9">  <span class="dt">CumulativeActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeActualNetReceipts),</a>
-<a class="sourceLine" id="cb157-10" data-line-number="10">  <span class="dt">CumulativeActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeActualNetReceipts),</a>
-<a class="sourceLine" id="cb157-11" data-line-number="11">  <span class="dt">CumulativeProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeProjectedNetReceipts),</a>
-<a class="sourceLine" id="cb157-12" data-line-number="12">  <span class="dt">CumulativeProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeProjectedNetReceipts),</a>
-<a class="sourceLine" id="cb157-13" data-line-number="13">  <span class="dt">CumulativeDifference =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeDifference),</a>
-<a class="sourceLine" id="cb157-14" data-line-number="14">  <span class="dt">CumulativeDifference =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeDifference),</a>
-<a class="sourceLine" id="cb157-15" data-line-number="15">  <span class="dt">CumulativePercentDifference =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">%&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativePercentDifference)</a>
-<a class="sourceLine" id="cb157-16" data-line-number="16">  ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(<span class="op">-</span>Month), as.numeric) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">ReportMonth =</span> <span class="st">&quot;January 2020&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" data-line-number="1">receipts <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb156-2" data-line-number="2">  <span class="dt">TotalActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,TotalActualNetReceipts),</a>
+<a class="sourceLine" id="cb156-3" data-line-number="3">  <span class="dt">TotalActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,TotalActualNetReceipts),</a>
+<a class="sourceLine" id="cb156-4" data-line-number="4">  <span class="dt">TotalProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,TotalProjectedNetReceipts),</a>
+<a class="sourceLine" id="cb156-5" data-line-number="5">  <span class="dt">TotalProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,TotalProjectedNetReceipts),</a>
+<a class="sourceLine" id="cb156-6" data-line-number="6">  <span class="dt">Difference =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,Difference),</a>
+<a class="sourceLine" id="cb156-7" data-line-number="7">  <span class="dt">Difference =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,Difference),</a>
+<a class="sourceLine" id="cb156-8" data-line-number="8">  <span class="dt">PercentDifference =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">%&quot;</span>,<span class="st">&quot;&quot;</span>,PercentDifference),</a>
+<a class="sourceLine" id="cb156-9" data-line-number="9">  <span class="dt">CumulativeActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeActualNetReceipts),</a>
+<a class="sourceLine" id="cb156-10" data-line-number="10">  <span class="dt">CumulativeActualNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeActualNetReceipts),</a>
+<a class="sourceLine" id="cb156-11" data-line-number="11">  <span class="dt">CumulativeProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeProjectedNetReceipts),</a>
+<a class="sourceLine" id="cb156-12" data-line-number="12">  <span class="dt">CumulativeProjectedNetReceipts =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeProjectedNetReceipts),</a>
+<a class="sourceLine" id="cb156-13" data-line-number="13">  <span class="dt">CumulativeDifference =</span> <span class="kw">gsub</span>(<span class="st">&quot;,&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeDifference),</a>
+<a class="sourceLine" id="cb156-14" data-line-number="14">  <span class="dt">CumulativeDifference =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">$&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativeDifference),</a>
+<a class="sourceLine" id="cb156-15" data-line-number="15">  <span class="dt">CumulativePercentDifference =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">%&quot;</span>,<span class="st">&quot;&quot;</span>,CumulativePercentDifference)</a>
+<a class="sourceLine" id="cb156-16" data-line-number="16">  ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(<span class="op">-</span>Month), as.numeric) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">ReportMonth =</span> <span class="st">&quot;January 2020&quot;</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 7 x 10
 ##   Month TotalActualNetR… TotalProjectedN… Difference PercentDifferen…
 ##   &lt;chr&gt;            &lt;dbl&gt;            &lt;dbl&gt;      &lt;dbl&gt;            &lt;dbl&gt;

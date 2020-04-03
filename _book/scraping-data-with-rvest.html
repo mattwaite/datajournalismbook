@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 15 Scraping data with Rvest | Data Journalism with R and the Tidyverse</title>
   <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 15 Scraping data with Rvest | Data Journalism with R and the Tidyverse" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Matt Waite" />
 
 
-<meta name="date" content="2020-03-31" />
+<meta name="date" content="2020-04-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,12 +52,12 @@
 
 <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.12/datatables.js"></script>
+<script src="libs/datatables-binding-0.13/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160712129-1"></script>
 <script>
@@ -276,7 +276,7 @@ One of the most powerful tools you can learn as a data journalist is how to scra
 <p>Let’s try an easy one.</p>
 <p>We’re going to use a library called <code>rvest</code>, which you can install it the same way we’ve done all installs: go to the console and <code>install.packages(&quot;rvest&quot;)</code>.</p>
 <p>We’ll load them first:</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" data-line-number="1"><span class="kw">library</span>(rvest)</a></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" data-line-number="1"><span class="kw">library</span>(rvest)</a></code></pre></div>
 <pre><code>## Warning: package &#39;rvest&#39; was built under R version 3.5.2</code></pre>
 <pre><code>## Loading required package: xml2</code></pre>
 <pre><code>## Warning: package &#39;xml2&#39; was built under R version 3.5.2</code></pre>
@@ -288,25 +288,25 @@ One of the most powerful tools you can learn as a data journalist is how to scra
 <pre><code>## The following object is masked from &#39;package:readr&#39;:
 ## 
 ##     guess_encoding</code></pre>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <p>The first thing we need to do is define a URL. What URL are we going to scrape? This is where paying attention to URLs pays off. Some search urls are addressable – meaning you can copy the url of your search and go to it again and again. Or is the search term invisible?</p>
 <p>Let’s take an example from the Nebraska Legislature. The Legislature publishes a daily agenda that tells you what bills will be debated on the floor that day. Here’s <a href="https://nebraskalegislature.gov/calendar/agenda.php?day=2020-02-03">an example from Feb. 3</a>. Go that page. You’ll see multiple sections – a reports section, and the General File section. General File is the first stage of floor debate. Those are the bills to be debated.</p>
 <p>Let’s grab them with rvest.</p>
 <p>First, we create a url variable and set it equal to that url.</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" data-line-number="1">url &lt;-<span class="st"> &quot;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-02-03&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1">url &lt;-<span class="st"> &quot;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-02-03&quot;</span></a></code></pre></div>
 <p>Now we’re going to do a handful of things at once. We’re going to take that url, pass it to a <code>read_html</code> command, which does what you think it does. We’re then going to search that HTML for a specific node, the node that contains our data.</p>
 <p>The most difficult part of scraping data from any website is knowing what exact HTML tag you need to grab. In this case, we want a <code>&lt;table&gt;</code> tag that has all of our data table in it. But how do you tell R which one that is? Well, it’s easy, once you know what to do. But it’s not simple. So I’ve made a short video to show you how to find it.</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/kYkSE3zWa9Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
 <p>Using that same trick on the Legislature page, we find the table with those general file bills and it’s in something called <code>agenda_table_4464</code>. With that, we can turn it into a table.</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1">agenda &lt;-<span class="st"> </span>url <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb194-2" data-line-number="2"><span class="st">  </span><span class="kw">read_html</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb194-3" data-line-number="3"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="dt">xpath =</span> <span class="st">&#39;//*[@id=&quot;agenda_table_4464&quot;]&#39;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb194-4" data-line-number="4"><span class="st">  </span><span class="kw">html_table</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" data-line-number="1">agenda &lt;-<span class="st"> </span>url <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb193-2" data-line-number="2"><span class="st">  </span><span class="kw">read_html</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb193-3" data-line-number="3"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="dt">xpath =</span> <span class="st">&#39;//*[@id=&quot;agenda_table_4464&quot;]&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb193-4" data-line-number="4"><span class="st">  </span><span class="kw">html_table</span>()</a></code></pre></div>
 <p>After doing that, looking at the environment for your agenda. And you’ll see … not a dataframe. You’ll see a list. With one thing in it. That one thing? A dataframe. So we need to grab that first element. We get it by doing this:</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" data-line-number="1">agenda &lt;-<span class="st"> </span>agenda[[<span class="dv">1</span>]]</a></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1">agenda &lt;-<span class="st"> </span>agenda[[<span class="dv">1</span>]]</a></code></pre></div>
 <p>And now we can take a look:</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" data-line-number="1">agenda</a></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" data-line-number="1">agenda</a></code></pre></div>
 <pre><code>##                                                                                                Document
 ## 1   Currently or Pendingon Floor\n                                                                LB267
 ## 2   Currently or Pendingon Floor\n                                                                LB205
@@ -341,7 +341,7 @@ One of the most powerful tools you can learn as a data journalist is how to scra
 ## 9        Change provisions relating to compensation for burial expenses under the Nebraska Workers&#39; Compensation Act
 ## 10                                                          Change provisions relating to the Student Discipline Act</code></pre>
 <p>And as you can see, it’s … not perfect. But we can fix that with a little <code>gsub</code> magic.</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" data-line-number="1">agenda <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Document =</span> <span class="kw">gsub</span>(<span class="st">&quot;Currently or Pendingon Floor</span><span class="ch">\n</span><span class="st"> &quot;</span>,<span class="st">&quot;&quot;</span>,Document))</a></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" data-line-number="1">agenda <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Document =</span> <span class="kw">gsub</span>(<span class="st">&quot;Currently or Pendingon Floor</span><span class="ch">\n</span><span class="st"> &quot;</span>,<span class="st">&quot;&quot;</span>,Document))</a></code></pre></div>
 <pre><code>##                                                                 Document
 ## 1                                                                  LB267
 ## 2                                                                  LB205
@@ -380,13 +380,13 @@ One of the most powerful tools you can learn as a data journalist is how to scra
 <p>The Nebraska Legislature, with it’s unique unicameral or one house structure, does some things a little differently than other legislatures. Example: Bills have to go through three rounds of debate before getting passed. There’s General File (round 1), Select File (round 2), and Final Reading (round 3).</p>
 <p>So what does a day where they do more than general file look like? <a href="https://nebraskalegislature.gov/calendar/agenda.php?day=2020-02-21">Like this</a>.</p>
 <p>How do we scrape that?</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" data-line-number="1">harderurl &lt;-<span class="st"> &quot;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-02-21&quot;</span></a></code></pre></div>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" data-line-number="1">harderagenda &lt;-<span class="st"> </span>harderurl <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb201-2" data-line-number="2"><span class="st">  </span><span class="kw">read_html</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb201-3" data-line-number="3"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;table&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb201-4" data-line-number="4"><span class="st">  </span><span class="kw">html_table</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" data-line-number="1">harderurl &lt;-<span class="st"> &quot;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-02-21&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" data-line-number="1">harderagenda &lt;-<span class="st"> </span>harderurl <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb200-2" data-line-number="2"><span class="st">  </span><span class="kw">read_html</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb200-3" data-line-number="3"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;table&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb200-4" data-line-number="4"><span class="st">  </span><span class="kw">html_table</span>()</a></code></pre></div>
 <p>You can see that <code>harderagenda</code> has a list of four instead of a list of one. We can see each item in the list has a dataframe. We can see them individually. Here’s the first:</p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" data-line-number="1">harderagenda[[<span class="dv">1</span>]]</a></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" data-line-number="1">harderagenda[[<span class="dv">1</span>]]</a></code></pre></div>
 <pre><code>##                                                                                               Document
 ## 1 Currently or Pendingon Floor\n                                                                LB1054
 ## 2  Currently or Pendingon Floor\n                                                                LB944
@@ -403,7 +403,7 @@ One of the most powerful tools you can learn as a data journalist is how to scra
 ## 3                                                                                                                                                                                                                                                                                                                                                                                 Change provisions relating to racial profiling and require law enforcement training
 ## 4                                                                                                                                                                                                                                                                                                                                                            Provide for state park permits  for disabled veterans and change nonresident fees for state park permits</code></pre>
 <p>Here’s the second:</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" data-line-number="1">harderagenda[[<span class="dv">2</span>]]</a></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" data-line-number="1">harderagenda[[<span class="dv">2</span>]]</a></code></pre></div>
 <pre><code>##                                                                                               Document
 ## 1 Currently or Pendingon Floor\n                                                                LB1061
 ## 2 Currently or Pendingon Floor\n                                                                LB1014
@@ -422,19 +422,19 @@ One of the most powerful tools you can learn as a data journalist is how to scra
 <p>So we can merge those together no problem, but how would we know what stage each bill is at?</p>
 <p>Look at the page – we can see that the bills are separated by a big headline like “SELECT FILE: 2020 PRIORITY BILLS”. To separate these, we need to grab those and then add them to each bill using mutate.</p>
 <p>Here’s how we grab them:</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb206-1" data-line-number="1">labels &lt;-<span class="st"> </span>harderurl <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb206-2" data-line-number="2"><span class="st">  </span><span class="kw">read_html</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb206-3" data-line-number="3"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;.card-header&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb206-4" data-line-number="4"><span class="st">  </span><span class="kw">html_text</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" data-line-number="1">labels &lt;-<span class="st"> </span>harderurl <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb205-2" data-line-number="2"><span class="st">  </span><span class="kw">read_html</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb205-3" data-line-number="3"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;.card-header&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb205-4" data-line-number="4"><span class="st">  </span><span class="kw">html_text</span>()</a></code></pre></div>
 <p>Another list. If you look at the first, it’s at the top of the page with no bills. Here’s the second:</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" data-line-number="1">labels[[<span class="dv">2</span>]]</a></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb206-1" data-line-number="1">labels[[<span class="dv">2</span>]]</a></code></pre></div>
 <pre><code>## [1] &quot;\n                    SELECT FILE:  2020 PRIORITY BILLS\n                &quot;</code></pre>
 <p>So we know can see there’s some garbage in there we want to clean out. We can use a new library called <code>stringr</code> to trim the excess spaces and <code>gsub</code> to strip the newline character: <code>\n</code>.</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" data-line-number="1">harderagenda[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb209-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Document =</span> <span class="kw">gsub</span>(<span class="st">&quot;Currently or Pendingon Floor</span><span class="ch">\n</span><span class="st"> &quot;</span>,<span class="st">&quot;&quot;</span>,Document)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb209-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> labels[[<span class="dv">2</span>]]) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb209-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="st">&quot;&quot;</span>,Stage)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb209-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">str_trim</span>(Stage, <span class="dt">side =</span> <span class="st">&quot;both&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb208-1" data-line-number="1">harderagenda[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb208-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Document =</span> <span class="kw">gsub</span>(<span class="st">&quot;Currently or Pendingon Floor</span><span class="ch">\n</span><span class="st"> &quot;</span>,<span class="st">&quot;&quot;</span>,Document)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb208-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> labels[[<span class="dv">2</span>]]) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb208-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="st">&quot;&quot;</span>,Stage)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb208-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">str_trim</span>(Stage, <span class="dt">side =</span> <span class="st">&quot;both&quot;</span>))</a></code></pre></div>
 <pre><code>##                                                                Document
 ## 1                                                                LB1054
 ## 2                                                                 LB944
@@ -457,28 +457,28 @@ One of the most powerful tools you can learn as a data journalist is how to scra
 ## 4 SELECT FILE:  2020 PRIORITY BILLS</code></pre>
 <p>Now it’s just a matter grinding through the items in the list.</p>
 <p>NOTE: This is grossly inefficient and very manual. And, we’d have to change this for every day we want to scrape. As such, this is not the “right” way to do this. We’ll cover that in the next chapter.</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" data-line-number="1">harderagenda1 &lt;-<span class="st"> </span>harderagenda[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span></a>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb210-1" data-line-number="1">harderagenda1 &lt;-<span class="st"> </span>harderagenda[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb210-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Document =</span> <span class="kw">gsub</span>(<span class="st">&quot;Currently or Pendingon Floor</span><span class="ch">\n</span><span class="st"> &quot;</span>,<span class="st">&quot;&quot;</span>,Document)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb210-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> labels[[<span class="dv">2</span>]]) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="st">&quot;&quot;</span>,Stage)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb210-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">str_trim</span>(Stage, <span class="dt">side =</span> <span class="st">&quot;both&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" data-line-number="1">harderagenda2 &lt;-<span class="st"> </span>harderagenda[[<span class="dv">2</span>]] <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb211-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Document =</span> <span class="kw">gsub</span>(<span class="st">&quot;Currently or Pendingon Floor</span><span class="ch">\n</span><span class="st"> &quot;</span>,<span class="st">&quot;&quot;</span>,Document)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb211-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> labels[[<span class="dv">2</span>]]) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="st">&quot;&quot;</span>,Stage)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb211-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> labels[[<span class="dv">3</span>]]) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="st">&quot;&quot;</span>,Stage)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb211-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">str_trim</span>(Stage, <span class="dt">side =</span> <span class="st">&quot;both&quot;</span>))</a></code></pre></div>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb212-1" data-line-number="1">harderagenda2 &lt;-<span class="st"> </span>harderagenda[[<span class="dv">2</span>]] <span class="op">%&gt;%</span><span class="st"> </span></a>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb212-1" data-line-number="1">harderagenda3 &lt;-<span class="st"> </span>harderagenda[[<span class="dv">3</span>]] <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb212-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Document =</span> <span class="kw">gsub</span>(<span class="st">&quot;Currently or Pendingon Floor</span><span class="ch">\n</span><span class="st"> &quot;</span>,<span class="st">&quot;&quot;</span>,Document)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb212-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> labels[[<span class="dv">3</span>]]) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="st">&quot;&quot;</span>,Stage)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb212-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> labels[[<span class="dv">4</span>]]) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="st">&quot;&quot;</span>,Stage)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb212-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">str_trim</span>(Stage, <span class="dt">side =</span> <span class="st">&quot;both&quot;</span>))</a></code></pre></div>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1">harderagenda3 &lt;-<span class="st"> </span>harderagenda[[<span class="dv">3</span>]] <span class="op">%&gt;%</span><span class="st"> </span></a>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1">harderagenda4 &lt;-<span class="st"> </span>harderagenda[[<span class="dv">4</span>]] <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb213-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Document =</span> <span class="kw">gsub</span>(<span class="st">&quot;Currently or Pendingon Floor</span><span class="ch">\n</span><span class="st"> &quot;</span>,<span class="st">&quot;&quot;</span>,Document)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb213-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> labels[[<span class="dv">4</span>]]) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="st">&quot;&quot;</span>,Stage)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb213-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> labels[[<span class="dv">5</span>]]) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="st">&quot;&quot;</span>,Stage)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb213-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">str_trim</span>(Stage, <span class="dt">side =</span> <span class="st">&quot;both&quot;</span>))</a></code></pre></div>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" data-line-number="1">harderagenda4 &lt;-<span class="st"> </span>harderagenda[[<span class="dv">4</span>]] <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb214-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Document =</span> <span class="kw">gsub</span>(<span class="st">&quot;Currently or Pendingon Floor</span><span class="ch">\n</span><span class="st"> &quot;</span>,<span class="st">&quot;&quot;</span>,Document)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb214-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> labels[[<span class="dv">5</span>]]) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="st">&quot;&quot;</span>,Stage)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb214-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Stage =</span> <span class="kw">str_trim</span>(Stage, <span class="dt">side =</span> <span class="st">&quot;both&quot;</span>))</a></code></pre></div>
 <p>Now we merge:</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1">largeragenda &lt;-<span class="st"> </span><span class="kw">rbind</span>(harderagenda1, harderagenda2)</a>
-<a class="sourceLine" id="cb215-2" data-line-number="2">largeragenda &lt;-<span class="st"> </span><span class="kw">rbind</span>(largeragenda, harderagenda3)</a>
-<a class="sourceLine" id="cb215-3" data-line-number="3">largeragenda &lt;-<span class="st"> </span><span class="kw">rbind</span>(largeragenda, harderagenda4)</a></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" data-line-number="1">largeragenda &lt;-<span class="st"> </span><span class="kw">rbind</span>(harderagenda1, harderagenda2)</a>
+<a class="sourceLine" id="cb214-2" data-line-number="2">largeragenda &lt;-<span class="st"> </span><span class="kw">rbind</span>(largeragenda, harderagenda3)</a>
+<a class="sourceLine" id="cb214-3" data-line-number="3">largeragenda &lt;-<span class="st"> </span><span class="kw">rbind</span>(largeragenda, harderagenda4)</a></code></pre></div>
 <p>And now we have a dataset of all bills and what stage they’re at for that day.</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" data-line-number="1">largeragenda</a></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1">largeragenda</a></code></pre></div>
 <pre><code>##                                                                 Document
 ## 1                                                                 LB1054
 ## 2                                                                  LB944

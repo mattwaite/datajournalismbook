@@ -118,7 +118,7 @@
 
 \title{Data Journalism with R and the Tidyverse}
 \author{Matt Waite}
-\date{2020-03-31}
+\date{2020-04-02}
 
 \begin{document}
 \maketitle
@@ -2349,7 +2349,7 @@ Here's an example using sensible defaults for weighting -- unfortunately \href{h
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3036
+## [1] 3033
 \end{verbatim}
 
 Cuts it down by almost 1000. That seems pretty good. Here's a different method, using a method that turns words into phonetic spellings called soundex.
@@ -2881,8 +2881,7 @@ Remove the nrow and run it again for yourself. See how there are several columns
 \end{Shaded}
 
 \begin{verbatim}
-## Joining, by = c("STATE", "ST_CASE", "VE_FORMS", "COUNTY", "DAY", "MONTH",
-## "HOUR", "MINUTE", "RUR_URB", "FUNC_SYS", "HARM_EV", "MAN_COLL", "SCH_BUS")
+## Joining, by = c("STATE", "ST_CASE", "VE_FORMS", "COUNTY", "DAY", "MONTH", "HOUR", "MINUTE", "RUR_URB", "FUNC_SYS", "HARM_EV", "MAN_COLL", "SCH_BUS")
 \end{verbatim}
 
 \begin{verbatim}
@@ -2932,8 +2931,7 @@ Let's save our joined data to a new dataframe.
 \end{Shaded}
 
 \begin{verbatim}
-## Joining, by = c("STATE", "ST_CASE", "VE_FORMS", "COUNTY", "DAY", "MONTH",
-## "HOUR", "MINUTE", "RUR_URB", "FUNC_SYS", "HARM_EV", "MAN_COLL", "SCH_BUS")
+## Joining, by = c("STATE", "ST_CASE", "VE_FORMS", "COUNTY", "DAY", "MONTH", "HOUR", "MINUTE", "RUR_URB", "FUNC_SYS", "HARM_EV", "MAN_COLL", "SCH_BUS")
 \end{verbatim}
 
 Now, with our joined data, we can answer questions that come from both datasets. So what if we looked at median age of drivers who died broken down by what kind of roadway the accident happened on?
@@ -3677,7 +3675,8 @@ Now we join the data together.
 \end{Shaded}
 
 \begin{verbatim}
-## Joining, by = c("GEOID", "NAME")Joining, by = c("GEOID", "NAME")
+## Joining, by = c("GEOID", "NAME")
+## Joining, by = c("GEOID", "NAME")
 \end{verbatim}
 
 And now we calculate the percent change.
@@ -4446,7 +4445,7 @@ At first, we can look at the \texttt{nehospitals} data and see there's a \texttt
 ## proj4string:    +proj=longlat +datum=WGS84 +no_defs
 ## # A tibble: 67 x 3
 ##    COUNTY    total_beds                                            geometry
-##  * <fct>          <dbl>                                      <GEOMETRY [°]>
+##    <fct>          <dbl>                                      <GEOMETRY [°]>
 ##  1 ADAMS            161                          POINT (-98.38807 40.59091)
 ##  2 ANTELOPE          25                          POINT (-98.03064 42.13475)
 ##  3 BOONE             25                          POINT (-98.00574 41.68304)
@@ -4785,7 +4784,7 @@ You install them the same way you do anything else -- \texttt{install.packages("
 \hypertarget{automating-downloads-an-imports}{%
 \section{Automating downloads an imports}\label{automating-downloads-an-imports}}
 
-Nebraska \href{https://neworks.nebraska.gov/gsipub/index.asp?docid=710}{publishes data weekly on first time unemployment claims on a Department of Labor website}.
+Nebraska \href{https://neworks.nebraska.gov/gsipub/index.asp?docid=710}{publishes data weekly on first time unemployment claims on the state Department of Labor website}.
 
 There's four datasets. We're looking at the weekly initial claims from 2012 to present. If you click it, you'll get an Excel spreadsheet. That's a problem, given that we've been working with CSVs all along. So the problem we have before us is this: Have to download it first, then open an Excel file with multiple sheets and lots of header and footers.
 
@@ -5077,6 +5076,10 @@ The rest is labeling and adjusting the text to make it look more like a news gra
 \end{Highlighting}
 \end{Shaded}
 
+\begin{verbatim}
+## `geom_smooth()` using formula 'y ~ x'
+\end{verbatim}
+
 \includegraphics{datajournalism_files/figure-latex/unnamed-chunk-215-1.pdf}
 
 One thing we are missing? Context. What if we programmatically wrote the chatter for this chart using the percent change calculation we did before?
@@ -5097,7 +5100,7 @@ Now we're going to use a function called paste to merge some text together. We'r
 \end{Highlighting}
 \end{Shaded}
 
-Heres's our sentence:
+Here's our sentence:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5130,6 +5133,10 @@ Now we can add that to our labels.
 \end{Highlighting}
 \end{Shaded}
 
+\begin{verbatim}
+## `geom_smooth()` using formula 'y ~ x'
+\end{verbatim}
+
 \includegraphics{datajournalism_files/figure-latex/unnamed-chunk-219-1.pdf}
 
 This is going to be a story for months, if not years. So repeating this analysis is a must for a reporter covering the economy in Nebraska. We've set ourselves up to do this every week when the data comes out. We just open our notebook, go to Run \textgreater{} Restart R and Run All Chunks and sit back and watch as it does it all again.
@@ -5141,7 +5148,7 @@ Then we go report.
 
 As I write this, the state hasn't updated their data but the feds have, and the feds have more. The problem? It's a mess. And it's not automatable. So to get more data, you need to go to \href{https://oui.doleta.gov/unemploy/claims.asp}{the Department of Labor website} and fill out the form.
 
-Select Spreadsheet, but know that it's a lie. If you try to load it using read\_excel, you'll get an error. Why? Because what is being downloaded is an HTML file. So you can use \texttt{rvest} to read and parse it.
+Leave the years, select state, pick yours (I'm taking Nebraska) and select spreadsheet, but know that it's a lie. If you try to load it using read\_excel, you'll get an error. Why? Because what is being downloaded is an HTML file. So you can use \texttt{rvest} to read and parse it.
 
 However, that isn't so simple.
 
@@ -5197,7 +5204,7 @@ To do this, we're going to fix this in steps after we create a new dataframe cal
 \end{Highlighting}
 \end{Shaded}
 
-If you open \texttt{cleanclaims}, you may notice something, depending on when you do this analysis:
+If you open \texttt{cleanclaims}, you may notice something:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5207,28 +5214,28 @@ If you open \texttt{cleanclaims}, you may notice something, depending on when yo
 
 \begin{verbatim}
 ##      state filed_week_ended initial_claims reflecting_week_ended
-## 1 Nebraska       2020-03-14            795            2020-03-07
-## 2 Nebraska       2020-03-07            501            2020-02-29
-## 3 Nebraska       2020-02-29            502            2020-02-22
-## 4 Nebraska       2020-02-22            493            2020-02-15
-## 5 Nebraska       2020-02-15            537            2020-02-08
-## 6 Nebraska       2020-02-08            675            2020-02-01
+## 1 Nebraska       2020-03-21          15700            2020-03-14
+## 2 Nebraska       2020-03-14            795            2020-03-07
+## 3 Nebraska       2020-03-07            501            2020-02-29
+## 4 Nebraska       2020-02-29            502            2020-02-22
+## 5 Nebraska       2020-02-22            493            2020-02-15
+## 6 Nebraska       2020-02-15            537            2020-02-08
 ##   continued_claims covered_employment insured_unemployment_rate
-## 1             5076             962725                      0.53
-## 2             5581             962725                      0.58
-## 3             6286             962725                      0.65
-## 4             5780             962725                      0.60
-## 5             5804             962725                      0.60
-## 6             5693             962725                      0.59
+## 1             4859             962725                      0.50
+## 2             5076             962725                      0.53
+## 3             5581             962725                      0.58
+## 4             6286             962725                      0.65
+## 5             5780             962725                      0.60
+## 6             5804             962725                      0.60
 \end{verbatim}
 
-See it? The latest data isn't in there in my version. \href{https://www.dol.gov/sites/dolgov/files/OPA/newsreleases/ui-claims/20200510.pdf}{It's in a press release}.
+See it? The latest data isn't in there in my version. \href{https://www.dol.gov/sites/dolgov/files/OPA/newsreleases/ui-claims/20200551.pdf}{It's in a press release}.
 
 So how do we add it? We use \texttt{add\_row} from the tidyverse (specifically the \texttt{tibble} library).
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{updatedcleanclaims <-}\StringTok{ }\NormalTok{cleanclaims }\OperatorTok{%>%}\StringTok{ }\KeywordTok{add_row}\NormalTok{(}\DataTypeTok{state=}\StringTok{"Nebraska"}\NormalTok{, }\DataTypeTok{filed_week_ended=}\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-21"}\NormalTok{), }\DataTypeTok{initial_claims=}\DecValTok{15688}\NormalTok{, }\DataTypeTok{reflecting_week_ended=}\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-14"}\NormalTok{))}
+\NormalTok{updatedcleanclaims <-}\StringTok{ }\NormalTok{cleanclaims }\OperatorTok{%>%}\StringTok{ }\KeywordTok{add_row}\NormalTok{(}\DataTypeTok{state=}\StringTok{"Nebraska"}\NormalTok{, }\DataTypeTok{filed_week_ended=}\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-28"}\NormalTok{), }\DataTypeTok{initial_claims=}\DecValTok{24572}\NormalTok{, }\DataTypeTok{reflecting_week_ended=}\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-21"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5250,6 +5257,46 @@ We get the latest week.
 \end{Highlighting}
 \end{Shaded}
 
+The previous week \ldots{}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fedprevious <-}\StringTok{ }\NormalTok{fedranked }\OperatorTok{%>%}\StringTok{ }\KeywordTok{slice}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+And for this one, let's grab the pre-crisis number as well as a basis point.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pre <-}\StringTok{ }\NormalTok{fedranked }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(filed_week_ended}\OperatorTok{==}\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2020-03-14"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Now we can do some percent change math similar to above. First we calculate the current change.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{change <-}\StringTok{ }\KeywordTok{round}\NormalTok{((((fedlatest}\OperatorTok{$}\NormalTok{initial_claims }\OperatorTok{-}\StringTok{ }\NormalTok{fedprevious}\OperatorTok{$}\NormalTok{initial_claims)}\OperatorTok{/}\NormalTok{fedprevious}\OperatorTok{$}\NormalTok{initial_claims)}\OperatorTok{*}\DecValTok{100}\NormalTok{), }\DataTypeTok{digits=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Then the change from the pre-crisis week.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{prechange <-}\StringTok{ }\KeywordTok{round}\NormalTok{((((fedlatest}\OperatorTok{$}\NormalTok{initial_claims }\OperatorTok{-}\StringTok{ }\NormalTok{pre}\OperatorTok{$}\NormalTok{initial_claims)}\OperatorTok{/}\NormalTok{pre}\OperatorTok{$}\NormalTok{initial_claims)}\OperatorTok{*}\DecValTok{100}\NormalTok{), }\DataTypeTok{digits=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+And we roll it all into a subhead that we can use in the chart with a little paste-fu.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{subhed <-}\StringTok{ }\KeywordTok{paste}\NormalTok{(}\StringTok{"Applications for unemployment jumped "}\NormalTok{, change, }\StringTok{" percent from last week to this week and are up "}\NormalTok{, prechange, }\StringTok{" percent since March 14."}\NormalTok{, }\DataTypeTok{sep=}\StringTok{""}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
 And we make the graphic.
 
 \begin{Shaded}
@@ -5257,9 +5304,11 @@ And we make the graphic.
 \KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{data=}\NormalTok{fedranked, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{filed_week_ended, }\DataTypeTok{y=}\NormalTok{initial_claims, }\DataTypeTok{group=}\DecValTok{1}\NormalTok{)) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data=}\NormalTok{fedlatest, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{filed_week_ended, }\DataTypeTok{y=}\NormalTok{initial_claims)) }\OperatorTok{+}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\DataTypeTok{data=}\NormalTok{fedlatest, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{filed_week_ended}\DecValTok{-200}\NormalTok{, }\DataTypeTok{y=}\NormalTok{initial_claims }\OperatorTok{+}\StringTok{ }\DecValTok{500}\NormalTok{, }\DataTypeTok{label=}\StringTok{"15,668"}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\DataTypeTok{data=}\NormalTok{fedlatest, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{filed_week_ended}\DecValTok{-200}\NormalTok{, }\DataTypeTok{y=}\NormalTok{initial_claims }\OperatorTok{+}\StringTok{ }\DecValTok{500}\NormalTok{, }\DataTypeTok{label=}\NormalTok{initial_claims)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data=}\NormalTok{fedprevious, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{filed_week_ended, }\DataTypeTok{y=}\NormalTok{initial_claims)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\DataTypeTok{data=}\NormalTok{fedprevious, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{filed_week_ended}\DecValTok{-500}\NormalTok{, }\DataTypeTok{y=}\NormalTok{initial_claims }\OperatorTok{+}\StringTok{ }\DecValTok{500}\NormalTok{, }\DataTypeTok{label=}\NormalTok{initial_claims)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{data=}\NormalTok{fedranked, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{filed_week_ended, }\DataTypeTok{y=}\NormalTok{initial_claims), }\DataTypeTok{method=}\NormalTok{loess, }\DataTypeTok{se=}\OtherTok{FALSE}\NormalTok{) }\OperatorTok{+}\StringTok{ }
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title=}\StringTok{"A record for jobless claims in Nebraska"}\NormalTok{, }\DataTypeTok{subtitle=}\StringTok{"Applications for unemployment jumped 1,871 percent from the week ending March 14 to the 21st. The worst is yet to come."}\NormalTok{, }\DataTypeTok{x=}\StringTok{"Date"}\NormalTok{, }\DataTypeTok{y=}\StringTok{"Claims"}\NormalTok{, }\DataTypeTok{caption =} \StringTok{"Source: US Dept. of Labor  |  Graphic by Matt Waite"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title=}\StringTok{"Another record for jobless claims in Nebraska"}\NormalTok{, }\DataTypeTok{subtitle=}\NormalTok{subhed, }\DataTypeTok{x=}\StringTok{"Date"}\NormalTok{, }\DataTypeTok{y=}\StringTok{"Claims"}\NormalTok{, }\DataTypeTok{caption =} \StringTok{"Source: US Dept. of Labor  |  Graphic by Matt Waite"}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{theme_minimal}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{theme}\NormalTok{(}
     \DataTypeTok{plot.title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{16}\NormalTok{, }\DataTypeTok{face =} \StringTok{"bold"}\NormalTok{),}
@@ -5270,7 +5319,11 @@ And we make the graphic.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-228-1.pdf}
+\begin{verbatim}
+## `geom_smooth()` using formula 'y ~ x'
+\end{verbatim}
+
+\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-233-1.pdf}
 
 \hypertarget{automating-geographic-analysis}{%
 \chapter{Automating geographic analysis}\label{automating-geographic-analysis}}
@@ -5350,7 +5403,7 @@ And we can create line chart like this:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-233-1.pdf}
+\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-238-1.pdf}
 
 The little county on the bottom that curves sharply up? That's my home county, Washington County. One day of this writing, they added 10 cases in one day in one nursing home. Grim stuff.
 
@@ -5362,7 +5415,7 @@ The curve you see for Douglas County is a classic exponential curve. Because the
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-234-1.pdf}
+\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-239-1.pdf}
 
 \hypertarget{mapping-continuously}{%
 \section{Mapping continuously}\label{mapping-continuously}}
@@ -5440,7 +5493,7 @@ So now, we have a geographic dataframe that has both the county shapes and the n
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-240-1.pdf}
+\includegraphics{datajournalism_files/figure-latex/unnamed-chunk-245-1.pdf}
 
 As it stands, we can run this every day and get an up-to-date map.
 

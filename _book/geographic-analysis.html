@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 21 Geographic analysis | Data Journalism with R and the Tidyverse</title>
   <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 21 Geographic analysis | Data Journalism with R and the Tidyverse" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Matt Waite" />
 
 
-<meta name="date" content="2020-03-31" />
+<meta name="date" content="2020-04-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,12 +52,12 @@
 
 <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.12/datatables.js"></script>
+<script src="libs/datatables-binding-0.13/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160712129-1"></script>
 <script>
@@ -271,10 +271,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 21</span> Geographic analysis</h1>
 <p>In the previous chapter, we looked at Nebraska’s hospitals and used layers to show where hospitals on a map of Nebraska’s counties. Let’s go little further.</p>
 <p>First, we get caught up to where we were last time.</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb303-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb303-2" data-line-number="2"><span class="kw">library</span>(sf)</a>
-<a class="sourceLine" id="cb303-3" data-line-number="3"><span class="kw">library</span>(janitor)</a>
-<a class="sourceLine" id="cb303-4" data-line-number="4"><span class="kw">library</span>(scales)</a></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb302-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb302-2" data-line-number="2"><span class="kw">library</span>(sf)</a>
+<a class="sourceLine" id="cb302-3" data-line-number="3"><span class="kw">library</span>(janitor)</a>
+<a class="sourceLine" id="cb302-4" data-line-number="4"><span class="kw">library</span>(scales)</a></code></pre></div>
 <pre><code>## Warning: package &#39;scales&#39; was built under R version 3.5.2</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;scales&#39;</code></pre>
@@ -284,7 +284,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## The following object is masked from &#39;package:readr&#39;:
 ## 
 ##     col_factor</code></pre>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb308-1" data-line-number="1">hospitals &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;data/Hospitals/Hospitals.shp&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb307-1" data-line-number="1">hospitals &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;data/Hospitals/Hospitals.shp&quot;</span>)</a></code></pre></div>
 <pre><code>## Reading layer `Hospitals&#39; from data source `/Users/mwaite3/Box/BookProjects/DataJournalismWithR/data/Hospitals/Hospitals.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 7581 features and 32 fields
 ## geometry type:  POINT
@@ -292,9 +292,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## bbox:           xmin: -176.6403 ymin: -14.29024 xmax: 145.7245 ymax: 71.29285
 ## epsg (SRID):    4326
 ## proj4string:    +proj=longlat +datum=WGS84 +no_defs</code></pre>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb310-1" data-line-number="1">ne &lt;-<span class="st"> </span>hospitals <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(STATE <span class="op">==</span><span class="st"> &quot;NE&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb311-1" data-line-number="1">nehospitals &lt;-<span class="st"> </span>ne <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(TYPE <span class="op">==</span><span class="st"> &quot;CRITICAL ACCESS&quot;</span> <span class="op">|</span><span class="st"> </span>TYPE <span class="op">==</span><span class="st"> &quot;GENERAL ACUTE CARE&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(STATUS <span class="op">==</span><span class="st"> &quot;OPEN&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb312-1" data-line-number="1">counties &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;data/cb_2018_us_county_5m/cb_2018_us_county_5m.shp&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb309-1" data-line-number="1">ne &lt;-<span class="st"> </span>hospitals <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(STATE <span class="op">==</span><span class="st"> &quot;NE&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb310-1" data-line-number="1">nehospitals &lt;-<span class="st"> </span>ne <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(TYPE <span class="op">==</span><span class="st"> &quot;CRITICAL ACCESS&quot;</span> <span class="op">|</span><span class="st"> </span>TYPE <span class="op">==</span><span class="st"> &quot;GENERAL ACUTE CARE&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(STATUS <span class="op">==</span><span class="st"> &quot;OPEN&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb311-1" data-line-number="1">counties &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;data/cb_2018_us_county_5m/cb_2018_us_county_5m.shp&quot;</span>)</a></code></pre></div>
 <pre><code>## Reading layer `cb_2018_us_county_5m&#39; from data source `/Users/mwaite3/Box/BookProjects/DataJournalismWithR/data/cb_2018_us_county_5m/cb_2018_us_county_5m.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 3233 features and 9 fields
 ## geometry type:  MULTIPOLYGON
@@ -302,10 +302,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## bbox:           xmin: -179.1473 ymin: -14.55255 xmax: 179.7785 ymax: 71.35256
 ## epsg (SRID):    4269
 ## proj4string:    +proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs</code></pre>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb314-1" data-line-number="1">necounties &lt;-<span class="st"> </span>counties <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(STATEFP <span class="op">==</span><span class="st"> &quot;31&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb313-1" data-line-number="1">necounties &lt;-<span class="st"> </span>counties <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(STATEFP <span class="op">==</span><span class="st"> &quot;31&quot;</span>)</a></code></pre></div>
 <p>Now that we’re in the same place as last time, let’s start asking questions of this data. For starters: how many hopsital beds are there in each county?</p>
 <p>At first, we can look at the <code>nehospitals</code> data and see there’s a <code>COUNTY</code> field that would make for an easy group and summarize.</p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb315-1" data-line-number="1">nehospitals <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(COUNTY) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="dt">total_beds=</span><span class="kw">sum</span>(BEDS))</a></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb314-1" data-line-number="1">nehospitals <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(COUNTY) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="dt">total_beds=</span><span class="kw">sum</span>(BEDS))</a></code></pre></div>
 <pre><code>## Simple feature collection with 67 features and 2 fields
 ## geometry type:  GEOMETRY
 ## dimension:      XY
@@ -314,7 +314,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## proj4string:    +proj=longlat +datum=WGS84 +no_defs
 ## # A tibble: 67 x 3
 ##    COUNTY    total_beds                                            geometry
-##  * &lt;fct&gt;          &lt;dbl&gt;                                      &lt;GEOMETRY [°]&gt;
+##    &lt;fct&gt;          &lt;dbl&gt;                                      &lt;GEOMETRY [°]&gt;
 ##  1 ADAMS            161                          POINT (-98.38807 40.59091)
 ##  2 ANTELOPE          25                          POINT (-98.03064 42.13475)
 ##  3 BOONE             25                          POINT (-98.00574 41.68304)
@@ -331,17 +331,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>What we really want to do with this data is join the number of beds in each county to the county map, and then shade those counties by the number of beds. It’s a style of map called a cloropleth map. You’ve seen them before.</p>
 <p>To do that, we need to make a dataframe. In our our hospitals data, we have a field called COUNTYFIPS that is identical to the GEOID in the counties data – it’s the merging of the state fips and the county fips to make a unique number for each county. So in one query, we need to convert our <code>sf</code> file to a dataframe, filter out the -999 hospital, group it by the COUNTY and COUNTYFIPS and then, to save us some hassle, we’re going to rename that COUNTYFIPS field to GEOID which makes our join easier. And, as one last convenience, we’re going to drop the geometry, because that too will cause confusion.</p>
 <p>Follow? No worries if you didn’t. Each step by itself is simple, and they add up together.</p>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb317-1" data-line-number="1">nebedcount &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb317-2" data-line-number="2"><span class="st">  </span><span class="kw">as.data.frame</span>(</a>
-<a class="sourceLine" id="cb317-3" data-line-number="3">    nehospitals <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb317-4" data-line-number="4"><span class="st">      </span><span class="kw">filter</span>(BEDS <span class="op">!=</span><span class="st"> </span><span class="dv">-999</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb317-5" data-line-number="5"><span class="st">      </span><span class="kw">group_by</span>(COUNTY, COUNTYFIPS) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb317-6" data-line-number="6"><span class="st">      </span><span class="kw">summarize</span>(<span class="dt">total_beds =</span> <span class="kw">sum</span>(BEDS)</a>
-<a class="sourceLine" id="cb317-7" data-line-number="7">  ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb317-8" data-line-number="8"><span class="st">    </span><span class="kw">rename</span>(<span class="dt">GEOID =</span> COUNTYFIPS)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb317-9" data-line-number="9"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>geometry)</a></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb316-1" data-line-number="1">nebedcount &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb316-2" data-line-number="2"><span class="st">  </span><span class="kw">as.data.frame</span>(</a>
+<a class="sourceLine" id="cb316-3" data-line-number="3">    nehospitals <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb316-4" data-line-number="4"><span class="st">      </span><span class="kw">filter</span>(BEDS <span class="op">!=</span><span class="st"> </span><span class="dv">-999</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb316-5" data-line-number="5"><span class="st">      </span><span class="kw">group_by</span>(COUNTY, COUNTYFIPS) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb316-6" data-line-number="6"><span class="st">      </span><span class="kw">summarize</span>(<span class="dt">total_beds =</span> <span class="kw">sum</span>(BEDS)</a>
+<a class="sourceLine" id="cb316-7" data-line-number="7">  ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb316-8" data-line-number="8"><span class="st">    </span><span class="kw">rename</span>(<span class="dt">GEOID =</span> COUNTYFIPS)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb316-9" data-line-number="9"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>geometry)</a></code></pre></div>
 <p>Let’s take a look at what we got:</p>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb318-1" data-line-number="1"><span class="kw">head</span>(nebedcount)</a></code></pre></div>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb317-1" data-line-number="1"><span class="kw">head</span>(nebedcount)</a></code></pre></div>
 <pre><code>##      COUNTY GEOID total_beds
 ## 1     ADAMS 31001        161
 ## 2  ANTELOPE 31003         25
@@ -351,23 +351,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6     BROWN 31017         23</code></pre>
 <p>Pretty simple. Three columns: COUNTY, GEOID and total_beds.</p>
 <p>Now using what we learned in the joining chapter, we can combine them with our counties data.</p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb320-1" data-line-number="1">nehospbycounty &lt;-<span class="st"> </span>necounties <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(nebedcount, <span class="dt">by=</span><span class="st">&quot;GEOID&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb319-1" data-line-number="1">nehospbycounty &lt;-<span class="st"> </span>necounties <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(nebedcount, <span class="dt">by=</span><span class="st">&quot;GEOID&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning: Column `GEOID` joining factors with different levels, coercing to
 ## character vector</code></pre>
 <p>We can ignore that warning.</p>
 <p>Now we can map it. What’s going to change here is we’re going to add a fill to our aes in our geom_sf.</p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" data-line-number="1"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb322-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data=</span>nehospbycounty, <span class="kw">aes</span>(<span class="dt">fill=</span>total_beds)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb322-3" data-line-number="3"><span class="st">  </span><span class="kw">theme_minimal</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb321-1" data-line-number="1"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb321-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data=</span>nehospbycounty, <span class="kw">aes</span>(<span class="dt">fill=</span>total_beds)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb321-3" data-line-number="3"><span class="st">  </span><span class="kw">theme_minimal</span>()</a></code></pre></div>
 <p><img src="datajournalism_files/figure-html/unnamed-chunk-192-1.png" width="672" /></p>
 <p>We get what we expect … it’s not ideal. We can’t really tell a difference between anything outside of Douglas and Lancaster counties. So we can add a scale in here. This one is called viridis, and it makes a more visibile color ramp. And since we have a large disparity between Douglas County and pretty much everywhere else, we’ll make the scale exponential.</p>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb323-1" data-line-number="1"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb323-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data=</span>nehospbycounty, <span class="kw">aes</span>(<span class="dt">fill=</span>total_beds)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb323-3" data-line-number="3"><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb323-4" data-line-number="4"><span class="st">  </span><span class="kw">scale_fill_viridis_c</span>(<span class="dt">option =</span> <span class="st">&quot;plasma&quot;</span>, <span class="dt">trans =</span> <span class="st">&quot;sqrt&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" data-line-number="1"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb322-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data=</span>nehospbycounty, <span class="kw">aes</span>(<span class="dt">fill=</span>total_beds)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb322-3" data-line-number="3"><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb322-4" data-line-number="4"><span class="st">  </span><span class="kw">scale_fill_viridis_c</span>(<span class="dt">option =</span> <span class="st">&quot;plasma&quot;</span>, <span class="dt">trans =</span> <span class="st">&quot;sqrt&quot;</span>)</a></code></pre></div>
 <p><img src="datajournalism_files/figure-html/unnamed-chunk-193-1.png" width="672" /></p>
 <p>So there’s the map. How about a list:</p>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb324-1" data-line-number="1">nebedcount <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(COUNTY, total_beds) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(total_beds)) </a></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb323-1" data-line-number="1">nebedcount <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(COUNTY, total_beds) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(total_beds)) </a></code></pre></div>
 <pre><code>##          COUNTY total_beds
 ## 1       DOUGLAS       2479
 ## 2     LANCASTER        984
@@ -437,47 +437,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 66       GARDEN         10
 ## 67      KEARNEY         10</code></pre>
 <p>So there’s a lot of hosptial beds in Omaha (DOUGLAS) and Lincoln (LANCASTER). Some quick math shows there 3,463 beds in those two counties. How many beds are in the rest of the state combined?</p>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb326-1" data-line-number="1">nebedcount <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(COUNTY <span class="op">!=</span><span class="st"> &quot;DOUGLAS&quot;</span> <span class="op">&amp;</span><span class="st"> </span>COUNTY <span class="op">!=</span><span class="st"> &quot;LANCASTER&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="kw">sum</span>(total_beds))</a></code></pre></div>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb325-1" data-line-number="1">nebedcount <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(COUNTY <span class="op">!=</span><span class="st"> &quot;DOUGLAS&quot;</span> <span class="op">&amp;</span><span class="st"> </span>COUNTY <span class="op">!=</span><span class="st"> &quot;LANCASTER&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="kw">sum</span>(total_beds))</a></code></pre></div>
 <pre><code>##   sum(total_beds)
 ## 1            2586</code></pre>
 <p>How many total beds?</p>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb328-1" data-line-number="1">nebedcount <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="kw">sum</span>(total_beds))</a></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb327-1" data-line-number="1">nebedcount <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="kw">sum</span>(total_beds))</a></code></pre></div>
 <pre><code>##   sum(total_beds)
 ## 1            6049</code></pre>
 <p>So there’s 6,104 beds in the state and 3,463 of them are in Omaha and Lincoln. What perent is that?</p>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb330-1" data-line-number="1"><span class="dv">3463</span><span class="op">/</span><span class="dv">6104</span></a></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb329-1" data-line-number="1"><span class="dv">3463</span><span class="op">/</span><span class="dv">6104</span></a></code></pre></div>
 <pre><code>## [1] 0.5673329</code></pre>
 <p>According to this data, 57 percent of the state’s hospital beds are in two counties. What about population?</p>
 <div id="why-tidycensus-is-so-useful" class="section level2">
 <h2><span class="header-section-number">21.1</span> Why tidycensus is so useful</h2>
 <p>Most of the time when we’re looking at population questions, we’re looking at Census data. So what percent of people live in Lancaster and Douglas counties?</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb332-1" data-line-number="1"><span class="kw">library</span>(tidycensus)</a></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb331-1" data-line-number="1"><span class="kw">library</span>(tidycensus)</a></code></pre></div>
 <p>In this case, the population variable we’re looking for is Total Population, which is <code>B01003_001</code> and we’re looking at the county geography. Here’s what that looks like:</p>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb333-1" data-line-number="1">nepop &lt;-<span class="st"> </span><span class="kw">get_acs</span>(<span class="dt">geography =</span> <span class="st">&quot;county&quot;</span>, </a>
-<a class="sourceLine" id="cb333-2" data-line-number="2">              <span class="dt">variables =</span> <span class="kw">c</span>(<span class="dt">population =</span> <span class="st">&quot;B01003_001&quot;</span>), </a>
-<a class="sourceLine" id="cb333-3" data-line-number="3">              <span class="dt">state =</span> <span class="st">&quot;NE&quot;</span>, </a>
-<a class="sourceLine" id="cb333-4" data-line-number="4">              <span class="dt">year =</span> <span class="dv">2018</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb332-1" data-line-number="1">nepop &lt;-<span class="st"> </span><span class="kw">get_acs</span>(<span class="dt">geography =</span> <span class="st">&quot;county&quot;</span>, </a>
+<a class="sourceLine" id="cb332-2" data-line-number="2">              <span class="dt">variables =</span> <span class="kw">c</span>(<span class="dt">population =</span> <span class="st">&quot;B01003_001&quot;</span>), </a>
+<a class="sourceLine" id="cb332-3" data-line-number="3">              <span class="dt">state =</span> <span class="st">&quot;NE&quot;</span>, </a>
+<a class="sourceLine" id="cb332-4" data-line-number="4">              <span class="dt">year =</span> <span class="dv">2018</span>)</a></code></pre></div>
 <pre><code>## Getting data from the 2014-2018 5-year ACS</code></pre>
 <p>First we can filter FOR Douglas OR Lancaster using the | character:</p>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb335-1" data-line-number="1">nepop <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(NAME <span class="op">==</span><span class="st"> &quot;Lancaster County, Nebraska&quot;</span> <span class="op">|</span><span class="st"> </span>NAME <span class="op">==</span><span class="st"> &quot;Douglas County, Nebraska&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="kw">sum</span>(estimate))</a></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb334-1" data-line-number="1">nepop <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(NAME <span class="op">==</span><span class="st"> &quot;Lancaster County, Nebraska&quot;</span> <span class="op">|</span><span class="st"> </span>NAME <span class="op">==</span><span class="st"> &quot;Douglas County, Nebraska&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="kw">sum</span>(estimate))</a></code></pre></div>
 <pre><code>## # A tibble: 1 x 1
 ##   `sum(estimate)`
 ##             &lt;dbl&gt;
 ## 1          865086</code></pre>
 <p>Now without them:</p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb337-1" data-line-number="1">nepop <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(NAME <span class="op">!=</span><span class="st"> &quot;Lancaster County, Nebraska&quot;</span> <span class="op">|</span><span class="st"> </span>NAME <span class="op">!=</span><span class="st"> &quot;Douglas County, Nebraska&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="kw">sum</span>(estimate))</a></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb336-1" data-line-number="1">nepop <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(NAME <span class="op">!=</span><span class="st"> &quot;Lancaster County, Nebraska&quot;</span> <span class="op">|</span><span class="st"> </span>NAME <span class="op">!=</span><span class="st"> &quot;Douglas County, Nebraska&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="kw">sum</span>(estimate))</a></code></pre></div>
 <pre><code>## # A tibble: 1 x 1
 ##   `sum(estimate)`
 ##             &lt;dbl&gt;
 ## 1         1904760</code></pre>
 <p>All together now:</p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb339-1" data-line-number="1">nepop <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="kw">sum</span>(estimate))</a></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb338-1" data-line-number="1">nepop <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="kw">sum</span>(estimate))</a></code></pre></div>
 <pre><code>## # A tibble: 1 x 1
 ##   `sum(estimate)`
 ##             &lt;dbl&gt;
 ## 1         1904760</code></pre>
 <p>And the percentage:</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" data-line-number="1"><span class="dv">865086</span><span class="op">/</span><span class="dv">1904760</span></a></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb340-1" data-line-number="1"><span class="dv">865086</span><span class="op">/</span><span class="dv">1904760</span></a></code></pre></div>
 <pre><code>## [1] 0.4541706</code></pre>
 <p>So Omaha and Lincoln represent 57 percent of the hospital beds, but only 45 percent of the population.</p>
 

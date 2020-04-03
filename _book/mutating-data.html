@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 Mutating data | Data Journalism with R and the Tidyverse</title>
   <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 Mutating data | Data Journalism with R and the Tidyverse" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Matt Waite" />
 
 
-<meta name="date" content="2020-03-31" />
+<meta name="date" content="2020-04-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,12 +52,12 @@
 
 <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.12/datatables.js"></script>
+<script src="libs/datatables-binding-0.13/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160712129-1"></script>
 <script>
@@ -273,9 +273,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>(new - old) / old</code></p>
 <p>Or new minus old divided by old. Your new number minus the old number, the result of which is divided by the old number. To do that in R, we can use <code>dplyr</code> and <code>mutate</code> to calculate new metrics in a new field using existing fields of data.</p>
 <p>So first we’ll import the tidyverse so we can read in our data and begin to work with it.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <p>Now we’ll import a common and <a href="https://unl.box.com/s/ad8zrib123psjxjjhd8t5m2fgfdfv3q3">simple dataset of county population estimates</a> from the US Census Bureau. Each year, the Census Bureau publishes estimates for states and counties. This one has every county in the US. A common question: who are the winners and losers?</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">population &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;data/countypopulations.csv&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1">population &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;data/countypopulations.csv&#39;</span>)</a></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   STNAME = col_character(),
@@ -294,9 +294,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## )</code></pre>
 <p>The code to calculate percent change is pretty simple. Remember, with <code>summarize</code>, we used <code>n()</code> to count things. With <code>mutate</code>, we use very similar syntax to calculate a new value – a new column of data – using other values in our dataset. So in this case, we’re trying to do (new-old)/old, but we’re doing it with fields.</p>
 <p>If we look at what we got when we imported the data, you’ll see there’s <code>POPESTIMATE2018</code> as the new data, and we’ll use <code>POPESTIMATE2017</code> as the old data. So we’re looking at one year. Then, to help us, we’ll use arrange again to sort it, so we get the fastest growing county over one year.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1">population <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(</a>
-<a class="sourceLine" id="cb53-2" data-line-number="2">  <span class="dt">change =</span> (POPESTIMATE2018 <span class="op">-</span><span class="st"> </span>POPESTIMATE2017)<span class="op">/</span>POPESTIMATE2017</a>
-<a class="sourceLine" id="cb53-3" data-line-number="3">) </a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1">population <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb52-2" data-line-number="2">  <span class="dt">change =</span> (POPESTIMATE2018 <span class="op">-</span><span class="st"> </span>POPESTIMATE2017)<span class="op">/</span>POPESTIMATE2017</a>
+<a class="sourceLine" id="cb52-3" data-line-number="3">) </a></code></pre></div>
 <pre><code>## # A tibble: 3,142 x 14
 ##    STNAME CTYNAME CENSUS2010POP ESTIMATESBASE20… POPESTIMATE2010 POPESTIMATE2011
 ##    &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt;            &lt;dbl&gt;           &lt;dbl&gt;           &lt;dbl&gt;
@@ -315,9 +315,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## #   POPESTIMATE2016 &lt;dbl&gt;, POPESTIMATE2017 &lt;dbl&gt;, POPESTIMATE2018 &lt;dbl&gt;,
 ## #   change &lt;dbl&gt;</code></pre>
 <p>Click the black arrow pointing right and you’ll see, way out on the right, your change column. But what do you see right away? Do those numbers look like we expect them to? No. They’re a decimal expressed as a percentage. So let’s fix that by multiplying by 100.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1">population <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(</a>
-<a class="sourceLine" id="cb55-2" data-line-number="2">  <span class="dt">change =</span> ((POPESTIMATE2018 <span class="op">-</span><span class="st"> </span>POPESTIMATE2017)<span class="op">/</span>POPESTIMATE2017)<span class="op">*</span><span class="dv">100</span></a>
-<a class="sourceLine" id="cb55-3" data-line-number="3">) </a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1">population <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb54-2" data-line-number="2">  <span class="dt">change =</span> ((POPESTIMATE2018 <span class="op">-</span><span class="st"> </span>POPESTIMATE2017)<span class="op">/</span>POPESTIMATE2017)<span class="op">*</span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb54-3" data-line-number="3">) </a></code></pre></div>
 <pre><code>## # A tibble: 3,142 x 14
 ##    STNAME CTYNAME CENSUS2010POP ESTIMATESBASE20… POPESTIMATE2010 POPESTIMATE2011
 ##    &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt;            &lt;dbl&gt;           &lt;dbl&gt;           &lt;dbl&gt;
@@ -336,9 +336,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## #   POPESTIMATE2016 &lt;dbl&gt;, POPESTIMATE2017 &lt;dbl&gt;, POPESTIMATE2018 &lt;dbl&gt;,
 ## #   change &lt;dbl&gt;</code></pre>
 <p>Now, does this ordering do anything for us? No. Let’s fix that with arrange.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1">population <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(</a>
-<a class="sourceLine" id="cb57-2" data-line-number="2">  <span class="dt">change =</span> ((POPESTIMATE2018 <span class="op">-</span><span class="st"> </span>POPESTIMATE2017)<span class="op">/</span>POPESTIMATE2017)<span class="op">*</span><span class="dv">100</span></a>
-<a class="sourceLine" id="cb57-3" data-line-number="3">)  <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(change))</a></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1">population <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb56-2" data-line-number="2">  <span class="dt">change =</span> ((POPESTIMATE2018 <span class="op">-</span><span class="st"> </span>POPESTIMATE2017)<span class="op">/</span>POPESTIMATE2017)<span class="op">*</span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb56-3" data-line-number="3">)  <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(change))</a></code></pre></div>
 <pre><code>## # A tibble: 3,142 x 14
 ##    STNAME CTYNAME CENSUS2010POP ESTIMATESBASE20… POPESTIMATE2010 POPESTIMATE2011
 ##    &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt;            &lt;dbl&gt;           &lt;dbl&gt;           &lt;dbl&gt;
@@ -361,11 +361,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">7.1</span> Another use of mutate</h2>
 <p>Note in our data we have separate State and County name fields. If we were publishing this, we wouldn’t want that.</p>
 <p>So how can we fix that? Mutate! And a new function to combine text together called <code>paste</code>. Paste allows us to merge fields together easily with a separator. In our case, we want to combine the county name and the state name with a comma and a space between them.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1">population <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb59-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(</a>
-<a class="sourceLine" id="cb59-3" data-line-number="3">    <span class="dt">change =</span> ((POPESTIMATE2018 <span class="op">-</span><span class="st"> </span>POPESTIMATE2017)<span class="op">/</span>POPESTIMATE2017)<span class="op">*</span><span class="dv">100</span>,</a>
-<a class="sourceLine" id="cb59-4" data-line-number="4">    <span class="dt">location =</span> <span class="kw">paste</span>(CTYNAME, STNAME, <span class="dt">sep=</span><span class="st">&quot;, &quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb59-5" data-line-number="5"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(change))</a></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1">population <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb58-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb58-3" data-line-number="3">    <span class="dt">change =</span> ((POPESTIMATE2018 <span class="op">-</span><span class="st"> </span>POPESTIMATE2017)<span class="op">/</span>POPESTIMATE2017)<span class="op">*</span><span class="dv">100</span>,</a>
+<a class="sourceLine" id="cb58-4" data-line-number="4">    <span class="dt">location =</span> <span class="kw">paste</span>(CTYNAME, STNAME, <span class="dt">sep=</span><span class="st">&quot;, &quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb58-5" data-line-number="5"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(change))</a></code></pre></div>
 <pre><code>## # A tibble: 3,142 x 15
 ##    STNAME CTYNAME CENSUS2010POP ESTIMATESBASE20… POPESTIMATE2010 POPESTIMATE2011
 ##    &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt;            &lt;dbl&gt;           &lt;dbl&gt;           &lt;dbl&gt;

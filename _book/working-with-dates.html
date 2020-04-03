@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 Working with dates | Data Journalism with R and the Tidyverse</title>
   <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 Working with dates | Data Journalism with R and the Tidyverse" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Matt Waite" />
 
 
-<meta name="date" content="2020-03-31" />
+<meta name="date" content="2020-04-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,12 +52,12 @@
 
 <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.12/datatables.js"></script>
+<script src="libs/datatables-binding-0.13/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160712129-1"></script>
 <script>
@@ -274,10 +274,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="the-hard-way" class="section level2">
 <h2><span class="header-section-number">8.1</span> The hard way</h2>
 <p>First, we’ll import <code>tidyverse</code> like we always do.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <p>We’re going to use a dataset of <a href="https://unl.box.com/s/3c5kx2i5iouc52ty46k4js412u48yajr">parking tickets at UNL</a>. If we do this the old way – using read.csv – this is what we get:</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1">tickets &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/tickets.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb62-2" data-line-number="2"><span class="kw">head</span>(tickets)</a></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1">tickets &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/tickets.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb61-2" data-line-number="2"><span class="kw">head</span>(tickets)</a></code></pre></div>
 <pre><code>##   Citation                Date        Location                    Violation
 ## 1 15078429 2012-04-02 07:15:00   North Stadium                Expired Meter
 ## 2 24048318 2012-04-02 07:22:00         Housing    No Valid Permit Displayed
@@ -286,11 +286,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 18074937 2012-04-02 07:39:00          Sandoz                Expired Meter
 ## 6 18074938 2012-04-02 07:40:00          Sandoz                Expired Meter</code></pre>
 <p>Note the date is a factor, not a date. We have to fix that. There’s a lot of ways to fix dates. The base R way is to use formatting. The code is … a little odd … but it’s useful to know if you get a really odd date format. What you are doing is essentially parsing the date into it’s component parts then reassmbling it into a date using formatting.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1">newtickets &lt;-<span class="st"> </span>tickets <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(</a>
-<a class="sourceLine" id="cb64-2" data-line-number="2">    <span class="dt">CleanDate =</span> <span class="kw">as.POSIXct</span>(Date, <span class="dt">format=</span><span class="st">&quot;%Y-%m-%d %H:%M:%S&quot;</span>)</a>
-<a class="sourceLine" id="cb64-3" data-line-number="3">)</a>
-<a class="sourceLine" id="cb64-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb64-5" data-line-number="5"><span class="kw">head</span>(newtickets)</a></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1">newtickets &lt;-<span class="st"> </span>tickets <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb63-2" data-line-number="2">    <span class="dt">CleanDate =</span> <span class="kw">as.POSIXct</span>(Date, <span class="dt">format=</span><span class="st">&quot;%Y-%m-%d %H:%M:%S&quot;</span>)</a>
+<a class="sourceLine" id="cb63-3" data-line-number="3">)</a>
+<a class="sourceLine" id="cb63-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb63-5" data-line-number="5"><span class="kw">head</span>(newtickets)</a></code></pre></div>
 <pre><code>##   Citation                Date        Location                    Violation
 ## 1 15078429 2012-04-02 07:15:00   North Stadium                Expired Meter
 ## 2 24048318 2012-04-02 07:22:00         Housing    No Valid Permit Displayed
@@ -308,18 +308,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>CleanDate is now a special date format that includes times.</p>
 <p>You can almost read the code that created it: The format of the date is %Y, which means a four digit year DASH %m or two digit month DASH %d or two digit day SPACE %H or two digit hour COLON %M or two digit minute COLON %S or two digit second. You can remix that as you need. If you had a date that was <code>20021212</code> then you would do <code>format=&quot;%Y%m%d&quot;</code> and so on.</p>
 <p>There is a <a href="https://cran.r-project.org/web/packages/lubridate/vignettes/lubridate.html">library called lubridate</a> that can parse some common date problems. If it’s not already installed, just run <code>install.packages('lubridate')</code></p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="kw">library</span>(lubridate)</a></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="kw">library</span>(lubridate)</a></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;lubridate&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:base&#39;:
 ## 
 ##     date</code></pre>
 <p>Lubridate can handle this tickets data easier with one of it’s many functions. The functions parse dates given a basic pattern. In this case, our data is in a very common pattern of year month date hours minutes seconds. Lubridate has a function called <code>ymd_hms</code>.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1">lubridatetickets &lt;-<span class="st"> </span>tickets <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(</a>
-<a class="sourceLine" id="cb69-2" data-line-number="2">    <span class="dt">CleanDate =</span> <span class="kw">ymd_hms</span>(Date)</a>
-<a class="sourceLine" id="cb69-3" data-line-number="3">)</a>
-<a class="sourceLine" id="cb69-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb69-5" data-line-number="5"><span class="kw">head</span>(lubridatetickets)</a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1">lubridatetickets &lt;-<span class="st"> </span>tickets <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb68-2" data-line-number="2">    <span class="dt">CleanDate =</span> <span class="kw">ymd_hms</span>(Date)</a>
+<a class="sourceLine" id="cb68-3" data-line-number="3">)</a>
+<a class="sourceLine" id="cb68-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb68-5" data-line-number="5"><span class="kw">head</span>(lubridatetickets)</a></code></pre></div>
 <pre><code>##   Citation                Date        Location                    Violation
 ## 1 15078429 2012-04-02 07:15:00   North Stadium                Expired Meter
 ## 2 24048318 2012-04-02 07:22:00         Housing    No Valid Permit Displayed
@@ -338,7 +338,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>But to get clean data, I’ve installed a library and created a new field so I can now start to work with my dates. That seems like a lot, but don’t think your data will always be perfect and you won’t have to do these things.</p>
 <p>Still, there’s got to be a better way. And there is.</p>
 <p>Fortunately, <code>readr</code> anticipates some date formattings and can automatically handle this (indeed it uses lubridate under the hood). The change in your code? You just use <code>read_csv</code> instead of <code>read.csv</code></p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1">tickets &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/tickets.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1">tickets &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/tickets.csv&quot;</span>)</a></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   Citation = col_double(),
@@ -355,7 +355,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 57053 Citation a double EF010020  &#39;data/tickets.csv&#39;
 ## ..... ........ ........ ......... ..................
 ## See problems(...) for more details.</code></pre>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="kw">head</span>(tickets)</a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="kw">head</span>(tickets)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 4
 ##   Citation Date                Location        Violation                   
 ##      &lt;dbl&gt; &lt;dttm&gt;              &lt;chr&gt;           &lt;chr&gt;                       
@@ -370,11 +370,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>What’s a question you might have about parking tickets on campus involving dates?</p>
 <p>How about what month are the most tickets issued? We could use formatting to create a Month field but that would group all the Aprils ever together. We could create a year and a month together, but that would give us an invalid date object and that would create problems later. Lubridate has something called a floor date that we can use.</p>
 <p>So to follow along here, we’re going to use mutate to create a month field, group by to lump them together, summarize to count them up and arrange to order them. We’re just chaining things together.</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1">tickets <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb76-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Month =</span> <span class="kw">floor_date</span>(Date, <span class="st">&quot;month&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb76-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(Month) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb76-4" data-line-number="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">total =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb76-5" data-line-number="5"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(total))</a></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1">tickets <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb75-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Month =</span> <span class="kw">floor_date</span>(Date, <span class="st">&quot;month&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb75-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(Month) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb75-4" data-line-number="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">total =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb75-5" data-line-number="5"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(total))</a></code></pre></div>
 <pre><code>## # A tibble: 56 x 2
 ##    Month               total
 ##    &lt;dttm&gt;              &lt;int&gt;

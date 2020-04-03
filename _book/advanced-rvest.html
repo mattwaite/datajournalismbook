@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 16 Advanced rvest | Data Journalism with R and the Tidyverse</title>
   <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 16 Advanced rvest | Data Journalism with R and the Tidyverse" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Matt Waite" />
 
 
-<meta name="date" content="2020-03-31" />
+<meta name="date" content="2020-04-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,12 +52,12 @@
 
 <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.12/datatables.js"></script>
+<script src="libs/datatables-binding-0.13/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160712129-1"></script>
 <script>
@@ -272,19 +272,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Continuing a discussion from the last chapter, this is an example of when it goes from Easy to Moderately Difficult.</p>
 <p>In the last exercise, we scraped bills out of one day of floor activity in the Nebraska Legislature. What if we wanted all of them? Let’s say we wanted to keep a running scoreboard of who has introduced the most bills that have seen the floor?</p>
 <p>Here’s how to use some programming knowledge with R to grab all days and merge them together. First we start with libraries, as we always do.</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb218-2" data-line-number="2"><span class="kw">library</span>(rvest)</a></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb217-2" data-line-number="2"><span class="kw">library</span>(rvest)</a></code></pre></div>
 <p>Now we’ll start the trickery. So we need to know what days the legislature is in session. Fortunately, the legislature tells us that in a drop down menu. Inspect <a href="https://nebraskalegislature.gov/calendar/dayview.php?day=2020-02-03">the dropdown menu of this page</a>. See the list?</p>
 <p><img src="images/advrvest1.png" width="946" /></p>
 <p>If it’s HTML in the page, we can grab it, so let’s do that. We start with the URL to any day, really.</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1">url &lt;-<span class="st"> &quot;https://nebraskalegislature.gov/calendar/dayview.php?day=2020-02-03&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" data-line-number="1">url &lt;-<span class="st"> &quot;https://nebraskalegislature.gov/calendar/dayview.php?day=2020-02-03&quot;</span></a></code></pre></div>
 <p>I’m going to create a thing called a calendar and store the list of option values in there. So when I’m done, I’ll have a list of dates.</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" data-line-number="1">calendar &lt;-<span class="st"> </span>url <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb220-2" data-line-number="2"><span class="st">  </span><span class="kw">read_html</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb220-3" data-line-number="3"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="dt">xpath =</span> <span class="st">&#39;//*[@id=&quot;leg_day&quot;]&#39;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb220-4" data-line-number="4"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;option&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb220-5" data-line-number="5"><span class="st">  </span><span class="kw">html_attrs</span>()</a></code></pre></div>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" data-line-number="1">calendar[<span class="dv">1</span>][<span class="dv">1</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1">calendar &lt;-<span class="st"> </span>url <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb219-2" data-line-number="2"><span class="st">  </span><span class="kw">read_html</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb219-3" data-line-number="3"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="dt">xpath =</span> <span class="st">&#39;//*[@id=&quot;leg_day&quot;]&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb219-4" data-line-number="4"><span class="st">  </span><span class="kw">html_nodes</span>(<span class="st">&quot;option&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb219-5" data-line-number="5"><span class="st">  </span><span class="kw">html_attrs</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" data-line-number="1">calendar[<span class="dv">1</span>][<span class="dv">1</span>]</a></code></pre></div>
 <pre><code>## [[1]]
 ##        value 
 ## &quot;2020-01-08&quot;</code></pre>
@@ -307,31 +307,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Then, because I’m a decent fellow, I’m going to pause my query for three seconds to give their servers a break.</li>
 </ol>
 <p>Let’s run it.</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" data-line-number="1">allbills &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-01-14&amp;print=csv&quot;</span>, <span class="dt">col_types =</span> <span class="kw">cols</span>()) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Date =</span> <span class="kw">as.Date</span>(<span class="st">&quot;2020-01-01&quot;</span>))<span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="st">`</span><span class="dt">Section Header</span><span class="st">`</span> <span class="op">==</span><span class="st"> &quot;Blah&quot;</span>)</a>
-<a class="sourceLine" id="cb224-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb224-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> calendar){</a>
-<a class="sourceLine" id="cb224-4" data-line-number="4">  date &lt;-<span class="st"> </span>i[<span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb224-5" data-line-number="5">  checkdate &lt;-<span class="st"> </span><span class="kw">as.Date</span>(date)</a>
-<a class="sourceLine" id="cb224-6" data-line-number="6">  </a>
-<a class="sourceLine" id="cb224-7" data-line-number="7">  <span class="cf">if</span> (checkdate <span class="op">&lt;=</span><span class="st"> </span><span class="kw">Sys.Date</span>() <span class="op">&amp;</span><span class="st"> </span>checkdate <span class="op">&gt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-01-13&quot;</span>)) {</a>
-<a class="sourceLine" id="cb224-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb224-9" data-line-number="9">    agendaurl &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;https://nebraskalegislature.gov/calendar/agenda.php?day=&quot;</span>, i, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb224-10" data-line-number="10">    csvurl &lt;-<span class="kw">paste</span>(agendaurl, <span class="st">&quot;&amp;print=csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb224-11" data-line-number="11">  <span class="kw">tryCatch</span>(</a>
-<a class="sourceLine" id="cb224-12" data-line-number="12">    agenda &lt;-<span class="st"> </span><span class="kw">read_csv</span>(csvurl, <span class="dt">col_types =</span> <span class="kw">cols</span>()) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Date =</span> checkdate), </a>
-<a class="sourceLine" id="cb224-13" data-line-number="13">    <span class="dt">error =</span> <span class="cf">function</span>(e){<span class="ot">NA</span>})</a>
-<a class="sourceLine" id="cb224-14" data-line-number="14">  <span class="kw">tryCatch</span>(</a>
-<a class="sourceLine" id="cb224-15" data-line-number="15">    allbills &lt;-<span class="st"> </span><span class="kw">rbind</span>(allbills, agenda), </a>
-<a class="sourceLine" id="cb224-16" data-line-number="16">    <span class="dt">error =</span> <span class="cf">function</span>(e){<span class="ot">NA</span>})</a>
-<a class="sourceLine" id="cb224-17" data-line-number="17">  <span class="kw">Sys.sleep</span>(<span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb224-18" data-line-number="18">  }</a>
-<a class="sourceLine" id="cb224-19" data-line-number="19">}</a></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1">allbills &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-01-14&amp;print=csv&quot;</span>, <span class="dt">col_types =</span> <span class="kw">cols</span>()) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Date =</span> <span class="kw">as.Date</span>(<span class="st">&quot;2020-01-01&quot;</span>))<span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="st">`</span><span class="dt">Section Header</span><span class="st">`</span> <span class="op">==</span><span class="st"> &quot;Blah&quot;</span>)</a>
+<a class="sourceLine" id="cb223-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb223-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> calendar){</a>
+<a class="sourceLine" id="cb223-4" data-line-number="4">  date &lt;-<span class="st"> </span>i[<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb223-5" data-line-number="5">  checkdate &lt;-<span class="st"> </span><span class="kw">as.Date</span>(date)</a>
+<a class="sourceLine" id="cb223-6" data-line-number="6">  </a>
+<a class="sourceLine" id="cb223-7" data-line-number="7">  <span class="cf">if</span> (checkdate <span class="op">&lt;=</span><span class="st"> </span><span class="kw">Sys.Date</span>() <span class="op">&amp;</span><span class="st"> </span>checkdate <span class="op">&gt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-01-13&quot;</span>)) {</a>
+<a class="sourceLine" id="cb223-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb223-9" data-line-number="9">    agendaurl &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;https://nebraskalegislature.gov/calendar/agenda.php?day=&quot;</span>, i, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb223-10" data-line-number="10">    csvurl &lt;-<span class="kw">paste</span>(agendaurl, <span class="st">&quot;&amp;print=csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb223-11" data-line-number="11">  <span class="kw">tryCatch</span>(</a>
+<a class="sourceLine" id="cb223-12" data-line-number="12">    agenda &lt;-<span class="st"> </span><span class="kw">read_csv</span>(csvurl, <span class="dt">col_types =</span> <span class="kw">cols</span>()) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Date =</span> checkdate), </a>
+<a class="sourceLine" id="cb223-13" data-line-number="13">    <span class="dt">error =</span> <span class="cf">function</span>(e){<span class="ot">NA</span>})</a>
+<a class="sourceLine" id="cb223-14" data-line-number="14">  <span class="kw">tryCatch</span>(</a>
+<a class="sourceLine" id="cb223-15" data-line-number="15">    allbills &lt;-<span class="st"> </span><span class="kw">rbind</span>(allbills, agenda), </a>
+<a class="sourceLine" id="cb223-16" data-line-number="16">    <span class="dt">error =</span> <span class="cf">function</span>(e){<span class="ot">NA</span>})</a>
+<a class="sourceLine" id="cb223-17" data-line-number="17">  <span class="kw">Sys.sleep</span>(<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb223-18" data-line-number="18">  }</a>
+<a class="sourceLine" id="cb223-19" data-line-number="19">}</a></code></pre></div>
 <pre><code>## Warning: 2 parsing failures.
 ## row      col           expected actual                                                                           file
 ##  31 Oneliner delimiter or quote      C &#39;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-06&amp;print=csv&#39;
 ##  31 Oneliner delimiter or quote        &#39;https://nebraskalegislature.gov/calendar/agenda.php?day=2020-03-06&amp;print=csv&#39;</code></pre>
 <p>And after that, I have a dataset of entries of bills on the floor. So if I want to see who has had the most bills on the floor – including repeats – I could answer that now.</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" data-line-number="1">allbills <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Introducer) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>(<span class="dt">sort=</span><span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">top_n</span>(<span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1">allbills <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Introducer) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>(<span class="dt">sort=</span><span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">na.omit</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">top_n</span>(<span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## Selecting by n</code></pre>
 <pre><code>## # A tibble: 5 x 2
 ##   Introducer         n
