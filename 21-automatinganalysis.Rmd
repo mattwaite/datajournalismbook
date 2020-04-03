@@ -352,13 +352,13 @@ pre <- fedranked %>% filter(filed_week_ended==as.Date("2020-03-14"))
 Now we can do some percent change math similar to above. First we calculate the current change. 
 
 ```{r}
-change <- round((((fedlatest$initial_claims - fedprevious$initial_claims)/fedprevious$initial_claims)*100), digits=2)
+change <- round((((fedlatest$initial_claims - fedprevious$initial_claims)/fedprevious$initial_claims)*100), digits=0)
 ```
 
 Then the change from the pre-crisis week.
 
 ```{r}
-prechange <- round((((fedlatest$initial_claims - pre$initial_claims)/pre$initial_claims)*100), digits=2)
+prechange <- round((((fedlatest$initial_claims - pre$initial_claims)/pre$initial_claims)*100), digits=0)
 ```
 
 And we roll it all into a subhead that we can use in the chart with a little paste-fu.
@@ -373,7 +373,7 @@ And we make the graphic.
 ggplot() + 
   geom_line(data=fedranked, aes(x=filed_week_ended, y=initial_claims, group=1)) +
   geom_point(data=fedlatest, aes(x=filed_week_ended, y=initial_claims)) + 
-  geom_text(data=fedlatest, aes(x=filed_week_ended-200, y=initial_claims + 500, label=initial_claims)) + 
+  geom_text(data=fedlatest, aes(x=filed_week_ended-500, y=initial_claims + 500, label=initial_claims)) + 
   geom_point(data=fedprevious, aes(x=filed_week_ended, y=initial_claims)) + 
   geom_text(data=fedprevious, aes(x=filed_week_ended-500, y=initial_claims + 500, label=initial_claims)) + 
   geom_smooth(data=fedranked, aes(x=filed_week_ended, y=initial_claims), method=loess, se=FALSE) + 
@@ -386,5 +386,3 @@ ggplot() +
     panel.grid.minor = element_blank()
     )
 ```
-
-

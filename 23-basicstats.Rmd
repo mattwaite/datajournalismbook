@@ -1,0 +1,147 @@
+# Basic Stats: The T-Test
+
+During the coronavirus social distancing, former Lincoln Police Chief and Director of Public Safety Tom Casady tweeted the following:
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">If you’re interested I how effective social distancing is working, a good surrogate measure would be the number of police incidents. Lincoln averages about 329 per day. <a href="https://t.co/tQAo7CN82r">https://t.co/tQAo7CN82r</a></p>&mdash; Tom Casady (@TCasady304) <a href="https://twitter.com/TCasady304/status/1239696474813992962?ref_src=twsrc%5Etfw">March 16, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+So, is it? 
+
+Let's find out. Can we see signs of Lincoln hunkering down in LPD data? 
+
+We're fortunate here. We can get [daily updated calls for service data from the Lincoln Open Data Portal](http://opendata.lincoln.ne.gov/datasets/lpd-dispatch-records). So download the spreadsheet version (which is really a csv) and load some libraries.
+
+```{r}
+library(tidyverse)
+library(lubridate)
+library(janitor)
+```
+
+And now load the data. 
+
+```{r}
+calls <- read_csv("data/LPD_Dispatch_Records.csv")
+```
+
+The first issue we need to address is that the dates don't import as dates. So we need to fix RPT_Date to make it a date. Lubridate to the rescue.
+
+```{r}
+calls <- calls %>% mutate(RPT_Date = ymd(RPT_Date))
+```
+
+For purposes of this work, we can live without the 13 (they don't occur when we're interested in).
+
+First, let's just visualize regular call volumes and see: Does the end of the line drop sharply, indicating people are socially distancing? 
+
+```{r}
+calls %>% group_by(RPT_Date) %>% summarize(total=n()) %>% ggplot() + geom_line(aes(x=RPT_Date, y=total))
+```
+
+Short answer? No. Longer answer? It's obivous that Lincoln has a seasonality to crime. It generally is low over the dead of winter and rises as it gets warmer, peaking during early football season (no surprise there) and dropping back down as winter sets in. So to make this useful, we should only compare dates in this March to previous March dates. Then we eliminate the seasonality issue.
+
+So we're going to do some filtering here. The following block is broken down like this:
+
+1. First, filter days in March.
+2. Then, group calls by day.
+3. Then, count them. How many happened that day?
+4. Then we're going to do some mutate magic. `case_when` is if/else logic. So what this says is if the date is less than March 8, 2020, then it's in the Previous group. After and equal to March 8, 2020, it's in the Current group. 
+5. Last, but not least, cutting out April dates in this dataset. Just going to look at March.
+
+And we'll put it all in a dataframe called `calldays`.
+
+```{r}
+calldays <- calls %>% filter(month(RPT_Date) == 3) %>% group_by(RPT_Date) %>% summarize(total_calls = n()) %>% mutate(TimePeriod = case_when(
+  RPT_Date < as.Date("2020-03-08") ~ "Previous",
+  RPT_Date >= as.Date("2020-03-08") ~ "Current",
+)) %>% filter(RPT_Date < as.Date("2020-04-01"))
+```
+
+To test if the current period of time is different from previous March days, we're going to use something called a t-test. A t-test simply asks if two sample means are different -- is the average between sample A different from the mean of sample B. It looks at the variability in the data and boils it down to a p-value. The p-value tells us if it's statistically significant or not. Simply put: If our value is below .05, it's statistically significant and the two means are different. If it's above .05, then the differences between the two numbers are not meaningful -- it could just be random chance that they're different. 
+
+[More on the t-test here](https://conjointly.com/kb/statistical-student-t-test/). Worth reading. 
+
+In R, a `t.test` is a base R function, owing to it being a statistical langauge. So were going to look at `total_calls` split between `TimePeriod`s. Here's the code. We'll interpret the output below.
+
+```{r}
+t.test(total_calls ~ TimePeriod, data = calldays)
+```
+
+First, look at the two means on the bottom. On the left, it says the daily call average in the current group -- March 8 to March 31 -- is 294.00 calls per day. On the right, in previous March days, it's 298.43. So about 4.5 calls diffrence. Is that a sigificant difference? Look above to the p-value for that answer. At 0.4917, that's considerably higher than .05. 
+
+So, statistically speaking, these numbers are the same. There's no real difference between them. A bad reporter would write a story -- or a bad mayor would hold a press conference and shout from the heavens -- that crime is down 4.5 calls per day on average! This is good! But it's not real. It's statistically meaningless. It's just random noise.
+
+## Specific call types
+
+But you need only look outside your house to realize the world is different. So how is it that calls to Lincoln police aren't?
+
+As they say, the devil is in the details. 
+
+Let's use `janitor`'s `tabyl` function to get a look at what kind of call groups we can look at. 
+
+```{r}
+calls %>% filter(RPT_Date >= as.Date("2020-03-01")) %>% tabyl(CFS_LEGEND)
+```
+
+Let's first look at disturbances, one of the first big call types on that list. Disturbances, for those of you who have always stayed on the right side of the law, are anything where the police get called out to and people are acting the fool. Arguments between neighbors? Disturbance. Terrible racket coming from the back yard down the way? Disturbance. So it's pretty generic and it happens a lot.
+
+To look specifically at a crime, we're going to take what we did before and add a filter into it, and we'll name the dataframe what we're looking at.
+
+```{r}
+disturbance <- calls %>% filter(CFS_LEGEND == "DISTURBANCE") %>% filter(month(RPT_Date) == 3) %>% group_by(RPT_Date) %>% summarize(total_calls = n()) %>% mutate(TimePeriod = case_when(
+  RPT_Date < as.Date("2020-03-08") ~ "Previous",
+  RPT_Date >= as.Date("2020-03-08") ~ "Current",
+)) %>% filter(RPT_Date < as.Date("2020-04-01"))
+```
+
+Then we can do our t-test. 
+
+```{r}
+t.test(total_calls ~ TimePeriod, data = disturbance)
+```
+
+So what does this say? Typically, you'd see 48.5 disturbances a day on average before coronavirus. Now? 55. Is that a sigificant difference? According to our p-value of .006875, it is. So police are going to more disturbances than usual. 
+
+What about traffic calls? 
+
+```{r}
+traffic <- calls %>% filter(CFS_LEGEND == "TRAFFIC") %>% filter(month(RPT_Date) == 3) %>% group_by(RPT_Date) %>% summarize(total_calls = n()) %>% mutate(TimePeriod = case_when(
+  RPT_Date < as.Date("2020-03-08") ~ "Previous",
+  RPT_Date >= as.Date("2020-03-08") ~ "Current",
+)) %>% filter(RPT_Date < as.Date("2020-04-01"))
+```
+
+```{r}
+t.test(total_calls ~ TimePeriod, data = traffic)
+```
+
+Typically get about 33 calls a day, now 23. That's a big difference, and a statistically significant one.
+
+How about car accidents?
+
+```{r}
+accident <- calls %>% filter(CFS_LEGEND == "ACCIDENT") %>% filter(month(RPT_Date) == 3) %>% group_by(RPT_Date) %>% summarize(total_calls = n()) %>% mutate(TimePeriod = case_when(
+  RPT_Date < as.Date("2020-03-08") ~ "Previous",
+  RPT_Date >= as.Date("2020-03-08") ~ "Current",
+)) %>% filter(RPT_Date < as.Date("2020-04-01"))
+```
+
+```{r}
+t.test(total_calls ~ TimePeriod, data = accident)
+```
+
+Typically get a little more than 25 accident calls a day. Now, it's 17. Insurance companies are making out like bandits right now.
+
+## What else should we look at?
+
+With a little magic using `tidyr` to transform the data ([learn more about that here](http://mattwaite.github.io/sports/transforming-data.html)), we can get a peek at other call groups worth exploring.
+
+```{r}
+calls %>% filter(month(RPT_Date) == 3) %>% group_by(RPT_Date, CFS_LEGEND) %>% summarize(total_calls = n()) %>% mutate(TimePeriod = case_when(
+  RPT_Date < as.Date("2020-03-08") ~ "Previous",
+  RPT_Date >= as.Date("2020-03-08") ~ "Current",
+)) %>% filter(RPT_Date < as.Date("2020-04-01")) %>%
+  group_by(TimePeriod, CFS_LEGEND) %>% summarize(avg_calls = mean(total_calls)) %>% pivot_wider(names_from = "TimePeriod", values_from = "avg_calls") %>% na.omit()
+```
+
+Other interesting stories here? DUI is almost half of what it normally is. Thefts from vehicles is up way up. Also: trespassing?
+
+But are they meaningful differences? Put them to the test. 
