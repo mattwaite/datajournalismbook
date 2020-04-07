@@ -1,0 +1,208 @@
+# An intro to text analysis
+
+Throughout this course, we've been focused on finding information in structured data. We've learned a lot of techniques to do that, and we've learned how the creative mixing and matching of those skills can find new insights. 
+
+What happens when the insights are in unstructured data? Like a block of text? 
+
+Turning unstructured text into data to analyze is a whole course in and of itself -- and one worth taking if you've got the credit hours -- but some simple stuff is in the grasp of basic data analysis. 
+
+To do this, we'll need a new library -- tidytext, which you can guess by the name plays very nicely with the tidyverse. So install it with `install.packages("tidytext")` and we'll get rolling. 
+
+```{r}
+library(tidyverse)
+library(tidytext)
+library(janitor)
+library(lubridate)
+```
+
+Here's the question we're going to go after: What's changed with campus crime since coronavirus chased everyone off campus? 
+
+[Here's a dataset that has crime data before and after the quarantine started](https://unl.box.com/s/1reagysljshlxgvhs92bcj7xid1o50ll). 
+
+This dataset has some flaws -- UNL uses some ... interesting ... datetime formats and there's a newline character in the report number field. We can fix all these issues on load with a little creative work.
+
+The following block is going to ... 
+
+1. Make a new dataframe called unl
+2. Read the csv of crime reports we downloaded.
+3. Use `janitor` to clean the header names
+4. Use mutate and `lubridate` to fix the dates in three fields
+5. Use `gsub` to drop the newline character -- a newline is `\n` and the extra slash tells gsub to ignore the next character, meaning don't read this as a newline, read it as backslash n. 
+
+```{r}
+unl <- read_csv("data/unlcrime_covid.csv") %>% 
+  clean_names() %>% 
+  mutate(
+    reported = mdy_hm(reported), 
+    start_occurred = mdy_hm(start_occurred), 
+    end_occurred = mdy_hm(end_occurred), 
+    case = gsub("\\n", "", case)
+  )
+```
+
+We can see what that all did with head:
+
+```{r}
+head(unl)
+```
+
+To look at a before and after picture, let's create two different dataframes -- one from January 1 to March 13, the day the University told everyone to go home. Campus that day was pretty empty -- few classes actually went on as scheduled, and most students didn't go to the ones that did. 
+
+```{r}
+pre2020 <- unl %>% filter(reported < "2020-03-13" & reported >= "2020-01-01")
+```
+
+And now we'll take that March 13 and everything after it. 
+
+```{r}
+post2020 <- unl %>% filter(reported >= "2020-03-13")
+```
+
+To answer this question, on the surface, we don't need to use text analysis to answer this question. We could simply ask what was the most common incident at UNLPD before classes were cancelled and then moved online? Let's just group it by incident_code, count them up and then get a top ten list. To go a step further, we'll calculate a percent that the crime represented by dividing the count by the sum of the counts and we'll use top_n to give us the top 10 incidents.
+
+```{r}
+pre2020 %>% 
+  group_by(incident_code) %>% 
+  tally(sort=TRUE) %>% 
+  mutate(percent = (n/sum(n))*100) %>% 
+  top_n(10)
+```
+
+So disturbances at the top with 32 of them reported between January 1 and the end. What about after the calamity?
+
+```{r}
+post2020 %>% 
+  group_by(incident_code) %>% 
+  tally(sort=TRUE) %>% 
+  mutate(percent = (n/sum(n))*100) %>% 
+  top_n(10)
+```
+
+Trespassing. That right there is a story -- the most common thing UNLPD has responded to in the few weeks since campus was pretty much closed is trespassing complaints. But really, there's not much going on here if 5 is the most common, and it's 12 percent of the total call volume. 
+
+Which begs the question: How many trespassing complaints did university police respond to before coronavirus?
+
+```{r}
+pre2020 %>% 
+  group_by(incident_code) %>% 
+  tally(sort=TRUE) %>% 
+  mutate(percent = (n/sum(n))*100) %>% 
+  filter(incident_code == "TRESPASSING")
+```
+
+Six. So six in two and a half months, five in a few weeks. That's a campus crime story.
+
+## Going further by analyzing text
+
+But notice the summary field at the end of the report? See all that text? There's a lot of meaning in there. As a reporter, I used to read those reports at different law enforcement agencies every day, looking for news. So it's a rich stream of data in there. How do we get at it?
+
+Text analysis attempts to find meaning in unstructured data by breaking apart the words. That's a bit of an oversimplification, but it'll do for now. Again, take a class in it. We're going to take all the words in the summary, break them apart into individual words. Now, it'd doesn't take a genius to realize if we did that, words like a, the, and, but and others would be at the top. So, we need to remove those. They're called stop words in text analysis. The tidytext library a dataframe of them. We can import it like this:
+
+```{r}
+data("stop_words")
+```
+
+The magic of tidytext is in a function called `unnest_tokens`, which is going to take the sentence that you read in the summary and break them apart in to words. The way that `unnest_tokens` works is that we tell it what we want to call the field we're creating with this breaking apart, then we tell it what we're breaking apart -- what field has all the text in it. For us, that's the summary.
+
+Then we're going to use a dplyr function we haven't used yet called an `anti_join`, which filters out any matches. So we'll `anti_join the stop words and get a list of words that aren't stop words. 
+
+From there, we can get a simple word frequency by just grouping them together and counting them. We can borrow the percent code from above to get a percent of the words our top 10 words represent. 
+
+```{r}
+pre2020 %>% 
+  unnest_tokens(word, summary) %>% 
+  anti_join(stop_words) %>% 
+  group_by(word) %>% 
+  tally(sort=TRUE) %>%
+  mutate(percent = (n/sum(n))*100) %>%
+  top_n(10)
+```
+
+Before the calamity, student, reported and university were your top three by a long ways. What about after?
+
+```{r}
+post2020 %>% 
+  unnest_tokens(word, summary) %>% 
+  anti_join(stop_words) %>% 
+  group_by(word) %>% 
+  tally(sort=TRUE) %>%
+  mutate(percent = (n/sum(n))*100) %>%
+  top_n(10)
+```
+
+Reported is now one, university two and student has dropped to three. But look at the proportions -- student was 7 percent of the words before, now students are 4 percent. I'm trying to decide if that's expected -- most students left campus -- or surprising that it's still that high. 
+
+## Going beyond a single word
+
+The next step in text analysis is using `ngrams`. An `ngram` is any combination of words that you specify. Two word ngrams are called bigrams (bi-grams). Three would be trigrams. And so forth. 
+
+The code to make ngrams is similar to what we did above, but involves some more twists. 
+
+So this block is is going to do the following:
+
+1. Use the pre2020 data we created above
+2. Unnest the tokens again, but instead we're going to create a field called bigram, break apart summary, but we're going to specify the tokens in this case are ngrams of 2.
+3. We're going to make things easier to read on ourselves and split bigrams into word1 and word2. 
+4. We're going to filter out stopwords again, but this time we're going to do it in both word1 and word2 using a slightly different filtering method.
+5. Because of some weirdness in calculating the percentage, we're going to put bigram back together again, now that the stop words are gone.
+6. We'll then group by, count and create a percent just like we did above.
+7. We'll then use top_n to give us the top 10 bigrams. 
+
+
+```{r}
+pre2020 %>% 
+  unnest_tokens(bigram, summary, token = "ngrams", n = 2) %>%
+  separate(bigram, c("word1", "word2"), sep = " ") %>%
+  filter(!word1 %in% stop_words$word) %>%
+  filter(!word2 %in% stop_words$word) %>% 
+  mutate(bigram = paste(word1, word2, sep=" ")) %>%
+  group_by(bigram) %>%
+  tally(sort=TRUE) %>%
+  mutate(percent = (n/sum(n))*100) %>%
+  top_n(10)
+```
+
+And we already have a different, more nuanced result. Student and reported were our top two single words. Why? Because they appear together a lot. In pre-calamity reports, student reported was the top bigram. What about after?
+
+```{r}
+post2020 %>% 
+  unnest_tokens(bigram, summary, token = "ngrams", n = 2) %>%
+  separate(bigram, c("word1", "word2"), sep = " ") %>%
+  filter(!word1 %in% stop_words$word) %>%
+  filter(!word2 %in% stop_words$word) %>% 
+  mutate(bigram = paste(word1, word2, sep=" ")) %>%
+  group_by(bigram) %>%
+  tally(sort=TRUE) %>%
+  mutate(percent = (n/sum(n))*100) %>%
+  top_n(10)
+```
+
+Look at that -- you can remove 90 percent of the students from campus, and they're still the top callers to UNLPD. The percent is almost no different.
+
+So what are the students left on campus reporting to UNLPD?
+
+```{r}
+post2020 %>% 
+  unnest_tokens(bigram, summary, token = "ngrams", n = 2) %>%
+  separate(bigram, c("word1", "word2"), sep = " ") %>%
+  filter(!word1 %in% stop_words$word) %>%
+  filter(!word2 %in% stop_words$word) %>% 
+  mutate(bigram = paste(word1, word2, sep=" ")) %>%
+  filter(bigram == "student reported") %>%
+  group_by(incident_code) %>%
+  tally(sort=TRUE)
+```
+
+What about before?
+
+```{r}
+pre2020 %>% 
+  unnest_tokens(bigram, summary, token = "ngrams", n = 2) %>%
+  separate(bigram, c("word1", "word2"), sep = " ") %>%
+  filter(!word1 %in% stop_words$word) %>%
+  filter(!word2 %in% stop_words$word) %>% 
+  mutate(bigram = paste(word1, word2, sep=" ")) %>%
+  filter(bigram == "student reported") %>%
+  group_by(incident_code) %>%
+  tally(sort=TRUE)
+```
