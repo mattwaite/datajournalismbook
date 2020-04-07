@@ -2349,7 +2349,7 @@ Here's an example using sensible defaults for weighting -- unfortunately \href{h
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3034
+## [1] 3035
 \end{verbatim}
 
 Cuts it down by almost 1000. That seems pretty good. Here's a different method, using a method that turns words into phonetic spellings called soundex.
@@ -5577,7 +5577,7 @@ First, let's just visualize regular call volumes and see: Does the end of the li
 
 \includegraphics{datajournalism_files/figure-latex/unnamed-chunk-249-1.pdf}
 
-Short answer? No.~Longer answer? It's obivous that Lincoln has a seasonality to crime. It generally is low over the dead of winter and rises as it gets warmer, peaking during early football season (no surprise there) and dropping back down as winter sets in. So to make this useful, we should only compare dates in this March to previous March dates. Then we eliminate the seasonality issue.
+Short answer? No.~Longer answer? It's obvious that Lincoln has a seasonality to crime. It generally is low over the dead of winter and rises as it gets warmer, peaking during early football season (no surprise there) and dropping back down as winter sets in. So to make this useful, we should only compare dates in this March to previous March dates. Then we eliminate the seasonality issue.
 
 So we're going to do some filtering here. The following block is broken down like this:
 
@@ -5611,7 +5611,7 @@ To test if the current period of time is different from previous March days, we'
 
 \href{https://conjointly.com/kb/statistical-student-t-test/}{More on the t-test here}. Worth reading.
 
-In R, a \texttt{t.test} is a base R function, owing to it being a statistical langauge. So were going to look at \texttt{total\_calls} split between \texttt{TimePeriod}s. Here's the code. We'll interpret the output below.
+In R, a \texttt{t.test} is a base R function, owing to it being a statistical language. So were going to look at \texttt{total\_calls} split between \texttt{TimePeriod}s. Here's the code. We'll interpret the output below.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5633,7 +5633,7 @@ In R, a \texttt{t.test} is a base R function, owing to it being a statistical la
 ##               295.7333               297.8611
 \end{verbatim}
 
-First, look at the two means on the bottom. On the left, it says the daily call average in the current group -- March 16 to March 31 -- is 295.73 calls per day. On the right, in previous March days, it's 297.86. So about 2.3 calls diffrence. Is that a sigificant difference? Look above to the p-value for that answer. At 0.7645, that's considerably higher than .05.
+First, look at the two means on the bottom. On the left, it says the daily call average in the current group -- March 16 to March 31 -- is 295.73 calls per day. On the right, in previous March days, it's 297.86. So about 2.3 calls difference. Is that a significant difference? Look above to the p-value for that answer. At 0.7645, that's considerably higher than .05.
 
 So, statistically speaking, these numbers are the same. There's no real difference between them. A bad reporter would write a story -- or a bad mayor would hold a press conference and shout from the heavens -- that crime is down 2.3 calls per day on average! This is good! But it's not real. It's statistically meaningless. It's just random noise.
 
@@ -5727,7 +5727,7 @@ Then we can do our t-test.
 ##               56.06667               48.85185
 \end{verbatim}
 
-So what does this say? Typically, you'd see 48.85 disturbances a day on average before coronavirus. Now? 56. Is that a sigificant difference? According to our p-value of 0.0138, it is. So police are going to more disturbances than usual.
+So what does this say? Typically, you'd see 48.85 disturbances a day on average before coronavirus. Now? 56. Is that a significant difference? According to our p-value of 0.0138, it is. So police are going to more disturbances than usual.
 
 What about traffic calls?
 

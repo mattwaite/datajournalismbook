@@ -381,7 +381,7 @@ Every time I talk about Open Refine, I remember this, and I get mad.</p>
 <a class="sourceLine" id="cb147-5" data-line-number="5"><span class="st">  </span><span class="kw">group_by</span>(clean_charges) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb147-6" data-line-number="6"><span class="st">  </span><span class="kw">tally</span>() <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb147-7" data-line-number="7"><span class="st">  </span><span class="kw">nrow</span>()</a></code></pre></div>
-<pre><code>## [1] 3036</code></pre>
+<pre><code>## [1] 3035</code></pre>
 <p>Cuts it down by almost 1000. That seems pretty good. Here’s a different method, using a method that turns words into phonetic spellings called soundex.</p>
 <div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" data-line-number="1">charges <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb149-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(</a>
