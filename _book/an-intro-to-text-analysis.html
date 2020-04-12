@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 25 An intro to text analysis | Data Journalism with R and the Tidyverse</title>
+  <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 25 An intro to text analysis | Data Journalism with R and the Tidyverse" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 25 An intro to text analysis | Data Journalism with R and the Tidyverse" />
+  
+  <meta name="twitter:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  
+
+<meta name="author" content="Matt Waite" />
+
+
+<meta name="date" content="2020-04-06" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="basic-stats-the-t-test.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.13/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-160712129-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-160712129-1');
+</script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="http://mattwaite.github.io/datajournalism/">Data Journalism With R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#modern-data-journalism"><i class="fa fa-check"></i><b>1.1</b> Modern data journalism</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installations"><i class="fa fa-check"></i><b>1.2</b> Installations</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#about-this-book"><i class="fa fa-check"></i><b>1.3</b> About this book</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#what-well-cover"><i class="fa fa-check"></i><b>1.4</b> What we’ll cover</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="public-records.html"><a href="public-records.html"><i class="fa fa-check"></i><b>2</b> Public records</a><ul>
+<li class="chapter" data-level="2.1" data-path="public-records.html"><a href="public-records.html#federal-law"><i class="fa fa-check"></i><b>2.1</b> Federal law</a></li>
+<li class="chapter" data-level="2.2" data-path="public-records.html"><a href="public-records.html#state-law"><i class="fa fa-check"></i><b>2.2</b> State law</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>3</b> R basics</a><ul>
+<li class="chapter" data-level="3.1" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-1"><i class="fa fa-check"></i><b>3.1</b> Adding libraries, part 1</a></li>
+<li class="chapter" data-level="3.2" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-2"><i class="fa fa-check"></i><b>3.2</b> Adding libraries, part 2</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html"><i class="fa fa-check"></i><b>4</b> Data journalism in the age of replication</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#the-stylebook"><i class="fa fa-check"></i><b>4.1</b> The stylebook</a></li>
+<li class="chapter" data-level="4.2" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication"><i class="fa fa-check"></i><b>4.2</b> Replication</a></li>
+<li class="chapter" data-level="4.3" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#goodbye-excel"><i class="fa fa-check"></i><b>4.3</b> Goodbye Excel?</a></li>
+<li class="chapter" data-level="4.4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#receptivity-is-high"><i class="fa fa-check"></i><b>4.4</b> “Receptivity … is high”</a></li>
+<li class="chapter" data-level="4.5" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication-in-notebooks"><i class="fa fa-check"></i><b>4.5</b> Replication in notebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html"><i class="fa fa-check"></i><b>5</b> Data, structures and types</a><ul>
+<li class="chapter" data-level="5.1" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#rows-and-columns"><i class="fa fa-check"></i><b>5.1</b> Rows and columns</a></li>
+<li class="chapter" data-level="5.2" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#types"><i class="fa fa-check"></i><b>5.2</b> Types</a></li>
+<li class="chapter" data-level="5.3" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#a-simple-way-to-get-data"><i class="fa fa-check"></i><b>5.3</b> A simple way to get data</a></li>
+<li class="chapter" data-level="5.4" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#cleaning-the-data"><i class="fa fa-check"></i><b>5.4</b> Cleaning the data</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="aggregates.html"><a href="aggregates.html"><i class="fa fa-check"></i><b>6</b> Aggregates</a><ul>
+<li class="chapter" data-level="6.1" data-path="aggregates.html"><a href="aggregates.html#importing-data"><i class="fa fa-check"></i><b>6.1</b> Importing data</a></li>
+<li class="chapter" data-level="6.2" data-path="aggregates.html"><a href="aggregates.html#group-by-and-count"><i class="fa fa-check"></i><b>6.2</b> Group by and count</a></li>
+<li class="chapter" data-level="6.3" data-path="aggregates.html"><a href="aggregates.html#other-aggregates-mean-and-median"><i class="fa fa-check"></i><b>6.3</b> Other aggregates: Mean and median</a></li>
+<li class="chapter" data-level="6.4" data-path="aggregates.html"><a href="aggregates.html#even-more-aggregates"><i class="fa fa-check"></i><b>6.4</b> Even more aggregates</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>7</b> Mutating data</a><ul>
+<li class="chapter" data-level="7.1" data-path="mutating-data.html"><a href="mutating-data.html#another-use-of-mutate"><i class="fa fa-check"></i><b>7.1</b> Another use of mutate</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>8</b> Working with dates</a><ul>
+<li class="chapter" data-level="8.1" data-path="working-with-dates.html"><a href="working-with-dates.html#the-hard-way"><i class="fa fa-check"></i><b>8.1</b> The hard way</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="filters-and-selections.html"><a href="filters-and-selections.html"><i class="fa fa-check"></i><b>9</b> Filters and selections</a><ul>
+<li class="chapter" data-level="9.1" data-path="filters-and-selections.html"><a href="filters-and-selections.html#combining-filters"><i class="fa fa-check"></i><b>9.1</b> Combining filters</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html"><i class="fa fa-check"></i><b>10</b> Data Cleaning Part I: Data smells</a><ul>
+<li class="chapter" data-level="10.1" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#wrong-type"><i class="fa fa-check"></i><b>10.1</b> Wrong Type</a></li>
+<li class="chapter" data-level="10.2" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#missing-data"><i class="fa fa-check"></i><b>10.2</b> Missing Data</a></li>
+<li class="chapter" data-level="10.3" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#gaps-in-data"><i class="fa fa-check"></i><b>10.3</b> Gaps in data</a></li>
+<li class="chapter" data-level="10.4" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#internal-inconsistency"><i class="fa fa-check"></i><b>10.4</b> Internal inconsistency</a></li>
+<li class="chapter" data-level="10.5" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#a-shortcut-summary"><i class="fa fa-check"></i><b>10.5</b> A Shortcut: Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html"><i class="fa fa-check"></i><b>11</b> Data Cleaning Part II: Janitor</a><ul>
+<li class="chapter" data-level="11.1" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#cleaning-headers"><i class="fa fa-check"></i><b>11.1</b> Cleaning headers</a></li>
+<li class="chapter" data-level="11.2" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#duplicates"><i class="fa fa-check"></i><b>11.2</b> Duplicates</a></li>
+<li class="chapter" data-level="11.3" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#inconsistency"><i class="fa fa-check"></i><b>11.3</b> Inconsistency</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html"><i class="fa fa-check"></i><b>12</b> Data Cleaning Part III: Open Refine</a><ul>
+<li class="chapter" data-level="12.1" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#refinr-open-refine-in-r"><i class="fa fa-check"></i><b>12.1</b> Refinr, Open Refine in R</a></li>
+<li class="chapter" data-level="12.2" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#more-complex-issues"><i class="fa fa-check"></i><b>12.2</b> More complex issues</a></li>
+<li class="chapter" data-level="12.3" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#manually-cleaning-data-with-open-refine"><i class="fa fa-check"></i><b>12.3</b> Manually cleaning data with Open Refine</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html"><i class="fa fa-check"></i><b>13</b> Cleaning Data Part IV: PDFs</a><ul>
+<li class="chapter" data-level="13.1" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-looks-good-but-goes-wrong"><i class="fa fa-check"></i><b>13.1</b> When it looks good, but goes wrong</a></li>
+<li class="chapter" data-level="13.2" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-works-well."><i class="fa fa-check"></i><b>13.2</b> When it works well.</a></li>
+<li class="chapter" data-level="13.3" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#cleaning-up-the-data-in-r"><i class="fa fa-check"></i><b>13.3</b> Cleaning up the data in R</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="combining-and-joining.html"><a href="combining-and-joining.html"><i class="fa fa-check"></i><b>14</b> Combining and joining</a><ul>
+<li class="chapter" data-level="14.1" data-path="combining-and-joining.html"><a href="combining-and-joining.html#combining-data"><i class="fa fa-check"></i><b>14.1</b> Combining data</a></li>
+<li class="chapter" data-level="14.2" data-path="combining-and-joining.html"><a href="combining-and-joining.html#joining-data"><i class="fa fa-check"></i><b>14.2</b> Joining data</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html"><i class="fa fa-check"></i><b>15</b> Scraping data with Rvest</a><ul>
+<li class="chapter" data-level="15.1" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html#a-more-difficult-example"><i class="fa fa-check"></i><b>15.1</b> A more difficult example</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="advanced-rvest.html"><a href="advanced-rvest.html"><i class="fa fa-check"></i><b>16</b> Advanced rvest</a></li>
+<li class="chapter" data-level="17" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html"><i class="fa fa-check"></i><b>17</b> Intro to APIs: The Census</a><ul>
+<li class="chapter" data-level="17.1" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html#the-acs"><i class="fa fa-check"></i><b>17.1</b> The ACS</a></li>
+<li class="chapter" data-level="17.2" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html#bonus-api-example-coronavirus"><i class="fa fa-check"></i><b>17.2</b> Bonus API example: Coronavirus</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html"><i class="fa fa-check"></i><b>18</b> Visualizing your data for reporting</a><ul>
+<li class="chapter" data-level="18.1" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html#bar-charts"><i class="fa fa-check"></i><b>18.1</b> Bar charts</a></li>
+<li class="chapter" data-level="18.2" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html#line-charts"><i class="fa fa-check"></i><b>18.2</b> Line charts</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="visualizing-your-data-for-publication.html"><a href="visualizing-your-data-for-publication.html"><i class="fa fa-check"></i><b>19</b> Visualizing your data for publication</a><ul>
+<li class="chapter" data-level="19.1" data-path="visualizing-your-data-for-publication.html"><a href="visualizing-your-data-for-publication.html#datawrapper"><i class="fa fa-check"></i><b>19.1</b> Datawrapper</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html"><i class="fa fa-check"></i><b>20</b> Geographic data basics</a><ul>
+<li class="chapter" data-level="20.1" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html#importing-and-viewing-data"><i class="fa fa-check"></i><b>20.1</b> Importing and viewing data</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="geographic-analysis.html"><a href="geographic-analysis.html"><i class="fa fa-check"></i><b>21</b> Geographic analysis</a><ul>
+<li class="chapter" data-level="21.1" data-path="geographic-analysis.html"><a href="geographic-analysis.html#why-tidycensus-is-so-useful"><i class="fa fa-check"></i><b>21.1</b> Why tidycensus is so useful</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="automating-analysis.html"><a href="automating-analysis.html"><i class="fa fa-check"></i><b>22</b> Automating analysis</a><ul>
+<li class="chapter" data-level="22.1" data-path="automating-analysis.html"><a href="automating-analysis.html#automating-downloads-an-imports"><i class="fa fa-check"></i><b>22.1</b> Automating downloads an imports</a></li>
+<li class="chapter" data-level="22.2" data-path="automating-analysis.html"><a href="automating-analysis.html#exploring-the-data"><i class="fa fa-check"></i><b>22.2</b> Exploring the data</a></li>
+<li class="chapter" data-level="22.3" data-path="automating-analysis.html"><a href="automating-analysis.html#analysis"><i class="fa fa-check"></i><b>22.3</b> Analysis</a></li>
+<li class="chapter" data-level="22.4" data-path="automating-analysis.html"><a href="automating-analysis.html#making-updating-graphics"><i class="fa fa-check"></i><b>22.4</b> Making updating graphics</a></li>
+<li class="chapter" data-level="22.5" data-path="automating-analysis.html"><a href="automating-analysis.html#the-state-vs-the-feds"><i class="fa fa-check"></i><b>22.5</b> The State vs the Feds</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="automating-geographic-analysis.html"><a href="automating-geographic-analysis.html"><i class="fa fa-check"></i><b>23</b> Automating geographic analysis</a><ul>
+<li class="chapter" data-level="23.1" data-path="automating-geographic-analysis.html"><a href="automating-geographic-analysis.html#mapping-continuously"><i class="fa fa-check"></i><b>23.1</b> Mapping continuously</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="basic-stats-the-t-test.html"><a href="basic-stats-the-t-test.html"><i class="fa fa-check"></i><b>24</b> Basic Stats: The T-Test</a><ul>
+<li class="chapter" data-level="24.1" data-path="basic-stats-the-t-test.html"><a href="basic-stats-the-t-test.html#specific-call-types"><i class="fa fa-check"></i><b>24.1</b> Specific call types</a></li>
+<li class="chapter" data-level="24.2" data-path="basic-stats-the-t-test.html"><a href="basic-stats-the-t-test.html#what-else-should-we-look-at"><i class="fa fa-check"></i><b>24.2</b> What else should we look at?</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="an-intro-to-text-analysis.html"><a href="an-intro-to-text-analysis.html"><i class="fa fa-check"></i><b>25</b> An intro to text analysis</a><ul>
+<li class="chapter" data-level="25.1" data-path="an-intro-to-text-analysis.html"><a href="an-intro-to-text-analysis.html#going-further-by-analyzing-text"><i class="fa fa-check"></i><b>25.1</b> Going further by analyzing text</a></li>
+<li class="chapter" data-level="25.2" data-path="an-intro-to-text-analysis.html"><a href="an-intro-to-text-analysis.html#going-beyond-a-single-word"><i class="fa fa-check"></i><b>25.2</b> Going beyond a single word</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Journalism with R and the Tidyverse</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="an-intro-to-text-analysis" class="section level1">
+<h1><span class="header-section-number">Chapter 25</span> An intro to text analysis</h1>
+<p>Throughout this course, we’ve been focused on finding information in structured data. We’ve learned a lot of techniques to do that, and we’ve learned how the creative mixing and matching of those skills can find new insights.</p>
+<p>What happens when the insights are in unstructured data? Like a block of text?</p>
+<p>Turning unstructured text into data to analyze is a whole course in and of itself – and one worth taking if you’ve got the credit hours – but some simple stuff is in the grasp of basic data analysis.</p>
+<p>To do this, we’ll need a new library – tidytext, which you can guess by the name plays very nicely with the tidyverse. So install it with <code>install.packages(&quot;tidytext&quot;)</code> and we’ll get rolling.</p>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb427-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb427-2" data-line-number="2"><span class="kw">library</span>(tidytext)</a></code></pre></div>
+<pre><code>## Warning: package &#39;tidytext&#39; was built under R version 3.5.2</code></pre>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb429-1" data-line-number="1"><span class="kw">library</span>(janitor)</a>
+<a class="sourceLine" id="cb429-2" data-line-number="2"><span class="kw">library</span>(lubridate)</a></code></pre></div>
+<p>Here’s the question we’re going to go after: What’s changed with campus crime since coronavirus chased everyone off campus?</p>
+<p><a href="https://unl.box.com/s/1reagysljshlxgvhs92bcj7xid1o50ll">Here’s a dataset that has crime data before and after the quarantine started</a>.</p>
+<p>This dataset has some flaws – UNL uses some … interesting … datetime formats and there’s a newline character in the report number field. We can fix all these issues on load with a little creative work.</p>
+<p>The following block is going to …</p>
+<ol style="list-style-type: decimal">
+<li>Make a new dataframe called unl</li>
+<li>Read the csv of crime reports we downloaded.</li>
+<li>Use <code>janitor</code> to clean the header names</li>
+<li>Use mutate and <code>lubridate</code> to fix the dates in three fields</li>
+<li>Use <code>gsub</code> to drop the newline character – a newline is <code>\n</code> and the extra slash tells gsub to ignore the next character, meaning don’t read this as a newline, read it as backslash n.</li>
+</ol>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb430-1" data-line-number="1">unl &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/unlcrime_covid.csv&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb430-2" data-line-number="2"><span class="st">  </span><span class="kw">clean_names</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb430-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb430-4" data-line-number="4">    <span class="dt">reported =</span> <span class="kw">mdy_hm</span>(reported), </a>
+<a class="sourceLine" id="cb430-5" data-line-number="5">    <span class="dt">start_occurred =</span> <span class="kw">mdy_hm</span>(start_occurred), </a>
+<a class="sourceLine" id="cb430-6" data-line-number="6">    <span class="dt">end_occurred =</span> <span class="kw">mdy_hm</span>(end_occurred), </a>
+<a class="sourceLine" id="cb430-7" data-line-number="7">    <span class="dt">case =</span> <span class="kw">gsub</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">n&quot;</span>, <span class="st">&quot;&quot;</span>, case)</a>
+<a class="sourceLine" id="cb430-8" data-line-number="8">  )</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   Case = col_character(),
+##   `Incident Code` = col_character(),
+##   Reported = col_character(),
+##   Disposition = col_character(),
+##   `Start Occurred` = col_character(),
+##   `End Occurred` = col_character(),
+##   Building = col_character(),
+##   Location = col_character(),
+##   Stolen = col_double(),
+##   Damaged = col_double(),
+##   Summary = col_character()
+## )</code></pre>
+<p>We can see what that all did with head:</p>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb432-1" data-line-number="1"><span class="kw">head</span>(unl)</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 11
+##   case  incident_code reported            disposition start_occurred     
+##   &lt;chr&gt; &lt;chr&gt;         &lt;dttm&gt;              &lt;chr&gt;       &lt;dttm&gt;             
+## 1 1900… LARCENY - ST… 2019-08-26 11:05:00 Open        2019-08-23 12:00:00
+## 2 1900… DISTURBANCE … 2019-08-26 11:55:00 Closed      2019-08-25 00:00:00
+## 3 1900… VANDALISM - … 2019-08-26 13:00:00 Open        2019-08-23 16:00:00
+## 4 1900… DISTURBANCE … 2019-08-26 13:40:00 Closed      2019-05-04 12:00:00
+## 5 1900… DISTURBANCE … 2019-08-26 17:03:00 Closed      2019-08-26 17:03:00
+## 6 1900… STALKING      2019-08-26 19:57:00 Open        2018-10-01 00:00:00
+## # … with 6 more variables: end_occurred &lt;dttm&gt;, building &lt;chr&gt;, location &lt;chr&gt;,
+## #   stolen &lt;dbl&gt;, damaged &lt;dbl&gt;, summary &lt;chr&gt;</code></pre>
+<p>To look at a before and after picture, let’s create two different dataframes – one from January 1 to March 13, the day the University told everyone to go home. Campus that day was pretty empty – few classes actually went on as scheduled, and most students didn’t go to the ones that did.</p>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb434-1" data-line-number="1">pre2020 &lt;-<span class="st"> </span>unl <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(reported <span class="op">&lt;</span><span class="st"> &quot;2020-03-13&quot;</span> <span class="op">&amp;</span><span class="st"> </span>reported <span class="op">&gt;=</span><span class="st"> &quot;2020-01-01&quot;</span>)</a></code></pre></div>
+<p>And now we’ll take that March 13 and everything after it.</p>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb435-1" data-line-number="1">post2020 &lt;-<span class="st"> </span>unl <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(reported <span class="op">&gt;=</span><span class="st"> &quot;2020-03-13&quot;</span>)</a></code></pre></div>
+<p>To answer this question, on the surface, we don’t need to use text analysis to answer this question. We could simply ask what was the most common incident at UNLPD before classes were cancelled and then moved online? Let’s just group it by incident_code, count them up and then get a top ten list. To go a step further, we’ll calculate a percent that the crime represented by dividing the count by the sum of the counts and we’ll use top_n to give us the top 10 incidents.</p>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb436-1" data-line-number="1">pre2020 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb436-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(incident_code) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb436-3" data-line-number="3"><span class="st">  </span><span class="kw">tally</span>(<span class="dt">sort=</span><span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb436-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">percent =</span> (n<span class="op">/</span><span class="kw">sum</span>(n))<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb436-5" data-line-number="5"><span class="st">  </span><span class="kw">top_n</span>(<span class="dv">10</span>)</a></code></pre></div>
+<pre><code>## Selecting by percent</code></pre>
+<pre><code>## # A tibble: 10 x 3
+##    incident_code                           n percent
+##    &lt;chr&gt;                               &lt;int&gt;   &lt;dbl&gt;
+##  1 DISTURBANCE - OTHER                    32   11.6 
+##  2 LOST OR STOLEN ITEM                    20    7.27
+##  3 ACCIDENTS - P.D. H&amp;R NOT REPORTABLE    17    6.18
+##  4 ACCIDENTS - P.D. NOT REPORTABLE        17    6.18
+##  5 ALCOHOL - MINOR IN POSSESSION          15    5.45
+##  6 MEDICAL EMERGENCY                      14    5.09
+##  7 NARCOTICS - POSSESSION                 13    4.73
+##  8 SS - CHECK WELFARE OF PERSON           13    4.73
+##  9 LARCENY - FROM BUILDING                12    4.36
+## 10 ALCOHOL - DRUNK                        10    3.64</code></pre>
+<p>So disturbances at the top with 32 of them reported between January 1 and the end. What about after the calamity?</p>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb439-1" data-line-number="1">post2020 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb439-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(incident_code) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb439-3" data-line-number="3"><span class="st">  </span><span class="kw">tally</span>(<span class="dt">sort=</span><span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb439-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">percent =</span> (n<span class="op">/</span><span class="kw">sum</span>(n))<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb439-5" data-line-number="5"><span class="st">  </span><span class="kw">top_n</span>(<span class="dv">10</span>)</a></code></pre></div>
+<pre><code>## Selecting by percent</code></pre>
+<pre><code>## # A tibble: 12 x 3
+##    incident_code                           n percent
+##    &lt;chr&gt;                               &lt;int&gt;   &lt;dbl&gt;
+##  1 TRESPASSING                             5   12.8 
+##  2 ACCIDENTS - P.D. H&amp;R NOT REPORTABLE     3    7.69
+##  3 ALCOHOL - MINOR IN POSSESSION           2    5.13
+##  4 BURGLARY                                2    5.13
+##  5 DISTURBANCE - OTHER                     2    5.13
+##  6 LARCENY - FROM MOTOR VEHICLE            2    5.13
+##  7 LARCENY - OTHER OR FROM OPEN AREA       2    5.13
+##  8 LARCENY - STOLEN BIKE                   2    5.13
+##  9 LOST OR STOLEN ITEM                     2    5.13
+## 10 NARCOTICS - POSSESSION                  2    5.13
+## 11 OUTSIDE - O.P.S. OTHER                  2    5.13
+## 12 VANDALISM - OTHER                       2    5.13</code></pre>
+<p>Trespassing. That right there is a story – the most common thing UNLPD has responded to in the few weeks since campus was pretty much closed is trespassing complaints. But really, there’s not much going on here if 5 is the most common, and it’s 12 percent of the total call volume.</p>
+<p>Which begs the question: How many trespassing complaints did university police respond to before coronavirus?</p>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb442-1" data-line-number="1">pre2020 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb442-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(incident_code) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb442-3" data-line-number="3"><span class="st">  </span><span class="kw">tally</span>(<span class="dt">sort=</span><span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb442-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">percent =</span> (n<span class="op">/</span><span class="kw">sum</span>(n))<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb442-5" data-line-number="5"><span class="st">  </span><span class="kw">filter</span>(incident_code <span class="op">==</span><span class="st"> &quot;TRESPASSING&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 3
+##   incident_code     n percent
+##   &lt;chr&gt;         &lt;int&gt;   &lt;dbl&gt;
+## 1 TRESPASSING       6    2.18</code></pre>
+<p>Six. So six in two and a half months, five in a few weeks. That’s a campus crime story.</p>
+<div id="going-further-by-analyzing-text" class="section level2">
+<h2><span class="header-section-number">25.1</span> Going further by analyzing text</h2>
+<p>But notice the summary field at the end of the report? See all that text? There’s a lot of meaning in there. As a reporter, I used to read those reports at different law enforcement agencies every day, looking for news. So it’s a rich stream of data in there. How do we get at it?</p>
+<p>Text analysis attempts to find meaning in unstructured data by breaking apart the words. That’s a bit of an oversimplification, but it’ll do for now. Again, take a class in it. We’re going to take all the words in the summary, break them apart into individual words. Now, it’d doesn’t take a genius to realize if we did that, words like a, the, and, but and others would be at the top. So, we need to remove those. They’re called stop words in text analysis. The tidytext library a dataframe of them. We can import it like this:</p>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb444-1" data-line-number="1"><span class="kw">data</span>(<span class="st">&quot;stop_words&quot;</span>)</a></code></pre></div>
+<p>The magic of tidytext is in a function called <code>unnest_tokens</code>, which is going to take the sentence that you read in the summary and break them apart in to words. The way that <code>unnest_tokens</code> works is that we tell it what we want to call the field we’re creating with this breaking apart, then we tell it what we’re breaking apart – what field has all the text in it. For us, that’s the summary.</p>
+<p>Then we’re going to use a dplyr function we haven’t used yet called an <code>anti_join</code>, which filters out any matches. So we’ll `anti_join the stop words and get a list of words that aren’t stop words.</p>
+<p>From there, we can get a simple word frequency by just grouping them together and counting them. We can borrow the percent code from above to get a percent of the words our top 10 words represent.</p>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb445-1" data-line-number="1">pre2020 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb445-2" data-line-number="2"><span class="st">  </span><span class="kw">unnest_tokens</span>(word, summary) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb445-3" data-line-number="3"><span class="st">  </span><span class="kw">anti_join</span>(stop_words) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb445-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(word) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb445-5" data-line-number="5"><span class="st">  </span><span class="kw">tally</span>(<span class="dt">sort=</span><span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb445-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">percent =</span> (n<span class="op">/</span><span class="kw">sum</span>(n))<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb445-7" data-line-number="7"><span class="st">  </span><span class="kw">top_n</span>(<span class="dv">10</span>)</a></code></pre></div>
+<pre><code>## Joining, by = &quot;word&quot;</code></pre>
+<pre><code>## Selecting by percent</code></pre>
+<pre><code>## # A tibble: 10 x 3
+##    word           n percent
+##    &lt;chr&gt;      &lt;int&gt;   &lt;dbl&gt;
+##  1 student      183    7.26
+##  2 reported     136    5.40
+##  3 university   129    5.12
+##  4 affiliate     48    1.91
+##  5 vehicle       47    1.87
+##  6 contacted     46    1.83
+##  7 staff         40    1.59
+##  8 belated       38    1.51
+##  9 cited         36    1.43
+## 10 report        36    1.43</code></pre>
+<p>Before the calamity, student, reported and university were your top three by a long ways. What about after?</p>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb449-1" data-line-number="1">post2020 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb449-2" data-line-number="2"><span class="st">  </span><span class="kw">unnest_tokens</span>(word, summary) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb449-3" data-line-number="3"><span class="st">  </span><span class="kw">anti_join</span>(stop_words) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb449-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(word) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb449-5" data-line-number="5"><span class="st">  </span><span class="kw">tally</span>(<span class="dt">sort=</span><span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb449-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">percent =</span> (n<span class="op">/</span><span class="kw">sum</span>(n))<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb449-7" data-line-number="7"><span class="st">  </span><span class="kw">top_n</span>(<span class="dv">10</span>)</a></code></pre></div>
+<pre><code>## Joining, by = &quot;word&quot;</code></pre>
+<pre><code>## Selecting by percent</code></pre>
+<pre><code>## # A tibble: 13 x 3
+##    word           n percent
+##    &lt;chr&gt;      &lt;int&gt;   &lt;dbl&gt;
+##  1 reported      19    6.13
+##  2 university    17    5.48
+##  3 student       13    4.19
+##  4 affiliate     10    3.23
+##  5 vehicle       10    3.23
+##  6 contacted      7    2.26
+##  7 staff          6    1.94
+##  8 alcohol        5    1.61
+##  9 belated        5    1.61
+## 10 marijuana      5    1.61
+## 11 officers       5    1.61
+## 12 possession     5    1.61
+## 13 report         5    1.61</code></pre>
+<p>Reported is now one, university two and student has dropped to three. But look at the proportions – student was 7 percent of the words before, now students are 4 percent. I’m trying to decide if that’s expected – most students left campus – or surprising that it’s still that high.</p>
+</div>
+<div id="going-beyond-a-single-word" class="section level2">
+<h2><span class="header-section-number">25.2</span> Going beyond a single word</h2>
+<p>The next step in text analysis is using <code>ngrams</code>. An <code>ngram</code> is any combination of words that you specify. Two word ngrams are called bigrams (bi-grams). Three would be trigrams. And so forth.</p>
+<p>The code to make ngrams is similar to what we did above, but involves some more twists.</p>
+<p>So this block is is going to do the following:</p>
+<ol style="list-style-type: decimal">
+<li>Use the pre2020 data we created above</li>
+<li>Unnest the tokens again, but instead we’re going to create a field called bigram, break apart summary, but we’re going to specify the tokens in this case are ngrams of 2.</li>
+<li>We’re going to make things easier to read on ourselves and split bigrams into word1 and word2.</li>
+<li>We’re going to filter out stopwords again, but this time we’re going to do it in both word1 and word2 using a slightly different filtering method.</li>
+<li>Because of some weirdness in calculating the percentage, we’re going to put bigram back together again, now that the stop words are gone.</li>
+<li>We’ll then group by, count and create a percent just like we did above.</li>
+<li>We’ll then use top_n to give us the top 10 bigrams.</li>
+</ol>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb453-1" data-line-number="1">pre2020 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb453-2" data-line-number="2"><span class="st">  </span><span class="kw">unnest_tokens</span>(bigram, summary, <span class="dt">token =</span> <span class="st">&quot;ngrams&quot;</span>, <span class="dt">n =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb453-3" data-line-number="3"><span class="st">  </span><span class="kw">separate</span>(bigram, <span class="kw">c</span>(<span class="st">&quot;word1&quot;</span>, <span class="st">&quot;word2&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb453-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>word1 <span class="op">%in%</span><span class="st"> </span>stop_words<span class="op">$</span>word) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb453-5" data-line-number="5"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>word2 <span class="op">%in%</span><span class="st"> </span>stop_words<span class="op">$</span>word) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb453-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">bigram =</span> <span class="kw">paste</span>(word1, word2, <span class="dt">sep=</span><span class="st">&quot; &quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb453-7" data-line-number="7"><span class="st">  </span><span class="kw">group_by</span>(bigram) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb453-8" data-line-number="8"><span class="st">  </span><span class="kw">tally</span>(<span class="dt">sort=</span><span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb453-9" data-line-number="9"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">percent =</span> (n<span class="op">/</span><span class="kw">sum</span>(n))<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb453-10" data-line-number="10"><span class="st">  </span><span class="kw">top_n</span>(<span class="dv">10</span>)</a></code></pre></div>
+<pre><code>## Selecting by percent</code></pre>
+<pre><code>## # A tibble: 10 x 3
+##    bigram                  n percent
+##    &lt;chr&gt;               &lt;int&gt;   &lt;dbl&gt;
+##  1 student reported       85    8.19
+##  2 university student     49    4.72
+##  3 cited released         29    2.79
+##  4 university staff       29    2.79
+##  5 nebraska student       17    1.64
+##  6 drug paraphernalia     14    1.35
+##  7 safe detoxification    14    1.35
+##  8 belated theft          12    1.16
+##  9 injury accident        12    1.16
+## 10 traffic stop           12    1.16</code></pre>
+<p>And we already have a different, more nuanced result. Student and reported were our top two single words. Why? Because they appear together a lot. In pre-calamity reports, student reported was the top bigram. What about after?</p>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb456-1" data-line-number="1">post2020 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb456-2" data-line-number="2"><span class="st">  </span><span class="kw">unnest_tokens</span>(bigram, summary, <span class="dt">token =</span> <span class="st">&quot;ngrams&quot;</span>, <span class="dt">n =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb456-3" data-line-number="3"><span class="st">  </span><span class="kw">separate</span>(bigram, <span class="kw">c</span>(<span class="st">&quot;word1&quot;</span>, <span class="st">&quot;word2&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb456-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>word1 <span class="op">%in%</span><span class="st"> </span>stop_words<span class="op">$</span>word) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb456-5" data-line-number="5"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>word2 <span class="op">%in%</span><span class="st"> </span>stop_words<span class="op">$</span>word) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb456-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">bigram =</span> <span class="kw">paste</span>(word1, word2, <span class="dt">sep=</span><span class="st">&quot; &quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb456-7" data-line-number="7"><span class="st">  </span><span class="kw">group_by</span>(bigram) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb456-8" data-line-number="8"><span class="st">  </span><span class="kw">tally</span>(<span class="dt">sort=</span><span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb456-9" data-line-number="9"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">percent =</span> (n<span class="op">/</span><span class="kw">sum</span>(n))<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb456-10" data-line-number="10"><span class="st">  </span><span class="kw">top_n</span>(<span class="dv">10</span>)</a></code></pre></div>
+<pre><code>## Selecting by percent</code></pre>
+<pre><code>## # A tibble: 11 x 3
+##    bigram                 n percent
+##    &lt;chr&gt;              &lt;int&gt;   &lt;dbl&gt;
+##  1 student reported      10    7.87
+##  2 university staff       5    3.94
+##  3 reported damage        4    3.15
+##  4 affiliate reported     3    2.36
+##  5 cited released         3    2.36
+##  6 officers responded     3    2.36
+##  7 university student     3    2.36
+##  8 assisted lpd           2    1.57
+##  9 drug paraphernalia     2    1.57
+## 10 motor vehicle          2    1.57
+## 11 unlpd received         2    1.57</code></pre>
+<p>Look at that – you can remove 90 percent of the students from campus, and they’re still the top callers to UNLPD. The percent is almost no different.</p>
+<p>So what are the students left on campus reporting to UNLPD?</p>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb459-1" data-line-number="1">post2020 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb459-2" data-line-number="2"><span class="st">  </span><span class="kw">unnest_tokens</span>(bigram, summary, <span class="dt">token =</span> <span class="st">&quot;ngrams&quot;</span>, <span class="dt">n =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb459-3" data-line-number="3"><span class="st">  </span><span class="kw">separate</span>(bigram, <span class="kw">c</span>(<span class="st">&quot;word1&quot;</span>, <span class="st">&quot;word2&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb459-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>word1 <span class="op">%in%</span><span class="st"> </span>stop_words<span class="op">$</span>word) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb459-5" data-line-number="5"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>word2 <span class="op">%in%</span><span class="st"> </span>stop_words<span class="op">$</span>word) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb459-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">bigram =</span> <span class="kw">paste</span>(word1, word2, <span class="dt">sep=</span><span class="st">&quot; &quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb459-7" data-line-number="7"><span class="st">  </span><span class="kw">filter</span>(bigram <span class="op">==</span><span class="st"> &quot;student reported&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb459-8" data-line-number="8"><span class="st">  </span><span class="kw">group_by</span>(incident_code) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb459-9" data-line-number="9"><span class="st">  </span><span class="kw">tally</span>(<span class="dt">sort=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 9 x 2
+##   incident_code                           n
+##   &lt;chr&gt;                               &lt;int&gt;
+## 1 LARCENY - FROM MOTOR VEHICLE            2
+## 2 ACCIDENTS - P.D. H&amp;R NOT REPORTABLE     1
+## 3 ACCIDENTS - P.D. NOT REPORTABLE         1
+## 4 DISTURBANCE - OTHER                     1
+## 5 FRAUD - CREDIT CARDS/ATM/BANK CARD      1
+## 6 LARCENY - OTHER OR FROM OPEN AREA       1
+## 7 LARCENY - STOLEN BIKE                   1
+## 8 LOST OR STOLEN ITEM                     1
+## 9 STALKING                                1</code></pre>
+<p>What about before?</p>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb461-1" data-line-number="1">pre2020 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb461-2" data-line-number="2"><span class="st">  </span><span class="kw">unnest_tokens</span>(bigram, summary, <span class="dt">token =</span> <span class="st">&quot;ngrams&quot;</span>, <span class="dt">n =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb461-3" data-line-number="3"><span class="st">  </span><span class="kw">separate</span>(bigram, <span class="kw">c</span>(<span class="st">&quot;word1&quot;</span>, <span class="st">&quot;word2&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb461-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>word1 <span class="op">%in%</span><span class="st"> </span>stop_words<span class="op">$</span>word) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb461-5" data-line-number="5"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>word2 <span class="op">%in%</span><span class="st"> </span>stop_words<span class="op">$</span>word) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb461-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">bigram =</span> <span class="kw">paste</span>(word1, word2, <span class="dt">sep=</span><span class="st">&quot; &quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb461-7" data-line-number="7"><span class="st">  </span><span class="kw">filter</span>(bigram <span class="op">==</span><span class="st"> &quot;student reported&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb461-8" data-line-number="8"><span class="st">  </span><span class="kw">group_by</span>(incident_code) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb461-9" data-line-number="9"><span class="st">  </span><span class="kw">tally</span>(<span class="dt">sort=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 21 x 2
+##    incident_code                                           n
+##    &lt;chr&gt;                                               &lt;int&gt;
+##  1 LOST OR STOLEN ITEM                                    17
+##  2 ACCIDENTS - P.D. H&amp;R NOT REPORTABLE                    11
+##  3 DISTURBANCE - OTHER                                     9
+##  4 LARCENY - FROM BUILDING                                 8
+##  5 LARCENY - STOLEN BIKE                                   8
+##  6 ACCIDENTS - P.D. NOT REPORTABLE                         4
+##  7 LARCENY - FROM MOTOR VEHICLE                            4
+##  8 SUSPICIOUS PERSON                                       4
+##  9 FRAUD - CON GAMES/DECEPTION/FALSE    PRETENSE/OTHER     3
+## 10 OUTSIDE - O.P.S. OTHER                                  3
+## # … with 11 more rows</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="basic-stats-the-t-test.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/25-textanalysis.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["datajournalism.pdf", "datajournalism.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

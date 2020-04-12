@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.5.8)  2 APR 2020 19:52
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.5.8)  6 APR 2020 21:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -4364,6 +4364,9 @@ tor, coercing into[]
 File: datajournalism_files/figure-latex/unnamed-chunk-245-1.pdf Graphic file (t
 ype pdf)
 <use datajournalism_files/figure-latex/unnamed-chunk-245-1.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 [182] [183] [184
 
 ]
@@ -4405,27 +4408,89 @@ Overfull \hbox (17.25pt too wide) in paragraph at lines 5794--5794
 ual to 0[] 
  []
 
-[190]
+[190] [191] [192
+
+]
+Chapter 25.
+
+Underfull \hbox (badness 1052) in paragraph at lines 5843--5844
+\TU/lmr/m/n/10 by the name plays very nicely with the tidyverse. So install it 
+with
+ []
+
+[193]
+Overfull \hbox (27.75pt too wide) in paragraph at lines 5927--5927
+[]\TU/lmtt/m/n/10 ##   case  incident_code reported            disposition star
+t_occurred[] 
+ []
+
+
+Overfull \hbox (54.0pt too wide) in paragraph at lines 5927--5927
+[]\TU/lmtt/m/n/10 ## 1 1900~ LARCENY - ST~ 2019-08-26 11:05:00 Open        2019
+-08-23 12:00:00[] 
+ []
+
+
+Overfull \hbox (54.0pt too wide) in paragraph at lines 5927--5927
+[]\TU/lmtt/m/n/10 ## 2 1900~ DISTURBANCE ~ 2019-08-26 11:55:00 Closed      2019
+-08-25 00:00:00[] 
+ []
+
+
+Overfull \hbox (54.0pt too wide) in paragraph at lines 5927--5927
+[]\TU/lmtt/m/n/10 ## 3 1900~ VANDALISM - ~ 2019-08-26 13:00:00 Open        2019
+-08-23 16:00:00[] 
+ []
+
+
+Overfull \hbox (54.0pt too wide) in paragraph at lines 5927--5927
+[]\TU/lmtt/m/n/10 ## 4 1900~ DISTURBANCE ~ 2019-08-26 13:40:00 Closed      2019
+-05-04 12:00:00[] 
+ []
+
+
+Overfull \hbox (54.0pt too wide) in paragraph at lines 5927--5927
+[]\TU/lmtt/m/n/10 ## 5 1900~ DISTURBANCE ~ 2019-08-26 17:03:00 Closed      2019
+-08-26 17:03:00[] 
+ []
+
+
+Overfull \hbox (54.0pt too wide) in paragraph at lines 5927--5927
+[]\TU/lmtt/m/n/10 ## 6 1900~ STALKING      2019-08-26 19:57:00 Open        2018
+-10-01 00:00:00[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5927--5927
+[]\TU/lmtt/m/n/10 ## # ... with 6 more variables: end_occurred <dttm>, building
+ <chr>,[] 
+ []
+
+[194] [195] [196] [197] [198]
+Overfull \vbox (0.28996pt too high) detected at line 6210
+ []
+
+[199] [200]
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5834.
-[191]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 5834.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 6299.
+[201]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 6299.
 (./datajournalism.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 5834.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 5834.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 6299.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 6299.
 
 Package rerunfilecheck Info: File `datajournalism.out' has not changed.
-(rerunfilecheck)             Checksum: A2BBFA7702DD820A5726554338D6CDD9.
+(rerunfilecheck)             Checksum: 5A0A1E58E317C22ACDA5C807E50971A8.
  ) 
 Here is how much of TeX's memory you used:
- 27596 strings out of 492916
- 508854 string characters out of 6133346
- 751315 words of memory out of 5000000
- 31341 multiletter control sequences out of 15000+600000
+ 27600 strings out of 492916
+ 508954 string characters out of 6133346
+ 752134 words of memory out of 5000000
+ 31345 multiletter control sequences out of 15000+600000
  538732 words of font info for 77 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  58i,6n,115p,1006b,455s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on datajournalism.pdf (191 pages).
+Output written on datajournalism.pdf (201 pages).

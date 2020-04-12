@@ -118,7 +118,7 @@
 
 \title{Data Journalism with R and the Tidyverse}
 \author{Matt Waite}
-\date{2020-04-02}
+\date{2020-04-06}
 
 \begin{document}
 \maketitle
@@ -2349,7 +2349,7 @@ Here's an example using sensible defaults for weighting -- unfortunately \href{h
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3035
+## [1] 3033
 \end{verbatim}
 
 Cuts it down by almost 1000. That seems pretty good. Here's a different method, using a method that turns words into phonetic spellings called soundex.
@@ -5830,5 +5830,470 @@ With a little magic using \texttt{tidyr} to transform the data (\href{http://mat
 Other interesting stories here? DUI is almost half of what it normally is. Thefts from vehicles are up way up. Also: trespassing? What's that about?
 
 But are they meaningful differences? Put them to the test.
+
+\hypertarget{an-intro-to-text-analysis}{%
+\chapter{An intro to text analysis}\label{an-intro-to-text-analysis}}
+
+Throughout this course, we've been focused on finding information in structured data. We've learned a lot of techniques to do that, and we've learned how the creative mixing and matching of those skills can find new insights.
+
+What happens when the insights are in unstructured data? Like a block of text?
+
+Turning unstructured text into data to analyze is a whole course in and of itself -- and one worth taking if you've got the credit hours -- but some simple stuff is in the grasp of basic data analysis.
+
+To do this, we'll need a new library -- tidytext, which you can guess by the name plays very nicely with the tidyverse. So install it with \texttt{install.packages("tidytext")} and we'll get rolling.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\KeywordTok{library}\NormalTok{(tidytext)}
+\KeywordTok{library}\NormalTok{(janitor)}
+\KeywordTok{library}\NormalTok{(lubridate)}
+\end{Highlighting}
+\end{Shaded}
+
+Here's the question we're going to go after: What's changed with campus crime since coronavirus chased everyone off campus?
+
+\href{https://unl.box.com/s/1reagysljshlxgvhs92bcj7xid1o50ll}{Here's a dataset that has crime data before and after the quarantine started}.
+
+This dataset has some flaws -- UNL uses some \ldots{} interesting \ldots{} datetime formats and there's a newline character in the report number field. We can fix all these issues on load with a little creative work.
+
+The following block is going to \ldots{}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Make a new dataframe called unl
+\item
+  Read the csv of crime reports we downloaded.
+\item
+  Use \texttt{janitor} to clean the header names
+\item
+  Use mutate and \texttt{lubridate} to fix the dates in three fields
+\item
+  Use \texttt{gsub} to drop the newline character -- a newline is \texttt{\textbackslash{}n} and the extra slash tells gsub to ignore the next character, meaning don't read this as a newline, read it as backslash n.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{unl <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"data/unlcrime_covid.csv"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{clean_names}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}
+    \DataTypeTok{reported =} \KeywordTok{mdy_hm}\NormalTok{(reported), }
+    \DataTypeTok{start_occurred =} \KeywordTok{mdy_hm}\NormalTok{(start_occurred), }
+    \DataTypeTok{end_occurred =} \KeywordTok{mdy_hm}\NormalTok{(end_occurred), }
+    \DataTypeTok{case =} \KeywordTok{gsub}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{n"}\NormalTok{, }\StringTok{""}\NormalTok{, case)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Parsed with column specification:
+## cols(
+##   Case = col_character(),
+##   `Incident Code` = col_character(),
+##   Reported = col_character(),
+##   Disposition = col_character(),
+##   `Start Occurred` = col_character(),
+##   `End Occurred` = col_character(),
+##   Building = col_character(),
+##   Location = col_character(),
+##   Stolen = col_double(),
+##   Damaged = col_double(),
+##   Summary = col_character()
+## )
+\end{verbatim}
+
+We can see what that all did with head:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(unl)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 11
+##   case  incident_code reported            disposition start_occurred     
+##   <chr> <chr>         <dttm>              <chr>       <dttm>             
+## 1 1900~ LARCENY - ST~ 2019-08-26 11:05:00 Open        2019-08-23 12:00:00
+## 2 1900~ DISTURBANCE ~ 2019-08-26 11:55:00 Closed      2019-08-25 00:00:00
+## 3 1900~ VANDALISM - ~ 2019-08-26 13:00:00 Open        2019-08-23 16:00:00
+## 4 1900~ DISTURBANCE ~ 2019-08-26 13:40:00 Closed      2019-05-04 12:00:00
+## 5 1900~ DISTURBANCE ~ 2019-08-26 17:03:00 Closed      2019-08-26 17:03:00
+## 6 1900~ STALKING      2019-08-26 19:57:00 Open        2018-10-01 00:00:00
+## # ... with 6 more variables: end_occurred <dttm>, building <chr>,
+## #   location <chr>, stolen <dbl>, damaged <dbl>, summary <chr>
+\end{verbatim}
+
+To look at a before and after picture, let's create two different dataframes -- one from January 1 to March 13, the day the University told everyone to go home. Campus that day was pretty empty -- few classes actually went on as scheduled, and most students didn't go to the ones that did.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pre2020 <-}\StringTok{ }\NormalTok{unl }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(reported }\OperatorTok{<}\StringTok{ "2020-03-13"} \OperatorTok{&}\StringTok{ }\NormalTok{reported }\OperatorTok{>=}\StringTok{ "2020-01-01"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+And now we'll take that March 13 and everything after it.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{post2020 <-}\StringTok{ }\NormalTok{unl }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(reported }\OperatorTok{>=}\StringTok{ "2020-03-13"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+To answer this question, on the surface, we don't need to use text analysis to answer this question. We could simply ask what was the most common incident at UNLPD before classes were cancelled and then moved online? Let's just group it by incident\_code, count them up and then get a top ten list. To go a step further, we'll calculate a percent that the crime represented by dividing the count by the sum of the counts and we'll use top\_n to give us the top 10 incidents.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pre2020 }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(incident_code) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{tally}\NormalTok{(}\DataTypeTok{sort=}\OtherTok{TRUE}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{percent =}\NormalTok{ (n}\OperatorTok{/}\KeywordTok{sum}\NormalTok{(n))}\OperatorTok{*}\DecValTok{100}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{top_n}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Selecting by percent
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 10 x 3
+##    incident_code                           n percent
+##    <chr>                               <int>   <dbl>
+##  1 DISTURBANCE - OTHER                    32   11.6 
+##  2 LOST OR STOLEN ITEM                    20    7.27
+##  3 ACCIDENTS - P.D. H&R NOT REPORTABLE    17    6.18
+##  4 ACCIDENTS - P.D. NOT REPORTABLE        17    6.18
+##  5 ALCOHOL - MINOR IN POSSESSION          15    5.45
+##  6 MEDICAL EMERGENCY                      14    5.09
+##  7 NARCOTICS - POSSESSION                 13    4.73
+##  8 SS - CHECK WELFARE OF PERSON           13    4.73
+##  9 LARCENY - FROM BUILDING                12    4.36
+## 10 ALCOHOL - DRUNK                        10    3.64
+\end{verbatim}
+
+So disturbances at the top with 32 of them reported between January 1 and the end. What about after the calamity?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{post2020 }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(incident_code) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{tally}\NormalTok{(}\DataTypeTok{sort=}\OtherTok{TRUE}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{percent =}\NormalTok{ (n}\OperatorTok{/}\KeywordTok{sum}\NormalTok{(n))}\OperatorTok{*}\DecValTok{100}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{top_n}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Selecting by percent
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 12 x 3
+##    incident_code                           n percent
+##    <chr>                               <int>   <dbl>
+##  1 TRESPASSING                             5   12.8 
+##  2 ACCIDENTS - P.D. H&R NOT REPORTABLE     3    7.69
+##  3 ALCOHOL - MINOR IN POSSESSION           2    5.13
+##  4 BURGLARY                                2    5.13
+##  5 DISTURBANCE - OTHER                     2    5.13
+##  6 LARCENY - FROM MOTOR VEHICLE            2    5.13
+##  7 LARCENY - OTHER OR FROM OPEN AREA       2    5.13
+##  8 LARCENY - STOLEN BIKE                   2    5.13
+##  9 LOST OR STOLEN ITEM                     2    5.13
+## 10 NARCOTICS - POSSESSION                  2    5.13
+## 11 OUTSIDE - O.P.S. OTHER                  2    5.13
+## 12 VANDALISM - OTHER                       2    5.13
+\end{verbatim}
+
+Trespassing. That right there is a story -- the most common thing UNLPD has responded to in the few weeks since campus was pretty much closed is trespassing complaints. But really, there's not much going on here if 5 is the most common, and it's 12 percent of the total call volume.
+
+Which begs the question: How many trespassing complaints did university police respond to before coronavirus?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pre2020 }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(incident_code) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{tally}\NormalTok{(}\DataTypeTok{sort=}\OtherTok{TRUE}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{percent =}\NormalTok{ (n}\OperatorTok{/}\KeywordTok{sum}\NormalTok{(n))}\OperatorTok{*}\DecValTok{100}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(incident_code }\OperatorTok{==}\StringTok{ "TRESPASSING"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 3
+##   incident_code     n percent
+##   <chr>         <int>   <dbl>
+## 1 TRESPASSING       6    2.18
+\end{verbatim}
+
+Six. So six in two and a half months, five in a few weeks. That's a campus crime story.
+
+\hypertarget{going-further-by-analyzing-text}{%
+\section{Going further by analyzing text}\label{going-further-by-analyzing-text}}
+
+But notice the summary field at the end of the report? See all that text? There's a lot of meaning in there. As a reporter, I used to read those reports at different law enforcement agencies every day, looking for news. So it's a rich stream of data in there. How do we get at it?
+
+Text analysis attempts to find meaning in unstructured data by breaking apart the words. That's a bit of an oversimplification, but it'll do for now. Again, take a class in it. We're going to take all the words in the summary, break them apart into individual words. Now, it'd doesn't take a genius to realize if we did that, words like a, the, and, but and others would be at the top. So, we need to remove those. They're called stop words in text analysis. The tidytext library a dataframe of them. We can import it like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{data}\NormalTok{(}\StringTok{"stop_words"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+The magic of tidytext is in a function called \texttt{unnest\_tokens}, which is going to take the sentence that you read in the summary and break them apart in to words. The way that \texttt{unnest\_tokens} works is that we tell it what we want to call the field we're creating with this breaking apart, then we tell it what we're breaking apart -- what field has all the text in it. For us, that's the summary.
+
+Then we're going to use a dplyr function we haven't used yet called an \texttt{anti\_join}, which filters out any matches. So we'll `anti\_join the stop words and get a list of words that aren't stop words.
+
+From there, we can get a simple word frequency by just grouping them together and counting them. We can borrow the percent code from above to get a percent of the words our top 10 words represent.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pre2020 }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{unnest_tokens}\NormalTok{(word, summary) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{anti_join}\NormalTok{(stop_words) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(word) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{tally}\NormalTok{(}\DataTypeTok{sort=}\OtherTok{TRUE}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{percent =}\NormalTok{ (n}\OperatorTok{/}\KeywordTok{sum}\NormalTok{(n))}\OperatorTok{*}\DecValTok{100}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{top_n}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining, by = "word"
+\end{verbatim}
+
+\begin{verbatim}
+## Selecting by percent
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 10 x 3
+##    word           n percent
+##    <chr>      <int>   <dbl>
+##  1 student      183    7.26
+##  2 reported     136    5.40
+##  3 university   129    5.12
+##  4 affiliate     48    1.91
+##  5 vehicle       47    1.87
+##  6 contacted     46    1.83
+##  7 staff         40    1.59
+##  8 belated       38    1.51
+##  9 cited         36    1.43
+## 10 report        36    1.43
+\end{verbatim}
+
+Before the calamity, student, reported and university were your top three by a long ways. What about after?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{post2020 }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{unnest_tokens}\NormalTok{(word, summary) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{anti_join}\NormalTok{(stop_words) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(word) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{tally}\NormalTok{(}\DataTypeTok{sort=}\OtherTok{TRUE}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{percent =}\NormalTok{ (n}\OperatorTok{/}\KeywordTok{sum}\NormalTok{(n))}\OperatorTok{*}\DecValTok{100}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{top_n}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining, by = "word"
+\end{verbatim}
+
+\begin{verbatim}
+## Selecting by percent
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 13 x 3
+##    word           n percent
+##    <chr>      <int>   <dbl>
+##  1 reported      19    6.13
+##  2 university    17    5.48
+##  3 student       13    4.19
+##  4 affiliate     10    3.23
+##  5 vehicle       10    3.23
+##  6 contacted      7    2.26
+##  7 staff          6    1.94
+##  8 alcohol        5    1.61
+##  9 belated        5    1.61
+## 10 marijuana      5    1.61
+## 11 officers       5    1.61
+## 12 possession     5    1.61
+## 13 report         5    1.61
+\end{verbatim}
+
+Reported is now one, university two and student has dropped to three. But look at the proportions -- student was 7 percent of the words before, now students are 4 percent. I'm trying to decide if that's expected -- most students left campus -- or surprising that it's still that high.
+
+\hypertarget{going-beyond-a-single-word}{%
+\section{Going beyond a single word}\label{going-beyond-a-single-word}}
+
+The next step in text analysis is using \texttt{ngrams}. An \texttt{ngram} is any combination of words that you specify. Two word ngrams are called bigrams (bi-grams). Three would be trigrams. And so forth.
+
+The code to make ngrams is similar to what we did above, but involves some more twists.
+
+So this block is is going to do the following:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Use the pre2020 data we created above
+\item
+  Unnest the tokens again, but instead we're going to create a field called bigram, break apart summary, but we're going to specify the tokens in this case are ngrams of 2.
+\item
+  We're going to make things easier to read on ourselves and split bigrams into word1 and word2.
+\item
+  We're going to filter out stopwords again, but this time we're going to do it in both word1 and word2 using a slightly different filtering method.
+\item
+  Because of some weirdness in calculating the percentage, we're going to put bigram back together again, now that the stop words are gone.
+\item
+  We'll then group by, count and create a percent just like we did above.
+\item
+  We'll then use top\_n to give us the top 10 bigrams.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pre2020 }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{unnest_tokens}\NormalTok{(bigram, summary, }\DataTypeTok{token =} \StringTok{"ngrams"}\NormalTok{, }\DataTypeTok{n =} \DecValTok{2}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{separate}\NormalTok{(bigram, }\KeywordTok{c}\NormalTok{(}\StringTok{"word1"}\NormalTok{, }\StringTok{"word2"}\NormalTok{), }\DataTypeTok{sep =} \StringTok{" "}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\NormalTok{word1 }\OperatorTok{%in%}\StringTok{ }\NormalTok{stop_words}\OperatorTok{$}\NormalTok{word) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\NormalTok{word2 }\OperatorTok{%in%}\StringTok{ }\NormalTok{stop_words}\OperatorTok{$}\NormalTok{word) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{bigram =} \KeywordTok{paste}\NormalTok{(word1, word2, }\DataTypeTok{sep=}\StringTok{" "}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(bigram) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{tally}\NormalTok{(}\DataTypeTok{sort=}\OtherTok{TRUE}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{percent =}\NormalTok{ (n}\OperatorTok{/}\KeywordTok{sum}\NormalTok{(n))}\OperatorTok{*}\DecValTok{100}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{top_n}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Selecting by percent
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 10 x 3
+##    bigram                  n percent
+##    <chr>               <int>   <dbl>
+##  1 student reported       85    8.19
+##  2 university student     49    4.72
+##  3 cited released         29    2.79
+##  4 university staff       29    2.79
+##  5 nebraska student       17    1.64
+##  6 drug paraphernalia     14    1.35
+##  7 safe detoxification    14    1.35
+##  8 belated theft          12    1.16
+##  9 injury accident        12    1.16
+## 10 traffic stop           12    1.16
+\end{verbatim}
+
+And we already have a different, more nuanced result. Student and reported were our top two single words. Why? Because they appear together a lot. In pre-calamity reports, student reported was the top bigram. What about after?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{post2020 }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{unnest_tokens}\NormalTok{(bigram, summary, }\DataTypeTok{token =} \StringTok{"ngrams"}\NormalTok{, }\DataTypeTok{n =} \DecValTok{2}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{separate}\NormalTok{(bigram, }\KeywordTok{c}\NormalTok{(}\StringTok{"word1"}\NormalTok{, }\StringTok{"word2"}\NormalTok{), }\DataTypeTok{sep =} \StringTok{" "}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\NormalTok{word1 }\OperatorTok{%in%}\StringTok{ }\NormalTok{stop_words}\OperatorTok{$}\NormalTok{word) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\NormalTok{word2 }\OperatorTok{%in%}\StringTok{ }\NormalTok{stop_words}\OperatorTok{$}\NormalTok{word) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{bigram =} \KeywordTok{paste}\NormalTok{(word1, word2, }\DataTypeTok{sep=}\StringTok{" "}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(bigram) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{tally}\NormalTok{(}\DataTypeTok{sort=}\OtherTok{TRUE}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{percent =}\NormalTok{ (n}\OperatorTok{/}\KeywordTok{sum}\NormalTok{(n))}\OperatorTok{*}\DecValTok{100}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{top_n}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Selecting by percent
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 11 x 3
+##    bigram                 n percent
+##    <chr>              <int>   <dbl>
+##  1 student reported      10    7.87
+##  2 university staff       5    3.94
+##  3 reported damage        4    3.15
+##  4 affiliate reported     3    2.36
+##  5 cited released         3    2.36
+##  6 officers responded     3    2.36
+##  7 university student     3    2.36
+##  8 assisted lpd           2    1.57
+##  9 drug paraphernalia     2    1.57
+## 10 motor vehicle          2    1.57
+## 11 unlpd received         2    1.57
+\end{verbatim}
+
+Look at that -- you can remove 90 percent of the students from campus, and they're still the top callers to UNLPD. The percent is almost no different.
+
+So what are the students left on campus reporting to UNLPD?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{post2020 }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{unnest_tokens}\NormalTok{(bigram, summary, }\DataTypeTok{token =} \StringTok{"ngrams"}\NormalTok{, }\DataTypeTok{n =} \DecValTok{2}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{separate}\NormalTok{(bigram, }\KeywordTok{c}\NormalTok{(}\StringTok{"word1"}\NormalTok{, }\StringTok{"word2"}\NormalTok{), }\DataTypeTok{sep =} \StringTok{" "}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\NormalTok{word1 }\OperatorTok{%in%}\StringTok{ }\NormalTok{stop_words}\OperatorTok{$}\NormalTok{word) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\NormalTok{word2 }\OperatorTok{%in%}\StringTok{ }\NormalTok{stop_words}\OperatorTok{$}\NormalTok{word) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{bigram =} \KeywordTok{paste}\NormalTok{(word1, word2, }\DataTypeTok{sep=}\StringTok{" "}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(bigram }\OperatorTok{==}\StringTok{ "student reported"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(incident_code) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{tally}\NormalTok{(}\DataTypeTok{sort=}\OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 9 x 2
+##   incident_code                           n
+##   <chr>                               <int>
+## 1 LARCENY - FROM MOTOR VEHICLE            2
+## 2 ACCIDENTS - P.D. H&R NOT REPORTABLE     1
+## 3 ACCIDENTS - P.D. NOT REPORTABLE         1
+## 4 DISTURBANCE - OTHER                     1
+## 5 FRAUD - CREDIT CARDS/ATM/BANK CARD      1
+## 6 LARCENY - OTHER OR FROM OPEN AREA       1
+## 7 LARCENY - STOLEN BIKE                   1
+## 8 LOST OR STOLEN ITEM                     1
+## 9 STALKING                                1
+\end{verbatim}
+
+What about before?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pre2020 }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{unnest_tokens}\NormalTok{(bigram, summary, }\DataTypeTok{token =} \StringTok{"ngrams"}\NormalTok{, }\DataTypeTok{n =} \DecValTok{2}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{separate}\NormalTok{(bigram, }\KeywordTok{c}\NormalTok{(}\StringTok{"word1"}\NormalTok{, }\StringTok{"word2"}\NormalTok{), }\DataTypeTok{sep =} \StringTok{" "}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\NormalTok{word1 }\OperatorTok{%in%}\StringTok{ }\NormalTok{stop_words}\OperatorTok{$}\NormalTok{word) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\NormalTok{word2 }\OperatorTok{%in%}\StringTok{ }\NormalTok{stop_words}\OperatorTok{$}\NormalTok{word) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{bigram =} \KeywordTok{paste}\NormalTok{(word1, word2, }\DataTypeTok{sep=}\StringTok{" "}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(bigram }\OperatorTok{==}\StringTok{ "student reported"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(incident_code) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{tally}\NormalTok{(}\DataTypeTok{sort=}\OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 21 x 2
+##    incident_code                                           n
+##    <chr>                                               <int>
+##  1 LOST OR STOLEN ITEM                                    17
+##  2 ACCIDENTS - P.D. H&R NOT REPORTABLE                    11
+##  3 DISTURBANCE - OTHER                                     9
+##  4 LARCENY - FROM BUILDING                                 8
+##  5 LARCENY - STOLEN BIKE                                   8
+##  6 ACCIDENTS - P.D. NOT REPORTABLE                         4
+##  7 LARCENY - FROM MOTOR VEHICLE                            4
+##  8 SUSPICIOUS PERSON                                       4
+##  9 FRAUD - CON GAMES/DECEPTION/FALSE    PRETENSE/OTHER     3
+## 10 OUTSIDE - O.P.S. OTHER                                  3
+## # ... with 11 more rows
+\end{verbatim}
 
 \end{document}
