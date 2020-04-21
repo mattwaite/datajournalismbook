@@ -1,6 +1,6 @@
 # Ethics in data journalism
 
-[This originally appeared on Open News in 2013](https://source.opennews.org/articles/public-info-doesnt-always-want-be-free/).
+[This originally appeared on Open News in March 2013](https://source.opennews.org/articles/public-info-doesnt-always-want-be-free/). 
 
 In 2009, a senior web editor asked me and another developer a question: could our development group build a new news application for Tampabay.com that displayed a gallery of mug shots? Stories about goofy crimes with strange mug shots were popular with readers. The vision, on the part of management, was a website that would display the mugshots collected every day from publicly available websites by two editors—well paid, professional editors with other responsibilities.
 
