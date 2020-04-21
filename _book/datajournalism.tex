@@ -118,7 +118,7 @@
 
 \title{Data Journalism with R and the Tidyverse}
 \author{Matt Waite}
-\date{2020-04-06}
+\date{2020-04-19}
 
 \begin{document}
 \maketitle
@@ -2349,7 +2349,7 @@ Here's an example using sensible defaults for weighting -- unfortunately \href{h
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3033
+## [1] 3035
 \end{verbatim}
 
 Cuts it down by almost 1000. That seems pretty good. Here's a different method, using a method that turns words into phonetic spellings called soundex.
@@ -6295,5 +6295,96 @@ What about before?
 ## 10 OUTSIDE - O.P.S. OTHER                                  3
 ## # ... with 11 more rows
 \end{verbatim}
+
+\hypertarget{writing-with-numbers}{%
+\chapter{Writing with numbers}\label{writing-with-numbers}}
+
+The number one sin of all early career data journalist is to get really, really, really attached to the analysis you've done and include every number you find.
+
+Don't do that.
+
+Numbers tell you what. Numbers rarely tell you why. What question has driven most people since they were three years old? Why. The very first thing to do is realize that is the purpose of reporting. You've done the analysis to determine the what. Now go do the reporting to do the why. Or as an old editor of mine used to say ``Now go do that reporting shit you do.''
+
+The trick to writing a numbers story is to frame your story around people. Sometimes, your lead can be a number, if that number is compelling. Often, your lead is a person, a person who is one of the numbers you are writing about.
+
+Tell their story. Briefly. Then, let us hear from them. Let them speak about what it is you are writing about.
+
+Then come the numbers.
+
+\hypertarget{how-to-write-about-numbers-without-overwhelming-with-numbers.}{%
+\section{How to write about numbers without overwhelming with numbers.}\label{how-to-write-about-numbers-without-overwhelming-with-numbers.}}
+
+Writing complex stories is often a battle against that complexity. You don't want to overwhelm. You want to simplify where you can. The first place you can do that is only use exact numbers where an exact number is called for.
+
+Where you can, do the following:
+
+\begin{itemize}
+\tightlist
+\item
+  Using ratios instead of percents
+\item
+  Often, it's better to put it in counts of 10. 6 of 10, 4 of 10. It's easy to translate that from a percentage to a ratio.
+\item
+  But be careful when your number is 45 percent. Is that 4 in 10 or 5 in 10?
+\item
+  If a ratio doesn't make sense, round. There's 287,401 people in Lincoln, according to the Census Bureau. It's easier, and no less accurate, to say there's more than 287,000 people in Lincoln.
+\end{itemize}
+
+\textbf{A critical question your writing should answer: As compared to what?}
+
+How does this compare to the average? The state? The nation? The top? The bottom?
+
+One of the most damning numbers in the series of stories Craig Pittman and I wrote that became the book \href{https://www.amazon.com/Paving-Paradise-Floridas-Vanishing-Wetlands-ebook/dp/B004HZXZCE}{Paving Paradise} was comparing approvals and denials.
+
+We were looking at the US Army Corps of Engineers and their permitting program. We were able to get a dataset of just a few years of permits that was relatively clean. From that, we were able to count the number of times the corps had said yes to a developer to wipe out wetlands the law protected and how many times they said no.
+
+They said yes 12,000 times. They said no once.
+
+That one time? Someone wanted to build an eco-lodge in the Everglades. Literally. Almost every acre of the property was wetlands. So in order to build it, the developer would have to fill in the very thing they were going to try to bring people into. The corps said no.
+
+\hypertarget{when-exact-numbers-matter}{%
+\section{When exact numbers matter}\label{when-exact-numbers-matter}}
+
+Sometimes ratios and rounding are not appropriate.
+
+This is being written in the days of the coronavirus. Case counts are where an exact number is called for. You don't say that there are more than 70 cases in Lancaster County on the day this was written. You specify. It's 75.
+
+You don't say almost 30 deaths. It's 28.
+
+Where this also comes into play is any time there are deaths: Do not round bodies.
+
+\hypertarget{an-example}{%
+\section{An example}\label{an-example}}
+
+\href{https://www.azcentral.com/in-depth/news/local/arizona-wildfires/2019/07/22/wildfire-risks-more-than-500-spots-have-greater-hazard-than-paradise/1434502001/}{Read this story from USA Today and the Arizona Republic}. Notice first that the top sets up a conflict: People say one thing, and that thing is not true.
+
+\begin{quote}
+No one could have anticipated such a catastrophe, people said. The fire's speed was unprecedented, the ferocity unimaginable, the devastation unpredictable.
+\end{quote}
+
+\begin{quote}
+Those declarations were simply untrue. Though the toll may be impossible to predict, worst-case fires are a historic and inevitable fact.
+\end{quote}
+
+The first voice you hear? An expert who studies wildfires.
+
+\begin{quote}
+Phillip Levin, a researcher at the University of Washington and lead scientist for the Nature Conservancy in Washington, puts it this way: ``Fire is natural. But the disaster happens because people didn't know to leave, or couldn't leave. It didn't have to happen.''
+\end{quote}
+
+Then notice how they take what is a complex analysis using geographic information systems, raster analysis, the merging of multiple different datasets together and show that it's quite simple -- the averaging together of pixels on a 1-5 scale.
+
+Then, the compare what they found to a truly massive fire: The Paradise fire that burned 19,000 structures.
+
+\begin{quote}
+Across the West, 526 small communities --- more than 10 percent of all places --- rank higher.
+\end{quote}
+
+And that is how it's done. Simplify, round, ratios: simple metrics, powerful results.
+
+\hypertarget{ethics-in-data-journalism}{%
+\chapter{Ethics in data journalism}\label{ethics-in-data-journalism}}
+
+To come.
 
 \end{document}

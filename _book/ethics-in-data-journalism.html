@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Data, structures and types | Data Journalism with R and the Tidyverse</title>
+  <title>Chapter 27 Ethics in data journalism | Data Journalism with R and the Tidyverse</title>
   <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Data, structures and types | Data Journalism with R and the Tidyverse" />
+  <meta property="og:title" content="Chapter 27 Ethics in data journalism | Data Journalism with R and the Tidyverse" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Data, structures and types | Data Journalism with R and the Tidyverse" />
+  <meta name="twitter:title" content="Chapter 27 Ethics in data journalism | Data Journalism with R and the Tidyverse" />
   
   <meta name="twitter:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="data-journalism-in-the-age-of-replication.html"/>
-<link rel="next" href="aggregates.html"/>
+<link rel="prev" href="writing-with-numbers.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -281,66 +281,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-structures-and-types" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Data, structures and types</h1>
-<p>Data are everywhere (and data is plural of datum, thus the use of are in that statement). It surrounds you. Every time you use your phone, you are creating data. Lots of it. Your online life. Any time you buy something. It’s everywhere. News, like life, is no different. Modernity is drowning in data, and more comes along all the time.</p>
-<p>In news, and in this class, we’ll be dealing largely with two kinds of data: <strong>event level data and summary data</strong>. It’s not hard to envision event level data. A car accident. A crime. A fire. They are the events that make up the whole. Combine them together – summarize them – and you’ll have some notion of how the year went. What we usually see is summary data – who wants to scroll through 365 days of crime data to figure out if crime was up or down?</p>
-<p>To start with, we need to understand the shape of data.</p>
-<div id="rows-and-columns" class="section level2">
-<h2><span class="header-section-number">5.1</span> Rows and columns</h2>
-<p>Data, oversimplifying it a bit, is information organized. Generally speaking, it’s organized into rows and columns. Rows, generally, are individual elements. A crime. A county. An accident. Columns, generally, are components of the data, sometimes called variables. So if each row is a crime, the first column might be the type. The second is the date and time. The third is the location. And so on.</p>
-<p><img src="images/data1.png" width="792" /></p>
-<p>One of the critical components of data analysis, especially for beginners, is having a mental picture of your data. What does each row mean? What does each column in each row signify? How many rows do you have? How many columns?</p>
-<blockquote>
-<p>EXERCISE: I love orange Skittles. What are my chances of getting more orange Skittles than other colors in a fun sized packet? Each person in the class must track their package and everyone else using a spreadsheet. What differences between sheets emerge? What similarities?</p>
-</blockquote>
-</div>
-<div id="types" class="section level2">
-<h2><span class="header-section-number">5.2</span> Types</h2>
-<p>There are scores of data types in the world, and R has them. In this class, we’re primarily going to be dealing with data frames, and each element of our data frames will have a data type.</p>
-<p>Typically, they’ll be one of four types of data:</p>
-<ul>
-<li>Numeric: a number, like the number of car accidents in a year or the number of journalism majors.</li>
-<li>Character: Text, like a name, a county, a state.</li>
-<li>Date: Fully formed dates – 2019-01-01 – have a special date type. Elements of a date, like a year (ex. 2019) are not technically dates, so they’ll appear as numeric data types.</li>
-<li>Logical: Rare(ish), but every now and then we’ll have a data type that’s Yes or No, True or False, etc.</li>
-</ul>
-<p><strong>Question:</strong> Is a zip code a number? Is a jersey number a number? Trick question, because the answer is no. Numbers are things we do math on. If the thing you want is not something you’re going to do math on – can you add two phone numbers together? – then make it a character type. If you don’t, most every software system on the planet will drop leading zeros. For example, every zip code in Boston starts with 0. If you record that as a number, your zip code will become a four digit number, which isn’t a zip code anymore.</p>
-</div>
-<div id="a-simple-way-to-get-data" class="section level2">
-<h2><span class="header-section-number">5.3</span> A simple way to get data</h2>
-<p>The hardest part of doing data journalism is often getting the data. In news, there’s scores of organizations and agencies collecting data, and zero standards on how it’s being collected.</p>
-<p>If we’re lucky – huge IF in news – the data we want is in a downloadable format. If we’re a little less lucky, there’s a way to get the data on the web. And maybe that data is in a simple table. If so, we can pull that data directly into Google Sheets.</p>
-<p>The Lincoln Police Department publishes a daily summary of calls. Some days – like when it snows – that data becomes news. So let’s pretend that it snowed today and we need to see how many accidents the Lincoln Police responded to and what percentage of their call load that represents.</p>
-<p>Open a browser and go to the <a href="http://cjis.lincoln.ne.gov/~lpd/cfstoday.htm">LPD’s log page</a>. Now, in a new tab, log into Google Docs/Drive and open a new spreadsheet. In the first cell of the first row, copy and paste this formula in:</p>
-<pre><code>=importHTML(&quot;http://cjis.lincoln.ne.gov/~lpd/cfstoday.htm&quot;,&quot;table&quot;,1)</code></pre>
-This is <strong>function</strong>, with three <strong>inputs</strong>. The function is <code>importHTML</code> and the three inputs in order are the url of the page, the HTML tag we’re after (a
-<table>
-<p>tag in our case) and the number of the tag you’re after. So our function says go to the LPD page and get the first table tag you find. Fortunately for us, there’s only one.</p>
-<p>If your version worked right, you’ve got the data from that page in a spreadsheet.</p>
-</div>
-<div id="cleaning-the-data" class="section level2">
-<h2><span class="header-section-number">5.4</span> Cleaning the data</h2>
-<p>The first thing we need to do is recognize that we don’t have data, really. We have the results of a formula. You can tell by putting your cursor on that field, where you’ll see the formula again. This is where you’d look:</p>
-<p><img src="images/clean1.png" width="934" /></p>
-<p>The solution is easy:</p>
-<p>Edit &gt; Select All or type command/control A
-Edit &gt; Copy or type command/control C
-Edit &gt; Paste Special &gt; Values Only or type command/control shift V</p>
-<p>You can verify that it worked by looking in that same row 1 column A, where you’ll see the formula is gone.</p>
-<p><img src="images/clean2.png" width="922" /></p>
-<p>Now you have data, but look closely. At the bottom of the data, you have the total number of calls. More often than not, and particularly the deeper into this book we go, you want to delete that. So click on the number next to that Total Calls line to highlight it and go up to Edit &gt; Delete Row XX where XX is the row number.</p>
-<p>After you’ve done that, you can export it for use in R. Go to File &gt; Download as &gt; Comma Separated Values.</p>
+<div id="ethics-in-data-journalism" class="section level1">
+<h1><span class="header-section-number">Chapter 27</span> Ethics in data journalism</h1>
+<p>To come.</p>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="data-journalism-in-the-age-of-replication.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="aggregates.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="writing-with-numbers.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -371,7 +323,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-databasics.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/26-ethics.Rmd",
 "text": "Edit"
 },
 "history": {

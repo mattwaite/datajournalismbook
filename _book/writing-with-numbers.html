@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Data, structures and types | Data Journalism with R and the Tidyverse</title>
+  <title>Chapter 26 Writing with numbers | Data Journalism with R and the Tidyverse</title>
   <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Data, structures and types | Data Journalism with R and the Tidyverse" />
+  <meta property="og:title" content="Chapter 26 Writing with numbers | Data Journalism with R and the Tidyverse" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Data, structures and types | Data Journalism with R and the Tidyverse" />
+  <meta name="twitter:title" content="Chapter 26 Writing with numbers | Data Journalism with R and the Tidyverse" />
   
   <meta name="twitter:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="data-journalism-in-the-age-of-replication.html"/>
-<link rel="next" href="aggregates.html"/>
+<link rel="prev" href="an-intro-to-text-analysis.html"/>
+<link rel="next" href="ethics-in-data-journalism.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -281,56 +281,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-structures-and-types" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Data, structures and types</h1>
-<p>Data are everywhere (and data is plural of datum, thus the use of are in that statement). It surrounds you. Every time you use your phone, you are creating data. Lots of it. Your online life. Any time you buy something. It’s everywhere. News, like life, is no different. Modernity is drowning in data, and more comes along all the time.</p>
-<p>In news, and in this class, we’ll be dealing largely with two kinds of data: <strong>event level data and summary data</strong>. It’s not hard to envision event level data. A car accident. A crime. A fire. They are the events that make up the whole. Combine them together – summarize them – and you’ll have some notion of how the year went. What we usually see is summary data – who wants to scroll through 365 days of crime data to figure out if crime was up or down?</p>
-<p>To start with, we need to understand the shape of data.</p>
-<div id="rows-and-columns" class="section level2">
-<h2><span class="header-section-number">5.1</span> Rows and columns</h2>
-<p>Data, oversimplifying it a bit, is information organized. Generally speaking, it’s organized into rows and columns. Rows, generally, are individual elements. A crime. A county. An accident. Columns, generally, are components of the data, sometimes called variables. So if each row is a crime, the first column might be the type. The second is the date and time. The third is the location. And so on.</p>
-<p><img src="images/data1.png" width="792" /></p>
-<p>One of the critical components of data analysis, especially for beginners, is having a mental picture of your data. What does each row mean? What does each column in each row signify? How many rows do you have? How many columns?</p>
-<blockquote>
-<p>EXERCISE: I love orange Skittles. What are my chances of getting more orange Skittles than other colors in a fun sized packet? Each person in the class must track their package and everyone else using a spreadsheet. What differences between sheets emerge? What similarities?</p>
-</blockquote>
-</div>
-<div id="types" class="section level2">
-<h2><span class="header-section-number">5.2</span> Types</h2>
-<p>There are scores of data types in the world, and R has them. In this class, we’re primarily going to be dealing with data frames, and each element of our data frames will have a data type.</p>
-<p>Typically, they’ll be one of four types of data:</p>
+<div id="writing-with-numbers" class="section level1">
+<h1><span class="header-section-number">Chapter 26</span> Writing with numbers</h1>
+<p>The number one sin of all early career data journalist is to get really, really, really attached to the analysis you’ve done and include every number you find.</p>
+<p>Don’t do that.</p>
+<p>Numbers tell you what. Numbers rarely tell you why. What question has driven most people since they were three years old? Why. The very first thing to do is realize that is the purpose of reporting. You’ve done the analysis to determine the what. Now go do the reporting to do the why. Or as an old editor of mine used to say “Now go do that reporting shit you do.”</p>
+<p>The trick to writing a numbers story is to frame your story around people. Sometimes, your lead can be a number, if that number is compelling. Often, your lead is a person, a person who is one of the numbers you are writing about.</p>
+<p>Tell their story. Briefly. Then, let us hear from them. Let them speak about what it is you are writing about.</p>
+<p>Then come the numbers.</p>
+<div id="how-to-write-about-numbers-without-overwhelming-with-numbers." class="section level2">
+<h2><span class="header-section-number">26.1</span> How to write about numbers without overwhelming with numbers.</h2>
+<p>Writing complex stories is often a battle against that complexity. You don’t want to overwhelm. You want to simplify where you can. The first place you can do that is only use exact numbers where an exact number is called for.</p>
+<p>Where you can, do the following:</p>
 <ul>
-<li>Numeric: a number, like the number of car accidents in a year or the number of journalism majors.</li>
-<li>Character: Text, like a name, a county, a state.</li>
-<li>Date: Fully formed dates – 2019-01-01 – have a special date type. Elements of a date, like a year (ex. 2019) are not technically dates, so they’ll appear as numeric data types.</li>
-<li>Logical: Rare(ish), but every now and then we’ll have a data type that’s Yes or No, True or False, etc.</li>
+<li>Using ratios instead of percents</li>
+<li>Often, it’s better to put it in counts of 10. 6 of 10, 4 of 10. It’s easy to translate that from a percentage to a ratio.</li>
+<li>But be careful when your number is 45 percent. Is that 4 in 10 or 5 in 10?</li>
+<li>If a ratio doesn’t make sense, round. There’s 287,401 people in Lincoln, according to the Census Bureau. It’s easier, and no less accurate, to say there’s more than 287,000 people in Lincoln.</li>
 </ul>
-<p><strong>Question:</strong> Is a zip code a number? Is a jersey number a number? Trick question, because the answer is no. Numbers are things we do math on. If the thing you want is not something you’re going to do math on – can you add two phone numbers together? – then make it a character type. If you don’t, most every software system on the planet will drop leading zeros. For example, every zip code in Boston starts with 0. If you record that as a number, your zip code will become a four digit number, which isn’t a zip code anymore.</p>
+<p><strong>A critical question your writing should answer: As compared to what?</strong></p>
+<p>How does this compare to the average? The state? The nation? The top? The bottom?</p>
+<p>One of the most damning numbers in the series of stories Craig Pittman and I wrote that became the book <a href="https://www.amazon.com/Paving-Paradise-Floridas-Vanishing-Wetlands-ebook/dp/B004HZXZCE">Paving Paradise</a> was comparing approvals and denials.</p>
+<p>We were looking at the US Army Corps of Engineers and their permitting program. We were able to get a dataset of just a few years of permits that was relatively clean. From that, we were able to count the number of times the corps had said yes to a developer to wipe out wetlands the law protected and how many times they said no.</p>
+<p>They said yes 12,000 times. They said no once.</p>
+<p>That one time? Someone wanted to build an eco-lodge in the Everglades. Literally. Almost every acre of the property was wetlands. So in order to build it, the developer would have to fill in the very thing they were going to try to bring people into. The corps said no.</p>
 </div>
-<div id="a-simple-way-to-get-data" class="section level2">
-<h2><span class="header-section-number">5.3</span> A simple way to get data</h2>
-<p>The hardest part of doing data journalism is often getting the data. In news, there’s scores of organizations and agencies collecting data, and zero standards on how it’s being collected.</p>
-<p>If we’re lucky – huge IF in news – the data we want is in a downloadable format. If we’re a little less lucky, there’s a way to get the data on the web. And maybe that data is in a simple table. If so, we can pull that data directly into Google Sheets.</p>
-<p>The Lincoln Police Department publishes a daily summary of calls. Some days – like when it snows – that data becomes news. So let’s pretend that it snowed today and we need to see how many accidents the Lincoln Police responded to and what percentage of their call load that represents.</p>
-<p>Open a browser and go to the <a href="http://cjis.lincoln.ne.gov/~lpd/cfstoday.htm">LPD’s log page</a>. Now, in a new tab, log into Google Docs/Drive and open a new spreadsheet. In the first cell of the first row, copy and paste this formula in:</p>
-<pre><code>=importHTML(&quot;http://cjis.lincoln.ne.gov/~lpd/cfstoday.htm&quot;,&quot;table&quot;,1)</code></pre>
-This is <strong>function</strong>, with three <strong>inputs</strong>. The function is <code>importHTML</code> and the three inputs in order are the url of the page, the HTML tag we’re after (a
-<table>
-<p>tag in our case) and the number of the tag you’re after. So our function says go to the LPD page and get the first table tag you find. Fortunately for us, there’s only one.</p>
-<p>If your version worked right, you’ve got the data from that page in a spreadsheet.</p>
+<div id="when-exact-numbers-matter" class="section level2">
+<h2><span class="header-section-number">26.2</span> When exact numbers matter</h2>
+<p>Sometimes ratios and rounding are not appropriate.</p>
+<p>This is being written in the days of the coronavirus. Case counts are where an exact number is called for. You don’t say that there are more than 70 cases in Lancaster County on the day this was written. You specify. It’s 75.</p>
+<p>You don’t say almost 30 deaths. It’s 28.</p>
+<p>Where this also comes into play is any time there are deaths: Do not round bodies.</p>
 </div>
-<div id="cleaning-the-data" class="section level2">
-<h2><span class="header-section-number">5.4</span> Cleaning the data</h2>
-<p>The first thing we need to do is recognize that we don’t have data, really. We have the results of a formula. You can tell by putting your cursor on that field, where you’ll see the formula again. This is where you’d look:</p>
-<p><img src="images/clean1.png" width="934" /></p>
-<p>The solution is easy:</p>
-<p>Edit &gt; Select All or type command/control A
-Edit &gt; Copy or type command/control C
-Edit &gt; Paste Special &gt; Values Only or type command/control shift V</p>
-<p>You can verify that it worked by looking in that same row 1 column A, where you’ll see the formula is gone.</p>
-<p><img src="images/clean2.png" width="922" /></p>
-<p>Now you have data, but look closely. At the bottom of the data, you have the total number of calls. More often than not, and particularly the deeper into this book we go, you want to delete that. So click on the number next to that Total Calls line to highlight it and go up to Edit &gt; Delete Row XX where XX is the row number.</p>
-<p>After you’ve done that, you can export it for use in R. Go to File &gt; Download as &gt; Comma Separated Values.</p>
+<div id="an-example" class="section level2">
+<h2><span class="header-section-number">26.3</span> An example</h2>
+<p><a href="https://www.azcentral.com/in-depth/news/local/arizona-wildfires/2019/07/22/wildfire-risks-more-than-500-spots-have-greater-hazard-than-paradise/1434502001/">Read this story from USA Today and the Arizona Republic</a>. Notice first that the top sets up a conflict: People say one thing, and that thing is not true.</p>
+<blockquote>
+<p>No one could have anticipated such a catastrophe, people said. The fire’s speed was unprecedented, the ferocity unimaginable, the devastation unpredictable.</p>
+</blockquote>
+<blockquote>
+<p>Those declarations were simply untrue. Though the toll may be impossible to predict, worst-case fires are a historic and inevitable fact.</p>
+</blockquote>
+<p>The first voice you hear? An expert who studies wildfires.</p>
+<blockquote>
+<p>Phillip Levin, a researcher at the University of Washington and lead scientist for the Nature Conservancy in Washington, puts it this way: “Fire is natural. But the disaster happens because people didn’t know to leave, or couldn’t leave. It didn’t have to happen.”</p>
+</blockquote>
+<p>Then notice how they take what is a complex analysis using geographic information systems, raster analysis, the merging of multiple different datasets together and show that it’s quite simple – the averaging together of pixels on a 1-5 scale.</p>
+<p>Then, the compare what they found to a truly massive fire: The Paradise fire that burned 19,000 structures.</p>
+<blockquote>
+<p>Across the West, 526 small communities — more than 10 percent of all places — rank higher.</p>
+</blockquote>
+<p>And that is how it’s done. Simplify, round, ratios: simple metrics, powerful results.</p>
 
 </div>
 </div>
@@ -339,8 +340,8 @@ Edit &gt; Paste Special &gt; Values Only or type command/control shift V</p>
           </div>
         </div>
       </div>
-<a href="data-journalism-in-the-age-of-replication.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="aggregates.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="an-intro-to-text-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ethics-in-data-journalism.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -371,7 +372,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-databasics.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/25-writingwithdata.Rmd",
 "text": "Edit"
 },
 "history": {
