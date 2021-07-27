@@ -4,3 +4,9 @@
 .Ruserdata
 *.zip
 data/LPD_Dispatch_Records.csv
+
+# Globally ignore .DS_Store files
+*.DS_Store
+
+# Very large PPP loan data files
+data/ppp_loan_data/
