@@ -1,0 +1,116 @@
+---
+title: "ppp_loan_data_exploration"
+author: "sean mussenden"
+date: "7/27/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load Libraries
+```{r}
+# General data science goodness 
+library(tidyverse)
+
+# Data cleaning
+library(janitor)
+# For reading excel files
+library(readxl)
+# For summarization
+library(gtsummary)
+```
+
+## Load data, write out sample for testing, read in
+```{r}
+#ppp_loans <- read_csv("../data/ppp_loan_data/recipients.csv")
+#ppp_loans_sample <- head(ppp_loans, 100000)
+#rm(ppp_loans)
+#write_rds(ppp_loans_sample, "../data/ppp_loan_data/ppp_loans_sample.rds")
+ppp_loans_sample <- read_rds("../data/ppp_loan_data/ppp_loans_sample.rds")
+
+```
+
+### Load and clean data dictionary
+```{r}
+dictionary <-  read_xlsx("../data/ppp_loan_data/ppp-data-dictionary.xlsx") %>%
+  clean_names()
+
+descript_fix <- dictionary %>%
+  filter(field_name == "UTILITIES_PROCEED")
+
+descript_fix <- descript_fix$field_description
+
+dictionary <- dictionary %>%
+  mutate(field_description = case_when(
+    is.na(field_description) ~ descript_fix,
+    TRUE ~ field_description)
+  )
+
+# write clean data dictionary out
+write_rds(dictionary, "../data/ppp_loan_data/ppp-data-dictionary.rds")
+dictionary <- read_rds("../data/ppp_loan_data/ppp-data-dictionary.rds")
+
+```
+
+
+## Examine column values
+```{r}
+# http://www.danieldsjoberg.com/gtsummary/
+ppp_loans_sample %>%
+  select(state, amount,business_type, race,gender,veteran, non_profit, jobs_retained,date_approved,lender) %>%
+  select(-id,-name,-slug,)
+  tbl_summary(
+    sort=list(everything() ~ "frequency"),
+    statistic = list(all_continuous() ~ "min:{min}|max:{max}|mean:{mean}|median:{median}|sd:{sd}|"),
+    missing = "always",
+    missing_text = "na_values"
+    )
+ppp_loans_columns <- colnames(ppp_loans_sample) %>%
+  as_vector() %>%
+  unname()
+print(ppp_loans_columns)
+#summary(ppp_loans_sample)
+```
+```{r}
+
+select(amount,state,naics_code,business_type,race,gender,veteran,non_profit,jobs_retained,date_approved,congressional_district,sba_office_code,processing_method,loan_status,term,sba_guaranty_percentage,initial_approval_amount,current_approval_amount,undisbursed_amount,franchise_name,)
+-select(id,name,slug,address,city,zip,lender,loan_range_sort_key,previous_loan_range,previous_name,loan_number,servicing_lender_location_id,servicing_lender_name, servicing_lender_address"   )
+
+[1] "id"                             "name"                          
+ [3] "slug"                           "amount"                        
+ [5] "state"                          "address"                       
+ [7] "city"                           "zip"                           
+ [9] "naics_code"                     "business_type"                 
+[11] "race"                           "gender"                        
+[13] "veteran"                        "non_profit"                    
+[15] "jobs_retained"                  "date_approved"                 
+[17] "lender"                         "congressional_district"        
+[19] "loan_range_sort_key"            "previous_loan_range"           
+[21] "previous_name"                  "loan_number"                   
+[23] "sba_office_code"                "processing_method"             
+[25] "loan_status"                    "term"                          
+[27] "sba_guaranty_percentage"        "initial_approval_amount"       
+[29] "current_approval_amount"        "undisbursed_amount"            
+[31] "franchise_name"                 "servicing_lender_location_id"  
+[33] "servicing_lender_name"          "servicing_lender_address"      
+[35] "servicing_lender_city"          "servicing_lender_state"        
+[37] "servicing_lender_zip"           "rural_urban_indicator"         
+[39] "hubzone_indicator"              "business_age_description"      
+[41] "project_city"                   "project_county_name"           
+[43] "project_state"                  "project_zip"                   
+[45] "utilities_proceed"              "payroll_proceed"               
+[47] "mortgage_interest_proceed"      "rent_proceed"                  
+[49] "refinance_eidl_proceed"         "health_care_proceed"           
+[51] "debt_interest_proceed"          "originating_lender_city"       
+[53] "originating_lender_state"       "loan_status_date"              
+[55] "originating_lender_location_id" "old_slug"                      
+[57] "lmi_indicator"                  "unmatched_original"            
+[59] "unmatched_updated"              "previous_jobs_reported"        
+[61] "ethnicity"                      "forgiveness_amount"            
+[63] "forgiveness_date"     
+
+
+
+```
