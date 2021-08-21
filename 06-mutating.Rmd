@@ -1,10 +1,8 @@
 # Mutating data
 
-One of the most common data analysis techniques is to look at change over time. The most common way of comparing change over time is through percent change. The math behind calculating percent change is very simple, and you should know it off the top of your head. The easy way to remember it is:
+Often the data you have will prompt questions that it doesn't immediately answer. The PPP loan applications include a total amount column but also columns for different categories the money would be used for: payroll, utilities, rent, etc. Amounts are great, but comparing absolute numbers to each other is only useful if you have a very small number. We need percentages!
 
-`(new - old) / old` 
-
-Or new minus old divided by old. Your new number minus the old number, the result of which is divided by the old number. To do that in R, we can use `dplyr` and `mutate` to calculate new metrics in a new field using existing fields of data. 
+To do that in R, we can use `dplyr` and `mutate` to calculate new metrics in a new field using existing fields of data. That's the essence of `mutate` - using the data you have to answer a new question.
 
 So first we'll import the tidyverse so we can read in our data and begin to work with it.
 
@@ -12,51 +10,73 @@ So first we'll import the tidyverse so we can read in our data and begin to work
 library(tidyverse)
 ```
 
-Now we'll import a common and [simple dataset of county  population estimates](https://unl.box.com/s/ad8zrib123psjxjjhd8t5m2fgfdfv3q3) from the US Census Bureau. Each year, the Census Bureau publishes estimates for states and counties. This one has every county in the US. A common question: who are the winners and losers? 
+Now we'll import a dataset of [PPP applications from Maryland](https://umd.box.com/s/czolak14n8ts55aqnt7rrqfb6cb8blr1). We'll use this, a sample of the entire PPP loan data, to explore ways to create new information from existing data.
 
 ```{r}
-population <- read_csv('data/countypopulations.csv')
+maryland <- read_csv('ppp_applications_md.csv')
 ```
-The code to calculate percent change is pretty simple. Remember, with `summarize`, we used `n()` to count things. With `mutate`, we use very similar syntax to calculate a new value -- a new column of data -- using other values in our dataset. So in this case, we're trying to do (new-old)/old, but we're doing it with fields. 
 
+First, let's add a column called `percent_payroll` for the percentage of each loan application that payroll expenses represent. The code to calculate a percentage is pretty simple. Remember, with `summarize`, we used `n()` to count things. With `mutate`, we use very similar syntax to calculate a new value -- a new column of data -- using other values in our dataset. So in this case, we're trying to do , but we're doing it with fields.
 
-If we look at what we got when we imported the data, you'll see there's `POPESTIMATE2018` as the new data, and we'll use `POPESTIMATE2017` as the old data. So we're looking at one year. Then, to help us, we'll use arrange again to sort it, so we get the fastest growing county over one year. 
+If we look at what we got when we imported the data, you'll see there's `payroll_proceed` as the numerator, and we'll use `amount` as the denominator.
 
 ```{r}
-population %>% mutate(
-  change = (POPESTIMATE2018 - POPESTIMATE2017)/POPESTIMATE2017
-) 
+maryland %>%
+  select(loan_number, amount, payroll_proceed) %>%
+  mutate(
+  percent_payroll = payroll_proceed/amount
+)
 ```
-Click the black arrow pointing right and you'll see, way out on the right, your change column. But what do you see right away? Do those numbers look like we expect them to? No. They're a decimal expressed as a percentage. So let's fix that by multiplying by 100. 
+Now we've got our `percent_payroll` column. But what do you see right away? Do those numbers look like we expect them to? No. They're a decimal expressed as a percentage. So let's fix that by multiplying by 100.
 
 ```{r}
-population %>% mutate(
-  change = ((POPESTIMATE2018 - POPESTIMATE2017)/POPESTIMATE2017)*100
-) 
+maryland %>%
+  select(loan_number, amount, payroll_proceed) %>%
+  mutate(
+  percent_payroll = (payroll_proceed/amount)*100
+)
 ```
-Now, does this ordering do anything for us? No. Let's fix that with arrange. 
+Now, does this ordering do anything for us? No. Let's fix that with arrange.
 
 ```{r}
-population %>% mutate(
-  change = ((POPESTIMATE2018 - POPESTIMATE2017)/POPESTIMATE2017)*100
-)  %>% arrange(desc(change))
+maryland %>%
+  select(loan_number, amount, payroll_proceed) %>%
+  mutate(
+  percent_payroll = (payroll_proceed/amount)*100
+)  %>% arrange(desc(percent_payroll))
 ```
 
-So who had the most growth last year from the year before? Is everyone moving to Loving County, Texas? Or is it small changes in a small county? Also, note North Dakota showing up twice in the top 10.
+So now we have loans ordered by `percent_payroll` with the highest percentage first. Most loans are predominantly used for payroll expenses, so let's reverse that `arrange` function to show the lowest percentages first, then with the largest amount first.
+
+```{r}
+maryland %>%
+  select(loan_number, amount, payroll_proceed) %>%
+  mutate(
+  percent_payroll = (payroll_proceed/amount)*100
+)  %>% arrange(percent_payroll, desc(amount))
+```
+
+There's a loan application for $1.7 million where none of it would be used for payroll, and two six-figure loans with the same percentage. Wonder what those are about?
 
 ## Another use of mutate
 
-Note in our data we have separate State and County name fields. If we were publishing this, we wouldn't want that. 
-
-So how can we fix that? Mutate! And a new function to combine text together called `paste`. Paste allows us to merge fields together easily with a separator. In our case, we want to combine the county name and the state name with a comma and a space between them. 
+Take a look at the `city` column in our data.
 
 ```{r}
-population %>% 
-  mutate(
-    change = ((POPESTIMATE2018 - POPESTIMATE2017)/POPESTIMATE2017)*100,
-    location = paste(CTYNAME, STNAME, sep=", ")) %>% 
-  arrange(desc(change))
+View(maryland)
 ```
 
+You'll notice that there's a mix of styles: "Baltimore" and "BALTIMORE" for example. R will think those are two different cities, and that will mean that any aggregates we create based on city won't be accurate.
+
+So how can we fix that? Mutate - it's not just for math! And a function called `str_to_upper` that will convert a character column into all uppercase.
+
+```{r}
+maryland %>%
+  mutate(
+    upper_city = str_to_upper(city)
+)
+```
+
+We could do the same thing with the `address` column in order to standardize that for analysis, too.
 
 > EXERCISE: What happens when you sort it in ascending order? Delete the desc part in arrange and see what happens. How would you describe this list?

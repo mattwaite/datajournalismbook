@@ -2,71 +2,72 @@
 
 More often than not, we have more data than we want. Sometimes we need to be rid of that data. In `dplyr`, there's two ways to go about this: filtering and selecting.
 
-**Filtering creates a subset of the data based on criteria**. All records where the count is greater than 10. All records that match "Nebraska". Something like that. **Filtering works with rows -- when we filter, we get fewer rows back than we start with.**
+**Filtering creates a subset of the data based on criteria**. All records where the amount is greater than 150,000. All records that match "College Park". Something like that. **Filtering works with rows -- when we filter, we get fewer rows back than we start with.**
 
-**Selecting simply returns only the fields named**. So if you only want to see Year and County, you select those fields. When you look at your data again, you'll have two columns. If you try to use one of your columns that you had before you used select, you'll get an error. **Selecting works with columns. You will have the same number of records when you are done, but fewer columns of data to work with.**
+**Selecting simply returns only the fields named**. So if you only want to see city and amount, you select those fields. When you look at your data again, you'll have two columns. If you try to use one of your columns that you had before you used select, you'll get an error. **Selecting works with columns. You will have the same number of records when you are done, but fewer columns of data to work with.**
 
-Let's work with the [salaries data from the University of Nebraska](https://unl.box.com/s/9826nisk29fztlc1xhup988eah0mqdby). It has data from all NU campuses, but only one of them is our campus, so let's filter out everyone else. 
+Let's work with the [PPP applications from Maryland](https://umd.box.com/s/czolak14n8ts55aqnt7rrqfb6cb8blr1). It has loan applications from all over the state, so one way to filter is to isolate on "county" - Maryland has both counties and Baltimore City as jurisdictions. Let's start by loading tidyverse and reading in the Maryland data:
 
 ```{r}
 library(tidyverse)
 ```
 
 ```{r}
-salaries <- read_csv("data/nusalaries1819.csv")
+maryland <- read.csv('ppp_applications_md.csv')
 ```
 
-The data we want to filter on is in `Campus`. So we're going to use filter and something called a comparison operator. We need to filter all records equal to UNL. The comparison operators in R, like most programming languages, are == for equal to, != for not equal to, > for greater than, >= for greater than or equal to and so on. 
+The data we want to filter on is in `project_county_name`. So we're going to use filter and something called a comparison operator. We need to filter all records equal to "PRINCE GEORGES". The comparison operators in R, like most programming languages, are == for equal to, != for not equal to, > for greater than, >= for greater than or equal to and so on.
 
-**Be careful: `=` is not `==` and `=` is not "equal to". `=` is an assignment operator in most languages -- how things get named.** 
+**Be careful: `=` is not `==` and `=` is not "equal to". `=` is an assignment operator in most languages -- how things get named.**
 
 ```{r}
-unl <- salaries %>% filter(Campus == "UNL")
+prince_georges <- maryland %>% filter(project_county_name == "PRINCE GEORGES")
 
-head(unl)
+head(prince_georges)
 ```
 
-And just like that, we have just UNL, which we can verify looking at the head, the first six rows. 
+And just like that, we have just Prince Georges, which we can verify looking at the head, the first six rows.
 
-We also have more data than we might want. For example, the salary data is only in the Budgeted Annual Salary column. The other two salary fields are useless detail. 
+We also have more data than we might want. For example, we may only want to work with the name, address, city, zip code and amount of Prince George's applicants.
 
-To simplify our dataset, we can use select. 
+To simplify our dataset, we can use select.
 
 ```{r}
-selected_unl <- unl %>% select(Employee, Position, Campus, `Budgeted Annual Salary`)
+selected_prince_georges <- prince_georges %>% select(name, address, city, zip, amount)
 
-head(selected_unl)
+head(selected_prince_georges)
 ```
 
-And now we only have four columns of data for whatever salary analysis we might want to do. 
+And now we only have five columns of data for whatever analysis we might want to do.
 
-## Combining filters 
+## Combining filters
 
-So let's say we wanted to know how many full professors make more than $100,000. We can do this a number of ways. The first is we can chain together a whole lot of filters.
+So let's say we wanted to know how many Prince George's applications were from non-profit organizations and applied for more than $150,000. We can do this a number of ways. The first is we can chain together a whole lot of filters.
 
 ```{r}
-profs <- salaries %>% filter(Campus == "UNL") %>% filter(Position == "Professor") %>% filter(`Budgeted Annual Salary` > 100000)
+large_prince_georges_nonprofit <- maryland %>% filter(project_county_name == "PRINCE GEORGES") %>% filter(business_type == "Non-Profit Organization") %>% filter(amount > 150000)
 
-nrow(profs)
+nrow(large_prince_georges_nonprofit)
 ```
 
-So that gives us 312 full professors -- that's the top rank of tenured professors -- who make more than \$100,000. But that's silly and repetitive, no? We can do better using boolean operators -- AND and OR. In this case, AND is `&` and OR is `|`.
+That gives us 145 applicants. But that's silly and repetitive, no? We can do better using boolean operators -- AND and OR. In this case, AND is `&` and OR is `|`.
 
-The difference? With AND, all three things must be true to be included. With OR, any of those three things can be true and it will be included. An assistant professor making \$100k at UNO will get included because they make \$100k. One of the conditions is true.  
+The difference? With AND, all three things must be true to be included. With OR, any of those three things can be true and it will be included. A Prince George's corporation will get included because it applied for more than $150k. One of the conditions is true.
 
 Here's the difference.
 
 ```{r}
-andprofs <- salaries %>% filter(Campus == "UNL" & Position == "Professor" & `Budgeted Annual Salary` > 100000)
+and_prince_georges <- maryland %>% filter(project_county_name == "PRINCE GEORGES" & business_type == "Non-Profit Organization" & amount > 150000)
 
-nrow(andprofs)
+nrow(and_prince_georges)
 ```
-So AND gives us the same answer we got before. What does OR give us? 
+So AND gives us the same answer we got before. What does OR give us?
 
 ```{r}
-orprofs <- salaries %>% filter(Campus == "UNL" | Position == "Professor" | `Budgeted Annual Salary` > 100000)
+or_prince_georges <- maryland %>% filter(project_county_name == "PRINCE GEORGES" | business_type == "Non-Profit Organization" | amount > 150000)
 
-nrow(orprofs)
+nrow(or_prince_georges)
 ```
-So there's 7,248 unique people in the NU system who are at UNL (6,079 to be exact), are full Professors (1,086 of them), or make more than \$100,000 (1,604) of them. Included in that list? Football coach Scott Frost, who makes ... ahem ... more than \$100,000. A smidge more. 
+So there's 54,321 applications from Maryland applicants who are EITHER in Prince George's OR a non-profit organization OR applied for more than $150,000. Or is inclusive; AND is exclusive.
 
+A general tip about using filter: it's easier to work your way towards the filter syntax you need rather than try and write it once and trust the result. Each time you modify your filter, check the results to see if they make sense. This adds a little time to your process but you'll thank yourself for doing it because it helps avoid mistakes.
