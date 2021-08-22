@@ -1,0 +1,231 @@
+# Aggregates
+
+R is a statistical programming language that is purpose built for data analysis.
+
+Base R does a lot, but there are a mountain of external libraries that do things to make R better/easier/more fully featured. We already installed the tidyverse -- or you should have if you followed the instructions for the last assignment -- which isn't exactly a library, but a collection of libraries. Together, they make up the tidyverse. Individually, they are extraordinarily useful for what they do. We can load them all at once using the tidyverse name, or we can load them individually. Let's start with individually. 
+
+The two libraries we are going to need for this assignment are `readr` and `dplyr`. The library `readr` reads different types of data in. For this assignment, we're going to read in csv data or Comma Separated Values data. That's data that has a comma between each column of data. 
+
+Then we're going to use `dplyr` to analyze it. 
+
+To use a library, you need to import it. Good practice -- one I'm going to insist on -- is that you put all your library steps at the top of your notebooks. 
+
+That code looks like this:
+
+```{r}
+library(readr)
+```
+
+To load them both, you need to do this:
+
+```{r}
+library(readr)
+library(dplyr)
+```
+
+But, because those two libraries -- and several others that we're going to use over the course of this class -- are so commonly used, there's a shortcut to loading all of the libraries we'll need:
+
+```{r}
+library(tidyverse)
+```
+
+You can keep doing that for as many libraries as you need. I've seen notebooks with 10 or more library imports.
+
+## Importing data
+
+The first thing we need to do is get some data to work with. We do that by reading it in. In our case, we're going to read data from a csv file -- a comma-separated values file.
+
+The CSV file we're going to read in is from the [Small Business Administration's Paycheck Protection Program(https://www.sba.gov/funding-programs/loans/covid-19-relief-options/paycheck-protection-program)]. The program gave loans to businesses to keep people employed during the Covid-19 pandemic. We'll be working with a slice of the data that documents loans to Maryland businesses. 
+
+So step 1 is to import the data. The code to import the data looks like this, but hold off copying it just yet:
+
+`ppp_maryland_loans <- read_csv("ppp_maryland.csv")`
+
+Let's unpack that.
+
+The first part -- **ppp_maryland_loans** -- is the name of a variable. 
+
+A **variable** is just a name that we'll use to refer to some more complex thing. In this case, the more complex thing is the data we're importing into R that will be stored as a **dataframe**, which is one way R stores data. We can call this whatever we want. 
+
+The variable name doesn't matter, technically.  We could use any word.  You could use your first name, if you like. Generally, though, we want to give variables names that are descriptive of the thing they refer to. Which is why we're calling this one **ppp_maryland_loans**. Variable names, by convention are one word all lower case (or two or more words connected by an underscore). You can end a variable with a number, but you can't start one with a number.
+
+The <- bit, you'll recall from the basics, is the **variable assignment operator**. It's how we know we're assigning something to a word. Think of the arrow as saying "Take everything on the right of this arrow and stuff it into the thing on the left." So we're creating an empty vessel called **ppp_maryland_loans** and stuffing all this data into it. 
+
+**read_csv()** is a function, one that only works when we've loaded the tidyverse.  A **function** is a little computer program that takes in information and follows a series of pre-determined steps and spits it back out.  A recipe to make pizza is a kind of function.  You take a set of ingredients -- flour, water, oil, cheese, tomato, salt -- and pass them through each step outlined in a recipe -- mix flour and water and oil, knead, let it sit, roll it out, put tomato sauce and cheese on it, bake it in an oven, then take it out.  The output of our "make pizza" function is a finished pie. 
+
+We'll make use of a lot of pre-written functions from the tidyverse and other packages, and even write some of our own. Back to this line of code: 
+
+`ppp_maryland_loans <- read_csv("ppp_maryland.csv")`
+
+Inside of the **read_csv()** function, we've put the name of the file we want to load.  Things we put inside of function, to customize what the function does, are called **arguments**. 
+
+The easiest thing to do, if you are confused about how to find your data, is to put your data in the same folder as as your notebook (you'll have to save that notebook first). If you do that, then you just need to put the name of the file in there (ppp_maryland.csv). If you put your data in a folder called "data" that sits next to your data notebook, your function would instead look like this: 
+
+```{r}
+
+#ppp_maryland_loans <- read_csv("ppp_loan_data/ppp_maryland.csv")
+
+ppp_maryland_loans <- read_rds("in_class_demonstrations/class_01_demonstration/class_01_demonstration.rds")
+
+```
+
+After loading the data, it's a good idea to get a sense of its shape.  What does it look like? There are several ways we can examine it. 
+
+By looking in the R Studio environment window, we can see the number of rows (called "obs.", which is short for observations), and the number of columns(called variables).  We can double click on the dataframe name in the environment window, and explore it like a spreadsheet.  
+
+There are several useful functions for getting a sense of the dataset right in our markdown document. 
+
+If we run `glimpse(ppp_maryland_loans)`, it will give us a list of the columns, the data type for each column and and the first few values for each column.  
+
+```{r}
+glimpse(ppp_maryland_loans)
+```
+
+If we type `head(ppp_maryland_loans)`, it will print out the columns and the first six rows of data. 
+
+```{r}
+head(ppp_maryland_loans)
+```
+If we type `summary(ppp_maryland_loans)`, it will print out a list of columns, column types, and a summary of the values in number columns (mean, median, other values). 
+
+```{r}
+
+summary(ppp_maryland_loans)
+
+```
+
+## Group by and count
+
+So what if we wanted to know how many loans were made in each Maryland county? 
+
+To do that by hand, we'd have to take each of the 195,856 individual rows (or observations or records) and sort them into a pile. We'd put them in groups -- one for each county -- and then count them.
+
+`dplyr` has a group by function in it that does just this. A massive amount of data analysis involves grouping like things together and then doing simple things like counting them, or averaging them together. So it's a good place to start.
+
+So to do this, we'll take our dataset and we'll introduce a new operator: `%>%`. The best way to read that operator, in my opinion, is to interpret that as "and then do this." 
+
+We're going to establish a pattern that will come up again and again throughout this book: `data %>% function`. In English: take your data set and then do this specific action to it. 
+
+The first step of every analysis starts with the data being used. Then we apply functions to the data. 
+
+In our case, the pattern that you'll use many, many times is: `data %>% group_by(COLUMN NAME) %>% summarize(VARIABLE NAME = AGGREGATE FUNCTION(COLUMN NAME))`
+
+In our dataset, the column with county information is called "project_county_name"
+
+Here's the code to count the number of loans in each county:
+
+```{r}
+ppp_maryland_loans %>%
+  group_by(project_county_name) %>%
+  summarise(
+    count_loans = n()
+  )
+```
+
+So let's walk through that. 
+
+We start with our dataset -- `ppp_maryland_loans` -- and then we tell it to group the data by a given field in the data. In this case, we wanted to group together all the counties, signified by the field name `project_county_name`, which you could get from using the glimpse() function. After we group the data, we need to count them up. 
+
+In dplyr, we use the `summarize()` function, [which can do alot more than just count things](http://dplyr.tidyverse.org/reference/summarise.html). 
+
+Inside the parentheses in summarize, we set up the summaries we want. In this case, we just want a count of the number of loans for each county grouping. The line of code `count_loans = n(),` says create a new field, called `total_loans` and set it equal to `n()`. `n()` is a function that counts the number of rows or records in each group.  Why the letter n? The letter n is a common symbol used to denote a count of something. The number of things (or rows or observations or records) in a dataset? Statisticians call it n. There are n number of loans in this dataset. 
+
+When we run that, we get a list of counties with a count next to them. But it's not in any order. 
+
+So we'll add another "and then do this" symbol -- %>% -- and use a new function called `arrange()`. Arrange does what you think it does -- it arranges data in order. By default, it's in ascending order -- smallest to largest. But if we want to know the county with the most loans, we need to sort it in descending order. That looks like this:
+
+```{r}
+ppp_maryland_loans %>%
+  group_by(project_county_name) %>%
+  summarise(
+    count_loans = n()
+  ) %>% 
+  arrange(desc(count_loans))
+```
+Montgomery County has 38,781 loans, more than any other Maryland county. 
+
+We can, if we want, group by more than one thing. 
+
+The ppp loan data contains a column detailing the race of the business owner: "race". It has six possible values:  
+
+* American Indian or Alaska Native
+* Asian	
+* Black or African American
+* Native Hawaiian or Other Pacific Islander
+* White
+* Unanswered
+
+We can group by "project_county_name" and "race" to see how many loans fell in each category in each county. We'll sort alphabetically by county and then race. 
+
+```{r}
+ppp_maryland_loans %>%
+  group_by(project_county_name,race) %>%
+  summarise(
+    count_loans = n()
+  ) %>% 
+  arrange(project_county_name,race)
+```
+
+As you can see here, it's not clear that we'll be able to make use of the race data going forwardds.  By far the most common category in every county is "Unanswered". We'll avoid grouping by race in the rest of the examples in this chapter. 
+
+## Other summarization methods: summing, mean, median, min and max
+
+In the last example, we grouped like records together and counted them, but there's so much more we can to summarize each group.
+
+Let's say we wanted to know the total dollar amount of loans to each county? For that, we could use the `sum()` function to add up all of the loan values in the column "amount". We put the column we want to total -- "amount" -- inside the sum() function `sum(amount)`. Note that we can simply add a new summarize function here, keeping our count_loans field in our output table.
+
+```{r}
+ppp_maryland_loans %>%
+  group_by(project_county_name) %>%
+  summarise(
+    count_loans = n(),
+    total_loans_amount = sum(amount)
+  ) %>% 
+  arrange(desc(total_loans_amount))
+```
+
+We can also calculate the average size loan in each county -- the mean -- and the loan amount that sits at the midpoint of our data -- the median.  
+
+```{r}
+ppp_maryland_loans %>%
+  group_by(project_county_name) %>%
+  summarise(
+    count_loans = n(),
+    total_loans_amount = sum(amount),
+    mean_loan_amount = mean(amount),
+    median_loan_amount = median(amount)
+  ) %>% 
+  arrange(desc(mean_loan_amount))
+```
+
+We see something interesting here.  The mean loan amount is much higher than the median loan amount in every county.  Why? There are some very large loans -- millions of dollars -- skewing the mean higher.  Examining both the median -- which is less sensitive to extreme values -- and the mean -- which is more sensitive to extreme values --  gives you a clearer picture of the composition of the data. 
+
+Howard County has the highest average loan amount (107,217), while Carroll County has the highest median ($25,111.00) 
+
+What about the highest and lowest loan values in each county?  For that, we can use the `min()` and `max()` functions. 
+
+
+```{r}
+ppp_maryland_loans %>%
+  group_by(project_county_name) %>%
+  summarise(
+    count_loans = n(),
+    total_loans_amount = sum(amount),
+    mean_loan_amount = mean(amount),
+    median_loan_amount = median(amount),
+    min_loan_amount = min(amount),
+    max_loan_amount = max(amount)
+  ) %>% 
+  arrange(desc(max_loan_amount))
+```
+From this, we can see that the largest loan amounts in Anne Arundel County, Baltimore County, Carroll County, Garrett County and Howard County were $10 million, the maximum loan value authorized under the program. 
+
+It would be interesting to see what these companies are that got the maximum of $10 million.  To do that, we could simply take our original data set and sort it from highest to lowest on the loan amount. 
+
+```{r}
+ppp_maryland_loans %>%
+  arrange(desc(amount))
+
+
+```
+The first five rows here all represent companies that got $10 million loans. Who are they? What industries are they in?  The answers to these questions could provide a lead for further reporting. 

@@ -1,0 +1,34 @@
+---
+title: "lab_01"
+author: "sean mussenden"
+date: "8/19/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load libraries and establish settings
+```{r}
+# Turn off scientific notation
+options(scipen=999)
+
+# Load the tidyverse. If you have not installed the tidyverse already, remove the # from the next line and run it first.  
+# install.packages('tidyverse')
+library(tidyverse)
+```
+
+## Load Data 
+
+```{r}
+maryland_ppp <- read_rds("class_01_demonstration.rds")
+```
+
+## Questions
+
+1.  Which West Virginia county got the most 
+
+```{r}
+
+```

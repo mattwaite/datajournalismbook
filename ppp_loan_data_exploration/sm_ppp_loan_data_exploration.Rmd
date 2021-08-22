@@ -13,7 +13,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 # General data science goodness 
 library(tidyverse)
-
+# Census data
+library(tidycensus)
 # Data cleaning
 library(janitor)
 # For reading excel files
@@ -22,13 +23,108 @@ library(readxl)
 library(gtsummary)
 ```
 
+## Load data
+```{r}
+# 11,786,689 records
+ppp_loans <- read_csv("../data/ppp_loan_data/recipients.csv")
+
+
+
+
+```
+
+## Create datasets
+### Chapter 5 Aggregates
+```{r}
+### Chapter 5: Aggregates
+# 195,869 records
+maryland_ppp_loans <- ppp_loans %>%
+  filter(state == "MD") %>%
+  filter(!project_county_name %in% c("BROWARD","COBB","FAIRFAX","MIDDLESEX","PORTSMOUTH CITY","RICHLAND","YORK")) %>%
+  filter(!is.na(project_county_name))
+
+write_rds(maryland_ppp_loans,"../in_class_demonstrations/class_01_demonstration/class_01_demonstration.rds", compress="gz")
+
+```
+
+
+# Chapter 6 mutate
+```{r}
+# Load county data
+maryland_ppp_loan_county_pop <- ppp_loans %>%
+  filter(state == "MD") %>%
+  filter(!project_county_name %in% c("BROWARD","COBB","FAIRFAX","MIDDLESEX","PORTSMOUTH CITY","RICHLAND","YORK")) %>%
+  filter(!is.na(project_county_name)) %>%
+  group_by(project_county_name) %>%
+    summarize(
+      count=n(),
+      total_amount = sum(amount)
+    )
+
+# load tidycensus variable list
+census_api_key("549950d36c22ff16455fe196bbbd01d63cfbe6cf")
+acs_vars <- load_variables(year=2019,dataset="acs5")
+
+# Get maryland 2019 population
+maryland_county_pop <- get_acs(geography="county",variables="B01001_001", geometry = FALSE, state="MD") %>%
+  clean_names() %>%
+  mutate(name=toupper(str_remove_all(name,"\\, Maryland| County|'|\\."))) %>%
+  mutate(name=str_replace_all(name,"^ST","SAINT")) %>%
+  select(county=name,pop_2019=estimate)
+
+maryland_ppp_loan_county_pop <- maryland_ppp_loan_county_pop %>%
+  inner_join(maryland_county_pop, c("project_county_name" = "county"))
+
+write_rds(maryland_ppp_loan_county_pop,"../in_class_demonstrations/class_01_demonstration/class_01_demonstration_a.rds", compress="gz")
+
+    
+
+
+
+```
+
+# Lab 01
+
+```{r}
+wv_ppp_loans <- ppp_loans %>%
+  filter(state == "WV") %>%
+  filter(!project_county_name %in% c("PALM BEACH","ALLEGHENY")) 
+
+write_rds(wv_ppp_loans,"../labs/lab_01/lab_01.rds", compress="gz")
+  
+  
+# load tidycensus variable list
+census_api_key("549950d36c22ff16455fe196bbbd01d63cfbe6cf")
+acs_vars <- load_variables(year=2019,dataset="acs5")
+
+# Get maryland 2019 population
+west_virginia_county_pop <- get_acs(geography="county",variables="B01001_001", geometry = FALSE, state="WV") %>%
+  clean_names() %>%
+  mutate(name=toupper(str_remove_all(name,"\\, West Virginia| County|'|\\."))) %>%
+  select(county=name,pop_2019=estimate)
+
+wv_ppp_loan_county_pop <- wv_ppp_loans %>%
+  inner_join(west_virginia_county_pop, c("project_county_name" = "county"))
+
+```
+
+# Lab 02
+
+```{r}
+west_virginia_ppp_loans <- ppp_loans %>%
+  filter(state=="WV") %>%
+  group_by(project_county_name) %>%
+  count()
+
+```
+
+
 ## Load data, write out sample for testing, read in
 ```{r}
-#ppp_loans <- read_csv("../data/ppp_loan_data/recipients.csv")
 #ppp_loans_sample <- head(ppp_loans, 100000)
 #rm(ppp_loans)
 #write_rds(ppp_loans_sample, "../data/ppp_loan_data/ppp_loans_sample.rds")
-ppp_loans_sample <- read_rds("../data/ppp_loan_data/ppp_loans_sample.rds")
+#ppp_loans_sample <- read_rds("../data/ppp_loan_data/ppp_loans_sample.rds")
 
 ```
 

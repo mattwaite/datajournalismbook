@@ -1,6 +1,6 @@
 # Data journalism in the age of replication
 
-It's a single word in a single job description, but a Buzzfeed job posting in 2017 is another indicator in what could be a profound shift in how data journalism is both practiced and taught.
+A single word in a single job ad for [Buzzfeed News](https://www.buzzfeednews.com/) posted in 2017 offered an indication of a profound shift in how data journalism is both practiced and taught.
 
 "We’re looking for someone with a passion for news and a commitment to using data to find amazing, important stories — both quick hits and deeper analyses that drive conversations," the posting seeking a data journalist says. It goes on to list five things BuzzFeed is looking for: Excellent collaborator, clear writer, deep statistical understanding, knowledge of obtaining and restructuring data.
 
@@ -8,7 +8,7 @@ And then there's this:
 
 __"You should have a strong command of at least one toolset that (a) allows for filtering, joining, pivoting, and aggregating tabular data, and (b) enables reproducible workflows."__
 
-The word you're seeing more and more of? Reproducible. And it started in earnest this summer when data journalism crossed a major threshold in American journalism: It now has it's own section in the Associated Press Stylebook.
+The word you're seeing more and more of? Reproducible. And it started in earnest in 2017 when data journalism crossed a major threshold in American journalism: It got it's own section in the Associated Press Stylebook.
 
 "Data journalism has become a staple of reporting across beats and platforms," the Data Journalism section of the Stylebook opens. "The ability to analyze quantitative information and present conclusions in an engaging and accurate way is no longer the domain of specialists alone."
 
@@ -16,7 +16,7 @@ The AP's Data Journalism section discusses how to request data and in what forma
 
 But the third page of the section contains perhaps the most profound commandment: __"As a general rule, all assertions in a story based on data analysis should be reproducible. The methodology description in the story or accompanying materials should provide a road map to replicate the analysis."__
 
-Reproducible research -- replication -- is a cornerstone of scientific inquiry. Researchers across a range of academic disciplines use methods to find new knowledge and publish it in peer reviewed journals. And, when it works, other researchers take that knowledge and try it with their own samples in their own locations. Replication studies exist to take something from an Interesting Finding to a Theory and beyond.
+Reproducible research -- replication -- is a cornerstone of scientific inquiry. Researchers across a range of academic disciplines use methods to find new knowledge and publish it in peer reviewed journals. And, when it works, other researchers take that knowledge and try it with their own samples in their own locations. Replication studies exist to take something from an "interesting finding" to a "theory" and beyond.
 
 It doesn't always work.
 
@@ -32,14 +32,14 @@ He wrote that in 1971. It might as well have been yesterday.
 
 Journalism doesn't have a history of replication, but the concerns about credibility are substantially greater. Trust in media is at an all time low and shows no signs of improving. While the politics of the day have quite a bit to do with this mistrust of media, being more transparent about what journalists do can't hurt.
 
-The AP's commandment that Thou Must Replicate Your Findings could, if taken seriously by the news business, have substantial impacts on how data journalism gets done in newsrooms and how data journalism gets taught, both at professional conferences and universities.
+The AP's commandment that "Thou must replicate your findings" could, if taken seriously by the news business, have substantial impacts on how data journalism gets done in newsrooms and how data journalism gets taught, both at professional conferences and universities.
 
 How? Two ways.
 
-* The predominant way that data journalism gets done in a newsroom is through simple tools like Microsoft Excel or Google Sheets. Those simple tools, on their own, lack significant logging functions, meaning journalists will have to maintain detailed logs of what they did so any analysis can be replicated.
-* The predominant way that data journalism gets taught -- both in professional settings and at most universities -- doesn't deal with replication at all. The tools and the training stress Getting Things Done -- an entirely logical focus for a deadline driven business. The choices of tools -- like spreadsheets -- are made to get from data to story as quick as possible, without frightening away math and tech phobic students.
+* The predominant way that data journalism gets done in a newsroom is through simple tools like Microsoft Excel or Google Sheets. Those simple tools, on their own, lack significant logging functions that automatically keep track of steps a data journalist took to reach a given conclusion. That means journalists using those tools have to maintain separate, detailed logs of what they did so any analysis can be replicated.
+* The predominant way that data journalism gets taught -- both in professional settings and at most universities -- doesn't deal with replication at all. The tools and the training stress "getting things done" -- an entirely logical focus for a deadline driven business. The choices of tools -- like spreadsheet programs -- are made to get from data to story as quick as possible, without frightening away math and tech phobic students.
 
-If the AP's replication rules are to be followed, journalism needs to become much more serious about the tools and techniques used to do data journalism. The days of Point and Click tools to do Quick and Dirty analysis that get published are dying. The days of formal methods using documented steps are here.
+If the AP's replication rules are to be followed, journalism needs to become much more serious about the tools and techniques used to do data journalism. The days of "point and click" tools to do "quick and dirty" analysis that get published are dying. The days of formal methods using documented steps are here.
 
 ## The stylebook
 
@@ -71,7 +71,7 @@ But journalists should be sharing their data and analysis steps. And it doesn't 
 
 But as simple as that sounds, it's not so simple. Ask social scientists.
 
-Andrew Gelman, a professor of statistics and political science and director of the Applied Statistics Center at Columbia University, wrote in the journal CHANCE in February that difficulties with replication in empirical research are pervasive.
+Andrew Gelman, a professor of statistics and political science and director of the Applied Statistics Center at Columbia University, wrote in the journal CHANCE that difficulties with replication in empirical research are pervasive.
 
 "When an outsider requests data from a published paper, the authors will typically not post or send their data files and code, but instead will point to their sources, so replicators have to figure out exactly what to do from there," Gelman wrote. "End-to-end replicability is not the norm, even among scholars who actively advocate for the principles of open science."
 
@@ -93,7 +93,7 @@ Internally, the AP Stylebook says: __"If at all possible, an editor or another r
 
 There are two problems here.
 
-First is that journalism, unlike science, has no history of replication. There is no Scientific Method for stories. There is no Research Methods class taught at every journalism school, at least not where it comes to writing stories. And, beyond that, journalism school isn't a requirement to get into the news business. In other words, journalism lacks the standards other disciplines have.
+First is that journalism, unlike science, has no history of replication. There is no "scientific method" for stories. There is no standard "research methods" class taught at every journalism school, at least not where it comes to writing stories. And, beyond that, journalism school isn't a requirement to get into the news business. In other words, journalism lacks the standards other disciplines have.
 
 The second problem is, in many ways, worse: Except for the largest newsrooms, most news organizations lack editors who could replicate the analysis. Many don't have a second person who would know what to do.  
 
@@ -101,13 +101,11 @@ Not having a second set of eyes in a newsroom is a problem, Thibodeaux acknowled
 
 Thibodeaux, for his part, wants to see fewer "lone nerds in the corner" -- it's too much pressure. That person gets too much credibility from people who don't understand what they do, and they get too much blame when a mistake is made.
 
-So what would replication look like in a newsroom? What does this mean for how newsrooms do data journalism on deadline? And what does this mean for how data journalism is being taught, particularly at a time when only half of accredited journalism programs teach any data journalism at all?
-
-Are we walking ourselves into our own replication crisis?
+So what would replication look like in a newsroom? What does this mean for how newsrooms do data journalism on deadline? 
 
 ## Goodbye Excel?
 
-For decades, Excel has been the gateway drug for data journalists, the Swiss Army knife of data tools, the One Tool You Can't Live Without. Investigative Reporters and Editors, an organization that trains investigative journalists, have built large amounts of their curricula around Excel. Of the journalism schools that teach data journalism, most of them begin and end with spreadsheets.  
+For decades, Excel has been the gateway drug for data journalists, the Swiss Army knife of data tools, the "One Tool You Can't Live Without." Investigative Reporters and Editors, an organization that trains investigative journalists, have built large amounts of their curricula around Excel. Of the journalism schools that teach data journalism, most of them begin and end with spreadsheets.  
 
 The Stylebook says at a minimum, today's data journalists should keep a log that details:
 
@@ -115,13 +113,13 @@ The Stylebook says at a minimum, today's data journalists should keep a log that
 * Data dictionaries or any other supporting documentation of the data.
 * __"Description of all steps required to transform the data and perform the analysis."__
 
-The trouble with Excel is, unless you are keeping meticulous notes on what steps you are taking, there's no way to keep track. Many data journalists will copy and paste the values of a formula over the formula itself to prevent Excel from fouling up cell references when moving data around -- a practical step that also cuts off another path to being able to replicate the results.
+The trouble with Excel (or Google Sheets) is, unless you are keeping meticulous notes on what steps you are taking, there's no way to keep track. Many data journalists will copy and paste the values of a formula over the formula itself to prevent Excel from fouling up cell references when moving data around -- a practical step that also cuts off another path to being able to replicate the results.
 
 An increasing number of data journalists are switching to tools like analysis notebooks, which use languages like Python and R, to document their work. The notebooks, generally speaking, allow a data journalist to mix code and explanation in the same document.
 
 Combined with online sharing tools like GitHub, analysis notebooks seem to solve the problem of replication. But the number using them is small compared to those using spreadsheets. Recent examples of news organizations using analysis notebooks include the [Los Angeles Times](https://github.com/datadesk), the [New York Times](https://github.com/TheUpshot), [FiveThirtyEight](https://github.com/fivethirtyeight/data), and [Buzzfeed](https://github.com/BuzzFeedNews).
 
-Peter Aldous, a data journalist at Buzzfeed recently published a story about how the online news site used machine learning to find airplanes being used to spy on people in American cities. Published with the story is the code Aldous used to build his case.
+Peter Aldous, a data journalist at Buzzfeed recently published a story about how the online news site used machine learning to [find airplanes being used to spy on people in American cities](https://www.buzzfeednews.com/article/peteraldhous/us-marshals-spy-plane-over-mexico#.qqYnVj0B). Published with the story is the [code Aldous used to build his case](https://github.com/BuzzFeedNews/2017-08-spy-plane-finder).
 
 "I think of it this way: As a journalist, I don't like to simply trust what people tell me. Sometimes sources lie. Sometimes they're just mistaken. So I like to verify what I'm told," he wrote in an email. "By the same token, why should someone reading one of my articles believe my conclusions, if I don't provide the evidence that explains how I reached them?"
 
@@ -157,36 +155,18 @@ It's taken 45 years, but we are now at this point.
 
 For our purposes in this book, replication requires two things from you, the student: What and why. What is this piece of code doing, and why are you doing that here and now? What lead you to this place? That you can copy and paste code from this book or the internet is not impressive. What is necessary for learning is that you know what a piece of code is doing a thing and why you want to do that thing here. 
 
-In an R Notebook, there are two blocks: A block that uses markdown, which has no special notation, and a code block. The code blocks can run mulitple languages inside R Studio, including Python, a general purpose scripting language; and SQL, or Structured Query Language, the language of databases. 
+How will we replicate? We'll make use of special text files -- R Markdown, also known as R Notebooks -- that combine contextual text; the code we use to load, clean, analyze and visualize data; and the output of that code that allowed us to draw certain conclusions to use in stories.   
 
-For the rest of the class, we're going to be working in notebooks. In notebooks, you will both run your code and explain each step, much as I am doing here. 
+In an R Notebook, there are two blocks: A block that uses markdown, which has no special notation, and a code block. The code blocks can run mulitple languages inside R Studio. There's R, of course, but we could also run Python, a general purpose scripting language; and SQL, or Structured Query Language, the language of databases. 
 
-To start a notebook, you click on the green plus in the top left corner and go down to R Notebook. Do that now. 
+For the rest of the class, we're going to be working in notebooks. 
+
+In notebooks, you will both run your code and explain each step, much as I am doing here in this online book. This entire book was produced with R markdown files  
+
+To start a notebook in R Studio, you click on the green plus in the top left corner and go down to R Notebook. 
 
 ```{r, echo=FALSE}
 knitr::include_graphics(rep("images/verybasics2.png"))
 ```
 
-You will see that the notebook adds a lot of text for you. It tells you how to work in notebooks -- and you should read it. The most important parts are these: 
-
-To add text, simply type. To add code you can click on the *Insert* button on the toolbar or by pressing *Cmd+Option+I* on Mac or *Ctl+Alt+I* on Windows.
-
-Highlight all that text and delete it. You should have a blank document. This document is called a R Markdown file -- it's a special form of text, one that you can style, and one you can include R in the middle of it. Markdown is a simple markup format that you can use to create documents. So first things first, let's give our notebook a big headline. Add this:
-
-`# My awesome notebook` 
-
-Now, under that, without any markup, just type This is my awesome notebook.
-
-Under that, you can make text bold by writing `It is **really** awesome`.
-
-If you want it italics, just do this on the next line: `No, it's _really_ awesome. I swear.`
-
-To see what it looks like without the markup, click the Preview or Knit button in the toolbar. That will turn your notebook into a webpage, with the formatting included.
-
-Throughout this book, we're going to use this markdown to explain what we are doing and, more importantly, why we are doing it. Explaining your thinking is a vital part of understanding what you are doing. 
-
-That explaination, plus the code, is the real power of notebooks. To add a block of code, follow the instructions from above: click on the *Insert* button on the toolbar or by pressing *Cmd+Option+I* on Mac or *Ctl+Alt+I* on Windows.
-
-In that window, use some of the code from above and add two numbers together. To see it run, click the green triangle on the right. That runs the chunk. You should see the answer to your addition problem. 
-
-And that, just that, is the foundation you need to start this book.
+In our first lab, we'll go through the process of creating and editing a markdown notebook. 

@@ -1,0 +1,125 @@
+---
+title: "class_01_demonstration.Rmd"
+author: "sean mussenden"
+date: "8/19/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Points to hit
+1. Overview of R, R Studio, Console, R Markdown files.  
+2. Demonstrate how code runs in the console. print('your name'). 2+2. 
+3. Demonstrate how to install, then load libraries, and explain what libraries are. 
+5. Demonstrate how to load data, how to store it as an object, and how to view it. Show how to sort, filter in Viewer window.  
+6. Explain PPP loan data, what it is, why we're examining it, what stories journalists have done with it. Explain difference between rows and columns, and what each shows. Show documentation. 
+7. Explain that we're about to learn techniques, and that all of these techniques are about answering questions (we'll talk later about developing questions).
+8. Demonstration of aggregation. Explanation of functions. Explanation of pipes. 
+
+## Load Libraries
+```{r}
+# turn off sci notation
+options(scipen=999)
+library(tidyverse)
+```
+
+## Load Data 
+Maryland slice of PPP data
+```{r}
+maryland_ppp <- read_rds("class_01_demonstration.rds")
+```
+
+## Get a sense
+```{r}
+head(maryland_ppp)
+summary(maryland_ppp)
+colnames(maryland_ppp)
+glimpse(maryland_ppp)
+```
+
+## Group and Summarize
+Follow the money. Where's it going? 
+Which county got the most ppp loans?   
+
+```{r}
+# Show first
+maryland_ppp %>%
+  group_by(project_county_name) %>%
+  summarise(
+    count=n()
+  )
+
+# Show second
+maryland_ppp_county_count <- maryland_ppp %>%
+  group_by(project_county_name) %>%
+  summarise(
+    count=n()
+  )
+
+# Show third (with error to demonstrate error)
+maryland_ppp_county_count <- maryland_ppp %>%
+  group_by(project_county_name) %>%
+  summarise(
+    count=n()
+  ) %>%
+  arrange(desc(coun))
+
+# Show fourth 
+maryland_ppp_county_count <- maryland_ppp %>%
+  group_by(project_county_name) %>%
+  summarise(
+    count=n()
+  ) %>%
+  arrange(desc(count))
+
+# Show fifth
+maryland_ppp_county_count <- maryland_ppp %>%
+  group_by(project_county_name) %>%
+  summarise(
+    count=n(),
+    total_amount = sum(amount)
+  ) %>%
+  arrange(desc(total_amount))
+
+# Show sixth (what other kinds of summary stats?)
+maryland_ppp_county_count <- maryland_ppp %>%
+  group_by(project_county_name) %>%
+  summarise(
+    count=n(),
+    total_amount = sum(amount),
+    mean_amount = mean(amount)
+  ) %>%
+  arrange(desc(mean_amount))
+
+# Show seventh (what other kinds of summary stats?)
+maryland_ppp_county<- maryland_ppp %>%
+  group_by(project_county_name) %>%
+  summarise(
+    count=n(),
+    total_amount = sum(amount),
+    mean_amount = mean(amount),
+    median_amount = median(amount)
+  ) %>%
+  arrange(desc(mean_amount))
+
+# Show eighth (what other kinds of summary stats?)
+# Show seventh (what other kinds of summary stats?)
+maryland_ppp_county<- maryland_ppp %>%
+  group_by(project_county_name) %>%
+  summarise(
+    count=n(),
+    total_amount = sum(amount),
+    mean_amount = mean(amount),
+    median_amount = median(amount),
+    min_amount = min(amount),
+    max_amount = max(amount)
+  ) %>%
+  arrange(desc(mean_amount))
+
+# Interesting, who are these 10 million people who got max
+Examine
+
+
+```
