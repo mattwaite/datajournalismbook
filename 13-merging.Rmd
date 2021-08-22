@@ -1,169 +1,189 @@
 # Combining and joining
 
-Often, as data journalists, we're looking at data across time or at data stored in multiple tables. And to do that, we need to often need to merge that data together. 
+Often, as data journalists, we're looking at data across time or at data stored in multiple tables. And to do that, we need to often need to merge that data together.
 
 Depending on what we have, we may just need to stack data on top of each other to make new data. If we have 2019 data and 2018 data and we want that to be one file, we stack them. If we have a dataset of cows in counties and a dataset of populations in county, we're going to join those two together on the county -- the common element.  
 
 Let's explore.
 
-## Combining data
+## Combining data (stacking)
 
-In the last assignment, we harvested data out of PDFs. Let's reuse what we did there and merge three months of reports from the Department of Revenue together. For mine, I have [January 2020](https://unl.box.com/s/nd1yaroltsy161pqgbges9xrtav2qdqp), [December 2019](https://unl.box.com/s/jfdtqffty1vb2zbil8z5qalu18yg0590), and [November 2019](https://unl.box.com/s/g1dc0mibxxutsitqssv2uf75pmb7avle). 
+Let's say that we have county population estimates for three different years - [2010](https://umd.box.com/s/vsuyt7v1gtb2u0aerliv5eixfmzfgt17), [2015](https://umd.box.com/s/2qijnwfygsrfin9d2o1krhzw5o8vza30) and [2020](https://umd.box.com/s/uqkeaabkvs4ge0l10j3w3sa76q3z1v16) - in three different files. They have the same record layout and the same number of counties. We can combine them into a single dataframe.
 
-Let's do what we need to import them properly. Unlike the last example, I've merged it all into one step for each of the three datasets.
+Let's do what we need to import them properly. I've merged it all into one step for each of the three datasets.
 
 ```{r}
 library(tidyverse)
 ```
 
 ```{r}
-receiptsJan20 <- read_csv("data/tabula-General_Fund_Receipts_January_2020.csv", skip = 3, col_names = c("Month", "TotalActualNetReceipts", "TotalProjectedNetReceipts", "Difference", "PercentDifference", "CumulativeActualNetReceipts", "CumulativeProjectedNetReceipts", "CumulativeDifference","CumulativePercentDifference"), skip_empty_rows = TRUE) %>% mutate(
-  TotalActualNetReceipts = gsub(",","",TotalActualNetReceipts),
-  TotalActualNetReceipts = gsub("\\$","",TotalActualNetReceipts),
-  TotalProjectedNetReceipts = gsub(",","",TotalProjectedNetReceipts),
-  TotalProjectedNetReceipts = gsub("\\$","",TotalProjectedNetReceipts),
-  Difference = gsub(",","",Difference),
-  Difference = gsub("\\$","",Difference),
-  PercentDifference = gsub("\\%","",PercentDifference),
-  CumulativeActualNetReceipts = gsub(",","",CumulativeActualNetReceipts),
-  CumulativeActualNetReceipts = gsub("\\$","",CumulativeActualNetReceipts),
-  CumulativeProjectedNetReceipts = gsub(",","",CumulativeProjectedNetReceipts),
-  CumulativeProjectedNetReceipts = gsub("\\$","",CumulativeProjectedNetReceipts),
-  CumulativeDifference = gsub(",","",CumulativeDifference),
-  CumulativeDifference = gsub("\\$","",CumulativeDifference),
-  CumulativePercentDifference = gsub("\\%","",CumulativePercentDifference)
-  ) %>% mutate_at(vars(-Month), as.numeric) %>% mutate(ReportMonth = "January 2020")
+popestimate_2010 <- read_csv("popestimate_2010.csv")
 ```
 
 ```{r}
-receiptsDec19 <- read_csv("data/tabula-General_Fund_Receipts_December_2019.csv", skip = 3, col_names = c("Month", "TotalActualNetReceipts", "TotalProjectedNetReceipts", "Difference", "PercentDifference", "CumulativeActualNetReceipts", "CumulativeProjectedNetReceipts", "CumulativeDifference","CumulativePercentDifference"), skip_empty_rows = TRUE) %>% mutate(
-  TotalActualNetReceipts = gsub(",","",TotalActualNetReceipts),
-  TotalActualNetReceipts = gsub("\\$","",TotalActualNetReceipts),
-  TotalProjectedNetReceipts = gsub(",","",TotalProjectedNetReceipts),
-  TotalProjectedNetReceipts = gsub("\\$","",TotalProjectedNetReceipts),
-  Difference = gsub(",","",Difference),
-  Difference = gsub("\\$","",Difference),
-  PercentDifference = gsub("\\%","",PercentDifference),
-  CumulativeActualNetReceipts = gsub(",","",CumulativeActualNetReceipts),
-  CumulativeActualNetReceipts = gsub("\\$","",CumulativeActualNetReceipts),
-  CumulativeProjectedNetReceipts = gsub(",","",CumulativeProjectedNetReceipts),
-  CumulativeProjectedNetReceipts = gsub("\\$","",CumulativeProjectedNetReceipts),
-  CumulativeDifference = gsub(",","",CumulativeDifference),
-  CumulativeDifference = gsub("\\$","",CumulativeDifference),
-  CumulativePercentDifference = gsub("\\%","",CumulativePercentDifference)
-  ) %>% mutate_at(vars(-Month), as.numeric) %>% mutate(ReportMonth = "December 2019")
+popestimate_2015 <- read_csv("popestimate_2015.csv")
 ```
 
 ```{r}
-receiptsNov19 <- read_csv("data/tabula-General_Fund_Receipts_November_12-13-2019.csv", skip = 3, col_names = c("Month", "TotalActualNetReceipts", "TotalProjectedNetReceipts", "Difference", "PercentDifference", "CumulativeActualNetReceipts", "CumulativeProjectedNetReceipts", "CumulativeDifference","CumulativePercentDifference"), skip_empty_rows = TRUE) %>% mutate(
-  TotalActualNetReceipts = gsub(",","",TotalActualNetReceipts),
-  TotalActualNetReceipts = gsub("\\$","",TotalActualNetReceipts),
-  TotalProjectedNetReceipts = gsub(",","",TotalProjectedNetReceipts),
-  TotalProjectedNetReceipts = gsub("\\$","",TotalProjectedNetReceipts),
-  Difference = gsub(",","",Difference),
-  Difference = gsub("\\$","",Difference),
-  PercentDifference = gsub("\\%","",PercentDifference),
-  CumulativeActualNetReceipts = gsub(",","",CumulativeActualNetReceipts),
-  CumulativeActualNetReceipts = gsub("\\$","",CumulativeActualNetReceipts),
-  CumulativeProjectedNetReceipts = gsub(",","",CumulativeProjectedNetReceipts),
-  CumulativeProjectedNetReceipts = gsub("\\$","",CumulativeProjectedNetReceipts),
-  CumulativeDifference = gsub(",","",CumulativeDifference),
-  CumulativeDifference = gsub("\\$","",CumulativeDifference),
-  CumulativePercentDifference = gsub("\\%","",CumulativePercentDifference)
-  ) %>% mutate_at(vars(-Month), as.numeric) %>% mutate(ReportMonth = "November 2019")
+popestimate_2020 <- read_csv("popestimate_2020.csv")
 ```
 
-All three of these datasets have the same number of columns, all with the same names, so if we want to merge them together to compare them over time, we need to stack them together. The verb here, in R, is `rbind`. The good news about `rbind` is that it is very simple. The bad news -- you can only merge two things at a time.
+All three of these datasets have the same number of columns, all with the same names, so if we want to merge them together to compare them over time, we need to stack them together. The verb here, in R, is `bind_rows`. You tell the function what you want to combine and it does it, assuming that you've got column names in common containing identically formatted data.
 
-Since we have three things, we're going to do this in steps. First, we'll create a dataframe that will hold it all and we'll populate it with two of our revenue dataframes rbinded together. Then, we'll overwrite our new dataframe with the results of that dataframe with the third revenue dataframe. 
+Since we have three dataframes, we're going to need to pass them as a list, meaning they'll be enclosed inside the `list` function.
 
 ```{r}
-predictions1 <- rbind(receiptsJan20, receiptsDec19)
-
-predictions2 <- rbind(predictions1, receiptsNov19)
-
-predictions2
+estimates <- bind_rows(list(popestimate_2010, popestimate_2015, popestimate_2020))
 ```
 
-And boom, like that, we have 18 rows of data instead of three dataframes of 5, 6, and 7 respectively. 
+And boom, like that, we have 9,852 rows of data together instead of three dataframes. There are plenty of uses for `bind_rows`: any regularly updated data that comes in the same format like crime reports or award recipients or player game statistics.
 
 ## Joining data
 
-More difficult is when you have two separate tables that are connected by a common element or elements. 
+More difficult is when you have two separate tables that are connected by a common element or elements.
 
-Let's return to our fatal accident data. In reality, the Fatality Analysis Reporting System data has 27 tables in it -- everything from details about the damage to the paperwork done. 
-
-Let's just merge two of them and just for the state of Nebraska -- download [the accidents](https://unl.box.com/s/1h79r809xsmu1vcsszcobvf3fj9ect8k) and [the people](https://unl.box.com/s/5rp7li8ukq4e8eoy5ymjuzs1a21ba7bv). 
-
-Often, when talking about relational data files like this, there's substantial amounts of documentation that go with it to tell you how these things are related and what codes mean. [The FARS data is no different](https://crashstats.nhtsa.dot.gov/Api/Public/ViewPublication/812827). You should open it and click on the PERSON Data File. 
-
-> ST_CASE should be used to merge the Person data file with the Accident data file for a set of all motorists and non-motorists.
-
-So that's what we're going to do.
+Let's start by loading tidyverse and reading in the Maryland PPP loan applications data:
 
 ```{r}
-accidents <- read_csv("data/neaccidents.csv")
+library(tidyverse)
 ```
 
 ```{r}
-persons <- read_csv("data/nepersons.csv")
+maryland <- read_csv('ppp_applications_md.csv')
 ```
 
-First, notice something in the environment about your dataset: there are 201 accidents but 553 persons. That means there's not quite 3 people involved in every accident on average between drivers and passengers. Some are single car, single person crashes. Some involve a lot of people. 
+One of the columns we have is called `naics_code`, which is a six-digit number used by the federal government "in classifying business establishments for the purpose of collecting, analyzing, and publishing statistical data related to the U.S. business economy." More details at [the official NAICS site](https://www.census.gov/naics/).
 
-To put these two tables together, we need to use something called a join. There are different kinds of join. It's better if you think of two tables sitting next to each other. A `left_join` takes all the records from the left table and only the records that match in the right one. A `right_join` does the same thing. An `inner_join` takes only the records where they are equal. There's one other join -- a `full_join` which returns all rows of both, regardless of if there's a match -- but I've never once had a use for a full join.
+But unless you have a particular interest in memorizing what those more than 1,000 codes actually mean, the codes themselves don't help you understand what type of business any individual applicant has. Luckily, we can merge that information into our data using a join.
 
-In the PERSON Data File documentation, we see that column that connects these two tables together is the ST_CASE column. 
-
-So we can do this join multiple ways and get a similar result. We can put the person file on the left and the accident on the right and use a left join to get them all together. And we use `by=` to join by the right column. And to avoid rendering hundreds of rows of data, I'm going to count the rows at the end. The reason I'm going this is important: **Rule 1 in joining data is having an idea of what you are expecting to get**. So with a left join with people on the left, I have 553 people, so I expect to get 553 rows when I'm done. 
+Using a [CSV file of the 2017 NAICS codes](https://umd.box.com/s/thou3merdzwzbdimbvd06zkax1zndcsk), let's read the file into R:
 
 ```{r}
-persons %>% left_join(accidents, by="ST_CASE") %>% nrow()
+naics_codes <- read_csv('naics_codes.csv')
 ```
 
-Remove the nrow and run it again for yourself. See how there are several columns that end with .X? That means they're duplicates. There's a solid chance they are the same in both tables. By default, `dplyr` will do a "natural" join, where it'll match all the matching columns in both tables. So if we take out the by, it'll use all the common columns between the tables. That may not be right -- our documentation says ST_CASE is how they are related -- but let's try it. If it works, we should get 553 rows.
+To put the Maryland applications and NAICS codes together, we need to use something called a join. There are different kinds of joins. It's better if you think of two tables sitting next to each other. A `left_join` takes all the records from the left table and only the records that match in the right one. A `right_join` does the same thing. An `inner_join` takes only the records where they are equal. There's one other join -- a `full_join` which returns all rows of both, regardless of if there's a match -- but I've never once had a use for a full join.
+
+In the best-case scenario, the two tables we want to join share a common column. In this case, both of our tables have a column called `naics_code` that has the same characteristics: both are six-digit numbers.
+
+We can do this join multiple ways and get a similar result. We can put the Maryland file on the left and the NAICS codes on the right and use a left join to get them all together. And we use `by=` to join by the correct column. And to avoid rendering hundreds of rows of data, I'm going to count the rows at the end. The reason I'm going this is important: **Rule 1 in joining data is having an idea of what you are expecting to get**. So with a left join with applications on the left, I have 195,869 applications, so I expect to get 195,869 rows when I'm done.
 
 ```{r}
-persons %>% left_join(accidents) 
+maryland %>% left_join(naics_codes, by="naics_code") %>% select(name, naics_code, title) %>% nrow()
 ```
 
-So instead of just one column, it used 13. And we got the same answer. And we don't have any columns with .X after it anymore. So we're good to move forward.
-
-Let's save our joined data to a new dataframe. 
+Remove the nrow and run it again for yourself. By default, `dplyr` will do a "natural" join, where it'll match all the matching columns in both tables. So if we take out the by, it'll use all the common columns between the tables. That may not be right in every instance but let's try it. If it works, we should get 195,869 rows.
 
 ```{r}
-personaccidents <- persons %>% left_join(accidents)
+maryland %>% left_join(naics_codes) %>% select(name, naics_code, title)
 ```
 
-Now, with our joined data, we can answer questions that come from both datasets. So what if we looked at median age of drivers who died broken down by what kind of roadway the accident happened on? 
-We can do this now because the accident data has the roadway information information and the age and who was driving and what type of injury they sustained comes from the person table.
+Since we only have one column in common between the two tables, the join only used that column. And we got the same answer. If we had more columns in common, you could see in your results columns with .X after them - that's a sign of duplicative columns between two tables, and you may decide you don't need both moving forward.
 
-We get this by using filters followed by a group by and summarize. In the data documentation linked above, look in the PERSON Data File to get the appropriate filters. In this case, we want PER_TYPE of 1 (the driver) and an INJ_SEV of 4, which means death. In the ACCCIDENT Data File section, we learn it's the ROUTE we want to group by. 
+Let's save our joined data to a new dataframe, but this time let's remove the select function so we don't limit the columns to just three.
 
 ```{r}
-personaccidents %>% 
-  filter(PER_TYP == 1) %>% 
-  filter(INJ_SEV == 4) %>% 
-  group_by(ROUTE) %>% 
+maryland_with_title <- maryland %>% left_join(naics_codes)
+```
+
+Now, with our joined data, we can answer questions in a more useful way. But joins can do even more than just provide lookups; they can bring in additional data to enable you to ask more sophisticated questions.
+
+Let's try adding zip code demographic data to the mix. Using [a file from the state's data catalog](https://umd.box.com/s/2xsq2rpkmg4ct3a77vt8j5bu4vu1z0tf), we can read it into R:
+
+```{r}
+maryland_zcta <- read_csv('maryland_zcta.csv')
+```
+
+You'll want to keep open the [data documentation](https://geodata.md.gov/imap/rest/services/Demographics/MD_CensusData/FeatureServer/1) that hosts the data, because the field names are abbreviations.
+
+Note that this file describes Zip Code Tabulation Areas, which are very similar to but not always identical to zip codes (there's a [good explanation from the Census Bureau](https://www.census.gov/programs-surveys/geography/guidance/geo-areas/zctas.html)). Bottom line: "In most instances the ZCTA code is the same as the ZIP Code for an area."
+
+Again, we can use a `left_join` to make our demographic data available. This time we'll need to specify the two fields to join because they do not have identical names. We'll use `zip` from our PPP data and `ZCTA5N` from the demographic data:
+
+```{r}
+maryland_with_title_and_demographics <- maryland_with_title %>% left_join(maryland_zcta, by=c("zip"="ZCTA5N"))
+```
+
+You probably got an error when running that:
+
+```{r}
+Error: Can't join on `x$zip` x `y$zip` because of incompatible types.
+ℹ `x$zip` is of type <character>>.
+ℹ `y$zip` is of type <double>>
+```
+
+Let's unpack this: R is saying it can't join those two columns because one of them is a character column and the other is a double (number) column. When joining, _the two columns need to have the same data type_.
+
+We can fix that using our pal `mutate`. Let's change the ZCTA data to be a character, since zip codes aren't really useful as numbers (nobody needs to know the average zip code value).
+
+```{r}
+maryland_zcta <- maryland_zcta %>% mutate(across(ZCTA5N, as.character))
+```
+
+Now we can re-run the join:
+
+```{r}
+maryland_with_title_and_demographics <- maryland_with_title %>% left_join(maryland_zcta, by=c("zip"="ZCTA5N"))
+View(maryland_with_title_and_demographics)
+```
+
+Now, if you use the tiny black right arrows to see what's in those demographic columns, you'll see ... a lot of NAs. What's going on there? Are there zip codes in the PPP data that aren't in the ZCTA data? If you go back using the left arrows, you can see that the PPP zip codes often are zip+4, and we're using the ZCTA5N field to join, which is a 5-character field. But not all of the PPP codes are zip+4. So we'll need to use `mutate` once more to give us a PPP zip field that is exactly 5 characters. Let's do this on the original `maryland` dataframe so we can then do the join using our new `zip5` field:
+
+```{r}
+maryland_with_title <- maryland %>% mutate(zip5 = str_sub(zip, 1, 5))
+maryland_with_title_and_demographics <- maryland_with_title %>% left_join(maryland_zcta, by=c("zip5"="ZCTA5N"))
+```
+
+Now we've got PPP data and demographic data by zip code. That means we can draw from both datasets in asking our questions. For example, we could see the mean and median loan amount in zip codes with different demographic characteristics. Let's start with zip codes that have more than 50 percent non-Hispanic Black population.
+
+We get this by using filter followed by summarize. In this case, we want PNHB > 50:
+
+```{r}
+maryland_with_title_and_demographics %>%
+  filter(PNHB > 50) %>%
   summarize(
-    count = n(), 
-    avgage = mean(AGE), 
-    medage = median(AGE))
+    count = n(),
+    avgamount = mean(amount),
+    medamount = median(amount))
 ```
 
-According to our query, 15 accidents happened on interstates, and the median age of those was the lowest of all at 33. The most accidents were on US Highways, which makes sense because there's a lot more lane miles of US Highways than Interstates in Nebraska and pretty much every other state. But the second most common is county roads. And the median age of drivers there was quite low at 36. 
+According to our query, there were 44,032 loans approved in zip codes with more than 50 percent non-Hispanic Black population, and the average amount was $53,836 and the median amount was $20,000.
 
-Let's break this down one more step. What if we added RUR_URB -- if the accident happened in rural or urban place. A common feeling in a rural state like Nebraska is that urban interstate is a ribbon of insanity. But is it? 
+Let's change that to zip codes with more than 50 percent non-Hispanic white population:
 
 ```{r}
-personaccidents %>% 
-  filter(PER_TYP == 1) %>% 
-  filter(INJ_SEV == 4) %>% 
-  group_by(RUR_URB, ROUTE) %>% 
+maryland_with_title_and_demographics %>%
+  filter(PNHW > 50) %>%
   summarize(
-    count = n(), 
-    avgage = mean(AGE), 
-    medage = median(AGE))
+    count = n(),
+    avgamount = mean(amount),
+    medamount = median(amount))
 ```
 
-In 2018, only 3 of the 15 deaths on interestates were in urban areas. All the rest were in rural areas. And all 37 drivers who died in accidents on county roads were in rural areas. Most of the driver deaths on US Highways were in rural places as well.
+And we get a greater number of loans with a higher average and median amount. But that's not the end of the story, or of our questions. We'll need to ask more.
+
+Let's break this down one more step. What if we added `rural_urban_indicator` -- if the loan recipient is located in a rural or urban area -- as a group_by. Does that change anything for the previous queries?
+
+```{r}
+maryland_with_title_and_demographics %>%
+  filter(PNHB > 50) %>%
+  group_by(rural_urban_indicator) %>%
+  summarize(
+    count = n(),
+    avgamount = mean(amount),
+    medamount = median(amount))
+```
+
+```{r}
+maryland_with_title_and_demographics %>%
+  filter(PNHW > 50) %>%
+  group_by(rural_urban_indicator) %>%
+  summarize(
+    count = n(),
+    avgamount = mean(amount),
+    medamount = median(amount))
+```
+
+In both cases, urban applicants got more approvals for higher average and median amounts, and the gap between majority-white zip codes and majority-Black zip codes was larger for urban applicants than for rural ones.
+
+Joining datasets allows you to expand the range and sophistication of questions you're able to ask. It is one of the most powerful tools in a journalist's toolkit.
