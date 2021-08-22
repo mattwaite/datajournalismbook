@@ -4,129 +4,80 @@ The next circle of Hell on the Dante's Inferno of Data Journalism is the PDF. Go
 
 It's so ridiculous that there's a constellation of tools that do nothing more than try to harvest tables out of PDFs. There are online services like [CometDocs](https://www.cometdocs.com/) where you can upload your PDF and point and click your way into an Excel file. There are mobile device apps that take a picture of a table and convert it into a spreadsheet. But one of the best is a tool called [Tabula](https://tabula.technology/). It was build by journalists for journalists.
 
-There is a version of Tabula that will run inside of R -- a library called Tabulizer -- but the truth is I'm having the hardest time installing it on my machine, which leads me to believe that trying to install it across a classroom of various machines would be disasterous. The standalone version works just fine.
+There is a version of Tabula that will run inside of R -- a library called Tabulizer -- but the truth is I'm having the hardest time installing it on my machine, which leads me to believe that trying to install it across a classroom of various machines would be disastrous. The standalone version works just fine, and it provides a useful way for you to see what's actually going on.
 
 Unfortunately, harvesting tables from PDFs with Tabula is an exercise in getting your hopes up, only to have them dashed. We'll start with an example.
 
-## When it looks good, but goes wrong
+## Easy does it
 
-Every year, the University of Nebraska-Lincoln publishes dozens of PDFs that give you interesting demographic information about students, the faculty and a variety of other things. But all of it -- every little bit of it -- is in a PDF. And most of them are designed to look "nice" not convey data. Even when they do very obviously look like they came from a spreadsheet -- like someone printed the spreadsheet to a PDF so they could put it on the web -- it doesn't work.
+Tabula works best when tables in PDFs are clearly defined and have nicely-formatted information. Here's a perfect example: [active voters by county in Maryland](https://elections.maryland.gov/press_room/2020_stats/Eligible%20Active%20Voters%20by%20County%20-%20PG20.pdf).
 
-A perfect example of this is the data showing the [breakdown of students by degree, major, race and sex](https://iea.unl.edu/dmdocuments/050_fall_2018_enrl_p100.pdf). Open it up, it looks like a spreadsheet but in a PDF.
+[Download and install Tabula](https://tabula.technology/). Tabula works much the same way as Open Refine does -- it works in the browser by spinning up a small webserver in your computer.
 
-```{r, echo=FALSE}
-knitr::include_graphics(rep("images/pdfs1.png"))
-```
-
-[Download and install Tabula](https://tabula.technology/). Tabula works much the same way as Open Refine does -- it works in the browser by spinning up a small webserver in 
-your computer. 
-
-When Tabula opens, you click browse to find the PDF on your computer somewhere, and then click import. 
-
-After it imports, click autodetect tables. You'll see red boxes appear around what Tabula believes are the tables. You'll see it does a pretty good job at this. 
+When Tabula opens, you click browse to find the PDF on your computer somewhere, and then click import. After it imports, click autodetect tables. You'll see red boxes appear around what Tabula believes are the tables. You'll see it does a pretty good job at this.
 
 ```{r, echo=FALSE}
-knitr::include_graphics(rep("images/pdfs2.png"))
+knitr::include_graphics(rep("images/md_voters.png"))
 ```
 
-If you like what you see, click Preview and Export Extracted Data.
-
-And here's where it all starts to go wrong. 
-
-You'll see at first it looks good -- you get a reasonable representation of the table. But look at the first line.
+Now you can hit the green "Preview & Export Extracted Data" button on the top right. You should see something very like this:
 
 ```{r, echo=FALSE}
-knitr::include_graphics(rep("images/pdfs3.png"))
+knitr::include_graphics(rep("images/md_voters2.png"))
 ```
 
-First, the misspelling of college is disturbing. Did a university document misspell it? No. Which means Tabula is reading two ls as one. That's ... not good.
+You can now export that extracted table to a CSV file using the "Export" button. And then we can read it into R:
 
-Second, notice how the College of Agri Sci and Natl Resources, which was in it's own column before have been merged, somewhat inartfully, into the first column of major names. There is no major Colege of Agri Sci and Agribusiness. Same with Natl Resources Agricultural & Env Sci Comm. Those aren't things.
+```{r}
+voters_by_county <- read_csv("tabula-Eligible Active Voters by County - PG20.csv")
+View(voters_by_county)
+```
 
-Note the empty column between Major1 and DegreeId.
+Boom - we're good to go.
 
-Now scroll down some more.
+## When it looks good, but needs a little fixing
+
+Here's a slightly more involved PDF. Check out the table on page 4 of [this SBA PDF](https://www.sba.gov/sites/default/files/2021-06/PPP_Report_Public_210531-508.pdf).
 
 ```{r, echo=FALSE}
-knitr::include_graphics(rep("images/pdfs4.png"))
+knitr::include_graphics(rep("images/ppp_1.png"))
 ```
 
-Notice Architecture has the same merging of college name and first major problems as the first one does, but note the blank column is missing. 
+Looks like a spreadsheet, right? Save that PDF file to your computer in a place where you'll remember it (like a Downloads folder).
 
-Look at Arts and Sciences. Arts and Sciences are now in their own column, as the data shows, but there's now empty names that shouldn't be. What are those? 
-
-In short, it's a mess. 
-
-Here's the sad truth: THIS IS PRETTY GOOD. Open it in a spreadsheet and a little copying and pasting work while double checking the right names line up with the right rows and you're in business. As converted PDFs, this isn't bad. 
-
-It beats typing it out.
-
-## When it works well.
-
-Each month, the Nebraska Department of Revenue releases the monthly tax receipts of the state, and forecasts into the future what tax receipts might be in the near future. They do this for planning purposes -- the Legislature needs to know how much money the state may have when the new budget is put into place so they know how much money they have to spend. 
-
-[The announcement comes in a press release](https://revenue.nebraska.gov/about/news-releases/previous-general-funds-receipts-news-releases). Each press release includes a table showing the current number, the predicted number, and difference. Of course it's a PDF.
-
-Let's look at the most recent month as of this writing: [January 2020](https://revenue.nebraska.gov/sites/revenue.nebraska.gov/files/doc/news-release/gen-fund/2020/General_Fund_Receipts_January_2020.pdf). Download it, open it in Tabula and hit Autodetect tables.
-
-You'll note it finds no tables on the first page. Which is good, because there aren't any. Let's look at the third page. It finds a table, but is it one? 
+Now let's repeat the steps we did to import the PDF into Tabula and autodetect the tables. Page 4 should look like this:
 
 ```{r, echo=FALSE}
-knitr::include_graphics(rep("images/pdfs5.png"))
+knitr::include_graphics(rep("images/ppp_2.png"))
 ```
 
-Let's hit the X in the top right on that one. 
+We just want the table on page 4, so hit the "Clear All Selections" button to remove the red boxes. Now, in Tabula, let's draw a box around the table on page 4. Click and drag to draw the box.
 
-That leaves page 2. It finds two tables there. Let's just grab the first. Hit X on the second and click to preview the extracted data.
+Now you can hit the green "Preview & Export Extracted Data" button on the top right. You should see something very like this:
 
-This looks good. So let's export it to a csv. 
+```{r, echo=FALSE}
+knitr::include_graphics(rep("images/ppp_3.png"))
+```
+
+You can now export that extracted table to a CSV file using the "Export" button. And then we can read it into R:
+
+```{r}
+lender_types <- read_csv("tabula-PPP_Report_Public_210531-508.csv")
+View(lender_types)
+```
 
 ## Cleaning up the data in R
 
 The good news is that we have data we don't have to retype. The bad news is, it's hardly in importable shape.
 
-Let's load libraries.
+See the "Net Dollars" column? Thanks to the dollar signs, R doesn't recognize those values as numbers. The column names seem ok, but having spaces in them is a pain. Let's fix that by re-importing it and calling `mutate` so that the new `net_dollars` column is numeric.
 
 ```{r}
-library(tidyverse)
+lender_types <- read_csv("tabula-PPP_Report_Public_210531-508.csv", skip=1, col_names=c("type", "count", "approved", "net_dollars"))
+lender_types <- lender_types %>% mutate(net_dollars=as.numeric(parse_number(net_dollars)))
+View(lender_types)
 ```
 
-To import this, we need one row of headers. We have three. And we need headers that make sense. 
+All things considered, that was pretty easy. Many - most? - electronic PDFs aren't so easy to parse. Sometimes you'll need to open the exported CSV file and clean things up before importing into R. Other times you'll be able to do that cleaning in R itself.
 
-We can spell these out in the import step. First, we'll use `skip` to skip the first three lines. Then we'll spell out the column names by hand in a `col_names` bit. Here's how it looks.
-
-```{r}
-receipts <- read_csv("data/tabula-General_Fund_Receipts_January_2020.csv", skip = 3, col_names = c("Month", "TotalActualNetReceipts", "TotalProjectedNetReceipts", "Difference", "PercentDifference", "CumulativeActualNetReceipts", "CumulativeProjectedNetReceipts", "CumulativeDifference","CumulativePercentDifference"), skip_empty_rows = TRUE)
-```
-
-Now we have a harder part. 
-
-The columns come in as character columns. Why? Because the state puts commas and $ and % in them, which R does not interpret as anything except text. So we need to get rid of them. We can mutate columns and use a function called `gsub` that finds a string and replaces it with something. So in our case, we're going to `gsub(",","", fieldname)`. The unfortunate part is we have a lot of colunns and a lot of fixes. So this is going to require a lot of code. It is repetitive, though, so we can copy and paste and adjust with most of it. 
-
-At the end, we need to use a function called `mutate_at` and convert the columns that aren't text into numbers. 
-
-And one last thing: If we do many months of this, we should note which report this comes from. We can do this with mutate as well.
-
-Here's what that looks like:
-
-```{r}
-receipts %>% mutate(
-  TotalActualNetReceipts = gsub(",","",TotalActualNetReceipts),
-  TotalActualNetReceipts = gsub("\\$","",TotalActualNetReceipts),
-  TotalProjectedNetReceipts = gsub(",","",TotalProjectedNetReceipts),
-  TotalProjectedNetReceipts = gsub("\\$","",TotalProjectedNetReceipts),
-  Difference = gsub(",","",Difference),
-  Difference = gsub("\\$","",Difference),
-  PercentDifference = gsub("\\%","",PercentDifference),
-  CumulativeActualNetReceipts = gsub(",","",CumulativeActualNetReceipts),
-  CumulativeActualNetReceipts = gsub("\\$","",CumulativeActualNetReceipts),
-  CumulativeProjectedNetReceipts = gsub(",","",CumulativeProjectedNetReceipts),
-  CumulativeProjectedNetReceipts = gsub("\\$","",CumulativeProjectedNetReceipts),
-  CumulativeDifference = gsub(",","",CumulativeDifference),
-  CumulativeDifference = gsub("\\$","",CumulativeDifference),
-  CumulativePercentDifference = gsub("\\%","",CumulativePercentDifference)
-  ) %>% mutate_at(vars(-Month), as.numeric) %>% mutate(ReportMonth = "January 2020")
-```
-
-We can now reuse this with other months after we harvest the data out of it.
-
+Here's the sad truth: THIS IS PRETTY GOOD. It sure beats typing it out. And since many government processes don't change all that much, you can save the code to process subsequent versions of PDFs.
