@@ -1,0 +1,3195 @@
+﻿SUMLEV,REGION,DIVISION,STATE,COUNTY,STNAME,CTYNAME,YEAR,POPESTIMATE
+40,3,6,1,0,Alabama,Alabama,2015,4854803
+50,3,6,1,1,Alabama,Autauga County,2015,54903
+50,3,6,1,3,Alabama,Baldwin County,2015,203101
+50,3,6,1,5,Alabama,Barbour County,2015,26300
+50,3,6,1,7,Alabama,Bibb County,2015,22553
+50,3,6,1,9,Alabama,Blount County,2015,57535
+50,3,6,1,11,Alabama,Bullock County,2015,10404
+50,3,6,1,13,Alabama,Butler County,2015,20168
+50,3,6,1,15,Alabama,Calhoun County,2015,115550
+50,3,6,1,17,Alabama,Chambers County,2015,33991
+50,3,6,1,19,Alabama,Cherokee County,2015,25739
+50,3,6,1,21,Alabama,Chilton County,2015,43693
+50,3,6,1,23,Alabama,Choctaw County,2015,13237
+50,3,6,1,25,Alabama,Clarke County,2015,24711
+50,3,6,1,27,Alabama,Clay County,2015,13415
+50,3,6,1,29,Alabama,Cleburne County,2015,14923
+50,3,6,1,31,Alabama,Coffee County,2015,51004
+50,3,6,1,33,Alabama,Colbert County,2015,54439
+50,3,6,1,35,Alabama,Conecuh County,2015,12677
+50,3,6,1,37,Alabama,Coosa County,2015,10935
+50,3,6,1,39,Alabama,Covington County,2015,37566
+50,3,6,1,41,Alabama,Crenshaw County,2015,13851
+50,3,6,1,43,Alabama,Cullman County,2015,81771
+50,3,6,1,45,Alabama,Dale County,2015,49428
+50,3,6,1,47,Alabama,Dallas County,2015,40947
+50,3,6,1,49,Alabama,DeKalb County,2015,71065
+50,3,6,1,51,Alabama,Elmore County,2015,80903
+50,3,6,1,53,Alabama,Escambia County,2015,37676
+50,3,6,1,55,Alabama,Etowah County,2015,103033
+50,3,6,1,57,Alabama,Fayette County,2015,16711
+50,3,6,1,59,Alabama,Franklin County,2015,31532
+50,3,6,1,61,Alabama,Geneva County,2015,26645
+50,3,6,1,63,Alabama,Greene County,2015,8509
+50,3,6,1,65,Alabama,Hale County,2015,15016
+50,3,6,1,67,Alabama,Henry County,2015,17097
+50,3,6,1,69,Alabama,Houston County,2015,104326
+50,3,6,1,71,Alabama,Jackson County,2015,52229
+50,3,6,1,73,Alabama,Jefferson County,2015,660717
+50,3,6,1,75,Alabama,Lamar County,2015,13931
+50,3,6,1,77,Alabama,Lauderdale County,2015,92524
+50,3,6,1,79,Alabama,Lawrence County,2015,33116
+50,3,6,1,81,Alabama,Lee County,2015,157162
+50,3,6,1,83,Alabama,Limestone County,2015,91596
+50,3,6,1,85,Alabama,Lowndes County,2015,10350
+50,3,6,1,87,Alabama,Macon County,2015,19331
+50,3,6,1,89,Alabama,Madison County,2015,353194
+50,3,6,1,91,Alabama,Marengo County,2015,19772
+50,3,6,1,93,Alabama,Marion County,2015,30137
+50,3,6,1,95,Alabama,Marshall County,2015,94588
+50,3,6,1,97,Alabama,Mobile County,2015,414654
+50,3,6,1,99,Alabama,Monroe County,2015,21720
+50,3,6,1,101,Alabama,Montgomery County,2015,227420
+50,3,6,1,103,Alabama,Morgan County,2015,119316
+50,3,6,1,105,Alabama,Perry County,2015,9650
+50,3,6,1,107,Alabama,Pickens County,2015,20788
+50,3,6,1,109,Alabama,Pike County,2015,33518
+50,3,6,1,111,Alabama,Randolph County,2015,22603
+50,3,6,1,113,Alabama,Russell County,2015,58946
+50,3,6,1,115,Alabama,St. Clair County,2015,86569
+50,3,6,1,117,Alabama,Shelby County,2015,209047
+50,3,6,1,119,Alabama,Sumter County,2015,13212
+50,3,6,1,121,Alabama,Talladega County,2015,81168
+50,3,6,1,123,Alabama,Tallapoosa County,2015,40628
+50,3,6,1,125,Alabama,Tuscaloosa County,2015,204953
+50,3,6,1,127,Alabama,Walker County,2015,64950
+50,3,6,1,129,Alabama,Washington County,2015,16831
+50,3,6,1,131,Alabama,Wilcox County,2015,10900
+50,3,6,1,133,Alabama,Winston County,2015,23929
+40,4,9,2,0,Alaska,Alaska,2015,738430
+50,4,9,2,13,Alaska,Aleutians East Borough,2015,3373
+50,4,9,2,16,Alaska,Aleutians West Census Area,2015,5782
+50,4,9,2,20,Alaska,Anchorage Municipality,2015,298337
+50,4,9,2,50,Alaska,Bethel Census Area,2015,17970
+50,4,9,2,60,Alaska,Bristol Bay Borough,2015,906
+50,4,9,2,63,Alaska,Chugach Census Area,2015,6526
+50,4,9,2,66,Alaska,Copper River Census Area,2015,2891
+50,4,9,2,68,Alaska,Denali Borough,2015,1940
+50,4,9,2,70,Alaska,Dillingham Census Area,2015,4987
+50,4,9,2,90,Alaska,Fairbanks North Star Borough,2015,99812
+50,4,9,2,100,Alaska,Haines Borough,2015,2519
+50,4,9,2,105,Alaska,Hoonah-Angoon Census Area,2015,2126
+50,4,9,2,110,Alaska,Juneau City and Borough,2015,32644
+50,4,9,2,122,Alaska,Kenai Peninsula Borough,2015,58075
+50,4,9,2,130,Alaska,Ketchikan Gateway Borough,2015,13737
+50,4,9,2,150,Alaska,Kodiak Island Borough,2015,13760
+50,4,9,2,158,Alaska,Kusilvak Census Area,2015,8201
+50,4,9,2,164,Alaska,Lake and Peninsula Borough,2015,1597
+50,4,9,2,170,Alaska,Matanuska-Susitna Borough,2015,101162
+50,4,9,2,180,Alaska,Nome Census Area,2015,9901
+50,4,9,2,185,Alaska,North Slope Borough,2015,9382
+50,4,9,2,188,Alaska,Northwest Arctic Borough,2015,7787
+50,4,9,2,195,Alaska,Petersburg Borough,2015,3251
+50,4,9,2,198,Alaska,Prince of Wales-Hyder Census Area,2015,6508
+50,4,9,2,220,Alaska,Sitka City and Borough,2015,8789
+50,4,9,2,230,Alaska,Skagway Municipality,2015,1090
+50,4,9,2,240,Alaska,Southeast Fairbanks Census Area,2015,6827
+50,4,9,2,275,Alaska,Wrangell City and Borough,2015,2452
+50,4,9,2,282,Alaska,Yakutat City and Borough,2015,637
+50,4,9,2,290,Alaska,Yukon-Koyukuk Census Area,2015,5461
+40,4,8,4,0,Arizona,Arizona,2015,6832810
+50,4,8,4,1,Arizona,Apache County,2015,71026
+50,4,8,4,3,Arizona,Cochise County,2015,126594
+50,4,8,4,5,Arizona,Coconino County,2015,139100
+50,4,8,4,7,Arizona,Gila County,2015,53020
+50,4,8,4,9,Arizona,Graham County,2015,37888
+50,4,8,4,11,Arizona,Greenlee County,2015,9587
+50,4,8,4,12,Arizona,La Paz County,2015,20476
+50,4,8,4,13,Arizona,Maricopa County,2015,4174423
+50,4,8,4,15,Arizona,Mohave County,2015,204890
+50,4,8,4,17,Arizona,Navajo County,2015,107695
+50,4,8,4,19,Arizona,Pima County,2015,1009490
+50,4,8,4,21,Arizona,Pinal County,2015,405922
+50,4,8,4,23,Arizona,Santa Cruz County,2015,46493
+50,4,8,4,25,Arizona,Yavapai County,2015,221019
+50,4,8,4,27,Arizona,Yuma County,2015,205187
+40,3,7,5,0,Arkansas,Arkansas,2015,2979732
+50,3,7,5,1,Arkansas,Arkansas County,2015,18376
+50,3,7,5,3,Arkansas,Ashley County,2015,20856
+50,3,7,5,5,Arkansas,Baxter County,2015,41156
+50,3,7,5,7,Arkansas,Benton County,2015,251759
+50,3,7,5,9,Arkansas,Boone County,2015,37165
+50,3,7,5,11,Arkansas,Bradley County,2015,10999
+50,3,7,5,13,Arkansas,Calhoun County,2015,5197
+50,3,7,5,15,Arkansas,Carroll County,2015,27777
+50,3,7,5,17,Arkansas,Chicot County,2015,10987
+50,3,7,5,19,Arkansas,Clark County,2015,22536
+50,3,7,5,21,Arkansas,Clay County,2015,15206
+50,3,7,5,23,Arkansas,Cleburne County,2015,25384
+50,3,7,5,25,Arkansas,Cleveland County,2015,8290
+50,3,7,5,27,Arkansas,Columbia County,2015,24118
+50,3,7,5,29,Arkansas,Conway County,2015,20939
+50,3,7,5,31,Arkansas,Craighead County,2015,104509
+50,3,7,5,33,Arkansas,Crawford County,2015,61963
+50,3,7,5,35,Arkansas,Crittenden County,2015,48972
+50,3,7,5,37,Arkansas,Cross County,2015,17253
+50,3,7,5,39,Arkansas,Dallas County,2015,7539
+50,3,7,5,41,Arkansas,Desha County,2015,12024
+50,3,7,5,43,Arkansas,Drew County,2015,18615
+50,3,7,5,45,Arkansas,Faulkner County,2015,121333
+50,3,7,5,47,Arkansas,Franklin County,2015,17753
+50,3,7,5,49,Arkansas,Fulton County,2015,12149
+50,3,7,5,51,Arkansas,Garland County,2015,97930
+50,3,7,5,53,Arkansas,Grant County,2015,18031
+50,3,7,5,55,Arkansas,Greene County,2015,44321
+50,3,7,5,57,Arkansas,Hempstead County,2015,22095
+50,3,7,5,59,Arkansas,Hot Spring County,2015,33511
+50,3,7,5,61,Arkansas,Howard County,2015,13332
+50,3,7,5,63,Arkansas,Independence County,2015,37055
+50,3,7,5,65,Arkansas,Izard County,2015,13495
+50,3,7,5,67,Arkansas,Jackson County,2015,17386
+50,3,7,5,69,Arkansas,Jefferson County,2015,71920
+50,3,7,5,71,Arkansas,Johnson County,2015,26103
+50,3,7,5,73,Arkansas,Lafayette County,2015,7009
+50,3,7,5,75,Arkansas,Lawrence County,2015,16705
+50,3,7,5,77,Arkansas,Lee County,2015,9660
+50,3,7,5,79,Arkansas,Lincoln County,2015,13872
+50,3,7,5,81,Arkansas,Little River County,2015,12417
+50,3,7,5,83,Arkansas,Logan County,2015,21728
+50,3,7,5,85,Arkansas,Lonoke County,2015,71409
+50,3,7,5,87,Arkansas,Madison County,2015,15719
+50,3,7,5,89,Arkansas,Marion County,2015,16226
+50,3,7,5,91,Arkansas,Miller County,2015,43858
+50,3,7,5,93,Arkansas,Mississippi County,2015,43692
+50,3,7,5,95,Arkansas,Monroe County,2015,7454
+50,3,7,5,97,Arkansas,Montgomery County,2015,9029
+50,3,7,5,99,Arkansas,Nevada County,2015,8506
+50,3,7,5,101,Arkansas,Newton County,2015,7848
+50,3,7,5,103,Arkansas,Ouachita County,2015,24324
+50,3,7,5,105,Arkansas,Perry County,2015,10303
+50,3,7,5,107,Arkansas,Phillips County,2015,19548
+50,3,7,5,109,Arkansas,Pike County,2015,10834
+50,3,7,5,111,Arkansas,Poinsett County,2015,24004
+50,3,7,5,113,Arkansas,Polk County,2015,20205
+50,3,7,5,115,Arkansas,Pope County,2015,63642
+50,3,7,5,117,Arkansas,Prairie County,2015,8311
+50,3,7,5,119,Arkansas,Pulaski County,2015,393857
+50,3,7,5,121,Arkansas,Randolph County,2015,17447
+50,3,7,5,123,Arkansas,St. Francis County,2015,26600
+50,3,7,5,125,Arkansas,Saline County,2015,116428
+50,3,7,5,127,Arkansas,Scott County,2015,10538
+50,3,7,5,129,Arkansas,Searcy County,2015,7838
+50,3,7,5,131,Arkansas,Sebastian County,2015,127511
+50,3,7,5,133,Arkansas,Sevier County,2015,17263
+50,3,7,5,135,Arkansas,Sharp County,2015,16811
+50,3,7,5,137,Arkansas,Stone County,2015,12405
+50,3,7,5,139,Arkansas,Union County,2015,40112
+50,3,7,5,141,Arkansas,Van Buren County,2015,16811
+50,3,7,5,143,Arkansas,Washington County,2015,224600
+50,3,7,5,145,Arkansas,White County,2015,78954
+50,3,7,5,147,Arkansas,Woodruff County,2015,6715
+50,3,7,5,149,Arkansas,Yell County,2015,21505
+40,4,9,6,0,California,California,2015,38904296
+50,4,9,6,1,California,Alameda County,2015,1634326
+50,4,9,6,3,California,Alpine County,2015,1080
+50,4,9,6,5,California,Amador County,2015,37039
+50,4,9,6,7,California,Butte County,2015,224643
+50,4,9,6,9,California,Calaveras County,2015,44972
+50,4,9,6,11,California,Colusa County,2015,21208
+50,4,9,6,13,California,Contra Costa County,2015,1124148
+50,4,9,6,15,California,Del Norte County,2015,27198
+50,4,9,6,17,California,El Dorado County,2015,184627
+50,4,9,6,19,California,Fresno County,2015,968889
+50,4,9,6,21,California,Glenn County,2015,27723
+50,4,9,6,23,California,Humboldt County,2015,135177
+50,4,9,6,25,California,Imperial County,2015,178701
+50,4,9,6,27,California,Inyo County,2015,18097
+50,4,9,6,29,California,Kern County,2015,876548
+50,4,9,6,31,California,Kings County,2015,149960
+50,4,9,6,33,California,Lake County,2015,64266
+50,4,9,6,35,California,Lassen County,2015,31256
+50,4,9,6,37,California,Los Angeles County,2015,10077263
+50,4,9,6,39,California,Madera County,2015,153448
+50,4,9,6,41,California,Marin County,2015,260974
+50,4,9,6,43,California,Mariposa County,2015,17653
+50,4,9,6,45,California,Mendocino County,2015,87131
+50,4,9,6,47,California,Merced County,2015,266133
+50,4,9,6,49,California,Modoc County,2015,9064
+50,4,9,6,51,California,Mono County,2015,14074
+50,4,9,6,53,California,Monterey County,2015,430178
+50,4,9,6,55,California,Napa County,2015,140766
+50,4,9,6,57,California,Nevada County,2015,98716
+50,4,9,6,59,California,Orange County,2015,3148952
+50,4,9,6,61,California,Placer County,2015,372870
+50,4,9,6,63,California,Plumas County,2015,18435
+50,4,9,6,65,California,Riverside County,2015,2344648
+50,4,9,6,67,California,Sacramento County,2015,1493547
+50,4,9,6,69,California,San Benito County,2015,58276
+50,4,9,6,71,California,San Bernardino County,2015,2114352
+50,4,9,6,73,California,San Diego County,2015,3280825
+50,4,9,6,75,California,San Francisco County,2015,863237
+50,4,9,6,77,California,San Joaquin County,2015,721919
+50,4,9,6,79,California,San Luis Obispo County,2015,280138
+50,4,9,6,81,California,San Mateo County,2015,765479
+50,4,9,6,83,California,Santa Barbara County,2015,442051
+50,4,9,6,85,California,Santa Clara County,2015,1915736
+50,4,9,6,87,California,Santa Cruz County,2015,273495
+50,4,9,6,89,California,Shasta County,2015,178386
+50,4,9,6,91,California,Sierra County,2015,2990
+50,4,9,6,93,California,Siskiyou County,2015,43275
+50,4,9,6,95,California,Solano County,2015,433378
+50,4,9,6,97,California,Sonoma County,2015,500598
+50,4,9,6,99,California,Stanislaus County,2015,532954
+50,4,9,6,101,California,Sutter County,2015,95224
+50,4,9,6,103,California,Tehama County,2015,63150
+50,4,9,6,105,California,Trinity County,2015,13094
+50,4,9,6,107,California,Tulare County,2015,456794
+50,4,9,6,109,California,Tuolumne County,2015,53599
+50,4,9,6,111,California,Ventura County,2015,845599
+50,4,9,6,113,California,Yolo County,2015,211998
+50,4,9,6,115,California,Yuba County,2015,74039
+40,4,8,8,0,Colorado,Colorado,2015,5454328
+50,4,8,8,1,Colorado,Adams County,2015,490448
+50,4,8,8,3,Colorado,Alamosa County,2015,15894
+50,4,8,8,5,Colorado,Arapahoe County,2015,631688
+50,4,8,8,7,Colorado,Archuleta County,2015,12399
+50,4,8,8,9,Colorado,Baca County,2015,3554
+50,4,8,8,11,Colorado,Bent County,2015,5891
+50,4,8,8,13,Colorado,Boulder County,2015,318408
+50,4,8,8,14,Colorado,Broomfield County,2015,64914
+50,4,8,8,15,Colorado,Chaffee County,2015,18635
+50,4,8,8,17,Colorado,Cheyenne County,2015,1826
+50,4,8,8,19,Colorado,Clear Creek County,2015,9246
+50,4,8,8,21,Colorado,Conejos County,2015,8064
+50,4,8,8,23,Colorado,Costilla County,2015,3576
+50,4,8,8,25,Colorado,Crowley County,2015,5633
+50,4,8,8,27,Colorado,Custer County,2015,4434
+50,4,8,8,29,Colorado,Delta County,2015,29925
+50,4,8,8,31,Colorado,Denver County,2015,683328
+50,4,8,8,33,Colorado,Dolores County,2015,1980
+50,4,8,8,35,Colorado,Douglas County,2015,322333
+50,4,8,8,37,Colorado,Eagle County,2015,53863
+50,4,8,8,39,Colorado,Elbert County,2015,24634
+50,4,8,8,41,Colorado,El Paso County,2015,674094
+50,4,8,8,43,Colorado,Fremont County,2015,46327
+50,4,8,8,45,Colorado,Garfield County,2015,57724
+50,4,8,8,47,Colorado,Gilpin County,2015,5813
+50,4,8,8,49,Colorado,Grand County,2015,14742
+50,4,8,8,51,Colorado,Gunnison County,2015,16125
+50,4,8,8,53,Colorado,Hinsdale County,2015,762
+50,4,8,8,55,Colorado,Huerfano County,2015,6408
+50,4,8,8,57,Colorado,Jackson County,2015,1352
+50,4,8,8,59,Colorado,Jefferson County,2015,565240
+50,4,8,8,61,Colorado,Kiowa County,2015,1386
+50,4,8,8,63,Colorado,Kit Carson County,2015,8223
+50,4,8,8,65,Colorado,Lake County,2015,7455
+50,4,8,8,67,Colorado,La Plata County,2015,54776
+50,4,8,8,69,Colorado,Larimer County,2015,333637
+50,4,8,8,71,Colorado,Las Animas County,2015,14048
+50,4,8,8,73,Colorado,Lincoln County,2015,5545
+50,4,8,8,75,Colorado,Logan County,2015,22484
+50,4,8,8,77,Colorado,Mesa County,2015,148159
+50,4,8,8,79,Colorado,Mineral County,2015,742
+50,4,8,8,81,Colorado,Moffat County,2015,12946
+50,4,8,8,83,Colorado,Montezuma County,2015,25763
+50,4,8,8,85,Colorado,Montrose County,2015,40609
+50,4,8,8,87,Colorado,Morgan County,2015,28245
+50,4,8,8,89,Colorado,Otero County,2015,18182
+50,4,8,8,91,Colorado,Ouray County,2015,4611
+50,4,8,8,93,Colorado,Park County,2015,16739
+50,4,8,8,95,Colorado,Phillips County,2015,4328
+50,4,8,8,97,Colorado,Pitkin County,2015,17962
+50,4,8,8,99,Colorado,Prowers County,2015,11937
+50,4,8,8,101,Colorado,Pueblo County,2015,163101
+50,4,8,8,103,Colorado,Rio Blanco County,2015,6487
+50,4,8,8,105,Colorado,Rio Grande County,2015,11355
+50,4,8,8,107,Colorado,Routt County,2015,24388
+50,4,8,8,109,Colorado,Saguache County,2015,6250
+50,4,8,8,111,Colorado,San Juan County,2015,690
+50,4,8,8,113,Colorado,San Miguel County,2015,7850
+50,4,8,8,115,Colorado,Sedgwick County,2015,2373
+50,4,8,8,117,Colorado,Summit County,2015,30064
+50,4,8,8,119,Colorado,Teller County,2015,23421
+50,4,8,8,121,Colorado,Washington County,2015,4775
+50,4,8,8,123,Colorado,Weld County,2015,286493
+50,4,8,8,125,Colorado,Yuma County,2015,10044
+40,1,1,9,0,Connecticut,Connecticut,2015,3588561
+50,1,1,9,1,Connecticut,Fairfield County,2015,945323
+50,1,1,9,3,Connecticut,Hartford County,2015,896563
+50,1,1,9,5,Connecticut,Litchfield County,2015,184171
+50,1,1,9,7,Connecticut,Middlesex County,2015,163809
+50,1,1,9,9,Connecticut,New Haven County,2015,860506
+50,1,1,9,11,Connecticut,New London County,2015,269818
+50,1,1,9,13,Connecticut,Tolland County,2015,151815
+50,1,1,9,15,Connecticut,Windham County,2015,116556
+40,3,5,10,0,Delaware,Delaware,2015,942065
+50,3,5,10,1,Delaware,Kent County,2015,173308
+50,3,5,10,3,Delaware,New Castle County,2015,553929
+50,3,5,10,5,Delaware,Sussex County,2015,214828
+40,3,5,11,0,District of Columbia,District of Columbia,2015,677014
+50,3,5,11,1,District of Columbia,District of Columbia,2015,677014
+40,3,5,12,0,Florida,Florida,2015,20219111
+50,3,5,12,1,Florida,Alachua County,2015,259215
+50,3,5,12,3,Florida,Baker County,2015,27357
+50,3,5,12,5,Florida,Bay County,2015,181678
+50,3,5,12,7,Florida,Bradford County,2015,26759
+50,3,5,12,9,Florida,Brevard County,2015,566133
+50,3,5,12,11,Florida,Broward County,2015,1885435
+50,3,5,12,13,Florida,Calhoun County,2015,14412
+50,3,5,12,15,Florida,Charlotte County,2015,172607
+50,3,5,12,17,Florida,Citrus County,2015,140397
+50,3,5,12,19,Florida,Clay County,2015,202552
+50,3,5,12,21,Florida,Collier County,2015,356288
+50,3,5,12,23,Florida,Columbia County,2015,68277
+50,3,5,12,27,Florida,DeSoto County,2015,35644
+50,3,5,12,29,Florida,Dixie County,2015,16352
+50,3,5,12,31,Florida,Duval County,2015,911106
+50,3,5,12,33,Florida,Escambia County,2015,309630
+50,3,5,12,35,Florida,Flagler County,2015,104533
+50,3,5,12,37,Florida,Franklin County,2015,11702
+50,3,5,12,39,Florida,Gadsden County,2015,46057
+50,3,5,12,41,Florida,Gilchrist County,2015,17394
+50,3,5,12,43,Florida,Glades County,2015,13115
+50,3,5,12,45,Florida,Gulf County,2015,15944
+50,3,5,12,47,Florida,Hamilton County,2015,14275
+50,3,5,12,49,Florida,Hardee County,2015,27167
+50,3,5,12,51,Florida,Hendry County,2015,39242
+50,3,5,12,53,Florida,Hernando County,2015,178036
+50,3,5,12,55,Florida,Highlands County,2015,100204
+50,3,5,12,57,Florida,Hillsborough County,2015,1364645
+50,3,5,12,59,Florida,Holmes County,2015,19292
+50,3,5,12,61,Florida,Indian River County,2015,147547
+50,3,5,12,63,Florida,Jackson County,2015,48617
+50,3,5,12,65,Florida,Jefferson County,2015,14121
+50,3,5,12,67,Florida,Lafayette County,2015,8722
+50,3,5,12,69,Florida,Lake County,2015,325338
+50,3,5,12,71,Florida,Lee County,2015,700243
+50,3,5,12,73,Florida,Leon County,2015,286098
+50,3,5,12,75,Florida,Levy County,2015,39630
+50,3,5,12,77,Florida,Liberty County,2015,8412
+50,3,5,12,79,Florida,Madison County,2015,18485
+50,3,5,12,81,Florida,Manatee County,2015,362821
+50,3,5,12,83,Florida,Marion County,2015,342388
+50,3,5,12,85,Florida,Martin County,2015,155674
+50,3,5,12,86,Florida,Miami-Dade County,2015,2659549
+50,3,5,12,87,Florida,Monroe County,2015,76758
+50,3,5,12,89,Florida,Nassau County,2015,78022
+50,3,5,12,91,Florida,Okaloosa County,2015,198310
+50,3,5,12,93,Florida,Okeechobee County,2015,39833
+50,3,5,12,95,Florida,Orange County,2015,1291844
+50,3,5,12,97,Florida,Osceola County,2015,323860
+50,3,5,12,99,Florida,Palm Beach County,2015,1424772
+50,3,5,12,101,Florida,Pasco County,2015,495130
+50,3,5,12,103,Florida,Pinellas County,2015,947664
+50,3,5,12,105,Florida,Polk County,2015,648823
+50,3,5,12,107,Florida,Putnam County,2015,71961
+50,3,5,12,109,Florida,St. Johns County,2015,226582
+50,3,5,12,111,Florida,St. Lucie County,2015,297471
+50,3,5,12,113,Florida,Santa Rosa County,2015,166451
+50,3,5,12,115,Florida,Sarasota County,2015,405099
+50,3,5,12,117,Florida,Seminole County,2015,448535
+50,3,5,12,119,Florida,Sumter County,2015,117229
+50,3,5,12,121,Florida,Suwannee County,2015,43670
+50,3,5,12,123,Florida,Taylor County,2015,22362
+50,3,5,12,125,Florida,Union County,2015,15268
+50,3,5,12,127,Florida,Volusia County,2015,517144
+50,3,5,12,129,Florida,Wakulla County,2015,31529
+50,3,5,12,131,Florida,Walton County,2015,63145
+50,3,5,12,133,Florida,Washington County,2015,24556
+40,3,5,13,0,Georgia,Georgia,2015,10183353
+50,3,5,13,1,Georgia,Appling County,2015,18420
+50,3,5,13,3,Georgia,Atkinson County,2015,8331
+50,3,5,13,5,Georgia,Bacon County,2015,11225
+50,3,5,13,7,Georgia,Baker County,2015,3192
+50,3,5,13,9,Georgia,Baldwin County,2015,45566
+50,3,5,13,11,Georgia,Banks County,2015,18375
+50,3,5,13,13,Georgia,Barrow County,2015,74979
+50,3,5,13,15,Georgia,Bartow County,2015,102063
+50,3,5,13,17,Georgia,Ben Hill County,2015,17368
+50,3,5,13,19,Georgia,Berrien County,2015,18989
+50,3,5,13,21,Georgia,Bibb County,2015,154068
+50,3,5,13,23,Georgia,Bleckley County,2015,12710
+50,3,5,13,25,Georgia,Brantley County,2015,18443
+50,3,5,13,27,Georgia,Brooks County,2015,15672
+50,3,5,13,29,Georgia,Bryan County,2015,34860
+50,3,5,13,31,Georgia,Bulloch County,2015,73137
+50,3,5,13,33,Georgia,Burke County,2015,22644
+50,3,5,13,35,Georgia,Butts County,2015,23516
+50,3,5,13,37,Georgia,Calhoun County,2015,6536
+50,3,5,13,39,Georgia,Camden County,2015,52549
+50,3,5,13,43,Georgia,Candler County,2015,10864
+50,3,5,13,45,Georgia,Carroll County,2015,114501
+50,3,5,13,47,Georgia,Catoosa County,2015,65841
+50,3,5,13,49,Georgia,Charlton County,2015,13238
+50,3,5,13,51,Georgia,Chatham County,2015,286239
+50,3,5,13,53,Georgia,Chattahoochee County,2015,11075
+50,3,5,13,55,Georgia,Chattooga County,2015,24918
+50,3,5,13,57,Georgia,Cherokee County,2015,235424
+50,3,5,13,59,Georgia,Clarke County,2015,123621
+50,3,5,13,61,Georgia,Clay County,2015,3080
+50,3,5,13,63,Georgia,Clayton County,2015,272874
+50,3,5,13,65,Georgia,Clinch County,2015,6828
+50,3,5,13,67,Georgia,Cobb County,2015,739428
+50,3,5,13,69,Georgia,Coffee County,2015,42998
+50,3,5,13,71,Georgia,Colquitt County,2015,45486
+50,3,5,13,73,Georgia,Columbia County,2015,143991
+50,3,5,13,75,Georgia,Cook County,2015,17076
+50,3,5,13,77,Georgia,Coweta County,2015,138217
+50,3,5,13,79,Georgia,Crawford County,2015,12351
+50,3,5,13,81,Georgia,Crisp County,2015,22961
+50,3,5,13,83,Georgia,Dade County,2015,16176
+50,3,5,13,85,Georgia,Dawson County,2015,23371
+50,3,5,13,87,Georgia,Decatur County,2015,27063
+50,3,5,13,89,Georgia,DeKalb County,2015,734846
+50,3,5,13,91,Georgia,Dodge County,2015,21133
+50,3,5,13,93,Georgia,Dooly County,2015,14033
+50,3,5,13,95,Georgia,Dougherty County,2015,91556
+50,3,5,13,97,Georgia,Douglas County,2015,140264
+50,3,5,13,99,Georgia,Early County,2015,10459
+50,3,5,13,101,Georgia,Echols County,2015,4024
+50,3,5,13,103,Georgia,Effingham County,2015,57125
+50,3,5,13,105,Georgia,Elbert County,2015,19303
+50,3,5,13,107,Georgia,Emanuel County,2015,22465
+50,3,5,13,109,Georgia,Evans County,2015,10690
+50,3,5,13,111,Georgia,Fannin County,2015,24455
+50,3,5,13,113,Georgia,Fayette County,2015,110215
+50,3,5,13,115,Georgia,Floyd County,2015,96209
+50,3,5,13,117,Georgia,Forsyth County,2015,211368
+50,3,5,13,119,Georgia,Franklin County,2015,22281
+50,3,5,13,121,Georgia,Fulton County,2015,1005752
+50,3,5,13,123,Georgia,Gilmer County,2015,29512
+50,3,5,13,125,Georgia,Glascock County,2015,3020
+50,3,5,13,127,Georgia,Glynn County,2015,83368
+50,3,5,13,129,Georgia,Gordon County,2015,56330
+50,3,5,13,131,Georgia,Grady County,2015,25106
+50,3,5,13,133,Georgia,Greene County,2015,16620
+50,3,5,13,135,Georgia,Gwinnett County,2015,888597
+50,3,5,13,137,Georgia,Habersham County,2015,43775
+50,3,5,13,139,Georgia,Hall County,2015,192249
+50,3,5,13,141,Georgia,Hancock County,2015,8579
+50,3,5,13,143,Georgia,Haralson County,2015,28733
+50,3,5,13,145,Georgia,Harris County,2015,33147
+50,3,5,13,147,Georgia,Hart County,2015,25415
+50,3,5,13,149,Georgia,Heard County,2015,11557
+50,3,5,13,151,Georgia,Henry County,2015,216548
+50,3,5,13,153,Georgia,Houston County,2015,149197
+50,3,5,13,155,Georgia,Irwin County,2015,9137
+50,3,5,13,157,Georgia,Jackson County,2015,63439
+50,3,5,13,159,Georgia,Jasper County,2015,13679
+50,3,5,13,161,Georgia,Jeff Davis County,2015,15012
+50,3,5,13,163,Georgia,Jefferson County,2015,15926
+50,3,5,13,165,Georgia,Jenkins County,2015,8906
+50,3,5,13,167,Georgia,Johnson County,2015,9717
+50,3,5,13,169,Georgia,Jones County,2015,28432
+50,3,5,13,171,Georgia,Lamar County,2015,18229
+50,3,5,13,173,Georgia,Lanier County,2015,10264
+50,3,5,13,175,Georgia,Laurens County,2015,47491
+50,3,5,13,177,Georgia,Lee County,2015,29191
+50,3,5,13,179,Georgia,Liberty County,2015,61762
+50,3,5,13,181,Georgia,Lincoln County,2015,7720
+50,3,5,13,183,Georgia,Long County,2015,17695
+50,3,5,13,185,Georgia,Lowndes County,2015,113501
+50,3,5,13,187,Georgia,Lumpkin County,2015,31292
+50,3,5,13,189,Georgia,McDuffie County,2015,21470
+50,3,5,13,191,Georgia,McIntosh County,2015,14033
+50,3,5,13,193,Georgia,Macon County,2015,13689
+50,3,5,13,195,Georgia,Madison County,2015,28431
+50,3,5,13,197,Georgia,Marion County,2015,8561
+50,3,5,13,199,Georgia,Meriwether County,2015,21167
+50,3,5,13,201,Georgia,Miller County,2015,5847
+50,3,5,13,205,Georgia,Mitchell County,2015,22449
+50,3,5,13,207,Georgia,Monroe County,2015,26683
+50,3,5,13,209,Georgia,Montgomery County,2015,8939
+50,3,5,13,211,Georgia,Morgan County,2015,17947
+50,3,5,13,213,Georgia,Murray County,2015,39426
+50,3,5,13,215,Georgia,Muscogee County,2015,198925
+50,3,5,13,217,Georgia,Newton County,2015,104920
+50,3,5,13,219,Georgia,Oconee County,2015,35861
+50,3,5,13,221,Georgia,Oglethorpe County,2015,14722
+50,3,5,13,223,Georgia,Paulding County,2015,151691
+50,3,5,13,225,Georgia,Peach County,2015,27216
+50,3,5,13,227,Georgia,Pickens County,2015,30139
+50,3,5,13,229,Georgia,Pierce County,2015,19089
+50,3,5,13,231,Georgia,Pike County,2015,17935
+50,3,5,13,233,Georgia,Polk County,2015,41209
+50,3,5,13,235,Georgia,Pulaski County,2015,11409
+50,3,5,13,237,Georgia,Putnam County,2015,21310
+50,3,5,13,239,Georgia,Quitman County,2015,2277
+50,3,5,13,241,Georgia,Rabun County,2015,16224
+50,3,5,13,243,Georgia,Randolph County,2015,7153
+50,3,5,13,245,Georgia,Richmond County,2015,201639
+50,3,5,13,247,Georgia,Rockdale County,2015,88424
+50,3,5,13,249,Georgia,Schley County,2015,5208
+50,3,5,13,251,Georgia,Screven County,2015,14060
+50,3,5,13,253,Georgia,Seminole County,2015,8559
+50,3,5,13,255,Georgia,Spalding County,2015,63826
+50,3,5,13,257,Georgia,Stephens County,2015,25475
+50,3,5,13,259,Georgia,Stewart County,2015,5969
+50,3,5,13,261,Georgia,Sumter County,2015,30625
+50,3,5,13,263,Georgia,Talbot County,2015,6499
+50,3,5,13,265,Georgia,Taliaferro County,2015,1641
+50,3,5,13,267,Georgia,Tattnall County,2015,25394
+50,3,5,13,269,Georgia,Taylor County,2015,8316
+50,3,5,13,271,Georgia,Telfair County,2015,16448
+50,3,5,13,273,Georgia,Terrell County,2015,9016
+50,3,5,13,275,Georgia,Thomas County,2015,44819
+50,3,5,13,277,Georgia,Tift County,2015,40538
+50,3,5,13,279,Georgia,Toombs County,2015,27151
+50,3,5,13,281,Georgia,Towns County,2015,11208
+50,3,5,13,283,Georgia,Treutlen County,2015,6807
+50,3,5,13,285,Georgia,Troup County,2015,69666
+50,3,5,13,287,Georgia,Turner County,2015,7988
+50,3,5,13,289,Georgia,Twiggs County,2015,8353
+50,3,5,13,291,Georgia,Union County,2015,22029
+50,3,5,13,293,Georgia,Upson County,2015,26237
+50,3,5,13,295,Georgia,Walker County,2015,68604
+50,3,5,13,297,Georgia,Walton County,2015,88373
+50,3,5,13,299,Georgia,Ware County,2015,35337
+50,3,5,13,301,Georgia,Warren County,2015,5375
+50,3,5,13,303,Georgia,Washington County,2015,20734
+50,3,5,13,305,Georgia,Wayne County,2015,29460
+50,3,5,13,307,Georgia,Webster County,2015,2632
+50,3,5,13,309,Georgia,Wheeler County,2015,7909
+50,3,5,13,311,Georgia,White County,2015,28389
+50,3,5,13,313,Georgia,Whitfield County,2015,103621
+50,3,5,13,315,Georgia,Wilcox County,2015,9015
+50,3,5,13,317,Georgia,Wilkes County,2015,9927
+50,3,5,13,319,Georgia,Wilkinson County,2015,9080
+50,3,5,13,321,Georgia,Worth County,2015,20692
+40,4,9,15,0,Hawaii,Hawaii,2015,1422999
+50,4,9,15,1,Hawaii,Hawaii County,2015,196111
+50,4,9,15,3,Hawaii,Honolulu County,2015,991755
+50,4,9,15,5,Hawaii,Kalawao County,2015,88
+50,4,9,15,7,Hawaii,Kauai County,2015,71052
+50,4,9,15,9,Hawaii,Maui County,2015,163993
+40,4,8,16,0,Idaho,Idaho,2015,1652495
+50,4,8,16,1,Idaho,Ada County,2015,433254
+50,4,8,16,3,Idaho,Adams County,2015,3891
+50,4,8,16,5,Idaho,Bannock County,2015,84263
+50,4,8,16,7,Idaho,Bear Lake County,2015,5883
+50,4,8,16,9,Idaho,Benewah County,2015,8999
+50,4,8,16,11,Idaho,Bingham County,2015,45071
+50,4,8,16,13,Idaho,Blaine County,2015,21659
+50,4,8,16,15,Idaho,Boise County,2015,6963
+50,4,8,16,17,Idaho,Bonner County,2015,41656
+50,4,8,16,19,Idaho,Bonneville County,2015,109916
+50,4,8,16,21,Idaho,Boundary County,2015,11310
+50,4,8,16,23,Idaho,Butte County,2015,2565
+50,4,8,16,25,Idaho,Camas County,2015,1068
+50,4,8,16,27,Idaho,Canyon County,2015,206956
+50,4,8,16,29,Idaho,Caribou County,2015,6732
+50,4,8,16,31,Idaho,Cassia County,2015,23497
+50,4,8,16,33,Idaho,Clark County,2015,885
+50,4,8,16,35,Idaho,Clearwater County,2015,8554
+50,4,8,16,37,Idaho,Custer County,2015,4061
+50,4,8,16,39,Idaho,Elmore County,2015,25861
+50,4,8,16,41,Idaho,Franklin County,2015,12974
+50,4,8,16,43,Idaho,Fremont County,2015,12824
+50,4,8,16,45,Idaho,Gem County,2015,16706
+50,4,8,16,47,Idaho,Gooding County,2015,15181
+50,4,8,16,49,Idaho,Idaho County,2015,16312
+50,4,8,16,51,Idaho,Jefferson County,2015,27133
+50,4,8,16,53,Idaho,Jerome County,2015,22960
+50,4,8,16,55,Idaho,Kootenai County,2015,149566
+50,4,8,16,57,Idaho,Latah County,2015,38860
+50,4,8,16,59,Idaho,Lemhi County,2015,7744
+50,4,8,16,61,Idaho,Lewis County,2015,3792
+50,4,8,16,63,Idaho,Lincoln County,2015,5312
+50,4,8,16,65,Idaho,Madison County,2015,38120
+50,4,8,16,67,Idaho,Minidoka County,2015,20431
+50,4,8,16,69,Idaho,Nez Perce County,2015,40039
+50,4,8,16,71,Idaho,Oneida County,2015,4249
+50,4,8,16,73,Idaho,Owyhee County,2015,11294
+50,4,8,16,75,Idaho,Payette County,2015,22833
+50,4,8,16,77,Idaho,Power County,2015,7690
+50,4,8,16,79,Idaho,Shoshone County,2015,12446
+50,4,8,16,81,Idaho,Teton County,2015,10744
+50,4,8,16,83,Idaho,Twin Falls County,2015,82289
+50,4,8,16,85,Idaho,Valley County,2015,10058
+50,4,8,16,87,Idaho,Washington County,2015,9894
+40,2,3,17,0,Illinois,Illinois,2015,12859585
+50,2,3,17,1,Illinois,Adams County,2015,66850
+50,2,3,17,3,Illinois,Alexander County,2015,6763
+50,2,3,17,5,Illinois,Bond County,2015,16688
+50,2,3,17,7,Illinois,Boone County,2015,53571
+50,2,3,17,9,Illinois,Brown County,2015,6755
+50,2,3,17,11,Illinois,Bureau County,2015,33494
+50,2,3,17,13,Illinois,Calhoun County,2015,4858
+50,2,3,17,15,Illinois,Carroll County,2015,14638
+50,2,3,17,17,Illinois,Cass County,2015,12843
+50,2,3,17,19,Illinois,Champaign County,2015,209534
+50,2,3,17,21,Illinois,Christian County,2015,33480
+50,2,3,17,23,Illinois,Clark County,2015,15881
+50,2,3,17,25,Illinois,Clay County,2015,13395
+50,2,3,17,27,Illinois,Clinton County,2015,37657
+50,2,3,17,29,Illinois,Coles County,2015,52217
+50,2,3,17,31,Illinois,Cook County,2015,5243371
+50,2,3,17,33,Illinois,Crawford County,2015,19262
+50,2,3,17,35,Illinois,Cumberland County,2015,10869
+50,2,3,17,37,Illinois,DeKalb County,2015,104238
+50,2,3,17,39,Illinois,De Witt County,2015,16185
+50,2,3,17,41,Illinois,Douglas County,2015,19827
+50,2,3,17,43,Illinois,DuPage County,2015,933669
+50,2,3,17,45,Illinois,Edgar County,2015,17625
+50,2,3,17,47,Illinois,Edwards County,2015,6514
+50,2,3,17,49,Illinois,Effingham County,2015,34200
+50,2,3,17,51,Illinois,Fayette County,2015,22048
+50,2,3,17,53,Illinois,Ford County,2015,13527
+50,2,3,17,55,Illinois,Franklin County,2015,39398
+50,2,3,17,57,Illinois,Fulton County,2015,35709
+50,2,3,17,59,Illinois,Gallatin County,2015,5224
+50,2,3,17,61,Illinois,Greene County,2015,13345
+50,2,3,17,63,Illinois,Grundy County,2015,50358
+50,2,3,17,65,Illinois,Hamilton County,2015,8247
+50,2,3,17,67,Illinois,Hancock County,2015,18217
+50,2,3,17,69,Illinois,Hardin County,2015,4065
+50,2,3,17,71,Illinois,Henderson County,2015,7001
+50,2,3,17,73,Illinois,Henry County,2015,49654
+50,2,3,17,75,Illinois,Iroquois County,2015,28529
+50,2,3,17,77,Illinois,Jackson County,2015,59249
+50,2,3,17,79,Illinois,Jasper County,2015,9630
+50,2,3,17,81,Illinois,Jefferson County,2015,38290
+50,2,3,17,83,Illinois,Jersey County,2015,22268
+50,2,3,17,85,Illinois,Jo Daviess County,2015,22068
+50,2,3,17,87,Illinois,Johnson County,2015,12768
+50,2,3,17,89,Illinois,Kane County,2015,528562
+50,2,3,17,91,Illinois,Kankakee County,2015,111786
+50,2,3,17,93,Illinois,Kendall County,2015,122892
+50,2,3,17,95,Illinois,Knox County,2015,51377
+50,2,3,17,97,Illinois,Lake County,2015,704687
+50,2,3,17,99,Illinois,LaSalle County,2015,111015
+50,2,3,17,101,Illinois,Lawrence County,2015,16467
+50,2,3,17,103,Illinois,Lee County,2015,34521
+50,2,3,17,105,Illinois,Livingston County,2015,36615
+50,2,3,17,107,Illinois,Logan County,2015,29286
+50,2,3,17,109,Illinois,McDonough County,2015,31461
+50,2,3,17,111,Illinois,McHenry County,2015,307595
+50,2,3,17,113,Illinois,McLean County,2015,173222
+50,2,3,17,115,Illinois,Macon County,2015,107398
+50,2,3,17,117,Illinois,Macoupin County,2015,45887
+50,2,3,17,119,Illinois,Madison County,2015,266112
+50,2,3,17,121,Illinois,Marion County,2015,38381
+50,2,3,17,123,Illinois,Marshall County,2015,11925
+50,2,3,17,125,Illinois,Mason County,2015,13862
+50,2,3,17,127,Illinois,Massac County,2015,14568
+50,2,3,17,129,Illinois,Menard County,2015,12364
+50,2,3,17,131,Illinois,Mercer County,2015,15748
+50,2,3,17,133,Illinois,Monroe County,2015,33811
+50,2,3,17,135,Illinois,Montgomery County,2015,29196
+50,2,3,17,137,Illinois,Morgan County,2015,34693
+50,2,3,17,139,Illinois,Moultrie County,2015,14747
+50,2,3,17,141,Illinois,Ogle County,2015,51572
+50,2,3,17,143,Illinois,Peoria County,2015,186552
+50,2,3,17,145,Illinois,Perry County,2015,21522
+50,2,3,17,147,Illinois,Piatt County,2015,16356
+50,2,3,17,149,Illinois,Pike County,2015,15794
+50,2,3,17,151,Illinois,Pope County,2015,4302
+50,2,3,17,153,Illinois,Pulaski County,2015,5662
+50,2,3,17,155,Illinois,Putnam County,2015,5729
+50,2,3,17,157,Illinois,Randolph County,2015,32754
+50,2,3,17,159,Illinois,Richland County,2015,15952
+50,2,3,17,161,Illinois,Rock Island County,2015,146161
+50,2,3,17,163,Illinois,St. Clair County,2015,265008
+50,2,3,17,165,Illinois,Saline County,2015,24495
+50,2,3,17,167,Illinois,Sangamon County,2015,198973
+50,2,3,17,169,Illinois,Schuyler County,2015,7150
+50,2,3,17,171,Illinois,Scott County,2015,5112
+50,2,3,17,173,Illinois,Shelby County,2015,21819
+50,2,3,17,175,Illinois,Stark County,2015,5508
+50,2,3,17,177,Illinois,Stephenson County,2015,45680
+50,2,3,17,179,Illinois,Tazewell County,2015,134350
+50,2,3,17,181,Illinois,Union County,2015,17285
+50,2,3,17,183,Illinois,Vermilion County,2015,79209
+50,2,3,17,185,Illinois,Wabash County,2015,11627
+50,2,3,17,187,Illinois,Warren County,2015,17448
+50,2,3,17,189,Illinois,Washington County,2015,14259
+50,2,3,17,191,Illinois,Wayne County,2015,16534
+50,2,3,17,193,Illinois,White County,2015,14204
+50,2,3,17,195,Illinois,Whiteside County,2015,56943
+50,2,3,17,197,Illinois,Will County,2015,685825
+50,2,3,17,199,Illinois,Williamson County,2015,67457
+50,2,3,17,201,Illinois,Winnebago County,2015,287237
+50,2,3,17,203,Illinois,Woodford County,2015,38949
+40,2,3,18,0,Indiana,Indiana,2015,6611442
+50,2,3,18,1,Indiana,Adams County,2015,34962
+50,2,3,18,3,Indiana,Allen County,2015,367508
+50,2,3,18,5,Indiana,Bartholomew County,2015,81516
+50,2,3,18,7,Indiana,Benton County,2015,8698
+50,2,3,18,9,Indiana,Blackford County,2015,12237
+50,2,3,18,11,Indiana,Boone County,2015,63080
+50,2,3,18,13,Indiana,Brown County,2015,15003
+50,2,3,18,15,Indiana,Carroll County,2015,19891
+50,2,3,18,17,Indiana,Cass County,2015,38079
+50,2,3,18,19,Indiana,Clark County,2015,114887
+50,2,3,18,21,Indiana,Clay County,2015,26406
+50,2,3,18,23,Indiana,Clinton County,2015,32372
+50,2,3,18,25,Indiana,Crawford County,2015,10556
+50,2,3,18,27,Indiana,Daviess County,2015,32819
+50,2,3,18,29,Indiana,Dearborn County,2015,49491
+50,2,3,18,31,Indiana,Decatur County,2015,26338
+50,2,3,18,33,Indiana,DeKalb County,2015,42511
+50,2,3,18,35,Indiana,Delaware County,2015,115814
+50,2,3,18,37,Indiana,Dubois County,2015,42329
+50,2,3,18,39,Indiana,Elkhart County,2015,203022
+50,2,3,18,41,Indiana,Fayette County,2015,23389
+50,2,3,18,43,Indiana,Floyd County,2015,76559
+50,2,3,18,45,Indiana,Fountain County,2015,16543
+50,2,3,18,47,Indiana,Franklin County,2015,22953
+50,2,3,18,49,Indiana,Fulton County,2015,20346
+50,2,3,18,51,Indiana,Gibson County,2015,33656
+50,2,3,18,53,Indiana,Grant County,2015,67543
+50,2,3,18,55,Indiana,Greene County,2015,32428
+50,2,3,18,57,Indiana,Hamilton County,2015,308623
+50,2,3,18,59,Indiana,Hancock County,2015,72441
+50,2,3,18,61,Indiana,Harrison County,2015,39537
+50,2,3,18,63,Indiana,Hendricks County,2015,157848
+50,2,3,18,65,Indiana,Henry County,2015,48662
+50,2,3,18,67,Indiana,Howard County,2015,82378
+50,2,3,18,69,Indiana,Huntington County,2015,36535
+50,2,3,18,71,Indiana,Jackson County,2015,43892
+50,2,3,18,73,Indiana,Jasper County,2015,33498
+50,2,3,18,75,Indiana,Jay County,2015,21135
+50,2,3,18,77,Indiana,Jefferson County,2015,32305
+50,2,3,18,79,Indiana,Jennings County,2015,27847
+50,2,3,18,81,Indiana,Johnson County,2015,149021
+50,2,3,18,83,Indiana,Knox County,2015,37784
+50,2,3,18,85,Indiana,Kosciusko County,2015,78562
+50,2,3,18,87,Indiana,LaGrange County,2015,38620
+50,2,3,18,89,Indiana,Lake County,2015,488195
+50,2,3,18,91,Indiana,LaPorte County,2015,110884
+50,2,3,18,93,Indiana,Lawrence County,2015,45571
+50,2,3,18,95,Indiana,Madison County,2015,129436
+50,2,3,18,97,Indiana,Marion County,2015,940152
+50,2,3,18,99,Indiana,Marshall County,2015,46746
+50,2,3,18,101,Indiana,Martin County,2015,10222
+50,2,3,18,103,Indiana,Miami County,2015,36023
+50,2,3,18,105,Indiana,Monroe County,2015,144432
+50,2,3,18,107,Indiana,Montgomery County,2015,38255
+50,2,3,18,109,Indiana,Morgan County,2015,69576
+50,2,3,18,111,Indiana,Newton County,2015,13978
+50,2,3,18,113,Indiana,Noble County,2015,47514
+50,2,3,18,115,Indiana,Ohio County,2015,5888
+50,2,3,18,117,Indiana,Orange County,2015,19628
+50,2,3,18,119,Indiana,Owen County,2015,20823
+50,2,3,18,121,Indiana,Parke County,2015,16974
+50,2,3,18,123,Indiana,Perry County,2015,19323
+50,2,3,18,125,Indiana,Pike County,2015,12399
+50,2,3,18,127,Indiana,Porter County,2015,167439
+50,2,3,18,129,Indiana,Posey County,2015,25621
+50,2,3,18,131,Indiana,Pulaski County,2015,12801
+50,2,3,18,133,Indiana,Putnam County,2015,37397
+50,2,3,18,135,Indiana,Randolph County,2015,25139
+50,2,3,18,137,Indiana,Ripley County,2015,28375
+50,2,3,18,139,Indiana,Rush County,2015,16709
+50,2,3,18,141,Indiana,St. Joseph County,2015,268567
+50,2,3,18,143,Indiana,Scott County,2015,23670
+50,2,3,18,145,Indiana,Shelby County,2015,44343
+50,2,3,18,147,Indiana,Spencer County,2015,20644
+50,2,3,18,149,Indiana,Starke County,2015,22864
+50,2,3,18,151,Indiana,Steuben County,2015,34489
+50,2,3,18,153,Indiana,Sullivan County,2015,20874
+50,2,3,18,155,Indiana,Switzerland County,2015,10616
+50,2,3,18,157,Indiana,Tippecanoe County,2015,186858
+50,2,3,18,159,Indiana,Tipton County,2015,15250
+50,2,3,18,161,Indiana,Union County,2015,7201
+50,2,3,18,163,Indiana,Vanderburgh County,2015,181600
+50,2,3,18,165,Indiana,Vermillion County,2015,15597
+50,2,3,18,167,Indiana,Vigo County,2015,107615
+50,2,3,18,169,Indiana,Wabash County,2015,31883
+50,2,3,18,171,Indiana,Warren County,2015,8272
+50,2,3,18,173,Indiana,Warrick County,2015,61563
+50,2,3,18,175,Indiana,Washington County,2015,27784
+50,2,3,18,177,Indiana,Wayne County,2015,67044
+50,2,3,18,179,Indiana,Wells County,2015,27854
+50,2,3,18,181,Indiana,White County,2015,24279
+50,2,3,18,183,Indiana,Whitley County,2015,33451
+40,2,4,19,0,Iowa,Iowa,2015,3122541
+50,2,4,19,1,Iowa,Adair County,2015,7142
+50,2,4,19,3,Iowa,Adams County,2015,3752
+50,2,4,19,5,Iowa,Allamakee County,2015,13881
+50,2,4,19,7,Iowa,Appanoose County,2015,12587
+50,2,4,19,9,Iowa,Audubon County,2015,5707
+50,2,4,19,11,Iowa,Benton County,2015,25608
+50,2,4,19,13,Iowa,Black Hawk County,2015,133764
+50,2,4,19,15,Iowa,Boone County,2015,26468
+50,2,4,19,17,Iowa,Bremer County,2015,24755
+50,2,4,19,19,Iowa,Buchanan County,2015,21110
+50,2,4,19,21,Iowa,Buena Vista County,2015,20373
+50,2,4,19,23,Iowa,Butler County,2015,14880
+50,2,4,19,25,Iowa,Calhoun County,2015,9801
+50,2,4,19,27,Iowa,Carroll County,2015,20421
+50,2,4,19,29,Iowa,Cass County,2015,13354
+50,2,4,19,31,Iowa,Cedar County,2015,18257
+50,2,4,19,33,Iowa,Cerro Gordo County,2015,43006
+50,2,4,19,35,Iowa,Cherokee County,2015,11488
+50,2,4,19,37,Iowa,Chickasaw County,2015,12152
+50,2,4,19,39,Iowa,Clarke County,2015,9213
+50,2,4,19,41,Iowa,Clay County,2015,16498
+50,2,4,19,43,Iowa,Clayton County,2015,17726
+50,2,4,19,45,Iowa,Clinton County,2015,47593
+50,2,4,19,47,Iowa,Crawford County,2015,17069
+50,2,4,19,49,Iowa,Dallas County,2015,80658
+50,2,4,19,51,Iowa,Davis County,2015,8774
+50,2,4,19,53,Iowa,Decatur County,2015,8145
+50,2,4,19,55,Iowa,Delaware County,2015,17395
+50,2,4,19,57,Iowa,Des Moines County,2015,39909
+50,2,4,19,59,Iowa,Dickinson County,2015,17009
+50,2,4,19,61,Iowa,Dubuque County,2015,96934
+50,2,4,19,63,Iowa,Emmet County,2015,9708
+50,2,4,19,65,Iowa,Fayette County,2015,20143
+50,2,4,19,67,Iowa,Floyd County,2015,15920
+50,2,4,19,69,Iowa,Franklin County,2015,10318
+50,2,4,19,71,Iowa,Fremont County,2015,6910
+50,2,4,19,73,Iowa,Greene County,2015,8947
+50,2,4,19,75,Iowa,Grundy County,2015,12402
+50,2,4,19,77,Iowa,Guthrie County,2015,10653
+50,2,4,19,79,Iowa,Hamilton County,2015,15220
+50,2,4,19,81,Iowa,Hancock County,2015,11029
+50,2,4,19,83,Iowa,Hardin County,2015,17257
+50,2,4,19,85,Iowa,Harrison County,2015,14145
+50,2,4,19,87,Iowa,Henry County,2015,19862
+50,2,4,19,89,Iowa,Howard County,2015,9322
+50,2,4,19,91,Iowa,Humboldt County,2015,9562
+50,2,4,19,93,Iowa,Ida County,2015,6967
+50,2,4,19,95,Iowa,Iowa County,2015,16293
+50,2,4,19,97,Iowa,Jackson County,2015,19363
+50,2,4,19,99,Iowa,Jasper County,2015,36762
+50,2,4,19,101,Iowa,Jefferson County,2015,17913
+50,2,4,19,103,Iowa,Johnson County,2015,145114
+50,2,4,19,105,Iowa,Jones County,2015,20435
+50,2,4,19,107,Iowa,Keokuk County,2015,10169
+50,2,4,19,109,Iowa,Kossuth County,2015,15150
+50,2,4,19,111,Iowa,Lee County,2015,34916
+50,2,4,19,113,Iowa,Linn County,2015,220392
+50,2,4,19,115,Iowa,Louisa County,2015,11289
+50,2,4,19,117,Iowa,Lucas County,2015,8609
+50,2,4,19,119,Iowa,Lyon County,2015,11755
+50,2,4,19,121,Iowa,Madison County,2015,15727
+50,2,4,19,123,Iowa,Mahaska County,2015,22417
+50,2,4,19,125,Iowa,Marion County,2015,33123
+50,2,4,19,127,Iowa,Marshall County,2015,40340
+50,2,4,19,129,Iowa,Mills County,2015,14885
+50,2,4,19,131,Iowa,Mitchell County,2015,10670
+50,2,4,19,133,Iowa,Monona County,2015,8865
+50,2,4,19,135,Iowa,Monroe County,2015,7919
+50,2,4,19,137,Iowa,Montgomery County,2015,10153
+50,2,4,19,139,Iowa,Muscatine County,2015,43069
+50,2,4,19,141,Iowa,O'Brien County,2015,13927
+50,2,4,19,143,Iowa,Osceola County,2015,6161
+50,2,4,19,145,Iowa,Page County,2015,15466
+50,2,4,19,147,Iowa,Palo Alto County,2015,9137
+50,2,4,19,149,Iowa,Plymouth County,2015,24912
+50,2,4,19,151,Iowa,Pocahontas County,2015,6970
+50,2,4,19,153,Iowa,Polk County,2015,467517
+50,2,4,19,155,Iowa,Pottawattamie County,2015,93657
+50,2,4,19,157,Iowa,Poweshiek County,2015,18379
+50,2,4,19,159,Iowa,Ringgold County,2015,4978
+50,2,4,19,161,Iowa,Sac County,2015,9961
+50,2,4,19,163,Iowa,Scott County,2015,172072
+50,2,4,19,165,Iowa,Shelby County,2015,11799
+50,2,4,19,167,Iowa,Sioux County,2015,34764
+50,2,4,19,169,Iowa,Story County,2015,96744
+50,2,4,19,171,Iowa,Tama County,2015,17214
+50,2,4,19,173,Iowa,Taylor County,2015,6243
+50,2,4,19,175,Iowa,Union County,2015,12431
+50,2,4,19,177,Iowa,Van Buren County,2015,7297
+50,2,4,19,179,Iowa,Wapello County,2015,35450
+50,2,4,19,181,Iowa,Warren County,2015,48486
+50,2,4,19,183,Iowa,Washington County,2015,22160
+50,2,4,19,185,Iowa,Wayne County,2015,6359
+50,2,4,19,187,Iowa,Webster County,2015,37089
+50,2,4,19,189,Iowa,Winnebago County,2015,10612
+50,2,4,19,191,Iowa,Winneshiek County,2015,20756
+50,2,4,19,193,Iowa,Woodbury County,2015,102532
+50,2,4,19,195,Iowa,Worth County,2015,7503
+50,2,4,19,197,Iowa,Wright County,2015,12843
+40,2,4,20,0,Kansas,Kansas,2015,2910717
+50,2,4,20,1,Kansas,Allen County,2015,12680
+50,2,4,20,3,Kansas,Anderson County,2015,7826
+50,2,4,20,5,Kansas,Atchison County,2015,16429
+50,2,4,20,7,Kansas,Barber County,2015,4824
+50,2,4,20,9,Kansas,Barton County,2015,27164
+50,2,4,20,11,Kansas,Bourbon County,2015,14734
+50,2,4,20,13,Kansas,Brown County,2015,9710
+50,2,4,20,15,Kansas,Butler County,2015,66293
+50,2,4,20,17,Kansas,Chase County,2015,2654
+50,2,4,20,19,Kansas,Chautauqua County,2015,3389
+50,2,4,20,21,Kansas,Cherokee County,2015,20552
+50,2,4,20,23,Kansas,Cheyenne County,2015,2676
+50,2,4,20,25,Kansas,Clark County,2015,2082
+50,2,4,20,27,Kansas,Clay County,2015,8291
+50,2,4,20,29,Kansas,Cloud County,2015,9192
+50,2,4,20,31,Kansas,Coffey County,2015,8294
+50,2,4,20,33,Kansas,Comanche County,2015,1828
+50,2,4,20,35,Kansas,Cowley County,2015,35774
+50,2,4,20,37,Kansas,Crawford County,2015,39166
+50,2,4,20,39,Kansas,Decatur County,2015,2927
+50,2,4,20,41,Kansas,Dickinson County,2015,19214
+50,2,4,20,43,Kansas,Doniphan County,2015,7789
+50,2,4,20,45,Kansas,Douglas County,2015,118265
+50,2,4,20,47,Kansas,Edwards County,2015,2955
+50,2,4,20,49,Kansas,Elk County,2015,2572
+50,2,4,20,51,Kansas,Ellis County,2015,29030
+50,2,4,20,53,Kansas,Ellsworth County,2015,6311
+50,2,4,20,55,Kansas,Finney County,2015,37127
+50,2,4,20,57,Kansas,Ford County,2015,34617
+50,2,4,20,59,Kansas,Franklin County,2015,25495
+50,2,4,20,61,Kansas,Geary County,2015,36783
+50,2,4,20,63,Kansas,Gove County,2015,2700
+50,2,4,20,65,Kansas,Graham County,2015,2591
+50,2,4,20,67,Kansas,Grant County,2015,7719
+50,2,4,20,69,Kansas,Gray County,2015,6083
+50,2,4,20,71,Kansas,Greeley County,2015,1302
+50,2,4,20,73,Kansas,Greenwood County,2015,6235
+50,2,4,20,75,Kansas,Hamilton County,2015,2563
+50,2,4,20,77,Kansas,Harper County,2015,5785
+50,2,4,20,79,Kansas,Harvey County,2015,34832
+50,2,4,20,81,Kansas,Haskell County,2015,4087
+50,2,4,20,83,Kansas,Hodgeman County,2015,1868
+50,2,4,20,85,Kansas,Jackson County,2015,13286
+50,2,4,20,87,Kansas,Jefferson County,2015,18789
+50,2,4,20,89,Kansas,Jewell County,2015,2964
+50,2,4,20,91,Kansas,Johnson County,2015,580158
+50,2,4,20,93,Kansas,Kearny County,2015,3936
+50,2,4,20,95,Kansas,Kingman County,2015,7639
+50,2,4,20,97,Kansas,Kiowa County,2015,2568
+50,2,4,20,99,Kansas,Labette County,2015,20640
+50,2,4,20,101,Kansas,Lane County,2015,1630
+50,2,4,20,103,Kansas,Leavenworth County,2015,79269
+50,2,4,20,105,Kansas,Lincoln County,2015,3141
+50,2,4,20,107,Kansas,Linn County,2015,9574
+50,2,4,20,109,Kansas,Logan County,2015,2785
+50,2,4,20,111,Kansas,Lyon County,2015,33142
+50,2,4,20,113,Kansas,McPherson County,2015,28667
+50,2,4,20,115,Kansas,Marion County,2015,12054
+50,2,4,20,117,Kansas,Marshall County,2015,9848
+50,2,4,20,119,Kansas,Meade County,2015,4298
+50,2,4,20,121,Kansas,Miami County,2015,32782
+50,2,4,20,123,Kansas,Mitchell County,2015,6295
+50,2,4,20,125,Kansas,Montgomery County,2015,33458
+50,2,4,20,127,Kansas,Morris County,2015,5630
+50,2,4,20,129,Kansas,Morton County,2015,2950
+50,2,4,20,131,Kansas,Nemaha County,2015,10099
+50,2,4,20,133,Kansas,Neosho County,2015,16291
+50,2,4,20,135,Kansas,Ness County,2015,3022
+50,2,4,20,137,Kansas,Norton County,2015,5538
+50,2,4,20,139,Kansas,Osage County,2015,15867
+50,2,4,20,141,Kansas,Osborne County,2015,3641
+50,2,4,20,143,Kansas,Ottawa County,2015,5932
+50,2,4,20,145,Kansas,Pawnee County,2015,6772
+50,2,4,20,147,Kansas,Phillips County,2015,5419
+50,2,4,20,149,Kansas,Pottawatomie County,2015,23145
+50,2,4,20,151,Kansas,Pratt County,2015,9695
+50,2,4,20,153,Kansas,Rawlins County,2015,2504
+50,2,4,20,155,Kansas,Reno County,2015,63612
+50,2,4,20,157,Kansas,Republic County,2015,4688
+50,2,4,20,159,Kansas,Rice County,2015,9926
+50,2,4,20,161,Kansas,Riley County,2015,77293
+50,2,4,20,163,Kansas,Rooks County,2015,5179
+50,2,4,20,165,Kansas,Rush County,2015,3097
+50,2,4,20,167,Kansas,Russell County,2015,7045
+50,2,4,20,169,Kansas,Saline County,2015,55463
+50,2,4,20,171,Kansas,Scott County,2015,4950
+50,2,4,20,173,Kansas,Sedgwick County,2015,511230
+50,2,4,20,175,Kansas,Seward County,2015,23283
+50,2,4,20,177,Kansas,Shawnee County,2015,178789
+50,2,4,20,179,Kansas,Sheridan County,2015,2474
+50,2,4,20,181,Kansas,Sherman County,2015,5965
+50,2,4,20,183,Kansas,Smith County,2015,3691
+50,2,4,20,185,Kansas,Stafford County,2015,4217
+50,2,4,20,187,Kansas,Stanton County,2015,2072
+50,2,4,20,189,Kansas,Stevens County,2015,5791
+50,2,4,20,191,Kansas,Sumner County,2015,23414
+50,2,4,20,193,Kansas,Thomas County,2015,7908
+50,2,4,20,195,Kansas,Trego County,2015,2904
+50,2,4,20,197,Kansas,Wabaunsee County,2015,6886
+50,2,4,20,199,Kansas,Wallace County,2015,1505
+50,2,4,20,201,Kansas,Washington County,2015,5568
+50,2,4,20,203,Kansas,Wichita County,2015,2166
+50,2,4,20,205,Kansas,Wilson County,2015,8847
+50,2,4,20,207,Kansas,Woodson County,2015,3142
+50,2,4,20,209,Kansas,Wyandotte County,2015,163776
+40,3,6,21,0,Kentucky,Kentucky,2015,4429126
+50,3,6,21,1,Kentucky,Adair County,2015,19172
+50,3,6,21,3,Kentucky,Allen County,2015,20655
+50,3,6,21,5,Kentucky,Anderson County,2015,21933
+50,3,6,21,7,Kentucky,Ballard County,2015,8208
+50,3,6,21,9,Kentucky,Barren County,2015,43559
+50,3,6,21,11,Kentucky,Bath County,2015,12209
+50,3,6,21,13,Kentucky,Bell County,2015,27376
+50,3,6,21,15,Kentucky,Boone County,2015,128270
+50,3,6,21,17,Kentucky,Bourbon County,2015,20159
+50,3,6,21,19,Kentucky,Boyd County,2015,48518
+50,3,6,21,21,Kentucky,Boyle County,2015,29800
+50,3,6,21,23,Kentucky,Bracken County,2015,8292
+50,3,6,21,25,Kentucky,Breathitt County,2015,13358
+50,3,6,21,27,Kentucky,Breckinridge County,2015,19987
+50,3,6,21,29,Kentucky,Bullitt County,2015,78698
+50,3,6,21,31,Kentucky,Butler County,2015,12742
+50,3,6,21,33,Kentucky,Caldwell County,2015,12744
+50,3,6,21,35,Kentucky,Calloway County,2015,38695
+50,3,6,21,37,Kentucky,Campbell County,2015,92612
+50,3,6,21,39,Kentucky,Carlisle County,2015,4849
+50,3,6,21,41,Kentucky,Carroll County,2015,10693
+50,3,6,21,43,Kentucky,Carter County,2015,27443
+50,3,6,21,45,Kentucky,Casey County,2015,15756
+50,3,6,21,47,Kentucky,Christian County,2015,73243
+50,3,6,21,49,Kentucky,Clark County,2015,35685
+50,3,6,21,51,Kentucky,Clay County,2015,20986
+50,3,6,21,53,Kentucky,Clinton County,2015,10197
+50,3,6,21,55,Kentucky,Crittenden County,2015,9174
+50,3,6,21,57,Kentucky,Cumberland County,2015,6731
+50,3,6,21,59,Kentucky,Daviess County,2015,99548
+50,3,6,21,61,Kentucky,Edmonson County,2015,12009
+50,3,6,21,63,Kentucky,Elliott County,2015,7546
+50,3,6,21,65,Kentucky,Estill County,2015,14381
+50,3,6,21,67,Kentucky,Fayette County,2015,316079
+50,3,6,21,69,Kentucky,Fleming County,2015,14576
+50,3,6,21,71,Kentucky,Floyd County,2015,37545
+50,3,6,21,73,Kentucky,Franklin County,2015,50090
+50,3,6,21,75,Kentucky,Fulton County,2015,6259
+50,3,6,21,77,Kentucky,Gallatin County,2015,8610
+50,3,6,21,79,Kentucky,Garrard County,2015,17212
+50,3,6,21,81,Kentucky,Grant County,2015,24746
+50,3,6,21,83,Kentucky,Graves County,2015,37249
+50,3,6,21,85,Kentucky,Grayson County,2015,26143
+50,3,6,21,87,Kentucky,Green County,2015,10976
+50,3,6,21,89,Kentucky,Greenup County,2015,36030
+50,3,6,21,91,Kentucky,Hancock County,2015,8648
+50,3,6,21,93,Kentucky,Hardin County,2015,106415
+50,3,6,21,95,Kentucky,Harlan County,2015,27509
+50,3,6,21,97,Kentucky,Harrison County,2015,18642
+50,3,6,21,99,Kentucky,Hart County,2015,18415
+50,3,6,21,101,Kentucky,Henderson County,2015,46376
+50,3,6,21,103,Kentucky,Henry County,2015,15563
+50,3,6,21,105,Kentucky,Hickman County,2015,4622
+50,3,6,21,107,Kentucky,Hopkins County,2015,46068
+50,3,6,21,109,Kentucky,Jackson County,2015,13321
+50,3,6,21,111,Kentucky,Jefferson County,2015,765322
+50,3,6,21,113,Kentucky,Jessamine County,2015,51822
+50,3,6,21,115,Kentucky,Johnson County,2015,23144
+50,3,6,21,117,Kentucky,Kenton County,2015,164627
+50,3,6,21,119,Kentucky,Knott County,2015,15681
+50,3,6,21,121,Kentucky,Knox County,2015,31467
+50,3,6,21,123,Kentucky,Larue County,2015,14123
+50,3,6,21,125,Kentucky,Laurel County,2015,59937
+50,3,6,21,127,Kentucky,Lawrence County,2015,15861
+50,3,6,21,129,Kentucky,Lee County,2015,7023
+50,3,6,21,131,Kentucky,Leslie County,2015,10655
+50,3,6,21,133,Kentucky,Letcher County,2015,23043
+50,3,6,21,135,Kentucky,Lewis County,2015,13666
+50,3,6,21,137,Kentucky,Lincoln County,2015,24351
+50,3,6,21,139,Kentucky,Livingston County,2015,9290
+50,3,6,21,141,Kentucky,Logan County,2015,26761
+50,3,6,21,143,Kentucky,Lyon County,2015,8478
+50,3,6,21,145,Kentucky,McCracken County,2015,64990
+50,3,6,21,147,Kentucky,McCreary County,2015,17902
+50,3,6,21,149,Kentucky,McLean County,2015,9385
+50,3,6,21,151,Kentucky,Madison County,2015,88274
+50,3,6,21,153,Kentucky,Magoffin County,2015,12791
+50,3,6,21,155,Kentucky,Marion County,2015,19219
+50,3,6,21,157,Kentucky,Marshall County,2015,31068
+50,3,6,21,159,Kentucky,Martin County,2015,12299
+50,3,6,21,161,Kentucky,Mason County,2015,17052
+50,3,6,21,163,Kentucky,Meade County,2015,27743
+50,3,6,21,165,Kentucky,Menifee County,2015,6371
+50,3,6,21,167,Kentucky,Mercer County,2015,21383
+50,3,6,21,169,Kentucky,Metcalfe County,2015,9917
+50,3,6,21,171,Kentucky,Monroe County,2015,10616
+50,3,6,21,173,Kentucky,Montgomery County,2015,27594
+50,3,6,21,175,Kentucky,Morgan County,2015,13279
+50,3,6,21,177,Kentucky,Muhlenberg County,2015,31258
+50,3,6,21,179,Kentucky,Nelson County,2015,45119
+50,3,6,21,181,Kentucky,Nicholas County,2015,7072
+50,3,6,21,183,Kentucky,Ohio County,2015,24040
+50,3,6,21,185,Kentucky,Oldham County,2015,64586
+50,3,6,21,187,Kentucky,Owen County,2015,10737
+50,3,6,21,189,Kentucky,Owsley County,2015,4449
+50,3,6,21,191,Kentucky,Pendleton County,2015,14494
+50,3,6,21,193,Kentucky,Perry County,2015,27381
+50,3,6,21,195,Kentucky,Pike County,2015,61831
+50,3,6,21,197,Kentucky,Powell County,2015,12224
+50,3,6,21,199,Kentucky,Pulaski County,2015,63898
+50,3,6,21,201,Kentucky,Robertson County,2015,2139
+50,3,6,21,203,Kentucky,Rockcastle County,2015,16938
+50,3,6,21,205,Kentucky,Rowan County,2015,24658
+50,3,6,21,207,Kentucky,Russell County,2015,17694
+50,3,6,21,209,Kentucky,Scott County,2015,52177
+50,3,6,21,211,Kentucky,Shelby County,2015,45838
+50,3,6,21,213,Kentucky,Simpson County,2015,17913
+50,3,6,21,215,Kentucky,Spencer County,2015,18043
+50,3,6,21,217,Kentucky,Taylor County,2015,25562
+50,3,6,21,219,Kentucky,Todd County,2015,12449
+50,3,6,21,221,Kentucky,Trigg County,2015,14222
+50,3,6,21,223,Kentucky,Trimble County,2015,8739
+50,3,6,21,225,Kentucky,Union County,2015,14976
+50,3,6,21,227,Kentucky,Warren County,2015,124224
+50,3,6,21,229,Kentucky,Washington County,2015,12000
+50,3,6,21,231,Kentucky,Wayne County,2015,20606
+50,3,6,21,233,Kentucky,Webster County,2015,13153
+50,3,6,21,235,Kentucky,Whitley County,2015,36143
+50,3,6,21,237,Kentucky,Wolfe County,2015,7247
+50,3,6,21,239,Kentucky,Woodford County,2015,25860
+40,3,7,22,0,Louisiana,Louisiana,2015,4666998
+50,3,7,22,1,Louisiana,Acadia Parish,2015,62696
+50,3,7,22,3,Louisiana,Allen Parish,2015,25630
+50,3,7,22,5,Louisiana,Ascension Parish,2015,119417
+50,3,7,22,7,Louisiana,Assumption Parish,2015,22902
+50,3,7,22,9,Louisiana,Avoyelles Parish,2015,40992
+50,3,7,22,11,Louisiana,Beauregard Parish,2015,36557
+50,3,7,22,13,Louisiana,Bienville Parish,2015,13828
+50,3,7,22,15,Louisiana,Bossier Parish,2015,125634
+50,3,7,22,17,Louisiana,Caddo Parish,2015,251499
+50,3,7,22,19,Louisiana,Calcasieu Parish,2015,198542
+50,3,7,22,21,Louisiana,Caldwell Parish,2015,10048
+50,3,7,22,23,Louisiana,Cameron Parish,2015,6821
+50,3,7,22,25,Louisiana,Catahoula Parish,2015,10034
+50,3,7,22,27,Louisiana,Claiborne Parish,2015,16271
+50,3,7,22,29,Louisiana,Concordia Parish,2015,20233
+50,3,7,22,31,Louisiana,De Soto Parish,2015,27112
+50,3,7,22,33,Louisiana,East Baton Rouge Parish,2015,445776
+50,3,7,22,35,Louisiana,East Carroll Parish,2015,7279
+50,3,7,22,37,Louisiana,East Feliciana Parish,2015,19534
+50,3,7,22,39,Louisiana,Evangeline Parish,2015,33728
+50,3,7,22,41,Louisiana,Franklin Parish,2015,20397
+50,3,7,22,43,Louisiana,Grant Parish,2015,22327
+50,3,7,22,45,Louisiana,Iberia Parish,2015,73548
+50,3,7,22,47,Louisiana,Iberville Parish,2015,33149
+50,3,7,22,49,Louisiana,Jackson Parish,2015,15971
+50,3,7,22,51,Louisiana,Jefferson Parish,2015,435358
+50,3,7,22,53,Louisiana,Jefferson Davis Parish,2015,31449
+50,3,7,22,55,Louisiana,Lafayette Parish,2015,239654
+50,3,7,22,57,Louisiana,Lafourche Parish,2015,98279
+50,3,7,22,59,Louisiana,LaSalle Parish,2015,14975
+50,3,7,22,61,Louisiana,Lincoln Parish,2015,47469
+50,3,7,22,63,Louisiana,Livingston Parish,2015,137202
+50,3,7,22,65,Louisiana,Madison Parish,2015,11560
+50,3,7,22,67,Louisiana,Morehouse Parish,2015,26307
+50,3,7,22,69,Louisiana,Natchitoches Parish,2015,39018
+50,3,7,22,71,Louisiana,Orleans Parish,2015,390094
+50,3,7,22,73,Louisiana,Ouachita Parish,2015,156916
+50,3,7,22,75,Louisiana,Plaquemines Parish,2015,23462
+50,3,7,22,77,Louisiana,Pointe Coupee Parish,2015,22197
+50,3,7,22,79,Louisiana,Rapides Parish,2015,131821
+50,3,7,22,81,Louisiana,Red River Parish,2015,8710
+50,3,7,22,83,Louisiana,Richland Parish,2015,20552
+50,3,7,22,85,Louisiana,Sabine Parish,2015,24213
+50,3,7,22,87,Louisiana,St. Bernard Parish,2015,45436
+50,3,7,22,89,Louisiana,St. Charles Parish,2015,52587
+50,3,7,22,91,Louisiana,St. Helena Parish,2015,10465
+50,3,7,22,93,Louisiana,St. James Parish,2015,21483
+50,3,7,22,95,Louisiana,St. John the Baptist Parish,2015,43527
+50,3,7,22,97,Louisiana,St. Landry Parish,2015,83693
+50,3,7,22,99,Louisiana,St. Martin Parish,2015,53891
+50,3,7,22,101,Louisiana,St. Mary Parish,2015,52908
+50,3,7,22,103,Louisiana,St. Tammany Parish,2015,249116
+50,3,7,22,105,Louisiana,Tangipahoa Parish,2015,128774
+50,3,7,22,107,Louisiana,Tensas Parish,2015,4773
+50,3,7,22,109,Louisiana,Terrebonne Parish,2015,113894
+50,3,7,22,111,Louisiana,Union Parish,2015,22490
+50,3,7,22,113,Louisiana,Vermilion Parish,2015,59928
+50,3,7,22,115,Louisiana,Vernon Parish,2015,51535
+50,3,7,22,117,Louisiana,Washington Parish,2015,46365
+50,3,7,22,119,Louisiana,Webster Parish,2015,40067
+50,3,7,22,121,Louisiana,West Baton Rouge Parish,2015,25596
+50,3,7,22,123,Louisiana,West Carroll Parish,2015,11287
+50,3,7,22,125,Louisiana,West Feliciana Parish,2015,15376
+50,3,7,22,127,Louisiana,Winn Parish,2015,14646
+40,1,1,23,0,Maine,Maine,2015,1329098
+50,1,1,23,1,Maine,Androscoggin County,2015,107189
+50,1,1,23,3,Maine,Aroostook County,2015,68869
+50,1,1,23,5,Maine,Cumberland County,2015,289704
+50,1,1,23,7,Maine,Franklin County,2015,30024
+50,1,1,23,9,Maine,Hancock County,2015,54280
+50,1,1,23,11,Maine,Kennebec County,2015,121063
+50,1,1,23,13,Maine,Knox County,2015,39797
+50,1,1,23,15,Maine,Lincoln County,2015,33789
+50,1,1,23,17,Maine,Oxford County,2015,57195
+50,1,1,23,19,Maine,Penobscot County,2015,152029
+50,1,1,23,21,Maine,Piscataquis County,2015,16940
+50,1,1,23,23,Maine,Sagadahoc County,2015,35137
+50,1,1,23,25,Maine,Somerset County,2015,50749
+50,1,1,23,27,Maine,Waldo County,2015,39143
+50,1,1,23,29,Maine,Washington County,2015,31783
+50,1,1,23,31,Maine,York County,2015,201407
+40,3,5,24,0,Maryland,Maryland,2015,5988528
+50,3,5,24,1,Maryland,Allegany County,2015,72501
+50,3,5,24,3,Maryland,Anne Arundel County,2015,563133
+50,3,5,24,5,Maryland,Baltimore County,2015,827796
+50,3,5,24,9,Maryland,Calvert County,2015,90542
+50,3,5,24,11,Maryland,Caroline County,2015,32601
+50,3,5,24,13,Maryland,Carroll County,2015,167201
+50,3,5,24,15,Maryland,Cecil County,2015,102453
+50,3,5,24,17,Maryland,Charles County,2015,155775
+50,3,5,24,19,Maryland,Dorchester County,2015,32431
+50,3,5,24,21,Maryland,Frederick County,2015,245145
+50,3,5,24,23,Maryland,Garrett County,2015,29451
+50,3,5,24,25,Maryland,Harford County,2015,249690
+50,3,5,24,27,Maryland,Howard County,2015,311417
+50,3,5,24,29,Maryland,Kent County,2015,19745
+50,3,5,24,31,Maryland,Montgomery County,2015,1033370
+50,3,5,24,33,Maryland,Prince George's County,2015,906754
+50,3,5,24,35,Maryland,Queen Anne's County,2015,49012
+50,3,5,24,37,Maryland,St. Mary's County,2015,111092
+50,3,5,24,39,Maryland,Somerset County,2015,25705
+50,3,5,24,41,Maryland,Talbot County,2015,37431
+50,3,5,24,43,Maryland,Washington County,2015,149160
+50,3,5,24,45,Maryland,Wicomico County,2015,101820
+50,3,5,24,47,Maryland,Worcester County,2015,51472
+50,3,5,24,510,Maryland,Baltimore city,2015,622831
+40,1,1,25,0,Massachusetts,Massachusetts,2015,6797484
+50,1,1,25,1,Massachusetts,Barnstable County,2015,214015
+50,1,1,25,3,Massachusetts,Berkshire County,2015,127950
+50,1,1,25,5,Massachusetts,Bristol County,2015,557104
+50,1,1,25,7,Massachusetts,Dukes County,2015,17290
+50,1,1,25,9,Massachusetts,Essex County,2015,777228
+50,1,1,25,11,Massachusetts,Franklin County,2015,70911
+50,1,1,25,13,Massachusetts,Hampden County,2015,469251
+50,1,1,25,15,Massachusetts,Hampshire County,2015,160885
+50,1,1,25,17,Massachusetts,Middlesex County,2015,1586107
+50,1,1,25,19,Massachusetts,Nantucket County,2015,10933
+50,1,1,25,21,Massachusetts,Norfolk County,2015,694774
+50,1,1,25,23,Massachusetts,Plymouth County,2015,509413
+50,1,1,25,25,Massachusetts,Suffolk County,2015,783177
+50,1,1,25,27,Massachusetts,Worcester County,2015,818446
+40,2,3,26,0,Michigan,Michigan,2015,9934483
+50,2,3,26,1,Michigan,Alcona County,2015,10327
+50,2,3,26,3,Michigan,Alger County,2015,9265
+50,2,3,26,5,Michigan,Allegan County,2015,114122
+50,2,3,26,7,Michigan,Alpena County,2015,28728
+50,2,3,26,9,Michigan,Antrim County,2015,23036
+50,2,3,26,11,Michigan,Arenac County,2015,15304
+50,2,3,26,13,Michigan,Baraga County,2015,8583
+50,2,3,26,15,Michigan,Barry County,2015,59434
+50,2,3,26,17,Michigan,Bay County,2015,105271
+50,2,3,26,19,Michigan,Benzie County,2015,17386
+50,2,3,26,21,Michigan,Berrien County,2015,155136
+50,2,3,26,23,Michigan,Branch County,2015,43635
+50,2,3,26,25,Michigan,Calhoun County,2015,134377
+50,2,3,26,27,Michigan,Cass County,2015,51370
+50,2,3,26,29,Michigan,Charlevoix County,2015,26219
+50,2,3,26,31,Michigan,Cheboygan County,2015,25399
+50,2,3,26,33,Michigan,Chippewa County,2015,37998
+50,2,3,26,35,Michigan,Clare County,2015,30611
+50,2,3,26,37,Michigan,Clinton County,2015,77037
+50,2,3,26,39,Michigan,Crawford County,2015,13854
+50,2,3,26,41,Michigan,Delta County,2015,36431
+50,2,3,26,43,Michigan,Dickinson County,2015,25675
+50,2,3,26,45,Michigan,Eaton County,2015,108701
+50,2,3,26,47,Michigan,Emmet County,2015,32931
+50,2,3,26,49,Michigan,Genesee County,2015,410574
+50,2,3,26,51,Michigan,Gladwin County,2015,25227
+50,2,3,26,53,Michigan,Gogebic County,2015,15537
+50,2,3,26,55,Michigan,Grand Traverse County,2015,91610
+50,2,3,26,57,Michigan,Gratiot County,2015,41333
+50,2,3,26,59,Michigan,Hillsdale County,2015,45894
+50,2,3,26,61,Michigan,Houghton County,2015,36248
+50,2,3,26,63,Michigan,Huron County,2015,31761
+50,2,3,26,65,Michigan,Ingham County,2015,287255
+50,2,3,26,67,Michigan,Ionia County,2015,64073
+50,2,3,26,69,Michigan,Iosco County,2015,25360
+50,2,3,26,71,Michigan,Iron County,2015,11327
+50,2,3,26,73,Michigan,Isabella County,2015,70798
+50,2,3,26,75,Michigan,Jackson County,2015,159325
+50,2,3,26,77,Michigan,Kalamazoo County,2015,259816
+50,2,3,26,79,Michigan,Kalkaska County,2015,17254
+50,2,3,26,81,Michigan,Kent County,2015,637333
+50,2,3,26,83,Michigan,Keweenaw County,2015,2124
+50,2,3,26,85,Michigan,Lake County,2015,11691
+50,2,3,26,87,Michigan,Lapeer County,2015,88376
+50,2,3,26,89,Michigan,Leelanau County,2015,21633
+50,2,3,26,91,Michigan,Lenawee County,2015,98432
+50,2,3,26,93,Michigan,Livingston County,2015,187221
+50,2,3,26,95,Michigan,Luce County,2015,6431
+50,2,3,26,97,Michigan,Mackinac County,2015,10814
+50,2,3,26,99,Michigan,Macomb County,2015,865031
+50,2,3,26,101,Michigan,Manistee County,2015,24462
+50,2,3,26,103,Michigan,Marquette County,2015,67357
+50,2,3,26,105,Michigan,Mason County,2015,28754
+50,2,3,26,107,Michigan,Mecosta County,2015,43013
+50,2,3,26,109,Michigan,Menominee County,2015,23494
+50,2,3,26,111,Michigan,Midland County,2015,83706
+50,2,3,26,113,Michigan,Missaukee County,2015,14884
+50,2,3,26,115,Michigan,Monroe County,2015,149439
+50,2,3,26,117,Michigan,Montcalm County,2015,62778
+50,2,3,26,119,Michigan,Montmorency County,2015,9292
+50,2,3,26,121,Michigan,Muskegon County,2015,172506
+50,2,3,26,123,Michigan,Newaygo County,2015,47900
+50,2,3,26,125,Michigan,Oakland County,2015,1244895
+50,2,3,26,127,Michigan,Oceana County,2015,26316
+50,2,3,26,129,Michigan,Ogemaw County,2015,20876
+50,2,3,26,131,Michigan,Ontonagon County,2015,6037
+50,2,3,26,133,Michigan,Osceola County,2015,23180
+50,2,3,26,135,Michigan,Oscoda County,2015,8275
+50,2,3,26,137,Michigan,Otsego County,2015,24209
+50,2,3,26,139,Michigan,Ottawa County,2015,280907
+50,2,3,26,141,Michigan,Presque Isle County,2015,12800
+50,2,3,26,143,Michigan,Roscommon County,2015,23910
+50,2,3,26,145,Michigan,Saginaw County,2015,193384
+50,2,3,26,147,Michigan,St. Clair County,2015,159757
+50,2,3,26,149,Michigan,St. Joseph County,2015,60809
+50,2,3,26,151,Michigan,Sanilac County,2015,41463
+50,2,3,26,153,Michigan,Schoolcraft County,2015,8118
+50,2,3,26,155,Michigan,Shiawassee County,2015,68538
+50,2,3,26,157,Michigan,Tuscola County,2015,53723
+50,2,3,26,159,Michigan,Van Buren County,2015,75087
+50,2,3,26,161,Michigan,Washtenaw County,2015,363555
+50,2,3,26,163,Michigan,Wayne County,2015,1764866
+50,2,3,26,165,Michigan,Wexford County,2015,32885
+40,2,4,27,0,Minnesota,Minnesota,2015,5484002
+50,2,4,27,1,Minnesota,Aitkin County,2015,15857
+50,2,4,27,3,Minnesota,Anoka County,2015,344244
+50,2,4,27,5,Minnesota,Becker County,2015,33455
+50,2,4,27,7,Minnesota,Beltrami County,2015,45629
+50,2,4,27,9,Minnesota,Benton County,2015,39433
+50,2,4,27,11,Minnesota,Big Stone County,2015,4993
+50,2,4,27,13,Minnesota,Blue Earth County,2015,65701
+50,2,4,27,15,Minnesota,Brown County,2015,25246
+50,2,4,27,17,Minnesota,Carlton County,2015,35400
+50,2,4,27,19,Minnesota,Carver County,2015,98610
+50,2,4,27,21,Minnesota,Cass County,2015,28704
+50,2,4,27,23,Minnesota,Chippewa County,2015,12069
+50,2,4,27,25,Minnesota,Chisago County,2015,54144
+50,2,4,27,27,Minnesota,Clay County,2015,62235
+50,2,4,27,29,Minnesota,Clearwater County,2015,8794
+50,2,4,27,31,Minnesota,Cook County,2015,5249
+50,2,4,27,33,Minnesota,Cottonwood County,2015,11431
+50,2,4,27,35,Minnesota,Crow Wing County,2015,63255
+50,2,4,27,37,Minnesota,Dakota County,2015,414245
+50,2,4,27,39,Minnesota,Dodge County,2015,20417
+50,2,4,27,41,Minnesota,Douglas County,2015,36796
+50,2,4,27,43,Minnesota,Faribault County,2015,13977
+50,2,4,27,45,Minnesota,Fillmore County,2015,20737
+50,2,4,27,47,Minnesota,Freeborn County,2015,30519
+50,2,4,27,49,Minnesota,Goodhue County,2015,46092
+50,2,4,27,51,Minnesota,Grant County,2015,5865
+50,2,4,27,53,Minnesota,Hennepin County,2015,1222868
+50,2,4,27,55,Minnesota,Houston County,2015,18695
+50,2,4,27,57,Minnesota,Hubbard County,2015,20645
+50,2,4,27,59,Minnesota,Isanti County,2015,38281
+50,2,4,27,61,Minnesota,Itasca County,2015,45269
+50,2,4,27,63,Minnesota,Jackson County,2015,10098
+50,2,4,27,65,Minnesota,Kanabec County,2015,15895
+50,2,4,27,67,Minnesota,Kandiyohi County,2015,42638
+50,2,4,27,69,Minnesota,Kittson County,2015,4410
+50,2,4,27,71,Minnesota,Koochiching County,2015,12798
+50,2,4,27,73,Minnesota,Lac qui Parle County,2015,6876
+50,2,4,27,75,Minnesota,Lake County,2015,10540
+50,2,4,27,77,Minnesota,Lake of the Woods County,2015,3870
+50,2,4,27,79,Minnesota,Le Sueur County,2015,27762
+50,2,4,27,81,Minnesota,Lincoln County,2015,5707
+50,2,4,27,83,Minnesota,Lyon County,2015,25830
+50,2,4,27,85,Minnesota,McLeod County,2015,35808
+50,2,4,27,87,Minnesota,Mahnomen County,2015,5428
+50,2,4,27,89,Minnesota,Marshall County,2015,9410
+50,2,4,27,91,Minnesota,Martin County,2015,20041
+50,2,4,27,93,Minnesota,Meeker County,2015,23048
+50,2,4,27,95,Minnesota,Mille Lacs County,2015,25482
+50,2,4,27,97,Minnesota,Morrison County,2015,32770
+50,2,4,27,99,Minnesota,Mower County,2015,39497
+50,2,4,27,101,Minnesota,Murray County,2015,8395
+50,2,4,27,103,Minnesota,Nicollet County,2015,33545
+50,2,4,27,105,Minnesota,Nobles County,2015,21754
+50,2,4,27,107,Minnesota,Norman County,2015,6623
+50,2,4,27,109,Minnesota,Olmsted County,2015,151492
+50,2,4,27,111,Minnesota,Otter Tail County,2015,57539
+50,2,4,27,113,Minnesota,Pennington County,2015,14258
+50,2,4,27,115,Minnesota,Pine County,2015,29051
+50,2,4,27,117,Minnesota,Pipestone County,2015,9302
+50,2,4,27,119,Minnesota,Polk County,2015,31519
+50,2,4,27,121,Minnesota,Pope County,2015,10930
+50,2,4,27,123,Minnesota,Ramsey County,2015,536838
+50,2,4,27,125,Minnesota,Red Lake County,2015,4027
+50,2,4,27,127,Minnesota,Redwood County,2015,15427
+50,2,4,27,129,Minnesota,Renville County,2015,14797
+50,2,4,27,131,Minnesota,Rice County,2015,65336
+50,2,4,27,133,Minnesota,Rock County,2015,9456
+50,2,4,27,135,Minnesota,Roseau County,2015,15619
+50,2,4,27,137,Minnesota,St. Louis County,2015,200383
+50,2,4,27,139,Minnesota,Scott County,2015,141372
+50,2,4,27,141,Minnesota,Sherburne County,2015,91441
+50,2,4,27,143,Minnesota,Sibley County,2015,14893
+50,2,4,27,145,Minnesota,Stearns County,2015,156068
+50,2,4,27,147,Minnesota,Steele County,2015,36628
+50,2,4,27,149,Minnesota,Stevens County,2015,9886
+50,2,4,27,151,Minnesota,Swift County,2015,9379
+50,2,4,27,153,Minnesota,Todd County,2015,24318
+50,2,4,27,155,Minnesota,Traverse County,2015,3376
+50,2,4,27,157,Minnesota,Wabasha County,2015,21392
+50,2,4,27,159,Minnesota,Wadena County,2015,13664
+50,2,4,27,161,Minnesota,Waseca County,2015,18932
+50,2,4,27,163,Minnesota,Washington County,2015,250482
+50,2,4,27,165,Minnesota,Watonwan County,2015,11013
+50,2,4,27,167,Minnesota,Wilkin County,2015,6369
+50,2,4,27,169,Minnesota,Winona County,2015,50859
+50,2,4,27,171,Minnesota,Wright County,2015,131029
+50,2,4,27,173,Minnesota,Yellow Medicine County,2015,9847
+40,3,6,28,0,Mississippi,Mississippi,2015,2990231
+50,3,6,28,1,Mississippi,Adams County,2015,31574
+50,3,6,28,3,Mississippi,Alcorn County,2015,37302
+50,3,6,28,5,Mississippi,Amite County,2015,12553
+50,3,6,28,7,Mississippi,Attala County,2015,18674
+50,3,6,28,9,Mississippi,Benton County,2015,8164
+50,3,6,28,11,Mississippi,Bolivar County,2015,33233
+50,3,6,28,13,Mississippi,Calhoun County,2015,14636
+50,3,6,28,15,Mississippi,Carroll County,2015,10209
+50,3,6,28,17,Mississippi,Chickasaw County,2015,17389
+50,3,6,28,19,Mississippi,Choctaw County,2015,8372
+50,3,6,28,21,Mississippi,Claiborne County,2015,9211
+50,3,6,28,23,Mississippi,Clarke County,2015,16021
+50,3,6,28,25,Mississippi,Clay County,2015,20019
+50,3,6,28,27,Mississippi,Coahoma County,2015,24525
+50,3,6,28,29,Mississippi,Copiah County,2015,28868
+50,3,6,28,31,Mississippi,Covington County,2015,19253
+50,3,6,28,33,Mississippi,DeSoto County,2015,173470
+50,3,6,28,35,Mississippi,Forrest County,2015,75642
+50,3,6,28,37,Mississippi,Franklin County,2015,7734
+50,3,6,28,39,Mississippi,George County,2015,23391
+50,3,6,28,41,Mississippi,Greene County,2015,13545
+50,3,6,28,43,Mississippi,Grenada County,2015,21461
+50,3,6,28,45,Mississippi,Hancock County,2015,46360
+50,3,6,28,47,Mississippi,Harrison County,2015,200880
+50,3,6,28,49,Mississippi,Hinds County,2015,244321
+50,3,6,28,51,Mississippi,Holmes County,2015,18362
+50,3,6,28,53,Mississippi,Humphreys County,2015,8707
+50,3,6,28,55,Mississippi,Issaquena County,2015,1337
+50,3,6,28,57,Mississippi,Itawamba County,2015,23546
+50,3,6,28,59,Mississippi,Jackson County,2015,141443
+50,3,6,28,61,Mississippi,Jasper County,2015,16549
+50,3,6,28,63,Mississippi,Jefferson County,2015,7507
+50,3,6,28,65,Mississippi,Jefferson Davis County,2015,11633
+50,3,6,28,67,Mississippi,Jones County,2015,68664
+50,3,6,28,69,Mississippi,Kemper County,2015,10108
+50,3,6,28,71,Mississippi,Lafayette County,2015,52841
+50,3,6,28,73,Mississippi,Lamar County,2015,61034
+50,3,6,28,75,Mississippi,Lauderdale County,2015,78422
+50,3,6,28,77,Mississippi,Lawrence County,2015,12694
+50,3,6,28,79,Mississippi,Leake County,2015,22774
+50,3,6,28,81,Mississippi,Lee County,2015,84762
+50,3,6,28,83,Mississippi,Leflore County,2015,30260
+50,3,6,28,85,Mississippi,Lincoln County,2015,34527
+50,3,6,28,87,Mississippi,Lowndes County,2015,59725
+50,3,6,28,89,Mississippi,Madison County,2015,102516
+50,3,6,28,91,Mississippi,Marion County,2015,25430
+50,3,6,28,93,Mississippi,Marshall County,2015,35918
+50,3,6,28,95,Mississippi,Monroe County,2015,35831
+50,3,6,28,97,Mississippi,Montgomery County,2015,10190
+50,3,6,28,99,Mississippi,Neshoba County,2015,29491
+50,3,6,28,101,Mississippi,Newton County,2015,21578
+50,3,6,28,103,Mississippi,Noxubee County,2015,10948
+50,3,6,28,105,Mississippi,Oktibbeha County,2015,49589
+50,3,6,28,107,Mississippi,Panola County,2015,34204
+50,3,6,28,109,Mississippi,Pearl River County,2015,54978
+50,3,6,28,111,Mississippi,Perry County,2015,12083
+50,3,6,28,113,Mississippi,Pike County,2015,39907
+50,3,6,28,115,Mississippi,Pontotoc County,2015,30884
+50,3,6,28,117,Mississippi,Prentiss County,2015,25457
+50,3,6,28,119,Mississippi,Quitman County,2015,7513
+50,3,6,28,121,Mississippi,Rankin County,2015,149507
+50,3,6,28,123,Mississippi,Scott County,2015,28445
+50,3,6,28,125,Mississippi,Sharkey County,2015,4568
+50,3,6,28,127,Mississippi,Simpson County,2015,27177
+50,3,6,28,129,Mississippi,Smith County,2015,16073
+50,3,6,28,131,Mississippi,Stone County,2015,18283
+50,3,6,28,133,Mississippi,Sunflower County,2015,26883
+50,3,6,28,135,Mississippi,Tallahatchie County,2015,14619
+50,3,6,28,137,Mississippi,Tate County,2015,28465
+50,3,6,28,139,Mississippi,Tippah County,2015,22025
+50,3,6,28,141,Mississippi,Tishomingo County,2015,19485
+50,3,6,28,143,Mississippi,Tunica County,2015,10264
+50,3,6,28,145,Mississippi,Union County,2015,28309
+50,3,6,28,147,Mississippi,Walthall County,2015,14604
+50,3,6,28,149,Mississippi,Warren County,2015,47496
+50,3,6,28,151,Mississippi,Washington County,2015,47991
+50,3,6,28,153,Mississippi,Wayne County,2015,20515
+50,3,6,28,155,Mississippi,Webster County,2015,9881
+50,3,6,28,157,Mississippi,Wilkinson County,2015,9089
+50,3,6,28,159,Mississippi,Winston County,2015,18452
+50,3,6,28,161,Mississippi,Yalobusha County,2015,12457
+50,3,6,28,163,Mississippi,Yazoo County,2015,27424
+40,2,4,29,0,Missouri,Missouri,2015,6075411
+50,2,4,29,1,Missouri,Adair County,2015,25396
+50,2,4,29,3,Missouri,Andrew County,2015,17316
+50,2,4,29,5,Missouri,Atchison County,2015,5292
+50,2,4,29,7,Missouri,Audrain County,2015,25976
+50,2,4,29,9,Missouri,Barry County,2015,35300
+50,2,4,29,11,Missouri,Barton County,2015,11834
+50,2,4,29,13,Missouri,Bates County,2015,16361
+50,2,4,29,15,Missouri,Benton County,2015,18815
+50,2,4,29,17,Missouri,Bollinger County,2015,12320
+50,2,4,29,19,Missouri,Boone County,2015,174563
+50,2,4,29,21,Missouri,Buchanan County,2015,89137
+50,2,4,29,23,Missouri,Butler County,2015,42857
+50,2,4,29,25,Missouri,Caldwell County,2015,8996
+50,2,4,29,27,Missouri,Callaway County,2015,44722
+50,2,4,29,29,Missouri,Camden County,2015,44793
+50,2,4,29,31,Missouri,Cape Girardeau County,2015,78297
+50,2,4,29,33,Missouri,Carroll County,2015,8882
+50,2,4,29,35,Missouri,Carter County,2015,6280
+50,2,4,29,37,Missouri,Cass County,2015,101389
+50,2,4,29,39,Missouri,Cedar County,2015,13790
+50,2,4,29,41,Missouri,Chariton County,2015,7582
+50,2,4,29,43,Missouri,Christian County,2015,83154
+50,2,4,29,45,Missouri,Clark County,2015,6811
+50,2,4,29,47,Missouri,Clay County,2015,235344
+50,2,4,29,49,Missouri,Clinton County,2015,20592
+50,2,4,29,51,Missouri,Cole County,2015,76838
+50,2,4,29,53,Missouri,Cooper County,2015,17615
+50,2,4,29,55,Missouri,Crawford County,2015,24510
+50,2,4,29,57,Missouri,Dade County,2015,7576
+50,2,4,29,59,Missouri,Dallas County,2015,16362
+50,2,4,29,61,Missouri,Daviess County,2015,8281
+50,2,4,29,63,Missouri,DeKalb County,2015,12559
+50,2,4,29,65,Missouri,Dent County,2015,15662
+50,2,4,29,67,Missouri,Douglas County,2015,13374
+50,2,4,29,69,Missouri,Dunklin County,2015,30868
+50,2,4,29,71,Missouri,Franklin County,2015,102265
+50,2,4,29,73,Missouri,Gasconade County,2015,14753
+50,2,4,29,75,Missouri,Gentry County,2015,6650
+50,2,4,29,77,Missouri,Greene County,2015,287543
+50,2,4,29,79,Missouri,Grundy County,2015,10033
+50,2,4,29,81,Missouri,Harrison County,2015,8631
+50,2,4,29,83,Missouri,Henry County,2015,21728
+50,2,4,29,85,Missouri,Hickory County,2015,9269
+50,2,4,29,87,Missouri,Holt County,2015,4483
+50,2,4,29,89,Missouri,Howard County,2015,10136
+50,2,4,29,91,Missouri,Howell County,2015,40071
+50,2,4,29,93,Missouri,Iron County,2015,10200
+50,2,4,29,95,Missouri,Jackson County,2015,687182
+50,2,4,29,97,Missouri,Jasper County,2015,118623
+50,2,4,29,99,Missouri,Jefferson County,2015,223185
+50,2,4,29,101,Missouri,Johnson County,2015,53717
+50,2,4,29,103,Missouri,Knox County,2015,3907
+50,2,4,29,105,Missouri,Laclede County,2015,35506
+50,2,4,29,107,Missouri,Lafayette County,2015,32633
+50,2,4,29,109,Missouri,Lawrence County,2015,37999
+50,2,4,29,111,Missouri,Lewis County,2015,10141
+50,2,4,29,113,Missouri,Lincoln County,2015,54569
+50,2,4,29,115,Missouri,Linn County,2015,12290
+50,2,4,29,117,Missouri,Livingston County,2015,14943
+50,2,4,29,119,Missouri,McDonald County,2015,22721
+50,2,4,29,121,Missouri,Macon County,2015,15271
+50,2,4,29,123,Missouri,Madison County,2015,12182
+50,2,4,29,125,Missouri,Maries County,2015,8934
+50,2,4,29,127,Missouri,Marion County,2015,28719
+50,2,4,29,129,Missouri,Mercer County,2015,3660
+50,2,4,29,131,Missouri,Miller County,2015,24865
+50,2,4,29,133,Missouri,Mississippi County,2015,13984
+50,2,4,29,135,Missouri,Moniteau County,2015,15878
+50,2,4,29,137,Missouri,Monroe County,2015,8635
+50,2,4,29,139,Missouri,Montgomery County,2015,11579
+50,2,4,29,141,Missouri,Morgan County,2015,20072
+50,2,4,29,143,Missouri,New Madrid County,2015,18070
+50,2,4,29,145,Missouri,Newton County,2015,58165
+50,2,4,29,147,Missouri,Nodaway County,2015,22649
+50,2,4,29,149,Missouri,Oregon County,2015,10864
+50,2,4,29,151,Missouri,Osage County,2015,13540
+50,2,4,29,153,Missouri,Ozark County,2015,9373
+50,2,4,29,155,Missouri,Pemiscot County,2015,17427
+50,2,4,29,157,Missouri,Perry County,2015,19066
+50,2,4,29,159,Missouri,Pettis County,2015,42303
+50,2,4,29,161,Missouri,Phelps County,2015,44801
+50,2,4,29,163,Missouri,Pike County,2015,18404
+50,2,4,29,165,Missouri,Platte County,2015,96552
+50,2,4,29,167,Missouri,Polk County,2015,31272
+50,2,4,29,169,Missouri,Pulaski County,2015,53324
+50,2,4,29,171,Missouri,Putnam County,2015,4864
+50,2,4,29,173,Missouri,Ralls County,2015,10171
+50,2,4,29,175,Missouri,Randolph County,2015,25063
+50,2,4,29,177,Missouri,Ray County,2015,22799
+50,2,4,29,179,Missouri,Reynolds County,2015,6294
+50,2,4,29,181,Missouri,Ripley County,2015,13797
+50,2,4,29,183,Missouri,St. Charles County,2015,385108
+50,2,4,29,185,Missouri,St. Clair County,2015,9427
+50,2,4,29,186,Missouri,Ste. Genevieve County,2015,17805
+50,2,4,29,187,Missouri,St. Francois County,2015,66253
+50,2,4,29,189,Missouri,St. Louis County,2015,1001585
+50,2,4,29,195,Missouri,Saline County,2015,23241
+50,2,4,29,197,Missouri,Schuyler County,2015,4506
+50,2,4,29,199,Missouri,Scotland County,2015,4833
+50,2,4,29,201,Missouri,Scott County,2015,39040
+50,2,4,29,203,Missouri,Shannon County,2015,8275
+50,2,4,29,205,Missouri,Shelby County,2015,6099
+50,2,4,29,207,Missouri,Stoddard County,2015,29751
+50,2,4,29,209,Missouri,Stone County,2015,31334
+50,2,4,29,211,Missouri,Sullivan County,2015,6369
+50,2,4,29,213,Missouri,Taney County,2015,54282
+50,2,4,29,215,Missouri,Texas County,2015,25692
+50,2,4,29,217,Missouri,Vernon County,2015,20775
+50,2,4,29,219,Missouri,Warren County,2015,33539
+50,2,4,29,221,Missouri,Washington County,2015,24795
+50,2,4,29,223,Missouri,Wayne County,2015,13435
+50,2,4,29,225,Missouri,Webster County,2015,37611
+50,2,4,29,227,Missouri,Worth County,2015,2042
+50,2,4,29,229,Missouri,Wright County,2015,18147
+50,2,4,29,510,Missouri,St. Louis city,2015,316268
+40,4,8,30,0,Montana,Montana,2015,1031495
+50,4,8,30,1,Montana,Beaverhead County,2015,9303
+50,4,8,30,3,Montana,Big Horn County,2015,13310
+50,4,8,30,5,Montana,Blaine County,2015,6683
+50,4,8,30,7,Montana,Broadwater County,2015,5717
+50,4,8,30,9,Montana,Carbon County,2015,10404
+50,4,8,30,11,Montana,Carter County,2015,1147
+50,4,8,30,13,Montana,Cascade County,2015,81959
+50,4,8,30,15,Montana,Chouteau County,2015,5777
+50,4,8,30,17,Montana,Custer County,2015,12098
+50,4,8,30,19,Montana,Daniels County,2015,1751
+50,4,8,30,21,Montana,Dawson County,2015,9591
+50,4,8,30,23,Montana,Deer Lodge County,2015,9115
+50,4,8,30,25,Montana,Fallon County,2015,3172
+50,4,8,30,27,Montana,Fergus County,2015,11315
+50,4,8,30,29,Montana,Flathead County,2015,95940
+50,4,8,30,31,Montana,Gallatin County,2015,101043
+50,4,8,30,33,Montana,Garfield County,2015,1283
+50,4,8,30,35,Montana,Glacier County,2015,13647
+50,4,8,30,37,Montana,Golden Valley County,2015,818
+50,4,8,30,39,Montana,Granite County,2015,3160
+50,4,8,30,41,Montana,Hill County,2015,16435
+50,4,8,30,43,Montana,Jefferson County,2015,11576
+50,4,8,30,45,Montana,Judith Basin County,2015,1932
+50,4,8,30,47,Montana,Lake County,2015,29482
+50,4,8,30,49,Montana,Lewis and Clark County,2015,66308
+50,4,8,30,51,Montana,Liberty County,2015,2395
+50,4,8,30,53,Montana,Lincoln County,2015,19085
+50,4,8,30,55,Montana,McCone County,2015,1698
+50,4,8,30,57,Montana,Madison County,2015,8033
+50,4,8,30,59,Montana,Meagher County,2015,1822
+50,4,8,30,61,Montana,Mineral County,2015,4194
+50,4,8,30,63,Montana,Missoula County,2015,114281
+50,4,8,30,65,Montana,Musselshell County,2015,4631
+50,4,8,30,67,Montana,Park County,2015,16013
+50,4,8,30,69,Montana,Petroleum County,2015,475
+50,4,8,30,71,Montana,Phillips County,2015,4150
+50,4,8,30,73,Montana,Pondera County,2015,6100
+50,4,8,30,75,Montana,Powder River County,2015,1768
+50,4,8,30,77,Montana,Powell County,2015,6793
+50,4,8,30,79,Montana,Prairie County,2015,1140
+50,4,8,30,81,Montana,Ravalli County,2015,41199
+50,4,8,30,83,Montana,Richland County,2015,11931
+50,4,8,30,85,Montana,Roosevelt County,2015,11416
+50,4,8,30,87,Montana,Rosebud County,2015,9355
+50,4,8,30,89,Montana,Sanders County,2015,11298
+50,4,8,30,91,Montana,Sheridan County,2015,3673
+50,4,8,30,93,Montana,Silver Bow County,2015,34746
+50,4,8,30,95,Montana,Stillwater County,2015,9419
+50,4,8,30,97,Montana,Sweet Grass County,2015,3618
+50,4,8,30,99,Montana,Teton County,2015,6064
+50,4,8,30,101,Montana,Toole County,2015,5083
+50,4,8,30,103,Montana,Treasure County,2015,680
+50,4,8,30,105,Montana,Valley County,2015,7630
+50,4,8,30,107,Montana,Wheatland County,2015,2110
+50,4,8,30,109,Montana,Wibaux County,2015,1071
+50,4,8,30,111,Montana,Yellowstone County,2015,156658
+40,2,4,31,0,Nebraska,Nebraska,2015,1892059
+50,2,4,31,1,Nebraska,Adams County,2015,31576
+50,2,4,31,3,Nebraska,Antelope County,2015,6416
+50,2,4,31,5,Nebraska,Arthur County,2015,451
+50,2,4,31,7,Nebraska,Banner County,2015,715
+50,2,4,31,9,Nebraska,Blaine County,2015,476
+50,2,4,31,11,Nebraska,Boone County,2015,5308
+50,2,4,31,13,Nebraska,Box Butte County,2015,11327
+50,2,4,31,15,Nebraska,Boyd County,2015,2004
+50,2,4,31,17,Nebraska,Brown County,2015,2985
+50,2,4,31,19,Nebraska,Buffalo County,2015,48605
+50,2,4,31,21,Nebraska,Burt County,2015,6540
+50,2,4,31,23,Nebraska,Butler County,2015,8053
+50,2,4,31,25,Nebraska,Cass County,2015,25419
+50,2,4,31,27,Nebraska,Cedar County,2015,8523
+50,2,4,31,29,Nebraska,Chase County,2015,3966
+50,2,4,31,31,Nebraska,Cherry County,2015,5831
+50,2,4,31,33,Nebraska,Cheyenne County,2015,10150
+50,2,4,31,35,Nebraska,Clay County,2015,6289
+50,2,4,31,37,Nebraska,Colfax County,2015,10713
+50,2,4,31,39,Nebraska,Cuming County,2015,9074
+50,2,4,31,41,Nebraska,Custer County,2015,10831
+50,2,4,31,43,Nebraska,Dakota County,2015,20548
+50,2,4,31,45,Nebraska,Dawes County,2015,8974
+50,2,4,31,47,Nebraska,Dawson County,2015,23870
+50,2,4,31,49,Nebraska,Deuel County,2015,1908
+50,2,4,31,51,Nebraska,Dixon County,2015,5769
+50,2,4,31,53,Nebraska,Dodge County,2015,36566
+50,2,4,31,55,Nebraska,Douglas County,2015,549313
+50,2,4,31,57,Nebraska,Dundy County,2015,1771
+50,2,4,31,59,Nebraska,Fillmore County,2015,5552
+50,2,4,31,61,Nebraska,Franklin County,2015,2976
+50,2,4,31,63,Nebraska,Frontier County,2015,2629
+50,2,4,31,65,Nebraska,Furnas County,2015,4828
+50,2,4,31,67,Nebraska,Gage County,2015,21718
+50,2,4,31,69,Nebraska,Garden County,2015,1917
+50,2,4,31,71,Nebraska,Garfield County,2015,2013
+50,2,4,31,73,Nebraska,Gosper County,2015,2025
+50,2,4,31,75,Nebraska,Grant County,2015,648
+50,2,4,31,77,Nebraska,Greeley County,2015,2435
+50,2,4,31,79,Nebraska,Hall County,2015,61135
+50,2,4,31,81,Nebraska,Hamilton County,2015,9138
+50,2,4,31,83,Nebraska,Harlan County,2015,3440
+50,2,4,31,85,Nebraska,Hayes County,2015,916
+50,2,4,31,87,Nebraska,Hitchcock County,2015,2878
+50,2,4,31,89,Nebraska,Holt County,2015,10266
+50,2,4,31,91,Nebraska,Hooker County,2015,714
+50,2,4,31,93,Nebraska,Howard County,2015,6378
+50,2,4,31,95,Nebraska,Jefferson County,2015,7224
+50,2,4,31,97,Nebraska,Johnson County,2015,5239
+50,2,4,31,99,Nebraska,Kearney County,2015,6560
+50,2,4,31,101,Nebraska,Keith County,2015,8159
+50,2,4,31,103,Nebraska,Keya Paha County,2015,797
+50,2,4,31,105,Nebraska,Kimball County,2015,3715
+50,2,4,31,107,Nebraska,Knox County,2015,8472
+50,2,4,31,109,Nebraska,Lancaster County,2015,306293
+50,2,4,31,111,Nebraska,Lincoln County,2015,35519
+50,2,4,31,113,Nebraska,Logan County,2015,791
+50,2,4,31,115,Nebraska,Loup County,2015,606
+50,2,4,31,117,Nebraska,McPherson County,2015,489
+50,2,4,31,119,Nebraska,Madison County,2015,35001
+50,2,4,31,121,Nebraska,Merrick County,2015,7806
+50,2,4,31,123,Nebraska,Morrill County,2015,4928
+50,2,4,31,125,Nebraska,Nance County,2015,3574
+50,2,4,31,127,Nebraska,Nemaha County,2015,7007
+50,2,4,31,129,Nebraska,Nuckolls County,2015,4323
+50,2,4,31,131,Nebraska,Otoe County,2015,15844
+50,2,4,31,133,Nebraska,Pawnee County,2015,2693
+50,2,4,31,135,Nebraska,Perkins County,2015,2933
+50,2,4,31,137,Nebraska,Phelps County,2015,9218
+50,2,4,31,139,Nebraska,Pierce County,2015,7188
+50,2,4,31,141,Nebraska,Platte County,2015,32869
+50,2,4,31,143,Nebraska,Polk County,2015,5169
+50,2,4,31,145,Nebraska,Red Willow County,2015,10895
+50,2,4,31,147,Nebraska,Richardson County,2015,8026
+50,2,4,31,149,Nebraska,Rock County,2015,1417
+50,2,4,31,151,Nebraska,Saline County,2015,14193
+50,2,4,31,153,Nebraska,Sarpy County,2015,175294
+50,2,4,31,155,Nebraska,Saunders County,2015,20953
+50,2,4,31,157,Nebraska,Scotts Bluff County,2015,36273
+50,2,4,31,159,Nebraska,Seward County,2015,16998
+50,2,4,31,161,Nebraska,Sheridan County,2015,5220
+50,2,4,31,163,Nebraska,Sherman County,2015,3036
+50,2,4,31,165,Nebraska,Sioux County,2015,1272
+50,2,4,31,167,Nebraska,Stanton County,2015,5946
+50,2,4,31,169,Nebraska,Thayer County,2015,5129
+50,2,4,31,171,Nebraska,Thomas County,2015,692
+50,2,4,31,173,Nebraska,Thurston County,2015,7077
+50,2,4,31,175,Nebraska,Valley County,2015,4167
+50,2,4,31,177,Nebraska,Washington County,2015,19925
+50,2,4,31,179,Nebraska,Wayne County,2015,9375
+50,2,4,31,181,Nebraska,Webster County,2015,3594
+50,2,4,31,183,Nebraska,Wheeler County,2015,779
+50,2,4,31,185,Nebraska,York County,2015,13804
+40,4,8,32,0,Nevada,Nevada,2015,2868531
+50,4,8,32,1,Nevada,Churchill County,2015,24006
+50,4,8,32,3,Nevada,Clark County,2015,2097832
+50,4,8,32,5,Nevada,Douglas County,2015,47422
+50,4,8,32,7,Nevada,Elko County,2015,51756
+50,4,8,32,9,Nevada,Esmeralda County,2015,847
+50,4,8,32,11,Nevada,Eureka County,2015,2040
+50,4,8,32,13,Nevada,Humboldt County,2015,17033
+50,4,8,32,15,Nevada,Lander County,2015,5885
+50,4,8,32,17,Nevada,Lincoln County,2015,5135
+50,4,8,32,19,Nevada,Lyon County,2015,51999
+50,4,8,32,21,Nevada,Mineral County,2015,4423
+50,4,8,32,23,Nevada,Nye County,2015,43008
+50,4,8,32,27,Nevada,Pershing County,2015,6620
+50,4,8,32,29,Nevada,Storey County,2015,3881
+50,4,8,32,31,Nevada,Washoe County,2015,442617
+50,4,8,32,33,Nevada,White Pine County,2015,9875
+50,4,8,32,510,Nevada,Carson City,2015,54152
+40,1,1,33,0,New Hampshire,New Hampshire,2015,1337480
+50,1,1,33,1,New Hampshire,Belknap County,2015,60408
+50,1,1,33,3,New Hampshire,Carroll County,2015,47442
+50,1,1,33,5,New Hampshire,Cheshire County,2015,76390
+50,1,1,33,7,New Hampshire,Coos County,2015,32351
+50,1,1,33,9,New Hampshire,Grafton County,2015,89566
+50,1,1,33,11,New Hampshire,Hillsborough County,2015,409229
+50,1,1,33,13,New Hampshire,Merrimack County,2015,148770
+50,1,1,33,15,New Hampshire,Rockingham County,2015,302975
+50,1,1,33,17,New Hampshire,Strafford County,2015,127174
+50,1,1,33,19,New Hampshire,Sullivan County,2015,43175
+40,1,2,34,0,New Jersey,New Jersey,2015,8870312
+50,1,2,34,1,New Jersey,Atlantic County,2015,270206
+50,1,2,34,3,New Jersey,Bergen County,2015,926481
+50,1,2,34,5,New Jersey,Burlington County,2015,447906
+50,1,2,34,7,New Jersey,Camden County,2015,507760
+50,1,2,34,9,New Jersey,Cape May County,2015,94330
+50,1,2,34,11,New Jersey,Cumberland County,2015,154580
+50,1,2,34,13,New Jersey,Essex County,2015,790546
+50,1,2,34,15,New Jersey,Gloucester County,2015,291022
+50,1,2,34,17,New Jersey,Hudson County,2015,664595
+50,1,2,34,19,New Jersey,Hunterdon County,2015,125569
+50,1,2,34,21,New Jersey,Mercer County,2015,368266
+50,1,2,34,23,New Jersey,Middlesex County,2015,825471
+50,1,2,34,25,New Jersey,Monmouth County,2015,624180
+50,1,2,34,27,New Jersey,Morris County,2015,494370
+50,1,2,34,29,New Jersey,Ocean County,2015,587238
+50,1,2,34,31,New Jersey,Passaic County,2015,504556
+50,1,2,34,33,New Jersey,Salem County,2015,63754
+50,1,2,34,35,New Jersey,Somerset County,2015,329682
+50,1,2,34,37,New Jersey,Sussex County,2015,143059
+50,1,2,34,39,New Jersey,Union County,2015,549954
+50,1,2,34,41,New Jersey,Warren County,2015,106787
+40,4,8,35,0,New Mexico,New Mexico,2015,2090071
+50,4,8,35,1,New Mexico,Bernalillo County,2015,676440
+50,4,8,35,3,New Mexico,Catron County,2015,3480
+50,4,8,35,5,New Mexico,Chaves County,2015,65856
+50,4,8,35,6,New Mexico,Cibola County,2015,27046
+50,4,8,35,7,New Mexico,Colfax County,2015,12434
+50,4,8,35,9,New Mexico,Curry County,2015,50344
+50,4,8,35,11,New Mexico,De Baca County,2015,1877
+50,4,8,35,13,New Mexico,DoÒa Ana County,2015,214028
+50,4,8,35,15,New Mexico,Eddy County,2015,57756
+50,4,8,35,17,New Mexico,Grant County,2015,28369
+50,4,8,35,19,New Mexico,Guadalupe County,2015,4355
+50,4,8,35,21,New Mexico,Harding County,2015,717
+50,4,8,35,23,New Mexico,Hidalgo County,2015,4441
+50,4,8,35,25,New Mexico,Lea County,2015,71480
+50,4,8,35,27,New Mexico,Lincoln County,2015,19365
+50,4,8,35,28,New Mexico,Los Alamos County,2015,17848
+50,4,8,35,29,New Mexico,Luna County,2015,24370
+50,4,8,35,31,New Mexico,McKinley County,2015,73485
+50,4,8,35,33,New Mexico,Mora County,2015,4609
+50,4,8,35,35,New Mexico,Otero County,2015,64838
+50,4,8,35,37,New Mexico,Quay County,2015,8449
+50,4,8,35,39,New Mexico,Rio Arriba County,2015,39358
+50,4,8,35,41,New Mexico,Roosevelt County,2015,19157
+50,4,8,35,43,New Mexico,Sandoval County,2015,138586
+50,4,8,35,45,New Mexico,San Juan County,2015,128324
+50,4,8,35,47,New Mexico,San Miguel County,2015,28223
+50,4,8,35,49,New Mexico,Santa Fe County,2015,148199
+50,4,8,35,51,New Mexico,Sierra County,2015,11252
+50,4,8,35,53,New Mexico,Socorro County,2015,17148
+50,4,8,35,55,New Mexico,Taos County,2015,32806
+50,4,8,35,57,New Mexico,Torrance County,2015,15592
+50,4,8,35,59,New Mexico,Union County,2015,4174
+50,4,8,35,61,New Mexico,Valencia County,2015,75665
+40,1,2,36,0,New York,New York,2015,19657321
+50,1,2,36,1,New York,Albany County,2015,307521
+50,1,2,36,3,New York,Allegany County,2015,47352
+50,1,2,36,5,New York,Bronx County,2015,1439480
+50,1,2,36,7,New York,Broome County,2015,195981
+50,1,2,36,9,New York,Cattaraugus County,2015,77941
+50,1,2,36,11,New York,Cayuga County,2015,78323
+50,1,2,36,13,New York,Chautauqua County,2015,130582
+50,1,2,36,15,New York,Chemung County,2015,86771
+50,1,2,36,17,New York,Chenango County,2015,48794
+50,1,2,36,19,New York,Clinton County,2015,80759
+50,1,2,36,21,New York,Columbia County,2015,61451
+50,1,2,36,23,New York,Cortland County,2015,48299
+50,1,2,36,25,New York,Delaware County,2015,45895
+50,1,2,36,27,New York,Dutchess County,2015,294105
+50,1,2,36,29,New York,Erie County,2015,920858
+50,1,2,36,31,New York,Essex County,2015,37973
+50,1,2,36,33,New York,Franklin County,2015,50552
+50,1,2,36,35,New York,Fulton County,2015,53812
+50,1,2,36,37,New York,Genesee County,2015,58488
+50,1,2,36,39,New York,Greene County,2015,47621
+50,1,2,36,41,New York,Hamilton County,2015,4700
+50,1,2,36,43,New York,Herkimer County,2015,62659
+50,1,2,36,45,New York,Jefferson County,2015,116539
+50,1,2,36,47,New York,Kings County,2015,2608797
+50,1,2,36,49,New York,Lewis County,2015,26824
+50,1,2,36,51,New York,Livingston County,2015,64336
+50,1,2,36,53,New York,Madison County,2015,71779
+50,1,2,36,55,New York,Monroe County,2015,745847
+50,1,2,36,57,New York,Montgomery County,2015,49576
+50,1,2,36,59,New York,Nassau County,2015,1354987
+50,1,2,36,61,New York,New York County,2015,1637327
+50,1,2,36,63,New York,Niagara County,2015,212391
+50,1,2,36,65,New York,Oneida County,2015,231315
+50,1,2,36,67,New York,Onondaga County,2015,466320
+50,1,2,36,69,New York,Ontario County,2015,109324
+50,1,2,36,71,New York,Orange County,2015,375911
+50,1,2,36,73,New York,Orleans County,2015,41482
+50,1,2,36,75,New York,Oswego County,2015,119764
+50,1,2,36,77,New York,Otsego County,2015,60524
+50,1,2,36,79,New York,Putnam County,2015,99158
+50,1,2,36,81,New York,Queens County,2015,2305252
+50,1,2,36,83,New York,Rensselaer County,2015,159413
+50,1,2,36,85,New York,Richmond County,2015,472301
+50,1,2,36,87,New York,Rockland County,2015,322938
+50,1,2,36,89,New York,St. Lawrence County,2015,110399
+50,1,2,36,91,New York,Saratoga County,2015,226182
+50,1,2,36,93,New York,Schenectady County,2015,154773
+50,1,2,36,95,New York,Schoharie County,2015,31408
+50,1,2,36,97,New York,Schuyler County,2015,18037
+50,1,2,36,99,New York,Seneca County,2015,34814
+50,1,2,36,101,New York,Steuben County,2015,97549
+50,1,2,36,103,New York,Suffolk County,2015,1491997
+50,1,2,36,105,New York,Sullivan County,2015,74850
+50,1,2,36,107,New York,Tioga County,2015,49390
+50,1,2,36,109,New York,Tompkins County,2015,103187
+50,1,2,36,111,New York,Ulster County,2015,179696
+50,1,2,36,113,New York,Warren County,2015,64449
+50,1,2,36,115,New York,Washington County,2015,62277
+50,1,2,36,117,New York,Wayne County,2015,91316
+50,1,2,36,119,New York,Westchester County,2015,968891
+50,1,2,36,121,New York,Wyoming County,2015,40939
+50,1,2,36,123,New York,Yates County,2015,25145
+40,3,5,37,0,North Carolina,North Carolina,2015,10037218
+50,3,5,37,1,North Carolina,Alamance County,2015,157104
+50,3,5,37,3,North Carolina,Alexander County,2015,36960
+50,3,5,37,5,North Carolina,Alleghany County,2015,10855
+50,3,5,37,7,North Carolina,Anson County,2015,25616
+50,3,5,37,9,North Carolina,Ashe County,2015,26625
+50,3,5,37,11,North Carolina,Avery County,2015,17494
+50,3,5,37,13,North Carolina,Beaufort County,2015,47403
+50,3,5,37,15,North Carolina,Bertie County,2015,20167
+50,3,5,37,17,North Carolina,Bladen County,2015,34090
+50,3,5,37,19,North Carolina,Brunswick County,2015,122322
+50,3,5,37,21,North Carolina,Buncombe County,2015,252160
+50,3,5,37,23,North Carolina,Burke County,2015,89337
+50,3,5,37,25,North Carolina,Cabarrus County,2015,196483
+50,3,5,37,27,North Carolina,Caldwell County,2015,81554
+50,3,5,37,29,North Carolina,Camden County,2015,10284
+50,3,5,37,31,North Carolina,Carteret County,2015,68766
+50,3,5,37,33,North Carolina,Caswell County,2015,22813
+50,3,5,37,35,North Carolina,Catawba County,2015,155607
+50,3,5,37,37,North Carolina,Chatham County,2015,68307
+50,3,5,37,39,North Carolina,Cherokee County,2015,27126
+50,3,5,37,41,North Carolina,Chowan County,2015,14251
+50,3,5,37,43,North Carolina,Clay County,2015,10644
+50,3,5,37,45,North Carolina,Cleveland County,2015,96881
+50,3,5,37,47,North Carolina,Columbus County,2015,56698
+50,3,5,37,49,North Carolina,Craven County,2015,102988
+50,3,5,37,51,North Carolina,Cumberland County,2015,331598
+50,3,5,37,53,North Carolina,Currituck County,2015,25128
+50,3,5,37,55,North Carolina,Dare County,2015,35499
+50,3,5,37,57,North Carolina,Davidson County,2015,163548
+50,3,5,37,59,North Carolina,Davie County,2015,41652
+50,3,5,37,61,North Carolina,Duplin County,2015,58879
+50,3,5,37,63,North Carolina,Durham County,2015,301014
+50,3,5,37,65,North Carolina,Edgecombe County,2015,53734
+50,3,5,37,67,North Carolina,Forsyth County,2015,367516
+50,3,5,37,69,North Carolina,Franklin County,2015,63667
+50,3,5,37,71,North Carolina,Gaston County,2015,212998
+50,3,5,37,73,North Carolina,Gates County,2015,11530
+50,3,5,37,75,North Carolina,Graham County,2015,8587
+50,3,5,37,77,North Carolina,Granville County,2015,58201
+50,3,5,37,79,North Carolina,Greene County,2015,20952
+50,3,5,37,81,North Carolina,Guilford County,2015,517281
+50,3,5,37,83,North Carolina,Halifax County,2015,52190
+50,3,5,37,85,North Carolina,Harnett County,2015,128145
+50,3,5,37,87,North Carolina,Haywood County,2015,59724
+50,3,5,37,89,North Carolina,Henderson County,2015,111943
+50,3,5,37,91,North Carolina,Hertford County,2015,24404
+50,3,5,37,93,North Carolina,Hoke County,2015,52805
+50,3,5,37,95,North Carolina,Hyde County,2015,5425
+50,3,5,37,97,North Carolina,Iredell County,2015,169592
+50,3,5,37,99,North Carolina,Jackson County,2015,41352
+50,3,5,37,101,North Carolina,Johnston County,2015,185130
+50,3,5,37,103,North Carolina,Jones County,2015,9770
+50,3,5,37,105,North Carolina,Lee County,2015,59402
+50,3,5,37,107,North Carolina,Lenoir County,2015,58012
+50,3,5,37,109,North Carolina,Lincoln County,2015,80646
+50,3,5,37,111,North Carolina,McDowell County,2015,44982
+50,3,5,37,113,North Carolina,Macon County,2015,34117
+50,3,5,37,115,North Carolina,Madison County,2015,21175
+50,3,5,37,117,North Carolina,Martin County,2015,23267
+50,3,5,37,119,North Carolina,Mecklenburg County,2015,1034049
+50,3,5,37,121,North Carolina,Mitchell County,2015,15062
+50,3,5,37,123,North Carolina,Montgomery County,2015,27432
+50,3,5,37,125,North Carolina,Moore County,2015,94057
+50,3,5,37,127,North Carolina,Nash County,2015,93855
+50,3,5,37,129,North Carolina,New Hanover County,2015,219619
+50,3,5,37,131,North Carolina,Northampton County,2015,20539
+50,3,5,37,133,North Carolina,Onslow County,2015,193402
+50,3,5,37,135,North Carolina,Orange County,2015,141449
+50,3,5,37,137,North Carolina,Pamlico County,2015,12739
+50,3,5,37,139,North Carolina,Pasquotank County,2015,39433
+50,3,5,37,141,North Carolina,Pender County,2015,57463
+50,3,5,37,143,North Carolina,Perquimans County,2015,13474
+50,3,5,37,145,North Carolina,Person County,2015,39214
+50,3,5,37,147,North Carolina,Pitt County,2015,176178
+50,3,5,37,149,North Carolina,Polk County,2015,20417
+50,3,5,37,151,North Carolina,Randolph County,2015,142560
+50,3,5,37,153,North Carolina,Richmond County,2015,45427
+50,3,5,37,155,North Carolina,Robeson County,2015,134446
+50,3,5,37,157,North Carolina,Rockingham County,2015,91697
+50,3,5,37,159,North Carolina,Rowan County,2015,138520
+50,3,5,37,161,North Carolina,Rutherford County,2015,66408
+50,3,5,37,163,North Carolina,Sampson County,2015,63562
+50,3,5,37,165,North Carolina,Scotland County,2015,35333
+50,3,5,37,167,North Carolina,Stanly County,2015,60624
+50,3,5,37,169,North Carolina,Stokes County,2015,46143
+50,3,5,37,171,North Carolina,Surry County,2015,71990
+50,3,5,37,173,North Carolina,Swain County,2015,14325
+50,3,5,37,175,North Carolina,Transylvania County,2015,33185
+50,3,5,37,177,North Carolina,Tyrrell County,2015,4137
+50,3,5,37,179,North Carolina,Union County,2015,222051
+50,3,5,37,181,North Carolina,Vance County,2015,44477
+50,3,5,37,183,North Carolina,Wake County,2015,1022871
+50,3,5,37,185,North Carolina,Warren County,2015,20190
+50,3,5,37,187,North Carolina,Washington County,2015,12251
+50,3,5,37,189,North Carolina,Watauga County,2015,53129
+50,3,5,37,191,North Carolina,Wayne County,2015,124400
+50,3,5,37,193,North Carolina,Wilkes County,2015,68302
+50,3,5,37,195,North Carolina,Wilson County,2015,81228
+50,3,5,37,197,North Carolina,Yadkin County,2015,37630
+50,3,5,37,199,North Carolina,Yancey County,2015,17550
+40,2,4,38,0,North Dakota,North Dakota,2015,755537
+50,2,4,38,1,North Dakota,Adams County,2015,2396
+50,2,4,38,3,North Dakota,Barnes County,2015,11017
+50,2,4,38,5,North Dakota,Benson County,2015,6822
+50,2,4,38,7,North Dakota,Billings County,2015,950
+50,2,4,38,9,North Dakota,Bottineau County,2015,6742
+50,2,4,38,11,North Dakota,Bowman County,2015,3276
+50,2,4,38,13,North Dakota,Burke County,2015,2346
+50,2,4,38,15,North Dakota,Burleigh County,2015,93284
+50,2,4,38,17,North Dakota,Cass County,2015,171028
+50,2,4,38,19,North Dakota,Cavalier County,2015,3824
+50,2,4,38,21,North Dakota,Dickey County,2015,5052
+50,2,4,38,23,North Dakota,Divide County,2015,2457
+50,2,4,38,25,North Dakota,Dunn County,2015,4576
+50,2,4,38,27,North Dakota,Eddy County,2015,2304
+50,2,4,38,29,North Dakota,Emmons County,2015,3397
+50,2,4,38,31,North Dakota,Foster County,2015,3325
+50,2,4,38,33,North Dakota,Golden Valley County,2015,1881
+50,2,4,38,35,North Dakota,Grand Forks County,2015,70448
+50,2,4,38,37,North Dakota,Grant County,2015,2396
+50,2,4,38,39,North Dakota,Griggs County,2015,2288
+50,2,4,38,41,North Dakota,Hettinger County,2015,2658
+50,2,4,38,43,North Dakota,Kidder County,2015,2451
+50,2,4,38,45,North Dakota,LaMoure County,2015,4136
+50,2,4,38,47,North Dakota,Logan County,2015,1927
+50,2,4,38,49,North Dakota,McHenry County,2015,5975
+50,2,4,38,51,North Dakota,McIntosh County,2015,2716
+50,2,4,38,53,North Dakota,McKenzie County,2015,12817
+50,2,4,38,55,North Dakota,McLean County,2015,9664
+50,2,4,38,57,North Dakota,Mercer County,2015,8790
+50,2,4,38,59,North Dakota,Morton County,2015,30273
+50,2,4,38,61,North Dakota,Mountrail County,2015,10311
+50,2,4,38,63,North Dakota,Nelson County,2015,2916
+50,2,4,38,65,North Dakota,Oliver County,2015,1866
+50,2,4,38,67,North Dakota,Pembina County,2015,7033
+50,2,4,38,69,North Dakota,Pierce County,2015,4269
+50,2,4,38,71,North Dakota,Ramsey County,2015,11667
+50,2,4,38,73,North Dakota,Ransom County,2015,5455
+50,2,4,38,75,North Dakota,Renville County,2015,2550
+50,2,4,38,77,North Dakota,Richland County,2015,16306
+50,2,4,38,79,North Dakota,Rolette County,2015,14707
+50,2,4,38,81,North Dakota,Sargent County,2015,3871
+50,2,4,38,83,North Dakota,Sheridan County,2015,1311
+50,2,4,38,85,North Dakota,Sioux County,2015,4385
+50,2,4,38,87,North Dakota,Slope County,2015,783
+50,2,4,38,89,North Dakota,Stark County,2015,31908
+50,2,4,38,91,North Dakota,Steele County,2015,1918
+50,2,4,38,93,North Dakota,Stutsman County,2015,21090
+50,2,4,38,95,North Dakota,Towner County,2015,2250
+50,2,4,38,97,North Dakota,Traill County,2015,7991
+50,2,4,38,99,North Dakota,Walsh County,2015,10852
+50,2,4,38,101,North Dakota,Ward County,2015,71409
+50,2,4,38,103,North Dakota,Wells County,2015,4094
+50,2,4,38,105,North Dakota,Williams County,2015,35379
+40,2,3,39,0,Ohio,Ohio,2015,11622315
+50,2,3,39,1,Ohio,Adams County,2015,27919
+50,2,3,39,3,Ohio,Allen County,2015,104141
+50,2,3,39,5,Ohio,Ashland County,2015,53317
+50,2,3,39,7,Ohio,Ashtabula County,2015,98443
+50,2,3,39,9,Ohio,Athens County,2015,65949
+50,2,3,39,11,Ohio,Auglaize County,2015,45754
+50,2,3,39,13,Ohio,Belmont County,2015,69018
+50,2,3,39,15,Ohio,Brown County,2015,43717
+50,2,3,39,17,Ohio,Butler County,2015,376173
+50,2,3,39,19,Ohio,Carroll County,2015,27729
+50,2,3,39,21,Ohio,Champaign County,2015,38976
+50,2,3,39,23,Ohio,Clark County,2015,135810
+50,2,3,39,25,Ohio,Clermont County,2015,202077
+50,2,3,39,27,Ohio,Clinton County,2015,41864
+50,2,3,39,29,Ohio,Columbiana County,2015,104788
+50,2,3,39,31,Ohio,Coshocton County,2015,36579
+50,2,3,39,33,Ohio,Crawford County,2015,42327
+50,2,3,39,35,Ohio,Cuyahoga County,2015,1259109
+50,2,3,39,37,Ohio,Darke County,2015,52002
+50,2,3,39,39,Ohio,Defiance County,2015,38349
+50,2,3,39,41,Ohio,Delaware County,2015,193624
+50,2,3,39,43,Ohio,Erie County,2015,75388
+50,2,3,39,45,Ohio,Fairfield County,2015,151310
+50,2,3,39,47,Ohio,Fayette County,2015,28617
+50,2,3,39,49,Ohio,Franklin County,2015,1257891
+50,2,3,39,51,Ohio,Fulton County,2015,42299
+50,2,3,39,53,Ohio,Gallia County,2015,30258
+50,2,3,39,55,Ohio,Geauga County,2015,93899
+50,2,3,39,57,Ohio,Greene County,2015,164421
+50,2,3,39,59,Ohio,Guernsey County,2015,39402
+50,2,3,39,61,Ohio,Hamilton County,2015,809902
+50,2,3,39,63,Ohio,Hancock County,2015,75726
+50,2,3,39,65,Ohio,Hardin County,2015,31615
+50,2,3,39,67,Ohio,Harrison County,2015,15396
+50,2,3,39,69,Ohio,Henry County,2015,27490
+50,2,3,39,71,Ohio,Highland County,2015,42973
+50,2,3,39,73,Ohio,Hocking County,2015,28502
+50,2,3,39,75,Ohio,Holmes County,2015,43885
+50,2,3,39,77,Ohio,Huron County,2015,58325
+50,2,3,39,79,Ohio,Jackson County,2015,32575
+50,2,3,39,81,Ohio,Jefferson County,2015,67546
+50,2,3,39,83,Ohio,Knox County,2015,61045
+50,2,3,39,85,Ohio,Lake County,2015,229843
+50,2,3,39,87,Ohio,Lawrence County,2015,60990
+50,2,3,39,89,Ohio,Licking County,2015,170721
+50,2,3,39,91,Ohio,Logan County,2015,45255
+50,2,3,39,93,Ohio,Lorain County,2015,305533
+50,2,3,39,95,Ohio,Lucas County,2015,433826
+50,2,3,39,97,Ohio,Madison County,2015,44149
+50,2,3,39,99,Ohio,Mahoning County,2015,231988
+50,2,3,39,101,Ohio,Marion County,2015,65470
+50,2,3,39,103,Ohio,Medina County,2015,176185
+50,2,3,39,105,Ohio,Meigs County,2015,23192
+50,2,3,39,107,Ohio,Mercer County,2015,40735
+50,2,3,39,109,Ohio,Miami County,2015,104100
+50,2,3,39,111,Ohio,Monroe County,2015,14267
+50,2,3,39,113,Ohio,Montgomery County,2015,532059
+50,2,3,39,115,Ohio,Morgan County,2015,14736
+50,2,3,39,117,Ohio,Morrow County,2015,34954
+50,2,3,39,119,Ohio,Muskingum County,2015,86213
+50,2,3,39,121,Ohio,Noble County,2015,14468
+50,2,3,39,123,Ohio,Ottawa County,2015,40761
+50,2,3,39,125,Ohio,Paulding County,2015,18953
+50,2,3,39,127,Ohio,Perry County,2015,35970
+50,2,3,39,129,Ohio,Pickaway County,2015,56991
+50,2,3,39,131,Ohio,Pike County,2015,28115
+50,2,3,39,133,Ohio,Portage County,2015,162667
+50,2,3,39,135,Ohio,Preble County,2015,41313
+50,2,3,39,137,Ohio,Putnam County,2015,34020
+50,2,3,39,139,Ohio,Richland County,2015,121720
+50,2,3,39,141,Ohio,Ross County,2015,77067
+50,2,3,39,143,Ohio,Sandusky County,2015,59476
+50,2,3,39,145,Ohio,Scioto County,2015,77024
+50,2,3,39,147,Ohio,Seneca County,2015,55672
+50,2,3,39,149,Ohio,Shelby County,2015,49036
+50,2,3,39,151,Ohio,Stark County,2015,374798
+50,2,3,39,153,Ohio,Summit County,2015,541940
+50,2,3,39,155,Ohio,Trumbull County,2015,203442
+50,2,3,39,157,Ohio,Tuscarawas County,2015,92782
+50,2,3,39,159,Ohio,Union County,2015,54394
+50,2,3,39,161,Ohio,Van Wert County,2015,28330
+50,2,3,39,163,Ohio,Vinton County,2015,13083
+50,2,3,39,165,Ohio,Warren County,2015,224018
+50,2,3,39,167,Ohio,Washington County,2015,61075
+50,2,3,39,169,Ohio,Wayne County,2015,116262
+50,2,3,39,171,Ohio,Williams County,2015,37036
+50,2,3,39,173,Ohio,Wood County,2015,129375
+50,2,3,39,175,Ohio,Wyandot County,2015,22181
+40,3,7,40,0,Oklahoma,Oklahoma,2015,3910518
+50,3,7,40,1,Oklahoma,Adair County,2015,22266
+50,3,7,40,3,Oklahoma,Alfalfa County,2015,5912
+50,3,7,40,5,Oklahoma,Atoka County,2015,13888
+50,3,7,40,7,Oklahoma,Beaver County,2015,5460
+50,3,7,40,9,Oklahoma,Beckham County,2015,23564
+50,3,7,40,11,Oklahoma,Blaine County,2015,9772
+50,3,7,40,13,Oklahoma,Bryan County,2015,45080
+50,3,7,40,15,Oklahoma,Caddo County,2015,29439
+50,3,7,40,17,Oklahoma,Canadian County,2015,133241
+50,3,7,40,19,Oklahoma,Carter County,2015,48587
+50,3,7,40,21,Oklahoma,Cherokee County,2015,48392
+50,3,7,40,23,Oklahoma,Choctaw County,2015,14987
+50,3,7,40,25,Oklahoma,Cimarron County,2015,2225
+50,3,7,40,27,Oklahoma,Cleveland County,2015,274041
+50,3,7,40,29,Oklahoma,Coal County,2015,5600
+50,3,7,40,31,Oklahoma,Comanche County,2015,123689
+50,3,7,40,33,Oklahoma,Cotton County,2015,6008
+50,3,7,40,35,Oklahoma,Craig County,2015,14706
+50,3,7,40,37,Oklahoma,Creek County,2015,70798
+50,3,7,40,39,Oklahoma,Custer County,2015,29568
+50,3,7,40,41,Oklahoma,Delaware County,2015,41738
+50,3,7,40,43,Oklahoma,Dewey County,2015,4986
+50,3,7,40,45,Oklahoma,Ellis County,2015,4218
+50,3,7,40,47,Oklahoma,Garfield County,2015,63246
+50,3,7,40,49,Oklahoma,Garvin County,2015,27913
+50,3,7,40,51,Oklahoma,Grady County,2015,54563
+50,3,7,40,53,Oklahoma,Grant County,2015,4497
+50,3,7,40,55,Oklahoma,Greer County,2015,6031
+50,3,7,40,57,Oklahoma,Harmon County,2015,2782
+50,3,7,40,59,Oklahoma,Harper County,2015,3825
+50,3,7,40,61,Oklahoma,Haskell County,2015,12749
+50,3,7,40,63,Oklahoma,Hughes County,2015,13589
+50,3,7,40,65,Oklahoma,Jackson County,2015,25464
+50,3,7,40,67,Oklahoma,Jefferson County,2015,6259
+50,3,7,40,69,Oklahoma,Johnston County,2015,10977
+50,3,7,40,71,Oklahoma,Kay County,2015,45261
+50,3,7,40,73,Oklahoma,Kingfisher County,2015,15595
+50,3,7,40,75,Oklahoma,Kiowa County,2015,9120
+50,3,7,40,77,Oklahoma,Latimer County,2015,10622
+50,3,7,40,79,Oklahoma,Le Flore County,2015,50030
+50,3,7,40,81,Oklahoma,Lincoln County,2015,34937
+50,3,7,40,83,Oklahoma,Logan County,2015,45355
+50,3,7,40,85,Oklahoma,Love County,2015,9815
+50,3,7,40,87,Oklahoma,McClain County,2015,37981
+50,3,7,40,89,Oklahoma,McCurtain County,2015,33174
+50,3,7,40,91,Oklahoma,McIntosh County,2015,19811
+50,3,7,40,93,Oklahoma,Major County,2015,7774
+50,3,7,40,95,Oklahoma,Marshall County,2015,16267
+50,3,7,40,97,Oklahoma,Mayes County,2015,40901
+50,3,7,40,99,Oklahoma,Murray County,2015,13859
+50,3,7,40,101,Oklahoma,Muskogee County,2015,69349
+50,3,7,40,103,Oklahoma,Noble County,2015,11560
+50,3,7,40,105,Oklahoma,Nowata County,2015,10517
+50,3,7,40,107,Oklahoma,Okfuskee County,2015,12110
+50,3,7,40,109,Oklahoma,Oklahoma County,2015,777406
+50,3,7,40,111,Oklahoma,Okmulgee County,2015,39072
+50,3,7,40,113,Oklahoma,Osage County,2015,47333
+50,3,7,40,115,Oklahoma,Ottawa County,2015,31890
+50,3,7,40,117,Oklahoma,Pawnee County,2015,16436
+50,3,7,40,119,Oklahoma,Payne County,2015,81443
+50,3,7,40,121,Oklahoma,Pittsburg County,2015,44725
+50,3,7,40,123,Oklahoma,Pontotoc County,2015,38343
+50,3,7,40,125,Oklahoma,Pottawatomie County,2015,71510
+50,3,7,40,127,Oklahoma,Pushmataha County,2015,11155
+50,3,7,40,129,Oklahoma,Roger Mills County,2015,3782
+50,3,7,40,131,Oklahoma,Rogers County,2015,90113
+50,3,7,40,133,Oklahoma,Seminole County,2015,25410
+50,3,7,40,135,Oklahoma,Sequoyah County,2015,41811
+50,3,7,40,137,Oklahoma,Stephens County,2015,44604
+50,3,7,40,139,Oklahoma,Texas County,2015,21452
+50,3,7,40,141,Oklahoma,Tillman County,2015,7565
+50,3,7,40,143,Oklahoma,Tulsa County,2015,640851
+50,3,7,40,145,Oklahoma,Wagoner County,2015,76753
+50,3,7,40,147,Oklahoma,Washington County,2015,52144
+50,3,7,40,149,Oklahoma,Washita County,2015,11697
+50,3,7,40,151,Oklahoma,Woods County,2015,9306
+50,3,7,40,153,Oklahoma,Woodward County,2015,21619
+40,4,9,41,0,Oregon,Oregon,2015,4018542
+50,4,9,41,1,Oregon,Baker County,2015,15899
+50,4,9,41,3,Oregon,Benton County,2015,88443
+50,4,9,41,5,Oregon,Clackamas County,2015,399852
+50,4,9,41,7,Oregon,Clatsop County,2015,37848
+50,4,9,41,9,Oregon,Columbia County,2015,49671
+50,4,9,41,11,Oregon,Coos County,2015,62696
+50,4,9,41,13,Oregon,Crook County,2015,21465
+50,4,9,41,15,Oregon,Curry County,2015,22329
+50,4,9,41,17,Oregon,Deschutes County,2015,174392
+50,4,9,41,19,Oregon,Douglas County,2015,107260
+50,4,9,41,21,Oregon,Gilliam County,2015,1866
+50,4,9,41,23,Oregon,Grant County,2015,7209
+50,4,9,41,25,Oregon,Harney County,2015,7154
+50,4,9,41,27,Oregon,Hood River County,2015,22925
+50,4,9,41,29,Oregon,Jackson County,2015,211587
+50,4,9,41,31,Oregon,Jefferson County,2015,22540
+50,4,9,41,33,Oregon,Josephine County,2015,84606
+50,4,9,41,35,Oregon,Klamath County,2015,65742
+50,4,9,41,37,Oregon,Lake County,2015,7789
+50,4,9,41,39,Oregon,Lane County,2015,362257
+50,4,9,41,41,Oregon,Lincoln County,2015,47046
+50,4,9,41,43,Oregon,Linn County,2015,120303
+50,4,9,41,45,Oregon,Malheur County,2015,30228
+50,4,9,41,47,Oregon,Marion County,2015,329106
+50,4,9,41,49,Oregon,Morrow County,2015,11130
+50,4,9,41,51,Oregon,Multnomah County,2015,790723
+50,4,9,41,53,Oregon,Polk County,2015,79012
+50,4,9,41,55,Oregon,Sherman County,2015,1691
+50,4,9,41,57,Oregon,Tillamook County,2015,25554
+50,4,9,41,59,Oregon,Umatilla County,2015,76491
+50,4,9,41,61,Oregon,Union County,2015,25720
+50,4,9,41,63,Oregon,Wallowa County,2015,6810
+50,4,9,41,65,Oregon,Wasco County,2015,25469
+50,4,9,41,67,Oregon,Washington County,2015,572955
+50,4,9,41,69,Oregon,Wheeler County,2015,1327
+50,4,9,41,71,Oregon,Yamhill County,2015,101447
+40,1,2,42,0,Pennsylvania,Pennsylvania,2015,12789838
+50,1,2,42,1,Pennsylvania,Adams County,2015,101847
+50,1,2,42,3,Pennsylvania,Allegheny County,2015,1229342
+50,1,2,42,5,Pennsylvania,Armstrong County,2015,66913
+50,1,2,42,7,Pennsylvania,Beaver County,2015,168311
+50,1,2,42,9,Pennsylvania,Bedford County,2015,48748
+50,1,2,42,11,Pennsylvania,Berks County,2015,415218
+50,1,2,42,13,Pennsylvania,Blair County,2015,124637
+50,1,2,42,15,Pennsylvania,Bradford County,2015,61656
+50,1,2,42,17,Pennsylvania,Bucks County,2015,625670
+50,1,2,42,19,Pennsylvania,Butler County,2015,186046
+50,1,2,42,21,Pennsylvania,Cambria County,2015,136083
+50,1,2,42,23,Pennsylvania,Cameron County,2015,4773
+50,1,2,42,25,Pennsylvania,Carbon County,2015,63766
+50,1,2,42,27,Pennsylvania,Centre County,2015,160641
+50,1,2,42,29,Pennsylvania,Chester County,2015,515098
+50,1,2,42,31,Pennsylvania,Clarion County,2015,38889
+50,1,2,42,33,Pennsylvania,Clearfield County,2015,80735
+50,1,2,42,35,Pennsylvania,Clinton County,2015,39402
+50,1,2,42,37,Pennsylvania,Columbia County,2015,66704
+50,1,2,42,39,Pennsylvania,Crawford County,2015,86540
+50,1,2,42,41,Pennsylvania,Cumberland County,2015,245891
+50,1,2,42,43,Pennsylvania,Dauphin County,2015,273195
+50,1,2,42,45,Pennsylvania,Delaware County,2015,563434
+50,1,2,42,47,Pennsylvania,Elk County,2015,30898
+50,1,2,42,49,Pennsylvania,Erie County,2015,278452
+50,1,2,42,51,Pennsylvania,Fayette County,2015,133272
+50,1,2,42,53,Pennsylvania,Forest County,2015,7386
+50,1,2,42,55,Pennsylvania,Franklin County,2015,153131
+50,1,2,42,57,Pennsylvania,Fulton County,2015,14510
+50,1,2,42,59,Pennsylvania,Greene County,2015,37431
+50,1,2,42,61,Pennsylvania,Huntingdon County,2015,45514
+50,1,2,42,63,Pennsylvania,Indiana County,2015,86800
+50,1,2,42,65,Pennsylvania,Jefferson County,2015,44350
+50,1,2,42,67,Pennsylvania,Juniata County,2015,24442
+50,1,2,42,69,Pennsylvania,Lackawanna County,2015,211974
+50,1,2,42,71,Pennsylvania,Lancaster County,2015,535960
+50,1,2,42,73,Pennsylvania,Lawrence County,2015,88154
+50,1,2,42,75,Pennsylvania,Lebanon County,2015,137492
+50,1,2,42,77,Pennsylvania,Lehigh County,2015,359689
+50,1,2,42,79,Pennsylvania,Luzerne County,2015,318203
+50,1,2,42,81,Pennsylvania,Lycoming County,2015,115644
+50,1,2,42,83,Pennsylvania,McKean County,2015,42424
+50,1,2,42,85,Pennsylvania,Mercer County,2015,113684
+50,1,2,42,87,Pennsylvania,Mifflin County,2015,46435
+50,1,2,42,89,Pennsylvania,Monroe County,2015,166602
+50,1,2,42,91,Pennsylvania,Montgomery County,2015,817432
+50,1,2,42,93,Pennsylvania,Montour County,2015,18297
+50,1,2,42,95,Pennsylvania,Northampton County,2015,300264
+50,1,2,42,97,Pennsylvania,Northumberland County,2015,92895
+50,1,2,42,99,Pennsylvania,Perry County,2015,45849
+50,1,2,42,101,Pennsylvania,Philadelphia County,2015,1571679
+50,1,2,42,103,Pennsylvania,Pike County,2015,55410
+50,1,2,42,105,Pennsylvania,Potter County,2015,17078
+50,1,2,42,107,Pennsylvania,Schuylkill County,2015,144136
+50,1,2,42,109,Pennsylvania,Snyder County,2015,40530
+50,1,2,42,111,Pennsylvania,Somerset County,2015,75404
+50,1,2,42,113,Pennsylvania,Sullivan County,2015,6266
+50,1,2,42,115,Pennsylvania,Susquehanna County,2015,41778
+50,1,2,42,117,Pennsylvania,Tioga County,2015,41562
+50,1,2,42,119,Pennsylvania,Union County,2015,45573
+50,1,2,42,121,Pennsylvania,Venango County,2015,52962
+50,1,2,42,123,Pennsylvania,Warren County,2015,40346
+50,1,2,42,125,Pennsylvania,Washington County,2015,207824
+50,1,2,42,127,Pennsylvania,Wayne County,2015,51828
+50,1,2,42,129,Pennsylvania,Westmoreland County,2015,357006
+50,1,2,42,131,Pennsylvania,Wyoming County,2015,27822
+50,1,2,42,133,Pennsylvania,York County,2015,441911
+40,1,1,44,0,Rhode Island,Rhode Island,2015,1056886
+50,1,1,44,1,Rhode Island,Bristol County,2015,49159
+50,1,1,44,3,Rhode Island,Kent County,2015,163801
+50,1,1,44,5,Rhode Island,Newport County,2015,83496
+50,1,1,44,7,Rhode Island,Providence County,2015,634146
+50,1,1,44,9,Rhode Island,Washington County,2015,126284
+40,3,5,45,0,South Carolina,South Carolina,2015,4896006
+50,3,5,45,1,South Carolina,Abbeville County,2015,24814
+50,3,5,45,3,South Carolina,Aiken County,2015,165827
+50,3,5,45,5,South Carolina,Allendale County,2015,9435
+50,3,5,45,7,South Carolina,Anderson County,2015,193806
+50,3,5,45,9,South Carolina,Bamberg County,2015,14676
+50,3,5,45,11,South Carolina,Barnwell County,2015,21791
+50,3,5,45,13,South Carolina,Beaufort County,2015,180070
+50,3,5,45,15,South Carolina,Berkeley County,2015,203313
+50,3,5,45,17,South Carolina,Calhoun County,2015,14758
+50,3,5,45,19,South Carolina,Charleston County,2015,389885
+50,3,5,45,21,South Carolina,Cherokee County,2015,56534
+50,3,5,45,23,South Carolina,Chester County,2015,32420
+50,3,5,45,25,South Carolina,Chesterfield County,2015,46161
+50,3,5,45,27,South Carolina,Clarendon County,2015,34037
+50,3,5,45,29,South Carolina,Colleton County,2015,37444
+50,3,5,45,31,South Carolina,Darlington County,2015,67539
+50,3,5,45,33,South Carolina,Dillon County,2015,31138
+50,3,5,45,35,South Carolina,Dorchester County,2015,152946
+50,3,5,45,37,South Carolina,Edgefield County,2015,26789
+50,3,5,45,39,South Carolina,Fairfield County,2015,22899
+50,3,5,45,41,South Carolina,Florence County,2015,138781
+50,3,5,45,43,South Carolina,Georgetown County,2015,61506
+50,3,5,45,45,South Carolina,Greenville County,2015,491218
+50,3,5,45,47,South Carolina,Greenwood County,2015,69992
+50,3,5,45,49,South Carolina,Hampton County,2015,19969
+50,3,5,45,51,South Carolina,Horry County,2015,309350
+50,3,5,45,53,South Carolina,Jasper County,2015,27490
+50,3,5,45,55,South Carolina,Kershaw County,2015,63677
+50,3,5,45,57,South Carolina,Lancaster County,2015,86346
+50,3,5,45,59,South Carolina,Laurens County,2015,66459
+50,3,5,45,61,South Carolina,Lee County,2015,17813
+50,3,5,45,63,South Carolina,Lexington County,2015,281855
+50,3,5,45,65,South Carolina,McCormick County,2015,9671
+50,3,5,45,67,South Carolina,Marion County,2015,31769
+50,3,5,45,69,South Carolina,Marlboro County,2015,27594
+50,3,5,45,71,South Carolina,Newberry County,2015,37787
+50,3,5,45,73,South Carolina,Oconee County,2015,75908
+50,3,5,45,75,South Carolina,Orangeburg County,2015,89174
+50,3,5,45,77,South Carolina,Pickens County,2015,121637
+50,3,5,45,79,South Carolina,Richland County,2015,406455
+50,3,5,45,81,South Carolina,Saluda County,2015,20155
+50,3,5,45,83,South Carolina,Spartanburg County,2015,296741
+50,3,5,45,85,South Carolina,Sumter County,2015,107346
+50,3,5,45,87,South Carolina,Union County,2015,27731
+50,3,5,45,89,South Carolina,Williamsburg County,2015,32515
+50,3,5,45,91,South Carolina,York County,2015,250785
+40,2,4,46,0,South Dakota,South Dakota,2015,854663
+50,2,4,46,3,South Dakota,Aurora County,2015,2745
+50,2,4,46,5,South Dakota,Beadle County,2015,18146
+50,2,4,46,7,South Dakota,Bennett County,2015,3407
+50,2,4,46,9,South Dakota,Bon Homme County,2015,6942
+50,2,4,46,11,South Dakota,Brookings County,2015,33861
+50,2,4,46,13,South Dakota,Brown County,2015,38434
+50,2,4,46,15,South Dakota,Brule County,2015,5239
+50,2,4,46,17,South Dakota,Buffalo County,2015,2099
+50,2,4,46,19,South Dakota,Butte County,2015,10219
+50,2,4,46,21,South Dakota,Campbell County,2015,1414
+50,2,4,46,23,South Dakota,Charles Mix County,2015,9359
+50,2,4,46,25,South Dakota,Clark County,2015,3652
+50,2,4,46,27,South Dakota,Clay County,2015,13798
+50,2,4,46,29,South Dakota,Codington County,2015,27907
+50,2,4,46,31,South Dakota,Corson County,2015,4172
+50,2,4,46,33,South Dakota,Custer County,2015,8456
+50,2,4,46,35,South Dakota,Davison County,2015,19922
+50,2,4,46,37,South Dakota,Day County,2015,5504
+50,2,4,46,39,South Dakota,Deuel County,2015,4326
+50,2,4,46,41,South Dakota,Dewey County,2015,5702
+50,2,4,46,43,South Dakota,Douglas County,2015,2947
+50,2,4,46,45,South Dakota,Edmunds County,2015,3998
+50,2,4,46,47,South Dakota,Fall River County,2015,6809
+50,2,4,46,49,South Dakota,Faulk County,2015,2310
+50,2,4,46,51,South Dakota,Grant County,2015,7221
+50,2,4,46,53,South Dakota,Gregory County,2015,4195
+50,2,4,46,55,South Dakota,Haakon County,2015,1849
+50,2,4,46,57,South Dakota,Hamlin County,2015,5977
+50,2,4,46,59,South Dakota,Hand County,2015,3305
+50,2,4,46,61,South Dakota,Hanson County,2015,3388
+50,2,4,46,63,South Dakota,Harding County,2015,1269
+50,2,4,46,65,South Dakota,Hughes County,2015,17579
+50,2,4,46,67,South Dakota,Hutchinson County,2015,7270
+50,2,4,46,69,South Dakota,Hyde County,2015,1387
+50,2,4,46,71,South Dakota,Jackson County,2015,3281
+50,2,4,46,73,South Dakota,Jerauld County,2015,2021
+50,2,4,46,75,South Dakota,Jones County,2015,917
+50,2,4,46,77,South Dakota,Kingsbury County,2015,4951
+50,2,4,46,79,South Dakota,Lake County,2015,12350
+50,2,4,46,81,South Dakota,Lawrence County,2015,24862
+50,2,4,46,83,South Dakota,Lincoln County,2015,52997
+50,2,4,46,85,South Dakota,Lyman County,2015,3875
+50,2,4,46,87,South Dakota,McCook County,2015,5485
+50,2,4,46,89,South Dakota,McPherson County,2015,2399
+50,2,4,46,91,South Dakota,Marshall County,2015,4830
+50,2,4,46,93,South Dakota,Meade County,2015,26794
+50,2,4,46,95,South Dakota,Mellette County,2015,2027
+50,2,4,46,97,South Dakota,Miner County,2015,2208
+50,2,4,46,99,South Dakota,Minnehaha County,2015,183563
+50,2,4,46,101,South Dakota,Moody County,2015,6454
+50,2,4,46,102,South Dakota,Oglala Lakota County,2015,14364
+50,2,4,46,103,South Dakota,Pennington County,2015,108212
+50,2,4,46,105,South Dakota,Perkins County,2015,2983
+50,2,4,46,107,South Dakota,Potter County,2015,2297
+50,2,4,46,109,South Dakota,Roberts County,2015,10210
+50,2,4,46,111,South Dakota,Sanborn County,2015,2348
+50,2,4,46,115,South Dakota,Spink County,2015,6555
+50,2,4,46,117,South Dakota,Stanley County,2015,2978
+50,2,4,46,119,South Dakota,Sully County,2015,1402
+50,2,4,46,121,South Dakota,Todd County,2015,10050
+50,2,4,46,123,South Dakota,Tripp County,2015,5423
+50,2,4,46,125,South Dakota,Turner County,2015,8133
+50,2,4,46,127,South Dakota,Union County,2015,14934
+50,2,4,46,129,South Dakota,Walworth County,2015,5412
+50,2,4,46,135,South Dakota,Yankton County,2015,22702
+50,2,4,46,137,South Dakota,Ziebach County,2015,2838
+40,3,6,47,0,Tennessee,Tennessee,2015,6595354
+50,3,6,47,1,Tennessee,Anderson County,2015,75500
+50,3,6,47,3,Tennessee,Bedford County,2015,46954
+50,3,6,47,5,Tennessee,Benton County,2015,16224
+50,3,6,47,7,Tennessee,Bledsoe County,2015,14611
+50,3,6,47,9,Tennessee,Blount County,2015,127047
+50,3,6,47,11,Tennessee,Bradley County,2015,103846
+50,3,6,47,13,Tennessee,Campbell County,2015,39805
+50,3,6,47,15,Tennessee,Cannon County,2015,13746
+50,3,6,47,17,Tennessee,Carroll County,2015,27986
+50,3,6,47,19,Tennessee,Carter County,2015,56385
+50,3,6,47,21,Tennessee,Cheatham County,2015,39597
+50,3,6,47,23,Tennessee,Chester County,2015,17130
+50,3,6,47,25,Tennessee,Claiborne County,2015,31585
+50,3,6,47,27,Tennessee,Clay County,2015,7668
+50,3,6,47,29,Tennessee,Cocke County,2015,35157
+50,3,6,47,31,Tennessee,Coffee County,2015,54130
+50,3,6,47,33,Tennessee,Crockett County,2015,14588
+50,3,6,47,35,Tennessee,Cumberland County,2015,58259
+50,3,6,47,37,Tennessee,Davidson County,2015,680397
+50,3,6,47,39,Tennessee,Decatur County,2015,11596
+50,3,6,47,41,Tennessee,DeKalb County,2015,19281
+50,3,6,47,43,Tennessee,Dickson County,2015,51357
+50,3,6,47,45,Tennessee,Dyer County,2015,37784
+50,3,6,47,47,Tennessee,Fayette County,2015,39291
+50,3,6,47,49,Tennessee,Fentress County,2015,17974
+50,3,6,47,51,Tennessee,Franklin County,2015,41385
+50,3,6,47,53,Tennessee,Gibson County,2015,49327
+50,3,6,47,55,Tennessee,Giles County,2015,28982
+50,3,6,47,57,Tennessee,Grainger County,2015,22847
+50,3,6,47,59,Tennessee,Greene County,2015,68621
+50,3,6,47,61,Tennessee,Grundy County,2015,13339
+50,3,6,47,63,Tennessee,Hamblen County,2015,63379
+50,3,6,47,65,Tennessee,Hamilton County,2015,353985
+50,3,6,47,67,Tennessee,Hancock County,2015,6577
+50,3,6,47,69,Tennessee,Hardeman County,2015,25823
+50,3,6,47,71,Tennessee,Hardin County,2015,25760
+50,3,6,47,73,Tennessee,Hawkins County,2015,56397
+50,3,6,47,75,Tennessee,Haywood County,2015,18040
+50,3,6,47,77,Tennessee,Henderson County,2015,28092
+50,3,6,47,79,Tennessee,Henry County,2015,32133
+50,3,6,47,81,Tennessee,Hickman County,2015,24395
+50,3,6,47,83,Tennessee,Houston County,2015,8127
+50,3,6,47,85,Tennessee,Humphreys County,2015,18153
+50,3,6,47,87,Tennessee,Jackson County,2015,11541
+50,3,6,47,89,Tennessee,Jefferson County,2015,53049
+50,3,6,47,91,Tennessee,Johnson County,2015,17851
+50,3,6,47,93,Tennessee,Knox County,2015,451551
+50,3,6,47,95,Tennessee,Lake County,2015,7603
+50,3,6,47,97,Tennessee,Lauderdale County,2015,26907
+50,3,6,47,99,Tennessee,Lawrence County,2015,42607
+50,3,6,47,101,Tennessee,Lewis County,2015,11884
+50,3,6,47,103,Tennessee,Lincoln County,2015,33634
+50,3,6,47,105,Tennessee,Loudon County,2015,50950
+50,3,6,47,107,Tennessee,McMinn County,2015,52519
+50,3,6,47,109,Tennessee,McNairy County,2015,25874
+50,3,6,47,111,Tennessee,Macon County,2015,23075
+50,3,6,47,113,Tennessee,Madison County,2015,97613
+50,3,6,47,115,Tennessee,Marion County,2015,28407
+50,3,6,47,117,Tennessee,Marshall County,2015,31597
+50,3,6,47,119,Tennessee,Maury County,2015,87547
+50,3,6,47,121,Tennessee,Meigs County,2015,11813
+50,3,6,47,123,Tennessee,Monroe County,2015,45645
+50,3,6,47,125,Tennessee,Montgomery County,2015,192749
+50,3,6,47,127,Tennessee,Moore County,2015,6261
+50,3,6,47,129,Tennessee,Morgan County,2015,21514
+50,3,6,47,131,Tennessee,Obion County,2015,30580
+50,3,6,47,133,Tennessee,Overton County,2015,22062
+50,3,6,47,135,Tennessee,Perry County,2015,7855
+50,3,6,47,137,Tennessee,Pickett County,2015,5143
+50,3,6,47,139,Tennessee,Polk County,2015,16778
+50,3,6,47,141,Tennessee,Putnam County,2015,75091
+50,3,6,47,143,Tennessee,Rhea County,2015,32402
+50,3,6,47,145,Tennessee,Roane County,2015,52799
+50,3,6,47,147,Tennessee,Robertson County,2015,68709
+50,3,6,47,149,Tennessee,Rutherford County,2015,298401
+50,3,6,47,151,Tennessee,Scott County,2015,21896
+50,3,6,47,153,Tennessee,Sequatchie County,2015,14641
+50,3,6,47,155,Tennessee,Sevier County,2015,95492
+50,3,6,47,157,Tennessee,Shelby County,2015,937598
+50,3,6,47,159,Tennessee,Smith County,2015,19316
+50,3,6,47,161,Tennessee,Stewart County,2015,13193
+50,3,6,47,163,Tennessee,Sullivan County,2015,156336
+50,3,6,47,165,Tennessee,Sumner County,2015,175467
+50,3,6,47,167,Tennessee,Tipton County,2015,61570
+50,3,6,47,169,Tennessee,Trousdale County,2015,8053
+50,3,6,47,171,Tennessee,Unicoi County,2015,17830
+50,3,6,47,173,Tennessee,Union County,2015,19159
+50,3,6,47,175,Tennessee,Van Buren County,2015,5697
+50,3,6,47,177,Tennessee,Warren County,2015,40271
+50,3,6,47,179,Tennessee,Washington County,2015,126238
+50,3,6,47,181,Tennessee,Wayne County,2015,16765
+50,3,6,47,183,Tennessee,Weakley County,2015,33875
+50,3,6,47,185,Tennessee,White County,2015,26363
+50,3,6,47,187,Tennessee,Williamson County,2015,211713
+50,3,6,47,189,Tennessee,Wilson County,2015,128610
+40,3,7,48,0,Texas,Texas,2015,27468531
+50,3,7,48,1,Texas,Anderson County,2015,57665
+50,3,7,48,3,Texas,Andrews County,2015,18058
+50,3,7,48,5,Texas,Angelina County,2015,87837
+50,3,7,48,7,Texas,Aransas County,2015,24812
+50,3,7,48,9,Texas,Archer County,2015,8762
+50,3,7,48,11,Texas,Armstrong County,2015,1901
+50,3,7,48,13,Texas,Atascosa County,2015,48382
+50,3,7,48,15,Texas,Austin County,2015,29477
+50,3,7,48,17,Texas,Bailey County,2015,7219
+50,3,7,48,19,Texas,Bandera County,2015,21127
+50,3,7,48,21,Texas,Bastrop County,2015,80109
+50,3,7,48,23,Texas,Baylor County,2015,3610
+50,3,7,48,25,Texas,Bee County,2015,32620
+50,3,7,48,27,Texas,Bell County,2015,336434
+50,3,7,48,29,Texas,Bexar County,2015,1894811
+50,3,7,48,31,Texas,Blanco County,2015,11030
+50,3,7,48,33,Texas,Borden County,2015,655
+50,3,7,48,35,Texas,Bosque County,2015,17860
+50,3,7,48,37,Texas,Bowie County,2015,93146
+50,3,7,48,39,Texas,Brazoria County,2015,345295
+50,3,7,48,41,Texas,Brazos County,2015,216339
+50,3,7,48,43,Texas,Brewster County,2015,9140
+50,3,7,48,45,Texas,Briscoe County,2015,1515
+50,3,7,48,47,Texas,Brooks County,2015,7203
+50,3,7,48,49,Texas,Brown County,2015,37729
+50,3,7,48,51,Texas,Burleson County,2015,17612
+50,3,7,48,53,Texas,Burnet County,2015,44738
+50,3,7,48,55,Texas,Caldwell County,2015,40386
+50,3,7,48,57,Texas,Calhoun County,2015,21873
+50,3,7,48,59,Texas,Callahan County,2015,13595
+50,3,7,48,61,Texas,Cameron County,2015,419062
+50,3,7,48,63,Texas,Camp County,2015,12691
+50,3,7,48,65,Texas,Carson County,2015,6014
+50,3,7,48,67,Texas,Cass County,2015,30137
+50,3,7,48,69,Texas,Castro County,2015,7774
+50,3,7,48,71,Texas,Chambers County,2015,39025
+50,3,7,48,73,Texas,Cherokee County,2015,51567
+50,3,7,48,75,Texas,Childress County,2015,7177
+50,3,7,48,77,Texas,Clay County,2015,10363
+50,3,7,48,79,Texas,Cochran County,2015,2979
+50,3,7,48,81,Texas,Coke County,2015,3220
+50,3,7,48,83,Texas,Coleman County,2015,8317
+50,3,7,48,85,Texas,Collin County,2015,915014
+50,3,7,48,87,Texas,Collingsworth County,2015,3007
+50,3,7,48,89,Texas,Colorado County,2015,20946
+50,3,7,48,91,Texas,Comal County,2015,128870
+50,3,7,48,93,Texas,Comanche County,2015,13392
+50,3,7,48,95,Texas,Concho County,2015,4065
+50,3,7,48,97,Texas,Cooke County,2015,39179
+50,3,7,48,99,Texas,Coryell County,2015,76242
+50,3,7,48,101,Texas,Cottle County,2015,1437
+50,3,7,48,103,Texas,Crane County,2015,4991
+50,3,7,48,105,Texas,Crockett County,2015,3736
+50,3,7,48,107,Texas,Crosby County,2015,5918
+50,3,7,48,109,Texas,Culberson County,2015,2252
+50,3,7,48,111,Texas,Dallam County,2015,7301
+50,3,7,48,113,Texas,Dallas County,2015,2557615
+50,3,7,48,115,Texas,Dawson County,2015,13000
+50,3,7,48,117,Texas,Deaf Smith County,2015,18819
+50,3,7,48,119,Texas,Delta County,2015,5154
+50,3,7,48,121,Texas,Denton County,2015,778799
+50,3,7,48,123,Texas,DeWitt County,2015,20632
+50,3,7,48,125,Texas,Dickens County,2015,2203
+50,3,7,48,127,Texas,Dimmit County,2015,10914
+50,3,7,48,129,Texas,Donley County,2015,3390
+50,3,7,48,131,Texas,Duval County,2015,11313
+50,3,7,48,133,Texas,Eastland County,2015,18151
+50,3,7,48,135,Texas,Ector County,2015,159859
+50,3,7,48,137,Texas,Edwards County,2015,1911
+50,3,7,48,139,Texas,Ellis County,2015,163331
+50,3,7,48,141,Texas,El Paso County,2015,831382
+50,3,7,48,143,Texas,Erath County,2015,41200
+50,3,7,48,145,Texas,Falls County,2015,17215
+50,3,7,48,147,Texas,Fannin County,2015,33501
+50,3,7,48,149,Texas,Fayette County,2015,24923
+50,3,7,48,151,Texas,Fisher County,2015,3876
+50,3,7,48,153,Texas,Floyd County,2015,5845
+50,3,7,48,155,Texas,Foard County,2015,1223
+50,3,7,48,157,Texas,Fort Bend County,2015,715260
+50,3,7,48,159,Texas,Franklin County,2015,10600
+50,3,7,48,161,Texas,Freestone County,2015,19745
+50,3,7,48,163,Texas,Frio County,2015,19348
+50,3,7,48,165,Texas,Gaines County,2015,20204
+50,3,7,48,167,Texas,Galveston County,2015,321074
+50,3,7,48,169,Texas,Garza County,2015,6384
+50,3,7,48,171,Texas,Gillespie County,2015,25913
+50,3,7,48,173,Texas,Glasscock County,2015,1379
+50,3,7,48,175,Texas,Goliad County,2015,7517
+50,3,7,48,177,Texas,Gonzales County,2015,20492
+50,3,7,48,179,Texas,Gray County,2015,23262
+50,3,7,48,181,Texas,Grayson County,2015,125672
+50,3,7,48,183,Texas,Gregg County,2015,123887
+50,3,7,48,185,Texas,Grimes County,2015,27302
+50,3,7,48,187,Texas,Guadalupe County,2015,150608
+50,3,7,48,189,Texas,Hale County,2015,34010
+50,3,7,48,191,Texas,Hall County,2015,3093
+50,3,7,48,193,Texas,Hamilton County,2015,8084
+50,3,7,48,195,Texas,Hansford County,2015,5652
+50,3,7,48,197,Texas,Hardeman County,2015,3922
+50,3,7,48,199,Texas,Hardin County,2015,55767
+50,3,7,48,201,Texas,Harris County,2015,4556559
+50,3,7,48,203,Texas,Harrison County,2015,66710
+50,3,7,48,205,Texas,Hartley County,2015,5705
+50,3,7,48,207,Texas,Haskell County,2015,5819
+50,3,7,48,209,Texas,Hays County,2015,194588
+50,3,7,48,211,Texas,Hemphill County,2015,4283
+50,3,7,48,213,Texas,Henderson County,2015,79509
+50,3,7,48,215,Texas,Hidalgo County,2015,838741
+50,3,7,48,217,Texas,Hill County,2015,34841
+50,3,7,48,219,Texas,Hockley County,2015,23291
+50,3,7,48,221,Texas,Hood County,2015,55246
+50,3,7,48,223,Texas,Hopkins County,2015,35970
+50,3,7,48,225,Texas,Houston County,2015,22743
+50,3,7,48,227,Texas,Howard County,2015,37114
+50,3,7,48,229,Texas,Hudspeth County,2015,3534
+50,3,7,48,231,Texas,Hunt County,2015,89708
+50,3,7,48,233,Texas,Hutchinson County,2015,21798
+50,3,7,48,235,Texas,Irion County,2015,1555
+50,3,7,48,237,Texas,Jack County,2015,8886
+50,3,7,48,239,Texas,Jackson County,2015,14807
+50,3,7,48,241,Texas,Jasper County,2015,35268
+50,3,7,48,243,Texas,Jeff Davis County,2015,2197
+50,3,7,48,245,Texas,Jefferson County,2015,255115
+50,3,7,48,247,Texas,Jim Hogg County,2015,5295
+50,3,7,48,249,Texas,Jim Wells County,2015,41540
+50,3,7,48,251,Texas,Johnson County,2015,159346
+50,3,7,48,253,Texas,Jones County,2015,19965
+50,3,7,48,255,Texas,Karnes County,2015,15407
+50,3,7,48,257,Texas,Kaufman County,2015,114083
+50,3,7,48,259,Texas,Kendall County,2015,39959
+50,3,7,48,261,Texas,Kenedy County,2015,441
+50,3,7,48,263,Texas,Kent County,2015,746
+50,3,7,48,265,Texas,Kerr County,2015,50869
+50,3,7,48,267,Texas,Kimble County,2015,4387
+50,3,7,48,269,Texas,King County,2015,280
+50,3,7,48,271,Texas,Kinney County,2015,3599
+50,3,7,48,273,Texas,Kleberg County,2015,31406
+50,3,7,48,275,Texas,Knox County,2015,3790
+50,3,7,48,277,Texas,Lamar County,2015,49399
+50,3,7,48,279,Texas,Lamb County,2015,13267
+50,3,7,48,281,Texas,Lampasas County,2015,20362
+50,3,7,48,283,Texas,La Salle County,2015,7635
+50,3,7,48,285,Texas,Lavaca County,2015,19920
+50,3,7,48,287,Texas,Lee County,2015,16859
+50,3,7,48,289,Texas,Leon County,2015,17030
+50,3,7,48,291,Texas,Liberty County,2015,79537
+50,3,7,48,293,Texas,Limestone County,2015,23433
+50,3,7,48,295,Texas,Lipscomb County,2015,3557
+50,3,7,48,297,Texas,Live Oak County,2015,12177
+50,3,7,48,299,Texas,Llano County,2015,20080
+50,3,7,48,301,Texas,Loving County,2015,119
+50,3,7,48,303,Texas,Lubbock County,2015,298509
+50,3,7,48,305,Texas,Lynn County,2015,5746
+50,3,7,48,307,Texas,McCulloch County,2015,8253
+50,3,7,48,309,Texas,McLennan County,2015,245471
+50,3,7,48,311,Texas,McMullen County,2015,831
+50,3,7,48,313,Texas,Madison County,2015,13954
+50,3,7,48,315,Texas,Marion County,2015,10152
+50,3,7,48,317,Texas,Martin County,2015,5639
+50,3,7,48,319,Texas,Mason County,2015,4063
+50,3,7,48,321,Texas,Matagorda County,2015,36747
+50,3,7,48,323,Texas,Maverick County,2015,57643
+50,3,7,48,325,Texas,Medina County,2015,48419
+50,3,7,48,327,Texas,Menard County,2015,2135
+50,3,7,48,329,Texas,Midland County,2015,162381
+50,3,7,48,331,Texas,Milam County,2015,24364
+50,3,7,48,333,Texas,Mills County,2015,4887
+50,3,7,48,335,Texas,Mitchell County,2015,8863
+50,3,7,48,337,Texas,Montague County,2015,19254
+50,3,7,48,339,Texas,Montgomery County,2015,535913
+50,3,7,48,341,Texas,Moore County,2015,21709
+50,3,7,48,343,Texas,Morris County,2015,12360
+50,3,7,48,345,Texas,Motley County,2015,1146
+50,3,7,48,347,Texas,Nacogdoches County,2015,65456
+50,3,7,48,349,Texas,Navarro County,2015,48167
+50,3,7,48,351,Texas,Newton County,2015,14161
+50,3,7,48,353,Texas,Nolan County,2015,15128
+50,3,7,48,355,Texas,Nueces County,2015,360587
+50,3,7,48,357,Texas,Ochiltree County,2015,10690
+50,3,7,48,359,Texas,Oldham County,2015,2064
+50,3,7,48,361,Texas,Orange County,2015,84026
+50,3,7,48,363,Texas,Palo Pinto County,2015,27963
+50,3,7,48,365,Texas,Panola County,2015,23661
+50,3,7,48,367,Texas,Parker County,2015,125691
+50,3,7,48,369,Texas,Parmer County,2015,9791
+50,3,7,48,371,Texas,Pecos County,2015,16022
+50,3,7,48,373,Texas,Polk County,2015,46617
+50,3,7,48,375,Texas,Potter County,2015,121214
+50,3,7,48,377,Texas,Presidio County,2015,7048
+50,3,7,48,379,Texas,Rains County,2015,11121
+50,3,7,48,381,Texas,Randall County,2015,130463
+50,3,7,48,383,Texas,Reagan County,2015,3804
+50,3,7,48,385,Texas,Real County,2015,3297
+50,3,7,48,387,Texas,Red River County,2015,12344
+50,3,7,48,389,Texas,Reeves County,2015,15556
+50,3,7,48,391,Texas,Refugio County,2015,7331
+50,3,7,48,393,Texas,Roberts County,2015,906
+50,3,7,48,395,Texas,Robertson County,2015,16688
+50,3,7,48,397,Texas,Rockwall County,2015,90258
+50,3,7,48,399,Texas,Runnels County,2015,10387
+50,3,7,48,401,Texas,Rusk County,2015,52897
+50,3,7,48,403,Texas,Sabine County,2015,10451
+50,3,7,48,405,Texas,San Augustine County,2015,8346
+50,3,7,48,407,Texas,San Jacinto County,2015,27376
+50,3,7,48,409,Texas,San Patricio County,2015,67121
+50,3,7,48,411,Texas,San Saba County,2015,5925
+50,3,7,48,413,Texas,Schleicher County,2015,3191
+50,3,7,48,415,Texas,Scurry County,2015,17565
+50,3,7,48,417,Texas,Shackelford County,2015,3331
+50,3,7,48,419,Texas,Shelby County,2015,25366
+50,3,7,48,421,Texas,Sherman County,2015,3053
+50,3,7,48,423,Texas,Smith County,2015,222450
+50,3,7,48,425,Texas,Somervell County,2015,8619
+50,3,7,48,427,Texas,Starr County,2015,63406
+50,3,7,48,429,Texas,Stephens County,2015,9378
+50,3,7,48,431,Texas,Sterling County,2015,1330
+50,3,7,48,433,Texas,Stonewall County,2015,1400
+50,3,7,48,435,Texas,Sutton County,2015,3918
+50,3,7,48,437,Texas,Swisher County,2015,7477
+50,3,7,48,439,Texas,Tarrant County,2015,1985664
+50,3,7,48,441,Texas,Taylor County,2015,136210
+50,3,7,48,443,Texas,Terrell County,2015,863
+50,3,7,48,445,Texas,Terry County,2015,12761
+50,3,7,48,447,Texas,Throckmorton County,2015,1558
+50,3,7,48,449,Texas,Titus County,2015,32605
+50,3,7,48,451,Texas,Tom Green County,2015,117574
+50,3,7,48,453,Texas,Travis County,2015,1180003
+50,3,7,48,455,Texas,Trinity County,2015,14541
+50,3,7,48,457,Texas,Tyler County,2015,21372
+50,3,7,48,459,Texas,Upshur County,2015,40343
+50,3,7,48,461,Texas,Upton County,2015,3658
+50,3,7,48,463,Texas,Uvalde County,2015,26948
+50,3,7,48,465,Texas,Val Verde County,2015,48860
+50,3,7,48,467,Texas,Van Zandt County,2015,53431
+50,3,7,48,469,Texas,Victoria County,2015,92130
+50,3,7,48,471,Texas,Walker County,2015,70825
+50,3,7,48,473,Texas,Waller County,2015,48663
+50,3,7,48,475,Texas,Ward County,2015,11630
+50,3,7,48,477,Texas,Washington County,2015,34820
+50,3,7,48,479,Texas,Webb County,2015,269598
+50,3,7,48,481,Texas,Wharton County,2015,41369
+50,3,7,48,483,Texas,Wheeler County,2015,5665
+50,3,7,48,485,Texas,Wichita County,2015,131050
+50,3,7,48,487,Texas,Wilbarger County,2015,13059
+50,3,7,48,489,Texas,Willacy County,2015,21852
+50,3,7,48,491,Texas,Williamson County,2015,507728
+50,3,7,48,493,Texas,Wilson County,2015,47181
+50,3,7,48,495,Texas,Winkler County,2015,8028
+50,3,7,48,497,Texas,Wise County,2015,62813
+50,3,7,48,499,Texas,Wood County,2015,43142
+50,3,7,48,501,Texas,Yoakum County,2015,8635
+50,3,7,48,503,Texas,Young County,2015,18154
+50,3,7,48,505,Texas,Zapata County,2015,14474
+50,3,7,48,507,Texas,Zavala County,2015,12322
+40,4,8,49,0,Utah,Utah,2015,2983626
+50,4,8,49,1,Utah,Beaver County,2015,6351
+50,4,8,49,3,Utah,Box Elder County,2015,51839
+50,4,8,49,5,Utah,Cache County,2015,119777
+50,4,8,49,7,Utah,Carbon County,2015,20400
+50,4,8,49,9,Utah,Daggett County,2015,1107
+50,4,8,49,11,Utah,Davis County,2015,334814
+50,4,8,49,13,Utah,Duchesne County,2015,20743
+50,4,8,49,15,Utah,Emery County,2015,10360
+50,4,8,49,17,Utah,Garfield County,2015,4966
+50,4,8,49,19,Utah,Grand County,2015,9530
+50,4,8,49,21,Utah,Iron County,2015,48166
+50,4,8,49,23,Utah,Juab County,2015,10560
+50,4,8,49,25,Utah,Kane County,2015,7045
+50,4,8,49,27,Utah,Millard County,2015,12621
+50,4,8,49,29,Utah,Morgan County,2015,11048
+50,4,8,49,31,Utah,Piute County,2015,1489
+50,4,8,49,33,Utah,Rich County,2015,2301
+50,4,8,49,35,Utah,Salt Lake County,2015,1102690
+50,4,8,49,37,Utah,San Juan County,2015,15254
+50,4,8,49,39,Utah,Sanpete County,2015,28663
+50,4,8,49,41,Utah,Sevier County,2015,20872
+50,4,8,49,43,Utah,Summit County,2015,39675
+50,4,8,49,45,Utah,Tooele County,2015,62676
+50,4,8,49,47,Utah,Uintah County,2015,37815
+50,4,8,49,49,Utah,Utah County,2015,573289
+50,4,8,49,51,Utah,Wasatch County,2015,29131
+50,4,8,49,53,Utah,Washington County,2015,154839
+50,4,8,49,55,Utah,Wayne County,2015,2689
+50,4,8,49,57,Utah,Weber County,2015,242916
+40,1,1,50,0,Vermont,Vermont,2015,625810
+50,1,1,50,1,Vermont,Addison County,2015,36955
+50,1,1,50,3,Vermont,Bennington County,2015,36198
+50,1,1,50,5,Vermont,Caledonia County,2015,30658
+50,1,1,50,7,Vermont,Chittenden County,2015,161535
+50,1,1,50,9,Vermont,Essex County,2015,6193
+50,1,1,50,11,Vermont,Franklin County,2015,49002
+50,1,1,50,13,Vermont,Grand Isle County,2015,6873
+50,1,1,50,15,Vermont,Lamoille County,2015,25265
+50,1,1,50,17,Vermont,Orange County,2015,28900
+50,1,1,50,19,Vermont,Orleans County,2015,27043
+50,1,1,50,21,Vermont,Rutland County,2015,59582
+50,1,1,50,23,Vermont,Washington County,2015,58707
+50,1,1,50,25,Vermont,Windham County,2015,43309
+50,1,1,50,27,Vermont,Windsor County,2015,55590
+40,3,5,51,0,Virginia,Virginia,2015,8367303
+50,3,5,51,1,Virginia,Accomack County,2015,32930
+50,3,5,51,3,Virginia,Albemarle County,2015,105221
+50,3,5,51,5,Virginia,Alleghany County,2015,15432
+50,3,5,51,7,Virginia,Amelia County,2015,12784
+50,3,5,51,9,Virginia,Amherst County,2015,31855
+50,3,5,51,11,Virginia,Appomattox County,2015,15485
+50,3,5,51,13,Virginia,Arlington County,2015,228887
+50,3,5,51,15,Virginia,Augusta County,2015,74324
+50,3,5,51,17,Virginia,Bath County,2015,4463
+50,3,5,51,19,Virginia,Bedford County,2015,77653
+50,3,5,51,21,Virginia,Bland County,2015,6536
+50,3,5,51,23,Virginia,Botetourt County,2015,33391
+50,3,5,51,25,Virginia,Brunswick County,2015,16838
+50,3,5,51,27,Virginia,Buchanan County,2015,22767
+50,3,5,51,29,Virginia,Buckingham County,2015,17022
+50,3,5,51,31,Virginia,Campbell County,2015,55374
+50,3,5,51,33,Virginia,Caroline County,2015,29907
+50,3,5,51,35,Virginia,Carroll County,2015,29882
+50,3,5,51,36,Virginia,Charles City County,2015,7043
+50,3,5,51,37,Virginia,Charlotte County,2015,12182
+50,3,5,51,41,Virginia,Chesterfield County,2015,335093
+50,3,5,51,43,Virginia,Clarke County,2015,14252
+50,3,5,51,45,Virginia,Craig County,2015,5140
+50,3,5,51,47,Virginia,Culpeper County,2015,49559
+50,3,5,51,49,Virginia,Cumberland County,2015,9758
+50,3,5,51,51,Virginia,Dickenson County,2015,15200
+50,3,5,51,53,Virginia,Dinwiddie County,2015,28146
+50,3,5,51,57,Virginia,Essex County,2015,11091
+50,3,5,51,59,Virginia,Fairfax County,2015,1141040
+50,3,5,51,61,Virginia,Fauquier County,2015,68449
+50,3,5,51,63,Virginia,Floyd County,2015,15565
+50,3,5,51,65,Virginia,Fluvanna County,2015,26144
+50,3,5,51,67,Virginia,Franklin County,2015,56234
+50,3,5,51,69,Virginia,Frederick County,2015,83525
+50,3,5,51,71,Virginia,Giles County,2015,16768
+50,3,5,51,73,Virginia,Gloucester County,2015,37032
+50,3,5,51,75,Virginia,Goochland County,2015,22344
+50,3,5,51,77,Virginia,Grayson County,2015,15960
+50,3,5,51,79,Virginia,Greene County,2015,19205
+50,3,5,51,81,Virginia,Greensville County,2015,11792
+50,3,5,51,83,Virginia,Halifax County,2015,35104
+50,3,5,51,85,Virginia,Hanover County,2015,103095
+50,3,5,51,87,Virginia,Henrico County,2015,324424
+50,3,5,51,89,Virginia,Henry County,2015,51944
+50,3,5,51,91,Virginia,Highland County,2015,2196
+50,3,5,51,93,Virginia,Isle of Wight County,2015,36185
+50,3,5,51,95,Virginia,James City County,2015,72920
+50,3,5,51,97,Virginia,King and Queen County,2015,7089
+50,3,5,51,99,Virginia,King George County,2015,25442
+50,3,5,51,101,Virginia,King William County,2015,16287
+50,3,5,51,103,Virginia,Lancaster County,2015,10828
+50,3,5,51,105,Virginia,Lee County,2015,24624
+50,3,5,51,107,Virginia,Loudoun County,2015,374176
+50,3,5,51,109,Virginia,Louisa County,2015,34475
+50,3,5,51,111,Virginia,Lunenburg County,2015,12348
+50,3,5,51,113,Virginia,Madison County,2015,13054
+50,3,5,51,115,Virginia,Mathews County,2015,8833
+50,3,5,51,117,Virginia,Mecklenburg County,2015,30934
+50,3,5,51,119,Virginia,Middlesex County,2015,10683
+50,3,5,51,121,Virginia,Montgomery County,2015,97427
+50,3,5,51,125,Virginia,Nelson County,2015,14764
+50,3,5,51,127,Virginia,New Kent County,2015,20382
+50,3,5,51,131,Virginia,Northampton County,2015,12073
+50,3,5,51,133,Virginia,Northumberland County,2015,12243
+50,3,5,51,135,Virginia,Nottoway County,2015,15613
+50,3,5,51,137,Virginia,Orange County,2015,35173
+50,3,5,51,139,Virginia,Page County,2015,23667
+50,3,5,51,141,Virginia,Patrick County,2015,17972
+50,3,5,51,143,Virginia,Pittsylvania County,2015,62027
+50,3,5,51,145,Virginia,Powhatan County,2015,28068
+50,3,5,51,147,Virginia,Prince Edward County,2015,23139
+50,3,5,51,149,Virginia,Prince George County,2015,38306
+50,3,5,51,153,Virginia,Prince William County,2015,451242
+50,3,5,51,155,Virginia,Pulaski County,2015,34357
+50,3,5,51,157,Virginia,Rappahannock County,2015,7409
+50,3,5,51,159,Virginia,Richmond County,2015,8779
+50,3,5,51,161,Virginia,Roanoke County,2015,93439
+50,3,5,51,163,Virginia,Rockbridge County,2015,22410
+50,3,5,51,165,Virginia,Rockingham County,2015,78469
+50,3,5,51,167,Virginia,Russell County,2015,27863
+50,3,5,51,169,Virginia,Scott County,2015,22298
+50,3,5,51,171,Virginia,Shenandoah County,2015,42863
+50,3,5,51,173,Virginia,Smyth County,2015,31444
+50,3,5,51,175,Virginia,Southampton County,2015,18139
+50,3,5,51,177,Virginia,Spotsylvania County,2015,130042
+50,3,5,51,179,Virginia,Stafford County,2015,141035
+50,3,5,51,181,Virginia,Surry County,2015,6674
+50,3,5,51,183,Virginia,Sussex County,2015,11692
+50,3,5,51,185,Virginia,Tazewell County,2015,42930
+50,3,5,51,187,Virginia,Warren County,2015,38742
+50,3,5,51,191,Virginia,Washington County,2015,54309
+50,3,5,51,193,Virginia,Westmoreland County,2015,17553
+50,3,5,51,195,Virginia,Wise County,2015,39596
+50,3,5,51,197,Virginia,Wythe County,2015,29106
+50,3,5,51,199,Virginia,York County,2015,67900
+50,3,5,51,510,Virginia,Alexandria city,2015,153859
+50,3,5,51,520,Virginia,Bristol city,2015,17185
+50,3,5,51,530,Virginia,Buena Vista city,2015,6541
+50,3,5,51,540,Virginia,Charlottesville city,2015,46357
+50,3,5,51,550,Virginia,Chesapeake city,2015,235253
+50,3,5,51,570,Virginia,Colonial Heights city,2015,17457
+50,3,5,51,580,Virginia,Covington city,2015,5671
+50,3,5,51,590,Virginia,Danville city,2015,41984
+50,3,5,51,595,Virginia,Emporia city,2015,5569
+50,3,5,51,600,Virginia,Fairfax city,2015,23247
+50,3,5,51,610,Virginia,Falls Church city,2015,13777
+50,3,5,51,620,Virginia,Franklin city,2015,8339
+50,3,5,51,630,Virginia,Fredericksburg city,2015,28075
+50,3,5,51,640,Virginia,Galax city,2015,6791
+50,3,5,51,650,Virginia,Hampton city,2015,136379
+50,3,5,51,660,Virginia,Harrisonburg city,2015,52739
+50,3,5,51,670,Virginia,Hopewell city,2015,22241
+50,3,5,51,678,Virginia,Lexington city,2015,7174
+50,3,5,51,680,Virginia,Lynchburg city,2015,79263
+50,3,5,51,683,Virginia,Manassas city,2015,41409
+50,3,5,51,685,Virginia,Manassas Park city,2015,16145
+50,3,5,51,690,Virginia,Martinsville city,2015,13289
+50,3,5,51,700,Virginia,Newport News city,2015,181121
+50,3,5,51,710,Virginia,Norfolk city,2015,246667
+50,3,5,51,720,Virginia,Norton city,2015,4013
+50,3,5,51,730,Virginia,Petersburg city,2015,31895
+50,3,5,51,735,Virginia,Poquoson city,2015,12018
+50,3,5,51,740,Virginia,Portsmouth city,2015,96407
+50,3,5,51,750,Virginia,Radford city,2015,17301
+50,3,5,51,760,Virginia,Richmond city,2015,221084
+50,3,5,51,770,Virginia,Roanoke city,2015,99741
+50,3,5,51,775,Virginia,Salem city,2015,25378
+50,3,5,51,790,Virginia,Staunton city,2015,24192
+50,3,5,51,800,Virginia,Suffolk city,2015,88190
+50,3,5,51,810,Virginia,Virginia Beach city,2015,450635
+50,3,5,51,820,Virginia,Waynesboro city,2015,21543
+50,3,5,51,830,Virginia,Williamsburg city,2015,14815
+50,3,5,51,840,Virginia,Winchester city,2015,27500
+40,4,9,53,0,Washington,Washington,2015,7167287
+50,4,9,53,1,Washington,Adams County,2015,19208
+50,4,9,53,3,Washington,Asotin County,2015,22167
+50,4,9,53,5,Washington,Benton County,2015,190282
+50,4,9,53,7,Washington,Chelan County,2015,75030
+50,4,9,53,9,Washington,Clallam County,2015,73261
+50,4,9,53,11,Washington,Clark County,2015,457320
+50,4,9,53,13,Washington,Columbia County,2015,3961
+50,4,9,53,15,Washington,Cowlitz County,2015,103031
+50,4,9,53,17,Washington,Douglas County,2015,40521
+50,4,9,53,19,Washington,Ferry County,2015,7526
+50,4,9,53,21,Washington,Franklin County,2015,88681
+50,4,9,53,23,Washington,Garfield County,2015,2223
+50,4,9,53,25,Washington,Grant County,2015,93517
+50,4,9,53,27,Washington,Grays Harbor County,2015,71027
+50,4,9,53,29,Washington,Island County,2015,80135
+50,4,9,53,31,Washington,Jefferson County,2015,30376
+50,4,9,53,33,Washington,King County,2015,2127372
+50,4,9,53,35,Washington,Kitsap County,2015,259467
+50,4,9,53,37,Washington,Kittitas County,2015,43120
+50,4,9,53,39,Washington,Klickitat County,2015,21009
+50,4,9,53,41,Washington,Lewis County,2015,75474
+50,4,9,53,43,Washington,Lincoln County,2015,10287
+50,4,9,53,45,Washington,Mason County,2015,60999
+50,4,9,53,47,Washington,Okanogan County,2015,41345
+50,4,9,53,49,Washington,Pacific County,2015,20890
+50,4,9,53,51,Washington,Pend Oreille County,2015,13095
+50,4,9,53,53,Washington,Pierce County,2015,844317
+50,4,9,53,55,Washington,San Juan County,2015,16155
+50,4,9,53,57,Washington,Skagit County,2015,121589
+50,4,9,53,59,Washington,Skamania County,2015,11386
+50,4,9,53,61,Washington,Snohomish County,2015,770022
+50,4,9,53,63,Washington,Spokane County,2015,488970
+50,4,9,53,65,Washington,Stevens County,2015,43576
+50,4,9,53,67,Washington,Thurston County,2015,268175
+50,4,9,53,69,Washington,Wahkiakum County,2015,3989
+50,4,9,53,71,Washington,Walla Walla County,2015,59970
+50,4,9,53,73,Washington,Whatcom County,2015,211942
+50,4,9,53,75,Washington,Whitman County,2015,48224
+50,4,9,53,77,Washington,Yakima County,2015,247648
+40,3,5,54,0,West Virginia,West Virginia,2015,1843332
+50,3,5,54,1,West Virginia,Barbour County,2015,16980
+50,3,5,54,3,West Virginia,Berkeley County,2015,111824
+50,3,5,54,5,West Virginia,Boone County,2015,23252
+50,3,5,54,7,West Virginia,Braxton County,2015,14378
+50,3,5,54,9,West Virginia,Brooke County,2015,23213
+50,3,5,54,11,West Virginia,Cabell County,2015,96617
+50,3,5,54,13,West Virginia,Calhoun County,2015,7472
+50,3,5,54,15,West Virginia,Clay County,2015,8886
+50,3,5,54,17,West Virginia,Doddridge County,2015,8706
+50,3,5,54,19,West Virginia,Fayette County,2015,44726
+50,3,5,54,21,West Virginia,Gilmer County,2015,8315
+50,3,5,54,23,West Virginia,Grant County,2015,11648
+50,3,5,54,25,West Virginia,Greenbrier County,2015,35603
+50,3,5,54,27,West Virginia,Hampshire County,2015,23314
+50,3,5,54,29,West Virginia,Hancock County,2015,30014
+50,3,5,54,31,West Virginia,Hardy County,2015,13833
+50,3,5,54,33,West Virginia,Harrison County,2015,68573
+50,3,5,54,35,West Virginia,Jackson County,2015,29179
+50,3,5,54,37,West Virginia,Jefferson County,2015,56164
+50,3,5,54,39,West Virginia,Kanawha County,2015,188399
+50,3,5,54,41,West Virginia,Lewis County,2015,16436
+50,3,5,54,43,West Virginia,Lincoln County,2015,21284
+50,3,5,54,45,West Virginia,Logan County,2015,34444
+50,3,5,54,47,West Virginia,McDowell County,2015,19768
+50,3,5,54,49,West Virginia,Marion County,2015,56815
+50,3,5,54,51,West Virginia,Marshall County,2015,32218
+50,3,5,54,53,West Virginia,Mason County,2015,27117
+50,3,5,54,55,West Virginia,Mercer County,2015,61187
+50,3,5,54,57,West Virginia,Mineral County,2015,27431
+50,3,5,54,59,West Virginia,Mingo County,2015,25321
+50,3,5,54,61,West Virginia,Monongalia County,2015,104871
+50,3,5,54,63,West Virginia,Monroe County,2015,13586
+50,3,5,54,65,West Virginia,Morgan County,2015,17513
+50,3,5,54,67,West Virginia,Nicholas County,2015,25547
+50,3,5,54,69,West Virginia,Ohio County,2015,43018
+50,3,5,54,71,West Virginia,Pendleton County,2015,7106
+50,3,5,54,73,West Virginia,Pleasants County,2015,7499
+50,3,5,54,75,West Virginia,Pocahontas County,2015,8576
+50,3,5,54,77,West Virginia,Preston County,2015,33855
+50,3,5,54,79,West Virginia,Putnam County,2015,56601
+50,3,5,54,81,West Virginia,Raleigh County,2015,77416
+50,3,5,54,83,West Virginia,Randolph County,2015,29209
+50,3,5,54,85,West Virginia,Ritchie County,2015,10089
+50,3,5,54,87,West Virginia,Roane County,2015,14379
+50,3,5,54,89,West Virginia,Summers County,2015,13150
+50,3,5,54,91,West Virginia,Taylor County,2015,16920
+50,3,5,54,93,West Virginia,Tucker County,2015,7088
+50,3,5,54,95,West Virginia,Tyler County,2015,8959
+50,3,5,54,97,West Virginia,Upshur County,2015,24756
+50,3,5,54,99,West Virginia,Wayne County,2015,41272
+50,3,5,54,101,West Virginia,Webster County,2015,8635
+50,3,5,54,103,West Virginia,Wetzel County,2015,15783
+50,3,5,54,105,West Virginia,Wirt County,2015,5798
+50,3,5,54,107,West Virginia,Wood County,2015,86410
+50,3,5,54,109,West Virginia,Wyoming County,2015,22179
+40,2,3,55,0,Wisconsin,Wisconsin,2015,5762927
+50,2,3,55,1,Wisconsin,Adams County,2015,20027
+50,2,3,55,3,Wisconsin,Ashland County,2015,15808
+50,2,3,55,5,Wisconsin,Barron County,2015,45375
+50,2,3,55,7,Wisconsin,Bayfield County,2015,14980
+50,2,3,55,9,Wisconsin,Brown County,2015,257916
+50,2,3,55,11,Wisconsin,Buffalo County,2015,13245
+50,2,3,55,13,Wisconsin,Burnett County,2015,15140
+50,2,3,55,15,Wisconsin,Calumet County,2015,49823
+50,2,3,55,17,Wisconsin,Chippewa County,2015,63438
+50,2,3,55,19,Wisconsin,Clark County,2015,34350
+50,2,3,55,21,Wisconsin,Columbia County,2015,56683
+50,2,3,55,23,Wisconsin,Crawford County,2015,16315
+50,2,3,55,25,Wisconsin,Dane County,2015,523399
+50,2,3,55,27,Wisconsin,Dodge County,2015,87838
+50,2,3,55,29,Wisconsin,Door County,2015,27320
+50,2,3,55,31,Wisconsin,Douglas County,2015,43553
+50,2,3,55,33,Wisconsin,Dunn County,2015,44300
+50,2,3,55,35,Wisconsin,Eau Claire County,2015,102142
+50,2,3,55,37,Wisconsin,Florence County,2015,4343
+50,2,3,55,39,Wisconsin,Fond du Lac County,2015,101970
+50,2,3,55,41,Wisconsin,Forest County,2015,9015
+50,2,3,55,43,Wisconsin,Grant County,2015,52103
+50,2,3,55,45,Wisconsin,Green County,2015,36928
+50,2,3,55,47,Wisconsin,Green Lake County,2015,18703
+50,2,3,55,49,Wisconsin,Iowa County,2015,23597
+50,2,3,55,51,Wisconsin,Iron County,2015,5724
+50,2,3,55,53,Wisconsin,Jackson County,2015,20526
+50,2,3,55,55,Wisconsin,Jefferson County,2015,84501
+50,2,3,55,57,Wisconsin,Juneau County,2015,26319
+50,2,3,55,59,Wisconsin,Kenosha County,2015,168044
+50,2,3,55,61,Wisconsin,Kewaunee County,2015,20329
+50,2,3,55,63,Wisconsin,La Crosse County,2015,117782
+50,2,3,55,65,Wisconsin,Lafayette County,2015,16785
+50,2,3,55,67,Wisconsin,Langlade County,2015,19051
+50,2,3,55,69,Wisconsin,Lincoln County,2015,27864
+50,2,3,55,71,Wisconsin,Manitowoc County,2015,79488
+50,2,3,55,73,Wisconsin,Marathon County,2015,135361
+50,2,3,55,75,Wisconsin,Marinette County,2015,40676
+50,2,3,55,77,Wisconsin,Marquette County,2015,15112
+50,2,3,55,78,Wisconsin,Menominee County,2015,4510
+50,2,3,55,79,Wisconsin,Milwaukee County,2015,958606
+50,2,3,55,81,Wisconsin,Monroe County,2015,45314
+50,2,3,55,83,Wisconsin,Oconto County,2015,37474
+50,2,3,55,85,Wisconsin,Oneida County,2015,35307
+50,2,3,55,87,Wisconsin,Outagamie County,2015,183311
+50,2,3,55,89,Wisconsin,Ozaukee County,2015,87991
+50,2,3,55,91,Wisconsin,Pepin County,2015,7238
+50,2,3,55,93,Wisconsin,Pierce County,2015,41117
+50,2,3,55,95,Wisconsin,Polk County,2015,43240
+50,2,3,55,97,Wisconsin,Portage County,2015,70544
+50,2,3,55,99,Wisconsin,Price County,2015,13577
+50,2,3,55,101,Wisconsin,Racine County,2015,194725
+50,2,3,55,103,Wisconsin,Richland County,2015,17568
+50,2,3,55,105,Wisconsin,Rock County,2015,161095
+50,2,3,55,107,Wisconsin,Rusk County,2015,14119
+50,2,3,55,109,Wisconsin,St. Croix County,2015,87207
+50,2,3,55,111,Wisconsin,Sauk County,2015,63290
+50,2,3,55,113,Wisconsin,Sawyer County,2015,16297
+50,2,3,55,115,Wisconsin,Shawano County,2015,41058
+50,2,3,55,117,Wisconsin,Sheboygan County,2015,115209
+50,2,3,55,119,Wisconsin,Taylor County,2015,20314
+50,2,3,55,121,Wisconsin,Trempealeau County,2015,29444
+50,2,3,55,123,Wisconsin,Vernon County,2015,30331
+50,2,3,55,125,Wisconsin,Vilas County,2015,21455
+50,2,3,55,127,Wisconsin,Walworth County,2015,102508
+50,2,3,55,129,Wisconsin,Washburn County,2015,15515
+50,2,3,55,131,Wisconsin,Washington County,2015,133920
+50,2,3,55,133,Wisconsin,Waukesha County,2015,396377
+50,2,3,55,135,Wisconsin,Waupaca County,2015,51684
+50,2,3,55,137,Wisconsin,Waushara County,2015,23966
+50,2,3,55,139,Wisconsin,Winnebago County,2015,169383
+50,2,3,55,141,Wisconsin,Wood County,2015,73360
+40,4,8,56,0,Wyoming,Wyoming,2015,586389
+50,4,8,56,1,Wyoming,Albany County,2015,38054
+50,4,8,56,3,Wyoming,Big Horn County,2015,11965
+50,4,8,56,5,Wyoming,Campbell County,2015,49336
+50,4,8,56,7,Wyoming,Carbon County,2015,15630
+50,4,8,56,9,Wyoming,Converse County,2015,14303
+50,4,8,56,11,Wyoming,Crook County,2015,7441
+50,4,8,56,13,Wyoming,Fremont County,2015,40261
+50,4,8,56,15,Wyoming,Goshen County,2015,13566
+50,4,8,56,17,Wyoming,Hot Springs County,2015,4722
+50,4,8,56,19,Wyoming,Johnson County,2015,8622
+50,4,8,56,21,Wyoming,Laramie County,2015,97090
+50,4,8,56,23,Wyoming,Lincoln County,2015,18788
+50,4,8,56,25,Wyoming,Natrona County,2015,82218
+50,4,8,56,27,Wyoming,Niobrara County,2015,2504
+50,4,8,56,29,Wyoming,Park County,2015,28973
+50,4,8,56,31,Wyoming,Platte County,2015,8803
+50,4,8,56,33,Wyoming,Sheridan County,2015,29925
+50,4,8,56,35,Wyoming,Sublette County,2015,10064
+50,4,8,56,37,Wyoming,Sweetwater County,2015,44780
+50,4,8,56,39,Wyoming,Teton County,2015,23083
+50,4,8,56,41,Wyoming,Uinta County,2015,20777
+50,4,8,56,43,Wyoming,Washakie County,2015,8282
+50,4,8,56,45,Wyoming,Weston County,2015,7202
