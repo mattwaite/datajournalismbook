@@ -1,10 +1,10 @@
 # Intro to APIs: The Census
 
-There is truly an astonishing amount of data collected by the US Census Bureau. First, there's the Census that most people know -- the every 10 year census. That's the one mandated by the Constitution where the government attempts to count every person in the US. It's a mind-boggling feat to even try, and billions get spent on it. That data is used first for determining how many representatives each state gets in Congress. From there, the Census gets used to divide up billions of dollars of federal spending. 
+There is truly an astonishing amount of data collected by the US Census Bureau. First, there's the Census that most people know -- the every 10 year census. That's the one mandated by the Constitution where the government attempts to count every person in the US. It's a mind-boggling feat to even try, and billions get spent on it. That data is used first for determining how many representatives each state gets in Congress. From there, the Census gets used to divide up billions of dollars of federal spending.
 
-To answer the questions the government needs to do that, a ton of data gets collected. That, unfortunately, means the Census is exceedingly complicated to work with. The good news is, the Census has an API -- an application programming interface. What that means is we can get data directly through the Census Bureau via calls over the internet. 
+To answer the questions the government needs to do that, a ton of data gets collected. That, unfortunately, means the Census is exceedingly complicated to work with. The good news is, the Census has an API -- an application programming interface. What that means is we can get data directly through the Census Bureau via calls over the internet.
 
-Let's demonstrate. 
+Let's demonstrate.
 
 We're going to use a library called `tidycensus` which makes calls to the Census API in a very tidy way, and gives you back tidy data. That means we don't have to go through the process of importing the data from a file. I can't tell you how amazing this is, speaking from experience.
 
@@ -21,19 +21,19 @@ To use the API, you need an API key. To get that, you need to [apply for an API 
 census_api_key("YOUR KEY HERE")
 ```
 
-Just FYI: Your key is your key. Do not share it around. 
+Just FYI: Your key is your key. Do not share it around.
 
 ```{r echo=FALSE}
-census_api_key("a398e3144d92d0eb7cd4ede7526cec98bffe9933")
+census_api_key("YOUR KEY HERE")
 ```
 
-So to give you some idea of how complicated the data is, let's pull up just one file from the decennial Census. We'll use Summary File 1, or SF1. That has the major population and housing stuff. 
+So to give you some idea of how complicated the data is, let's pull up just one file from the decennial Census. We'll use Summary File 1, or SF1. That has the major population and housing stuff.
 
 ```{r}
 sf1 <- load_variables(2010, "sf1", cache = TRUE)
 ```
 
-Note: There are 3,346 variables in SF1. That's not a typo. Open it in your environment by double clicking. As you scroll down, you'll get an idea of what you've got to choose from. 
+Note: There are thousands of variables in SF1. That's not a typo. Open it in your environment by double clicking. As you scroll down, you'll get an idea of what you've got to choose from.
 
 If you think that's crazy, try the SF3 file from 2000.
 
@@ -41,17 +41,11 @@ If you think that's crazy, try the SF3 file from 2000.
 sf3 <- load_variables(2000, "sf3", cache = TRUE)
 ```
 
-Yes. That's 5,555 variables to choose from. I told you. Astonishing. 
+Yes. That's more than 16,000 variables to choose from. I told you. Astonishing.
 
-So let's try to answer a question using the Census. What is the fastest growing state since 1990? 
+So let's try to answer a question using the Census. What is the fastest growing state since 2000?
 
-To answer this, we need to pull the total population by state in each of the decennial census. Here's 1990.
-
-```{r}
-p90 <- get_decennial(geography = "state", variables = "P0010001", year = 1990)
-```
-
-Now 2000.
+To answer this, we need to pull the total population by state in each of the decennial census. Here's 2000.
 
 ```{r}
 p00 <- get_decennial(geography = "state", variables = "P001001", year = 2000)
@@ -63,35 +57,35 @@ Now 2010.
 p10 <- get_decennial(geography = "state", variables = "P001001", year = 2010)
 ```
 
-Let's take a peek at 2010. 
+Let's take a peek at 2010.
 
 ```{r}
 p10
 ```
 
-As you can see, we have a GEOID, NAME, then variable and value. Variable and value are going to be the same. Because those are named the same thing, to merge them together, we need to rename them. 
+As you can see, we have a GEOID, NAME, then variable and value. Variable and value are going to be the same. Because those are named the same thing, to merge them together, we need to rename them.
 
 ```{r}
 p10 %>% select(GEOID, NAME, value) %>% rename(Population2010=value) -> p2010
 
 p00 %>% select(GEOID, NAME, value) %>% rename(Population2000=value) -> p2000
-
-p90 %>% select(GEOID, NAME, value) %>% rename(Population1990=value) -> p1990
 ```
 
 Now we join the data together.
 
 ```{r}
-alldata <- p1990 %>% inner_join(p2000) %>% inner_join(p2010)
+alldata <- p2000 %>% inner_join(p2010)
 ```
 
 And now we calculate the percent change.
 
 ```{r}
-alldata %>% mutate(change = ((Population2010-Population1990)/Population1990)*100) %>% arrange(desc(change))
+alldata %>% mutate(change = ((Population2010-Population2000)/Population2000)*100) %>% arrange(desc(change))
 ```
 
-And just like that: Nevada. Nebraska is 33rd fastest growing. 
+And just like that: Nevada.
+
+You may be asking: hey, wasn't there a 2020 Census? Where's that data? The answer is that it's coming - the Census Bureau has a [schedule of releases](https://www.census.gov/programs-surveys/popest/about/schedule.html).
 
 ## The ACS
 
@@ -99,70 +93,70 @@ In 2010, the Census Bureau replaced SF3 with the American Community Survey. The 
 
 Here's an example:
 
-What is Nebraska's richest county?
+What is Maryland's richest county?
 
-We can measure this by median household income. That variable is `B19013_001`, so we can get that data like this (I'm narrowing it to the top 20 for simplicity): 
+We can measure this by median household income. That variable is `B19013_001`, so we can get that data like this (I'm narrowing it to the top 20 for simplicity):
 ```{r}
-ne <- get_acs(geography = "county", 
-              variables = c(medincome = "B19013_001"), 
-              state = "NE", 
-              year = 2018)
+md <- get_acs(geography = "county",
+              variables = c(medincome = "B19013_001"),
+              state = "MD",
+              year = 2019)
 
-ne <- ne %>% arrange(desc(estimate)) %>% top_n(20, estimate)
+md <- md %>% arrange(desc(estimate)) %>% top_n(20, estimate)
 
-ne
+md
 
 ```
 
-Sarpy, Cass, Washington. What do they all have in common? They ring Douglas County -- Omaha. So lots of suburban flight. But do the margins of error let us say one county is richer than the other. We can find this out visually using error bars. Don't worry much about the code here --  we'll cover that soon enough. 
+Howard, Calvert, Montgomery, Anne Arundel, Charles. What do they all have in common? Lots of suburban flight from DC and Baltimore. But do the margins of error let us say one county is richer than the other. We can find this out visually using error bars. Don't worry much about the code here --  we'll cover that soon enough.
 
 ```{r}
-ne %>%
-  mutate(NAME = gsub(" County, Nebraska", "", NAME)) %>%
+md %>%
+  mutate(NAME = gsub(" County, Maryland", "", NAME)) %>%
   ggplot(aes(x = estimate, y = reorder(NAME, estimate))) +
   geom_errorbarh(aes(xmin = estimate - moe, xmax = estimate + moe)) +
   geom_point(color = "red") +
-  labs(title = "Household income by county in Nebraska",
-       subtitle = "2013-2017 American Community Survey",
+  labs(title = "Household income by county in Maryland",
+       subtitle = "2015-2019 American Community Survey",
        y = "",
        x = "ACS estimate (bars represent margin of error)")
 ```
 
-As you can see, some of the error bars are quite wide. Some are narrow. But if the bars overlap, it means the difference between the two counties is within the margin of error, and the differences aren't statistically significant. So is the difference between Cass and Washington significant? Nope. Is the difference between Sarpy and everyone else significant? Yes it is.
+As you can see, some of the error bars are quite wide. Some are narrow. But if the bars overlap, it means the difference between the two counties is within the margin of error, and the differences aren't statistically significant. So is the difference between Calvert and Montgomery significant? Nope. Is the difference between Howard and everyone else significant? Yes it is.
 
 Let's ask another question of the ACS -- did any counties lose income from the time of the global financial crisis to the current 5-year window?
 
-Let's re-label our first household income data. 
+Let's re-label our first household income data.
 
 ```{r}
-ne18 <- get_acs(geography = "county", 
-              variables = c(medincome = "B19013_001"), 
-              state = "NE", 
-              year = 2018)
+md19 <- get_acs(geography = "county",
+              variables = c(medincome = "B19013_001"),
+              state = "MD",
+              year = 2019)
 ```
 
-And now we grab the 2010 median household income. 
+And now we grab the 2010 median household income.
 
 ```{r}
-ne10 <- get_acs(geography = "county", 
-              variables = c(medincome = "B19013_001"), 
-              state = "NE", 
+md10 <- get_acs(geography = "county",
+              variables = c(medincome = "B19013_001"),
+              state = "MD",
               year = 2010)
 ```
 
-What I'm going to do next is a lot, but each step is simple. I'm going to join the data together, so each county has one line of data. Then I'm going to rename some fields that repeat. Then I'm going to calculate the minimium and maximum value of the estimate using the margin of error. That'll help me later. After that, I'm going to calculate a perent change and sort it by that change. 
+What I'm going to do next is a lot, but each step is simple. I'm going to join the data together, so each county has one line of data. Then I'm going to rename some fields that repeat. Then I'm going to calculate the minimium and maximum value of the estimate using the margin of error. That'll help me later. After that, I'm going to calculate a perent change and sort it by that change.
 
 ```{r}
-ne10 %>% 
-  inner_join(ne18, by=c("GEOID", "NAME")) %>% 
-  rename(estimate2010=estimate.x, estimate2018=estimate.y) %>% 
-  mutate(min2010 = estimate2010-moe.x, max2010 = estimate2010+moe.x, min2018 = estimate2018-moe.y, max2018 = estimate2018+moe.y) %>% 
-  select(-variable.x, -variable.y, -moe.x, -moe.y) %>% 
-  mutate(change = ((estimate2018-estimate2010)/estimate2010)*100) %>% 
+md10 %>%
+  inner_join(md19, by=c("GEOID", "NAME")) %>%
+  rename(estimate2010=estimate.x, estimate2019=estimate.y) %>%
+  mutate(min2010 = estimate2010-moe.x, max2010 = estimate2010+moe.x, min2019 = estimate2019-moe.y, max2019 = estimate2019+moe.y) %>%
+  select(-variable.x, -variable.y, -moe.x, -moe.y) %>%
+  mutate(change = ((estimate2019-estimate2010)/estimate2010)*100) %>%
   arrange(change)
 ```
 
-So according to this, McPherson and Hayes counties lost ground from the financial meltdown to now.
+So according to this, Somerset and Caroline counties lost ground from the financial meltdown to now.
 
 But did they?
 
@@ -170,15 +164,16 @@ Look at the min and max values for both. Is the change statistically significant
 
 ## Bonus API example: Coronavirus
 
-As I'm writing this, there is a growing level of fear about the novel coronavirus, COVID-19. And, as I'm writing this, I was alerted to a new R package that pulls daily updates of coronavirus reports daily. You install it with `install.packages("coronavirus")`
+Of course there would be an R package about the novel coronavirus, COVID-19. It pulls daily updates of coronavirus reports. You install it with `install.packages("coronavirus")`
 
 ```{r}
 library(coronavirus)
 
-data("coronavirus") 
+data("coronavirus")
+update_dataset()
 ```
 
-What just happened, without you having to do anything, is the library just made a call to servers at Johns Hopkins University and got the latest coronavirus numbers from around the world. 
+What just happened, without you having to do anything, is the library just made a call to servers at Johns Hopkins University and got the latest coronavirus numbers from around the world.
 
 Check it out:
 
@@ -189,13 +184,13 @@ view(coronavirus)
 So now we can start using it for data analysis. How about cases in the US?
 
 ```{r}
-coronavirus %>% filter(Country.Region == "US")
+coronavirus %>% filter(country == "US")
 ```
 
 How about confirmed cases by country?
 
 ```{r}
-coronavirus %>% filter(type == "confirmed") %>% group_by(Country.Region) %>% summarize(total=sum(cases)) %>% arrange(desc(total))
+coronavirus %>% filter(type == "confirmed") %>% group_by(country) %>% summarize(total=sum(cases)) %>% arrange(desc(total))
 ```
 
-With this library, you could track this every day. Pretty neat, if you ask me.
+Seems a little out of date, but the idea is a good one.

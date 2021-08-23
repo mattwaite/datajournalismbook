@@ -1,8 +1,8 @@
 # Working with dates
 
-One of the most frustrating things in data is working with dates. Everyone has a different opinion on how to record them, and every software package on the planet has to sort it out. Dealing with it can be a little ... confusing. And every dataset has something new to throw at you. So consider this an introduction. 
+One of the most frustrating things in data is working with dates. Everyone has a different opinion on how to record them, and every software package on the planet has to sort it out. Dealing with it can be a little ... confusing. And every dataset has something new to throw at you. So consider this an introduction.
 
-We're going to do this two ways. First I'm going to show you how to use base R to solve a tricky problem. And then we'll use a library called `lubridate` to solve a more common and less tricky problem. And then we'll use a new library to solve most of the common problems before they start. 
+We're going to do this two ways. First I'm going to show you how to use base R to solve a tricky problem. And then we'll use a library called `lubridate` to solve a more common and less tricky problem. And then we'll use a new library to solve most of the common problems before they start.
 
 ## The hard way
 
@@ -12,25 +12,25 @@ First, we'll import `tidyverse` like we always do.
 library(tidyverse)
 ```
 
-We're going to use a dataset of [parking tickets at UNL](https://unl.box.com/s/3c5kx2i5iouc52ty46k4js412u48yajr). If we do this the old way -- using read.csv -- this is what we get:
+We're going to use a dataset of [PPP applications from Maryland](https://umd.box.com/s/czolak14n8ts55aqnt7rrqfb6cb8blr1). If we do this the old way -- using read.csv -- this is what we get:
 
 ```{r}
-tickets <- read.csv("data/tickets.csv")
-head(tickets)
+maryland <- read.csv('ppp_applications_md.csv')
+head(maryland)
 ```
-Note the date is a factor, not a date. We have to fix that. There's a lot of ways to fix dates. The base R way is to use formatting. The code is ... a little odd ... but it's useful to know if you get a really odd date format. What you are doing is essentially parsing the date into it's component parts then reassmbling it into a date using formatting. 
+Note the date is a factor, not a date. We have to fix that. There's a lot of ways to fix dates. The base R way is to use formatting. The code is ... a little odd ... but it's useful to know if you get a really odd date format. What you are doing is essentially parsing the date into it's component parts then reassembling it into a date using formatting.
 
 ```{r}
-newtickets <- tickets %>% mutate(
-    CleanDate = as.POSIXct(Date, format="%Y-%m-%d %H:%M:%S")
+new_maryland <- maryland %>% mutate(
+    CleanDate = as.POSIXct(date_approved, format="%Y-%m-%d %H:%M:%S")
 )
 
-head(newtickets)
+head(new_maryland)
 ```
 
-CleanDate is now a special date format that includes times.
+CleanDate is now an actual date format that includes times, so you can use `filter` to isolate applications with specific dates.
 
-You can almost read the code that created it: The format of the date is %Y, which means a four digit year DASH %m or two digit month DASH %d or two digit day SPACE %H or two digit hour COLON %M or two digit minute COLON %S or two digit second. You can remix that as you need. If you had a date that was `20021212` then you would do `format="%Y%m%d"` and so on. 
+You can almost read the code that created it: The format of the date is %Y, which means a four digit year DASH %m or two digit month DASH %d or two digit day SPACE %H or two digit hour COLON %M or two digit minute COLON %S or two digit second. You can remix that as you need. If you had a date that was `20021212` then you would do `format="%Y%m%d"` and so on.
 
 There is a [library called lubridate](https://cran.r-project.org/web/packages/lubridate/vignettes/lubridate.html) that can parse some common date problems. If it's not already installed, just run `install.packages('lubridate')`
 
@@ -38,48 +38,44 @@ There is a [library called lubridate](https://cran.r-project.org/web/packages/lu
 library(lubridate)
 ```
 
-Lubridate can handle this tickets data easier with one of it's many functions. The functions parse dates given a basic pattern. In this case, our data is in a very common pattern of year month date hours minutes seconds. Lubridate has a function called `ymd_hms`.
+Lubridate can handle this tickets data easier with one of it's many functions. The functions parse dates given a basic pattern. In this case, our data is in a very common pattern of month date year hours minutes seconds. Lubridate has a function called `ymd_hms`.
 
 ```{r}
-lubridatetickets <- tickets %>% mutate(
-    CleanDate = ymd_hms(Date)
+lubridatemaryland <- maryland %>% mutate(
+    CleanDate = ymd_hms(date_approved)
 )
 
-head(lubridatetickets)
+head(lubridatemaryland)
 ```
-That's less code and less weirdness, so that's good. 
+That's less code and less weirdness, so that's good.
 
-But to get clean data, I've installed a library and created a new field so I can now start to work with my dates. That seems like a lot, but don't think your data will always be perfect and you won't have to do these things. 
+But to get clean data, I've installed a library and created a new field so I can now start to work with my dates. That seems like a lot, but don't think your data will always be perfect and you won't have to do these things.
 
-Still, there's got to be a better way. And there is. 
+Still, there's got to be a better way. And there is.
 
 Fortunately, `readr` anticipates some date formattings and can automatically handle this (indeed it uses lubridate under the hood). The change in your code? You just use `read_csv` instead of `read.csv`
 
 ```{r}
-tickets <- read_csv("data/tickets.csv")
-head(tickets)
+maryland <- read_csv("ppp_applications_md.csv")
+head(maryland)
 ```
 
-And just like that, the dates are formatted correctly. 
+And just like that, the dates are formatted correctly.
 
-But you're not done with lubridate yet. It has some interesting pieces parts we'll use elsewhere. 
+But you're not done with lubridate yet. It has some interesting pieces parts we'll use elsewhere.
 
-What's a question you might have about parking tickets on campus involving dates? 
+What's a question you might have about PPP loan applications involving dates?
 
-How about what month are the most tickets issued? We could use formatting to create a Month field but that would group all the Aprils ever together. We could create a year and a month together, but that would give us an invalid date object and that would create problems later. Lubridate has something called a floor date that we can use. 
+How about what month are the most applications approved? We could use formatting to create a Month field but that would group all the Aprils ever together. We could create a year and a month together, but that would give us an invalid date object and that would create problems later. Lubridate has something called a floor date that we can use.
 
-So to follow along here, we're going to use mutate to create a month field, group by to lump them together, summarize to count them up and arrange to order them. We're just chaining things together. 
+So to follow along here, we're going to use mutate to create a month field, group by to lump them together, summarize to count them up and arrange to order them. We're just chaining things together.
 
 ```{r}
-tickets %>% 
-  mutate(Month = floor_date(Date, "month")) %>% 
-  group_by(Month) %>% 
+maryland %>%
+  mutate(Month = floor_date(date_approved, "month")) %>%
+  group_by(Month) %>%
   summarise(total = n()) %>%
   arrange(desc(total))
 ```
 
-So the most tickets in this dataset were issued in September of 2014. April of 2015 was second. Then two Septembers and an October. 
-
-Any guesses why those months? 
-
-I'll give you a hint. It involves 90,000 people gathering in a big building on campus in the fall and one day in April or late March every spring.
+So the most applications in this dataset were issued in April of 2020. April of 2021 was second. Then May of 2020 and March and May of 2021. This isn't random; there are reasons why those months were the most common that we'll learn as we delve into the PPP loan program.
