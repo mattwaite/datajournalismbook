@@ -9,4 +9,6 @@ data/LPD_Dispatch_Records.csv
 *.DS_Store
 
 # Very large PPP loan data files
-data/ppp_loan_data/
+data/ppp_loan_data/raw/
+data/ppp_loan_data/processed/full/
+

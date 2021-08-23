@@ -25,9 +25,60 @@ library(gtsummary)
 
 ## Load data
 ```{r}
-# 11,786,689 records
-ppp_loans <- read_csv("../data/ppp_loan_data/recipients.csv")
 
+
+# Load entire DF 11,786,689 records
+## Set guess max to determine col types to full data set
+ppp_loans <- read_csv("../data/ppp_loan_data/raw/recipients.csv", guess_max=11786689, progress = show_progress())
+
+# Filter for target states
+## Maryland only loans, 195865 records
+ppp_loans_md <- ppp_loans %>%
+  filter(project_state == "MD")
+## West Virginia only loans, 33,705 records
+ppp_loans_wv <- ppp_loans %>%
+  filter(project_state == "WV")
+
+# Write out data as zipped rds
+## Write out full data set
+write_rds(ppp_loans,"../data/ppp_loan_data/processed/full/ppp_loans.rmd", compress="gz")
+## Write Maryland 
+write_rds(ppp_loans_md,"../data/ppp_loan_data/processed/md/ppp_loans_md.rmd", compress="gz")
+## Write West Virginia
+write_rds(ppp_loans_wv,"../data/ppp_loan_data/processed/wv/ppp_loans_wv.rmd", compress="gz")
+
+# Write out data as zipped csv
+## Write out full data set
+write_csv(ppp_loans,"../data/ppp_loan_data/processed/full/ppp_loans.csv.gz")
+## Write Maryland 
+write_csv(ppp_loans_md,"../data/ppp_loan_data/processed/md/ppp_loans_md.csv.gz")
+## Write West Virginia
+write_csv(ppp_loans_wv,"../data/ppp_loan_data/processed/wv/ppp_loans_wv.csv.gz")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Write Maryland 
+write_rds(ppp_loans_md,"../data/ppp_loan_data/processed/md/ppp_loans_md.rmd", compress="gz")
+## Write West Virginia
+write_rds(ppp_loans_wv,"../data/ppp_loan_data/processed/wv/ppp_loans_wv.rmd", compress="gz")
+
+
+
+ppp_loans_wv <- read_csv_chunked("../data/ppp_loan_data/recipients.csv", DataFrameCallback$new(process_filter_md_function), chunk_size = 1000000, guess_max=11786689)
 
 
 
