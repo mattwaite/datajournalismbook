@@ -4,3 +4,5 @@
 .Ruserdata
 *.zip
 data/LPD_Dispatch_Records.csv
+.DS_Store
+*/*.DS_Store
