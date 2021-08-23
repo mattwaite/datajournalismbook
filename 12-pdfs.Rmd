@@ -51,7 +51,7 @@ Now let's repeat the steps we did to import the PDF into Tabula and autodetect t
 knitr::include_graphics(rep("images/ppp_2.png"))
 ```
 
-We just want the table on page 4, so hit the "Clear All Selections" button to remove the red boxes. Now, in Tabula, let's draw a box around the table on page 4. Click and drag to draw the box.
+We just want the table on page 4, which shows 2021 loan activity by type of lender, so hit the "Clear All Selections" button to remove the red boxes. Now, in Tabula, let's draw a box around the table on page 4. Click and drag to draw the box.
 
 Now you can hit the green "Preview & Export Extracted Data" button on the top right. You should see something very like this:
 
