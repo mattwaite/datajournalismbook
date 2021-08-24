@@ -6,11 +6,9 @@ One of the first things you should do is give it the smell test.
 
 Failure to give data the smell test [can lead you to miss stories and get your butt kicked on a competitive story](https://source.opennews.org/en-US/learning/handling-data-about-race-and-ethnicity/).
 
-Let's look at some campus parking ticket data. You can [get it here](https://unl.box.com/s/3c5kx2i5iouc52ty46k4js412u48yajr).
+With data smells, we're trying to find common mistakes in data. [For more on data smells, read the GitHub wiki post that started it all](https://github.com/nikeiubel/data-smells/wiki/Ensuring-Accuracy-in-Data-Journalism). Some common data smells are:
 
-With data smells, we're trying to find common mistakes in data. [For more on data smells, read the GitHub wiki post that started it all](https://github.com/nikeiubel/data-smells/wiki/Ensuring-Accuracy-in-Data-Journalism). The common mistakes we're looking for are:,
-
-* Missing data
+* Missing data or missing values
 * Gaps in data
 * Wrong type of data
 * Outliers
@@ -26,6 +24,8 @@ With data smells, we're trying to find common mistakes in data. [For more on dat
 Not all of these data smells are detectable in code. You may have to ask people about the data. You may have to compare it to another dataset yourself. Does the agency that uses the data produce reports from the data? Does your analysis match those reports? That will expose wrongly derived data, or wrong units, or mistakes you made with inclusion or exclusion.
 
 But with several of these data smells, we can do them first, before we do anything else. 
+
+
 
 ## Wrong Type
 
@@ -46,7 +46,9 @@ x<-read_rds("data/ppp_loan_data/processed/md/ppp_loans_md.rmd")
 ```
 Examine the data output message. There are "12802 parsing failures."
 
-Why? Look closely. The `readr` library makes guesses on what data type to assign to each column based on the first 1,000 rows of data.  In the column "old_slug", there are no values for the first 1,000 rows.  They're all "NA".  `readr` just guesses what data type to assign it, so it chooses "logical", where the values it expects will be TRUE or FALSE, T or F, 1 or 0.  Then, on row 170,056, actual values start showing up in that "old_slug" column.  And those values look nothing like "TRUE or FALSE"; they're a long string of numbers and letters like "aditi-llc-d139eb25916444a03984f38eebda4e63", which should be stored as a "character".  Because `readr` has already set this as a logical column, though, it fails to parse correctly.  So it reads in as "NA", even though there's data to work with. 
+Why? Look closely. The `readr` library makes guesses on what data type to assign to each column based on the first 1,000 rows of data.  
+
+In the column "old_slug", there are no values for the first 1,000 rows.  They're all "NA".  `readr` just guesses what data type to assign it, so it chooses "logical", where the values it expects will be TRUE or FALSE, T or F, 1 or 0.  Then, on row 170,056, actual values start showing up in that "old_slug" column.  And those values look nothing like "TRUE or FALSE"; they're a long string of numbers and letters like "aditi-llc-d139eb25916444a03984f38eebda4e63", which should be stored as a "character".  Because `readr` has already set this as a logical column, though, it fails to parse correctly.  So it reads in as "NA", even though there's data to work with. 
 
 The easy way to fix this is to change the guess_max parameter of `readr` to use every row to determine what data type to make each column to guess the column types. It'll go a little slower, but it'll fix the problem.  This data set has 195,685 rows, so that's the value we'll use. 
 
@@ -145,7 +147,7 @@ So, our data starts in April 2020, the month that has more loans -- 45,040 -- th
 
 Then, there are no loans until January 2021. EXPLAIN WHY? IS THIS A PROBLEM?  There are loans every month until the program winds down on May 31, 2021.  There are still loans in June.  IS THIS A PROBLEM.   
 
-## Internal inconsistency
+## Outliers 
 
 Any time you are going to focus on something, you should check it for consistency inside the data set. So let's pretend the large number of Displaying Altered Permit tickets caught your attention and you want to do a story about tens of thousands of students being caught altering their parking permits to reduce their costs parking on campus. Good story right? Before you go calling the parking office for comment, I'd check that data first. 
 
