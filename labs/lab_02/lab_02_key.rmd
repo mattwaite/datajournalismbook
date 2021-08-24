@@ -1,0 +1,95 @@
+---
+title: "lab_02"
+author: "derek willis"
+date: "8/24/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load libraries and establish settings
+```{r}
+# Turn off scientific notation
+options(scipen=999)
+
+# Load the tidyverse. If you have not installed the tidyverse already, remove the # from the next line and run it first.  
+# install.packages('tidyverse')
+library(tidyverse)
+library(lubridate)
+```
+
+## Load Data
+
+Let's keep working with West Virginia loans contained in the PPP loans data.  
+
+```{r}
+wv_ppp_loans <- read_rds("lab_02.rds")
+```
+
+## Examine Data
+
+## Answer questions
+
+Q1. Which West Virginia city got the most loans? How many? (You'll need mutate so that city names are standardized.)
+A1. Charleston got 2,836 loans, more than any other West Virginia city.  
+
+```{r}
+wv_ppp_loans %>%
+  mutate(city=str_to_upper(city)) %>%
+  group_by(project_county_name) %>%
+  summarise(
+    total_loans = n()
+  ) %>%
+  arrange(desc(total_loans))
+```
+Q2. How many loans have an undisbursed amount > 0?
+A2. 655.
+```{r}
+wv_ppp_loans %>%
+  filter(undisbursed_amount > 0) %>%
+  summarise(
+    total_loans = n()
+  ) %>%
+  arrange(desc(total_loans))
+```
+
+Another way to do this is:
+
+```{r}
+nrow(wv_ppp_loans %>% filter(undisbursed_amount > 0))
+```
+
+Q3. Now, which servicing lenders are responsible for those loans with undisbursed amounts?
+A3. Harvest Small Business Finance, LLC, tops the list with 139.
+
+```{r}
+wv_ppp_loans %>%
+  filter(undisbursed_amount > 0) %>%
+  group_by(servicing_lender_name, servicing_lender_state ) %>%
+  summarise(
+    total_loans = n()
+  ) %>%
+  arrange(desc(total_loans))
+```
+
+Q4. How would you describe the top 10 list of those lenders? What do they have in common or not? (You may want to look up some of the top ones.)
+A4. The top seven lenders with the most undisbursed loans are banks or institutions located outside West Virginia. The top three are not chartered banks but specialty lenders that operate under different rules. They also have distinctly unhelpful websites for PPP applicants.
+
+Q5. 
+A5.
+
+```{r}
+wv_county_summary <- wv_ppp_loans %>%
+  group_by(project_county_name) %>%
+  summarise(
+    count_loans = n(),
+    total_loans_amount = sum(amount),
+    mean_loan_amount = mean(amount),
+    median_loan_amount = median(amount),
+    min_loan_amount = min(amount),
+    max_loan_amount = max(amount)
+  ) %>%
+  arrange(desc(max_loan_amount))
+```
