@@ -1,0 +1,92 @@
+---
+title: "lab_04"
+author: "derek willis"
+date: "8/24/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load libraries and establish settings
+```{r}
+# Turn off scientific notation
+options(scipen=999)
+
+# Load the tidyverse. If you have not installed the tidyverse already, remove the # from the next line and run it first.  
+# install.packages('tidyverse')
+library(tidyverse)
+```
+
+## Load Data
+
+Let's keep working with Maryland loan applications contained in the PPP data.  
+
+```{r}
+maryland_ppp <- read_rds("lab_04.rds")
+```
+
+After reading into R [the NAICS code data we have](https://umd.box.com/s/thou3merdzwzbdimbvd06zkax1zndcsk):
+
+```{r}
+naics_codes <- read_csv('naics_codes.csv')
+```
+
+Let's join the two:
+
+```{r}
+maryland_ppp_with_title <- maryland_ppp %>% left_join(naics_codes)
+```
+
+## Answer questions
+
+Q1. Create a new column that divides the loan amounts into multiple options: under_10k, 10k_50k, 50k_100k, 100k_500k, 500k_1m, 1m_plus. How many loans are in each group?
+A1. The 10k-50k group has 15,372, the most of any group.
+
+```{r}
+west_virginia_ppp %>%
+  mutate(
+    amount_option = case_when(
+      amount < 10000 ~ 'under_10k',
+      amount >= 10000 & amount < 50000 ~ '10k_50k',
+      amount >= 50000 & amount < 100000 ~ '50k_100k',
+      amount >= 100000 & amount < 500000 ~ '100k_500k',
+      amount >= 500000 & amount < 1000000 ~ '500k_1m',
+      amount >= 1000000 ~ '1m_plus'
+    )
+  ) %>%
+  group_by(amount_option) %>%
+  summarise(
+    total_loans = n()
+  ) %>%
+  arrange(desc(total_loans))
+```
+
+Q2. Which servicing lenders have the most loans with undisbursed amounts greater than 0?
+A2. Harvest Small Business Finance, LLC, tops the list with 139.
+
+```{r}
+west_virginia_ppp %>%
+  filter(undisbursed_amount > 0) %>%
+  group_by(servicing_lender_name, servicing_lender_state ) %>%
+  summarise(
+    total_loans = n()
+  ) %>%
+  arrange(desc(total_loans))
+```
+
+Q3. How would you describe the top 10 list of those lenders? What do they have in common or not? (You may want to look up some of the top ones.)
+A3. The top seven lenders with the most undisbursed loans are banks or institutions located outside West Virginia. The top three are not chartered banks but specialty lenders that operate under different rules. They also have distinctly unhelpful websites for PPP applicants.
+
+Q4. Which month in 2021 had the most loans approved?
+A4. March 2021, with 4,404.
+
+```{r}
+west_virginia_ppp %>%
+  filter(date_approved > '2020-12-31') %>%
+  mutate(Month = floor_date(date_approved, "month")) %>%
+  group_by(Month) %>%
+  summarise(total = n()) %>%
+  arrange(desc(total))
+```
