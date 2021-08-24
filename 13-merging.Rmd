@@ -42,14 +42,10 @@ And boom, like that, we have 9,852 rows of data together instead of three datafr
 
 More difficult is when you have two separate tables that are connected by a common element or elements.
 
-Let's start by loading tidyverse and reading in the Maryland PPP loan applications data:
+Let's start by reading in the Maryland PPP loan applications data:
 
 ```{r}
-library(tidyverse)
-```
-
-```{r}
-maryland <- read_csv('ppp_applications_md.csv')
+maryland_ppp <- read_csv('ppp_applications_md.csv')
 ```
 
 One of the columns we have is called `naics_code`, which is a six-digit number used by the federal government "in classifying business establishments for the purpose of collecting, analyzing, and publishing statistical data related to the U.S. business economy." More details at [the official NAICS site](https://www.census.gov/naics/).
@@ -69,13 +65,13 @@ In the best-case scenario, the two tables we want to join share a common column.
 We can do this join multiple ways and get a similar result. We can put the Maryland file on the left and the NAICS codes on the right and use a left join to get them all together. And we use `by=` to join by the correct column. And to avoid rendering hundreds of rows of data, I'm going to count the rows at the end. The reason I'm going this is important: **Rule 1 in joining data is having an idea of what you are expecting to get**. So with a left join with applications on the left, I have 195,869 applications, so I expect to get 195,869 rows when I'm done.
 
 ```{r}
-maryland %>% left_join(naics_codes, by="naics_code") %>% select(name, naics_code, title) %>% nrow()
+maryland_ppp %>% left_join(naics_codes, by="naics_code") %>% select(name, naics_code, title) %>% nrow()
 ```
 
 Remove the nrow and run it again for yourself. By default, `dplyr` will do a "natural" join, where it'll match all the matching columns in both tables. So if we take out the by, it'll use all the common columns between the tables. That may not be right in every instance but let's try it. If it works, we should get 195,869 rows.
 
 ```{r}
-maryland %>% left_join(naics_codes) %>% select(name, naics_code, title)
+maryland_ppp %>% left_join(naics_codes) %>% select(name, naics_code, title)
 ```
 
 Since we only have one column in common between the two tables, the join only used that column. And we got the same answer. If we had more columns in common, you could see in your results columns with .X after them - that's a sign of duplicative columns between two tables, and you may decide you don't need both moving forward.
@@ -83,7 +79,7 @@ Since we only have one column in common between the two tables, the join only us
 Let's save our joined data to a new dataframe, but this time let's remove the select function so we don't limit the columns to just three.
 
 ```{r}
-maryland_with_title <- maryland %>% left_join(naics_codes)
+maryland_ppp_with_title <- maryland_ppp %>% left_join(naics_codes)
 ```
 
 Now, with our joined data, we can answer questions in a more useful way. But joins can do even more than just provide lookups; they can bring in additional data to enable you to ask more sophisticated questions.
@@ -101,7 +97,7 @@ Note that this file describes Zip Code Tabulation Areas, which are very similar 
 Again, we can use a `left_join` to make our demographic data available. This time we'll need to specify the two fields to join because they do not have identical names. We'll use `zip` from our PPP data and `ZCTA5N` from the demographic data:
 
 ```{r}
-maryland_with_title_and_demographics <- maryland_with_title %>% left_join(maryland_zcta, by=c("zip"="ZCTA5N"))
+maryland_ppp_with_title_and_demographics <- maryland_ppp_with_title %>% left_join(maryland_zcta, by=c("zip"="ZCTA5N"))
 ```
 
 You probably got an error when running that:
@@ -123,15 +119,15 @@ maryland_zcta <- maryland_zcta %>% mutate(across(ZCTA5N, as.character))
 Now we can re-run the join:
 
 ```{r}
-maryland_with_title_and_demographics <- maryland_with_title %>% left_join(maryland_zcta, by=c("zip"="ZCTA5N"))
-View(maryland_with_title_and_demographics)
+maryland_ppp_with_title_and_demographics <- maryland_ppp_with_title %>% left_join(maryland_zcta, by=c("zip"="ZCTA5N"))
+View(maryland_ppp_with_title_and_demographics)
 ```
 
 Now, if you use the tiny black right arrows to see what's in those demographic columns, you'll see ... a lot of NAs. What's going on there? Are there zip codes in the PPP data that aren't in the ZCTA data? If you go back using the left arrows, you can see that the PPP zip codes often are zip+4, and we're using the ZCTA5N field to join, which is a 5-character field. But not all of the PPP codes are zip+4. So we'll need to use `mutate` once more to give us a PPP zip field that is exactly 5 characters. Let's do this on the original `maryland` dataframe so we can then do the join using our new `zip5` field:
 
 ```{r}
-maryland_with_title <- maryland %>% mutate(zip5 = str_sub(zip, 1, 5))
-maryland_with_title_and_demographics <- maryland_with_title %>% left_join(maryland_zcta, by=c("zip5"="ZCTA5N"))
+maryland_ppp_with_title <- maryland_ppp %>% mutate(zip5 = str_sub(zip, 1, 5))
+maryland_ppp_with_title_and_demographics <- maryland_ppp_with_title %>% left_join(maryland_zcta, by=c("zip5"="ZCTA5N"))
 ```
 
 Now we've got PPP data and demographic data by zip code. That means we can draw from both datasets in asking our questions. For example, we could see the mean and median loan amount in zip codes with different demographic characteristics. Let's start with zip codes that have more than 50 percent non-Hispanic Black population.
@@ -139,7 +135,7 @@ Now we've got PPP data and demographic data by zip code. That means we can draw 
 We get this by using filter followed by summarize. In this case, we want PNHB > 50:
 
 ```{r}
-maryland_with_title_and_demographics %>%
+maryland_ppp_with_title_and_demographics %>%
   filter(PNHB > 50) %>%
   summarize(
     count = n(),
@@ -152,7 +148,7 @@ According to our query, there were 44,032 loans approved in zip codes with more 
 Let's change that to zip codes with more than 50 percent non-Hispanic white population:
 
 ```{r}
-maryland_with_title_and_demographics %>%
+maryland_ppp_with_title_and_demographics %>%
   filter(PNHW > 50) %>%
   summarize(
     count = n(),
@@ -165,7 +161,7 @@ And we get a greater number of loans with a higher average and median amount. Bu
 Let's break this down one more step. What if we added `rural_urban_indicator` -- if the loan recipient is located in a rural or urban area -- as a group_by. Does that change anything for the previous queries?
 
 ```{r}
-maryland_with_title_and_demographics %>%
+maryland_ppp_with_title_and_demographics %>%
   filter(PNHB > 50) %>%
   group_by(rural_urban_indicator) %>%
   summarize(
@@ -175,7 +171,7 @@ maryland_with_title_and_demographics %>%
 ```
 
 ```{r}
-maryland_with_title_and_demographics %>%
+maryland_ppp_with_title_and_demographics %>%
   filter(PNHW > 50) %>%
   group_by(rural_urban_indicator) %>%
   summarize(

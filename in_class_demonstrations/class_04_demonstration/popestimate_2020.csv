@@ -1,0 +1,3195 @@
+SUMLEV,REGION,DIVISION,STATE,COUNTY,STNAME,CTYNAME,YEAR,POPESTIMATE
+40,3,6,1,0,Alabama,Alabama,2020,4921532
+50,3,6,1,1,Alabama,Autauga County,2020,56145
+50,3,6,1,3,Alabama,Baldwin County,2020,229287
+50,3,6,1,5,Alabama,Barbour County,2020,24589
+50,3,6,1,7,Alabama,Bibb County,2020,22136
+50,3,6,1,9,Alabama,Blount County,2020,57879
+50,3,6,1,11,Alabama,Bullock County,2020,9976
+50,3,6,1,13,Alabama,Butler County,2020,19504
+50,3,6,1,15,Alabama,Calhoun County,2020,113469
+50,3,6,1,17,Alabama,Chambers County,2020,32865
+50,3,6,1,19,Alabama,Cherokee County,2020,26294
+50,3,6,1,21,Alabama,Chilton County,2020,44397
+50,3,6,1,23,Alabama,Choctaw County,2020,12418
+50,3,6,1,25,Alabama,Clarke County,2020,23291
+50,3,6,1,27,Alabama,Clay County,2020,13112
+50,3,6,1,29,Alabama,Cleburne County,2020,14967
+50,3,6,1,31,Alabama,Coffee County,2020,53230
+50,3,6,1,33,Alabama,Colbert County,2020,55411
+50,3,6,1,35,Alabama,Conecuh County,2020,11851
+50,3,6,1,37,Alabama,Coosa County,2020,10650
+50,3,6,1,39,Alabama,Covington County,2020,36930
+50,3,6,1,41,Alabama,Crenshaw County,2020,13681
+50,3,6,1,43,Alabama,Cullman County,2020,84515
+50,3,6,1,45,Alabama,Dale County,2020,48959
+50,3,6,1,47,Alabama,Dallas County,2020,36098
+50,3,6,1,49,Alabama,DeKalb County,2020,71658
+50,3,6,1,51,Alabama,Elmore County,2020,82158
+50,3,6,1,53,Alabama,Escambia County,2020,36281
+50,3,6,1,55,Alabama,Etowah County,2020,102371
+50,3,6,1,57,Alabama,Fayette County,2020,16241
+50,3,6,1,59,Alabama,Franklin County,2020,31507
+50,3,6,1,61,Alabama,Geneva County,2020,26411
+50,3,6,1,63,Alabama,Greene County,2020,7990
+50,3,6,1,65,Alabama,Hale County,2020,14670
+50,3,6,1,67,Alabama,Henry County,2020,17223
+50,3,6,1,69,Alabama,Houston County,2020,106580
+50,3,6,1,71,Alabama,Jackson County,2020,51582
+50,3,6,1,73,Alabama,Jefferson County,2020,655342
+50,3,6,1,75,Alabama,Lamar County,2020,13764
+50,3,6,1,77,Alabama,Lauderdale County,2020,93368
+50,3,6,1,79,Alabama,Lawrence County,2020,32857
+50,3,6,1,81,Alabama,Lee County,2020,166831
+50,3,6,1,83,Alabama,Limestone County,2020,102228
+50,3,6,1,85,Alabama,Lowndes County,2020,9641
+50,3,6,1,87,Alabama,Macon County,2020,17895
+50,3,6,1,89,Alabama,Madison County,2020,379453
+50,3,6,1,91,Alabama,Marengo County,2020,18733
+50,3,6,1,93,Alabama,Marion County,2020,29703
+50,3,6,1,95,Alabama,Marshall County,2020,96990
+50,3,6,1,97,Alabama,Mobile County,2020,412716
+50,3,6,1,99,Alabama,Monroe County,2020,20459
+50,3,6,1,101,Alabama,Montgomery County,2020,224639
+50,3,6,1,103,Alabama,Morgan County,2020,119883
+50,3,6,1,105,Alabama,Perry County,2020,8687
+50,3,6,1,107,Alabama,Pickens County,2020,19793
+50,3,6,1,109,Alabama,Pike County,2020,32966
+50,3,6,1,111,Alabama,Randolph County,2020,22920
+50,3,6,1,113,Alabama,Russell County,2020,58237
+50,3,6,1,115,Alabama,St. Clair County,2020,90739
+50,3,6,1,117,Alabama,Shelby County,2020,221428
+50,3,6,1,119,Alabama,Sumter County,2020,12225
+50,3,6,1,121,Alabama,Talladega County,2020,79985
+50,3,6,1,123,Alabama,Tallapoosa County,2020,40133
+50,3,6,1,125,Alabama,Tuscaloosa County,2020,210758
+50,3,6,1,127,Alabama,Walker County,2020,63143
+50,3,6,1,129,Alabama,Washington County,2020,15976
+50,3,6,1,131,Alabama,Wilcox County,2020,10206
+50,3,6,1,133,Alabama,Winston County,2020,23508
+40,4,9,2,0,Alaska,Alaska,2020,731158
+50,4,9,2,13,Alaska,Aleutians East Borough,2020,3401
+50,4,9,2,16,Alaska,Aleutians West Census Area,2020,5680
+50,4,9,2,20,Alaska,Anchorage Municipality,2020,287095
+50,4,9,2,50,Alaska,Bethel Census Area,2020,18437
+50,4,9,2,60,Alaska,Bristol Bay Borough,2020,788
+50,4,9,2,63,Alaska,Chugach Census Area,2020,6427
+50,4,9,2,66,Alaska,Copper River Census Area,2020,2919
+50,4,9,2,68,Alaska,Denali Borough,2020,2081
+50,4,9,2,70,Alaska,Dillingham Census Area,2020,4833
+50,4,9,2,90,Alaska,Fairbanks North Star Borough,2020,95651
+50,4,9,2,100,Alaska,Haines Borough,2020,2614
+50,4,9,2,105,Alaska,Hoonah-Angoon Census Area,2020,2141
+50,4,9,2,110,Alaska,Juneau City and Borough,2020,31849
+50,4,9,2,122,Alaska,Kenai Peninsula Borough,2020,59414
+50,4,9,2,130,Alaska,Ketchikan Gateway Borough,2020,13747
+50,4,9,2,150,Alaska,Kodiak Island Borough,2020,12992
+50,4,9,2,158,Alaska,Kusilvak Census Area,2020,8328
+50,4,9,2,164,Alaska,Lake and Peninsula Borough,2020,1493
+50,4,9,2,170,Alaska,Matanuska-Susitna Borough,2020,110213
+50,4,9,2,180,Alaska,Nome Census Area,2020,9909
+50,4,9,2,185,Alaska,North Slope Borough,2020,9294
+50,4,9,2,188,Alaska,Northwest Arctic Borough,2020,7644
+50,4,9,2,195,Alaska,Petersburg Borough,2020,3296
+50,4,9,2,198,Alaska,Prince of Wales-Hyder Census Area,2020,6147
+50,4,9,2,220,Alaska,Sitka City and Borough,2020,8405
+50,4,9,2,230,Alaska,Skagway Municipality,2020,1179
+50,4,9,2,240,Alaska,Southeast Fairbanks Census Area,2020,6957
+50,4,9,2,275,Alaska,Wrangell City and Borough,2020,2510
+50,4,9,2,282,Alaska,Yakutat City and Borough,2020,637
+50,4,9,2,290,Alaska,Yukon-Koyukuk Census Area,2020,5077
+40,4,8,4,0,Arizona,Arizona,2020,7421401
+50,4,8,4,1,Arizona,Apache County,2020,71875
+50,4,8,4,3,Arizona,Cochise County,2020,127450
+50,4,8,4,5,Arizona,Coconino County,2020,142481
+50,4,8,4,7,Arizona,Gila County,2020,54303
+50,4,8,4,9,Arizona,Graham County,2020,39211
+50,4,8,4,11,Arizona,Greenlee County,2020,9341
+50,4,8,4,12,Arizona,La Paz County,2020,21480
+50,4,8,4,13,Arizona,Maricopa County,2020,4579081
+50,4,8,4,15,Arizona,Mohave County,2020,217206
+50,4,8,4,17,Arizona,Navajo County,2020,112112
+50,4,8,4,19,Arizona,Pima County,2020,1061175
+50,4,8,4,21,Arizona,Pinal County,2020,480828
+50,4,8,4,23,Arizona,Santa Cruz County,2020,46808
+50,4,8,4,25,Arizona,Yavapai County,2020,240226
+50,4,8,4,27,Arizona,Yuma County,2020,217824
+40,3,7,5,0,Arkansas,Arkansas,2020,3030522
+50,3,7,5,1,Arkansas,Arkansas County,2020,17383
+50,3,7,5,3,Arkansas,Ashley County,2020,19339
+50,3,7,5,5,Arkansas,Baxter County,2020,42242
+50,3,7,5,7,Arkansas,Benton County,2020,288774
+50,3,7,5,9,Arkansas,Boone County,2020,37625
+50,3,7,5,11,Arkansas,Bradley County,2020,10639
+50,3,7,5,13,Arkansas,Calhoun County,2020,5113
+50,3,7,5,15,Arkansas,Carroll County,2020,28276
+50,3,7,5,17,Arkansas,Chicot County,2020,9924
+50,3,7,5,19,Arkansas,Clark County,2020,22103
+50,3,7,5,21,Arkansas,Clay County,2020,14375
+50,3,7,5,23,Arkansas,Cleburne County,2020,24935
+50,3,7,5,25,Arkansas,Cleveland County,2020,7957
+50,3,7,5,27,Arkansas,Columbia County,2020,23331
+50,3,7,5,29,Arkansas,Conway County,2020,21037
+50,3,7,5,31,Arkansas,Craighead County,2020,112245
+50,3,7,5,33,Arkansas,Crawford County,2020,63409
+50,3,7,5,35,Arkansas,Crittenden County,2020,47616
+50,3,7,5,37,Arkansas,Cross County,2020,16142
+50,3,7,5,39,Arkansas,Dallas County,2020,6802
+50,3,7,5,41,Arkansas,Desha County,2020,11110
+50,3,7,5,43,Arkansas,Drew County,2020,17977
+50,3,7,5,45,Arkansas,Faulkner County,2020,126919
+50,3,7,5,47,Arkansas,Franklin County,2020,17897
+50,3,7,5,49,Arkansas,Fulton County,2020,12381
+50,3,7,5,51,Arkansas,Garland County,2020,99789
+50,3,7,5,53,Arkansas,Grant County,2020,18449
+50,3,7,5,55,Arkansas,Greene County,2020,45597
+50,3,7,5,57,Arkansas,Hempstead County,2020,21253
+50,3,7,5,59,Arkansas,Hot Spring County,2020,33787
+50,3,7,5,61,Arkansas,Howard County,2020,13109
+50,3,7,5,63,Arkansas,Independence County,2020,37757
+50,3,7,5,65,Arkansas,Izard County,2020,13613
+50,3,7,5,67,Arkansas,Jackson County,2020,16636
+50,3,7,5,69,Arkansas,Jefferson County,2020,65377
+50,3,7,5,71,Arkansas,Johnson County,2020,26513
+50,3,7,5,73,Arkansas,Lafayette County,2020,6596
+50,3,7,5,75,Arkansas,Lawrence County,2020,16410
+50,3,7,5,77,Arkansas,Lee County,2020,8513
+50,3,7,5,79,Arkansas,Lincoln County,2020,12944
+50,3,7,5,81,Arkansas,Little River County,2020,12180
+50,3,7,5,83,Arkansas,Logan County,2020,21410
+50,3,7,5,85,Arkansas,Lonoke County,2020,73921
+50,3,7,5,87,Arkansas,Madison County,2020,16644
+50,3,7,5,89,Arkansas,Marion County,2020,16790
+50,3,7,5,91,Arkansas,Miller County,2020,43177
+50,3,7,5,93,Arkansas,Mississippi County,2020,40066
+50,3,7,5,95,Arkansas,Monroe County,2020,6584
+50,3,7,5,97,Arkansas,Montgomery County,2020,9006
+50,3,7,5,99,Arkansas,Nevada County,2020,8099
+50,3,7,5,101,Arkansas,Newton County,2020,7602
+50,3,7,5,103,Arkansas,Ouachita County,2020,23167
+50,3,7,5,105,Arkansas,Perry County,2020,10327
+50,3,7,5,107,Arkansas,Phillips County,2020,17299
+50,3,7,5,109,Arkansas,Pike County,2020,10643
+50,3,7,5,111,Arkansas,Poinsett County,2020,23283
+50,3,7,5,113,Arkansas,Polk County,2020,19707
+50,3,7,5,115,Arkansas,Pope County,2020,64334
+50,3,7,5,117,Arkansas,Prairie County,2020,7966
+50,3,7,5,119,Arkansas,Pulaski County,2020,392980
+50,3,7,5,121,Arkansas,Randolph County,2020,18247
+50,3,7,5,123,Arkansas,St. Francis County,2020,24682
+50,3,7,5,125,Arkansas,Saline County,2020,123968
+50,3,7,5,127,Arkansas,Scott County,2020,10164
+50,3,7,5,129,Arkansas,Searcy County,2020,7842
+50,3,7,5,131,Arkansas,Sebastian County,2020,127590
+50,3,7,5,133,Arkansas,Sevier County,2020,16702
+50,3,7,5,135,Arkansas,Sharp County,2020,17424
+50,3,7,5,137,Arkansas,Stone County,2020,12674
+50,3,7,5,139,Arkansas,Union County,2020,38219
+50,3,7,5,141,Arkansas,Van Buren County,2020,16541
+50,3,7,5,143,Arkansas,Washington County,2020,243216
+50,3,7,5,145,Arkansas,White County,2020,78729
+50,3,7,5,147,Arkansas,Woodruff County,2020,6264
+50,3,7,5,149,Arkansas,Yell County,2020,21181
+40,4,9,6,0,California,California,2020,39368078
+50,4,9,6,1,California,Alameda County,2020,1662323
+50,4,9,6,3,California,Alpine County,2020,1119
+50,4,9,6,5,California,Amador County,2020,40083
+50,4,9,6,7,California,Butte County,2020,212744
+50,4,9,6,9,California,Calaveras County,2020,46308
+50,4,9,6,11,California,Colusa County,2020,21558
+50,4,9,6,13,California,Contra Costa County,2020,1152333
+50,4,9,6,15,California,Del Norte County,2020,27968
+50,4,9,6,17,California,El Dorado County,2020,192925
+50,4,9,6,19,California,Fresno County,2020,1000918
+50,4,9,6,21,California,Glenn County,2020,28283
+50,4,9,6,23,California,Humboldt County,2020,134977
+50,4,9,6,25,California,Imperial County,2020,180267
+50,4,9,6,27,California,Inyo County,2020,18046
+50,4,9,6,29,California,Kern County,2020,901362
+50,4,9,6,31,California,Kings County,2020,152692
+50,4,9,6,33,California,Lake County,2020,64479
+50,4,9,6,35,California,Lassen County,2020,30016
+50,4,9,6,37,California,Los Angeles County,2020,9943046
+50,4,9,6,39,California,Madera County,2020,157761
+50,4,9,6,41,California,Marin County,2020,257332
+50,4,9,6,43,California,Mariposa County,2020,17160
+50,4,9,6,45,California,Mendocino County,2020,86061
+50,4,9,6,47,California,Merced County,2020,279252
+50,4,9,6,49,California,Modoc County,2020,8763
+50,4,9,6,51,California,Mono County,2020,14534
+50,4,9,6,53,California,Monterey County,2020,430906
+50,4,9,6,55,California,Napa County,2020,135965
+50,4,9,6,57,California,Nevada County,2020,99606
+50,4,9,6,59,California,Orange County,2020,3166857
+50,4,9,6,61,California,Placer County,2020,402950
+50,4,9,6,63,California,Plumas County,2020,18967
+50,4,9,6,65,California,Riverside County,2020,2489188
+50,4,9,6,67,California,Sacramento County,2020,1559146
+50,4,9,6,69,California,San Benito County,2020,64055
+50,4,9,6,71,California,San Bernardino County,2020,2189183
+50,4,9,6,73,California,San Diego County,2020,3332427
+50,4,9,6,75,California,San Francisco County,2020,866606
+50,4,9,6,77,California,San Joaquin County,2020,767967
+50,4,9,6,79,California,San Luis Obispo County,2020,282249
+50,4,9,6,81,California,San Mateo County,2020,758308
+50,4,9,6,83,California,Santa Barbara County,2020,444766
+50,4,9,6,85,California,Santa Clara County,2020,1907105
+50,4,9,6,87,California,Santa Cruz County,2020,269925
+50,4,9,6,89,California,Shasta County,2020,179027
+50,4,9,6,91,California,Sierra County,2020,2920
+50,4,9,6,93,California,Siskiyou County,2020,43245
+50,4,9,6,95,California,Solano County,2020,446935
+50,4,9,6,97,California,Sonoma County,2020,489819
+50,4,9,6,99,California,Stanislaus County,2020,550081
+50,4,9,6,101,California,Sutter County,2020,96385
+50,4,9,6,103,California,Tehama County,2020,64494
+50,4,9,6,105,California,Trinity County,2020,12216
+50,4,9,6,107,California,Tulare County,2020,468680
+50,4,9,6,109,California,Tuolumne County,2020,54515
+50,4,9,6,111,California,Ventura County,2020,841387
+50,4,9,6,113,California,Yolo County,2020,219728
+50,4,9,6,115,California,Yuba County,2020,80160
+40,4,8,8,0,Colorado,Colorado,2020,5807719
+50,4,8,8,1,Colorado,Adams County,2020,519883
+50,4,8,8,3,Colorado,Alamosa County,2020,16180
+50,4,8,8,5,Colorado,Arapahoe County,2020,657452
+50,4,8,8,7,Colorado,Archuleta County,2020,14196
+50,4,8,8,9,Colorado,Baca County,2020,3555
+50,4,8,8,11,Colorado,Bent County,2020,5356
+50,4,8,8,13,Colorado,Boulder County,2020,327171
+50,4,8,8,14,Colorado,Broomfield County,2020,72236
+50,4,8,8,15,Colorado,Chaffee County,2020,20661
+50,4,8,8,17,Colorado,Cheyenne County,2020,1795
+50,4,8,8,19,Colorado,Clear Creek County,2020,9586
+50,4,8,8,21,Colorado,Conejos County,2020,8143
+50,4,8,8,23,Colorado,Costilla County,2020,3921
+50,4,8,8,25,Colorado,Crowley County,2020,5696
+50,4,8,8,27,Colorado,Custer County,2020,5183
+50,4,8,8,29,Colorado,Delta County,2020,31067
+50,4,8,8,31,Colorado,Denver County,2020,735538
+50,4,8,8,33,Colorado,Dolores County,2020,2096
+50,4,8,8,35,Colorado,Douglas County,2020,360750
+50,4,8,8,37,Colorado,Eagle County,2020,54929
+50,4,8,8,39,Colorado,Elbert County,2020,27313
+50,4,8,8,41,Colorado,El Paso County,2020,728310
+50,4,8,8,43,Colorado,Fremont County,2020,47867
+50,4,8,8,45,Colorado,Garfield County,2020,60366
+50,4,8,8,47,Colorado,Gilpin County,2020,6235
+50,4,8,8,49,Colorado,Grand County,2020,15794
+50,4,8,8,51,Colorado,Gunnison County,2020,17593
+50,4,8,8,53,Colorado,Hinsdale County,2020,808
+50,4,8,8,55,Colorado,Huerfano County,2020,6883
+50,4,8,8,57,Colorado,Jackson County,2020,1389
+50,4,8,8,59,Colorado,Jefferson County,2020,583283
+50,4,8,8,61,Colorado,Kiowa County,2020,1458
+50,4,8,8,63,Colorado,Kit Carson County,2020,7121
+50,4,8,8,65,Colorado,Lake County,2020,7987
+50,4,8,8,67,Colorado,La Plata County,2020,56564
+50,4,8,8,69,Colorado,Larimer County,2020,360428
+50,4,8,8,71,Colorado,Las Animas County,2020,14420
+50,4,8,8,73,Colorado,Lincoln County,2020,5680
+50,4,8,8,75,Colorado,Logan County,2020,21974
+50,4,8,8,77,Colorado,Mesa County,2020,155603
+50,4,8,8,79,Colorado,Mineral County,2020,773
+50,4,8,8,81,Colorado,Moffat County,2020,13144
+50,4,8,8,83,Colorado,Montezuma County,2020,26408
+50,4,8,8,85,Colorado,Montrose County,2020,43322
+50,4,8,8,87,Colorado,Morgan County,2020,28941
+50,4,8,8,89,Colorado,Otero County,2020,18201
+50,4,8,8,91,Colorado,Ouray County,2020,5001
+50,4,8,8,93,Colorado,Park County,2020,18955
+50,4,8,8,95,Colorado,Phillips County,2020,4367
+50,4,8,8,97,Colorado,Pitkin County,2020,17894
+50,4,8,8,99,Colorado,Prowers County,2020,12106
+50,4,8,8,101,Colorado,Pueblo County,2020,169823
+50,4,8,8,103,Colorado,Rio Blanco County,2020,6342
+50,4,8,8,105,Colorado,Rio Grande County,2020,11296
+50,4,8,8,107,Colorado,Routt County,2020,25560
+50,4,8,8,109,Colorado,Saguache County,2020,6938
+50,4,8,8,111,Colorado,San Juan County,2020,748
+50,4,8,8,113,Colorado,San Miguel County,2020,8105
+50,4,8,8,115,Colorado,Sedgwick County,2020,2260
+50,4,8,8,117,Colorado,Summit County,2020,30631
+50,4,8,8,119,Colorado,Teller County,2020,25529
+50,4,8,8,121,Colorado,Washington County,2020,4875
+50,4,8,8,123,Colorado,Weld County,2020,333983
+50,4,8,8,125,Colorado,Yuma County,2020,10047
+40,1,1,9,0,Connecticut,Connecticut,2020,3557006
+50,1,1,9,1,Connecticut,Fairfield County,2020,942426
+50,1,1,9,3,Connecticut,Hartford County,2020,889226
+50,1,1,9,5,Connecticut,Litchfield County,2020,179610
+50,1,1,9,7,Connecticut,Middlesex County,2020,161657
+50,1,1,9,9,Connecticut,New Haven County,2020,851948
+50,1,1,9,11,Connecticut,New London County,2020,264999
+50,1,1,9,13,Connecticut,Tolland County,2020,150600
+50,1,1,9,15,Connecticut,Windham County,2020,116540
+40,3,5,10,0,Delaware,Delaware,2020,986809
+50,3,5,10,1,Delaware,Kent County,2020,183643
+50,3,5,10,3,Delaware,New Castle County,2020,561531
+50,3,5,10,5,Delaware,Sussex County,2020,241635
+40,3,5,11,0,District of Columbia,District of Columbia,2020,712816
+50,3,5,11,1,District of Columbia,District of Columbia,2020,712816
+40,3,5,12,0,Florida,Florida,2020,21733312
+50,3,5,12,1,Florida,Alachua County,2020,271218
+50,3,5,12,3,Florida,Baker County,2020,29566
+50,3,5,12,5,Florida,Bay County,2020,171322
+50,3,5,12,7,Florida,Bradford County,2020,28593
+50,3,5,12,9,Florida,Brevard County,2020,608459
+50,3,5,12,11,Florida,Broward County,2020,1958105
+50,3,5,12,13,Florida,Calhoun County,2020,14078
+50,3,5,12,15,Florida,Charlotte County,2020,194711
+50,3,5,12,17,Florida,Citrus County,2020,153010
+50,3,5,12,19,Florida,Clay County,2020,221770
+50,3,5,12,21,Florida,Collier County,2020,392973
+50,3,5,12,23,Florida,Columbia County,2020,72654
+50,3,5,12,27,Florida,DeSoto County,2020,38520
+50,3,5,12,29,Florida,Dixie County,2020,17057
+50,3,5,12,31,Florida,Duval County,2020,966728
+50,3,5,12,33,Florida,Escambia County,2020,322364
+50,3,5,12,35,Florida,Flagler County,2020,118451
+50,3,5,12,37,Florida,Franklin County,2020,12201
+50,3,5,12,39,Florida,Gadsden County,2020,45277
+50,3,5,12,41,Florida,Gilchrist County,2020,18885
+50,3,5,12,43,Florida,Glades County,2020,14198
+50,3,5,12,45,Florida,Gulf County,2020,13534
+50,3,5,12,47,Florida,Hamilton County,2020,14521
+50,3,5,12,49,Florida,Hardee County,2020,26822
+50,3,5,12,51,Florida,Hendry County,2020,42813
+50,3,5,12,53,Florida,Hernando County,2020,198792
+50,3,5,12,55,Florida,Highlands County,2020,106639
+50,3,5,12,57,Florida,Hillsborough County,2020,1497957
+50,3,5,12,59,Florida,Holmes County,2020,19594
+50,3,5,12,61,Florida,Indian River County,2020,162518
+50,3,5,12,63,Florida,Jackson County,2020,46085
+50,3,5,12,65,Florida,Jefferson County,2020,14543
+50,3,5,12,67,Florida,Lafayette County,2020,8482
+50,3,5,12,69,Florida,Lake County,2020,375492
+50,3,5,12,71,Florida,Lee County,2020,790767
+50,3,5,12,73,Florida,Leon County,2020,295460
+50,3,5,12,75,Florida,Levy County,2020,42214
+50,3,5,12,77,Florida,Liberty County,2020,8364
+50,3,5,12,79,Florida,Madison County,2020,18707
+50,3,5,12,81,Florida,Manatee County,2020,411219
+50,3,5,12,83,Florida,Marion County,2020,373513
+50,3,5,12,85,Florida,Martin County,2020,162088
+50,3,5,12,86,Florida,Miami-Dade County,2020,2707303
+50,3,5,12,87,Florida,Monroe County,2020,73900
+50,3,5,12,89,Florida,Nassau County,2020,91113
+50,3,5,12,91,Florida,Okaloosa County,2020,212820
+50,3,5,12,93,Florida,Okeechobee County,2020,42297
+50,3,5,12,95,Florida,Orange County,2020,1404396
+50,3,5,12,97,Florida,Osceola County,2020,385315
+50,3,5,12,99,Florida,Palm Beach County,2020,1507600
+50,3,5,12,101,Florida,Pasco County,2020,570412
+50,3,5,12,103,Florida,Pinellas County,2020,976802
+50,3,5,12,105,Florida,Polk County,2020,744552
+50,3,5,12,107,Florida,Putnam County,2020,74815
+50,3,5,12,109,Florida,St. Johns County,2020,278715
+50,3,5,12,111,Florida,St. Lucie County,2020,337186
+50,3,5,12,113,Florida,Santa Rosa County,2020,189139
+50,3,5,12,115,Florida,Sarasota County,2020,443465
+50,3,5,12,117,Florida,Seminole County,2020,474171
+50,3,5,12,119,Florida,Sumter County,2020,139018
+50,3,5,12,121,Florida,Suwannee County,2020,44851
+50,3,5,12,123,Florida,Taylor County,2020,21600
+50,3,5,12,125,Florida,Union County,2020,15182
+50,3,5,12,127,Florida,Volusia County,2020,561497
+50,3,5,12,129,Florida,Wakulla County,2020,34319
+50,3,5,12,131,Florida,Walton County,2020,76648
+50,3,5,12,133,Florida,Washington County,2020,25932
+40,3,5,13,0,Georgia,Georgia,2020,10710017
+50,3,5,13,1,Georgia,Appling County,2020,18325
+50,3,5,13,3,Georgia,Atkinson County,2020,8393
+50,3,5,13,5,Georgia,Bacon County,2020,11036
+50,3,5,13,7,Georgia,Baker County,2020,2971
+50,3,5,13,9,Georgia,Baldwin County,2020,45099
+50,3,5,13,11,Georgia,Banks County,2020,19352
+50,3,5,13,13,Georgia,Barrow County,2020,85588
+50,3,5,13,15,Georgia,Bartow County,2020,109426
+50,3,5,13,17,Georgia,Ben Hill County,2020,16614
+50,3,5,13,19,Georgia,Berrien County,2020,19408
+50,3,5,13,21,Georgia,Bibb County,2020,152737
+50,3,5,13,23,Georgia,Bleckley County,2020,12955
+50,3,5,13,25,Georgia,Brantley County,2020,19202
+50,3,5,13,27,Georgia,Brooks County,2020,15357
+50,3,5,13,29,Georgia,Bryan County,2020,40755
+50,3,5,13,31,Georgia,Bulloch County,2020,80839
+50,3,5,13,33,Georgia,Burke County,2020,22648
+50,3,5,13,35,Georgia,Butts County,2020,25426
+50,3,5,13,37,Georgia,Calhoun County,2020,6231
+50,3,5,13,39,Georgia,Camden County,2020,55388
+50,3,5,13,43,Georgia,Candler County,2020,10985
+50,3,5,13,45,Georgia,Carroll County,2020,121633
+50,3,5,13,47,Georgia,Catoosa County,2020,67996
+50,3,5,13,49,Georgia,Charlton County,2020,13430
+50,3,5,13,51,Georgia,Chatham County,2020,289463
+50,3,5,13,53,Georgia,Chattahoochee County,2020,10551
+50,3,5,13,55,Georgia,Chattooga County,2020,24843
+50,3,5,13,57,Georgia,Cherokee County,2020,265274
+50,3,5,13,59,Georgia,Clarke County,2020,127795
+50,3,5,13,61,Georgia,Clay County,2020,2866
+50,3,5,13,63,Georgia,Clayton County,2020,292646
+50,3,5,13,65,Georgia,Clinch County,2020,6582
+50,3,5,13,67,Georgia,Cobb County,2020,762944
+50,3,5,13,69,Georgia,Coffee County,2020,43218
+50,3,5,13,71,Georgia,Colquitt County,2020,45542
+50,3,5,13,73,Georgia,Columbia County,2020,160377
+50,3,5,13,75,Georgia,Cook County,2020,17291
+50,3,5,13,77,Georgia,Coweta County,2020,150849
+50,3,5,13,79,Georgia,Crawford County,2020,12231
+50,3,5,13,81,Georgia,Crisp County,2020,22034
+50,3,5,13,83,Georgia,Dade County,2020,16057
+50,3,5,13,85,Georgia,Dawson County,2020,27113
+50,3,5,13,87,Georgia,Decatur County,2020,26457
+50,3,5,13,89,Georgia,DeKalb County,2020,762009
+50,3,5,13,91,Georgia,Dodge County,2020,20452
+50,3,5,13,93,Georgia,Dooly County,2020,13174
+50,3,5,13,95,Georgia,Dougherty County,2020,86477
+50,3,5,13,97,Georgia,Douglas County,2020,147988
+50,3,5,13,99,Georgia,Early County,2020,10037
+50,3,5,13,101,Georgia,Echols County,2020,4002
+50,3,5,13,103,Georgia,Effingham County,2020,65765
+50,3,5,13,105,Georgia,Elbert County,2020,19335
+50,3,5,13,107,Georgia,Emanuel County,2020,22507
+50,3,5,13,109,Georgia,Evans County,2020,10638
+50,3,5,13,111,Georgia,Fannin County,2020,26521
+50,3,5,13,113,Georgia,Fayette County,2020,115821
+50,3,5,13,115,Georgia,Floyd County,2020,98604
+50,3,5,13,117,Georgia,Forsyth County,2020,250847
+50,3,5,13,119,Georgia,Franklin County,2020,23504
+50,3,5,13,121,Georgia,Fulton County,2020,1077402
+50,3,5,13,123,Georgia,Gilmer County,2020,31978
+50,3,5,13,125,Georgia,Glascock County,2020,2984
+50,3,5,13,127,Georgia,Glynn County,2020,85568
+50,3,5,13,129,Georgia,Gordon County,2020,58780
+50,3,5,13,131,Georgia,Grady County,2020,24491
+50,3,5,13,133,Georgia,Greene County,2020,18837
+50,3,5,13,135,Georgia,Gwinnett County,2020,942627
+50,3,5,13,137,Georgia,Habersham County,2020,46047
+50,3,5,13,139,Georgia,Hall County,2020,206591
+50,3,5,13,141,Georgia,Hancock County,2020,8494
+50,3,5,13,143,Georgia,Haralson County,2020,30383
+50,3,5,13,145,Georgia,Harris County,2020,36080
+50,3,5,13,147,Georgia,Hart County,2020,26406
+50,3,5,13,149,Georgia,Heard County,2020,11973
+50,3,5,13,151,Georgia,Henry County,2020,239139
+50,3,5,13,153,Georgia,Houston County,2020,160110
+50,3,5,13,155,Georgia,Irwin County,2020,9387
+50,3,5,13,157,Georgia,Jackson County,2020,76199
+50,3,5,13,159,Georgia,Jasper County,2020,14483
+50,3,5,13,161,Georgia,Jeff Davis County,2020,15213
+50,3,5,13,163,Georgia,Jefferson County,2020,15267
+50,3,5,13,165,Georgia,Jenkins County,2020,8746
+50,3,5,13,167,Georgia,Johnson County,2020,9667
+50,3,5,13,169,Georgia,Jones County,2020,28787
+50,3,5,13,171,Georgia,Lamar County,2020,19261
+50,3,5,13,173,Georgia,Lanier County,2020,10737
+50,3,5,13,175,Georgia,Laurens County,2020,47512
+50,3,5,13,177,Georgia,Lee County,2020,30234
+50,3,5,13,179,Georgia,Liberty County,2020,63004
+50,3,5,13,181,Georgia,Lincoln County,2020,8031
+50,3,5,13,183,Georgia,Long County,2020,20171
+50,3,5,13,185,Georgia,Lowndes County,2020,118268
+50,3,5,13,187,Georgia,Lumpkin County,2020,34186
+50,3,5,13,189,Georgia,McDuffie County,2020,21162
+50,3,5,13,191,Georgia,McIntosh County,2020,14387
+50,3,5,13,193,Georgia,Macon County,2020,12712
+50,3,5,13,195,Georgia,Madison County,2020,30457
+50,3,5,13,197,Georgia,Marion County,2020,8516
+50,3,5,13,199,Georgia,Meriwether County,2020,21164
+50,3,5,13,201,Georgia,Miller County,2020,5622
+50,3,5,13,205,Georgia,Mitchell County,2020,21602
+50,3,5,13,207,Georgia,Monroe County,2020,28042
+50,3,5,13,209,Georgia,Montgomery County,2020,9012
+50,3,5,13,211,Georgia,Morgan County,2020,19636
+50,3,5,13,213,Georgia,Murray County,2020,40032
+50,3,5,13,215,Georgia,Muscogee County,2020,196442
+50,3,5,13,217,Georgia,Newton County,2020,113295
+50,3,5,13,219,Georgia,Oconee County,2020,41124
+50,3,5,13,221,Georgia,Oglethorpe County,2020,15383
+50,3,5,13,223,Georgia,Paulding County,2020,173359
+50,3,5,13,225,Georgia,Peach County,2020,27950
+50,3,5,13,227,Georgia,Pickens County,2020,33127
+50,3,5,13,229,Georgia,Pierce County,2020,19522
+50,3,5,13,231,Georgia,Pike County,2020,19121
+50,3,5,13,233,Georgia,Polk County,2020,42840
+50,3,5,13,235,Georgia,Pulaski County,2020,11191
+50,3,5,13,237,Georgia,Putnam County,2020,22520
+50,3,5,13,239,Georgia,Quitman County,2020,2271
+50,3,5,13,241,Georgia,Rabun County,2020,17273
+50,3,5,13,243,Georgia,Randolph County,2020,6682
+50,3,5,13,245,Georgia,Richmond County,2020,202079
+50,3,5,13,247,Georgia,Rockdale County,2020,90939
+50,3,5,13,249,Georgia,Schley County,2020,5196
+50,3,5,13,251,Georgia,Screven County,2020,14012
+50,3,5,13,253,Georgia,Seminole County,2020,8060
+50,3,5,13,255,Georgia,Spalding County,2020,67414
+50,3,5,13,257,Georgia,Stephens County,2020,26107
+50,3,5,13,259,Georgia,Stewart County,2020,6689
+50,3,5,13,261,Georgia,Sumter County,2020,29282
+50,3,5,13,263,Georgia,Talbot County,2020,6143
+50,3,5,13,265,Georgia,Taliaferro County,2020,1562
+50,3,5,13,267,Georgia,Tattnall County,2020,25365
+50,3,5,13,269,Georgia,Taylor County,2020,8074
+50,3,5,13,271,Georgia,Telfair County,2020,15781
+50,3,5,13,273,Georgia,Terrell County,2020,8523
+50,3,5,13,275,Georgia,Thomas County,2020,44372
+50,3,5,13,277,Georgia,Tift County,2020,40719
+50,3,5,13,279,Georgia,Toombs County,2020,26973
+50,3,5,13,281,Georgia,Towns County,2020,12247
+50,3,5,13,283,Georgia,Treutlen County,2020,6822
+50,3,5,13,285,Georgia,Troup County,2020,70214
+50,3,5,13,287,Georgia,Turner County,2020,7882
+50,3,5,13,289,Georgia,Twiggs County,2020,8103
+50,3,5,13,291,Georgia,Union County,2020,25358
+50,3,5,13,293,Georgia,Upson County,2020,26527
+50,3,5,13,295,Georgia,Walker County,2020,70116
+50,3,5,13,297,Georgia,Walton County,2020,96875
+50,3,5,13,299,Georgia,Ware County,2020,35826
+50,3,5,13,301,Georgia,Warren County,2020,5232
+50,3,5,13,303,Georgia,Washington County,2020,20150
+50,3,5,13,305,Georgia,Wayne County,2020,30023
+50,3,5,13,307,Georgia,Webster County,2020,2595
+50,3,5,13,309,Georgia,Wheeler County,2020,7751
+50,3,5,13,311,Georgia,White County,2020,31094
+50,3,5,13,313,Georgia,Whitfield County,2020,103837
+50,3,5,13,315,Georgia,Wilcox County,2020,8502
+50,3,5,13,317,Georgia,Wilkes County,2020,9694
+50,3,5,13,319,Georgia,Wilkinson County,2020,8812
+50,3,5,13,321,Georgia,Worth County,2020,19972
+40,4,9,15,0,Hawaii,Hawaii,2020,1407006
+50,4,9,15,1,Hawaii,Hawaii County,2020,203340
+50,4,9,15,3,Hawaii,Honolulu County,2020,963826
+50,4,9,15,5,Hawaii,Kalawao County,2020,87
+50,4,9,15,7,Hawaii,Kauai County,2020,71851
+50,4,9,15,9,Hawaii,Maui County,2020,167902
+40,4,8,16,0,Idaho,Idaho,2020,1826913
+50,4,8,16,1,Idaho,Ada County,2020,494399
+50,4,8,16,3,Idaho,Adams County,2020,4447
+50,4,8,16,5,Idaho,Bannock County,2020,88795
+50,4,8,16,7,Idaho,Bear Lake County,2020,6143
+50,4,8,16,9,Idaho,Benewah County,2020,9430
+50,4,8,16,11,Idaho,Bingham County,2020,47202
+50,4,8,16,13,Idaho,Blaine County,2020,23426
+50,4,8,16,15,Idaho,Boise County,2020,8065
+50,4,8,16,17,Idaho,Bonner County,2020,46817
+50,4,8,16,19,Idaho,Bonneville County,2020,122134
+50,4,8,16,21,Idaho,Boundary County,2020,12656
+50,4,8,16,23,Idaho,Butte County,2020,2646
+50,4,8,16,25,Idaho,Camas County,2020,1130
+50,4,8,16,27,Idaho,Canyon County,2020,237053
+50,4,8,16,29,Idaho,Caribou County,2020,7123
+50,4,8,16,31,Idaho,Cassia County,2020,24277
+50,4,8,16,33,Idaho,Clark County,2020,852
+50,4,8,16,35,Idaho,Clearwater County,2020,8846
+50,4,8,16,37,Idaho,Custer County,2020,4249
+50,4,8,16,39,Idaho,Elmore County,2020,27448
+50,4,8,16,41,Idaho,Franklin County,2020,14215
+50,4,8,16,43,Idaho,Fremont County,2020,13218
+50,4,8,16,45,Idaho,Gem County,2020,18703
+50,4,8,16,47,Idaho,Gooding County,2020,15618
+50,4,8,16,49,Idaho,Idaho County,2020,16823
+50,4,8,16,51,Idaho,Jefferson County,2020,30581
+50,4,8,16,53,Idaho,Jerome County,2020,24578
+50,4,8,16,55,Idaho,Kootenai County,2020,170628
+50,4,8,16,57,Idaho,Latah County,2020,40830
+50,4,8,16,59,Idaho,Lemhi County,2020,8054
+50,4,8,16,61,Idaho,Lewis County,2020,3838
+50,4,8,16,63,Idaho,Lincoln County,2020,5358
+50,4,8,16,65,Idaho,Madison County,2020,40318
+50,4,8,16,67,Idaho,Minidoka County,2020,21216
+50,4,8,16,69,Idaho,Nez Perce County,2020,40755
+50,4,8,16,71,Idaho,Oneida County,2020,4520
+50,4,8,16,73,Idaho,Owyhee County,2020,12133
+50,4,8,16,75,Idaho,Payette County,2020,24771
+50,4,8,16,77,Idaho,Power County,2020,7643
+50,4,8,16,79,Idaho,Shoshone County,2020,12911
+50,4,8,16,81,Idaho,Teton County,2020,12501
+50,4,8,16,83,Idaho,Twin Falls County,2020,88411
+50,4,8,16,85,Idaho,Valley County,2020,11792
+50,4,8,16,87,Idaho,Washington County,2020,10360
+40,2,3,17,0,Illinois,Illinois,2020,12587530
+50,2,3,17,1,Illinois,Adams County,2020,64783
+50,2,3,17,3,Illinois,Alexander County,2020,5497
+50,2,3,17,5,Illinois,Bond County,2020,16262
+50,2,3,17,7,Illinois,Boone County,2020,52777
+50,2,3,17,9,Illinois,Brown County,2020,6546
+50,2,3,17,11,Illinois,Bureau County,2020,32303
+50,2,3,17,13,Illinois,Calhoun County,2020,4616
+50,2,3,17,15,Illinois,Carroll County,2020,14241
+50,2,3,17,17,Illinois,Cass County,2020,11925
+50,2,3,17,19,Illinois,Champaign County,2020,209192
+50,2,3,17,21,Illinois,Christian County,2020,32075
+50,2,3,17,23,Illinois,Clark County,2020,15268
+50,2,3,17,25,Illinois,Clay County,2020,13079
+50,2,3,17,27,Illinois,Clinton County,2020,37398
+50,2,3,17,29,Illinois,Coles County,2020,50383
+50,2,3,17,31,Illinois,Cook County,2020,5108284
+50,2,3,17,33,Illinois,Crawford County,2020,18512
+50,2,3,17,35,Illinois,Cumberland County,2020,10649
+50,2,3,17,37,Illinois,DeKalb County,2020,104491
+50,2,3,17,39,Illinois,De Witt County,2020,15368
+50,2,3,17,41,Illinois,Douglas County,2020,19510
+50,2,3,17,43,Illinois,DuPage County,2020,917481
+50,2,3,17,45,Illinois,Edgar County,2020,16858
+50,2,3,17,47,Illinois,Edwards County,2020,6356
+50,2,3,17,49,Illinois,Effingham County,2020,34065
+50,2,3,17,51,Illinois,Fayette County,2020,21264
+50,2,3,17,53,Illinois,Ford County,2020,12949
+50,2,3,17,55,Illinois,Franklin County,2020,38060
+50,2,3,17,57,Illinois,Fulton County,2020,33690
+50,2,3,17,59,Illinois,Gallatin County,2020,4793
+50,2,3,17,61,Illinois,Greene County,2020,12702
+50,2,3,17,63,Illinois,Grundy County,2020,50993
+50,2,3,17,65,Illinois,Hamilton County,2020,8084
+50,2,3,17,67,Illinois,Hancock County,2020,17422
+50,2,3,17,69,Illinois,Hardin County,2020,3808
+50,2,3,17,71,Illinois,Henderson County,2020,6535
+50,2,3,17,73,Illinois,Henry County,2020,48411
+50,2,3,17,75,Illinois,Iroquois County,2020,26711
+50,2,3,17,77,Illinois,Jackson County,2020,56675
+50,2,3,17,79,Illinois,Jasper County,2020,9465
+50,2,3,17,81,Illinois,Jefferson County,2020,37235
+50,2,3,17,83,Illinois,Jersey County,2020,21616
+50,2,3,17,85,Illinois,Jo Daviess County,2020,21239
+50,2,3,17,87,Illinois,Johnson County,2020,12358
+50,2,3,17,89,Illinois,Kane County,2020,531010
+50,2,3,17,91,Illinois,Kankakee County,2020,108594
+50,2,3,17,93,Illinois,Kendall County,2020,130638
+50,2,3,17,95,Illinois,Knox County,2020,49053
+50,2,3,17,97,Illinois,Lake County,2020,693593
+50,2,3,17,99,Illinois,LaSalle County,2020,107571
+50,2,3,17,101,Illinois,Lawrence County,2020,15467
+50,2,3,17,103,Illinois,Lee County,2020,33647
+50,2,3,17,105,Illinois,Livingston County,2020,35414
+50,2,3,17,107,Illinois,Logan County,2020,28383
+50,2,3,17,109,Illinois,McDonough County,2020,29295
+50,2,3,17,111,Illinois,McHenry County,2020,305888
+50,2,3,17,113,Illinois,McLean County,2020,171256
+50,2,3,17,115,Illinois,Macon County,2020,103015
+50,2,3,17,117,Illinois,Macoupin County,2020,44567
+50,2,3,17,119,Illinois,Madison County,2020,262635
+50,2,3,17,121,Illinois,Marion County,2020,37045
+50,2,3,17,123,Illinois,Marshall County,2020,11309
+50,2,3,17,125,Illinois,Mason County,2020,13173
+50,2,3,17,127,Illinois,Massac County,2020,13636
+50,2,3,17,129,Illinois,Menard County,2020,12068
+50,2,3,17,131,Illinois,Mercer County,2020,15225
+50,2,3,17,133,Illinois,Monroe County,2020,34739
+50,2,3,17,135,Illinois,Montgomery County,2020,28045
+50,2,3,17,137,Illinois,Morgan County,2020,33400
+50,2,3,17,139,Illinois,Moultrie County,2020,14347
+50,2,3,17,141,Illinois,Ogle County,2020,50306
+50,2,3,17,143,Illinois,Peoria County,2020,177652
+50,2,3,17,145,Illinois,Perry County,2020,20664
+50,2,3,17,147,Illinois,Piatt County,2020,16355
+50,2,3,17,149,Illinois,Pike County,2020,15239
+50,2,3,17,151,Illinois,Pope County,2020,4142
+50,2,3,17,153,Illinois,Pulaski County,2020,5201
+50,2,3,17,155,Illinois,Putnam County,2020,5716
+50,2,3,17,157,Illinois,Randolph County,2020,31351
+50,2,3,17,159,Illinois,Richland County,2020,15507
+50,2,3,17,161,Illinois,Rock Island County,2020,140907
+50,2,3,17,163,Illinois,St. Clair County,2020,258046
+50,2,3,17,165,Illinois,Saline County,2020,23182
+50,2,3,17,167,Illinois,Sangamon County,2020,193882
+50,2,3,17,169,Illinois,Schuyler County,2020,6738
+50,2,3,17,171,Illinois,Scott County,2020,4950
+50,2,3,17,173,Illinois,Shelby County,2020,21299
+50,2,3,17,175,Illinois,Stark County,2020,5262
+50,2,3,17,177,Illinois,Stephenson County,2020,43831
+50,2,3,17,179,Illinois,Tazewell County,2020,130777
+50,2,3,17,181,Illinois,Union County,2020,16498
+50,2,3,17,183,Illinois,Vermilion County,2020,74855
+50,2,3,17,185,Illinois,Wabash County,2020,11190
+50,2,3,17,187,Illinois,Warren County,2020,16696
+50,2,3,17,189,Illinois,Washington County,2020,13764
+50,2,3,17,191,Illinois,Wayne County,2020,16031
+50,2,3,17,193,Illinois,White County,2020,13364
+50,2,3,17,195,Illinois,Whiteside County,2020,54656
+50,2,3,17,197,Illinois,Will County,2020,688726
+50,2,3,17,199,Illinois,Williamson County,2020,66415
+50,2,3,17,201,Illinois,Winnebago County,2020,281295
+50,2,3,17,203,Illinois,Woodford County,2020,38091
+40,2,3,18,0,Indiana,Indiana,2020,6754953
+50,2,3,18,1,Indiana,Adams County,2020,35839
+50,2,3,18,3,Indiana,Allen County,2020,382187
+50,2,3,18,5,Indiana,Bartholomew County,2020,84447
+50,2,3,18,7,Indiana,Benton County,2020,8741
+50,2,3,18,9,Indiana,Blackford County,2020,11782
+50,2,3,18,11,Indiana,Boone County,2020,69347
+50,2,3,18,13,Indiana,Brown County,2020,15112
+50,2,3,18,15,Indiana,Carroll County,2020,20228
+50,2,3,18,17,Indiana,Cass County,2020,37388
+50,2,3,18,19,Indiana,Clark County,2020,119266
+50,2,3,18,21,Indiana,Clay County,2020,26246
+50,2,3,18,23,Indiana,Clinton County,2020,32206
+50,2,3,18,25,Indiana,Crawford County,2020,10629
+50,2,3,18,27,Indiana,Daviess County,2020,33505
+50,2,3,18,29,Indiana,Dearborn County,2020,49824
+50,2,3,18,31,Indiana,Decatur County,2020,26584
+50,2,3,18,33,Indiana,DeKalb County,2020,43670
+50,2,3,18,35,Indiana,Delaware County,2020,113454
+50,2,3,18,37,Indiana,Dubois County,2020,42542
+50,2,3,18,39,Indiana,Elkhart County,2020,206161
+50,2,3,18,41,Indiana,Fayette County,2020,22892
+50,2,3,18,43,Indiana,Floyd County,2020,78936
+50,2,3,18,45,Indiana,Fountain County,2020,16511
+50,2,3,18,47,Indiana,Franklin County,2020,22761
+50,2,3,18,49,Indiana,Fulton County,2020,20018
+50,2,3,18,51,Indiana,Gibson County,2020,33825
+50,2,3,18,53,Indiana,Grant County,2020,65225
+50,2,3,18,55,Indiana,Greene County,2020,32203
+50,2,3,18,57,Indiana,Hamilton County,2020,344238
+50,2,3,18,59,Indiana,Hancock County,2020,79553
+50,2,3,18,61,Indiana,Harrison County,2020,40682
+50,2,3,18,63,Indiana,Hendricks County,2020,173251
+50,2,3,18,65,Indiana,Henry County,2020,48033
+50,2,3,18,67,Indiana,Howard County,2020,82732
+50,2,3,18,69,Indiana,Huntington County,2020,36395
+50,2,3,18,71,Indiana,Jackson County,2020,44222
+50,2,3,18,73,Indiana,Jasper County,2020,33440
+50,2,3,18,75,Indiana,Jay County,2020,20416
+50,2,3,18,77,Indiana,Jefferson County,2020,32110
+50,2,3,18,79,Indiana,Jennings County,2020,27515
+50,2,3,18,81,Indiana,Johnson County,2020,160607
+50,2,3,18,83,Indiana,Knox County,2020,36522
+50,2,3,18,85,Indiana,Kosciusko County,2020,78988
+50,2,3,18,87,Indiana,LaGrange County,2020,40119
+50,2,3,18,89,Indiana,Lake County,2020,487536
+50,2,3,18,91,Indiana,LaPorte County,2020,109663
+50,2,3,18,93,Indiana,Lawrence County,2020,45496
+50,2,3,18,95,Indiana,Madison County,2020,129681
+50,2,3,18,97,Indiana,Marion County,2020,966183
+50,2,3,18,99,Indiana,Marshall County,2020,46108
+50,2,3,18,101,Indiana,Martin County,2020,10079
+50,2,3,18,103,Indiana,Miami County,2020,35328
+50,2,3,18,105,Indiana,Monroe County,2020,148219
+50,2,3,18,107,Indiana,Montgomery County,2020,38365
+50,2,3,18,109,Indiana,Morgan County,2020,70707
+50,2,3,18,111,Indiana,Newton County,2020,13907
+50,2,3,18,113,Indiana,Noble County,2020,47832
+50,2,3,18,115,Indiana,Ohio County,2020,5892
+50,2,3,18,117,Indiana,Orange County,2020,19651
+50,2,3,18,119,Indiana,Owen County,2020,20833
+50,2,3,18,121,Indiana,Parke County,2020,16871
+50,2,3,18,123,Indiana,Perry County,2020,19154
+50,2,3,18,125,Indiana,Pike County,2020,12378
+50,2,3,18,127,Indiana,Porter County,2020,170980
+50,2,3,18,129,Indiana,Posey County,2020,25275
+50,2,3,18,131,Indiana,Pulaski County,2020,12388
+50,2,3,18,133,Indiana,Putnam County,2020,37469
+50,2,3,18,135,Indiana,Randolph County,2020,24191
+50,2,3,18,137,Indiana,Ripley County,2020,28448
+50,2,3,18,139,Indiana,Rush County,2020,16649
+50,2,3,18,141,Indiana,St. Joseph County,2020,271484
+50,2,3,18,143,Indiana,Scott County,2020,23788
+50,2,3,18,145,Indiana,Shelby County,2020,44871
+50,2,3,18,147,Indiana,Spencer County,2020,20225
+50,2,3,18,149,Indiana,Starke County,2020,23049
+50,2,3,18,151,Indiana,Steuben County,2020,34831
+50,2,3,18,153,Indiana,Sullivan County,2020,20578
+50,2,3,18,155,Indiana,Switzerland County,2020,10724
+50,2,3,18,157,Indiana,Tippecanoe County,2020,196115
+50,2,3,18,159,Indiana,Tipton County,2020,15227
+50,2,3,18,161,Indiana,Union County,2020,7119
+50,2,3,18,163,Indiana,Vanderburgh County,2020,182447
+50,2,3,18,165,Indiana,Vermillion County,2020,15329
+50,2,3,18,167,Indiana,Vigo County,2020,106608
+50,2,3,18,169,Indiana,Wabash County,2020,30784
+50,2,3,18,171,Indiana,Warren County,2020,8194
+50,2,3,18,173,Indiana,Warrick County,2020,63269
+50,2,3,18,175,Indiana,Washington County,2020,28213
+50,2,3,18,177,Indiana,Wayne County,2020,65778
+50,2,3,18,179,Indiana,Wells County,2020,28142
+50,2,3,18,181,Indiana,White County,2020,24165
+50,2,3,18,183,Indiana,Whitley County,2020,34378
+40,2,4,19,0,Iowa,Iowa,2020,3163561
+50,2,4,19,1,Iowa,Adair County,2020,7059
+50,2,4,19,3,Iowa,Adams County,2020,3588
+50,2,4,19,5,Iowa,Allamakee County,2020,13642
+50,2,4,19,7,Iowa,Appanoose County,2020,12430
+50,2,4,19,9,Iowa,Audubon County,2020,5481
+50,2,4,19,11,Iowa,Benton County,2020,25414
+50,2,4,19,13,Iowa,Black Hawk County,2020,130786
+50,2,4,19,15,Iowa,Boone County,2020,26277
+50,2,4,19,17,Iowa,Bremer County,2020,25311
+50,2,4,19,19,Iowa,Buchanan County,2020,21287
+50,2,4,19,21,Iowa,Buena Vista County,2020,19772
+50,2,4,19,23,Iowa,Butler County,2020,14333
+50,2,4,19,25,Iowa,Calhoun County,2020,9473
+50,2,4,19,27,Iowa,Carroll County,2020,19914
+50,2,4,19,29,Iowa,Cass County,2020,12817
+50,2,4,19,31,Iowa,Cedar County,2020,18485
+50,2,4,19,33,Iowa,Cerro Gordo County,2020,42103
+50,2,4,19,35,Iowa,Cherokee County,2020,11190
+50,2,4,19,37,Iowa,Chickasaw County,2020,11834
+50,2,4,19,39,Iowa,Clarke County,2020,9353
+50,2,4,19,41,Iowa,Clay County,2020,15976
+50,2,4,19,43,Iowa,Clayton County,2020,17321
+50,2,4,19,45,Iowa,Clinton County,2020,46392
+50,2,4,19,47,Iowa,Crawford County,2020,16834
+50,2,4,19,49,Iowa,Dallas County,2020,96963
+50,2,4,19,51,Iowa,Davis County,2020,9051
+50,2,4,19,53,Iowa,Decatur County,2020,7769
+50,2,4,19,55,Iowa,Delaware County,2020,16937
+50,2,4,19,57,Iowa,Des Moines County,2020,38708
+50,2,4,19,59,Iowa,Dickinson County,2020,17549
+50,2,4,19,61,Iowa,Dubuque County,2020,97590
+50,2,4,19,63,Iowa,Emmet County,2020,9095
+50,2,4,19,65,Iowa,Fayette County,2020,19258
+50,2,4,19,67,Iowa,Floyd County,2020,15480
+50,2,4,19,69,Iowa,Franklin County,2020,9971
+50,2,4,19,71,Iowa,Fremont County,2020,6729
+50,2,4,19,73,Iowa,Greene County,2020,8795
+50,2,4,19,75,Iowa,Grundy County,2020,12217
+50,2,4,19,77,Iowa,Guthrie County,2020,10737
+50,2,4,19,79,Iowa,Hamilton County,2020,14716
+50,2,4,19,81,Iowa,Hancock County,2020,10507
+50,2,4,19,83,Iowa,Hardin County,2020,16575
+50,2,4,19,85,Iowa,Harrison County,2020,13928
+50,2,4,19,87,Iowa,Henry County,2020,19697
+50,2,4,19,89,Iowa,Howard County,2020,9176
+50,2,4,19,91,Iowa,Humboldt County,2020,9473
+50,2,4,19,93,Iowa,Ida County,2020,6833
+50,2,4,19,95,Iowa,Iowa County,2020,16138
+50,2,4,19,97,Iowa,Jackson County,2020,19205
+50,2,4,19,99,Iowa,Jasper County,2020,37148
+50,2,4,19,101,Iowa,Jefferson County,2020,18347
+50,2,4,19,103,Iowa,Johnson County,2020,153740
+50,2,4,19,105,Iowa,Jones County,2020,20617
+50,2,4,19,107,Iowa,Keokuk County,2020,10085
+50,2,4,19,109,Iowa,Kossuth County,2020,14680
+50,2,4,19,111,Iowa,Lee County,2020,33480
+50,2,4,19,113,Iowa,Linn County,2020,227854
+50,2,4,19,115,Iowa,Louisa County,2020,11011
+50,2,4,19,117,Iowa,Lucas County,2020,8518
+50,2,4,19,119,Iowa,Lyon County,2020,11756
+50,2,4,19,121,Iowa,Madison County,2020,16521
+50,2,4,19,123,Iowa,Mahaska County,2020,22370
+50,2,4,19,125,Iowa,Marion County,2020,33168
+50,2,4,19,127,Iowa,Marshall County,2020,39495
+50,2,4,19,129,Iowa,Mills County,2020,14766
+50,2,4,19,131,Iowa,Mitchell County,2020,10647
+50,2,4,19,133,Iowa,Monona County,2020,8598
+50,2,4,19,135,Iowa,Monroe County,2020,7770
+50,2,4,19,137,Iowa,Montgomery County,2020,9935
+50,2,4,19,139,Iowa,Muscatine County,2020,42394
+50,2,4,19,141,Iowa,O'Brien County,2020,13679
+50,2,4,19,143,Iowa,Osceola County,2020,5987
+50,2,4,19,145,Iowa,Page County,2020,15073
+50,2,4,19,147,Iowa,Palo Alto County,2020,8845
+50,2,4,19,149,Iowa,Plymouth County,2020,25219
+50,2,4,19,151,Iowa,Pocahontas County,2020,6607
+50,2,4,19,153,Iowa,Polk County,2020,494281
+50,2,4,19,155,Iowa,Pottawattamie County,2020,93328
+50,2,4,19,157,Iowa,Poweshiek County,2020,18381
+50,2,4,19,159,Iowa,Ringgold County,2020,4801
+50,2,4,19,161,Iowa,Sac County,2020,9603
+50,2,4,19,163,Iowa,Scott County,2020,173216
+50,2,4,19,165,Iowa,Shelby County,2020,11430
+50,2,4,19,167,Iowa,Sioux County,2020,35043
+50,2,4,19,169,Iowa,Story County,2020,98237
+50,2,4,19,171,Iowa,Tama County,2020,16801
+50,2,4,19,173,Iowa,Taylor County,2020,6092
+50,2,4,19,175,Iowa,Union County,2020,12157
+50,2,4,19,177,Iowa,Van Buren County,2020,7069
+50,2,4,19,179,Iowa,Wapello County,2020,34985
+50,2,4,19,181,Iowa,Warren County,2020,52265
+50,2,4,19,183,Iowa,Washington County,2020,21992
+50,2,4,19,185,Iowa,Wayne County,2020,6415
+50,2,4,19,187,Iowa,Webster County,2020,35934
+50,2,4,19,189,Iowa,Winnebago County,2020,10277
+50,2,4,19,191,Iowa,Winneshiek County,2020,19862
+50,2,4,19,193,Iowa,Woodbury County,2020,103138
+50,2,4,19,195,Iowa,Worth County,2020,7359
+50,2,4,19,197,Iowa,Wright County,2020,12416
+40,2,4,20,0,Kansas,Kansas,2020,2913805
+50,2,4,20,1,Kansas,Allen County,2020,12399
+50,2,4,20,3,Kansas,Anderson County,2020,7949
+50,2,4,20,5,Kansas,Atchison County,2020,16015
+50,2,4,20,7,Kansas,Barber County,2020,4358
+50,2,4,20,9,Kansas,Barton County,2020,25658
+50,2,4,20,11,Kansas,Bourbon County,2020,14435
+50,2,4,20,13,Kansas,Brown County,2020,9482
+50,2,4,20,15,Kansas,Butler County,2020,66992
+50,2,4,20,17,Kansas,Chase County,2020,2586
+50,2,4,20,19,Kansas,Chautauqua County,2020,3230
+50,2,4,20,21,Kansas,Cherokee County,2020,19681
+50,2,4,20,23,Kansas,Cheyenne County,2020,2600
+50,2,4,20,25,Kansas,Clark County,2020,1963
+50,2,4,20,27,Kansas,Clay County,2020,8025
+50,2,4,20,29,Kansas,Cloud County,2020,8642
+50,2,4,20,31,Kansas,Coffey County,2020,8158
+50,2,4,20,33,Kansas,Comanche County,2020,1690
+50,2,4,20,35,Kansas,Cowley County,2020,34628
+50,2,4,20,37,Kansas,Crawford County,2020,38730
+50,2,4,20,39,Kansas,Decatur County,2020,2776
+50,2,4,20,41,Kansas,Dickinson County,2020,18266
+50,2,4,20,43,Kansas,Doniphan County,2020,7496
+50,2,4,20,45,Kansas,Douglas County,2020,122530
+50,2,4,20,47,Kansas,Edwards County,2020,2750
+50,2,4,20,49,Kansas,Elk County,2020,2507
+50,2,4,20,51,Kansas,Ellis County,2020,28671
+50,2,4,20,53,Kansas,Ellsworth County,2020,6034
+50,2,4,20,55,Kansas,Finney County,2020,35917
+50,2,4,20,57,Kansas,Ford County,2020,33094
+50,2,4,20,59,Kansas,Franklin County,2020,25703
+50,2,4,20,61,Kansas,Geary County,2020,32218
+50,2,4,20,63,Kansas,Gove County,2020,2621
+50,2,4,20,65,Kansas,Graham County,2020,2389
+50,2,4,20,67,Kansas,Grant County,2020,7077
+50,2,4,20,69,Kansas,Gray County,2020,5954
+50,2,4,20,71,Kansas,Greeley County,2020,1196
+50,2,4,20,73,Kansas,Greenwood County,2020,5868
+50,2,4,20,75,Kansas,Hamilton County,2020,2425
+50,2,4,20,77,Kansas,Harper County,2020,5336
+50,2,4,20,79,Kansas,Harvey County,2020,34291
+50,2,4,20,81,Kansas,Haskell County,2020,3923
+50,2,4,20,83,Kansas,Hodgeman County,2020,1779
+50,2,4,20,85,Kansas,Jackson County,2020,13171
+50,2,4,20,87,Kansas,Jefferson County,2020,19032
+50,2,4,20,89,Kansas,Jewell County,2020,2833
+50,2,4,20,91,Kansas,Johnson County,2020,607220
+50,2,4,20,93,Kansas,Kearny County,2020,3745
+50,2,4,20,95,Kansas,Kingman County,2020,6974
+50,2,4,20,97,Kansas,Kiowa County,2020,2456
+50,2,4,20,99,Kansas,Labette County,2020,19586
+50,2,4,20,101,Kansas,Lane County,2020,1518
+50,2,4,20,103,Kansas,Leavenworth County,2020,82246
+50,2,4,20,105,Kansas,Lincoln County,2020,2986
+50,2,4,20,107,Kansas,Linn County,2020,9654
+50,2,4,20,109,Kansas,Logan County,2020,2732
+50,2,4,20,111,Kansas,Lyon County,2020,33045
+50,2,4,20,113,Kansas,McPherson County,2020,28448
+50,2,4,20,115,Kansas,Marion County,2020,11652
+50,2,4,20,117,Kansas,Marshall County,2020,9652
+50,2,4,20,119,Kansas,Meade County,2020,4029
+50,2,4,20,121,Kansas,Miami County,2020,34334
+50,2,4,20,123,Kansas,Mitchell County,2020,5879
+50,2,4,20,125,Kansas,Montgomery County,2020,31502
+50,2,4,20,127,Kansas,Morris County,2020,5559
+50,2,4,20,129,Kansas,Morton County,2020,2538
+50,2,4,20,131,Kansas,Nemaha County,2020,10121
+50,2,4,20,133,Kansas,Neosho County,2020,15929
+50,2,4,20,135,Kansas,Ness County,2020,2768
+50,2,4,20,137,Kansas,Norton County,2020,5328
+50,2,4,20,139,Kansas,Osage County,2020,15770
+50,2,4,20,141,Kansas,Osborne County,2020,3439
+50,2,4,20,143,Kansas,Ottawa County,2020,5712
+50,2,4,20,145,Kansas,Pawnee County,2020,6366
+50,2,4,20,147,Kansas,Phillips County,2020,5181
+50,2,4,20,149,Kansas,Pottawatomie County,2020,24722
+50,2,4,20,151,Kansas,Pratt County,2020,9127
+50,2,4,20,153,Kansas,Rawlins County,2020,2511
+50,2,4,20,155,Kansas,Reno County,2020,61793
+50,2,4,20,157,Kansas,Republic County,2020,4536
+50,2,4,20,159,Kansas,Rice County,2020,9362
+50,2,4,20,161,Kansas,Riley County,2020,73202
+50,2,4,20,163,Kansas,Rooks County,2020,4827
+50,2,4,20,165,Kansas,Rush County,2020,2947
+50,2,4,20,167,Kansas,Russell County,2020,6804
+50,2,4,20,169,Kansas,Saline County,2020,53926
+50,2,4,20,171,Kansas,Scott County,2020,4790
+50,2,4,20,173,Kansas,Sedgwick County,2020,519907
+50,2,4,20,175,Kansas,Seward County,2020,21038
+50,2,4,20,177,Kansas,Shawnee County,2020,175999
+50,2,4,20,179,Kansas,Sheridan County,2020,2520
+50,2,4,20,181,Kansas,Sherman County,2020,5777
+50,2,4,20,183,Kansas,Smith County,2020,3544
+50,2,4,20,185,Kansas,Stafford County,2020,4046
+50,2,4,20,187,Kansas,Stanton County,2020,1969
+50,2,4,20,189,Kansas,Stevens County,2020,5388
+50,2,4,20,191,Kansas,Sumner County,2020,22578
+50,2,4,20,193,Kansas,Thomas County,2020,7702
+50,2,4,20,195,Kansas,Trego County,2020,2758
+50,2,4,20,197,Kansas,Wabaunsee County,2020,6906
+50,2,4,20,199,Kansas,Wallace County,2020,1536
+50,2,4,20,201,Kansas,Washington County,2020,5427
+50,2,4,20,203,Kansas,Wichita County,2020,2074
+50,2,4,20,205,Kansas,Wilson County,2020,8362
+50,2,4,20,207,Kansas,Woodson County,2020,3015
+50,2,4,20,209,Kansas,Wyandotte County,2020,165265
+40,3,6,21,0,Kentucky,Kentucky,2020,4477251
+50,3,6,21,1,Kentucky,Adair County,2020,19555
+50,3,6,21,3,Kentucky,Allen County,2020,21303
+50,3,6,21,5,Kentucky,Anderson County,2020,22833
+50,3,6,21,7,Kentucky,Ballard County,2020,7769
+50,3,6,21,9,Kentucky,Barren County,2020,44300
+50,3,6,21,11,Kentucky,Bath County,2020,12481
+50,3,6,21,13,Kentucky,Bell County,2020,25482
+50,3,6,21,15,Kentucky,Boone County,2020,135396
+50,3,6,21,17,Kentucky,Bourbon County,2020,19901
+50,3,6,21,19,Kentucky,Boyd County,2020,46516
+50,3,6,21,21,Kentucky,Boyle County,2020,30367
+50,3,6,21,23,Kentucky,Bracken County,2020,8286
+50,3,6,21,25,Kentucky,Breathitt County,2020,12550
+50,3,6,21,27,Kentucky,Breckinridge County,2020,20537
+50,3,6,21,29,Kentucky,Bullitt County,2020,82182
+50,3,6,21,31,Kentucky,Butler County,2020,12703
+50,3,6,21,33,Kentucky,Caldwell County,2020,12687
+50,3,6,21,35,Kentucky,Calloway County,2020,39300
+50,3,6,21,37,Kentucky,Campbell County,2020,94020
+50,3,6,21,39,Kentucky,Carlisle County,2020,4692
+50,3,6,21,41,Kentucky,Carroll County,2020,10730
+50,3,6,21,43,Kentucky,Carter County,2020,26542
+50,3,6,21,45,Kentucky,Casey County,2020,16066
+50,3,6,21,47,Kentucky,Christian County,2020,71478
+50,3,6,21,49,Kentucky,Clark County,2020,36463
+50,3,6,21,51,Kentucky,Clay County,2020,19631
+50,3,6,21,53,Kentucky,Clinton County,2020,10110
+50,3,6,21,55,Kentucky,Crittenden County,2020,8847
+50,3,6,21,57,Kentucky,Cumberland County,2020,6523
+50,3,6,21,59,Kentucky,Daviess County,2020,101978
+50,3,6,21,61,Kentucky,Edmonson County,2020,12235
+50,3,6,21,63,Kentucky,Elliott County,2020,7372
+50,3,6,21,65,Kentucky,Estill County,2020,14109
+50,3,6,21,67,Kentucky,Fayette County,2020,324735
+50,3,6,21,69,Kentucky,Fleming County,2020,14603
+50,3,6,21,71,Kentucky,Floyd County,2020,34974
+50,3,6,21,73,Kentucky,Franklin County,2020,51118
+50,3,6,21,75,Kentucky,Fulton County,2020,5952
+50,3,6,21,77,Kentucky,Gallatin County,2020,8779
+50,3,6,21,79,Kentucky,Garrard County,2020,17719
+50,3,6,21,81,Kentucky,Grant County,2020,25387
+50,3,6,21,83,Kentucky,Graves County,2020,36818
+50,3,6,21,85,Kentucky,Grayson County,2020,26480
+50,3,6,21,87,Kentucky,Green County,2020,10995
+50,3,6,21,89,Kentucky,Greenup County,2020,34865
+50,3,6,21,91,Kentucky,Hancock County,2020,8742
+50,3,6,21,93,Kentucky,Hardin County,2020,111309
+50,3,6,21,95,Kentucky,Harlan County,2020,25566
+50,3,6,21,97,Kentucky,Harrison County,2020,18920
+50,3,6,21,99,Kentucky,Hart County,2020,19013
+50,3,6,21,101,Kentucky,Henderson County,2020,44740
+50,3,6,21,103,Kentucky,Henry County,2020,16067
+50,3,6,21,105,Kentucky,Hickman County,2020,4364
+50,3,6,21,107,Kentucky,Hopkins County,2020,44662
+50,3,6,21,109,Kentucky,Jackson County,2020,13340
+50,3,6,21,111,Kentucky,Jefferson County,2020,767452
+50,3,6,21,113,Kentucky,Jessamine County,2020,54057
+50,3,6,21,115,Kentucky,Johnson County,2020,22002
+50,3,6,21,117,Kentucky,Kenton County,2020,167949
+50,3,6,21,119,Kentucky,Knott County,2020,14512
+50,3,6,21,121,Kentucky,Knox County,2020,31022
+50,3,6,21,123,Kentucky,Larue County,2020,14431
+50,3,6,21,125,Kentucky,Laurel County,2020,61238
+50,3,6,21,127,Kentucky,Lawrence County,2020,15436
+50,3,6,21,129,Kentucky,Lee County,2020,7268
+50,3,6,21,131,Kentucky,Leslie County,2020,9637
+50,3,6,21,133,Kentucky,Letcher County,2020,21213
+50,3,6,21,135,Kentucky,Lewis County,2020,13262
+50,3,6,21,137,Kentucky,Lincoln County,2020,24466
+50,3,6,21,139,Kentucky,Livingston County,2020,9041
+50,3,6,21,141,Kentucky,Logan County,2020,27416
+50,3,6,21,143,Kentucky,Lyon County,2020,8133
+50,3,6,21,145,Kentucky,McCracken County,2020,65644
+50,3,6,21,147,Kentucky,McCreary County,2020,17071
+50,3,6,21,149,Kentucky,McLean County,2020,9075
+50,3,6,21,151,Kentucky,Madison County,2020,94265
+50,3,6,21,153,Kentucky,Magoffin County,2020,12017
+50,3,6,21,155,Kentucky,Marion County,2020,19314
+50,3,6,21,157,Kentucky,Marshall County,2020,31163
+50,3,6,21,159,Kentucky,Martin County,2020,11031
+50,3,6,21,161,Kentucky,Mason County,2020,17035
+50,3,6,21,163,Kentucky,Meade County,2020,28616
+50,3,6,21,165,Kentucky,Menifee County,2020,6502
+50,3,6,21,167,Kentucky,Mercer County,2020,21889
+50,3,6,21,169,Kentucky,Metcalfe County,2020,10058
+50,3,6,21,171,Kentucky,Monroe County,2020,10549
+50,3,6,21,173,Kentucky,Montgomery County,2020,28186
+50,3,6,21,175,Kentucky,Morgan County,2020,13142
+50,3,6,21,177,Kentucky,Muhlenberg County,2020,30457
+50,3,6,21,179,Kentucky,Nelson County,2020,46450
+50,3,6,21,181,Kentucky,Nicholas County,2020,7234
+50,3,6,21,183,Kentucky,Ohio County,2020,23899
+50,3,6,21,185,Kentucky,Oldham County,2020,66999
+50,3,6,21,187,Kentucky,Owen County,2020,11017
+50,3,6,21,189,Kentucky,Owsley County,2020,4331
+50,3,6,21,191,Kentucky,Pendleton County,2020,14586
+50,3,6,21,193,Kentucky,Perry County,2020,25456
+50,3,6,21,195,Kentucky,Pike County,2020,57057
+50,3,6,21,197,Kentucky,Powell County,2020,12218
+50,3,6,21,199,Kentucky,Pulaski County,2020,65530
+50,3,6,21,201,Kentucky,Robertson County,2020,2136
+50,3,6,21,203,Kentucky,Rockcastle County,2020,16750
+50,3,6,21,205,Kentucky,Rowan County,2020,24682
+50,3,6,21,207,Kentucky,Russell County,2020,17998
+50,3,6,21,209,Kentucky,Scott County,2020,58470
+50,3,6,21,211,Kentucky,Shelby County,2020,49611
+50,3,6,21,213,Kentucky,Simpson County,2020,18635
+50,3,6,21,215,Kentucky,Spencer County,2020,19585
+50,3,6,21,217,Kentucky,Taylor County,2020,25707
+50,3,6,21,219,Kentucky,Todd County,2020,12448
+50,3,6,21,221,Kentucky,Trigg County,2020,14776
+50,3,6,21,223,Kentucky,Trimble County,2020,8481
+50,3,6,21,225,Kentucky,Union County,2020,14443
+50,3,6,21,227,Kentucky,Warren County,2020,134510
+50,3,6,21,229,Kentucky,Washington County,2020,12147
+50,3,6,21,231,Kentucky,Wayne County,2020,20209
+50,3,6,21,233,Kentucky,Webster County,2020,12923
+50,3,6,21,235,Kentucky,Whitley County,2020,36451
+50,3,6,21,237,Kentucky,Wolfe County,2020,7106
+50,3,6,21,239,Kentucky,Woodford County,2020,26765
+40,3,7,22,0,Louisiana,Louisiana,2020,4645318
+50,3,7,22,1,Louisiana,Acadia Parish,2020,61918
+50,3,7,22,3,Louisiana,Allen Parish,2020,25440
+50,3,7,22,5,Louisiana,Ascension Parish,2020,128665
+50,3,7,22,7,Louisiana,Assumption Parish,2020,21621
+50,3,7,22,9,Louisiana,Avoyelles Parish,2020,39966
+50,3,7,22,11,Louisiana,Beauregard Parish,2020,37881
+50,3,7,22,13,Louisiana,Bienville Parish,2020,12983
+50,3,7,22,15,Louisiana,Bossier Parish,2020,127275
+50,3,7,22,17,Louisiana,Caddo Parish,2020,237479
+50,3,7,22,19,Louisiana,Calcasieu Parish,2020,203310
+50,3,7,22,21,Louisiana,Caldwell Parish,2020,9839
+50,3,7,22,23,Louisiana,Cameron Parish,2020,7003
+50,3,7,22,25,Louisiana,Catahoula Parish,2020,9226
+50,3,7,22,27,Louisiana,Claiborne Parish,2020,15508
+50,3,7,22,29,Louisiana,Concordia Parish,2020,18914
+50,3,7,22,31,Louisiana,De Soto Parish,2020,27650
+50,3,7,22,33,Louisiana,East Baton Rouge Parish,2020,439729
+50,3,7,22,35,Louisiana,East Carroll Parish,2020,6589
+50,3,7,22,37,Louisiana,East Feliciana Parish,2020,18882
+50,3,7,22,39,Louisiana,Evangeline Parish,2020,33276
+50,3,7,22,41,Louisiana,Franklin Parish,2020,19723
+50,3,7,22,43,Louisiana,Grant Parish,2020,22254
+50,3,7,22,45,Louisiana,Iberia Parish,2020,68991
+50,3,7,22,47,Louisiana,Iberville Parish,2020,32070
+50,3,7,22,49,Louisiana,Jackson Parish,2020,15574
+50,3,7,22,51,Louisiana,Jefferson Parish,2020,432346
+50,3,7,22,53,Louisiana,Jefferson Davis Parish,2020,31208
+50,3,7,22,55,Louisiana,Lafayette Parish,2020,246518
+50,3,7,22,57,Louisiana,Lafourche Parish,2020,97596
+50,3,7,22,59,Louisiana,LaSalle Parish,2020,15021
+50,3,7,22,61,Louisiana,Lincoln Parish,2020,46552
+50,3,7,22,63,Louisiana,Livingston Parish,2020,143737
+50,3,7,22,65,Louisiana,Madison Parish,2020,10635
+50,3,7,22,67,Louisiana,Morehouse Parish,2020,24227
+50,3,7,22,69,Louisiana,Natchitoches Parish,2020,37655
+50,3,7,22,71,Louisiana,Orleans Parish,2020,389476
+50,3,7,22,73,Louisiana,Ouachita Parish,2020,152439
+50,3,7,22,75,Louisiana,Plaquemines Parish,2020,23113
+50,3,7,22,77,Louisiana,Pointe Coupee Parish,2020,21529
+50,3,7,22,79,Louisiana,Rapides Parish,2020,128567
+50,3,7,22,81,Louisiana,Red River Parish,2020,8286
+50,3,7,22,83,Louisiana,Richland Parish,2020,20014
+50,3,7,22,85,Louisiana,Sabine Parish,2020,23803
+50,3,7,22,87,Louisiana,St. Bernard Parish,2020,47647
+50,3,7,22,89,Louisiana,St. Charles Parish,2020,52987
+50,3,7,22,91,Louisiana,St. Helena Parish,2020,10081
+50,3,7,22,93,Louisiana,St. James Parish,2020,20727
+50,3,7,22,95,Louisiana,St. John the Baptist Parish,2020,42516
+50,3,7,22,97,Louisiana,St. Landry Parish,2020,81440
+50,3,7,22,99,Louisiana,St. Martin Parish,2020,52954
+50,3,7,22,101,Louisiana,St. Mary Parish,2020,48330
+50,3,7,22,103,Louisiana,St. Tammany Parish,2020,263446
+50,3,7,22,105,Louisiana,Tangipahoa Parish,2020,136765
+50,3,7,22,107,Louisiana,Tensas Parish,2020,4178
+50,3,7,22,109,Louisiana,Terrebonne Parish,2020,109859
+50,3,7,22,111,Louisiana,Union Parish,2020,22170
+50,3,7,22,113,Louisiana,Vermilion Parish,2020,59378
+50,3,7,22,115,Louisiana,Vernon Parish,2020,47894
+50,3,7,22,117,Louisiana,Washington Parish,2020,45773
+50,3,7,22,119,Louisiana,Webster Parish,2020,37943
+50,3,7,22,121,Louisiana,West Baton Rouge Parish,2020,26792
+50,3,7,22,123,Louisiana,West Carroll Parish,2020,10646
+50,3,7,22,125,Louisiana,West Feliciana Parish,2020,15465
+50,3,7,22,127,Louisiana,Winn Parish,2020,13839
+40,1,1,23,0,Maine,Maine,2020,1350141
+50,1,1,23,1,Maine,Androscoggin County,2020,108547
+50,1,1,23,3,Maine,Aroostook County,2020,66804
+50,1,1,23,5,Maine,Cumberland County,2020,298111
+50,1,1,23,7,Maine,Franklin County,2020,29986
+50,1,1,23,9,Maine,Hancock County,2020,55088
+50,1,1,23,11,Maine,Kennebec County,2020,122955
+50,1,1,23,13,Maine,Knox County,2020,39951
+50,1,1,23,15,Maine,Lincoln County,2020,34775
+50,1,1,23,17,Maine,Oxford County,2020,58132
+50,1,1,23,19,Maine,Penobscot County,2020,151655
+50,1,1,23,21,Maine,Piscataquis County,2020,16996
+50,1,1,23,23,Maine,Sagadahoc County,2020,36044
+50,1,1,23,25,Maine,Somerset County,2020,50635
+50,1,1,23,27,Maine,Waldo County,2020,39923
+50,1,1,23,29,Maine,Washington County,2020,31473
+50,1,1,23,31,Maine,York County,2020,209066
+40,3,5,24,0,Maryland,Maryland,2020,6055802
+50,3,5,24,1,Maryland,Allegany County,2020,70057
+50,3,5,24,3,Maryland,Anne Arundel County,2020,582777
+50,3,5,24,5,Maryland,Baltimore County,2020,826017
+50,3,5,24,9,Maryland,Calvert County,2020,93072
+50,3,5,24,11,Maryland,Caroline County,2020,33492
+50,3,5,24,13,Maryland,Carroll County,2020,169092
+50,3,5,24,15,Maryland,Cecil County,2020,103419
+50,3,5,24,17,Maryland,Charles County,2020,164436
+50,3,5,24,19,Maryland,Dorchester County,2020,31853
+50,3,5,24,21,Maryland,Frederick County,2020,265161
+50,3,5,24,23,Maryland,Garrett County,2020,28852
+50,3,5,24,25,Maryland,Harford County,2020,256805
+50,3,5,24,27,Maryland,Howard County,2020,328200
+50,3,5,24,29,Maryland,Kent County,2020,19192
+50,3,5,24,31,Maryland,Montgomery County,2020,1051816
+50,3,5,24,33,Maryland,Prince George's County,2020,909612
+50,3,5,24,35,Maryland,Queen Anne's County,2020,51167
+50,3,5,24,37,Maryland,St. Mary's County,2020,114687
+50,3,5,24,39,Maryland,Somerset County,2020,25453
+50,3,5,24,41,Maryland,Talbot County,2020,36972
+50,3,5,24,43,Maryland,Washington County,2020,151146
+50,3,5,24,45,Maryland,Wicomico County,2020,103990
+50,3,5,24,47,Maryland,Worcester County,2020,52403
+50,3,5,24,510,Maryland,Baltimore city,2020,586131
+40,1,1,25,0,Massachusetts,Massachusetts,2020,6893574
+50,1,1,25,1,Massachusetts,Barnstable County,2020,213164
+50,1,1,25,3,Massachusetts,Berkshire County,2020,124571
+50,1,1,25,5,Massachusetts,Bristol County,2020,566765
+50,1,1,25,7,Massachusetts,Dukes County,2020,17461
+50,1,1,25,9,Massachusetts,Essex County,2020,791263
+50,1,1,25,11,Massachusetts,Franklin County,2020,70267
+50,1,1,25,13,Massachusetts,Hampden County,2020,463986
+50,1,1,25,15,Massachusetts,Hampshire County,2020,161401
+50,1,1,25,17,Massachusetts,Middlesex County,2020,1609379
+50,1,1,25,19,Massachusetts,Nantucket County,2020,11376
+50,1,1,25,21,Massachusetts,Norfolk County,2020,709409
+50,1,1,25,23,Massachusetts,Plymouth County,2020,523738
+50,1,1,25,25,Massachusetts,Suffolk County,2020,801582
+50,1,1,25,27,Massachusetts,Worcester County,2020,829212
+40,2,3,26,0,Michigan,Michigan,2020,9966555
+50,2,3,26,1,Michigan,Alcona County,2020,10505
+50,2,3,26,3,Michigan,Alger County,2020,9015
+50,2,3,26,5,Michigan,Allegan County,2020,118927
+50,2,3,26,7,Michigan,Alpena County,2020,28238
+50,2,3,26,9,Michigan,Antrim County,2020,23449
+50,2,3,26,11,Michigan,Arenac County,2020,14953
+50,2,3,26,13,Michigan,Baraga County,2020,8164
+50,2,3,26,15,Michigan,Barry County,2020,62061
+50,2,3,26,17,Michigan,Bay County,2020,102387
+50,2,3,26,19,Michigan,Benzie County,2020,17852
+50,2,3,26,21,Michigan,Berrien County,2020,153025
+50,2,3,26,23,Michigan,Branch County,2020,43424
+50,2,3,26,25,Michigan,Calhoun County,2020,133580
+50,2,3,26,27,Michigan,Cass County,2020,51584
+50,2,3,26,29,Michigan,Charlevoix County,2020,26105
+50,2,3,26,31,Michigan,Cheboygan County,2020,25365
+50,2,3,26,33,Michigan,Chippewa County,2020,36958
+50,2,3,26,35,Michigan,Clare County,2020,30771
+50,2,3,26,37,Michigan,Clinton County,2020,79753
+50,2,3,26,39,Michigan,Crawford County,2020,13981
+50,2,3,26,41,Michigan,Delta County,2020,35612
+50,2,3,26,43,Michigan,Dickinson County,2020,25112
+50,2,3,26,45,Michigan,Eaton County,2020,110148
+50,2,3,26,47,Michigan,Emmet County,2020,33342
+50,2,3,26,49,Michigan,Genesee County,2020,404794
+50,2,3,26,51,Michigan,Gladwin County,2020,25424
+50,2,3,26,53,Michigan,Gogebic County,2020,13842
+50,2,3,26,55,Michigan,Grand Traverse County,2020,93592
+50,2,3,26,57,Michigan,Gratiot County,2020,40283
+50,2,3,26,59,Michigan,Hillsdale County,2020,45658
+50,2,3,26,61,Michigan,Houghton County,2020,35126
+50,2,3,26,63,Michigan,Huron County,2020,30653
+50,2,3,26,65,Michigan,Ingham County,2020,290609
+50,2,3,26,67,Michigan,Ionia County,2020,64553
+50,2,3,26,69,Michigan,Iosco County,2020,25140
+50,2,3,26,71,Michigan,Iron County,2020,11066
+50,2,3,26,73,Michigan,Isabella County,2020,69504
+50,2,3,26,75,Michigan,Jackson County,2020,156920
+50,2,3,26,77,Michigan,Kalamazoo County,2020,265988
+50,2,3,26,79,Michigan,Kalkaska County,2020,18003
+50,2,3,26,81,Michigan,Kent County,2020,658708
+50,2,3,26,83,Michigan,Keweenaw County,2020,2119
+50,2,3,26,85,Michigan,Lake County,2020,11587
+50,2,3,26,87,Michigan,Lapeer County,2020,87635
+50,2,3,26,89,Michigan,Leelanau County,2020,21743
+50,2,3,26,91,Michigan,Lenawee County,2020,97808
+50,2,3,26,93,Michigan,Livingston County,2020,192335
+50,2,3,26,95,Michigan,Luce County,2020,6126
+50,2,3,26,97,Michigan,Mackinac County,2020,10839
+50,2,3,26,99,Michigan,Macomb County,2020,870791
+50,2,3,26,101,Michigan,Manistee County,2020,24738
+50,2,3,26,103,Michigan,Marquette County,2020,65834
+50,2,3,26,105,Michigan,Mason County,2020,29164
+50,2,3,26,107,Michigan,Mecosta County,2020,43907
+50,2,3,26,109,Michigan,Menominee County,2020,22608
+50,2,3,26,111,Michigan,Midland County,2020,83441
+50,2,3,26,113,Michigan,Missaukee County,2020,15152
+50,2,3,26,115,Michigan,Monroe County,2020,150568
+50,2,3,26,117,Michigan,Montcalm County,2020,63476
+50,2,3,26,119,Michigan,Montmorency County,2020,9337
+50,2,3,26,121,Michigan,Muskegon County,2020,173883
+50,2,3,26,123,Michigan,Newaygo County,2020,49348
+50,2,3,26,125,Michigan,Oakland County,2020,1253459
+50,2,3,26,127,Michigan,Oceana County,2020,26819
+50,2,3,26,129,Michigan,Ogemaw County,2020,20923
+50,2,3,26,131,Michigan,Ontonagon County,2020,5656
+50,2,3,26,133,Michigan,Osceola County,2020,23466
+50,2,3,26,135,Michigan,Oscoda County,2020,8368
+50,2,3,26,137,Michigan,Otsego County,2020,24765
+50,2,3,26,139,Michigan,Ottawa County,2020,294635
+50,2,3,26,141,Michigan,Presque Isle County,2020,12665
+50,2,3,26,143,Michigan,Roscommon County,2020,23986
+50,2,3,26,145,Michigan,Saginaw County,2020,189868
+50,2,3,26,147,Michigan,St. Clair County,2020,159293
+50,2,3,26,149,Michigan,St. Joseph County,2020,60848
+50,2,3,26,151,Michigan,Sanilac County,2020,40747
+50,2,3,26,153,Michigan,Schoolcraft County,2020,8104
+50,2,3,26,155,Michigan,Shiawassee County,2020,67738
+50,2,3,26,157,Michigan,Tuscola County,2020,52289
+50,2,3,26,159,Michigan,Van Buren County,2020,75474
+50,2,3,26,161,Michigan,Washtenaw County,2020,366473
+50,2,3,26,163,Michigan,Wayne County,2020,1740623
+50,2,3,26,165,Michigan,Wexford County,2020,33743
+40,2,4,27,0,Minnesota,Minnesota,2020,5657342
+50,2,4,27,1,Minnesota,Aitkin County,2020,15848
+50,2,4,27,3,Minnesota,Anoka County,2020,359921
+50,2,4,27,5,Minnesota,Becker County,2020,34456
+50,2,4,27,7,Minnesota,Beltrami County,2020,47442
+50,2,4,27,9,Minnesota,Benton County,2020,40958
+50,2,4,27,11,Minnesota,Big Stone County,2020,4923
+50,2,4,27,13,Minnesota,Blue Earth County,2020,68241
+50,2,4,27,15,Minnesota,Brown County,2020,24846
+50,2,4,27,17,Minnesota,Carlton County,2020,35769
+50,2,4,27,19,Minnesota,Carver County,2020,106565
+50,2,4,27,21,Minnesota,Cass County,2020,29928
+50,2,4,27,23,Minnesota,Chippewa County,2020,11758
+50,2,4,27,25,Minnesota,Chisago County,2020,56794
+50,2,4,27,27,Minnesota,Clay County,2020,64690
+50,2,4,27,29,Minnesota,Clearwater County,2020,9017
+50,2,4,27,31,Minnesota,Cook County,2020,5417
+50,2,4,27,33,Minnesota,Cottonwood County,2020,11242
+50,2,4,27,35,Minnesota,Crow Wing County,2020,65644
+50,2,4,27,37,Minnesota,Dakota County,2020,431807
+50,2,4,27,39,Minnesota,Dodge County,2020,20987
+50,2,4,27,41,Minnesota,Douglas County,2020,38328
+50,2,4,27,43,Minnesota,Faribault County,2020,13601
+50,2,4,27,45,Minnesota,Fillmore County,2020,21135
+50,2,4,27,47,Minnesota,Freeborn County,2020,30364
+50,2,4,27,49,Minnesota,Goodhue County,2020,46318
+50,2,4,27,51,Minnesota,Grant County,2020,6026
+50,2,4,27,53,Minnesota,Hennepin County,2020,1268408
+50,2,4,27,55,Minnesota,Houston County,2020,18632
+50,2,4,27,57,Minnesota,Hubbard County,2020,21783
+50,2,4,27,59,Minnesota,Isanti County,2020,41429
+50,2,4,27,61,Minnesota,Itasca County,2020,45268
+50,2,4,27,63,Minnesota,Jackson County,2020,9768
+50,2,4,27,65,Minnesota,Kanabec County,2020,16416
+50,2,4,27,67,Minnesota,Kandiyohi County,2020,43130
+50,2,4,27,69,Minnesota,Kittson County,2020,4214
+50,2,4,27,71,Minnesota,Koochiching County,2020,12059
+50,2,4,27,73,Minnesota,Lac qui Parle County,2020,6527
+50,2,4,27,75,Minnesota,Lake County,2020,10639
+50,2,4,27,77,Minnesota,Lake of the Woods County,2020,3754
+50,2,4,27,79,Minnesota,Le Sueur County,2020,28741
+50,2,4,27,81,Minnesota,Lincoln County,2020,5568
+50,2,4,27,83,Minnesota,Lyon County,2020,25271
+50,2,4,27,85,Minnesota,McLeod County,2020,35710
+50,2,4,27,87,Minnesota,Mahnomen County,2020,5473
+50,2,4,27,89,Minnesota,Marshall County,2020,9321
+50,2,4,27,91,Minnesota,Martin County,2020,19484
+50,2,4,27,93,Minnesota,Meeker County,2020,23341
+50,2,4,27,95,Minnesota,Mille Lacs County,2020,26146
+50,2,4,27,97,Minnesota,Morrison County,2020,33187
+50,2,4,27,99,Minnesota,Mower County,2020,40150
+50,2,4,27,101,Minnesota,Murray County,2020,8155
+50,2,4,27,103,Minnesota,Nicollet County,2020,34482
+50,2,4,27,105,Minnesota,Nobles County,2020,21400
+50,2,4,27,107,Minnesota,Norman County,2020,6338
+50,2,4,27,109,Minnesota,Olmsted County,2020,159298
+50,2,4,27,111,Minnesota,Otter Tail County,2020,58741
+50,2,4,27,113,Minnesota,Pennington County,2020,13874
+50,2,4,27,115,Minnesota,Pine County,2020,29359
+50,2,4,27,117,Minnesota,Pipestone County,2020,9121
+50,2,4,27,119,Minnesota,Polk County,2020,30900
+50,2,4,27,121,Minnesota,Pope County,2020,11277
+50,2,4,27,123,Minnesota,Ramsey County,2020,547903
+50,2,4,27,125,Minnesota,Red Lake County,2020,4046
+50,2,4,27,127,Minnesota,Redwood County,2020,15079
+50,2,4,27,129,Minnesota,Renville County,2020,14403
+50,2,4,27,131,Minnesota,Rice County,2020,67084
+50,2,4,27,133,Minnesota,Rock County,2020,9301
+50,2,4,27,135,Minnesota,Roseau County,2020,15117
+50,2,4,27,137,Minnesota,St. Louis County,2020,198538
+50,2,4,27,139,Minnesota,Scott County,2020,150689
+50,2,4,27,141,Minnesota,Sherburne County,2020,98811
+50,2,4,27,143,Minnesota,Sibley County,2020,14715
+50,2,4,27,145,Minnesota,Stearns County,2020,162038
+50,2,4,27,147,Minnesota,Steele County,2020,36596
+50,2,4,27,149,Minnesota,Stevens County,2020,9765
+50,2,4,27,151,Minnesota,Swift County,2020,9176
+50,2,4,27,153,Minnesota,Todd County,2020,24732
+50,2,4,27,155,Minnesota,Traverse County,2020,3218
+50,2,4,27,157,Minnesota,Wabasha County,2020,21642
+50,2,4,27,159,Minnesota,Wadena County,2020,13807
+50,2,4,27,161,Minnesota,Waseca County,2020,18550
+50,2,4,27,163,Minnesota,Washington County,2020,265476
+50,2,4,27,165,Minnesota,Watonwan County,2020,10792
+50,2,4,27,167,Minnesota,Wilkin County,2020,6161
+50,2,4,27,169,Minnesota,Winona County,2020,50485
+50,2,4,27,171,Minnesota,Wright County,2020,140249
+50,2,4,27,173,Minnesota,Yellow Medicine County,2020,9580
+40,3,6,28,0,Mississippi,Mississippi,2020,2966786
+50,3,6,28,1,Mississippi,Adams County,2020,30275
+50,3,6,28,3,Mississippi,Alcorn County,2020,36889
+50,3,6,28,5,Mississippi,Amite County,2020,12205
+50,3,6,28,7,Mississippi,Attala County,2020,18004
+50,3,6,28,9,Mississippi,Benton County,2020,8351
+50,3,6,28,11,Mississippi,Bolivar County,2020,30142
+50,3,6,28,13,Mississippi,Calhoun County,2020,14241
+50,3,6,28,15,Mississippi,Carroll County,2020,9732
+50,3,6,28,17,Mississippi,Chickasaw County,2020,16951
+50,3,6,28,19,Mississippi,Choctaw County,2020,8063
+50,3,6,28,21,Mississippi,Claiborne County,2020,8911
+50,3,6,28,23,Mississippi,Clarke County,2020,15299
+50,3,6,28,25,Mississippi,Clay County,2020,19352
+50,3,6,28,27,Mississippi,Coahoma County,2020,21564
+50,3,6,28,29,Mississippi,Copiah County,2020,27933
+50,3,6,28,31,Mississippi,Covington County,2020,18518
+50,3,6,28,33,Mississippi,DeSoto County,2020,188275
+50,3,6,28,35,Mississippi,Forrest County,2020,75009
+50,3,6,28,37,Mississippi,Franklin County,2020,7657
+50,3,6,28,39,Mississippi,George County,2020,24425
+50,3,6,28,41,Mississippi,Greene County,2020,13477
+50,3,6,28,43,Mississippi,Grenada County,2020,20610
+50,3,6,28,45,Mississippi,Hancock County,2020,48000
+50,3,6,28,47,Mississippi,Harrison County,2020,208801
+50,3,6,28,49,Mississippi,Hinds County,2020,227966
+50,3,6,28,51,Mississippi,Holmes County,2020,16726
+50,3,6,28,53,Mississippi,Humphreys County,2020,7827
+50,3,6,28,55,Mississippi,Issaquena County,2020,1220
+50,3,6,28,57,Mississippi,Itawamba County,2020,23261
+50,3,6,28,59,Mississippi,Jackson County,2020,143802
+50,3,6,28,61,Mississippi,Jasper County,2020,16332
+50,3,6,28,63,Mississippi,Jefferson County,2020,6997
+50,3,6,28,65,Mississippi,Jefferson Davis County,2020,10890
+50,3,6,28,67,Mississippi,Jones County,2020,67993
+50,3,6,28,69,Mississippi,Kemper County,2020,9521
+50,3,6,28,71,Mississippi,Lafayette County,2020,54408
+50,3,6,28,73,Mississippi,Lamar County,2020,64165
+50,3,6,28,75,Mississippi,Lauderdale County,2020,73751
+50,3,6,28,77,Mississippi,Lawrence County,2020,12480
+50,3,6,28,79,Mississippi,Leake County,2020,22741
+50,3,6,28,81,Mississippi,Lee County,2020,85466
+50,3,6,28,83,Mississippi,Leflore County,2020,27854
+50,3,6,28,85,Mississippi,Lincoln County,2020,33936
+50,3,6,28,87,Mississippi,Lowndes County,2020,58309
+50,3,6,28,89,Mississippi,Madison County,2020,106871
+50,3,6,28,91,Mississippi,Marion County,2020,24441
+50,3,6,28,93,Mississippi,Marshall County,2020,35301
+50,3,6,28,95,Mississippi,Monroe County,2020,35123
+50,3,6,28,97,Mississippi,Montgomery County,2020,9661
+50,3,6,28,99,Mississippi,Neshoba County,2020,28996
+50,3,6,28,101,Mississippi,Newton County,2020,20866
+50,3,6,28,103,Mississippi,Noxubee County,2020,10236
+50,3,6,28,105,Mississippi,Oktibbeha County,2020,49789
+50,3,6,28,107,Mississippi,Panola County,2020,33848
+50,3,6,28,109,Mississippi,Pearl River County,2020,55876
+50,3,6,28,111,Mississippi,Perry County,2020,11862
+50,3,6,28,113,Mississippi,Pike County,2020,38997
+50,3,6,28,115,Mississippi,Pontotoc County,2020,32461
+50,3,6,28,117,Mississippi,Prentiss County,2020,25013
+50,3,6,28,119,Mississippi,Quitman County,2020,6760
+50,3,6,28,121,Mississippi,Rankin County,2020,155975
+50,3,6,28,123,Mississippi,Scott County,2020,28061
+50,3,6,28,125,Mississippi,Sharkey County,2020,4160
+50,3,6,28,127,Mississippi,Simpson County,2020,26629
+50,3,6,28,129,Mississippi,Smith County,2020,15779
+50,3,6,28,131,Mississippi,Stone County,2020,18360
+50,3,6,28,133,Mississippi,Sunflower County,2020,24740
+50,3,6,28,135,Mississippi,Tallahatchie County,2020,13707
+50,3,6,28,137,Mississippi,Tate County,2020,28539
+50,3,6,28,139,Mississippi,Tippah County,2020,21748
+50,3,6,28,141,Mississippi,Tishomingo County,2020,19275
+50,3,6,28,143,Mississippi,Tunica County,2020,9392
+50,3,6,28,145,Mississippi,Union County,2020,28866
+50,3,6,28,147,Mississippi,Walthall County,2020,14294
+50,3,6,28,149,Mississippi,Warren County,2020,44841
+50,3,6,28,151,Mississippi,Washington County,2020,42837
+50,3,6,28,153,Mississippi,Wayne County,2020,20317
+50,3,6,28,155,Mississippi,Webster County,2020,9676
+50,3,6,28,157,Mississippi,Wilkinson County,2020,8351
+50,3,6,28,159,Mississippi,Winston County,2020,17845
+50,3,6,28,161,Mississippi,Yalobusha County,2020,11982
+50,3,6,28,163,Mississippi,Yazoo County,2020,26982
+40,2,4,29,0,Missouri,Missouri,2020,6151548
+50,2,4,29,1,Missouri,Adair County,2020,25399
+50,2,4,29,3,Missouri,Andrew County,2020,17586
+50,2,4,29,5,Missouri,Atchison County,2020,5096
+50,2,4,29,7,Missouri,Audrain County,2020,24835
+50,2,4,29,9,Missouri,Barry County,2020,35818
+50,2,4,29,11,Missouri,Barton County,2020,11592
+50,2,4,29,13,Missouri,Bates County,2020,16242
+50,2,4,29,15,Missouri,Benton County,2020,19627
+50,2,4,29,17,Missouri,Bollinger County,2020,12111
+50,2,4,29,19,Missouri,Boone County,2020,182991
+50,2,4,29,21,Missouri,Buchanan County,2020,86530
+50,2,4,29,23,Missouri,Butler County,2020,42178
+50,2,4,29,25,Missouri,Caldwell County,2020,9051
+50,2,4,29,27,Missouri,Callaway County,2020,44887
+50,2,4,29,29,Missouri,Camden County,2020,46414
+50,2,4,29,31,Missouri,Cape Girardeau County,2020,79512
+50,2,4,29,33,Missouri,Carroll County,2020,8554
+50,2,4,29,35,Missouri,Carter County,2020,5991
+50,2,4,29,37,Missouri,Cass County,2020,106806
+50,2,4,29,39,Missouri,Cedar County,2020,14322
+50,2,4,29,41,Missouri,Chariton County,2020,7360
+50,2,4,29,43,Missouri,Christian County,2020,90655
+50,2,4,29,45,Missouri,Clark County,2020,6830
+50,2,4,29,47,Missouri,Clay County,2020,253463
+50,2,4,29,49,Missouri,Clinton County,2020,20553
+50,2,4,29,51,Missouri,Cole County,2020,76191
+50,2,4,29,53,Missouri,Cooper County,2020,17102
+50,2,4,29,55,Missouri,Crawford County,2020,23739
+50,2,4,29,57,Missouri,Dade County,2020,7568
+50,2,4,29,59,Missouri,Dallas County,2020,17219
+50,2,4,29,61,Missouri,Daviess County,2020,8283
+50,2,4,29,63,Missouri,DeKalb County,2020,10944
+50,2,4,29,65,Missouri,Dent County,2020,15481
+50,2,4,29,67,Missouri,Douglas County,2020,13344
+50,2,4,29,69,Missouri,Dunklin County,2020,28878
+50,2,4,29,71,Missouri,Franklin County,2020,104469
+50,2,4,29,73,Missouri,Gasconade County,2020,14566
+50,2,4,29,75,Missouri,Gentry County,2020,6484
+50,2,4,29,77,Missouri,Greene County,2020,294997
+50,2,4,29,79,Missouri,Grundy County,2020,9595
+50,2,4,29,81,Missouri,Harrison County,2020,8321
+50,2,4,29,83,Missouri,Henry County,2020,22076
+50,2,4,29,85,Missouri,Hickory County,2020,9586
+50,2,4,29,87,Missouri,Holt County,2020,4232
+50,2,4,29,89,Missouri,Howard County,2020,10001
+50,2,4,29,91,Missouri,Howell County,2020,40262
+50,2,4,29,93,Missouri,Iron County,2020,10098
+50,2,4,29,95,Missouri,Jackson County,2020,705925
+50,2,4,29,97,Missouri,Jasper County,2020,121648
+50,2,4,29,99,Missouri,Jefferson County,2020,226543
+50,2,4,29,101,Missouri,Johnson County,2020,54219
+50,2,4,29,103,Missouri,Knox County,2020,3940
+50,2,4,29,105,Missouri,Laclede County,2020,35895
+50,2,4,29,107,Missouri,Lafayette County,2020,33006
+50,2,4,29,109,Missouri,Lawrence County,2020,38175
+50,2,4,29,111,Missouri,Lewis County,2020,9810
+50,2,4,29,113,Missouri,Lincoln County,2020,60119
+50,2,4,29,115,Missouri,Linn County,2020,11830
+50,2,4,29,117,Missouri,Livingston County,2020,14413
+50,2,4,29,119,Missouri,McDonald County,2020,22900
+50,2,4,29,121,Missouri,Macon County,2020,15095
+50,2,4,29,123,Missouri,Madison County,2020,12113
+50,2,4,29,125,Missouri,Maries County,2020,8795
+50,2,4,29,127,Missouri,Marion County,2020,28423
+50,2,4,29,129,Missouri,Mercer County,2020,3558
+50,2,4,29,131,Missouri,Miller County,2020,25791
+50,2,4,29,133,Missouri,Mississippi County,2020,12691
+50,2,4,29,135,Missouri,Moniteau County,2020,15585
+50,2,4,29,137,Missouri,Monroe County,2020,8672
+50,2,4,29,139,Missouri,Montgomery County,2020,11294
+50,2,4,29,141,Missouri,Morgan County,2020,20716
+50,2,4,29,143,Missouri,New Madrid County,2020,16693
+50,2,4,29,145,Missouri,Newton County,2020,58451
+50,2,4,29,147,Missouri,Nodaway County,2020,21743
+50,2,4,29,149,Missouri,Oregon County,2020,10411
+50,2,4,29,151,Missouri,Osage County,2020,13535
+50,2,4,29,153,Missouri,Ozark County,2020,9083
+50,2,4,29,155,Missouri,Pemiscot County,2020,15600
+50,2,4,29,157,Missouri,Perry County,2020,19194
+50,2,4,29,159,Missouri,Pettis County,2020,42490
+50,2,4,29,161,Missouri,Phelps County,2020,44414
+50,2,4,29,163,Missouri,Pike County,2020,17552
+50,2,4,29,165,Missouri,Platte County,2020,106532
+50,2,4,29,167,Missouri,Polk County,2020,32490
+50,2,4,29,169,Missouri,Pulaski County,2020,52709
+50,2,4,29,171,Missouri,Putnam County,2020,4688
+50,2,4,29,173,Missouri,Ralls County,2020,10299
+50,2,4,29,175,Missouri,Randolph County,2020,24409
+50,2,4,29,177,Missouri,Ray County,2020,22915
+50,2,4,29,179,Missouri,Reynolds County,2020,6198
+50,2,4,29,181,Missouri,Ripley County,2020,13300
+50,2,4,29,183,Missouri,St. Charles County,2020,406204
+50,2,4,29,185,Missouri,St. Clair County,2020,9689
+50,2,4,29,186,Missouri,Ste. Genevieve County,2020,17924
+50,2,4,29,187,Missouri,St. Francois County,2020,66485
+50,2,4,29,189,Missouri,St. Louis County,2020,994020
+50,2,4,29,195,Missouri,Saline County,2020,22858
+50,2,4,29,197,Missouri,Schuyler County,2020,4534
+50,2,4,29,199,Missouri,Scotland County,2020,4871
+50,2,4,29,201,Missouri,Scott County,2020,38288
+50,2,4,29,203,Missouri,Shannon County,2020,8203
+50,2,4,29,205,Missouri,Shelby County,2020,5919
+50,2,4,29,207,Missouri,Stoddard County,2020,29001
+50,2,4,29,209,Missouri,Stone County,2020,32465
+50,2,4,29,211,Missouri,Sullivan County,2020,6033
+50,2,4,29,213,Missouri,Taney County,2020,56104
+50,2,4,29,215,Missouri,Texas County,2020,25112
+50,2,4,29,217,Missouri,Vernon County,2020,20388
+50,2,4,29,219,Missouri,Warren County,2020,36594
+50,2,4,29,221,Missouri,Washington County,2020,24604
+50,2,4,29,223,Missouri,Wayne County,2020,12769
+50,2,4,29,225,Missouri,Webster County,2020,39859
+50,2,4,29,227,Missouri,Worth County,2020,1953
+50,2,4,29,229,Missouri,Wright County,2020,18325
+50,2,4,29,510,Missouri,St. Louis city,2020,297645
+40,4,8,30,0,Montana,Montana,2020,1080577
+50,4,8,30,1,Montana,Beaverhead County,2020,9483
+50,4,8,30,3,Montana,Big Horn County,2020,13063
+50,4,8,30,5,Montana,Blaine County,2020,6568
+50,4,8,30,7,Montana,Broadwater County,2020,6444
+50,4,8,30,9,Montana,Carbon County,2020,10921
+50,4,8,30,11,Montana,Carter County,2020,1235
+50,4,8,30,13,Montana,Cascade County,2020,81346
+50,4,8,30,15,Montana,Chouteau County,2020,5699
+50,4,8,30,17,Montana,Custer County,2020,11292
+50,4,8,30,19,Montana,Daniels County,2020,1638
+50,4,8,30,21,Montana,Dawson County,2020,8555
+50,4,8,30,23,Montana,Deer Lodge County,2020,9204
+50,4,8,30,25,Montana,Fallon County,2020,2826
+50,4,8,30,27,Montana,Fergus County,2020,11104
+50,4,8,30,29,Montana,Flathead County,2020,105851
+50,4,8,30,31,Montana,Gallatin County,2020,116806
+50,4,8,30,33,Montana,Garfield County,2020,1268
+50,4,8,30,35,Montana,Glacier County,2020,13594
+50,4,8,30,37,Montana,Golden Valley County,2020,827
+50,4,8,30,39,Montana,Granite County,2020,3317
+50,4,8,30,41,Montana,Hill County,2020,16358
+50,4,8,30,43,Montana,Jefferson County,2020,12360
+50,4,8,30,45,Montana,Judith Basin County,2020,1994
+50,4,8,30,47,Montana,Lake County,2020,30986
+50,4,8,30,49,Montana,Lewis and Clark County,2020,70229
+50,4,8,30,51,Montana,Liberty County,2020,2369
+50,4,8,30,53,Montana,Lincoln County,2020,20343
+50,4,8,30,55,Montana,McCone County,2020,1648
+50,4,8,30,57,Montana,Madison County,2020,8959
+50,4,8,30,59,Montana,Meagher County,2020,1831
+50,4,8,30,61,Montana,Mineral County,2020,4544
+50,4,8,30,63,Montana,Missoula County,2020,121630
+50,4,8,30,65,Montana,Musselshell County,2020,4669
+50,4,8,30,67,Montana,Park County,2020,16760
+50,4,8,30,69,Montana,Petroleum County,2020,500
+50,4,8,30,71,Montana,Phillips County,2020,3919
+50,4,8,30,73,Montana,Pondera County,2020,5782
+50,4,8,30,75,Montana,Powder River County,2020,1681
+50,4,8,30,77,Montana,Powell County,2020,6817
+50,4,8,30,79,Montana,Prairie County,2020,1067
+50,4,8,30,81,Montana,Ravalli County,2020,45002
+50,4,8,30,83,Montana,Richland County,2020,11043
+50,4,8,30,85,Montana,Roosevelt County,2020,10964
+50,4,8,30,87,Montana,Rosebud County,2020,8836
+50,4,8,30,89,Montana,Sanders County,2020,12157
+50,4,8,30,91,Montana,Sheridan County,2020,3261
+50,4,8,30,93,Montana,Silver Bow County,2020,35180
+50,4,8,30,95,Montana,Stillwater County,2020,9888
+50,4,8,30,97,Montana,Sweet Grass County,2020,3684
+50,4,8,30,99,Montana,Teton County,2020,6249
+50,4,8,30,101,Montana,Toole County,2020,4686
+50,4,8,30,103,Montana,Treasure County,2020,695
+50,4,8,30,105,Montana,Valley County,2020,7359
+50,4,8,30,107,Montana,Wheatland County,2020,2157
+50,4,8,30,109,Montana,Wibaux County,2020,939
+50,4,8,30,111,Montana,Yellowstone County,2020,162990
+40,2,4,31,0,Nebraska,Nebraska,2020,1937552
+50,2,4,31,1,Nebraska,Adams County,2020,31321
+50,2,4,31,3,Nebraska,Antelope County,2020,6264
+50,2,4,31,5,Nebraska,Arthur County,2020,466
+50,2,4,31,7,Nebraska,Banner County,2020,786
+50,2,4,31,9,Nebraska,Blaine County,2020,457
+50,2,4,31,11,Nebraska,Boone County,2020,5096
+50,2,4,31,13,Nebraska,Box Butte County,2020,10696
+50,2,4,31,15,Nebraska,Boyd County,2020,1860
+50,2,4,31,17,Nebraska,Brown County,2020,2981
+50,2,4,31,19,Nebraska,Buffalo County,2020,50114
+50,2,4,31,21,Nebraska,Burt County,2020,6477
+50,2,4,31,23,Nebraska,Butler County,2020,7960
+50,2,4,31,25,Nebraska,Cass County,2020,26232
+50,2,4,31,27,Nebraska,Cedar County,2020,8414
+50,2,4,31,29,Nebraska,Chase County,2020,3840
+50,2,4,31,31,Nebraska,Cherry County,2020,5781
+50,2,4,31,33,Nebraska,Cheyenne County,2020,9111
+50,2,4,31,35,Nebraska,Clay County,2020,6216
+50,2,4,31,37,Nebraska,Colfax County,2020,10587
+50,2,4,31,39,Nebraska,Cuming County,2020,8798
+50,2,4,31,41,Nebraska,Custer County,2020,10626
+50,2,4,31,43,Nebraska,Dakota County,2020,20070
+50,2,4,31,45,Nebraska,Dawes County,2020,8361
+50,2,4,31,47,Nebraska,Dawson County,2020,23510
+50,2,4,31,49,Nebraska,Deuel County,2020,1793
+50,2,4,31,51,Nebraska,Dixon County,2020,5596
+50,2,4,31,53,Nebraska,Dodge County,2020,36222
+50,2,4,31,55,Nebraska,Douglas County,2020,574332
+50,2,4,31,57,Nebraska,Dundy County,2020,1671
+50,2,4,31,59,Nebraska,Fillmore County,2020,5519
+50,2,4,31,61,Nebraska,Franklin County,2020,2940
+50,2,4,31,63,Nebraska,Frontier County,2020,2587
+50,2,4,31,65,Nebraska,Furnas County,2020,4653
+50,2,4,31,67,Nebraska,Gage County,2020,21431
+50,2,4,31,69,Nebraska,Garden County,2020,1847
+50,2,4,31,71,Nebraska,Garfield County,2020,1956
+50,2,4,31,73,Nebraska,Gosper County,2020,1986
+50,2,4,31,75,Nebraska,Grant County,2020,630
+50,2,4,31,77,Nebraska,Greeley County,2020,2319
+50,2,4,31,79,Nebraska,Hall County,2020,61028
+50,2,4,31,81,Nebraska,Hamilton County,2020,9237
+50,2,4,31,83,Nebraska,Harlan County,2020,3311
+50,2,4,31,85,Nebraska,Hayes County,2020,916
+50,2,4,31,87,Nebraska,Hitchcock County,2020,2773
+50,2,4,31,89,Nebraska,Holt County,2020,9956
+50,2,4,31,91,Nebraska,Hooker County,2020,647
+50,2,4,31,93,Nebraska,Howard County,2020,6488
+50,2,4,31,95,Nebraska,Jefferson County,2020,7099
+50,2,4,31,97,Nebraska,Johnson County,2020,5057
+50,2,4,31,99,Nebraska,Kearney County,2020,6652
+50,2,4,31,101,Nebraska,Keith County,2020,7983
+50,2,4,31,103,Nebraska,Keya Paha County,2020,759
+50,2,4,31,105,Nebraska,Kimball County,2020,3495
+50,2,4,31,107,Nebraska,Knox County,2020,8304
+50,2,4,31,109,Nebraska,Lancaster County,2020,320650
+50,2,4,31,111,Nebraska,Lincoln County,2020,34347
+50,2,4,31,113,Nebraska,Logan County,2020,747
+50,2,4,31,115,Nebraska,Loup County,2020,650
+50,2,4,31,117,Nebraska,McPherson County,2020,474
+50,2,4,31,119,Nebraska,Madison County,2020,34813
+50,2,4,31,121,Nebraska,Merrick County,2020,7809
+50,2,4,31,123,Nebraska,Morrill County,2020,4625
+50,2,4,31,125,Nebraska,Nance County,2020,3532
+50,2,4,31,127,Nebraska,Nemaha County,2020,7044
+50,2,4,31,129,Nebraska,Nuckolls County,2020,4134
+50,2,4,31,131,Nebraska,Otoe County,2020,15965
+50,2,4,31,133,Nebraska,Pawnee County,2020,2601
+50,2,4,31,135,Nebraska,Perkins County,2020,2867
+50,2,4,31,137,Nebraska,Phelps County,2020,9006
+50,2,4,31,139,Nebraska,Pierce County,2020,7184
+50,2,4,31,141,Nebraska,Platte County,2020,33364
+50,2,4,31,143,Nebraska,Polk County,2020,5201
+50,2,4,31,145,Nebraska,Red Willow County,2020,10627
+50,2,4,31,147,Nebraska,Richardson County,2020,7791
+50,2,4,31,149,Nebraska,Rock County,2020,1377
+50,2,4,31,151,Nebraska,Saline County,2020,13987
+50,2,4,31,153,Nebraska,Sarpy County,2020,188856
+50,2,4,31,155,Nebraska,Saunders County,2020,21927
+50,2,4,31,157,Nebraska,Scotts Bluff County,2020,35299
+50,2,4,31,159,Nebraska,Seward County,2020,17186
+50,2,4,31,161,Nebraska,Sheridan County,2020,5150
+50,2,4,31,163,Nebraska,Sherman County,2020,2986
+50,2,4,31,165,Nebraska,Sioux County,2020,1200
+50,2,4,31,167,Nebraska,Stanton County,2020,5880
+50,2,4,31,169,Nebraska,Thayer County,2020,4887
+50,2,4,31,171,Nebraska,Thomas County,2020,739
+50,2,4,31,173,Nebraska,Thurston County,2020,7220
+50,2,4,31,175,Nebraska,Valley County,2020,4103
+50,2,4,31,177,Nebraska,Washington County,2020,20901
+50,2,4,31,179,Nebraska,Wayne County,2020,9492
+50,2,4,31,181,Nebraska,Webster County,2020,3419
+50,2,4,31,183,Nebraska,Wheeler County,2020,790
+50,2,4,31,185,Nebraska,York County,2020,13511
+40,4,8,32,0,Nevada,Nevada,2020,3138259
+50,4,8,32,1,Nevada,Churchill County,2020,25363
+50,4,8,32,3,Nevada,Clark County,2020,2315963
+50,4,8,32,5,Nevada,Douglas County,2020,49088
+50,4,8,32,7,Nevada,Elko County,2020,53006
+50,4,8,32,9,Nevada,Esmeralda County,2020,886
+50,4,8,32,11,Nevada,Eureka County,2020,2065
+50,4,8,32,13,Nevada,Humboldt County,2020,16962
+50,4,8,32,15,Nevada,Lander County,2020,5514
+50,4,8,32,17,Nevada,Lincoln County,2020,5159
+50,4,8,32,19,Nevada,Lyon County,2020,58319
+50,4,8,32,21,Nevada,Mineral County,2020,4518
+50,4,8,32,23,Nevada,Nye County,2020,48054
+50,4,8,32,27,Nevada,Pershing County,2020,6573
+50,4,8,32,29,Nevada,Storey County,2020,4207
+50,4,8,32,31,Nevada,Washoe County,2020,477082
+50,4,8,32,33,Nevada,White Pine County,2020,9466
+50,4,8,32,510,Nevada,Carson City,2020,56034
+40,1,1,33,0,New Hampshire,New Hampshire,2020,1366275
+50,1,1,33,1,New Hampshire,Belknap County,2020,61551
+50,1,1,33,3,New Hampshire,Carroll County,2020,49167
+50,1,1,33,5,New Hampshire,Cheshire County,2020,76228
+50,1,1,33,7,New Hampshire,Coos County,2020,31174
+50,1,1,33,9,New Hampshire,Grafton County,2020,90691
+50,1,1,33,11,New Hampshire,Hillsborough County,2020,418735
+50,1,1,33,13,New Hampshire,Merrimack County,2020,152622
+50,1,1,33,15,New Hampshire,Rockingham County,2020,311307
+50,1,1,33,17,New Hampshire,Strafford County,2020,131533
+50,1,1,33,19,New Hampshire,Sullivan County,2020,43267
+40,1,2,34,0,New Jersey,New Jersey,2020,8882371
+50,1,2,34,1,New Jersey,Atlantic County,2020,262945
+50,1,2,34,3,New Jersey,Bergen County,2020,930394
+50,1,2,34,5,New Jersey,Burlington County,2020,446596
+50,1,2,34,7,New Jersey,Camden County,2020,506809
+50,1,2,34,9,New Jersey,Cape May County,2020,91546
+50,1,2,34,11,New Jersey,Cumberland County,2020,147008
+50,1,2,34,13,New Jersey,Essex County,2020,800501
+50,1,2,34,15,New Jersey,Gloucester County,2020,293245
+50,1,2,34,17,New Jersey,Hudson County,2020,671666
+50,1,2,34,19,New Jersey,Hunterdon County,2020,124797
+50,1,2,34,21,New Jersey,Mercer County,2020,367239
+50,1,2,34,23,New Jersey,Middlesex County,2020,822736
+50,1,2,34,25,New Jersey,Monmouth County,2020,618381
+50,1,2,34,27,New Jersey,Morris County,2020,491087
+50,1,2,34,29,New Jersey,Ocean County,2020,614237
+50,1,2,34,31,New Jersey,Passaic County,2020,500382
+50,1,2,34,33,New Jersey,Salem County,2020,62451
+50,1,2,34,35,New Jersey,Somerset County,2020,329331
+50,1,2,34,37,New Jersey,Sussex County,2020,140002
+50,1,2,34,39,New Jersey,Union County,2020,555394
+50,1,2,34,41,New Jersey,Warren County,2020,105624
+40,4,8,35,0,New Mexico,New Mexico,2020,2106319
+50,4,8,35,1,New Mexico,Bernalillo County,2020,681666
+50,4,8,35,3,New Mexico,Catron County,2020,3623
+50,4,8,35,5,New Mexico,Chaves County,2020,64711
+50,4,8,35,6,New Mexico,Cibola County,2020,26354
+50,4,8,35,7,New Mexico,Colfax County,2020,11927
+50,4,8,35,9,New Mexico,Curry County,2020,48793
+50,4,8,35,11,New Mexico,De Baca County,2020,1673
+50,4,8,35,13,New Mexico,Doña Ana County,2020,221262
+50,4,8,35,15,New Mexico,Eddy County,2020,58418
+50,4,8,35,17,New Mexico,Grant County,2020,27007
+50,4,8,35,19,New Mexico,Guadalupe County,2020,4275
+50,4,8,35,21,New Mexico,Harding County,2020,638
+50,4,8,35,23,New Mexico,Hidalgo County,2020,4106
+50,4,8,35,25,New Mexico,Lea County,2020,71830
+50,4,8,35,27,New Mexico,Lincoln County,2020,19939
+50,4,8,35,28,New Mexico,Los Alamos County,2020,19462
+50,4,8,35,29,New Mexico,Luna County,2020,23905
+50,4,8,35,31,New Mexico,McKinley County,2020,70824
+50,4,8,35,33,New Mexico,Mora County,2020,4478
+50,4,8,35,35,New Mexico,Otero County,2020,67967
+50,4,8,35,37,New Mexico,Quay County,2020,8197
+50,4,8,35,39,New Mexico,Rio Arriba County,2020,38521
+50,4,8,35,41,New Mexico,Roosevelt County,2020,18350
+50,4,8,35,43,New Mexico,Sandoval County,2020,148904
+50,4,8,35,45,New Mexico,San Juan County,2020,123312
+50,4,8,35,47,New Mexico,San Miguel County,2020,27144
+50,4,8,35,49,New Mexico,Santa Fe County,2020,151946
+50,4,8,35,51,New Mexico,Sierra County,2020,10867
+50,4,8,35,53,New Mexico,Socorro County,2020,16541
+50,4,8,35,55,New Mexico,Taos County,2020,32593
+50,4,8,35,57,New Mexico,Torrance County,2020,15486
+50,4,8,35,59,New Mexico,Union County,2020,4026
+50,4,8,35,61,New Mexico,Valencia County,2020,77574
+40,1,2,36,0,New York,New York,2020,19336776
+50,1,2,36,1,New York,Albany County,2020,303654
+50,1,2,36,3,New York,Allegany County,2020,45587
+50,1,2,36,5,New York,Bronx County,2020,1401142
+50,1,2,36,7,New York,Broome County,2020,189420
+50,1,2,36,9,New York,Cattaraugus County,2020,75863
+50,1,2,36,11,New York,Cayuga County,2020,76029
+50,1,2,36,13,New York,Chautauqua County,2020,126032
+50,1,2,36,15,New York,Chemung County,2020,82622
+50,1,2,36,17,New York,Chenango County,2020,46730
+50,1,2,36,19,New York,Clinton County,2020,79778
+50,1,2,36,21,New York,Columbia County,2020,59534
+50,1,2,36,23,New York,Cortland County,2020,47173
+50,1,2,36,25,New York,Delaware County,2020,43938
+50,1,2,36,27,New York,Dutchess County,2020,293293
+50,1,2,36,29,New York,Erie County,2020,917241
+50,1,2,36,31,New York,Essex County,2020,36891
+50,1,2,36,33,New York,Franklin County,2020,49965
+50,1,2,36,35,New York,Fulton County,2020,52812
+50,1,2,36,37,New York,Genesee County,2020,56994
+50,1,2,36,39,New York,Greene County,2020,47177
+50,1,2,36,41,New York,Hamilton County,2020,4345
+50,1,2,36,43,New York,Herkimer County,2020,60945
+50,1,2,36,45,New York,Jefferson County,2020,108095
+50,1,2,36,47,New York,Kings County,2020,2538934
+50,1,2,36,49,New York,Lewis County,2020,26187
+50,1,2,36,51,New York,Livingston County,2020,62398
+50,1,2,36,53,New York,Madison County,2020,70478
+50,1,2,36,55,New York,Monroe County,2020,740900
+50,1,2,36,57,New York,Montgomery County,2020,49170
+50,1,2,36,59,New York,Nassau County,2020,1351334
+50,1,2,36,61,New York,New York County,2020,1611989
+50,1,2,36,63,New York,Niagara County,2020,208396
+50,1,2,36,65,New York,Oneida County,2020,227346
+50,1,2,36,67,New York,Onondaga County,2020,459214
+50,1,2,36,69,New York,Ontario County,2020,110091
+50,1,2,36,71,New York,Orange County,2020,385234
+50,1,2,36,73,New York,Orleans County,2020,39978
+50,1,2,36,75,New York,Oswego County,2020,116346
+50,1,2,36,77,New York,Otsego County,2020,58701
+50,1,2,36,79,New York,Putnam County,2020,98532
+50,1,2,36,81,New York,Queens County,2020,2225821
+50,1,2,36,83,New York,Rensselaer County,2020,158108
+50,1,2,36,85,New York,Richmond County,2020,475327
+50,1,2,36,87,New York,Rockland County,2020,326225
+50,1,2,36,89,New York,St. Lawrence County,2020,107185
+50,1,2,36,91,New York,Saratoga County,2020,230298
+50,1,2,36,93,New York,Schenectady County,2020,155358
+50,1,2,36,95,New York,Schoharie County,2020,31132
+50,1,2,36,97,New York,Schuyler County,2020,17685
+50,1,2,36,99,New York,Seneca County,2020,33991
+50,1,2,36,101,New York,Steuben County,2020,94657
+50,1,2,36,103,New York,Suffolk County,2020,1474273
+50,1,2,36,105,New York,Sullivan County,2020,75802
+50,1,2,36,107,New York,Tioga County,2020,47904
+50,1,2,36,109,New York,Tompkins County,2020,101058
+50,1,2,36,111,New York,Ulster County,2020,177716
+50,1,2,36,113,New York,Warren County,2020,63756
+50,1,2,36,115,New York,Washington County,2020,60606
+50,1,2,36,117,New York,Wayne County,2020,89339
+50,1,2,36,119,New York,Westchester County,2020,965802
+50,1,2,36,121,New York,Wyoming County,2020,39465
+50,1,2,36,123,New York,Yates County,2020,24780
+40,3,5,37,0,North Carolina,North Carolina,2020,10600823
+50,3,5,37,1,North Carolina,Alamance County,2020,171346
+50,3,5,37,3,North Carolina,Alexander County,2020,37441
+50,3,5,37,5,North Carolina,Alleghany County,2020,11194
+50,3,5,37,7,North Carolina,Anson County,2020,24097
+50,3,5,37,9,North Carolina,Ashe County,2020,27166
+50,3,5,37,11,North Carolina,Avery County,2020,17571
+50,3,5,37,13,North Carolina,Beaufort County,2020,47073
+50,3,5,37,15,North Carolina,Bertie County,2020,18712
+50,3,5,37,17,North Carolina,Bladen County,2020,32911
+50,3,5,37,19,North Carolina,Brunswick County,2020,149039
+50,3,5,37,21,North Carolina,Buncombe County,2020,263477
+50,3,5,37,23,North Carolina,Burke County,2020,90418
+50,3,5,37,25,North Carolina,Cabarrus County,2020,221479
+50,3,5,37,27,North Carolina,Caldwell County,2020,82100
+50,3,5,37,29,North Carolina,Camden County,2020,10984
+50,3,5,37,31,North Carolina,Carteret County,2020,69558
+50,3,5,37,33,North Carolina,Caswell County,2020,22443
+50,3,5,37,35,North Carolina,Catawba County,2020,160307
+50,3,5,37,37,North Carolina,Chatham County,2020,75748
+50,3,5,37,39,North Carolina,Cherokee County,2020,29073
+50,3,5,37,41,North Carolina,Chowan County,2020,13815
+50,3,5,37,43,North Carolina,Clay County,2020,11505
+50,3,5,37,45,North Carolina,Cleveland County,2020,99035
+50,3,5,37,47,North Carolina,Columbus County,2020,54754
+50,3,5,37,49,North Carolina,Craven County,2020,101233
+50,3,5,37,51,North Carolina,Cumberland County,2020,336364
+50,3,5,37,53,North Carolina,Currituck County,2020,29052
+50,3,5,37,55,North Carolina,Dare County,2020,37547
+50,3,5,37,57,North Carolina,Davidson County,2020,169234
+50,3,5,37,59,North Carolina,Davie County,2020,43286
+50,3,5,37,61,North Carolina,Duplin County,2020,58794
+50,3,5,37,63,North Carolina,Durham County,2020,327306
+50,3,5,37,65,North Carolina,Edgecombe County,2020,50829
+50,3,5,37,67,North Carolina,Forsyth County,2020,383843
+50,3,5,37,69,North Carolina,Franklin County,2020,71859
+50,3,5,37,71,North Carolina,Gaston County,2020,226568
+50,3,5,37,73,North Carolina,Gates County,2020,11464
+50,3,5,37,75,North Carolina,Graham County,2020,8474
+50,3,5,37,77,North Carolina,Granville County,2020,60486
+50,3,5,37,79,North Carolina,Greene County,2020,20928
+50,3,5,37,81,North Carolina,Guilford County,2020,540521
+50,3,5,37,83,North Carolina,Halifax County,2020,49479
+50,3,5,37,85,North Carolina,Harnett County,2020,137058
+50,3,5,37,87,North Carolina,Haywood County,2020,62972
+50,3,5,37,89,North Carolina,Henderson County,2020,118445
+50,3,5,37,91,North Carolina,Hertford County,2020,23108
+50,3,5,37,93,North Carolina,Hoke County,2020,55830
+50,3,5,37,95,North Carolina,Hyde County,2020,4843
+50,3,5,37,97,North Carolina,Iredell County,2020,185770
+50,3,5,37,99,North Carolina,Jackson County,2020,44033
+50,3,5,37,101,North Carolina,Johnston County,2020,216246
+50,3,5,37,103,North Carolina,Jones County,2020,9250
+50,3,5,37,105,North Carolina,Lee County,2020,62353
+50,3,5,37,107,North Carolina,Lenoir County,2020,55720
+50,3,5,37,109,North Carolina,Lincoln County,2020,88097
+50,3,5,37,111,North Carolina,McDowell County,2020,45782
+50,3,5,37,113,North Carolina,Macon County,2020,35994
+50,3,5,37,115,North Carolina,Madison County,2020,21740
+50,3,5,37,117,North Carolina,Martin County,2020,22178
+50,3,5,37,119,North Carolina,Mecklenburg County,2020,1128945
+50,3,5,37,121,North Carolina,Mitchell County,2020,14881
+50,3,5,37,123,North Carolina,Montgomery County,2020,27238
+50,3,5,37,125,North Carolina,Moore County,2020,103352
+50,3,5,37,127,North Carolina,Nash County,2020,94859
+50,3,5,37,129,North Carolina,New Hanover County,2020,236613
+50,3,5,37,131,North Carolina,Northampton County,2020,19088
+50,3,5,37,133,North Carolina,Onslow County,2020,203943
+50,3,5,37,135,North Carolina,Orange County,2020,149077
+50,3,5,37,137,North Carolina,Pamlico County,2020,12715
+50,3,5,37,139,North Carolina,Pasquotank County,2020,40372
+50,3,5,37,141,North Carolina,Pender County,2020,64671
+50,3,5,37,143,North Carolina,Perquimans County,2020,13667
+50,3,5,37,145,North Carolina,Person County,2020,39925
+50,3,5,37,147,North Carolina,Pitt County,2020,182924
+50,3,5,37,149,North Carolina,Polk County,2020,21030
+50,3,5,37,151,North Carolina,Randolph County,2020,144557
+50,3,5,37,153,North Carolina,Richmond County,2020,44332
+50,3,5,37,155,North Carolina,Robeson County,2020,129999
+50,3,5,37,157,North Carolina,Rockingham County,2020,91285
+50,3,5,37,159,North Carolina,Rowan County,2020,142495
+50,3,5,37,161,North Carolina,Rutherford County,2020,67076
+50,3,5,37,163,North Carolina,Sampson County,2020,63382
+50,3,5,37,165,North Carolina,Scotland County,2020,34637
+50,3,5,37,167,North Carolina,Stanly County,2020,63239
+50,3,5,37,169,North Carolina,Stokes County,2020,45743
+50,3,5,37,171,North Carolina,Surry County,2020,71683
+50,3,5,37,173,North Carolina,Swain County,2020,14179
+50,3,5,37,175,North Carolina,Transylvania County,2020,34498
+50,3,5,37,177,North Carolina,Tyrrell County,2020,3774
+50,3,5,37,179,North Carolina,Union County,2020,244562
+50,3,5,37,181,North Carolina,Vance County,2020,44718
+50,3,5,37,183,North Carolina,Wake County,2020,1132271
+50,3,5,37,185,North Carolina,Warren County,2020,19522
+50,3,5,37,187,North Carolina,Washington County,2020,11485
+50,3,5,37,189,North Carolina,Watauga County,2020,56441
+50,3,5,37,191,North Carolina,Wayne County,2020,123967
+50,3,5,37,193,North Carolina,Wilkes County,2020,68043
+50,3,5,37,195,North Carolina,Wilson County,2020,81979
+50,3,5,37,197,North Carolina,Yadkin County,2020,37625
+50,3,5,37,199,North Carolina,Yancey County,2020,18099
+40,2,4,38,0,North Dakota,North Dakota,2020,765309
+50,2,4,38,1,North Dakota,Adams County,2020,2188
+50,2,4,38,3,North Dakota,Barnes County,2020,10402
+50,2,4,38,5,North Dakota,Benson County,2020,6762
+50,2,4,38,7,North Dakota,Billings County,2020,890
+50,2,4,38,9,North Dakota,Bottineau County,2020,6287
+50,2,4,38,11,North Dakota,Bowman County,2020,2986
+50,2,4,38,13,North Dakota,Burke County,2020,2118
+50,2,4,38,15,North Dakota,Burleigh County,2020,96212
+50,2,4,38,17,North Dakota,Cass County,2020,183904
+50,2,4,38,19,North Dakota,Cavalier County,2020,3713
+50,2,4,38,21,North Dakota,Dickey County,2020,4705
+50,2,4,38,23,North Dakota,Divide County,2020,2277
+50,2,4,38,25,North Dakota,Dunn County,2020,4465
+50,2,4,38,27,North Dakota,Eddy County,2020,2179
+50,2,4,38,29,North Dakota,Emmons County,2020,3187
+50,2,4,38,31,North Dakota,Foster County,2020,3165
+50,2,4,38,33,North Dakota,Golden Valley County,2020,1737
+50,2,4,38,35,North Dakota,Grand Forks County,2020,69481
+50,2,4,38,37,North Dakota,Grant County,2020,2215
+50,2,4,38,39,North Dakota,Griggs County,2020,2207
+50,2,4,38,41,North Dakota,Hettinger County,2020,2438
+50,2,4,38,43,North Dakota,Kidder County,2020,2458
+50,2,4,38,45,North Dakota,LaMoure County,2020,4033
+50,2,4,38,47,North Dakota,Logan County,2020,1880
+50,2,4,38,49,North Dakota,McHenry County,2020,5695
+50,2,4,38,51,North Dakota,McIntosh County,2020,2440
+50,2,4,38,53,North Dakota,McKenzie County,2020,15242
+50,2,4,38,55,North Dakota,McLean County,2020,9416
+50,2,4,38,57,North Dakota,Mercer County,2020,8174
+50,2,4,38,59,North Dakota,Morton County,2020,31503
+50,2,4,38,61,North Dakota,Mountrail County,2020,10502
+50,2,4,38,63,North Dakota,Nelson County,2020,2789
+50,2,4,38,65,North Dakota,Oliver County,2020,1926
+50,2,4,38,67,North Dakota,Pembina County,2020,6658
+50,2,4,38,69,North Dakota,Pierce County,2020,3928
+50,2,4,38,71,North Dakota,Ramsey County,2020,11388
+50,2,4,38,73,North Dakota,Ransom County,2020,5173
+50,2,4,38,75,North Dakota,Renville County,2020,2283
+50,2,4,38,77,North Dakota,Richland County,2020,16156
+50,2,4,38,79,North Dakota,Rolette County,2020,14165
+50,2,4,38,81,North Dakota,Sargent County,2020,3913
+50,2,4,38,83,North Dakota,Sheridan County,2020,1275
+50,2,4,38,85,North Dakota,Sioux County,2020,4173
+50,2,4,38,87,North Dakota,Slope County,2020,747
+50,2,4,38,89,North Dakota,Stark County,2020,32107
+50,2,4,38,91,North Dakota,Steele County,2020,1890
+50,2,4,38,93,North Dakota,Stutsman County,2020,20498
+50,2,4,38,95,North Dakota,Towner County,2020,2108
+50,2,4,38,97,North Dakota,Traill County,2020,7959
+50,2,4,38,99,North Dakota,Walsh County,2020,10437
+50,2,4,38,101,North Dakota,Ward County,2020,68466
+50,2,4,38,103,North Dakota,Wells County,2020,3709
+50,2,4,38,105,North Dakota,Williams County,2020,38700
+40,2,3,39,0,Ohio,Ohio,2020,11693217
+50,2,3,39,1,Ohio,Adams County,2020,27531
+50,2,3,39,3,Ohio,Allen County,2020,101980
+50,2,3,39,5,Ohio,Ashland County,2020,53362
+50,2,3,39,7,Ohio,Ashtabula County,2020,96513
+50,2,3,39,9,Ohio,Athens County,2020,65481
+50,2,3,39,11,Ohio,Auglaize County,2020,45680
+50,2,3,39,13,Ohio,Belmont County,2020,65932
+50,2,3,39,15,Ohio,Brown County,2020,43414
+50,2,3,39,17,Ohio,Butler County,2020,385648
+50,2,3,39,19,Ohio,Carroll County,2020,26897
+50,2,3,39,21,Ohio,Champaign County,2020,38960
+50,2,3,39,23,Ohio,Clark County,2020,133593
+50,2,3,39,25,Ohio,Clermont County,2020,207449
+50,2,3,39,27,Ohio,Clinton County,2020,41921
+50,2,3,39,29,Ohio,Columbiana County,2020,101118
+50,2,3,39,31,Ohio,Coshocton County,2020,36449
+50,2,3,39,33,Ohio,Crawford County,2020,41338
+50,2,3,39,35,Ohio,Cuyahoga County,2020,1227883
+50,2,3,39,37,Ohio,Darke County,2020,51205
+50,2,3,39,39,Ohio,Defiance County,2020,37778
+50,2,3,39,41,Ohio,Delaware County,2020,213554
+50,2,3,39,43,Ohio,Erie County,2020,73719
+50,2,3,39,45,Ohio,Fairfield County,2020,159709
+50,2,3,39,47,Ohio,Fayette County,2020,28579
+50,2,3,39,49,Ohio,Franklin County,2020,1324624
+50,2,3,39,51,Ohio,Fulton County,2020,41889
+50,2,3,39,53,Ohio,Gallia County,2020,29802
+50,2,3,39,55,Ohio,Geauga County,2020,93271
+50,2,3,39,57,Ohio,Greene County,2020,170122
+50,2,3,39,59,Ohio,Guernsey County,2020,38779
+50,2,3,39,61,Ohio,Hamilton County,2020,817985
+50,2,3,39,63,Ohio,Hancock County,2020,75407
+50,2,3,39,65,Ohio,Hardin County,2020,31469
+50,2,3,39,67,Ohio,Harrison County,2020,15014
+50,2,3,39,69,Ohio,Henry County,2020,26904
+50,2,3,39,71,Ohio,Highland County,2020,43304
+50,2,3,39,73,Ohio,Hocking County,2020,28095
+50,2,3,39,75,Ohio,Holmes County,2020,44004
+50,2,3,39,77,Ohio,Huron County,2020,57979
+50,2,3,39,79,Ohio,Jackson County,2020,32493
+50,2,3,39,81,Ohio,Jefferson County,2020,64939
+50,2,3,39,83,Ohio,Knox County,2020,62423
+50,2,3,39,85,Ohio,Lake County,2020,229569
+50,2,3,39,87,Ohio,Lawrence County,2020,59091
+50,2,3,39,89,Ohio,Licking County,2020,178100
+50,2,3,39,91,Ohio,Logan County,2020,45326
+50,2,3,39,93,Ohio,Lorain County,2020,312172
+50,2,3,39,95,Ohio,Lucas County,2020,428294
+50,2,3,39,97,Ohio,Madison County,2020,44559
+50,2,3,39,99,Ohio,Mahoning County,2020,226075
+50,2,3,39,101,Ohio,Marion County,2020,64820
+50,2,3,39,103,Ohio,Medina County,2020,180912
+50,2,3,39,105,Ohio,Meigs County,2020,22678
+50,2,3,39,107,Ohio,Mercer County,2020,41274
+50,2,3,39,109,Ohio,Miami County,2020,107516
+50,2,3,39,111,Ohio,Monroe County,2020,13586
+50,2,3,39,113,Ohio,Montgomery County,2020,531610
+50,2,3,39,115,Ohio,Morgan County,2020,14305
+50,2,3,39,117,Ohio,Morrow County,2020,35411
+50,2,3,39,119,Ohio,Muskingum County,2020,86020
+50,2,3,39,121,Ohio,Noble County,2020,14364
+50,2,3,39,123,Ohio,Ottawa County,2020,40253
+50,2,3,39,125,Ohio,Paulding County,2020,18648
+50,2,3,39,127,Ohio,Perry County,2020,36215
+50,2,3,39,129,Ohio,Pickaway County,2020,58658
+50,2,3,39,131,Ohio,Pike County,2020,27695
+50,2,3,39,133,Ohio,Portage County,2020,162583
+50,2,3,39,135,Ohio,Preble County,2020,40836
+50,2,3,39,137,Ohio,Putnam County,2020,33654
+50,2,3,39,139,Ohio,Richland County,2020,120891
+50,2,3,39,141,Ohio,Ross County,2020,76420
+50,2,3,39,143,Ohio,Sandusky County,2020,58351
+50,2,3,39,145,Ohio,Scioto County,2020,74347
+50,2,3,39,147,Ohio,Seneca County,2020,54938
+50,2,3,39,149,Ohio,Shelby County,2020,48337
+50,2,3,39,151,Ohio,Stark County,2020,369772
+50,2,3,39,153,Ohio,Summit County,2020,538866
+50,2,3,39,155,Ohio,Trumbull County,2020,196800
+50,2,3,39,157,Ohio,Tuscarawas County,2020,91776
+50,2,3,39,159,Ohio,Union County,2020,60021
+50,2,3,39,161,Ohio,Van Wert County,2020,28159
+50,2,3,39,163,Ohio,Vinton County,2020,12972
+50,2,3,39,165,Ohio,Warren County,2020,238412
+50,2,3,39,167,Ohio,Washington County,2020,59652
+50,2,3,39,169,Ohio,Wayne County,2020,115694
+50,2,3,39,171,Ohio,Williams County,2020,36565
+50,2,3,39,173,Ohio,Wood County,2020,131113
+50,2,3,39,175,Ohio,Wyandot County,2020,21711
+40,3,7,40,0,Oklahoma,Oklahoma,2020,3980783
+50,3,7,40,1,Oklahoma,Adair County,2020,21955
+50,3,7,40,3,Oklahoma,Alfalfa County,2020,5718
+50,3,7,40,5,Oklahoma,Atoka County,2020,13912
+50,3,7,40,7,Oklahoma,Beaver County,2020,5207
+50,3,7,40,9,Oklahoma,Beckham County,2020,21468
+50,3,7,40,11,Oklahoma,Blaine County,2020,9447
+50,3,7,40,13,Oklahoma,Bryan County,2020,48998
+50,3,7,40,15,Oklahoma,Caddo County,2020,28684
+50,3,7,40,17,Oklahoma,Canadian County,2020,153192
+50,3,7,40,19,Oklahoma,Carter County,2020,48353
+50,3,7,40,21,Oklahoma,Cherokee County,2020,49019
+50,3,7,40,23,Oklahoma,Choctaw County,2020,14646
+50,3,7,40,25,Oklahoma,Cimarron County,2020,2145
+50,3,7,40,27,Oklahoma,Cleveland County,2020,287066
+50,3,7,40,29,Oklahoma,Coal County,2020,5587
+50,3,7,40,31,Oklahoma,Comanche County,2020,121099
+50,3,7,40,33,Oklahoma,Cotton County,2020,5676
+50,3,7,40,35,Oklahoma,Craig County,2020,14194
+50,3,7,40,37,Oklahoma,Creek County,2020,71485
+50,3,7,40,39,Oklahoma,Custer County,2020,28648
+50,3,7,40,41,Oklahoma,Delaware County,2020,43136
+50,3,7,40,43,Oklahoma,Dewey County,2020,4815
+50,3,7,40,45,Oklahoma,Ellis County,2020,3830
+50,3,7,40,47,Oklahoma,Garfield County,2020,60869
+50,3,7,40,49,Oklahoma,Garvin County,2020,27691
+50,3,7,40,51,Oklahoma,Grady County,2020,55906
+50,3,7,40,53,Oklahoma,Grant County,2020,4372
+50,3,7,40,55,Oklahoma,Greer County,2020,5704
+50,3,7,40,57,Oklahoma,Harmon County,2020,2557
+50,3,7,40,59,Oklahoma,Harper County,2020,3611
+50,3,7,40,61,Oklahoma,Haskell County,2020,12652
+50,3,7,40,63,Oklahoma,Hughes County,2020,13126
+50,3,7,40,65,Oklahoma,Jackson County,2020,24305
+50,3,7,40,67,Oklahoma,Jefferson County,2020,5949
+50,3,7,40,69,Oklahoma,Johnston County,2020,10824
+50,3,7,40,71,Oklahoma,Kay County,2020,43274
+50,3,7,40,73,Oklahoma,Kingfisher County,2020,15806
+50,3,7,40,75,Oklahoma,Kiowa County,2020,8741
+50,3,7,40,77,Oklahoma,Latimer County,2020,10132
+50,3,7,40,79,Oklahoma,Le Flore County,2020,49935
+50,3,7,40,81,Oklahoma,Lincoln County,2020,35045
+50,3,7,40,83,Oklahoma,Logan County,2020,48777
+50,3,7,40,85,Oklahoma,Love County,2020,10230
+50,3,7,40,87,Oklahoma,McClain County,2020,41348
+50,3,7,40,89,Oklahoma,McCurtain County,2020,32772
+50,3,7,40,91,Oklahoma,McIntosh County,2020,19635
+50,3,7,40,93,Oklahoma,Major County,2020,7579
+50,3,7,40,95,Oklahoma,Marshall County,2020,17114
+50,3,7,40,97,Oklahoma,Mayes County,2020,41152
+50,3,7,40,99,Oklahoma,Murray County,2020,13955
+50,3,7,40,101,Oklahoma,Muskogee County,2020,67610
+50,3,7,40,103,Oklahoma,Noble County,2020,11113
+50,3,7,40,105,Oklahoma,Nowata County,2020,10076
+50,3,7,40,107,Oklahoma,Okfuskee County,2020,11765
+50,3,7,40,109,Oklahoma,Oklahoma County,2020,804041
+50,3,7,40,111,Oklahoma,Okmulgee County,2020,38234
+50,3,7,40,113,Oklahoma,Osage County,2020,46642
+50,3,7,40,115,Oklahoma,Ottawa County,2020,30879
+50,3,7,40,117,Oklahoma,Pawnee County,2020,16381
+50,3,7,40,119,Oklahoma,Payne County,2020,81755
+50,3,7,40,121,Oklahoma,Pittsburg County,2020,43679
+50,3,7,40,123,Oklahoma,Pontotoc County,2020,38397
+50,3,7,40,125,Oklahoma,Pottawatomie County,2020,72998
+50,3,7,40,127,Oklahoma,Pushmataha County,2020,10970
+50,3,7,40,129,Oklahoma,Roger Mills County,2020,3570
+50,3,7,40,131,Oklahoma,Rogers County,2020,93155
+50,3,7,40,133,Oklahoma,Seminole County,2020,24248
+50,3,7,40,135,Oklahoma,Sequoyah County,2020,41538
+50,3,7,40,137,Oklahoma,Stephens County,2020,43100
+50,3,7,40,139,Oklahoma,Texas County,2020,19997
+50,3,7,40,141,Oklahoma,Tillman County,2020,7229
+50,3,7,40,143,Oklahoma,Tulsa County,2020,657589
+50,3,7,40,145,Oklahoma,Wagoner County,2020,82925
+50,3,7,40,147,Oklahoma,Washington County,2020,52222
+50,3,7,40,149,Oklahoma,Washita County,2020,10830
+50,3,7,40,151,Oklahoma,Woods County,2020,8687
+50,3,7,40,153,Oklahoma,Woodward County,2020,19812
+40,4,9,41,0,Oregon,Oregon,2020,4241507
+50,4,9,41,1,Oregon,Baker County,2020,16284
+50,4,9,41,3,Oregon,Benton County,2020,93239
+50,4,9,41,5,Oregon,Clackamas County,2020,421596
+50,4,9,41,7,Oregon,Clatsop County,2020,40423
+50,4,9,41,9,Oregon,Columbia County,2020,52876
+50,4,9,41,11,Oregon,Coos County,2020,64711
+50,4,9,41,13,Oregon,Crook County,2020,25105
+50,4,9,41,15,Oregon,Curry County,2020,23305
+50,4,9,41,17,Oregon,Deschutes County,2020,201769
+50,4,9,41,19,Oregon,Douglas County,2020,111364
+50,4,9,41,21,Oregon,Gilliam County,2020,1975
+50,4,9,41,23,Oregon,Grant County,2020,7180
+50,4,9,41,25,Oregon,Harney County,2020,7373
+50,4,9,41,27,Oregon,Hood River County,2020,23280
+50,4,9,41,29,Oregon,Jackson County,2020,221844
+50,4,9,41,31,Oregon,Jefferson County,2020,24856
+50,4,9,41,33,Oregon,Josephine County,2020,88053
+50,4,9,41,35,Oregon,Klamath County,2020,68739
+50,4,9,41,37,Oregon,Lake County,2020,7949
+50,4,9,41,39,Oregon,Lane County,2020,382986
+50,4,9,41,41,Oregon,Lincoln County,2020,50583
+50,4,9,41,43,Oregon,Linn County,2020,131054
+50,4,9,41,45,Oregon,Malheur County,2020,30983
+50,4,9,41,47,Oregon,Marion County,2020,349204
+50,4,9,41,49,Oregon,Morrow County,2020,11700
+50,4,9,41,51,Oregon,Multnomah County,2020,815637
+50,4,9,41,53,Oregon,Polk County,2020,87744
+50,4,9,41,55,Oregon,Sherman County,2020,1801
+50,4,9,41,57,Oregon,Tillamook County,2020,27442
+50,4,9,41,59,Oregon,Umatilla County,2020,77752
+50,4,9,41,61,Oregon,Union County,2020,26551
+50,4,9,41,63,Oregon,Wallowa County,2020,7181
+50,4,9,41,65,Oregon,Wasco County,2020,26403
+50,4,9,41,67,Oregon,Washington County,2020,603514
+50,4,9,41,69,Oregon,Wheeler County,2020,1387
+50,4,9,41,71,Oregon,Yamhill County,2020,107664
+40,1,2,42,0,Pennsylvania,Pennsylvania,2020,12783254
+50,1,2,42,1,Pennsylvania,Adams County,2020,102742
+50,1,2,42,3,Pennsylvania,Allegheny County,2020,1211358
+50,1,2,42,5,Pennsylvania,Armstrong County,2020,64162
+50,1,2,42,7,Pennsylvania,Beaver County,2020,162575
+50,1,2,42,9,Pennsylvania,Bedford County,2020,47817
+50,1,2,42,11,Pennsylvania,Berks County,2020,421017
+50,1,2,42,13,Pennsylvania,Blair County,2020,121007
+50,1,2,42,15,Pennsylvania,Bradford County,2020,60221
+50,1,2,42,17,Pennsylvania,Bucks County,2020,627987
+50,1,2,42,19,Pennsylvania,Butler County,2020,189135
+50,1,2,42,21,Pennsylvania,Cambria County,2020,128672
+50,1,2,42,23,Pennsylvania,Cameron County,2020,4330
+50,1,2,42,25,Pennsylvania,Carbon County,2020,64081
+50,1,2,42,27,Pennsylvania,Centre County,2020,161496
+50,1,2,42,29,Pennsylvania,Chester County,2020,526759
+50,1,2,42,31,Pennsylvania,Clarion County,2020,38305
+50,1,2,42,33,Pennsylvania,Clearfield County,2020,78612
+50,1,2,42,35,Pennsylvania,Clinton County,2020,37957
+50,1,2,42,37,Pennsylvania,Columbia County,2020,64842
+50,1,2,42,39,Pennsylvania,Crawford County,2020,83697
+50,1,2,42,41,Pennsylvania,Cumberland County,2020,255857
+50,1,2,42,43,Pennsylvania,Dauphin County,2020,279874
+50,1,2,42,45,Pennsylvania,Delaware County,2020,566753
+50,1,2,42,47,Pennsylvania,Elk County,2020,29607
+50,1,2,42,49,Pennsylvania,Erie County,2020,268426
+50,1,2,42,51,Pennsylvania,Fayette County,2020,128126
+50,1,2,42,53,Pennsylvania,Forest County,2020,6965
+50,1,2,42,55,Pennsylvania,Franklin County,2020,155637
+50,1,2,42,57,Pennsylvania,Fulton County,2020,14501
+50,1,2,42,59,Pennsylvania,Greene County,2020,35621
+50,1,2,42,61,Pennsylvania,Huntingdon County,2020,44590
+50,1,2,42,63,Pennsylvania,Indiana County,2020,83664
+50,1,2,42,65,Pennsylvania,Jefferson County,2020,43108
+50,1,2,42,67,Pennsylvania,Juniata County,2020,24619
+50,1,2,42,69,Pennsylvania,Lackawanna County,2020,208989
+50,1,2,42,71,Pennsylvania,Lancaster County,2020,546192
+50,1,2,42,73,Pennsylvania,Lawrence County,2020,85083
+50,1,2,42,75,Pennsylvania,Lebanon County,2020,141663
+50,1,2,42,77,Pennsylvania,Lehigh County,2020,370802
+50,1,2,42,79,Pennsylvania,Luzerne County,2020,316982
+50,1,2,42,81,Pennsylvania,Lycoming County,2020,113209
+50,1,2,42,83,Pennsylvania,McKean County,2020,40333
+50,1,2,42,85,Pennsylvania,Mercer County,2020,108545
+50,1,2,42,87,Pennsylvania,Mifflin County,2020,46064
+50,1,2,42,89,Pennsylvania,Monroe County,2020,170154
+50,1,2,42,91,Pennsylvania,Montgomery County,2020,833869
+50,1,2,42,93,Pennsylvania,Montour County,2020,18042
+50,1,2,42,95,Pennsylvania,Northampton County,2020,305892
+50,1,2,42,97,Pennsylvania,Northumberland County,2020,90258
+50,1,2,42,99,Pennsylvania,Perry County,2020,46212
+50,1,2,42,101,Pennsylvania,Philadelphia County,2020,1578487
+50,1,2,42,103,Pennsylvania,Pike County,2020,56072
+50,1,2,42,105,Pennsylvania,Potter County,2020,16453
+50,1,2,42,107,Pennsylvania,Schuylkill County,2020,140709
+50,1,2,42,109,Pennsylvania,Snyder County,2020,40317
+50,1,2,42,111,Pennsylvania,Somerset County,2020,72916
+50,1,2,42,113,Pennsylvania,Sullivan County,2020,5913
+50,1,2,42,115,Pennsylvania,Susquehanna County,2020,40006
+50,1,2,42,117,Pennsylvania,Tioga County,2020,40381
+50,1,2,42,119,Pennsylvania,Union County,2020,44294
+50,1,2,42,121,Pennsylvania,Venango County,2020,50328
+50,1,2,42,123,Pennsylvania,Warren County,2020,38911
+50,1,2,42,125,Pennsylvania,Washington County,2020,206803
+50,1,2,42,127,Pennsylvania,Wayne County,2020,51163
+50,1,2,42,129,Pennsylvania,Westmoreland County,2020,347087
+50,1,2,42,131,Pennsylvania,Wyoming County,2020,26557
+50,1,2,42,133,Pennsylvania,York County,2020,450448
+40,1,1,44,0,Rhode Island,Rhode Island,2020,1057125
+50,1,1,44,1,Rhode Island,Bristol County,2020,48350
+50,1,1,44,3,Rhode Island,Kent County,2020,164646
+50,1,1,44,5,Rhode Island,Newport County,2020,81836
+50,1,1,44,7,Rhode Island,Providence County,2020,636547
+50,1,1,44,9,Rhode Island,Washington County,2020,125746
+40,3,5,45,0,South Carolina,South Carolina,2020,5218040
+50,3,5,45,1,South Carolina,Abbeville County,2020,24404
+50,3,5,45,3,South Carolina,Aiken County,2020,172895
+50,3,5,45,5,South Carolina,Allendale County,2020,8331
+50,3,5,45,7,South Carolina,Anderson County,2020,204353
+50,3,5,45,9,South Carolina,Bamberg County,2020,13906
+50,3,5,45,11,South Carolina,Barnwell County,2020,20805
+50,3,5,45,13,South Carolina,Beaufort County,2020,195656
+50,3,5,45,15,South Carolina,Berkeley County,2020,235987
+50,3,5,45,17,South Carolina,Calhoun County,2020,14554
+50,3,5,45,19,South Carolina,Charleston County,2020,417981
+50,3,5,45,21,South Carolina,Cherokee County,2020,57316
+50,3,5,45,23,South Carolina,Chester County,2020,32232
+50,3,5,45,25,South Carolina,Chesterfield County,2020,45606
+50,3,5,45,27,South Carolina,Clarendon County,2020,33415
+50,3,5,45,29,South Carolina,Colleton County,2020,37481
+50,3,5,45,31,South Carolina,Darlington County,2020,66509
+50,3,5,45,33,South Carolina,Dillon County,2020,30367
+50,3,5,45,35,South Carolina,Dorchester County,2020,165737
+50,3,5,45,37,South Carolina,Edgefield County,2020,27120
+50,3,5,45,39,South Carolina,Fairfield County,2020,22059
+50,3,5,45,41,South Carolina,Florence County,2020,137588
+50,3,5,45,43,South Carolina,Georgetown County,2020,63353
+50,3,5,45,45,South Carolina,Greenville County,2020,532486
+50,3,5,45,47,South Carolina,Greenwood County,2020,71074
+50,3,5,45,49,South Carolina,Hampton County,2020,18053
+50,3,5,45,51,South Carolina,Horry County,2020,365449
+50,3,5,45,53,South Carolina,Jasper County,2020,31588
+50,3,5,45,55,South Carolina,Kershaw County,2020,67472
+50,3,5,45,57,South Carolina,Lancaster County,2020,100926
+50,3,5,45,59,South Carolina,Laurens County,2020,67883
+50,3,5,45,61,South Carolina,Lee County,2020,16701
+50,3,5,45,63,South Carolina,Lexington County,2020,303946
+50,3,5,45,65,South Carolina,McCormick County,2020,9430
+50,3,5,45,67,South Carolina,Marion County,2020,30158
+50,3,5,45,69,South Carolina,Marlboro County,2020,25581
+50,3,5,45,71,South Carolina,Newberry County,2020,38445
+50,3,5,45,73,South Carolina,Oconee County,2020,80015
+50,3,5,45,75,South Carolina,Orangeburg County,2020,85343
+50,3,5,45,77,South Carolina,Pickens County,2020,127983
+50,3,5,45,79,South Carolina,Richland County,2020,419051
+50,3,5,45,81,South Carolina,Saluda County,2020,20315
+50,3,5,45,83,South Carolina,Spartanburg County,2020,326205
+50,3,5,45,85,South Carolina,Sumter County,2020,106360
+50,3,5,45,87,South Carolina,Union County,2020,26991
+50,3,5,45,89,South Carolina,Williamsburg County,2020,29825
+50,3,5,45,91,South Carolina,York County,2020,289105
+40,2,4,46,0,South Dakota,South Dakota,2020,892717
+50,2,4,46,3,South Dakota,Aurora County,2020,2730
+50,2,4,46,5,South Dakota,Beadle County,2020,18513
+50,2,4,46,7,South Dakota,Bennett County,2020,3399
+50,2,4,46,9,South Dakota,Bon Homme County,2020,6848
+50,2,4,46,11,South Dakota,Brookings County,2020,35603
+50,2,4,46,13,South Dakota,Brown County,2020,38738
+50,2,4,46,15,South Dakota,Brule County,2020,5254
+50,2,4,46,17,South Dakota,Buffalo County,2020,1956
+50,2,4,46,19,South Dakota,Butte County,2020,10538
+50,2,4,46,21,South Dakota,Campbell County,2020,1380
+50,2,4,46,23,South Dakota,Charles Mix County,2020,9262
+50,2,4,46,25,South Dakota,Clark County,2020,3802
+50,2,4,46,27,South Dakota,Clay County,2020,14246
+50,2,4,46,29,South Dakota,Codington County,2020,28186
+50,2,4,46,31,South Dakota,Corson County,2020,4031
+50,2,4,46,33,South Dakota,Custer County,2020,9017
+50,2,4,46,35,South Dakota,Davison County,2020,19812
+50,2,4,46,37,South Dakota,Day County,2020,5345
+50,2,4,46,39,South Dakota,Deuel County,2020,4346
+50,2,4,46,41,South Dakota,Dewey County,2020,5789
+50,2,4,46,43,South Dakota,Douglas County,2020,2906
+50,2,4,46,45,South Dakota,Edmunds County,2020,3817
+50,2,4,46,47,South Dakota,Fall River County,2020,6708
+50,2,4,46,49,South Dakota,Faulk County,2020,2306
+50,2,4,46,51,South Dakota,Grant County,2020,7000
+50,2,4,46,53,South Dakota,Gregory County,2020,4219
+50,2,4,46,55,South Dakota,Haakon County,2020,1861
+50,2,4,46,57,South Dakota,Hamlin County,2020,6234
+50,2,4,46,59,South Dakota,Hand County,2020,3127
+50,2,4,46,61,South Dakota,Hanson County,2020,3489
+50,2,4,46,63,South Dakota,Harding County,2020,1311
+50,2,4,46,65,South Dakota,Hughes County,2020,17336
+50,2,4,46,67,South Dakota,Hutchinson County,2020,7282
+50,2,4,46,69,South Dakota,Hyde County,2020,1281
+50,2,4,46,71,South Dakota,Jackson County,2020,3321
+50,2,4,46,73,South Dakota,Jerauld County,2020,1985
+50,2,4,46,75,South Dakota,Jones County,2020,938
+50,2,4,46,77,South Dakota,Kingsbury County,2020,4987
+50,2,4,46,79,South Dakota,Lake County,2020,12488
+50,2,4,46,81,South Dakota,Lawrence County,2020,26221
+50,2,4,46,83,South Dakota,Lincoln County,2020,63019
+50,2,4,46,85,South Dakota,Lyman County,2020,3797
+50,2,4,46,87,South Dakota,McCook County,2020,5520
+50,2,4,46,89,South Dakota,McPherson County,2020,2363
+50,2,4,46,91,South Dakota,Marshall County,2020,4884
+50,2,4,46,93,South Dakota,Meade County,2020,28588
+50,2,4,46,95,South Dakota,Mellette County,2020,2089
+50,2,4,46,97,South Dakota,Miner County,2020,2202
+50,2,4,46,99,South Dakota,Minnehaha County,2020,196659
+50,2,4,46,101,South Dakota,Moody County,2020,6525
+50,2,4,46,102,South Dakota,Oglala Lakota County,2020,14070
+50,2,4,46,103,South Dakota,Pennington County,2020,115926
+50,2,4,46,105,South Dakota,Perkins County,2020,2832
+50,2,4,46,107,South Dakota,Potter County,2020,2163
+50,2,4,46,109,South Dakota,Roberts County,2020,10331
+50,2,4,46,111,South Dakota,Sanborn County,2020,2322
+50,2,4,46,115,South Dakota,Spink County,2020,6319
+50,2,4,46,117,South Dakota,Stanley County,2020,3121
+50,2,4,46,119,South Dakota,Sully County,2020,1391
+50,2,4,46,121,South Dakota,Todd County,2020,10313
+50,2,4,46,123,South Dakota,Tripp County,2020,5377
+50,2,4,46,125,South Dakota,Turner County,2020,8368
+50,2,4,46,127,South Dakota,Union County,2020,16192
+50,2,4,46,129,South Dakota,Walworth County,2020,5336
+50,2,4,46,135,South Dakota,Yankton County,2020,22742
+50,2,4,46,137,South Dakota,Ziebach County,2020,2656
+40,3,6,47,0,Tennessee,Tennessee,2020,6886834
+50,3,6,47,1,Tennessee,Anderson County,2020,77558
+50,3,6,47,3,Tennessee,Bedford County,2020,50179
+50,3,6,47,5,Tennessee,Benton County,2020,16131
+50,3,6,47,7,Tennessee,Bledsoe County,2020,15223
+50,3,6,47,9,Tennessee,Blount County,2020,134751
+50,3,6,47,11,Tennessee,Bradley County,2020,109071
+50,3,6,47,13,Tennessee,Campbell County,2020,39837
+50,3,6,47,15,Tennessee,Cannon County,2020,14847
+50,3,6,47,17,Tennessee,Carroll County,2020,27779
+50,3,6,47,19,Tennessee,Carter County,2020,56418
+50,3,6,47,21,Tennessee,Cheatham County,2020,41101
+50,3,6,47,23,Tennessee,Chester County,2020,17432
+50,3,6,47,25,Tennessee,Claiborne County,2020,32023
+50,3,6,47,27,Tennessee,Clay County,2020,7629
+50,3,6,47,29,Tennessee,Cocke County,2020,36225
+50,3,6,47,31,Tennessee,Coffee County,2020,57632
+50,3,6,47,33,Tennessee,Crockett County,2020,14180
+50,3,6,47,35,Tennessee,Cumberland County,2020,61603
+50,3,6,47,37,Tennessee,Davidson County,2020,694176
+50,3,6,47,39,Tennessee,Decatur County,2020,11601
+50,3,6,47,41,Tennessee,DeKalb County,2020,20837
+50,3,6,47,43,Tennessee,Dickson County,2020,54376
+50,3,6,47,45,Tennessee,Dyer County,2020,36693
+50,3,6,47,47,Tennessee,Fayette County,2020,41620
+50,3,6,47,49,Tennessee,Fentress County,2020,18787
+50,3,6,47,51,Tennessee,Franklin County,2020,42485
+50,3,6,47,53,Tennessee,Gibson County,2020,49159
+50,3,6,47,55,Tennessee,Giles County,2020,29530
+50,3,6,47,57,Tennessee,Grainger County,2020,23565
+50,3,6,47,59,Tennessee,Greene County,2020,69571
+50,3,6,47,61,Tennessee,Grundy County,2020,13485
+50,3,6,47,63,Tennessee,Hamblen County,2020,65110
+50,3,6,47,65,Tennessee,Hamilton County,2020,371662
+50,3,6,47,67,Tennessee,Hancock County,2020,6493
+50,3,6,47,69,Tennessee,Hardeman County,2020,24836
+50,3,6,47,71,Tennessee,Hardin County,2020,25583
+50,3,6,47,73,Tennessee,Hawkins County,2020,56775
+50,3,6,47,75,Tennessee,Haywood County,2020,17002
+50,3,6,47,77,Tennessee,Henderson County,2020,28076
+50,3,6,47,79,Tennessee,Henry County,2020,32056
+50,3,6,47,81,Tennessee,Hickman County,2020,25387
+50,3,6,47,83,Tennessee,Houston County,2020,8292
+50,3,6,47,85,Tennessee,Humphreys County,2020,18590
+50,3,6,47,87,Tennessee,Jackson County,2020,11864
+50,3,6,47,89,Tennessee,Jefferson County,2020,55307
+50,3,6,47,91,Tennessee,Johnson County,2020,17849
+50,3,6,47,93,Tennessee,Knox County,2020,475609
+50,3,6,47,95,Tennessee,Lake County,2020,6988
+50,3,6,47,97,Tennessee,Lauderdale County,2020,25451
+50,3,6,47,99,Tennessee,Lawrence County,2020,44432
+50,3,6,47,101,Tennessee,Lewis County,2020,12363
+50,3,6,47,103,Tennessee,Lincoln County,2020,34540
+50,3,6,47,105,Tennessee,Loudon County,2020,54910
+50,3,6,47,107,Tennessee,McMinn County,2020,54208
+50,3,6,47,109,Tennessee,McNairy County,2020,25696
+50,3,6,47,111,Tennessee,Macon County,2020,24827
+50,3,6,47,113,Tennessee,Madison County,2020,98360
+50,3,6,47,115,Tennessee,Marion County,2020,28924
+50,3,6,47,117,Tennessee,Marshall County,2020,35016
+50,3,6,47,119,Tennessee,Maury County,2020,99590
+50,3,6,47,121,Tennessee,Meigs County,2020,12532
+50,3,6,47,123,Tennessee,Monroe County,2020,47177
+50,3,6,47,125,Tennessee,Montgomery County,2020,214251
+50,3,6,47,127,Tennessee,Moore County,2020,6438
+50,3,6,47,129,Tennessee,Morgan County,2020,21431
+50,3,6,47,131,Tennessee,Obion County,2020,30131
+50,3,6,47,133,Tennessee,Overton County,2020,22566
+50,3,6,47,135,Tennessee,Perry County,2020,8099
+50,3,6,47,137,Tennessee,Pickett County,2020,5061
+50,3,6,47,139,Tennessee,Polk County,2020,16835
+50,3,6,47,141,Tennessee,Putnam County,2020,80929
+50,3,6,47,143,Tennessee,Rhea County,2020,33443
+50,3,6,47,145,Tennessee,Roane County,2020,53841
+50,3,6,47,147,Tennessee,Robertson County,2020,72275
+50,3,6,47,149,Tennessee,Rutherford County,2020,339261
+50,3,6,47,151,Tennessee,Scott County,2020,22090
+50,3,6,47,153,Tennessee,Sequatchie County,2020,15176
+50,3,6,47,155,Tennessee,Sevier County,2020,99244
+50,3,6,47,157,Tennessee,Shelby County,2020,936017
+50,3,6,47,159,Tennessee,Smith County,2020,20285
+50,3,6,47,161,Tennessee,Stewart County,2020,13859
+50,3,6,47,163,Tennessee,Sullivan County,2020,158755
+50,3,6,47,165,Tennessee,Sumner County,2020,195561
+50,3,6,47,167,Tennessee,Tipton County,2020,61918
+50,3,6,47,169,Tennessee,Trousdale County,2020,11455
+50,3,6,47,171,Tennessee,Unicoi County,2020,17755
+50,3,6,47,173,Tennessee,Union County,2020,20187
+50,3,6,47,175,Tennessee,Van Buren County,2020,5947
+50,3,6,47,177,Tennessee,Warren County,2020,41605
+50,3,6,47,179,Tennessee,Washington County,2020,130367
+50,3,6,47,181,Tennessee,Wayne County,2020,16524
+50,3,6,47,183,Tennessee,Weakley County,2020,33334
+50,3,6,47,185,Tennessee,White County,2020,27707
+50,3,6,47,187,Tennessee,Williamson County,2020,245348
+50,3,6,47,189,Tennessee,Wilson County,2020,148130
+40,3,7,48,0,Texas,Texas,2020,29360759
+50,3,7,48,1,Texas,Anderson County,2020,57805
+50,3,7,48,3,Texas,Andrews County,2020,18879
+50,3,7,48,5,Texas,Angelina County,2020,86796
+50,3,7,48,7,Texas,Aransas County,2020,23814
+50,3,7,48,9,Texas,Archer County,2020,8730
+50,3,7,48,11,Texas,Armstrong County,2020,1869
+50,3,7,48,13,Texas,Atascosa County,2020,51724
+50,3,7,48,15,Texas,Austin County,2020,29972
+50,3,7,48,17,Texas,Bailey County,2020,6697
+50,3,7,48,19,Texas,Bandera County,2020,23861
+50,3,7,48,21,Texas,Bastrop County,2020,91601
+50,3,7,48,23,Texas,Baylor County,2020,3518
+50,3,7,48,25,Texas,Bee County,2020,32513
+50,3,7,48,27,Texas,Bell County,2020,369927
+50,3,7,48,29,Texas,Bexar County,2020,2026823
+50,3,7,48,31,Texas,Blanco County,2020,12269
+50,3,7,48,33,Texas,Borden County,2020,706
+50,3,7,48,35,Texas,Bosque County,2020,18603
+50,3,7,48,37,Texas,Bowie County,2020,93481
+50,3,7,48,39,Texas,Brazoria County,2020,380518
+50,3,7,48,41,Texas,Brazos County,2020,232555
+50,3,7,48,43,Texas,Brewster County,2020,9237
+50,3,7,48,45,Texas,Briscoe County,2020,1487
+50,3,7,48,47,Texas,Brooks County,2020,6964
+50,3,7,48,49,Texas,Brown County,2020,37633
+50,3,7,48,51,Texas,Burleson County,2020,18514
+50,3,7,48,53,Texas,Burnet County,2020,49653
+50,3,7,48,55,Texas,Caldwell County,2020,43979
+50,3,7,48,57,Texas,Calhoun County,2020,21001
+50,3,7,48,59,Texas,Callahan County,2020,14110
+50,3,7,48,61,Texas,Cameron County,2020,424180
+50,3,7,48,63,Texas,Camp County,2020,13060
+50,3,7,48,65,Texas,Carson County,2020,5854
+50,3,7,48,67,Texas,Cass County,2020,29879
+50,3,7,48,69,Texas,Castro County,2020,7396
+50,3,7,48,71,Texas,Chambers County,2020,45590
+50,3,7,48,73,Texas,Cherokee County,2020,52875
+50,3,7,48,75,Texas,Childress County,2020,7143
+50,3,7,48,77,Texas,Clay County,2020,10550
+50,3,7,48,79,Texas,Cochran County,2020,2897
+50,3,7,48,81,Texas,Coke County,2020,3323
+50,3,7,48,83,Texas,Coleman County,2020,8100
+50,3,7,48,85,Texas,Collin County,2020,1072069
+50,3,7,48,87,Texas,Collingsworth County,2020,2877
+50,3,7,48,89,Texas,Colorado County,2020,21610
+50,3,7,48,91,Texas,Comal County,2020,164812
+50,3,7,48,93,Texas,Comanche County,2020,13750
+50,3,7,48,95,Texas,Concho County,2020,2827
+50,3,7,48,97,Texas,Cooke County,2020,41393
+50,3,7,48,99,Texas,Coryell County,2020,76737
+50,3,7,48,101,Texas,Cottle County,2020,1363
+50,3,7,48,103,Texas,Crane County,2020,4765
+50,3,7,48,105,Texas,Crockett County,2020,3513
+50,3,7,48,107,Texas,Crosby County,2020,5567
+50,3,7,48,109,Texas,Culberson County,2020,2149
+50,3,7,48,111,Texas,Dallam County,2020,7273
+50,3,7,48,113,Texas,Dallas County,2020,2635888
+50,3,7,48,115,Texas,Dawson County,2020,12974
+50,3,7,48,117,Texas,Deaf Smith County,2020,18277
+50,3,7,48,119,Texas,Delta County,2020,5349
+50,3,7,48,121,Texas,Denton County,2020,919324
+50,3,7,48,123,Texas,DeWitt County,2020,20174
+50,3,7,48,125,Texas,Dickens County,2020,2140
+50,3,7,48,127,Texas,Dimmit County,2020,9925
+50,3,7,48,129,Texas,Donley County,2020,3308
+50,3,7,48,131,Texas,Duval County,2020,11058
+50,3,7,48,133,Texas,Eastland County,2020,18388
+50,3,7,48,135,Texas,Ector County,2020,167701
+50,3,7,48,137,Texas,Edwards County,2020,1923
+50,3,7,48,139,Texas,Ellis County,2020,191760
+50,3,7,48,141,Texas,El Paso County,2020,841286
+50,3,7,48,143,Texas,Erath County,2020,43224
+50,3,7,48,145,Texas,Falls County,2020,17275
+50,3,7,48,147,Texas,Fannin County,2020,35913
+50,3,7,48,149,Texas,Fayette County,2020,25547
+50,3,7,48,151,Texas,Fisher County,2020,3784
+50,3,7,48,153,Texas,Floyd County,2020,5672
+50,3,7,48,155,Texas,Foard County,2020,1135
+50,3,7,48,157,Texas,Fort Bend County,2020,839706
+50,3,7,48,159,Texas,Franklin County,2020,10821
+50,3,7,48,161,Texas,Freestone County,2020,19874
+50,3,7,48,163,Texas,Frio County,2020,20379
+50,3,7,48,165,Texas,Gaines County,2020,21996
+50,3,7,48,167,Texas,Galveston County,2020,345089
+50,3,7,48,169,Texas,Garza County,2020,6222
+50,3,7,48,171,Texas,Gillespie County,2020,26960
+50,3,7,48,173,Texas,Glasscock County,2020,1439
+50,3,7,48,175,Texas,Goliad County,2020,7626
+50,3,7,48,177,Texas,Gonzales County,2020,20948
+50,3,7,48,179,Texas,Gray County,2020,21658
+50,3,7,48,181,Texas,Grayson County,2020,138318
+50,3,7,48,183,Texas,Gregg County,2020,124229
+50,3,7,48,185,Texas,Grimes County,2020,29614
+50,3,7,48,187,Texas,Guadalupe County,2020,170608
+50,3,7,48,189,Texas,Hale County,2020,32754
+50,3,7,48,191,Texas,Hall County,2020,2939
+50,3,7,48,193,Texas,Hamilton County,2020,8557
+50,3,7,48,195,Texas,Hansford County,2020,5279
+50,3,7,48,197,Texas,Hardeman County,2020,4011
+50,3,7,48,199,Texas,Hardin County,2020,58305
+50,3,7,48,201,Texas,Harris County,2020,4738253
+50,3,7,48,203,Texas,Harrison County,2020,66386
+50,3,7,48,205,Texas,Hartley County,2020,5443
+50,3,7,48,207,Texas,Haskell County,2020,5754
+50,3,7,48,209,Texas,Hays County,2020,241365
+50,3,7,48,211,Texas,Hemphill County,2020,3777
+50,3,7,48,213,Texas,Henderson County,2020,83792
+50,3,7,48,215,Texas,Hidalgo County,2020,875200
+50,3,7,48,217,Texas,Hill County,2020,37006
+50,3,7,48,219,Texas,Hockley County,2020,22921
+50,3,7,48,221,Texas,Hood County,2020,63527
+50,3,7,48,223,Texas,Hopkins County,2020,37170
+50,3,7,48,225,Texas,Houston County,2020,22835
+50,3,7,48,227,Texas,Howard County,2020,36540
+50,3,7,48,229,Texas,Hudspeth County,2020,4906
+50,3,7,48,231,Texas,Hunt County,2020,99807
+50,3,7,48,233,Texas,Hutchinson County,2020,20677
+50,3,7,48,235,Texas,Irion County,2020,1564
+50,3,7,48,237,Texas,Jack County,2020,9056
+50,3,7,48,239,Texas,Jackson County,2020,14854
+50,3,7,48,241,Texas,Jasper County,2020,35375
+50,3,7,48,243,Texas,Jeff Davis County,2020,2220
+50,3,7,48,245,Texas,Jefferson County,2020,250127
+50,3,7,48,247,Texas,Jim Hogg County,2020,5184
+50,3,7,48,249,Texas,Jim Wells County,2020,40452
+50,3,7,48,251,Texas,Johnson County,2020,179575
+50,3,7,48,253,Texas,Jones County,2020,19875
+50,3,7,48,255,Texas,Karnes County,2020,15562
+50,3,7,48,257,Texas,Kaufman County,2020,143198
+50,3,7,48,259,Texas,Kendall County,2020,48523
+50,3,7,48,261,Texas,Kenedy County,2020,379
+50,3,7,48,263,Texas,Kent County,2020,786
+50,3,7,48,265,Texas,Kerr County,2020,52869
+50,3,7,48,267,Texas,Kimble County,2020,4396
+50,3,7,48,269,Texas,King County,2020,283
+50,3,7,48,271,Texas,Kinney County,2020,3670
+50,3,7,48,273,Texas,Kleberg County,2020,30338
+50,3,7,48,275,Texas,Knox County,2020,3683
+50,3,7,48,277,Texas,Lamar County,2020,49905
+50,3,7,48,279,Texas,Lamb County,2020,12710
+50,3,7,48,281,Texas,Lampasas County,2020,21789
+50,3,7,48,283,Texas,La Salle County,2020,7500
+50,3,7,48,285,Texas,Lavaca County,2020,20216
+50,3,7,48,287,Texas,Lee County,2020,17397
+50,3,7,48,289,Texas,Leon County,2020,17493
+50,3,7,48,291,Texas,Liberty County,2020,91547
+50,3,7,48,293,Texas,Limestone County,2020,23340
+50,3,7,48,295,Texas,Lipscomb County,2020,3111
+50,3,7,48,297,Texas,Live Oak County,2020,12324
+50,3,7,48,299,Texas,Llano County,2020,21958
+50,3,7,48,301,Texas,Loving County,2020,181
+50,3,7,48,303,Texas,Lubbock County,2020,314772
+50,3,7,48,305,Texas,Lynn County,2020,6025
+50,3,7,48,307,Texas,McCulloch County,2020,7823
+50,3,7,48,309,Texas,McLennan County,2020,259730
+50,3,7,48,311,Texas,McMullen County,2020,721
+50,3,7,48,313,Texas,Madison County,2020,14427
+50,3,7,48,315,Texas,Marion County,2020,9960
+50,3,7,48,317,Texas,Martin County,2020,5816
+50,3,7,48,319,Texas,Mason County,2020,4344
+50,3,7,48,321,Texas,Matagorda County,2020,36725
+50,3,7,48,323,Texas,Maverick County,2020,58378
+50,3,7,48,325,Texas,Medina County,2020,52358
+50,3,7,48,327,Texas,Menard County,2020,2124
+50,3,7,48,329,Texas,Midland County,2020,177863
+50,3,7,48,331,Texas,Milam County,2020,24708
+50,3,7,48,333,Texas,Mills County,2020,4840
+50,3,7,48,335,Texas,Mitchell County,2020,8202
+50,3,7,48,337,Texas,Montague County,2020,19962
+50,3,7,48,339,Texas,Montgomery County,2020,626351
+50,3,7,48,341,Texas,Moore County,2020,20654
+50,3,7,48,343,Texas,Morris County,2020,12393
+50,3,7,48,345,Texas,Motley County,2020,1185
+50,3,7,48,347,Texas,Nacogdoches County,2020,64753
+50,3,7,48,349,Texas,Navarro County,2020,50694
+50,3,7,48,351,Texas,Newton County,2020,13414
+50,3,7,48,353,Texas,Nolan County,2020,14835
+50,3,7,48,355,Texas,Nueces County,2020,363148
+50,3,7,48,357,Texas,Ochiltree County,2020,9598
+50,3,7,48,359,Texas,Oldham County,2020,2135
+50,3,7,48,361,Texas,Orange County,2020,82878
+50,3,7,48,363,Texas,Palo Pinto County,2020,29320
+50,3,7,48,365,Texas,Panola County,2020,23187
+50,3,7,48,367,Texas,Parker County,2020,148198
+50,3,7,48,369,Texas,Parmer County,2020,9522
+50,3,7,48,371,Texas,Pecos County,2020,15718
+50,3,7,48,373,Texas,Polk County,2020,52995
+50,3,7,48,375,Texas,Potter County,2020,116004
+50,3,7,48,377,Texas,Presidio County,2020,6508
+50,3,7,48,379,Texas,Rains County,2020,12552
+50,3,7,48,381,Texas,Randall County,2020,139899
+50,3,7,48,383,Texas,Reagan County,2020,3833
+50,3,7,48,385,Texas,Real County,2020,3411
+50,3,7,48,387,Texas,Red River County,2020,11995
+50,3,7,48,389,Texas,Reeves County,2020,15949
+50,3,7,48,391,Texas,Refugio County,2020,6877
+50,3,7,48,393,Texas,Roberts County,2020,813
+50,3,7,48,395,Texas,Robertson County,2020,17155
+50,3,7,48,397,Texas,Rockwall County,2020,109888
+50,3,7,48,399,Texas,Runnels County,2020,10401
+50,3,7,48,401,Texas,Rusk County,2020,54324
+50,3,7,48,403,Texas,Sabine County,2020,10507
+50,3,7,48,405,Texas,San Augustine County,2020,8248
+50,3,7,48,407,Texas,San Jacinto County,2020,29301
+50,3,7,48,409,Texas,San Patricio County,2020,67069
+50,3,7,48,411,Texas,San Saba County,2020,6039
+50,3,7,48,413,Texas,Schleicher County,2020,2761
+50,3,7,48,415,Texas,Scurry County,2020,16662
+50,3,7,48,417,Texas,Shackelford County,2020,3300
+50,3,7,48,419,Texas,Shelby County,2020,24915
+50,3,7,48,421,Texas,Sherman County,2020,3027
+50,3,7,48,423,Texas,Smith County,2020,235806
+50,3,7,48,425,Texas,Somervell County,2020,9139
+50,3,7,48,427,Texas,Starr County,2020,64266
+50,3,7,48,429,Texas,Stephens County,2020,9334
+50,3,7,48,431,Texas,Sterling County,2020,1315
+50,3,7,48,433,Texas,Stonewall County,2020,1348
+50,3,7,48,435,Texas,Sutton County,2020,3738
+50,3,7,48,437,Texas,Swisher County,2020,7340
+50,3,7,48,439,Texas,Tarrant County,2020,2123347
+50,3,7,48,441,Texas,Taylor County,2020,139200
+50,3,7,48,443,Texas,Terrell County,2020,702
+50,3,7,48,445,Texas,Terry County,2020,12183
+50,3,7,48,447,Texas,Throckmorton County,2020,1487
+50,3,7,48,449,Texas,Titus County,2020,32926
+50,3,7,48,451,Texas,Tom Green County,2020,120010
+50,3,7,48,453,Texas,Travis County,2020,1300503
+50,3,7,48,455,Texas,Trinity County,2020,14883
+50,3,7,48,457,Texas,Tyler County,2020,21591
+50,3,7,48,459,Texas,Upshur County,2020,42166
+50,3,7,48,461,Texas,Upton County,2020,3623
+50,3,7,48,463,Texas,Uvalde County,2020,26742
+50,3,7,48,465,Texas,Val Verde County,2020,49028
+50,3,7,48,467,Texas,Van Zandt County,2020,57533
+50,3,7,48,469,Texas,Victoria County,2020,91936
+50,3,7,48,471,Texas,Walker County,2020,72164
+50,3,7,48,473,Texas,Waller County,2020,57452
+50,3,7,48,475,Texas,Ward County,2020,12097
+50,3,7,48,477,Texas,Washington County,2020,35771
+50,3,7,48,479,Texas,Webb County,2020,277681
+50,3,7,48,481,Texas,Wharton County,2020,41685
+50,3,7,48,483,Texas,Wheeler County,2020,4946
+50,3,7,48,485,Texas,Wichita County,2020,133205
+50,3,7,48,487,Texas,Wilbarger County,2020,12552
+50,3,7,48,489,Texas,Willacy County,2020,21161
+50,3,7,48,491,Texas,Williamson County,2020,617855
+50,3,7,48,493,Texas,Wilson County,2020,52023
+50,3,7,48,495,Texas,Winkler County,2020,7887
+50,3,7,48,497,Texas,Wise County,2020,71084
+50,3,7,48,499,Texas,Wood County,2020,46291
+50,3,7,48,501,Texas,Yoakum County,2020,8702
+50,3,7,48,503,Texas,Young County,2020,17904
+50,3,7,48,505,Texas,Zapata County,2020,14172
+50,3,7,48,507,Texas,Zavala County,2020,11840
+40,4,8,49,0,Utah,Utah,2020,3249879
+50,4,8,49,1,Utah,Beaver County,2020,6761
+50,4,8,49,3,Utah,Box Elder County,2020,57007
+50,4,8,49,5,Utah,Cache County,2020,130004
+50,4,8,49,7,Utah,Carbon County,2020,20760
+50,4,8,49,9,Utah,Daggett County,2020,1026
+50,4,8,49,11,Utah,Davis County,2020,359232
+50,4,8,49,13,Utah,Duchesne County,2020,19894
+50,4,8,49,15,Utah,Emery County,2020,10147
+50,4,8,49,17,Utah,Garfield County,2020,5050
+50,4,8,49,19,Utah,Grand County,2020,9796
+50,4,8,49,21,Utah,Iron County,2020,56814
+50,4,8,49,23,Utah,Juab County,2020,12122
+50,4,8,49,25,Utah,Kane County,2020,7914
+50,4,8,49,27,Utah,Millard County,2020,13327
+50,4,8,49,29,Utah,Morgan County,2020,12462
+50,4,8,49,31,Utah,Piute County,2020,1473
+50,4,8,49,33,Utah,Rich County,2020,2452
+50,4,8,49,35,Utah,Salt Lake County,2020,1165517
+50,4,8,49,37,Utah,San Juan County,2020,15278
+50,4,8,49,39,Utah,Sanpete County,2020,31393
+50,4,8,49,41,Utah,Sevier County,2020,21780
+50,4,8,49,43,Utah,Summit County,2020,42499
+50,4,8,49,45,Utah,Tooele County,2020,74512
+50,4,8,49,47,Utah,Uintah County,2020,35970
+50,4,8,49,49,Utah,Utah County,2020,651059
+50,4,8,49,51,Utah,Wasatch County,2020,35300
+50,4,8,49,53,Utah,Washington County,2020,184913
+50,4,8,49,55,Utah,Wayne County,2020,2759
+50,4,8,49,57,Utah,Weber County,2020,262658
+40,1,1,50,0,Vermont,Vermont,2020,623347
+50,1,1,50,1,Vermont,Addison County,2020,36851
+50,1,1,50,3,Vermont,Bennington County,2020,35338
+50,1,1,50,5,Vermont,Caledonia County,2020,29705
+50,1,1,50,7,Vermont,Chittenden County,2020,164306
+50,1,1,50,9,Vermont,Essex County,2020,6123
+50,1,1,50,11,Vermont,Franklin County,2020,49685
+50,1,1,50,13,Vermont,Grand Isle County,2020,7169
+50,1,1,50,15,Vermont,Lamoille County,2020,25341
+50,1,1,50,17,Vermont,Orange County,2020,28837
+50,1,1,50,19,Vermont,Orleans County,2020,26897
+50,1,1,50,21,Vermont,Rutland County,2020,57764
+50,1,1,50,23,Vermont,Washington County,2020,58328
+50,1,1,50,25,Vermont,Windham County,2020,42015
+50,1,1,50,27,Vermont,Windsor County,2020,54988
+40,3,5,51,0,Virginia,Virginia,2020,8590563
+50,3,5,51,1,Virginia,Accomack County,2020,32238
+50,3,5,51,3,Virginia,Albemarle County,2020,110652
+50,3,5,51,5,Virginia,Alleghany County,2020,14701
+50,3,5,51,7,Virginia,Amelia County,2020,13014
+50,3,5,51,9,Virginia,Amherst County,2020,31667
+50,3,5,51,11,Virginia,Appomattox County,2020,16043
+50,3,5,51,13,Virginia,Arlington County,2020,240119
+50,3,5,51,15,Virginia,Augusta County,2020,76544
+50,3,5,51,17,Virginia,Bath County,2020,4119
+50,3,5,51,19,Virginia,Bedford County,2020,79811
+50,3,5,51,21,Virginia,Bland County,2020,6239
+50,3,5,51,23,Virginia,Botetourt County,2020,33633
+50,3,5,51,25,Virginia,Brunswick County,2020,16037
+50,3,5,51,27,Virginia,Buchanan County,2020,20613
+50,3,5,51,29,Virginia,Buckingham County,2020,17168
+50,3,5,51,31,Virginia,Campbell County,2020,55304
+50,3,5,51,33,Virginia,Caroline County,2020,30860
+50,3,5,51,35,Virginia,Carroll County,2020,30074
+50,3,5,51,36,Virginia,Charles City County,2020,6821
+50,3,5,51,37,Virginia,Charlotte County,2020,11820
+50,3,5,51,41,Virginia,Chesterfield County,2020,358245
+50,3,5,51,43,Virginia,Clarke County,2020,14622
+50,3,5,51,45,Virginia,Craig County,2020,5077
+50,3,5,51,47,Virginia,Culpeper County,2020,53569
+50,3,5,51,49,Virginia,Cumberland County,2020,9933
+50,3,5,51,51,Virginia,Dickenson County,2020,14078
+50,3,5,51,53,Virginia,Dinwiddie County,2020,28688
+50,3,5,51,57,Virginia,Essex County,2020,10943
+50,3,5,51,59,Virginia,Fairfax County,2020,1150847
+50,3,5,51,61,Virginia,Fauquier County,2020,71361
+50,3,5,51,63,Virginia,Floyd County,2020,15777
+50,3,5,51,65,Virginia,Fluvanna County,2020,27422
+50,3,5,51,67,Virginia,Franklin County,2020,56167
+50,3,5,51,69,Virginia,Frederick County,2020,91119
+50,3,5,51,71,Virginia,Giles County,2020,16663
+50,3,5,51,73,Virginia,Gloucester County,2020,37459
+50,3,5,51,75,Virginia,Goochland County,2020,24431
+50,3,5,51,77,Virginia,Grayson County,2020,15493
+50,3,5,51,79,Virginia,Greene County,2020,20131
+50,3,5,51,81,Virginia,Greensville County,2020,11280
+50,3,5,51,83,Virginia,Halifax County,2020,33633
+50,3,5,51,85,Virginia,Hanover County,2020,108262
+50,3,5,51,87,Virginia,Henrico County,2020,333766
+50,3,5,51,89,Virginia,Henry County,2020,50309
+50,3,5,51,91,Virginia,Highland County,2020,2200
+50,3,5,51,93,Virginia,Isle of Wight County,2020,37725
+50,3,5,51,95,Virginia,James City County,2020,77612
+50,3,5,51,97,Virginia,King and Queen County,2020,6942
+50,3,5,51,99,Virginia,King George County,2020,27381
+50,3,5,51,101,Virginia,King William County,2020,17641
+50,3,5,51,103,Virginia,Lancaster County,2020,10618
+50,3,5,51,105,Virginia,Lee County,2020,23238
+50,3,5,51,107,Virginia,Loudoun County,2020,422784
+50,3,5,51,109,Virginia,Louisa County,2020,38132
+50,3,5,51,111,Virginia,Lunenburg County,2020,12267
+50,3,5,51,113,Virginia,Madison County,2020,13312
+50,3,5,51,115,Virginia,Mathews County,2020,8766
+50,3,5,51,117,Virginia,Mecklenburg County,2020,30679
+50,3,5,51,119,Virginia,Middlesex County,2020,10569
+50,3,5,51,121,Virginia,Montgomery County,2020,98391
+50,3,5,51,125,Virginia,Nelson County,2020,14755
+50,3,5,51,127,Virginia,New Kent County,2020,23648
+50,3,5,51,131,Virginia,Northampton County,2020,11673
+50,3,5,51,133,Virginia,Northumberland County,2020,12069
+50,3,5,51,135,Virginia,Nottoway County,2020,15160
+50,3,5,51,137,Virginia,Orange County,2020,37695
+50,3,5,51,139,Virginia,Page County,2020,23933
+50,3,5,51,141,Virginia,Patrick County,2020,17493
+50,3,5,51,143,Virginia,Pittsylvania County,2020,59850
+50,3,5,51,145,Virginia,Powhatan County,2020,30148
+50,3,5,51,147,Virginia,Prince Edward County,2020,23006
+50,3,5,51,149,Virginia,Prince George County,2020,38686
+50,3,5,51,153,Virginia,Prince William County,2020,475533
+50,3,5,51,155,Virginia,Pulaski County,2020,33935
+50,3,5,51,157,Virginia,Rappahannock County,2020,7260
+50,3,5,51,159,Virginia,Richmond County,2020,9071
+50,3,5,51,161,Virginia,Roanoke County,2020,94509
+50,3,5,51,163,Virginia,Rockbridge County,2020,22757
+50,3,5,51,165,Virginia,Rockingham County,2020,82346
+50,3,5,51,167,Virginia,Russell County,2020,26647
+50,3,5,51,169,Virginia,Scott County,2020,21629
+50,3,5,51,171,Virginia,Shenandoah County,2020,43905
+50,3,5,51,173,Virginia,Smyth County,2020,30090
+50,3,5,51,175,Virginia,Southampton County,2020,17636
+50,3,5,51,177,Virginia,Spotsylvania County,2020,138449
+50,3,5,51,179,Virginia,Stafford County,2020,156748
+50,3,5,51,181,Virginia,Surry County,2020,6385
+50,3,5,51,183,Virginia,Sussex County,2020,10925
+50,3,5,51,185,Virginia,Tazewell County,2020,40529
+50,3,5,51,187,Virginia,Warren County,2020,40475
+50,3,5,51,191,Virginia,Washington County,2020,53695
+50,3,5,51,193,Virginia,Westmoreland County,2020,18149
+50,3,5,51,195,Virginia,Wise County,2020,37206
+50,3,5,51,197,Virginia,Wythe County,2020,28620
+50,3,5,51,199,Virginia,York County,2020,69199
+50,3,5,51,510,Virginia,Alexandria city,2020,158726
+50,3,5,51,520,Virginia,Bristol city,2020,17329
+50,3,5,51,530,Virginia,Buena Vista city,2020,6402
+50,3,5,51,540,Virginia,Charlottesville city,2020,46950
+50,3,5,51,550,Virginia,Chesapeake city,2020,247011
+50,3,5,51,570,Virginia,Colonial Heights city,2020,17205
+50,3,5,51,580,Virginia,Covington city,2020,5639
+50,3,5,51,590,Virginia,Danville city,2020,39869
+50,3,5,51,595,Virginia,Emporia city,2020,5257
+50,3,5,51,600,Virginia,Fairfax city,2020,23429
+50,3,5,51,610,Virginia,Falls Church city,2020,14631
+50,3,5,51,620,Virginia,Franklin city,2020,7833
+50,3,5,51,630,Virginia,Fredericksburg city,2020,29492
+50,3,5,51,640,Virginia,Galax city,2020,6296
+50,3,5,51,650,Virginia,Hampton city,2020,135464
+50,3,5,51,660,Virginia,Harrisonburg city,2020,53204
+50,3,5,51,670,Virginia,Hopewell city,2020,22375
+50,3,5,51,678,Virginia,Lexington city,2020,7279
+50,3,5,51,680,Virginia,Lynchburg city,2020,81561
+50,3,5,51,683,Virginia,Manassas city,2020,40869
+50,3,5,51,685,Virginia,Manassas Park city,2020,18004
+50,3,5,51,690,Virginia,Martinsville city,2020,12355
+50,3,5,51,700,Virginia,Newport News city,2020,179062
+50,3,5,51,710,Virginia,Norfolk city,2020,242803
+50,3,5,51,720,Virginia,Norton city,2020,3985
+50,3,5,51,730,Virginia,Petersburg city,2020,30446
+50,3,5,51,735,Virginia,Poquoson city,2020,12257
+50,3,5,51,740,Virginia,Portsmouth city,2020,95094
+50,3,5,51,750,Virginia,Radford city,2020,18255
+50,3,5,51,760,Virginia,Richmond city,2020,232226
+50,3,5,51,770,Virginia,Roanoke city,2020,99058
+50,3,5,51,775,Virginia,Salem city,2020,25340
+50,3,5,51,790,Virginia,Staunton city,2020,25190
+50,3,5,51,800,Virginia,Suffolk city,2020,93913
+50,3,5,51,810,Virginia,Virginia Beach city,2020,451231
+50,3,5,51,820,Virginia,Waynesboro city,2020,22741
+50,3,5,51,830,Virginia,Williamsburg city,2020,15259
+50,3,5,51,840,Virginia,Winchester city,2020,27700
+40,4,9,53,0,Washington,Washington,2020,7693612
+50,4,9,53,1,Washington,Adams County,2020,20027
+50,4,9,53,3,Washington,Asotin County,2020,22820
+50,4,9,53,5,Washington,Benton County,2020,206426
+50,4,9,53,7,Washington,Chelan County,2020,77574
+50,4,9,53,9,Washington,Clallam County,2020,78067
+50,4,9,53,11,Washington,Clark County,2020,496865
+50,4,9,53,13,Washington,Columbia County,2020,4048
+50,4,9,53,15,Washington,Cowlitz County,2020,111371
+50,4,9,53,17,Washington,Douglas County,2020,43560
+50,4,9,53,19,Washington,Ferry County,2020,7759
+50,4,9,53,21,Washington,Franklin County,2020,97075
+50,4,9,53,23,Washington,Garfield County,2020,2290
+50,4,9,53,25,Washington,Grant County,2020,99377
+50,4,9,53,27,Washington,Grays Harbor County,2020,75950
+50,4,9,53,29,Washington,Island County,2020,86014
+50,4,9,53,31,Washington,Jefferson County,2020,32700
+50,4,9,53,33,Washington,King County,2020,2274315
+50,4,9,53,35,Washington,Kitsap County,2020,272787
+50,4,9,53,37,Washington,Kittitas County,2020,49204
+50,4,9,53,39,Washington,Klickitat County,2020,22697
+50,4,9,53,41,Washington,Lewis County,2020,82109
+50,4,9,53,43,Washington,Lincoln County,2020,11090
+50,4,9,53,45,Washington,Mason County,2020,68224
+50,4,9,53,47,Washington,Okanogan County,2020,42620
+50,4,9,53,49,Washington,Pacific County,2020,22984
+50,4,9,53,51,Washington,Pend Oreille County,2020,14144
+50,4,9,53,53,Washington,Pierce County,2020,913890
+50,4,9,53,55,Washington,San Juan County,2020,17492
+50,4,9,53,57,Washington,Skagit County,2020,130789
+50,4,9,53,59,Washington,Skamania County,2020,12107
+50,4,9,53,61,Washington,Snohomish County,2020,830393
+50,4,9,53,63,Washington,Spokane County,2020,528225
+50,4,9,53,65,Washington,Stevens County,2020,46360
+50,4,9,53,67,Washington,Thurston County,2020,294074
+50,4,9,53,69,Washington,Wahkiakum County,2020,4498
+50,4,9,53,71,Washington,Walla Walla County,2020,61292
+50,4,9,53,73,Washington,Whatcom County,2020,231016
+50,4,9,53,75,Washington,Whitman County,2020,49500
+50,4,9,53,77,Washington,Yakima County,2020,251879
+40,3,5,54,0,West Virginia,West Virginia,2020,1784787
+50,3,5,54,1,West Virginia,Barbour County,2020,16444
+50,3,5,54,3,West Virginia,Berkeley County,2020,122125
+50,3,5,54,5,West Virginia,Boone County,2020,21055
+50,3,5,54,7,West Virginia,Braxton County,2020,13702
+50,3,5,54,9,West Virginia,Brooke County,2020,21674
+50,3,5,54,11,West Virginia,Cabell County,2020,91589
+50,3,5,54,13,West Virginia,Calhoun County,2020,6945
+50,3,5,54,15,West Virginia,Clay County,2020,8341
+50,3,5,54,17,West Virginia,Doddridge County,2020,8368
+50,3,5,54,19,West Virginia,Fayette County,2020,42062
+50,3,5,54,21,West Virginia,Gilmer County,2020,7811
+50,3,5,54,23,West Virginia,Grant County,2020,11510
+50,3,5,54,25,West Virginia,Greenbrier County,2020,34319
+50,3,5,54,27,West Virginia,Hampshire County,2020,23190
+50,3,5,54,29,West Virginia,Hancock County,2020,28571
+50,3,5,54,31,West Virginia,Hardy County,2020,13633
+50,3,5,54,33,West Virginia,Harrison County,2020,66870
+50,3,5,54,35,West Virginia,Jackson County,2020,28453
+50,3,5,54,37,West Virginia,Jefferson County,2020,57486
+50,3,5,54,39,West Virginia,Kanawha County,2020,176253
+50,3,5,54,41,West Virginia,Lewis County,2020,15805
+50,3,5,54,43,West Virginia,Lincoln County,2020,20043
+50,3,5,54,45,West Virginia,Logan County,2020,31688
+50,3,5,54,47,West Virginia,McDowell County,2020,16916
+50,3,5,54,49,West Virginia,Marion County,2020,55962
+50,3,5,54,51,West Virginia,Marshall County,2020,30103
+50,3,5,54,53,West Virginia,Mason County,2020,26335
+50,3,5,54,55,West Virginia,Mercer County,2020,58258
+50,3,5,54,57,West Virginia,Mineral County,2020,26722
+50,3,5,54,59,West Virginia,Mingo County,2020,22951
+50,3,5,54,61,West Virginia,Monongalia County,2020,106819
+50,3,5,54,63,West Virginia,Monroe County,2020,13229
+50,3,5,54,65,West Virginia,Morgan County,2020,17873
+50,3,5,54,67,West Virginia,Nicholas County,2020,24340
+50,3,5,54,69,West Virginia,Ohio County,2020,41182
+50,3,5,54,71,West Virginia,Pendleton County,2020,6932
+50,3,5,54,73,West Virginia,Pleasants County,2020,7438
+50,3,5,54,75,West Virginia,Pocahontas County,2020,8190
+50,3,5,54,77,West Virginia,Preston County,2020,33380
+50,3,5,54,79,West Virginia,Putnam County,2020,56428
+50,3,5,54,81,West Virginia,Raleigh County,2020,72920
+50,3,5,54,83,West Virginia,Randolph County,2020,28387
+50,3,5,54,85,West Virginia,Ritchie County,2020,9499
+50,3,5,54,87,West Virginia,Roane County,2020,13482
+50,3,5,54,89,West Virginia,Summers County,2020,12444
+50,3,5,54,91,West Virginia,Taylor County,2020,16699
+50,3,5,54,93,West Virginia,Tucker County,2020,6816
+50,3,5,54,95,West Virginia,Tyler County,2020,8533
+50,3,5,54,97,West Virginia,Upshur County,2020,24230
+50,3,5,54,99,West Virginia,Wayne County,2020,39054
+50,3,5,54,101,West Virginia,Webster County,2020,8058
+50,3,5,54,103,West Virginia,Wetzel County,2020,14904
+50,3,5,54,105,West Virginia,Wirt County,2020,5705
+50,3,5,54,107,West Virginia,Wood County,2020,82938
+50,3,5,54,109,West Virginia,Wyoming County,2020,20123
+40,2,3,55,0,Wisconsin,Wisconsin,2020,5832655
+50,2,3,55,1,Wisconsin,Adams County,2020,20498
+50,2,3,55,3,Wisconsin,Ashland County,2020,15415
+50,2,3,55,5,Wisconsin,Barron County,2020,45090
+50,2,3,55,7,Wisconsin,Bayfield County,2020,15242
+50,2,3,55,9,Wisconsin,Brown County,2020,264610
+50,2,3,55,11,Wisconsin,Buffalo County,2020,13033
+50,2,3,55,13,Wisconsin,Burnett County,2020,15557
+50,2,3,55,15,Wisconsin,Calumet County,2020,50209
+50,2,3,55,17,Wisconsin,Chippewa County,2020,64737
+50,2,3,55,19,Wisconsin,Clark County,2020,34720
+50,2,3,55,21,Wisconsin,Columbia County,2020,57668
+50,2,3,55,23,Wisconsin,Crawford County,2020,16021
+50,2,3,55,25,Wisconsin,Dane County,2020,552536
+50,2,3,55,27,Wisconsin,Dodge County,2020,87336
+50,2,3,55,29,Wisconsin,Door County,2020,27889
+50,2,3,55,31,Wisconsin,Douglas County,2020,43702
+50,2,3,55,33,Wisconsin,Dunn County,2020,45452
+50,2,3,55,35,Wisconsin,Eau Claire County,2020,105260
+50,2,3,55,37,Wisconsin,Florence County,2020,4298
+50,2,3,55,39,Wisconsin,Fond du Lac County,2020,102902
+50,2,3,55,41,Wisconsin,Forest County,2020,8960
+50,2,3,55,43,Wisconsin,Grant County,2020,51021
+50,2,3,55,45,Wisconsin,Green County,2020,36603
+50,2,3,55,47,Wisconsin,Green Lake County,2020,18908
+50,2,3,55,49,Wisconsin,Iowa County,2020,23640
+50,2,3,55,51,Wisconsin,Iron County,2020,5698
+50,2,3,55,53,Wisconsin,Jackson County,2020,20630
+50,2,3,55,55,Wisconsin,Jefferson County,2020,85038
+50,2,3,55,57,Wisconsin,Juneau County,2020,26908
+50,2,3,55,59,Wisconsin,Kenosha County,2020,169671
+50,2,3,55,61,Wisconsin,Kewaunee County,2020,20386
+50,2,3,55,63,Wisconsin,La Crosse County,2020,118502
+50,2,3,55,65,Wisconsin,Lafayette County,2020,16646
+50,2,3,55,67,Wisconsin,Langlade County,2020,19119
+50,2,3,55,69,Wisconsin,Lincoln County,2020,27566
+50,2,3,55,71,Wisconsin,Manitowoc County,2020,78757
+50,2,3,55,73,Wisconsin,Marathon County,2020,135593
+50,2,3,55,75,Wisconsin,Marinette County,2020,40262
+50,2,3,55,77,Wisconsin,Marquette County,2020,15585
+50,2,3,55,78,Wisconsin,Menominee County,2020,4546
+50,2,3,55,79,Wisconsin,Milwaukee County,2020,945016
+50,2,3,55,81,Wisconsin,Monroe County,2020,46582
+50,2,3,55,83,Wisconsin,Oconto County,2020,38383
+50,2,3,55,85,Wisconsin,Oneida County,2020,35751
+50,2,3,55,87,Wisconsin,Outagamie County,2020,188766
+50,2,3,55,89,Wisconsin,Ozaukee County,2020,90043
+50,2,3,55,91,Wisconsin,Pepin County,2020,7271
+50,2,3,55,93,Wisconsin,Pierce County,2020,42700
+50,2,3,55,95,Wisconsin,Polk County,2020,43794
+50,2,3,55,97,Wisconsin,Portage County,2020,71032
+50,2,3,55,99,Wisconsin,Price County,2020,13245
+50,2,3,55,101,Wisconsin,Racine County,2020,195802
+50,2,3,55,103,Wisconsin,Richland County,2020,17258
+50,2,3,55,105,Wisconsin,Rock County,2020,163084
+50,2,3,55,107,Wisconsin,Rusk County,2020,14022
+50,2,3,55,109,Wisconsin,St. Croix County,2020,91838
+50,2,3,55,111,Wisconsin,Sauk County,2020,64449
+50,2,3,55,113,Wisconsin,Sawyer County,2020,16700
+50,2,3,55,115,Wisconsin,Shawano County,2020,40786
+50,2,3,55,117,Wisconsin,Sheboygan County,2020,115240
+50,2,3,55,119,Wisconsin,Taylor County,2020,20318
+50,2,3,55,121,Wisconsin,Trempealeau County,2020,29681
+50,2,3,55,123,Wisconsin,Vernon County,2020,30861
+50,2,3,55,125,Wisconsin,Vilas County,2020,22356
+50,2,3,55,127,Wisconsin,Walworth County,2020,103953
+50,2,3,55,129,Wisconsin,Washburn County,2020,15712
+50,2,3,55,131,Wisconsin,Washington County,2020,136445
+50,2,3,55,133,Wisconsin,Waukesha County,2020,406172
+50,2,3,55,135,Wisconsin,Waupaca County,2020,50664
+50,2,3,55,137,Wisconsin,Waushara County,2020,24326
+50,2,3,55,139,Wisconsin,Winnebago County,2020,171631
+50,2,3,55,141,Wisconsin,Wood County,2020,72560
+40,4,8,56,0,Wyoming,Wyoming,2020,582328
+50,4,8,56,1,Wyoming,Albany County,2020,38950
+50,4,8,56,3,Wyoming,Big Horn County,2020,11575
+50,4,8,56,5,Wyoming,Campbell County,2020,46676
+50,4,8,56,7,Wyoming,Carbon County,2020,14711
+50,4,8,56,9,Wyoming,Converse County,2020,13804
+50,4,8,56,11,Wyoming,Crook County,2020,7593
+50,4,8,56,13,Wyoming,Fremont County,2020,39317
+50,4,8,56,15,Wyoming,Goshen County,2020,13235
+50,4,8,56,17,Wyoming,Hot Springs County,2020,4425
+50,4,8,56,19,Wyoming,Johnson County,2020,8588
+50,4,8,56,21,Wyoming,Laramie County,2020,100595
+50,4,8,56,23,Wyoming,Lincoln County,2020,20253
+50,4,8,56,25,Wyoming,Natrona County,2020,80815
+50,4,8,56,27,Wyoming,Niobrara County,2020,2275
+50,4,8,56,29,Wyoming,Park County,2020,29331
+50,4,8,56,31,Wyoming,Platte County,2020,8578
+50,4,8,56,33,Wyoming,Sheridan County,2020,30863
+50,4,8,56,35,Wyoming,Sublette County,2020,9856
+50,4,8,56,37,Wyoming,Sweetwater County,2020,42673
+50,4,8,56,39,Wyoming,Teton County,2020,23497
+50,4,8,56,41,Wyoming,Uinta County,2020,20215
+50,4,8,56,43,Wyoming,Washakie County,2020,7760
+50,4,8,56,45,Wyoming,Weston County,2020,6743

@@ -1,0 +1,3195 @@
+﻿SUMLEV,REGION,DIVISION,STATE,COUNTY,STNAME,CTYNAME,YEAR,POPESTIMATE
+40,3,6,1,0,Alabama,Alabama,2010,4780118
+50,3,6,1,1,Alabama,Autauga County,2010,54582
+50,3,6,1,3,Alabama,Baldwin County,2010,182263
+50,3,6,1,5,Alabama,Barbour County,2010,27454
+50,3,6,1,7,Alabama,Bibb County,2010,22904
+50,3,6,1,9,Alabama,Blount County,2010,57322
+50,3,6,1,11,Alabama,Bullock County,2010,10913
+50,3,6,1,13,Alabama,Butler County,2010,20940
+50,3,6,1,15,Alabama,Calhoun County,2010,118533
+50,3,6,1,17,Alabama,Chambers County,2010,34154
+50,3,6,1,19,Alabama,Cherokee County,2010,25984
+50,3,6,1,21,Alabama,Chilton County,2010,43625
+50,3,6,1,23,Alabama,Choctaw County,2010,13858
+50,3,6,1,25,Alabama,Clarke County,2010,25834
+50,3,6,1,27,Alabama,Clay County,2010,13930
+50,3,6,1,29,Alabama,Cleburne County,2010,14972
+50,3,6,1,31,Alabama,Coffee County,2010,49951
+50,3,6,1,33,Alabama,Colbert County,2010,54430
+50,3,6,1,35,Alabama,Conecuh County,2010,13232
+50,3,6,1,37,Alabama,Coosa County,2010,11756
+50,3,6,1,39,Alabama,Covington County,2010,37762
+50,3,6,1,41,Alabama,Crenshaw County,2010,13891
+50,3,6,1,43,Alabama,Cullman County,2010,80404
+50,3,6,1,45,Alabama,Dale County,2010,50253
+50,3,6,1,47,Alabama,Dallas County,2010,43813
+50,3,6,1,49,Alabama,DeKalb County,2010,71090
+50,3,6,1,51,Alabama,Elmore County,2010,79279
+50,3,6,1,53,Alabama,Escambia County,2010,38325
+50,3,6,1,55,Alabama,Etowah County,2010,104412
+50,3,6,1,57,Alabama,Fayette County,2010,17237
+50,3,6,1,59,Alabama,Franklin County,2010,31708
+50,3,6,1,61,Alabama,Geneva County,2010,26783
+50,3,6,1,63,Alabama,Greene County,2010,9039
+50,3,6,1,65,Alabama,Hale County,2010,15762
+50,3,6,1,67,Alabama,Henry County,2010,17296
+50,3,6,1,69,Alabama,Houston County,2010,101562
+50,3,6,1,71,Alabama,Jackson County,2010,53248
+50,3,6,1,73,Alabama,Jefferson County,2010,658564
+50,3,6,1,75,Alabama,Lamar County,2010,14564
+50,3,6,1,77,Alabama,Lauderdale County,2010,92709
+50,3,6,1,79,Alabama,Lawrence County,2010,34308
+50,3,6,1,81,Alabama,Lee County,2010,140300
+50,3,6,1,83,Alabama,Limestone County,2010,82775
+50,3,6,1,85,Alabama,Lowndes County,2010,11302
+50,3,6,1,87,Alabama,Macon County,2010,21459
+50,3,6,1,89,Alabama,Madison County,2010,334812
+50,3,6,1,91,Alabama,Marengo County,2010,21047
+50,3,6,1,93,Alabama,Marion County,2010,30780
+50,3,6,1,95,Alabama,Marshall County,2010,93017
+50,3,6,1,97,Alabama,Mobile County,2010,413139
+50,3,6,1,99,Alabama,Monroe County,2010,23066
+50,3,6,1,101,Alabama,Montgomery County,2010,229365
+50,3,6,1,103,Alabama,Morgan County,2010,119519
+50,3,6,1,105,Alabama,Perry County,2010,10577
+50,3,6,1,107,Alabama,Pickens County,2010,19746
+50,3,6,1,109,Alabama,Pike County,2010,32902
+50,3,6,1,111,Alabama,Randolph County,2010,22916
+50,3,6,1,113,Alabama,Russell County,2010,52966
+50,3,6,1,115,Alabama,St. Clair County,2010,83366
+50,3,6,1,117,Alabama,Shelby County,2010,195257
+50,3,6,1,119,Alabama,Sumter County,2010,13763
+50,3,6,1,121,Alabama,Talladega County,2010,82348
+50,3,6,1,123,Alabama,Tallapoosa County,2010,41621
+50,3,6,1,125,Alabama,Tuscaloosa County,2010,194678
+50,3,6,1,127,Alabama,Walker County,2010,67019
+50,3,6,1,129,Alabama,Washington County,2010,17580
+50,3,6,1,131,Alabama,Wilcox County,2010,11664
+50,3,6,1,133,Alabama,Winston County,2010,24488
+40,4,9,2,0,Alaska,Alaska,2010,710246
+50,4,9,2,13,Alaska,Aleutians East Borough,2010,3141
+50,4,9,2,16,Alaska,Aleutians West Census Area,2010,5561
+50,4,9,2,20,Alaska,Anchorage Municipality,2010,292252
+50,4,9,2,50,Alaska,Bethel Census Area,2010,17013
+50,4,9,2,60,Alaska,Bristol Bay Borough,2010,997
+50,4,9,2,63,Alaska,Chugach Census Area,2010,6684
+50,4,9,2,66,Alaska,Copper River Census Area,2010,2952
+50,4,9,2,68,Alaska,Denali Borough,2010,1827
+50,4,9,2,70,Alaska,Dillingham Census Area,2010,4847
+50,4,9,2,90,Alaska,Fairbanks North Star Borough,2010,97585
+50,4,9,2,100,Alaska,Haines Borough,2010,2508
+50,4,9,2,105,Alaska,Hoonah-Angoon Census Area,2010,2095
+50,4,9,2,110,Alaska,Juneau City and Borough,2010,31276
+50,4,9,2,122,Alaska,Kenai Peninsula Borough,2010,55397
+50,4,9,2,130,Alaska,Ketchikan Gateway Borough,2010,13534
+50,4,9,2,150,Alaska,Kodiak Island Borough,2010,13606
+50,4,9,2,158,Alaska,Kusilvak Census Area,2010,7459
+50,4,9,2,164,Alaska,Lake and Peninsula Borough,2010,1635
+50,4,9,2,170,Alaska,Matanuska-Susitna Borough,2010,88981
+50,4,9,2,180,Alaska,Nome Census Area,2010,9492
+50,4,9,2,185,Alaska,North Slope Borough,2010,9018
+50,4,9,2,188,Alaska,Northwest Arctic Borough,2010,7523
+50,4,9,2,195,Alaska,Petersburg Borough,2010,3207
+50,4,9,2,198,Alaska,Prince of Wales-Hyder Census Area,2010,6168
+50,4,9,2,220,Alaska,Sitka City and Borough,2010,8881
+50,4,9,2,230,Alaska,Skagway Municipality,2010,968
+50,4,9,2,240,Alaska,Southeast Fairbanks Census Area,2010,7029
+50,4,9,2,275,Alaska,Wrangell City and Borough,2010,2365
+50,4,9,2,282,Alaska,Yakutat City and Borough,2010,662
+50,4,9,2,290,Alaska,Yukon-Koyukuk Census Area,2010,5583
+40,4,8,4,0,Arizona,Arizona,2010,6392292
+50,4,8,4,1,Arizona,Apache County,2010,71514
+50,4,8,4,3,Arizona,Cochise County,2010,131359
+50,4,8,4,5,Arizona,Coconino County,2010,134435
+50,4,8,4,7,Arizona,Gila County,2010,53592
+50,4,8,4,9,Arizona,Graham County,2010,37212
+50,4,8,4,11,Arizona,Greenlee County,2010,8444
+50,4,8,4,12,Arizona,La Paz County,2010,20489
+50,4,8,4,13,Arizona,Maricopa County,2010,3817371
+50,4,8,4,15,Arizona,Mohave County,2010,200181
+50,4,8,4,17,Arizona,Navajo County,2010,107488
+50,4,8,4,19,Arizona,Pima County,2010,980266
+50,4,8,4,21,Arizona,Pinal County,2010,375766
+50,4,8,4,23,Arizona,Santa Cruz County,2010,47417
+50,4,8,4,25,Arizona,Yavapai County,2010,211008
+50,4,8,4,27,Arizona,Yuma County,2010,195750
+40,3,7,5,0,Arkansas,Arkansas,2010,2916029
+50,3,7,5,1,Arkansas,Arkansas County,2010,19045
+50,3,7,5,3,Arkansas,Ashley County,2010,21845
+50,3,7,5,5,Arkansas,Baxter County,2010,41511
+50,3,7,5,7,Arkansas,Benton County,2010,221348
+50,3,7,5,9,Arkansas,Boone County,2010,36918
+50,3,7,5,11,Arkansas,Bradley County,2010,11505
+50,3,7,5,13,Arkansas,Calhoun County,2010,5368
+50,3,7,5,15,Arkansas,Carroll County,2010,27451
+50,3,7,5,17,Arkansas,Chicot County,2010,11800
+50,3,7,5,19,Arkansas,Clark County,2010,22992
+50,3,7,5,21,Arkansas,Clay County,2010,16083
+50,3,7,5,23,Arkansas,Cleburne County,2010,25967
+50,3,7,5,25,Arkansas,Cleveland County,2010,8692
+50,3,7,5,27,Arkansas,Columbia County,2010,24552
+50,3,7,5,29,Arkansas,Conway County,2010,21267
+50,3,7,5,31,Arkansas,Craighead County,2010,96443
+50,3,7,5,33,Arkansas,Crawford County,2010,61935
+50,3,7,5,35,Arkansas,Crittenden County,2010,50912
+50,3,7,5,37,Arkansas,Cross County,2010,17885
+50,3,7,5,39,Arkansas,Dallas County,2010,8124
+50,3,7,5,41,Arkansas,Desha County,2010,13000
+50,3,7,5,43,Arkansas,Drew County,2010,18517
+50,3,7,5,45,Arkansas,Faulkner County,2010,113242
+50,3,7,5,47,Arkansas,Franklin County,2010,18131
+50,3,7,5,49,Arkansas,Fulton County,2010,12231
+50,3,7,5,51,Arkansas,Garland County,2010,96003
+50,3,7,5,53,Arkansas,Grant County,2010,17842
+50,3,7,5,55,Arkansas,Greene County,2010,42090
+50,3,7,5,57,Arkansas,Hempstead County,2010,22593
+50,3,7,5,59,Arkansas,Hot Spring County,2010,33016
+50,3,7,5,61,Arkansas,Howard County,2010,13780
+50,3,7,5,63,Arkansas,Independence County,2010,36643
+50,3,7,5,65,Arkansas,Izard County,2010,13708
+50,3,7,5,67,Arkansas,Jackson County,2010,18005
+50,3,7,5,69,Arkansas,Jefferson County,2010,77429
+50,3,7,5,71,Arkansas,Johnson County,2010,25544
+50,3,7,5,73,Arkansas,Lafayette County,2010,7634
+50,3,7,5,75,Arkansas,Lawrence County,2010,17410
+50,3,7,5,77,Arkansas,Lee County,2010,10430
+50,3,7,5,79,Arkansas,Lincoln County,2010,14141
+50,3,7,5,81,Arkansas,Little River County,2010,13168
+50,3,7,5,83,Arkansas,Logan County,2010,22361
+50,3,7,5,85,Arkansas,Lonoke County,2010,68375
+50,3,7,5,87,Arkansas,Madison County,2010,15725
+50,3,7,5,89,Arkansas,Marion County,2010,16644
+50,3,7,5,91,Arkansas,Miller County,2010,43462
+50,3,7,5,93,Arkansas,Mississippi County,2010,46480
+50,3,7,5,95,Arkansas,Monroe County,2010,8155
+50,3,7,5,97,Arkansas,Montgomery County,2010,9501
+50,3,7,5,99,Arkansas,Nevada County,2010,9015
+50,3,7,5,101,Arkansas,Newton County,2010,8315
+50,3,7,5,103,Arkansas,Ouachita County,2010,26128
+50,3,7,5,105,Arkansas,Perry County,2010,10444
+50,3,7,5,107,Arkansas,Phillips County,2010,21755
+50,3,7,5,109,Arkansas,Pike County,2010,11286
+50,3,7,5,111,Arkansas,Poinsett County,2010,24570
+50,3,7,5,113,Arkansas,Polk County,2010,20654
+50,3,7,5,115,Arkansas,Pope County,2010,61754
+50,3,7,5,117,Arkansas,Prairie County,2010,8720
+50,3,7,5,119,Arkansas,Pulaski County,2010,382752
+50,3,7,5,121,Arkansas,Randolph County,2010,17969
+50,3,7,5,123,Arkansas,St. Francis County,2010,28246
+50,3,7,5,125,Arkansas,Saline County,2010,107126
+50,3,7,5,127,Arkansas,Scott County,2010,11217
+50,3,7,5,129,Arkansas,Searcy County,2010,8195
+50,3,7,5,131,Arkansas,Sebastian County,2010,125768
+50,3,7,5,133,Arkansas,Sevier County,2010,17061
+50,3,7,5,135,Arkansas,Sharp County,2010,17258
+50,3,7,5,137,Arkansas,Stone County,2010,12396
+50,3,7,5,139,Arkansas,Union County,2010,41634
+50,3,7,5,141,Arkansas,Van Buren County,2010,17294
+50,3,7,5,143,Arkansas,Washington County,2010,203045
+50,3,7,5,145,Arkansas,White County,2010,77075
+50,3,7,5,147,Arkansas,Woodruff County,2010,7264
+50,3,7,5,149,Arkansas,Yell County,2010,22185
+40,4,9,6,0,California,California,2010,37254522
+50,4,9,6,1,California,Alameda County,2010,1510283
+50,4,9,6,3,California,Alpine County,2010,1175
+50,4,9,6,5,California,Amador County,2010,38091
+50,4,9,6,7,California,Butte County,2010,220005
+50,4,9,6,9,California,Calaveras County,2010,45577
+50,4,9,6,11,California,Colusa County,2010,21407
+50,4,9,6,13,California,Contra Costa County,2010,1049188
+50,4,9,6,15,California,Del Norte County,2010,28610
+50,4,9,6,17,California,El Dorado County,2010,181079
+50,4,9,6,19,California,Fresno County,2010,930503
+50,4,9,6,21,California,Glenn County,2010,28121
+50,4,9,6,23,California,Humboldt County,2010,134613
+50,4,9,6,25,California,Imperial County,2010,174522
+50,4,9,6,27,California,Inyo County,2010,18533
+50,4,9,6,29,California,Kern County,2010,839619
+50,4,9,6,31,California,Kings County,2010,152990
+50,4,9,6,33,California,Lake County,2010,64662
+50,4,9,6,35,California,Lassen County,2010,34895
+50,4,9,6,37,California,Los Angeles County,2010,9818646
+50,4,9,6,39,California,Madera County,2010,150834
+50,4,9,6,41,California,Marin County,2010,252425
+50,4,9,6,43,California,Mariposa County,2010,18271
+50,4,9,6,45,California,Mendocino County,2010,87850
+50,4,9,6,47,California,Merced County,2010,255797
+50,4,9,6,49,California,Modoc County,2010,9686
+50,4,9,6,51,California,Mono County,2010,14204
+50,4,9,6,53,California,Monterey County,2010,415058
+50,4,9,6,55,California,Napa County,2010,136535
+50,4,9,6,57,California,Nevada County,2010,98749
+50,4,9,6,59,California,Orange County,2010,3010258
+50,4,9,6,61,California,Placer County,2010,348481
+50,4,9,6,63,California,Plumas County,2010,20007
+50,4,9,6,65,California,Riverside County,2010,2189785
+50,4,9,6,67,California,Sacramento County,2010,1418736
+50,4,9,6,69,California,San Benito County,2010,55265
+50,4,9,6,71,California,San Bernardino County,2010,2035172
+50,4,9,6,73,California,San Diego County,2010,3095352
+50,4,9,6,75,California,San Francisco County,2010,805184
+50,4,9,6,77,California,San Joaquin County,2010,685298
+50,4,9,6,79,California,San Luis Obispo County,2010,269599
+50,4,9,6,81,California,San Mateo County,2010,718528
+50,4,9,6,83,California,Santa Barbara County,2010,423947
+50,4,9,6,85,California,Santa Clara County,2010,1781680
+50,4,9,6,87,California,Santa Cruz County,2010,262345
+50,4,9,6,89,California,Shasta County,2010,177222
+50,4,9,6,91,California,Sierra County,2010,3239
+50,4,9,6,93,California,Siskiyou County,2010,44899
+50,4,9,6,95,California,Solano County,2010,413343
+50,4,9,6,97,California,Sonoma County,2010,483866
+50,4,9,6,99,California,Stanislaus County,2010,514451
+50,4,9,6,101,California,Sutter County,2010,94751
+50,4,9,6,103,California,Tehama County,2010,63441
+50,4,9,6,105,California,Trinity County,2010,13782
+50,4,9,6,107,California,Tulare County,2010,442176
+50,4,9,6,109,California,Tuolumne County,2010,55344
+50,4,9,6,111,California,Ventura County,2010,823446
+50,4,9,6,113,California,Yolo County,2010,200855
+50,4,9,6,115,California,Yuba County,2010,72142
+40,4,8,8,0,Colorado,Colorado,2010,5029319
+50,4,8,8,1,Colorado,Adams County,2010,441701
+50,4,8,8,3,Colorado,Alamosa County,2010,15440
+50,4,8,8,5,Colorado,Arapahoe County,2010,572477
+50,4,8,8,7,Colorado,Archuleta County,2010,12084
+50,4,8,8,9,Colorado,Baca County,2010,3787
+50,4,8,8,11,Colorado,Bent County,2010,6499
+50,4,8,8,13,Colorado,Boulder County,2010,294560
+50,4,8,8,14,Colorado,Broomfield County,2010,55848
+50,4,8,8,15,Colorado,Chaffee County,2010,17809
+50,4,8,8,17,Colorado,Cheyenne County,2010,1833
+50,4,8,8,19,Colorado,Clear Creek County,2010,9073
+50,4,8,8,21,Colorado,Conejos County,2010,8256
+50,4,8,8,23,Colorado,Costilla County,2010,3524
+50,4,8,8,25,Colorado,Crowley County,2010,5823
+50,4,8,8,27,Colorado,Custer County,2010,4251
+50,4,8,8,29,Colorado,Delta County,2010,30954
+50,4,8,8,31,Colorado,Denver County,2010,599454
+50,4,8,8,33,Colorado,Dolores County,2010,2064
+50,4,8,8,35,Colorado,Douglas County,2010,285480
+50,4,8,8,37,Colorado,Eagle County,2010,52200
+50,4,8,8,39,Colorado,Elbert County,2010,23084
+50,4,8,8,41,Colorado,El Paso County,2010,622256
+50,4,8,8,43,Colorado,Fremont County,2010,46825
+50,4,8,8,45,Colorado,Garfield County,2010,56373
+50,4,8,8,47,Colorado,Gilpin County,2010,5449
+50,4,8,8,49,Colorado,Grand County,2010,14843
+50,4,8,8,51,Colorado,Gunnison County,2010,15324
+50,4,8,8,53,Colorado,Hinsdale County,2010,843
+50,4,8,8,55,Colorado,Huerfano County,2010,6712
+50,4,8,8,57,Colorado,Jackson County,2010,1393
+50,4,8,8,59,Colorado,Jefferson County,2010,534832
+50,4,8,8,61,Colorado,Kiowa County,2010,1398
+50,4,8,8,63,Colorado,Kit Carson County,2010,8278
+50,4,8,8,65,Colorado,Lake County,2010,7310
+50,4,8,8,67,Colorado,La Plata County,2010,51335
+50,4,8,8,69,Colorado,Larimer County,2010,299628
+50,4,8,8,71,Colorado,Las Animas County,2010,15506
+50,4,8,8,73,Colorado,Lincoln County,2010,5469
+50,4,8,8,75,Colorado,Logan County,2010,22709
+50,4,8,8,77,Colorado,Mesa County,2010,146736
+50,4,8,8,79,Colorado,Mineral County,2010,712
+50,4,8,8,81,Colorado,Moffat County,2010,13791
+50,4,8,8,83,Colorado,Montezuma County,2010,25541
+50,4,8,8,85,Colorado,Montrose County,2010,41272
+50,4,8,8,87,Colorado,Morgan County,2010,28159
+50,4,8,8,89,Colorado,Otero County,2010,18833
+50,4,8,8,91,Colorado,Ouray County,2010,4442
+50,4,8,8,93,Colorado,Park County,2010,16199
+50,4,8,8,95,Colorado,Phillips County,2010,4442
+50,4,8,8,97,Colorado,Pitkin County,2010,17145
+50,4,8,8,99,Colorado,Prowers County,2010,12551
+50,4,8,8,101,Colorado,Pueblo County,2010,159066
+50,4,8,8,103,Colorado,Rio Blanco County,2010,6673
+50,4,8,8,105,Colorado,Rio Grande County,2010,11982
+50,4,8,8,107,Colorado,Routt County,2010,23506
+50,4,8,8,109,Colorado,Saguache County,2010,6108
+50,4,8,8,111,Colorado,San Juan County,2010,699
+50,4,8,8,113,Colorado,San Miguel County,2010,7359
+50,4,8,8,115,Colorado,Sedgwick County,2010,2382
+50,4,8,8,117,Colorado,Summit County,2010,27994
+50,4,8,8,119,Colorado,Teller County,2010,23360
+50,4,8,8,121,Colorado,Washington County,2010,4798
+50,4,8,8,123,Colorado,Weld County,2010,252836
+50,4,8,8,125,Colorado,Yuma County,2010,10049
+40,1,1,9,0,Connecticut,Connecticut,2010,3574151
+50,1,1,9,1,Connecticut,Fairfield County,2010,916910
+50,1,1,9,3,Connecticut,Hartford County,2010,894016
+50,1,1,9,5,Connecticut,Litchfield County,2010,189876
+50,1,1,9,7,Connecticut,Middlesex County,2010,165673
+50,1,1,9,9,Connecticut,New Haven County,2010,862476
+50,1,1,9,11,Connecticut,New London County,2010,274076
+50,1,1,9,13,Connecticut,Tolland County,2010,152745
+50,1,1,9,15,Connecticut,Windham County,2010,118379
+40,3,5,10,0,Delaware,Delaware,2010,897947
+50,3,5,10,1,Delaware,Kent County,2010,162352
+50,3,5,10,3,Delaware,New Castle County,2010,538496
+50,3,5,10,5,Delaware,Sussex County,2010,197099
+40,3,5,11,0,District of Columbia,District of Columbia,2010,601767
+50,3,5,11,1,District of Columbia,District of Columbia,2010,601767
+40,3,5,12,0,Florida,Florida,2010,18804589
+50,3,5,12,1,Florida,Alachua County,2010,247337
+50,3,5,12,3,Florida,Baker County,2010,27115
+50,3,5,12,5,Florida,Bay County,2010,168843
+50,3,5,12,7,Florida,Bradford County,2010,28519
+50,3,5,12,9,Florida,Brevard County,2010,543376
+50,3,5,12,11,Florida,Broward County,2010,1748158
+50,3,5,12,13,Florida,Calhoun County,2010,14632
+50,3,5,12,15,Florida,Charlotte County,2010,159974
+50,3,5,12,17,Florida,Citrus County,2010,141229
+50,3,5,12,19,Florida,Clay County,2010,190872
+50,3,5,12,21,Florida,Collier County,2010,321514
+50,3,5,12,23,Florida,Columbia County,2010,67526
+50,3,5,12,27,Florida,DeSoto County,2010,34862
+50,3,5,12,29,Florida,Dixie County,2010,16422
+50,3,5,12,31,Florida,Duval County,2010,864253
+50,3,5,12,33,Florida,Escambia County,2010,297632
+50,3,5,12,35,Florida,Flagler County,2010,95691
+50,3,5,12,37,Florida,Franklin County,2010,11549
+50,3,5,12,39,Florida,Gadsden County,2010,47737
+50,3,5,12,41,Florida,Gilchrist County,2010,16944
+50,3,5,12,43,Florida,Glades County,2010,12890
+50,3,5,12,45,Florida,Gulf County,2010,15863
+50,3,5,12,47,Florida,Hamilton County,2010,14799
+50,3,5,12,49,Florida,Hardee County,2010,27737
+50,3,5,12,51,Florida,Hendry County,2010,39141
+50,3,5,12,53,Florida,Hernando County,2010,172778
+50,3,5,12,55,Florida,Highlands County,2010,98786
+50,3,5,12,57,Florida,Hillsborough County,2010,1229207
+50,3,5,12,59,Florida,Holmes County,2010,19924
+50,3,5,12,61,Florida,Indian River County,2010,138028
+50,3,5,12,63,Florida,Jackson County,2010,49763
+50,3,5,12,65,Florida,Jefferson County,2010,14761
+50,3,5,12,67,Florida,Lafayette County,2010,8868
+50,3,5,12,69,Florida,Lake County,2010,297047
+50,3,5,12,71,Florida,Lee County,2010,618761
+50,3,5,12,73,Florida,Leon County,2010,275483
+50,3,5,12,75,Florida,Levy County,2010,40803
+50,3,5,12,77,Florida,Liberty County,2010,8367
+50,3,5,12,79,Florida,Madison County,2010,19228
+50,3,5,12,81,Florida,Manatee County,2010,322879
+50,3,5,12,83,Florida,Marion County,2010,331296
+50,3,5,12,85,Florida,Martin County,2010,146851
+50,3,5,12,86,Florida,Miami-Dade County,2010,2498003
+50,3,5,12,87,Florida,Monroe County,2010,73090
+50,3,5,12,89,Florida,Nassau County,2010,73314
+50,3,5,12,91,Florida,Okaloosa County,2010,180824
+50,3,5,12,93,Florida,Okeechobee County,2010,39987
+50,3,5,12,95,Florida,Orange County,2010,1145949
+50,3,5,12,97,Florida,Osceola County,2010,268685
+50,3,5,12,99,Florida,Palm Beach County,2010,1320124
+50,3,5,12,101,Florida,Pasco County,2010,464707
+50,3,5,12,103,Florida,Pinellas County,2010,916799
+50,3,5,12,105,Florida,Polk County,2010,602068
+50,3,5,12,107,Florida,Putnam County,2010,74380
+50,3,5,12,109,Florida,St. Johns County,2010,190040
+50,3,5,12,111,Florida,St. Lucie County,2010,277257
+50,3,5,12,113,Florida,Santa Rosa County,2010,151371
+50,3,5,12,115,Florida,Sarasota County,2010,379427
+50,3,5,12,117,Florida,Seminole County,2010,422720
+50,3,5,12,119,Florida,Sumter County,2010,93420
+50,3,5,12,121,Florida,Suwannee County,2010,41552
+50,3,5,12,123,Florida,Taylor County,2010,22572
+50,3,5,12,125,Florida,Union County,2010,15537
+50,3,5,12,127,Florida,Volusia County,2010,494592
+50,3,5,12,129,Florida,Wakulla County,2010,30781
+50,3,5,12,131,Florida,Walton County,2010,55044
+50,3,5,12,133,Florida,Washington County,2010,24901
+40,3,5,13,0,Georgia,Georgia,2010,9688737
+50,3,5,13,1,Georgia,Appling County,2010,18237
+50,3,5,13,3,Georgia,Atkinson County,2010,8380
+50,3,5,13,5,Georgia,Bacon County,2010,11097
+50,3,5,13,7,Georgia,Baker County,2010,3447
+50,3,5,13,9,Georgia,Baldwin County,2010,45840
+50,3,5,13,11,Georgia,Banks County,2010,18373
+50,3,5,13,13,Georgia,Barrow County,2010,69349
+50,3,5,13,15,Georgia,Bartow County,2010,100083
+50,3,5,13,17,Georgia,Ben Hill County,2010,17662
+50,3,5,13,19,Georgia,Berrien County,2010,19291
+50,3,5,13,21,Georgia,Bibb County,2010,155844
+50,3,5,13,23,Georgia,Bleckley County,2010,13060
+50,3,5,13,25,Georgia,Brantley County,2010,18409
+50,3,5,13,27,Georgia,Brooks County,2010,16314
+50,3,5,13,29,Georgia,Bryan County,2010,30238
+50,3,5,13,31,Georgia,Bulloch County,2010,70244
+50,3,5,13,33,Georgia,Burke County,2010,23334
+50,3,5,13,35,Georgia,Butts County,2010,23685
+50,3,5,13,37,Georgia,Calhoun County,2010,6697
+50,3,5,13,39,Georgia,Camden County,2010,50525
+50,3,5,13,43,Georgia,Candler County,2010,10987
+50,3,5,13,45,Georgia,Carroll County,2010,110565
+50,3,5,13,47,Georgia,Catoosa County,2010,63928
+50,3,5,13,49,Georgia,Charlton County,2010,12167
+50,3,5,13,51,Georgia,Chatham County,2010,265112
+50,3,5,13,53,Georgia,Chattahoochee County,2010,11263
+50,3,5,13,55,Georgia,Chattooga County,2010,26022
+50,3,5,13,57,Georgia,Cherokee County,2010,214400
+50,3,5,13,59,Georgia,Clarke County,2010,116670
+50,3,5,13,61,Georgia,Clay County,2010,3186
+50,3,5,13,63,Georgia,Clayton County,2010,259639
+50,3,5,13,65,Georgia,Clinch County,2010,6792
+50,3,5,13,67,Georgia,Cobb County,2010,688076
+50,3,5,13,69,Georgia,Coffee County,2010,42346
+50,3,5,13,71,Georgia,Colquitt County,2010,45496
+50,3,5,13,73,Georgia,Columbia County,2010,124013
+50,3,5,13,75,Georgia,Cook County,2010,17205
+50,3,5,13,77,Georgia,Coweta County,2010,127368
+50,3,5,13,79,Georgia,Crawford County,2010,12593
+50,3,5,13,81,Georgia,Crisp County,2010,23435
+50,3,5,13,83,Georgia,Dade County,2010,16644
+50,3,5,13,85,Georgia,Dawson County,2010,22377
+50,3,5,13,87,Georgia,Decatur County,2010,27841
+50,3,5,13,89,Georgia,DeKalb County,2010,692031
+50,3,5,13,91,Georgia,Dodge County,2010,21792
+50,3,5,13,93,Georgia,Dooly County,2010,14920
+50,3,5,13,95,Georgia,Dougherty County,2010,94564
+50,3,5,13,97,Georgia,Douglas County,2010,132281
+50,3,5,13,99,Georgia,Early County,2010,11008
+50,3,5,13,101,Georgia,Echols County,2010,4023
+50,3,5,13,103,Georgia,Effingham County,2010,52258
+50,3,5,13,105,Georgia,Elbert County,2010,20165
+50,3,5,13,107,Georgia,Emanuel County,2010,22592
+50,3,5,13,109,Georgia,Evans County,2010,11008
+50,3,5,13,111,Georgia,Fannin County,2010,23706
+50,3,5,13,113,Georgia,Fayette County,2010,106556
+50,3,5,13,115,Georgia,Floyd County,2010,96318
+50,3,5,13,117,Georgia,Forsyth County,2010,175498
+50,3,5,13,119,Georgia,Franklin County,2010,22098
+50,3,5,13,121,Georgia,Fulton County,2010,920393
+50,3,5,13,123,Georgia,Gilmer County,2010,28299
+50,3,5,13,125,Georgia,Glascock County,2010,3086
+50,3,5,13,127,Georgia,Glynn County,2010,79630
+50,3,5,13,129,Georgia,Gordon County,2010,55221
+50,3,5,13,131,Georgia,Grady County,2010,25019
+50,3,5,13,133,Georgia,Greene County,2010,15996
+50,3,5,13,135,Georgia,Gwinnett County,2010,805241
+50,3,5,13,137,Georgia,Habersham County,2010,43028
+50,3,5,13,139,Georgia,Hall County,2010,179765
+50,3,5,13,141,Georgia,Hancock County,2010,9401
+50,3,5,13,143,Georgia,Haralson County,2010,28780
+50,3,5,13,145,Georgia,Harris County,2010,31992
+50,3,5,13,147,Georgia,Hart County,2010,25205
+50,3,5,13,149,Georgia,Heard County,2010,11828
+50,3,5,13,151,Georgia,Henry County,2010,203777
+50,3,5,13,153,Georgia,Houston County,2010,139573
+50,3,5,13,155,Georgia,Irwin County,2010,9513
+50,3,5,13,157,Georgia,Jackson County,2010,60470
+50,3,5,13,159,Georgia,Jasper County,2010,13894
+50,3,5,13,161,Georgia,Jeff Davis County,2010,15074
+50,3,5,13,163,Georgia,Jefferson County,2010,16916
+50,3,5,13,165,Georgia,Jenkins County,2010,8333
+50,3,5,13,167,Georgia,Johnson County,2010,9978
+50,3,5,13,169,Georgia,Jones County,2010,28648
+50,3,5,13,171,Georgia,Lamar County,2010,18307
+50,3,5,13,173,Georgia,Lanier County,2010,10076
+50,3,5,13,175,Georgia,Laurens County,2010,48436
+50,3,5,13,177,Georgia,Lee County,2010,28295
+50,3,5,13,179,Georgia,Liberty County,2010,63584
+50,3,5,13,181,Georgia,Lincoln County,2010,7996
+50,3,5,13,183,Georgia,Long County,2010,14345
+50,3,5,13,185,Georgia,Lowndes County,2010,109257
+50,3,5,13,187,Georgia,Lumpkin County,2010,29947
+50,3,5,13,189,Georgia,McDuffie County,2010,21865
+50,3,5,13,191,Georgia,McIntosh County,2010,14332
+50,3,5,13,193,Georgia,Macon County,2010,14743
+50,3,5,13,195,Georgia,Madison County,2010,28174
+50,3,5,13,197,Georgia,Marion County,2010,8738
+50,3,5,13,199,Georgia,Meriwether County,2010,21976
+50,3,5,13,201,Georgia,Miller County,2010,6127
+50,3,5,13,205,Georgia,Mitchell County,2010,23500
+50,3,5,13,207,Georgia,Monroe County,2010,26121
+50,3,5,13,209,Georgia,Montgomery County,2010,9177
+50,3,5,13,211,Georgia,Morgan County,2010,17867
+50,3,5,13,213,Georgia,Murray County,2010,39628
+50,3,5,13,215,Georgia,Muscogee County,2010,190570
+50,3,5,13,217,Georgia,Newton County,2010,99964
+50,3,5,13,219,Georgia,Oconee County,2010,32840
+50,3,5,13,221,Georgia,Oglethorpe County,2010,14874
+50,3,5,13,223,Georgia,Paulding County,2010,142385
+50,3,5,13,225,Georgia,Peach County,2010,28054
+50,3,5,13,227,Georgia,Pickens County,2010,29402
+50,3,5,13,229,Georgia,Pierce County,2010,18760
+50,3,5,13,231,Georgia,Pike County,2010,17879
+50,3,5,13,233,Georgia,Polk County,2010,41487
+50,3,5,13,235,Georgia,Pulaski County,2010,12014
+50,3,5,13,237,Georgia,Putnam County,2010,21218
+50,3,5,13,239,Georgia,Quitman County,2010,2510
+50,3,5,13,241,Georgia,Rabun County,2010,16273
+50,3,5,13,243,Georgia,Randolph County,2010,7721
+50,3,5,13,245,Georgia,Richmond County,2010,200591
+50,3,5,13,247,Georgia,Rockdale County,2010,85173
+50,3,5,13,249,Georgia,Schley County,2010,5013
+50,3,5,13,251,Georgia,Screven County,2010,14592
+50,3,5,13,253,Georgia,Seminole County,2010,8729
+50,3,5,13,255,Georgia,Spalding County,2010,64107
+50,3,5,13,257,Georgia,Stephens County,2010,26162
+50,3,5,13,259,Georgia,Stewart County,2010,6060
+50,3,5,13,261,Georgia,Sumter County,2010,32742
+50,3,5,13,263,Georgia,Talbot County,2010,6892
+50,3,5,13,265,Georgia,Taliaferro County,2010,1717
+50,3,5,13,267,Georgia,Tattnall County,2010,25504
+50,3,5,13,269,Georgia,Taylor County,2010,8982
+50,3,5,13,271,Georgia,Telfair County,2010,16492
+50,3,5,13,273,Georgia,Terrell County,2010,9507
+50,3,5,13,275,Georgia,Thomas County,2010,44719
+50,3,5,13,277,Georgia,Tift County,2010,40132
+50,3,5,13,279,Georgia,Toombs County,2010,27174
+50,3,5,13,281,Georgia,Towns County,2010,10474
+50,3,5,13,283,Georgia,Treutlen County,2010,6883
+50,3,5,13,285,Georgia,Troup County,2010,67042
+50,3,5,13,287,Georgia,Turner County,2010,8931
+50,3,5,13,289,Georgia,Twiggs County,2010,9035
+50,3,5,13,291,Georgia,Union County,2010,21370
+50,3,5,13,293,Georgia,Upson County,2010,27147
+50,3,5,13,295,Georgia,Walker County,2010,68739
+50,3,5,13,297,Georgia,Walton County,2010,83808
+50,3,5,13,299,Georgia,Ware County,2010,36298
+50,3,5,13,301,Georgia,Warren County,2010,5834
+50,3,5,13,303,Georgia,Washington County,2010,21181
+50,3,5,13,305,Georgia,Wayne County,2010,30102
+50,3,5,13,307,Georgia,Webster County,2010,2799
+50,3,5,13,309,Georgia,Wheeler County,2010,7431
+50,3,5,13,311,Georgia,White County,2010,27139
+50,3,5,13,313,Georgia,Whitfield County,2010,102602
+50,3,5,13,315,Georgia,Wilcox County,2010,9251
+50,3,5,13,317,Georgia,Wilkes County,2010,10593
+50,3,5,13,319,Georgia,Wilkinson County,2010,9569
+50,3,5,13,321,Georgia,Worth County,2010,21667
+40,4,9,15,0,Hawaii,Hawaii,2010,1360304
+50,4,9,15,1,Hawaii,Hawaii County,2010,185076
+50,4,9,15,3,Hawaii,Honolulu County,2010,953203
+50,4,9,15,5,Hawaii,Kalawao County,2010,90
+50,4,9,15,7,Hawaii,Kauai County,2010,67095
+50,4,9,15,9,Hawaii,Maui County,2010,154840
+40,4,8,16,0,Idaho,Idaho,2010,1567658
+50,4,8,16,1,Idaho,Ada County,2010,392364
+50,4,8,16,3,Idaho,Adams County,2010,3978
+50,4,8,16,5,Idaho,Bannock County,2010,82842
+50,4,8,16,7,Idaho,Bear Lake County,2010,5989
+50,4,8,16,9,Idaho,Benewah County,2010,9283
+50,4,8,16,11,Idaho,Bingham County,2010,45605
+50,4,8,16,13,Idaho,Blaine County,2010,21377
+50,4,8,16,15,Idaho,Boise County,2010,7027
+50,4,8,16,17,Idaho,Bonner County,2010,40877
+50,4,8,16,19,Idaho,Bonneville County,2010,104294
+50,4,8,16,21,Idaho,Boundary County,2010,10972
+50,4,8,16,23,Idaho,Butte County,2010,2893
+50,4,8,16,25,Idaho,Camas County,2010,1117
+50,4,8,16,27,Idaho,Canyon County,2010,188930
+50,4,8,16,29,Idaho,Caribou County,2010,6960
+50,4,8,16,31,Idaho,Cassia County,2010,22964
+50,4,8,16,33,Idaho,Clark County,2010,982
+50,4,8,16,35,Idaho,Clearwater County,2010,8761
+50,4,8,16,37,Idaho,Custer County,2010,4366
+50,4,8,16,39,Idaho,Elmore County,2010,27040
+50,4,8,16,41,Idaho,Franklin County,2010,12786
+50,4,8,16,43,Idaho,Fremont County,2010,13243
+50,4,8,16,45,Idaho,Gem County,2010,16719
+50,4,8,16,47,Idaho,Gooding County,2010,15471
+50,4,8,16,49,Idaho,Idaho County,2010,16269
+50,4,8,16,51,Idaho,Jefferson County,2010,26144
+50,4,8,16,53,Idaho,Jerome County,2010,22355
+50,4,8,16,55,Idaho,Kootenai County,2010,138466
+50,4,8,16,57,Idaho,Latah County,2010,37243
+50,4,8,16,59,Idaho,Lemhi County,2010,7936
+50,4,8,16,61,Idaho,Lewis County,2010,3821
+50,4,8,16,63,Idaho,Lincoln County,2010,5207
+50,4,8,16,65,Idaho,Madison County,2010,37542
+50,4,8,16,67,Idaho,Minidoka County,2010,20055
+50,4,8,16,69,Idaho,Nez Perce County,2010,39270
+50,4,8,16,71,Idaho,Oneida County,2010,4286
+50,4,8,16,73,Idaho,Owyhee County,2010,11526
+50,4,8,16,75,Idaho,Payette County,2010,22622
+50,4,8,16,77,Idaho,Power County,2010,7819
+50,4,8,16,79,Idaho,Shoshone County,2010,12800
+50,4,8,16,81,Idaho,Teton County,2010,10165
+50,4,8,16,83,Idaho,Twin Falls County,2010,77240
+50,4,8,16,85,Idaho,Valley County,2010,9854
+50,4,8,16,87,Idaho,Washington County,2010,10198
+40,2,3,17,0,Illinois,Illinois,2010,12831572
+50,2,3,17,1,Illinois,Adams County,2010,67095
+50,2,3,17,3,Illinois,Alexander County,2010,8238
+50,2,3,17,5,Illinois,Bond County,2010,17770
+50,2,3,17,7,Illinois,Boone County,2010,54161
+50,2,3,17,9,Illinois,Brown County,2010,6937
+50,2,3,17,11,Illinois,Bureau County,2010,34980
+50,2,3,17,13,Illinois,Calhoun County,2010,5087
+50,2,3,17,15,Illinois,Carroll County,2010,15394
+50,2,3,17,17,Illinois,Cass County,2010,13641
+50,2,3,17,19,Illinois,Champaign County,2010,201087
+50,2,3,17,21,Illinois,Christian County,2010,34797
+50,2,3,17,23,Illinois,Clark County,2010,16335
+50,2,3,17,25,Illinois,Clay County,2010,13812
+50,2,3,17,27,Illinois,Clinton County,2010,37752
+50,2,3,17,29,Illinois,Coles County,2010,53876
+50,2,3,17,31,Illinois,Cook County,2010,5195024
+50,2,3,17,33,Illinois,Crawford County,2010,19818
+50,2,3,17,35,Illinois,Cumberland County,2010,11045
+50,2,3,17,37,Illinois,DeKalb County,2010,105162
+50,2,3,17,39,Illinois,De Witt County,2010,16558
+50,2,3,17,41,Illinois,Douglas County,2010,19971
+50,2,3,17,43,Illinois,DuPage County,2010,916741
+50,2,3,17,45,Illinois,Edgar County,2010,18576
+50,2,3,17,47,Illinois,Edwards County,2010,6726
+50,2,3,17,49,Illinois,Effingham County,2010,34244
+50,2,3,17,51,Illinois,Fayette County,2010,22152
+50,2,3,17,53,Illinois,Ford County,2010,14075
+50,2,3,17,55,Illinois,Franklin County,2010,39996
+50,2,3,17,57,Illinois,Fulton County,2010,37070
+50,2,3,17,59,Illinois,Gallatin County,2010,5589
+50,2,3,17,61,Illinois,Greene County,2010,13886
+50,2,3,17,63,Illinois,Grundy County,2010,50079
+50,2,3,17,65,Illinois,Hamilton County,2010,8457
+50,2,3,17,67,Illinois,Hancock County,2010,19104
+50,2,3,17,69,Illinois,Hardin County,2010,4319
+50,2,3,17,71,Illinois,Henderson County,2010,7329
+50,2,3,17,73,Illinois,Henry County,2010,50487
+50,2,3,17,75,Illinois,Iroquois County,2010,29719
+50,2,3,17,77,Illinois,Jackson County,2010,60204
+50,2,3,17,79,Illinois,Jasper County,2010,9701
+50,2,3,17,81,Illinois,Jefferson County,2010,38825
+50,2,3,17,83,Illinois,Jersey County,2010,23011
+50,2,3,17,85,Illinois,Jo Daviess County,2010,22681
+50,2,3,17,87,Illinois,Johnson County,2010,12571
+50,2,3,17,89,Illinois,Kane County,2010,515318
+50,2,3,17,91,Illinois,Kankakee County,2010,113450
+50,2,3,17,93,Illinois,Kendall County,2010,114800
+50,2,3,17,95,Illinois,Knox County,2010,52923
+50,2,3,17,97,Illinois,Lake County,2010,703396
+50,2,3,17,99,Illinois,LaSalle County,2010,113911
+50,2,3,17,101,Illinois,Lawrence County,2010,16903
+50,2,3,17,103,Illinois,Lee County,2010,36034
+50,2,3,17,105,Illinois,Livingston County,2010,38951
+50,2,3,17,107,Illinois,Logan County,2010,30305
+50,2,3,17,109,Illinois,McDonough County,2010,32616
+50,2,3,17,111,Illinois,McHenry County,2010,308886
+50,2,3,17,113,Illinois,McLean County,2010,169578
+50,2,3,17,115,Illinois,Macon County,2010,110777
+50,2,3,17,117,Illinois,Macoupin County,2010,47764
+50,2,3,17,119,Illinois,Madison County,2010,269296
+50,2,3,17,121,Illinois,Marion County,2010,39437
+50,2,3,17,123,Illinois,Marshall County,2010,12647
+50,2,3,17,125,Illinois,Mason County,2010,14666
+50,2,3,17,127,Illinois,Massac County,2010,15429
+50,2,3,17,129,Illinois,Menard County,2010,12705
+50,2,3,17,131,Illinois,Mercer County,2010,16436
+50,2,3,17,133,Illinois,Monroe County,2010,33006
+50,2,3,17,135,Illinois,Montgomery County,2010,30103
+50,2,3,17,137,Illinois,Morgan County,2010,35542
+50,2,3,17,139,Illinois,Moultrie County,2010,14856
+50,2,3,17,141,Illinois,Ogle County,2010,53494
+50,2,3,17,143,Illinois,Peoria County,2010,186496
+50,2,3,17,145,Illinois,Perry County,2010,22346
+50,2,3,17,147,Illinois,Piatt County,2010,16727
+50,2,3,17,149,Illinois,Pike County,2010,16432
+50,2,3,17,151,Illinois,Pope County,2010,4478
+50,2,3,17,153,Illinois,Pulaski County,2010,6165
+50,2,3,17,155,Illinois,Putnam County,2010,6008
+50,2,3,17,157,Illinois,Randolph County,2010,33427
+50,2,3,17,159,Illinois,Richland County,2010,16233
+50,2,3,17,161,Illinois,Rock Island County,2010,147542
+50,2,3,17,163,Illinois,St. Clair County,2010,270075
+50,2,3,17,165,Illinois,Saline County,2010,24913
+50,2,3,17,167,Illinois,Sangamon County,2010,197463
+50,2,3,17,169,Illinois,Schuyler County,2010,7543
+50,2,3,17,171,Illinois,Scott County,2010,5358
+50,2,3,17,173,Illinois,Shelby County,2010,22355
+50,2,3,17,175,Illinois,Stark County,2010,5992
+50,2,3,17,177,Illinois,Stephenson County,2010,47704
+50,2,3,17,179,Illinois,Tazewell County,2010,135392
+50,2,3,17,181,Illinois,Union County,2010,17804
+50,2,3,17,183,Illinois,Vermilion County,2010,81625
+50,2,3,17,185,Illinois,Wabash County,2010,11947
+50,2,3,17,187,Illinois,Warren County,2010,17701
+50,2,3,17,189,Illinois,Washington County,2010,14716
+50,2,3,17,191,Illinois,Wayne County,2010,16760
+50,2,3,17,193,Illinois,White County,2010,14665
+50,2,3,17,195,Illinois,Whiteside County,2010,58505
+50,2,3,17,197,Illinois,Will County,2010,677590
+50,2,3,17,199,Illinois,Williamson County,2010,66373
+50,2,3,17,201,Illinois,Winnebago County,2010,295270
+50,2,3,17,203,Illinois,Woodford County,2010,38656
+40,2,3,18,0,Indiana,Indiana,2010,6484050
+50,2,3,18,1,Indiana,Adams County,2010,34384
+50,2,3,18,3,Indiana,Allen County,2010,355339
+50,2,3,18,5,Indiana,Bartholomew County,2010,76782
+50,2,3,18,7,Indiana,Benton County,2010,8836
+50,2,3,18,9,Indiana,Blackford County,2010,12766
+50,2,3,18,11,Indiana,Boone County,2010,56647
+50,2,3,18,13,Indiana,Brown County,2010,15247
+50,2,3,18,15,Indiana,Carroll County,2010,20160
+50,2,3,18,17,Indiana,Cass County,2010,38970
+50,2,3,18,19,Indiana,Clark County,2010,110221
+50,2,3,18,21,Indiana,Clay County,2010,26896
+50,2,3,18,23,Indiana,Clinton County,2010,33219
+50,2,3,18,25,Indiana,Crawford County,2010,10713
+50,2,3,18,27,Indiana,Daviess County,2010,31654
+50,2,3,18,29,Indiana,Dearborn County,2010,50025
+50,2,3,18,31,Indiana,Decatur County,2010,25737
+50,2,3,18,33,Indiana,DeKalb County,2010,42255
+50,2,3,18,35,Indiana,Delaware County,2010,117674
+50,2,3,18,37,Indiana,Dubois County,2010,41886
+50,2,3,18,39,Indiana,Elkhart County,2010,197569
+50,2,3,18,41,Indiana,Fayette County,2010,24302
+50,2,3,18,43,Indiana,Floyd County,2010,74575
+50,2,3,18,45,Indiana,Fountain County,2010,17242
+50,2,3,18,47,Indiana,Franklin County,2010,23097
+50,2,3,18,49,Indiana,Fulton County,2010,20856
+50,2,3,18,51,Indiana,Gibson County,2010,33503
+50,2,3,18,53,Indiana,Grant County,2010,70063
+50,2,3,18,55,Indiana,Greene County,2010,33172
+50,2,3,18,57,Indiana,Hamilton County,2010,274555
+50,2,3,18,59,Indiana,Hancock County,2010,70060
+50,2,3,18,61,Indiana,Harrison County,2010,39363
+50,2,3,18,63,Indiana,Hendricks County,2010,145455
+50,2,3,18,65,Indiana,Henry County,2010,49466
+50,2,3,18,67,Indiana,Howard County,2010,82748
+50,2,3,18,69,Indiana,Huntington County,2010,37123
+50,2,3,18,71,Indiana,Jackson County,2010,42376
+50,2,3,18,73,Indiana,Jasper County,2010,33481
+50,2,3,18,75,Indiana,Jay County,2010,21253
+50,2,3,18,77,Indiana,Jefferson County,2010,32400
+50,2,3,18,79,Indiana,Jennings County,2010,28529
+50,2,3,18,81,Indiana,Johnson County,2010,139856
+50,2,3,18,83,Indiana,Knox County,2010,38440
+50,2,3,18,85,Indiana,Kosciusko County,2010,77355
+50,2,3,18,87,Indiana,LaGrange County,2010,37131
+50,2,3,18,89,Indiana,Lake County,2010,496112
+50,2,3,18,91,Indiana,LaPorte County,2010,111466
+50,2,3,18,93,Indiana,Lawrence County,2010,46134
+50,2,3,18,95,Indiana,Madison County,2010,131639
+50,2,3,18,97,Indiana,Marion County,2010,903373
+50,2,3,18,99,Indiana,Marshall County,2010,47050
+50,2,3,18,101,Indiana,Martin County,2010,10380
+50,2,3,18,103,Indiana,Miami County,2010,36905
+50,2,3,18,105,Indiana,Monroe County,2010,137957
+50,2,3,18,107,Indiana,Montgomery County,2010,38121
+50,2,3,18,109,Indiana,Morgan County,2010,68926
+50,2,3,18,111,Indiana,Newton County,2010,14239
+50,2,3,18,113,Indiana,Noble County,2010,47538
+50,2,3,18,115,Indiana,Ohio County,2010,6097
+50,2,3,18,117,Indiana,Orange County,2010,19846
+50,2,3,18,119,Indiana,Owen County,2010,21573
+50,2,3,18,121,Indiana,Parke County,2010,17349
+50,2,3,18,123,Indiana,Perry County,2010,19338
+50,2,3,18,125,Indiana,Pike County,2010,12695
+50,2,3,18,127,Indiana,Porter County,2010,164288
+50,2,3,18,129,Indiana,Posey County,2010,25912
+50,2,3,18,131,Indiana,Pulaski County,2010,13379
+50,2,3,18,133,Indiana,Putnam County,2010,37941
+50,2,3,18,135,Indiana,Randolph County,2010,26170
+50,2,3,18,137,Indiana,Ripley County,2010,28814
+50,2,3,18,139,Indiana,Rush County,2010,17391
+50,2,3,18,141,Indiana,St. Joseph County,2010,266914
+50,2,3,18,143,Indiana,Scott County,2010,24195
+50,2,3,18,145,Indiana,Shelby County,2010,44379
+50,2,3,18,147,Indiana,Spencer County,2010,20955
+50,2,3,18,149,Indiana,Starke County,2010,23362
+50,2,3,18,151,Indiana,Steuben County,2010,34147
+50,2,3,18,153,Indiana,Sullivan County,2010,21473
+50,2,3,18,155,Indiana,Switzerland County,2010,10688
+50,2,3,18,157,Indiana,Tippecanoe County,2010,172801
+50,2,3,18,159,Indiana,Tipton County,2010,15936
+50,2,3,18,161,Indiana,Union County,2010,7516
+50,2,3,18,163,Indiana,Vanderburgh County,2010,179701
+50,2,3,18,165,Indiana,Vermillion County,2010,16210
+50,2,3,18,167,Indiana,Vigo County,2010,107850
+50,2,3,18,169,Indiana,Wabash County,2010,32888
+50,2,3,18,171,Indiana,Warren County,2010,8511
+50,2,3,18,173,Indiana,Warrick County,2010,59689
+50,2,3,18,175,Indiana,Washington County,2010,28260
+50,2,3,18,177,Indiana,Wayne County,2010,68996
+50,2,3,18,179,Indiana,Wells County,2010,27637
+50,2,3,18,181,Indiana,White County,2010,24641
+50,2,3,18,183,Indiana,Whitley County,2010,33287
+40,2,4,19,0,Iowa,Iowa,2010,3046877
+50,2,4,19,1,Iowa,Adair County,2010,7682
+50,2,4,19,3,Iowa,Adams County,2010,4029
+50,2,4,19,5,Iowa,Allamakee County,2010,14328
+50,2,4,19,7,Iowa,Appanoose County,2010,12892
+50,2,4,19,9,Iowa,Audubon County,2010,6115
+50,2,4,19,11,Iowa,Benton County,2010,26071
+50,2,4,19,13,Iowa,Black Hawk County,2010,131086
+50,2,4,19,15,Iowa,Boone County,2010,26308
+50,2,4,19,17,Iowa,Bremer County,2010,24280
+50,2,4,19,19,Iowa,Buchanan County,2010,20953
+50,2,4,19,21,Iowa,Buena Vista County,2010,20265
+50,2,4,19,23,Iowa,Butler County,2010,14869
+50,2,4,19,25,Iowa,Calhoun County,2010,10177
+50,2,4,19,27,Iowa,Carroll County,2010,20816
+50,2,4,19,29,Iowa,Cass County,2010,13952
+50,2,4,19,31,Iowa,Cedar County,2010,18445
+50,2,4,19,33,Iowa,Cerro Gordo County,2010,44151
+50,2,4,19,35,Iowa,Cherokee County,2010,12067
+50,2,4,19,37,Iowa,Chickasaw County,2010,12442
+50,2,4,19,39,Iowa,Clarke County,2010,9286
+50,2,4,19,41,Iowa,Clay County,2010,16667
+50,2,4,19,43,Iowa,Clayton County,2010,18128
+50,2,4,19,45,Iowa,Clinton County,2010,49113
+50,2,4,19,47,Iowa,Crawford County,2010,17091
+50,2,4,19,49,Iowa,Dallas County,2010,66139
+50,2,4,19,51,Iowa,Davis County,2010,8753
+50,2,4,19,53,Iowa,Decatur County,2010,8456
+50,2,4,19,55,Iowa,Delaware County,2010,17770
+50,2,4,19,57,Iowa,Des Moines County,2010,40325
+50,2,4,19,59,Iowa,Dickinson County,2010,16667
+50,2,4,19,61,Iowa,Dubuque County,2010,93643
+50,2,4,19,63,Iowa,Emmet County,2010,10302
+50,2,4,19,65,Iowa,Fayette County,2010,20882
+50,2,4,19,67,Iowa,Floyd County,2010,16293
+50,2,4,19,69,Iowa,Franklin County,2010,10680
+50,2,4,19,71,Iowa,Fremont County,2010,7438
+50,2,4,19,73,Iowa,Greene County,2010,9337
+50,2,4,19,75,Iowa,Grundy County,2010,12453
+50,2,4,19,77,Iowa,Guthrie County,2010,10959
+50,2,4,19,79,Iowa,Hamilton County,2010,15675
+50,2,4,19,81,Iowa,Hancock County,2010,11340
+50,2,4,19,83,Iowa,Hardin County,2010,17534
+50,2,4,19,85,Iowa,Harrison County,2010,14937
+50,2,4,19,87,Iowa,Henry County,2010,20150
+50,2,4,19,89,Iowa,Howard County,2010,9564
+50,2,4,19,91,Iowa,Humboldt County,2010,9814
+50,2,4,19,93,Iowa,Ida County,2010,7089
+50,2,4,19,95,Iowa,Iowa County,2010,16356
+50,2,4,19,97,Iowa,Jackson County,2010,19855
+50,2,4,19,99,Iowa,Jasper County,2010,36842
+50,2,4,19,101,Iowa,Jefferson County,2010,16836
+50,2,4,19,103,Iowa,Johnson County,2010,130882
+50,2,4,19,105,Iowa,Jones County,2010,20634
+50,2,4,19,107,Iowa,Keokuk County,2010,10510
+50,2,4,19,109,Iowa,Kossuth County,2010,15545
+50,2,4,19,111,Iowa,Lee County,2010,35862
+50,2,4,19,113,Iowa,Linn County,2010,211242
+50,2,4,19,115,Iowa,Louisa County,2010,11387
+50,2,4,19,117,Iowa,Lucas County,2010,8900
+50,2,4,19,119,Iowa,Lyon County,2010,11581
+50,2,4,19,121,Iowa,Madison County,2010,15681
+50,2,4,19,123,Iowa,Mahaska County,2010,22384
+50,2,4,19,125,Iowa,Marion County,2010,33307
+50,2,4,19,127,Iowa,Marshall County,2010,40648
+50,2,4,19,129,Iowa,Mills County,2010,15059
+50,2,4,19,131,Iowa,Mitchell County,2010,10776
+50,2,4,19,133,Iowa,Monona County,2010,9243
+50,2,4,19,135,Iowa,Monroe County,2010,7967
+50,2,4,19,137,Iowa,Montgomery County,2010,10740
+50,2,4,19,139,Iowa,Muscatine County,2010,42803
+50,2,4,19,141,Iowa,O'Brien County,2010,14398
+50,2,4,19,143,Iowa,Osceola County,2010,6462
+50,2,4,19,145,Iowa,Page County,2010,15946
+50,2,4,19,147,Iowa,Palo Alto County,2010,9421
+50,2,4,19,149,Iowa,Plymouth County,2010,24986
+50,2,4,19,151,Iowa,Pocahontas County,2010,7310
+50,2,4,19,153,Iowa,Polk County,2010,430631
+50,2,4,19,155,Iowa,Pottawattamie County,2010,93149
+50,2,4,19,157,Iowa,Poweshiek County,2010,18915
+50,2,4,19,159,Iowa,Ringgold County,2010,5130
+50,2,4,19,161,Iowa,Sac County,2010,10350
+50,2,4,19,163,Iowa,Scott County,2010,165227
+50,2,4,19,165,Iowa,Shelby County,2010,12174
+50,2,4,19,167,Iowa,Sioux County,2010,33704
+50,2,4,19,169,Iowa,Story County,2010,89542
+50,2,4,19,171,Iowa,Tama County,2010,17767
+50,2,4,19,173,Iowa,Taylor County,2010,6317
+50,2,4,19,175,Iowa,Union County,2010,12534
+50,2,4,19,177,Iowa,Van Buren County,2010,7571
+50,2,4,19,179,Iowa,Wapello County,2010,35622
+50,2,4,19,181,Iowa,Warren County,2010,46226
+50,2,4,19,183,Iowa,Washington County,2010,21703
+50,2,4,19,185,Iowa,Wayne County,2010,6403
+50,2,4,19,187,Iowa,Webster County,2010,38011
+50,2,4,19,189,Iowa,Winnebago County,2010,10874
+50,2,4,19,191,Iowa,Winneshiek County,2010,21058
+50,2,4,19,193,Iowa,Woodbury County,2010,102173
+50,2,4,19,195,Iowa,Worth County,2010,7591
+50,2,4,19,197,Iowa,Wright County,2010,13229
+40,2,4,20,0,Kansas,Kansas,2010,2853120
+50,2,4,20,1,Kansas,Allen County,2010,13372
+50,2,4,20,3,Kansas,Anderson County,2010,8104
+50,2,4,20,5,Kansas,Atchison County,2010,16921
+50,2,4,20,7,Kansas,Barber County,2010,4864
+50,2,4,20,9,Kansas,Barton County,2010,27672
+50,2,4,20,11,Kansas,Bourbon County,2010,15173
+50,2,4,20,13,Kansas,Brown County,2010,9984
+50,2,4,20,15,Kansas,Butler County,2010,65884
+50,2,4,20,17,Kansas,Chase County,2010,2790
+50,2,4,20,19,Kansas,Chautauqua County,2010,3669
+50,2,4,20,21,Kansas,Cherokee County,2010,21610
+50,2,4,20,23,Kansas,Cheyenne County,2010,2726
+50,2,4,20,25,Kansas,Clark County,2010,2215
+50,2,4,20,27,Kansas,Clay County,2010,8542
+50,2,4,20,29,Kansas,Cloud County,2010,9533
+50,2,4,20,31,Kansas,Coffey County,2010,8598
+50,2,4,20,33,Kansas,Comanche County,2010,1891
+50,2,4,20,35,Kansas,Cowley County,2010,36309
+50,2,4,20,37,Kansas,Crawford County,2010,39135
+50,2,4,20,39,Kansas,Decatur County,2010,2965
+50,2,4,20,41,Kansas,Dickinson County,2010,19747
+50,2,4,20,43,Kansas,Doniphan County,2010,7948
+50,2,4,20,45,Kansas,Douglas County,2010,110826
+50,2,4,20,47,Kansas,Edwards County,2010,3037
+50,2,4,20,49,Kansas,Elk County,2010,2882
+50,2,4,20,51,Kansas,Ellis County,2010,28452
+50,2,4,20,53,Kansas,Ellsworth County,2010,6499
+50,2,4,20,55,Kansas,Finney County,2010,36785
+50,2,4,20,57,Kansas,Ford County,2010,33844
+50,2,4,20,59,Kansas,Franklin County,2010,25994
+50,2,4,20,61,Kansas,Geary County,2010,34352
+50,2,4,20,63,Kansas,Gove County,2010,2701
+50,2,4,20,65,Kansas,Graham County,2010,2588
+50,2,4,20,67,Kansas,Grant County,2010,7824
+50,2,4,20,69,Kansas,Gray County,2010,6001
+50,2,4,20,71,Kansas,Greeley County,2010,1248
+50,2,4,20,73,Kansas,Greenwood County,2010,6689
+50,2,4,20,75,Kansas,Hamilton County,2010,2687
+50,2,4,20,77,Kansas,Harper County,2010,6034
+50,2,4,20,79,Kansas,Harvey County,2010,34684
+50,2,4,20,81,Kansas,Haskell County,2010,4256
+50,2,4,20,83,Kansas,Hodgeman County,2010,1918
+50,2,4,20,85,Kansas,Jackson County,2010,13460
+50,2,4,20,87,Kansas,Jefferson County,2010,19108
+50,2,4,20,89,Kansas,Jewell County,2010,3073
+50,2,4,20,91,Kansas,Johnson County,2010,544181
+50,2,4,20,93,Kansas,Kearny County,2010,3982
+50,2,4,20,95,Kansas,Kingman County,2010,7860
+50,2,4,20,97,Kansas,Kiowa County,2010,2553
+50,2,4,20,99,Kansas,Labette County,2010,21609
+50,2,4,20,101,Kansas,Lane County,2010,1749
+50,2,4,20,103,Kansas,Leavenworth County,2010,76220
+50,2,4,20,105,Kansas,Lincoln County,2010,3237
+50,2,4,20,107,Kansas,Linn County,2010,9656
+50,2,4,20,109,Kansas,Logan County,2010,2759
+50,2,4,20,111,Kansas,Lyon County,2010,33692
+50,2,4,20,113,Kansas,McPherson County,2010,29186
+50,2,4,20,115,Kansas,Marion County,2010,12660
+50,2,4,20,117,Kansas,Marshall County,2010,10117
+50,2,4,20,119,Kansas,Meade County,2010,4575
+50,2,4,20,121,Kansas,Miami County,2010,32781
+50,2,4,20,123,Kansas,Mitchell County,2010,6373
+50,2,4,20,125,Kansas,Montgomery County,2010,35468
+50,2,4,20,127,Kansas,Morris County,2010,5923
+50,2,4,20,129,Kansas,Morton County,2010,3233
+50,2,4,20,131,Kansas,Nemaha County,2010,10178
+50,2,4,20,133,Kansas,Neosho County,2010,16511
+50,2,4,20,135,Kansas,Ness County,2010,3107
+50,2,4,20,137,Kansas,Norton County,2010,5669
+50,2,4,20,139,Kansas,Osage County,2010,16294
+50,2,4,20,141,Kansas,Osborne County,2010,3861
+50,2,4,20,143,Kansas,Ottawa County,2010,6091
+50,2,4,20,145,Kansas,Pawnee County,2010,6971
+50,2,4,20,147,Kansas,Phillips County,2010,5640
+50,2,4,20,149,Kansas,Pottawatomie County,2010,21608
+50,2,4,20,151,Kansas,Pratt County,2010,9653
+50,2,4,20,153,Kansas,Rawlins County,2010,2519
+50,2,4,20,155,Kansas,Reno County,2010,64511
+50,2,4,20,157,Kansas,Republic County,2010,4980
+50,2,4,20,159,Kansas,Rice County,2010,10082
+50,2,4,20,161,Kansas,Riley County,2010,71134
+50,2,4,20,163,Kansas,Rooks County,2010,5181
+50,2,4,20,165,Kansas,Rush County,2010,3307
+50,2,4,20,167,Kansas,Russell County,2010,6967
+50,2,4,20,169,Kansas,Saline County,2010,55604
+50,2,4,20,171,Kansas,Scott County,2010,4936
+50,2,4,20,173,Kansas,Sedgwick County,2010,498356
+50,2,4,20,175,Kansas,Seward County,2010,22950
+50,2,4,20,177,Kansas,Shawnee County,2010,177943
+50,2,4,20,179,Kansas,Sheridan County,2010,2544
+50,2,4,20,181,Kansas,Sherman County,2010,6010
+50,2,4,20,183,Kansas,Smith County,2010,3853
+50,2,4,20,185,Kansas,Stafford County,2010,4439
+50,2,4,20,187,Kansas,Stanton County,2010,2236
+50,2,4,20,189,Kansas,Stevens County,2010,5726
+50,2,4,20,191,Kansas,Sumner County,2010,24137
+50,2,4,20,193,Kansas,Thomas County,2010,7902
+50,2,4,20,195,Kansas,Trego County,2010,3006
+50,2,4,20,197,Kansas,Wabaunsee County,2010,7055
+50,2,4,20,199,Kansas,Wallace County,2010,1485
+50,2,4,20,201,Kansas,Washington County,2010,5794
+50,2,4,20,203,Kansas,Wichita County,2010,2234
+50,2,4,20,205,Kansas,Wilson County,2010,9406
+50,2,4,20,207,Kansas,Woodson County,2010,3309
+50,2,4,20,209,Kansas,Wyandotte County,2010,157523
+40,3,6,21,0,Kentucky,Kentucky,2010,4339330
+50,3,6,21,1,Kentucky,Adair County,2010,18656
+50,3,6,21,3,Kentucky,Allen County,2010,19943
+50,3,6,21,5,Kentucky,Anderson County,2010,21469
+50,3,6,21,7,Kentucky,Ballard County,2010,8237
+50,3,6,21,9,Kentucky,Barren County,2010,42164
+50,3,6,21,11,Kentucky,Bath County,2010,11592
+50,3,6,21,13,Kentucky,Bell County,2010,28688
+50,3,6,21,15,Kentucky,Boone County,2010,118810
+50,3,6,21,17,Kentucky,Bourbon County,2010,20008
+50,3,6,21,19,Kentucky,Boyd County,2010,49533
+50,3,6,21,21,Kentucky,Boyle County,2010,28434
+50,3,6,21,23,Kentucky,Bracken County,2010,8485
+50,3,6,21,25,Kentucky,Breathitt County,2010,13875
+50,3,6,21,27,Kentucky,Breckinridge County,2010,20054
+50,3,6,21,29,Kentucky,Bullitt County,2010,74293
+50,3,6,21,31,Kentucky,Butler County,2010,12706
+50,3,6,21,33,Kentucky,Caldwell County,2010,12989
+50,3,6,21,35,Kentucky,Calloway County,2010,37199
+50,3,6,21,37,Kentucky,Campbell County,2010,90340
+50,3,6,21,39,Kentucky,Carlisle County,2010,5099
+50,3,6,21,41,Kentucky,Carroll County,2010,10807
+50,3,6,21,43,Kentucky,Carter County,2010,27716
+50,3,6,21,45,Kentucky,Casey County,2010,15963
+50,3,6,21,47,Kentucky,Christian County,2010,73943
+50,3,6,21,49,Kentucky,Clark County,2010,35599
+50,3,6,21,51,Kentucky,Clay County,2010,21736
+50,3,6,21,53,Kentucky,Clinton County,2010,10279
+50,3,6,21,55,Kentucky,Crittenden County,2010,9315
+50,3,6,21,57,Kentucky,Cumberland County,2010,6845
+50,3,6,21,59,Kentucky,Daviess County,2010,96659
+50,3,6,21,61,Kentucky,Edmonson County,2010,12187
+50,3,6,21,63,Kentucky,Elliott County,2010,7852
+50,3,6,21,65,Kentucky,Estill County,2010,14686
+50,3,6,21,67,Kentucky,Fayette County,2010,295875
+50,3,6,21,69,Kentucky,Fleming County,2010,14344
+50,3,6,21,71,Kentucky,Floyd County,2010,39454
+50,3,6,21,73,Kentucky,Franklin County,2010,49262
+50,3,6,21,75,Kentucky,Fulton County,2010,6803
+50,3,6,21,77,Kentucky,Gallatin County,2010,8581
+50,3,6,21,79,Kentucky,Garrard County,2010,16905
+50,3,6,21,81,Kentucky,Grant County,2010,24660
+50,3,6,21,83,Kentucky,Graves County,2010,37142
+50,3,6,21,85,Kentucky,Grayson County,2010,25749
+50,3,6,21,87,Kentucky,Green County,2010,11285
+50,3,6,21,89,Kentucky,Greenup County,2010,36910
+50,3,6,21,91,Kentucky,Hancock County,2010,8565
+50,3,6,21,93,Kentucky,Hardin County,2010,105542
+50,3,6,21,95,Kentucky,Harlan County,2010,29278
+50,3,6,21,97,Kentucky,Harrison County,2010,18839
+50,3,6,21,99,Kentucky,Hart County,2010,18190
+50,3,6,21,101,Kentucky,Henderson County,2010,46249
+50,3,6,21,103,Kentucky,Henry County,2010,15411
+50,3,6,21,105,Kentucky,Hickman County,2010,4911
+50,3,6,21,107,Kentucky,Hopkins County,2010,46917
+50,3,6,21,109,Kentucky,Jackson County,2010,13486
+50,3,6,21,111,Kentucky,Jefferson County,2010,741095
+50,3,6,21,113,Kentucky,Jessamine County,2010,48579
+50,3,6,21,115,Kentucky,Johnson County,2010,23372
+50,3,6,21,117,Kentucky,Kenton County,2010,159728
+50,3,6,21,119,Kentucky,Knott County,2010,16360
+50,3,6,21,121,Kentucky,Knox County,2010,31882
+50,3,6,21,123,Kentucky,Larue County,2010,14190
+50,3,6,21,125,Kentucky,Laurel County,2010,58845
+50,3,6,21,127,Kentucky,Lawrence County,2010,15849
+50,3,6,21,129,Kentucky,Lee County,2010,7883
+50,3,6,21,131,Kentucky,Leslie County,2010,11310
+50,3,6,21,133,Kentucky,Letcher County,2010,24511
+50,3,6,21,135,Kentucky,Lewis County,2010,13882
+50,3,6,21,137,Kentucky,Lincoln County,2010,24741
+50,3,6,21,139,Kentucky,Livingston County,2010,9519
+50,3,6,21,141,Kentucky,Logan County,2010,26835
+50,3,6,21,143,Kentucky,Lyon County,2010,8319
+50,3,6,21,145,Kentucky,McCracken County,2010,65547
+50,3,6,21,147,Kentucky,McCreary County,2010,18306
+50,3,6,21,149,Kentucky,McLean County,2010,9527
+50,3,6,21,151,Kentucky,Madison County,2010,82910
+50,3,6,21,153,Kentucky,Magoffin County,2010,13333
+50,3,6,21,155,Kentucky,Marion County,2010,19844
+50,3,6,21,157,Kentucky,Marshall County,2010,31449
+50,3,6,21,159,Kentucky,Martin County,2010,12929
+50,3,6,21,161,Kentucky,Mason County,2010,17488
+50,3,6,21,163,Kentucky,Meade County,2010,28600
+50,3,6,21,165,Kentucky,Menifee County,2010,6306
+50,3,6,21,167,Kentucky,Mercer County,2010,21324
+50,3,6,21,169,Kentucky,Metcalfe County,2010,10105
+50,3,6,21,171,Kentucky,Monroe County,2010,10963
+50,3,6,21,173,Kentucky,Montgomery County,2010,26511
+50,3,6,21,175,Kentucky,Morgan County,2010,13923
+50,3,6,21,177,Kentucky,Muhlenberg County,2010,31501
+50,3,6,21,179,Kentucky,Nelson County,2010,43441
+50,3,6,21,181,Kentucky,Nicholas County,2010,7142
+50,3,6,21,183,Kentucky,Ohio County,2010,23849
+50,3,6,21,185,Kentucky,Oldham County,2010,60356
+50,3,6,21,187,Kentucky,Owen County,2010,10835
+50,3,6,21,189,Kentucky,Owsley County,2010,4757
+50,3,6,21,191,Kentucky,Pendleton County,2010,14874
+50,3,6,21,193,Kentucky,Perry County,2010,28697
+50,3,6,21,195,Kentucky,Pike County,2010,65029
+50,3,6,21,197,Kentucky,Powell County,2010,12613
+50,3,6,21,199,Kentucky,Pulaski County,2010,63062
+50,3,6,21,201,Kentucky,Robertson County,2010,2285
+50,3,6,21,203,Kentucky,Rockcastle County,2010,17060
+50,3,6,21,205,Kentucky,Rowan County,2010,23332
+50,3,6,21,207,Kentucky,Russell County,2010,17575
+50,3,6,21,209,Kentucky,Scott County,2010,47089
+50,3,6,21,211,Kentucky,Shelby County,2010,42004
+50,3,6,21,213,Kentucky,Simpson County,2010,17330
+50,3,6,21,215,Kentucky,Spencer County,2010,17108
+50,3,6,21,217,Kentucky,Taylor County,2010,24474
+50,3,6,21,219,Kentucky,Todd County,2010,12456
+50,3,6,21,221,Kentucky,Trigg County,2010,14327
+50,3,6,21,223,Kentucky,Trimble County,2010,8806
+50,3,6,21,225,Kentucky,Union County,2010,15006
+50,3,6,21,227,Kentucky,Warren County,2010,113782
+50,3,6,21,229,Kentucky,Washington County,2010,11701
+50,3,6,21,231,Kentucky,Wayne County,2010,20798
+50,3,6,21,233,Kentucky,Webster County,2010,13620
+50,3,6,21,235,Kentucky,Whitley County,2010,35634
+50,3,6,21,237,Kentucky,Wolfe County,2010,7358
+50,3,6,21,239,Kentucky,Woodford County,2010,24945
+40,3,7,22,0,Louisiana,Louisiana,2010,4533500
+50,3,7,22,1,Louisiana,Acadia Parish,2010,61788
+50,3,7,22,3,Louisiana,Allen Parish,2010,25750
+50,3,7,22,5,Louisiana,Ascension Parish,2010,107219
+50,3,7,22,7,Louisiana,Assumption Parish,2010,23417
+50,3,7,22,9,Louisiana,Avoyelles Parish,2010,42079
+50,3,7,22,11,Louisiana,Beauregard Parish,2010,35653
+50,3,7,22,13,Louisiana,Bienville Parish,2010,14355
+50,3,7,22,15,Louisiana,Bossier Parish,2010,116989
+50,3,7,22,17,Louisiana,Caddo Parish,2010,254969
+50,3,7,22,19,Louisiana,Calcasieu Parish,2010,192767
+50,3,7,22,21,Louisiana,Caldwell Parish,2010,10126
+50,3,7,22,23,Louisiana,Cameron Parish,2010,6868
+50,3,7,22,25,Louisiana,Catahoula Parish,2010,10409
+50,3,7,22,27,Louisiana,Claiborne Parish,2010,17195
+50,3,7,22,29,Louisiana,Concordia Parish,2010,20822
+50,3,7,22,31,Louisiana,De Soto Parish,2010,26656
+50,3,7,22,33,Louisiana,East Baton Rouge Parish,2010,440531
+50,3,7,22,35,Louisiana,East Carroll Parish,2010,7759
+50,3,7,22,37,Louisiana,East Feliciana Parish,2010,20254
+50,3,7,22,39,Louisiana,Evangeline Parish,2010,33986
+50,3,7,22,41,Louisiana,Franklin Parish,2010,20767
+50,3,7,22,43,Louisiana,Grant Parish,2010,22318
+50,3,7,22,45,Louisiana,Iberia Parish,2010,72856
+50,3,7,22,47,Louisiana,Iberville Parish,2010,33404
+50,3,7,22,49,Louisiana,Jackson Parish,2010,16274
+50,3,7,22,51,Louisiana,Jefferson Parish,2010,432576
+50,3,7,22,53,Louisiana,Jefferson Davis Parish,2010,31589
+50,3,7,22,55,Louisiana,Lafayette Parish,2010,221970
+50,3,7,22,57,Louisiana,Lafourche Parish,2010,96591
+50,3,7,22,59,Louisiana,LaSalle Parish,2010,14888
+50,3,7,22,61,Louisiana,Lincoln Parish,2010,46740
+50,3,7,22,63,Louisiana,Livingston Parish,2010,127688
+50,3,7,22,65,Louisiana,Madison Parish,2010,12101
+50,3,7,22,67,Louisiana,Morehouse Parish,2010,27979
+50,3,7,22,69,Louisiana,Natchitoches Parish,2010,39563
+50,3,7,22,71,Louisiana,Orleans Parish,2010,343828
+50,3,7,22,73,Louisiana,Ouachita Parish,2010,153732
+50,3,7,22,75,Louisiana,Plaquemines Parish,2010,23037
+50,3,7,22,77,Louisiana,Pointe Coupee Parish,2010,22800
+50,3,7,22,79,Louisiana,Rapides Parish,2010,131592
+50,3,7,22,81,Louisiana,Red River Parish,2010,9091
+50,3,7,22,83,Louisiana,Richland Parish,2010,20722
+50,3,7,22,85,Louisiana,Sabine Parish,2010,24229
+50,3,7,22,87,Louisiana,St. Bernard Parish,2010,35897
+50,3,7,22,89,Louisiana,St. Charles Parish,2010,52888
+50,3,7,22,91,Louisiana,St. Helena Parish,2010,11213
+50,3,7,22,93,Louisiana,St. James Parish,2010,22105
+50,3,7,22,95,Louisiana,St. John the Baptist Parish,2010,45810
+50,3,7,22,97,Louisiana,St. Landry Parish,2010,83400
+50,3,7,22,99,Louisiana,St. Martin Parish,2010,52160
+50,3,7,22,101,Louisiana,St. Mary Parish,2010,54647
+50,3,7,22,103,Louisiana,St. Tammany Parish,2010,233760
+50,3,7,22,105,Louisiana,Tangipahoa Parish,2010,121083
+50,3,7,22,107,Louisiana,Tensas Parish,2010,5250
+50,3,7,22,109,Louisiana,Terrebonne Parish,2010,111589
+50,3,7,22,111,Louisiana,Union Parish,2010,22781
+50,3,7,22,113,Louisiana,Vermilion Parish,2010,57958
+50,3,7,22,115,Louisiana,Vernon Parish,2010,52357
+50,3,7,22,117,Louisiana,Washington Parish,2010,47134
+50,3,7,22,119,Louisiana,Webster Parish,2010,41206
+50,3,7,22,121,Louisiana,West Baton Rouge Parish,2010,23798
+50,3,7,22,123,Louisiana,West Carroll Parish,2010,11604
+50,3,7,22,125,Louisiana,West Feliciana Parish,2010,15620
+50,3,7,22,127,Louisiana,Winn Parish,2010,15313
+40,1,1,23,0,Maine,Maine,2010,1328354
+50,1,1,23,1,Maine,Androscoggin County,2010,107713
+50,1,1,23,3,Maine,Aroostook County,2010,71873
+50,1,1,23,5,Maine,Cumberland County,2010,281687
+50,1,1,23,7,Maine,Franklin County,2010,30767
+50,1,1,23,9,Maine,Hancock County,2010,54407
+50,1,1,23,11,Maine,Kennebec County,2010,122151
+50,1,1,23,13,Maine,Knox County,2010,39732
+50,1,1,23,15,Maine,Lincoln County,2010,34444
+50,1,1,23,17,Maine,Oxford County,2010,57829
+50,1,1,23,19,Maine,Penobscot County,2010,153932
+50,1,1,23,21,Maine,Piscataquis County,2010,17535
+50,1,1,23,23,Maine,Sagadahoc County,2010,35287
+50,1,1,23,25,Maine,Somerset County,2010,52222
+50,1,1,23,27,Maine,Waldo County,2010,38791
+50,1,1,23,29,Maine,Washington County,2010,32855
+50,1,1,23,31,Maine,York County,2010,197129
+40,3,5,24,0,Maryland,Maryland,2010,5773787
+50,3,5,24,1,Maryland,Allegany County,2010,75042
+50,3,5,24,3,Maryland,Anne Arundel County,2010,537635
+50,3,5,24,5,Maryland,Baltimore County,2010,805311
+50,3,5,24,9,Maryland,Calvert County,2010,88741
+50,3,5,24,11,Maryland,Caroline County,2010,33078
+50,3,5,24,13,Maryland,Carroll County,2010,167155
+50,3,5,24,15,Maryland,Cecil County,2010,101091
+50,3,5,24,17,Maryland,Charles County,2010,146564
+50,3,5,24,19,Maryland,Dorchester County,2010,32623
+50,3,5,24,21,Maryland,Frederick County,2010,233415
+50,3,5,24,23,Maryland,Garrett County,2010,30139
+50,3,5,24,25,Maryland,Harford County,2010,244824
+50,3,5,24,27,Maryland,Howard County,2010,287110
+50,3,5,24,29,Maryland,Kent County,2010,20195
+50,3,5,24,31,Maryland,Montgomery County,2010,971279
+50,3,5,24,33,Maryland,Prince George's County,2010,864028
+50,3,5,24,35,Maryland,Queen Anne's County,2010,47789
+50,3,5,24,37,Maryland,St. Mary's County,2010,105146
+50,3,5,24,39,Maryland,Somerset County,2010,26470
+50,3,5,24,41,Maryland,Talbot County,2010,37777
+50,3,5,24,43,Maryland,Washington County,2010,147416
+50,3,5,24,45,Maryland,Wicomico County,2010,98734
+50,3,5,24,47,Maryland,Worcester County,2010,51448
+50,3,5,24,510,Maryland,Baltimore city,2010,620777
+40,1,1,25,0,Massachusetts,Massachusetts,2010,6547788
+50,1,1,25,1,Massachusetts,Barnstable County,2010,215883
+50,1,1,25,3,Massachusetts,Berkshire County,2010,131274
+50,1,1,25,5,Massachusetts,Bristol County,2010,548239
+50,1,1,25,7,Massachusetts,Dukes County,2010,16535
+50,1,1,25,9,Massachusetts,Essex County,2010,743082
+50,1,1,25,11,Massachusetts,Franklin County,2010,71381
+50,1,1,25,13,Massachusetts,Hampden County,2010,463620
+50,1,1,25,15,Massachusetts,Hampshire County,2010,158058
+50,1,1,25,17,Massachusetts,Middlesex County,2010,1503107
+50,1,1,25,19,Massachusetts,Nantucket County,2010,10168
+50,1,1,25,21,Massachusetts,Norfolk County,2010,670951
+50,1,1,25,23,Massachusetts,Plymouth County,2010,494933
+50,1,1,25,25,Massachusetts,Suffolk County,2010,722172
+50,1,1,25,27,Massachusetts,Worcester County,2010,798385
+40,2,3,26,0,Michigan,Michigan,2010,9884112
+50,2,3,26,1,Michigan,Alcona County,2010,10943
+50,2,3,26,3,Michigan,Alger County,2010,9601
+50,2,3,26,5,Michigan,Allegan County,2010,111398
+50,2,3,26,7,Michigan,Alpena County,2010,29594
+50,2,3,26,9,Michigan,Antrim County,2010,23577
+50,2,3,26,11,Michigan,Arenac County,2010,15903
+50,2,3,26,13,Michigan,Baraga County,2010,8866
+50,2,3,26,15,Michigan,Barry County,2010,59177
+50,2,3,26,17,Michigan,Bay County,2010,107773
+50,2,3,26,19,Michigan,Benzie County,2010,17519
+50,2,3,26,21,Michigan,Berrien County,2010,156810
+50,2,3,26,23,Michigan,Branch County,2010,45242
+50,2,3,26,25,Michigan,Calhoun County,2010,136150
+50,2,3,26,27,Michigan,Cass County,2010,52287
+50,2,3,26,29,Michigan,Charlevoix County,2010,25955
+50,2,3,26,31,Michigan,Cheboygan County,2010,26143
+50,2,3,26,33,Michigan,Chippewa County,2010,38676
+50,2,3,26,35,Michigan,Clare County,2010,30924
+50,2,3,26,37,Michigan,Clinton County,2010,75362
+50,2,3,26,39,Michigan,Crawford County,2010,14081
+50,2,3,26,41,Michigan,Delta County,2010,37069
+50,2,3,26,43,Michigan,Dickinson County,2010,26168
+50,2,3,26,45,Michigan,Eaton County,2010,107759
+50,2,3,26,47,Michigan,Emmet County,2010,32696
+50,2,3,26,49,Michigan,Genesee County,2010,425790
+50,2,3,26,51,Michigan,Gladwin County,2010,25696
+50,2,3,26,53,Michigan,Gogebic County,2010,16424
+50,2,3,26,55,Michigan,Grand Traverse County,2010,86988
+50,2,3,26,57,Michigan,Gratiot County,2010,42478
+50,2,3,26,59,Michigan,Hillsdale County,2010,46691
+50,2,3,26,61,Michigan,Houghton County,2010,36624
+50,2,3,26,63,Michigan,Huron County,2010,33118
+50,2,3,26,65,Michigan,Ingham County,2010,280895
+50,2,3,26,67,Michigan,Ionia County,2010,63901
+50,2,3,26,69,Michigan,Iosco County,2010,25895
+50,2,3,26,71,Michigan,Iron County,2010,11817
+50,2,3,26,73,Michigan,Isabella County,2010,70313
+50,2,3,26,75,Michigan,Jackson County,2010,160233
+50,2,3,26,77,Michigan,Kalamazoo County,2010,250327
+50,2,3,26,79,Michigan,Kalkaska County,2010,17147
+50,2,3,26,81,Michigan,Kent County,2010,602625
+50,2,3,26,83,Michigan,Keweenaw County,2010,2157
+50,2,3,26,85,Michigan,Lake County,2010,11542
+50,2,3,26,87,Michigan,Lapeer County,2010,88314
+50,2,3,26,89,Michigan,Leelanau County,2010,21711
+50,2,3,26,91,Michigan,Lenawee County,2010,99898
+50,2,3,26,93,Michigan,Livingston County,2010,180962
+50,2,3,26,95,Michigan,Luce County,2010,6631
+50,2,3,26,97,Michigan,Mackinac County,2010,11110
+50,2,3,26,99,Michigan,Macomb County,2010,841037
+50,2,3,26,101,Michigan,Manistee County,2010,24747
+50,2,3,26,103,Michigan,Marquette County,2010,67071
+50,2,3,26,105,Michigan,Mason County,2010,28689
+50,2,3,26,107,Michigan,Mecosta County,2010,42796
+50,2,3,26,109,Michigan,Menominee County,2010,24029
+50,2,3,26,111,Michigan,Midland County,2010,83623
+50,2,3,26,113,Michigan,Missaukee County,2010,14851
+50,2,3,26,115,Michigan,Monroe County,2010,152031
+50,2,3,26,117,Michigan,Montcalm County,2010,63342
+50,2,3,26,119,Michigan,Montmorency County,2010,9760
+50,2,3,26,121,Michigan,Muskegon County,2010,172202
+50,2,3,26,123,Michigan,Newaygo County,2010,48459
+50,2,3,26,125,Michigan,Oakland County,2010,1202388
+50,2,3,26,127,Michigan,Oceana County,2010,26570
+50,2,3,26,129,Michigan,Ogemaw County,2010,21686
+50,2,3,26,131,Michigan,Ontonagon County,2010,6780
+50,2,3,26,133,Michigan,Osceola County,2010,23528
+50,2,3,26,135,Michigan,Oscoda County,2010,8638
+50,2,3,26,137,Michigan,Otsego County,2010,24167
+50,2,3,26,139,Michigan,Ottawa County,2010,263787
+50,2,3,26,141,Michigan,Presque Isle County,2010,13380
+50,2,3,26,143,Michigan,Roscommon County,2010,24448
+50,2,3,26,145,Michigan,Saginaw County,2010,200169
+50,2,3,26,147,Michigan,St. Clair County,2010,163051
+50,2,3,26,149,Michigan,St. Joseph County,2010,61303
+50,2,3,26,151,Michigan,Sanilac County,2010,43106
+50,2,3,26,153,Michigan,Schoolcraft County,2010,8485
+50,2,3,26,155,Michigan,Shiawassee County,2010,70671
+50,2,3,26,157,Michigan,Tuscola County,2010,55722
+50,2,3,26,159,Michigan,Van Buren County,2010,76273
+50,2,3,26,161,Michigan,Washtenaw County,2010,345417
+50,2,3,26,163,Michigan,Wayne County,2010,1820216
+50,2,3,26,165,Michigan,Wexford County,2010,32730
+40,2,4,27,0,Minnesota,Minnesota,2010,5303933
+50,2,4,27,1,Minnesota,Aitkin County,2010,16194
+50,2,4,27,3,Minnesota,Anoka County,2010,330858
+50,2,4,27,5,Minnesota,Becker County,2010,32511
+50,2,4,27,7,Minnesota,Beltrami County,2010,44442
+50,2,4,27,9,Minnesota,Benton County,2010,38451
+50,2,4,27,11,Minnesota,Big Stone County,2010,5268
+50,2,4,27,13,Minnesota,Blue Earth County,2010,64013
+50,2,4,27,15,Minnesota,Brown County,2010,25893
+50,2,4,27,17,Minnesota,Carlton County,2010,35384
+50,2,4,27,19,Minnesota,Carver County,2010,91014
+50,2,4,27,21,Minnesota,Cass County,2010,28567
+50,2,4,27,23,Minnesota,Chippewa County,2010,12436
+50,2,4,27,25,Minnesota,Chisago County,2010,53892
+50,2,4,27,27,Minnesota,Clay County,2010,58994
+50,2,4,27,29,Minnesota,Clearwater County,2010,8695
+50,2,4,27,31,Minnesota,Cook County,2010,5176
+50,2,4,27,33,Minnesota,Cottonwood County,2010,11687
+50,2,4,27,35,Minnesota,Crow Wing County,2010,62512
+50,2,4,27,37,Minnesota,Dakota County,2010,398582
+50,2,4,27,39,Minnesota,Dodge County,2010,20087
+50,2,4,27,41,Minnesota,Douglas County,2010,36011
+50,2,4,27,43,Minnesota,Faribault County,2010,14553
+50,2,4,27,45,Minnesota,Fillmore County,2010,20870
+50,2,4,27,47,Minnesota,Freeborn County,2010,31254
+50,2,4,27,49,Minnesota,Goodhue County,2010,46194
+50,2,4,27,51,Minnesota,Grant County,2010,6018
+50,2,4,27,53,Minnesota,Hennepin County,2010,1152487
+50,2,4,27,55,Minnesota,Houston County,2010,19020
+50,2,4,27,57,Minnesota,Hubbard County,2010,20428
+50,2,4,27,59,Minnesota,Isanti County,2010,37811
+50,2,4,27,61,Minnesota,Itasca County,2010,45055
+50,2,4,27,63,Minnesota,Jackson County,2010,10266
+50,2,4,27,65,Minnesota,Kanabec County,2010,16244
+50,2,4,27,67,Minnesota,Kandiyohi County,2010,42237
+50,2,4,27,69,Minnesota,Kittson County,2010,4552
+50,2,4,27,71,Minnesota,Koochiching County,2010,13319
+50,2,4,27,73,Minnesota,Lac qui Parle County,2010,7258
+50,2,4,27,75,Minnesota,Lake County,2010,10862
+50,2,4,27,77,Minnesota,Lake of the Woods County,2010,4045
+50,2,4,27,79,Minnesota,Le Sueur County,2010,27701
+50,2,4,27,81,Minnesota,Lincoln County,2010,5895
+50,2,4,27,83,Minnesota,Lyon County,2010,25858
+50,2,4,27,85,Minnesota,McLeod County,2010,36645
+50,2,4,27,87,Minnesota,Mahnomen County,2010,5413
+50,2,4,27,89,Minnesota,Marshall County,2010,9437
+50,2,4,27,91,Minnesota,Martin County,2010,20843
+50,2,4,27,93,Minnesota,Meeker County,2010,23302
+50,2,4,27,95,Minnesota,Mille Lacs County,2010,26094
+50,2,4,27,97,Minnesota,Morrison County,2010,33198
+50,2,4,27,99,Minnesota,Mower County,2010,39165
+50,2,4,27,101,Minnesota,Murray County,2010,8725
+50,2,4,27,103,Minnesota,Nicollet County,2010,32729
+50,2,4,27,105,Minnesota,Nobles County,2010,21378
+50,2,4,27,107,Minnesota,Norman County,2010,6845
+50,2,4,27,109,Minnesota,Olmsted County,2010,144268
+50,2,4,27,111,Minnesota,Otter Tail County,2010,57301
+50,2,4,27,113,Minnesota,Pennington County,2010,13932
+50,2,4,27,115,Minnesota,Pine County,2010,29747
+50,2,4,27,117,Minnesota,Pipestone County,2010,9597
+50,2,4,27,119,Minnesota,Polk County,2010,31600
+50,2,4,27,121,Minnesota,Pope County,2010,10990
+50,2,4,27,123,Minnesota,Ramsey County,2010,508611
+50,2,4,27,125,Minnesota,Red Lake County,2010,4089
+50,2,4,27,127,Minnesota,Redwood County,2010,16058
+50,2,4,27,129,Minnesota,Renville County,2010,15728
+50,2,4,27,131,Minnesota,Rice County,2010,64133
+50,2,4,27,133,Minnesota,Rock County,2010,9686
+50,2,4,27,135,Minnesota,Roseau County,2010,15629
+50,2,4,27,137,Minnesota,St. Louis County,2010,200229
+50,2,4,27,139,Minnesota,Scott County,2010,129916
+50,2,4,27,141,Minnesota,Sherburne County,2010,88492
+50,2,4,27,143,Minnesota,Sibley County,2010,15234
+50,2,4,27,145,Minnesota,Stearns County,2010,150646
+50,2,4,27,147,Minnesota,Steele County,2010,36581
+50,2,4,27,149,Minnesota,Stevens County,2010,9722
+50,2,4,27,151,Minnesota,Swift County,2010,9786
+50,2,4,27,153,Minnesota,Todd County,2010,24889
+50,2,4,27,155,Minnesota,Traverse County,2010,3558
+50,2,4,27,157,Minnesota,Wabasha County,2010,21665
+50,2,4,27,159,Minnesota,Wadena County,2010,13843
+50,2,4,27,161,Minnesota,Waseca County,2010,19138
+50,2,4,27,163,Minnesota,Washington County,2010,238109
+50,2,4,27,165,Minnesota,Watonwan County,2010,11211
+50,2,4,27,167,Minnesota,Wilkin County,2010,6576
+50,2,4,27,169,Minnesota,Winona County,2010,51461
+50,2,4,27,171,Minnesota,Wright County,2010,124695
+50,2,4,27,173,Minnesota,Yellow Medicine County,2010,10445
+40,3,6,28,0,Mississippi,Mississippi,2010,2968129
+50,3,6,28,1,Mississippi,Adams County,2010,32304
+50,3,6,28,3,Mississippi,Alcorn County,2010,37062
+50,3,6,28,5,Mississippi,Amite County,2010,13135
+50,3,6,28,7,Mississippi,Attala County,2010,19562
+50,3,6,28,9,Mississippi,Benton County,2010,8730
+50,3,6,28,11,Mississippi,Bolivar County,2010,34151
+50,3,6,28,13,Mississippi,Calhoun County,2010,14957
+50,3,6,28,15,Mississippi,Carroll County,2010,10601
+50,3,6,28,17,Mississippi,Chickasaw County,2010,17389
+50,3,6,28,19,Mississippi,Choctaw County,2010,8552
+50,3,6,28,21,Mississippi,Claiborne County,2010,9595
+50,3,6,28,23,Mississippi,Clarke County,2010,16724
+50,3,6,28,25,Mississippi,Clay County,2010,20658
+50,3,6,28,27,Mississippi,Coahoma County,2010,26151
+50,3,6,28,29,Mississippi,Copiah County,2010,29451
+50,3,6,28,31,Mississippi,Covington County,2010,19573
+50,3,6,28,33,Mississippi,DeSoto County,2010,161267
+50,3,6,28,35,Mississippi,Forrest County,2010,74859
+50,3,6,28,37,Mississippi,Franklin County,2010,8114
+50,3,6,28,39,Mississippi,George County,2010,22582
+50,3,6,28,41,Mississippi,Greene County,2010,14387
+50,3,6,28,43,Mississippi,Grenada County,2010,21903
+50,3,6,28,45,Mississippi,Hancock County,2010,44037
+50,3,6,28,47,Mississippi,Harrison County,2010,187109
+50,3,6,28,49,Mississippi,Hinds County,2010,245360
+50,3,6,28,51,Mississippi,Holmes County,2010,19483
+50,3,6,28,53,Mississippi,Humphreys County,2010,9373
+50,3,6,28,55,Mississippi,Issaquena County,2010,1399
+50,3,6,28,57,Mississippi,Itawamba County,2010,23399
+50,3,6,28,59,Mississippi,Jackson County,2010,139669
+50,3,6,28,61,Mississippi,Jasper County,2010,17067
+50,3,6,28,63,Mississippi,Jefferson County,2010,7734
+50,3,6,28,65,Mississippi,Jefferson Davis County,2010,12475
+50,3,6,28,67,Mississippi,Jones County,2010,67778
+50,3,6,28,69,Mississippi,Kemper County,2010,10438
+50,3,6,28,71,Mississippi,Lafayette County,2010,47361
+50,3,6,28,73,Mississippi,Lamar County,2010,55732
+50,3,6,28,75,Mississippi,Lauderdale County,2010,80280
+50,3,6,28,77,Mississippi,Lawrence County,2010,12951
+50,3,6,28,79,Mississippi,Leake County,2010,23795
+50,3,6,28,81,Mississippi,Lee County,2010,82906
+50,3,6,28,83,Mississippi,Leflore County,2010,32382
+50,3,6,28,85,Mississippi,Lincoln County,2010,34867
+50,3,6,28,87,Mississippi,Lowndes County,2010,59779
+50,3,6,28,89,Mississippi,Madison County,2010,95208
+50,3,6,28,91,Mississippi,Marion County,2010,27075
+50,3,6,28,93,Mississippi,Marshall County,2010,37159
+50,3,6,28,95,Mississippi,Monroe County,2010,36971
+50,3,6,28,97,Mississippi,Montgomery County,2010,10929
+50,3,6,28,99,Mississippi,Neshoba County,2010,29694
+50,3,6,28,101,Mississippi,Newton County,2010,21717
+50,3,6,28,103,Mississippi,Noxubee County,2010,11546
+50,3,6,28,105,Mississippi,Oktibbeha County,2010,47657
+50,3,6,28,107,Mississippi,Panola County,2010,34701
+50,3,6,28,109,Mississippi,Pearl River County,2010,55726
+50,3,6,28,111,Mississippi,Perry County,2010,12252
+50,3,6,28,113,Mississippi,Pike County,2010,40402
+50,3,6,28,115,Mississippi,Pontotoc County,2010,29954
+50,3,6,28,117,Mississippi,Prentiss County,2010,25281
+50,3,6,28,119,Mississippi,Quitman County,2010,8216
+50,3,6,28,121,Mississippi,Rankin County,2010,142049
+50,3,6,28,123,Mississippi,Scott County,2010,28267
+50,3,6,28,125,Mississippi,Sharkey County,2010,4916
+50,3,6,28,127,Mississippi,Simpson County,2010,27500
+50,3,6,28,129,Mississippi,Smith County,2010,16484
+50,3,6,28,131,Mississippi,Stone County,2010,17790
+50,3,6,28,133,Mississippi,Sunflower County,2010,29383
+50,3,6,28,135,Mississippi,Tallahatchie County,2010,15385
+50,3,6,28,137,Mississippi,Tate County,2010,28863
+50,3,6,28,139,Mississippi,Tippah County,2010,22232
+50,3,6,28,141,Mississippi,Tishomingo County,2010,19598
+50,3,6,28,143,Mississippi,Tunica County,2010,10778
+50,3,6,28,145,Mississippi,Union County,2010,27131
+50,3,6,28,147,Mississippi,Walthall County,2010,15440
+50,3,6,28,149,Mississippi,Warren County,2010,48770
+50,3,6,28,151,Mississippi,Washington County,2010,51135
+50,3,6,28,153,Mississippi,Wayne County,2010,20754
+50,3,6,28,155,Mississippi,Webster County,2010,10263
+50,3,6,28,157,Mississippi,Wilkinson County,2010,9878
+50,3,6,28,159,Mississippi,Winston County,2010,19201
+50,3,6,28,161,Mississippi,Yalobusha County,2010,12678
+50,3,6,28,163,Mississippi,Yazoo County,2010,28065
+40,2,4,29,0,Missouri,Missouri,2010,5988941
+50,2,4,29,1,Missouri,Adair County,2010,25617
+50,2,4,29,3,Missouri,Andrew County,2010,17296
+50,2,4,29,5,Missouri,Atchison County,2010,5683
+50,2,4,29,7,Missouri,Audrain County,2010,25531
+50,2,4,29,9,Missouri,Barry County,2010,35601
+50,2,4,29,11,Missouri,Barton County,2010,12396
+50,2,4,29,13,Missouri,Bates County,2010,17047
+50,2,4,29,15,Missouri,Benton County,2010,19070
+50,2,4,29,17,Missouri,Bollinger County,2010,12365
+50,2,4,29,19,Missouri,Boone County,2010,162652
+50,2,4,29,21,Missouri,Buchanan County,2010,89191
+50,2,4,29,23,Missouri,Butler County,2010,42792
+50,2,4,29,25,Missouri,Caldwell County,2010,9418
+50,2,4,29,27,Missouri,Callaway County,2010,44331
+50,2,4,29,29,Missouri,Camden County,2010,44033
+50,2,4,29,31,Missouri,Cape Girardeau County,2010,75676
+50,2,4,29,33,Missouri,Carroll County,2010,9294
+50,2,4,29,35,Missouri,Carter County,2010,6265
+50,2,4,29,37,Missouri,Cass County,2010,99500
+50,2,4,29,39,Missouri,Cedar County,2010,13982
+50,2,4,29,41,Missouri,Chariton County,2010,7816
+50,2,4,29,43,Missouri,Christian County,2010,77414
+50,2,4,29,45,Missouri,Clark County,2010,7132
+50,2,4,29,47,Missouri,Clay County,2010,221905
+50,2,4,29,49,Missouri,Clinton County,2010,20742
+50,2,4,29,51,Missouri,Cole County,2010,75970
+50,2,4,29,53,Missouri,Cooper County,2010,17602
+50,2,4,29,55,Missouri,Crawford County,2010,24720
+50,2,4,29,57,Missouri,Dade County,2010,7879
+50,2,4,29,59,Missouri,Dallas County,2010,16769
+50,2,4,29,61,Missouri,Daviess County,2010,8424
+50,2,4,29,63,Missouri,DeKalb County,2010,12888
+50,2,4,29,65,Missouri,Dent County,2010,15692
+50,2,4,29,67,Missouri,Douglas County,2010,13686
+50,2,4,29,69,Missouri,Dunklin County,2010,31959
+50,2,4,29,71,Missouri,Franklin County,2010,101464
+50,2,4,29,73,Missouri,Gasconade County,2010,15210
+50,2,4,29,75,Missouri,Gentry County,2010,6740
+50,2,4,29,77,Missouri,Greene County,2010,275179
+50,2,4,29,79,Missouri,Grundy County,2010,10260
+50,2,4,29,81,Missouri,Harrison County,2010,8961
+50,2,4,29,83,Missouri,Henry County,2010,22291
+50,2,4,29,85,Missouri,Hickory County,2010,9629
+50,2,4,29,87,Missouri,Holt County,2010,4912
+50,2,4,29,89,Missouri,Howard County,2010,10142
+50,2,4,29,91,Missouri,Howell County,2010,40378
+50,2,4,29,93,Missouri,Iron County,2010,10615
+50,2,4,29,95,Missouri,Jackson County,2010,674164
+50,2,4,29,97,Missouri,Jasper County,2010,117395
+50,2,4,29,99,Missouri,Jefferson County,2010,218722
+50,2,4,29,101,Missouri,Johnson County,2010,52565
+50,2,4,29,103,Missouri,Knox County,2010,4131
+50,2,4,29,105,Missouri,Laclede County,2010,35594
+50,2,4,29,107,Missouri,Lafayette County,2010,33369
+50,2,4,29,109,Missouri,Lawrence County,2010,38647
+50,2,4,29,111,Missouri,Lewis County,2010,10205
+50,2,4,29,113,Missouri,Lincoln County,2010,52536
+50,2,4,29,115,Missouri,Linn County,2010,12773
+50,2,4,29,117,Missouri,Livingston County,2010,15196
+50,2,4,29,119,Missouri,McDonald County,2010,23083
+50,2,4,29,121,Missouri,Macon County,2010,15553
+50,2,4,29,123,Missouri,Madison County,2010,12217
+50,2,4,29,125,Missouri,Maries County,2010,9150
+50,2,4,29,127,Missouri,Marion County,2010,28778
+50,2,4,29,129,Missouri,Mercer County,2010,3785
+50,2,4,29,131,Missouri,Miller County,2010,24733
+50,2,4,29,133,Missouri,Mississippi County,2010,14377
+50,2,4,29,135,Missouri,Moniteau County,2010,15610
+50,2,4,29,137,Missouri,Monroe County,2010,8844
+50,2,4,29,139,Missouri,Montgomery County,2010,12226
+50,2,4,29,141,Missouri,Morgan County,2010,20567
+50,2,4,29,143,Missouri,New Madrid County,2010,18932
+50,2,4,29,145,Missouri,Newton County,2010,58114
+50,2,4,29,147,Missouri,Nodaway County,2010,23373
+50,2,4,29,149,Missouri,Oregon County,2010,10881
+50,2,4,29,151,Missouri,Osage County,2010,13911
+50,2,4,29,153,Missouri,Ozark County,2010,9728
+50,2,4,29,155,Missouri,Pemiscot County,2010,18285
+50,2,4,29,157,Missouri,Perry County,2010,18964
+50,2,4,29,159,Missouri,Pettis County,2010,42201
+50,2,4,29,161,Missouri,Phelps County,2010,45125
+50,2,4,29,163,Missouri,Pike County,2010,18511
+50,2,4,29,165,Missouri,Platte County,2010,89331
+50,2,4,29,167,Missouri,Polk County,2010,31130
+50,2,4,29,169,Missouri,Pulaski County,2010,52282
+50,2,4,29,171,Missouri,Putnam County,2010,4979
+50,2,4,29,173,Missouri,Ralls County,2010,10178
+50,2,4,29,175,Missouri,Randolph County,2010,25415
+50,2,4,29,177,Missouri,Ray County,2010,23516
+50,2,4,29,179,Missouri,Reynolds County,2010,6690
+50,2,4,29,181,Missouri,Ripley County,2010,14106
+50,2,4,29,183,Missouri,St. Charles County,2010,360488
+50,2,4,29,185,Missouri,St. Clair County,2010,9805
+50,2,4,29,186,Missouri,Ste. Genevieve County,2010,18147
+50,2,4,29,187,Missouri,St. Francois County,2010,65369
+50,2,4,29,189,Missouri,St. Louis County,2010,998961
+50,2,4,29,195,Missouri,Saline County,2010,23372
+50,2,4,29,197,Missouri,Schuyler County,2010,4431
+50,2,4,29,199,Missouri,Scotland County,2010,4854
+50,2,4,29,201,Missouri,Scott County,2010,39204
+50,2,4,29,203,Missouri,Shannon County,2010,8437
+50,2,4,29,205,Missouri,Shelby County,2010,6372
+50,2,4,29,207,Missouri,Stoddard County,2010,29968
+50,2,4,29,209,Missouri,Stone County,2010,32211
+50,2,4,29,211,Missouri,Sullivan County,2010,6714
+50,2,4,29,213,Missouri,Taney County,2010,51672
+50,2,4,29,215,Missouri,Texas County,2010,26018
+50,2,4,29,217,Missouri,Vernon County,2010,21165
+50,2,4,29,219,Missouri,Warren County,2010,32546
+50,2,4,29,221,Missouri,Washington County,2010,25200
+50,2,4,29,223,Missouri,Wayne County,2010,13535
+50,2,4,29,225,Missouri,Webster County,2010,36264
+50,2,4,29,227,Missouri,Worth County,2010,2169
+50,2,4,29,229,Missouri,Wright County,2010,18740
+50,2,4,29,510,Missouri,St. Louis city,2010,319308
+40,4,8,30,0,Montana,Montana,2010,989400
+50,4,8,30,1,Montana,Beaverhead County,2010,9246
+50,4,8,30,3,Montana,Big Horn County,2010,12863
+50,4,8,30,5,Montana,Blaine County,2010,6492
+50,4,8,30,7,Montana,Broadwater County,2010,5608
+50,4,8,30,9,Montana,Carbon County,2010,10078
+50,4,8,30,11,Montana,Carter County,2010,1160
+50,4,8,30,13,Montana,Cascade County,2010,81327
+50,4,8,30,15,Montana,Chouteau County,2010,5813
+50,4,8,30,17,Montana,Custer County,2010,11699
+50,4,8,30,19,Montana,Daniels County,2010,1751
+50,4,8,30,21,Montana,Dawson County,2010,8964
+50,4,8,30,23,Montana,Deer Lodge County,2010,9294
+50,4,8,30,25,Montana,Fallon County,2010,2890
+50,4,8,30,27,Montana,Fergus County,2010,11590
+50,4,8,30,29,Montana,Flathead County,2010,90922
+50,4,8,30,31,Montana,Gallatin County,2010,89515
+50,4,8,30,33,Montana,Garfield County,2010,1209
+50,4,8,30,35,Montana,Glacier County,2010,13399
+50,4,8,30,37,Montana,Golden Valley County,2010,884
+50,4,8,30,39,Montana,Granite County,2010,3072
+50,4,8,30,41,Montana,Hill County,2010,16093
+50,4,8,30,43,Montana,Jefferson County,2010,11403
+50,4,8,30,45,Montana,Judith Basin County,2010,2072
+50,4,8,30,47,Montana,Lake County,2010,28748
+50,4,8,30,49,Montana,Lewis and Clark County,2010,63394
+50,4,8,30,51,Montana,Liberty County,2010,2339
+50,4,8,30,53,Montana,Lincoln County,2010,19681
+50,4,8,30,55,Montana,McCone County,2010,1734
+50,4,8,30,57,Montana,Madison County,2010,7691
+50,4,8,30,59,Montana,Meagher County,2010,1891
+50,4,8,30,61,Montana,Mineral County,2010,4230
+50,4,8,30,63,Montana,Missoula County,2010,109295
+50,4,8,30,65,Montana,Musselshell County,2010,4538
+50,4,8,30,67,Montana,Park County,2010,15635
+50,4,8,30,69,Montana,Petroleum County,2010,488
+50,4,8,30,71,Montana,Phillips County,2010,4252
+50,4,8,30,73,Montana,Pondera County,2010,6155
+50,4,8,30,75,Montana,Powder River County,2010,1743
+50,4,8,30,77,Montana,Powell County,2010,7034
+50,4,8,30,79,Montana,Prairie County,2010,1179
+50,4,8,30,81,Montana,Ravalli County,2010,40210
+50,4,8,30,83,Montana,Richland County,2010,9746
+50,4,8,30,85,Montana,Roosevelt County,2010,10425
+50,4,8,30,87,Montana,Rosebud County,2010,9239
+50,4,8,30,89,Montana,Sanders County,2010,11413
+50,4,8,30,91,Montana,Sheridan County,2010,3384
+50,4,8,30,93,Montana,Silver Bow County,2010,34211
+50,4,8,30,95,Montana,Stillwater County,2010,9093
+50,4,8,30,97,Montana,Sweet Grass County,2010,3651
+50,4,8,30,99,Montana,Teton County,2010,6071
+50,4,8,30,101,Montana,Toole County,2010,5324
+50,4,8,30,103,Montana,Treasure County,2010,714
+50,4,8,30,105,Montana,Valley County,2010,7369
+50,4,8,30,107,Montana,Wheatland County,2010,2168
+50,4,8,30,109,Montana,Wibaux County,2010,1017
+50,4,8,30,111,Montana,Yellowstone County,2010,147994
+40,2,4,31,0,Nebraska,Nebraska,2010,1826311
+50,2,4,31,1,Nebraska,Adams County,2010,31367
+50,2,4,31,3,Nebraska,Antelope County,2010,6685
+50,2,4,31,5,Nebraska,Arthur County,2010,460
+50,2,4,31,7,Nebraska,Banner County,2010,694
+50,2,4,31,9,Nebraska,Blaine County,2010,478
+50,2,4,31,11,Nebraska,Boone County,2010,5505
+50,2,4,31,13,Nebraska,Box Butte County,2010,11308
+50,2,4,31,15,Nebraska,Boyd County,2010,2099
+50,2,4,31,17,Nebraska,Brown County,2010,3143
+50,2,4,31,19,Nebraska,Buffalo County,2010,46099
+50,2,4,31,21,Nebraska,Burt County,2010,6858
+50,2,4,31,23,Nebraska,Butler County,2010,8395
+50,2,4,31,25,Nebraska,Cass County,2010,25241
+50,2,4,31,27,Nebraska,Cedar County,2010,8852
+50,2,4,31,29,Nebraska,Chase County,2010,3966
+50,2,4,31,31,Nebraska,Cherry County,2010,5713
+50,2,4,31,33,Nebraska,Cheyenne County,2010,9998
+50,2,4,31,35,Nebraska,Clay County,2010,6539
+50,2,4,31,37,Nebraska,Colfax County,2010,10515
+50,2,4,31,39,Nebraska,Cuming County,2010,9139
+50,2,4,31,41,Nebraska,Custer County,2010,10939
+50,2,4,31,43,Nebraska,Dakota County,2010,21006
+50,2,4,31,45,Nebraska,Dawes County,2010,9182
+50,2,4,31,47,Nebraska,Dawson County,2010,24316
+50,2,4,31,49,Nebraska,Deuel County,2010,1932
+50,2,4,31,51,Nebraska,Dixon County,2010,6003
+50,2,4,31,53,Nebraska,Dodge County,2010,36683
+50,2,4,31,55,Nebraska,Douglas County,2010,517120
+50,2,4,31,57,Nebraska,Dundy County,2010,2008
+50,2,4,31,59,Nebraska,Fillmore County,2010,5890
+50,2,4,31,61,Nebraska,Franklin County,2010,3225
+50,2,4,31,63,Nebraska,Frontier County,2010,2756
+50,2,4,31,65,Nebraska,Furnas County,2010,4959
+50,2,4,31,67,Nebraska,Gage County,2010,22311
+50,2,4,31,69,Nebraska,Garden County,2010,2057
+50,2,4,31,71,Nebraska,Garfield County,2010,2047
+50,2,4,31,73,Nebraska,Gosper County,2010,2044
+50,2,4,31,75,Nebraska,Grant County,2010,614
+50,2,4,31,77,Nebraska,Greeley County,2010,2538
+50,2,4,31,79,Nebraska,Hall County,2010,58621
+50,2,4,31,81,Nebraska,Hamilton County,2010,9114
+50,2,4,31,83,Nebraska,Harlan County,2010,3417
+50,2,4,31,85,Nebraska,Hayes County,2010,960
+50,2,4,31,87,Nebraska,Hitchcock County,2010,2908
+50,2,4,31,89,Nebraska,Holt County,2010,10435
+50,2,4,31,91,Nebraska,Hooker County,2010,736
+50,2,4,31,93,Nebraska,Howard County,2010,6274
+50,2,4,31,95,Nebraska,Jefferson County,2010,7547
+50,2,4,31,97,Nebraska,Johnson County,2010,5217
+50,2,4,31,99,Nebraska,Kearney County,2010,6489
+50,2,4,31,101,Nebraska,Keith County,2010,8371
+50,2,4,31,103,Nebraska,Keya Paha County,2010,824
+50,2,4,31,105,Nebraska,Kimball County,2010,3821
+50,2,4,31,107,Nebraska,Knox County,2010,8701
+50,2,4,31,109,Nebraska,Lancaster County,2010,285407
+50,2,4,31,111,Nebraska,Lincoln County,2010,36288
+50,2,4,31,113,Nebraska,Logan County,2010,763
+50,2,4,31,115,Nebraska,Loup County,2010,628
+50,2,4,31,117,Nebraska,McPherson County,2010,539
+50,2,4,31,119,Nebraska,Madison County,2010,34876
+50,2,4,31,121,Nebraska,Merrick County,2010,7859
+50,2,4,31,123,Nebraska,Morrill County,2010,5042
+50,2,4,31,125,Nebraska,Nance County,2010,3735
+50,2,4,31,127,Nebraska,Nemaha County,2010,7248
+50,2,4,31,129,Nebraska,Nuckolls County,2010,4500
+50,2,4,31,131,Nebraska,Otoe County,2010,15740
+50,2,4,31,133,Nebraska,Pawnee County,2010,2773
+50,2,4,31,135,Nebraska,Perkins County,2010,2967
+50,2,4,31,137,Nebraska,Phelps County,2010,9188
+50,2,4,31,139,Nebraska,Pierce County,2010,7266
+50,2,4,31,141,Nebraska,Platte County,2010,32237
+50,2,4,31,143,Nebraska,Polk County,2010,5402
+50,2,4,31,145,Nebraska,Red Willow County,2010,11055
+50,2,4,31,147,Nebraska,Richardson County,2010,8363
+50,2,4,31,149,Nebraska,Rock County,2010,1528
+50,2,4,31,151,Nebraska,Saline County,2010,14200
+50,2,4,31,153,Nebraska,Sarpy County,2010,158837
+50,2,4,31,155,Nebraska,Saunders County,2010,20778
+50,2,4,31,157,Nebraska,Scotts Bluff County,2010,36972
+50,2,4,31,159,Nebraska,Seward County,2010,16750
+50,2,4,31,161,Nebraska,Sheridan County,2010,5469
+50,2,4,31,163,Nebraska,Sherman County,2010,3152
+50,2,4,31,165,Nebraska,Sioux County,2010,1307
+50,2,4,31,167,Nebraska,Stanton County,2010,6128
+50,2,4,31,169,Nebraska,Thayer County,2010,5228
+50,2,4,31,171,Nebraska,Thomas County,2010,647
+50,2,4,31,173,Nebraska,Thurston County,2010,6939
+50,2,4,31,175,Nebraska,Valley County,2010,4262
+50,2,4,31,177,Nebraska,Washington County,2010,20232
+50,2,4,31,179,Nebraska,Wayne County,2010,9592
+50,2,4,31,181,Nebraska,Webster County,2010,3812
+50,2,4,31,183,Nebraska,Wheeler County,2010,818
+50,2,4,31,185,Nebraska,York County,2010,13665
+40,4,8,32,0,Nevada,Nevada,2010,2700683
+50,4,8,32,1,Nevada,Churchill County,2010,24875
+50,4,8,32,3,Nevada,Clark County,2010,1951278
+50,4,8,32,5,Nevada,Douglas County,2010,47000
+50,4,8,32,7,Nevada,Elko County,2010,48942
+50,4,8,32,9,Nevada,Esmeralda County,2010,784
+50,4,8,32,11,Nevada,Eureka County,2010,1987
+50,4,8,32,13,Nevada,Humboldt County,2010,16519
+50,4,8,32,15,Nevada,Lander County,2010,5775
+50,4,8,32,17,Nevada,Lincoln County,2010,5339
+50,4,8,32,19,Nevada,Lyon County,2010,51985
+50,4,8,32,21,Nevada,Mineral County,2010,4770
+50,4,8,32,23,Nevada,Nye County,2010,43944
+50,4,8,32,27,Nevada,Pershing County,2010,6748
+50,4,8,32,29,Nevada,Storey County,2010,4013
+50,4,8,32,31,Nevada,Washoe County,2010,421429
+50,4,8,32,33,Nevada,White Pine County,2010,10026
+50,4,8,32,510,Nevada,Carson City,2010,55269
+40,1,1,33,0,New Hampshire,New Hampshire,2010,1316457
+50,1,1,33,1,New Hampshire,Belknap County,2010,60075
+50,1,1,33,3,New Hampshire,Carroll County,2010,47823
+50,1,1,33,5,New Hampshire,Cheshire County,2010,77123
+50,1,1,33,7,New Hampshire,Coos County,2010,33052
+50,1,1,33,9,New Hampshire,Grafton County,2010,89135
+50,1,1,33,11,New Hampshire,Hillsborough County,2010,400706
+50,1,1,33,13,New Hampshire,Merrimack County,2010,146452
+50,1,1,33,15,New Hampshire,Rockingham County,2010,295207
+50,1,1,33,17,New Hampshire,Strafford County,2010,123146
+50,1,1,33,19,New Hampshire,Sullivan County,2010,43738
+40,1,2,34,0,New Jersey,New Jersey,2010,8791959
+50,1,2,34,1,New Jersey,Atlantic County,2010,274532
+50,1,2,34,3,New Jersey,Bergen County,2010,905107
+50,1,2,34,5,New Jersey,Burlington County,2010,448730
+50,1,2,34,7,New Jersey,Camden County,2010,513541
+50,1,2,34,9,New Jersey,Cape May County,2010,97261
+50,1,2,34,11,New Jersey,Cumberland County,2010,156610
+50,1,2,34,13,New Jersey,Essex County,2010,783855
+50,1,2,34,15,New Jersey,Gloucester County,2010,288763
+50,1,2,34,17,New Jersey,Hudson County,2010,634281
+50,1,2,34,19,New Jersey,Hunterdon County,2010,127364
+50,1,2,34,21,New Jersey,Mercer County,2010,367485
+50,1,2,34,23,New Jersey,Middlesex County,2010,810099
+50,1,2,34,25,New Jersey,Monmouth County,2010,630347
+50,1,2,34,27,New Jersey,Morris County,2010,492281
+50,1,2,34,29,New Jersey,Ocean County,2010,576554
+50,1,2,34,31,New Jersey,Passaic County,2010,501595
+50,1,2,34,33,New Jersey,Salem County,2010,66072
+50,1,2,34,35,New Jersey,Somerset County,2010,323476
+50,1,2,34,37,New Jersey,Sussex County,2010,148941
+50,1,2,34,39,New Jersey,Union County,2010,536426
+50,1,2,34,41,New Jersey,Warren County,2010,108639
+40,4,8,35,0,New Mexico,New Mexico,2010,2059199
+50,4,8,35,1,New Mexico,Bernalillo County,2010,662469
+50,4,8,35,3,New Mexico,Catron County,2010,3727
+50,4,8,35,5,New Mexico,Chaves County,2010,65648
+50,4,8,35,6,New Mexico,Cibola County,2010,27218
+50,4,8,35,7,New Mexico,Colfax County,2010,13751
+50,4,8,35,9,New Mexico,Curry County,2010,48376
+50,4,8,35,11,New Mexico,De Baca County,2010,2024
+50,4,8,35,13,New Mexico,DoÒa Ana County,2010,209212
+50,4,8,35,15,New Mexico,Eddy County,2010,53828
+50,4,8,35,17,New Mexico,Grant County,2010,29512
+50,4,8,35,19,New Mexico,Guadalupe County,2010,4688
+50,4,8,35,21,New Mexico,Harding County,2010,695
+50,4,8,35,23,New Mexico,Hidalgo County,2010,4898
+50,4,8,35,25,New Mexico,Lea County,2010,64726
+50,4,8,35,27,New Mexico,Lincoln County,2010,20493
+50,4,8,35,28,New Mexico,Los Alamos County,2010,17950
+50,4,8,35,29,New Mexico,Luna County,2010,25095
+50,4,8,35,31,New Mexico,McKinley County,2010,71485
+50,4,8,35,33,New Mexico,Mora County,2010,4881
+50,4,8,35,35,New Mexico,Otero County,2010,63836
+50,4,8,35,37,New Mexico,Quay County,2010,9040
+50,4,8,35,39,New Mexico,Rio Arriba County,2010,40220
+50,4,8,35,41,New Mexico,Roosevelt County,2010,19840
+50,4,8,35,43,New Mexico,Sandoval County,2010,131623
+50,4,8,35,45,New Mexico,San Juan County,2010,130045
+50,4,8,35,47,New Mexico,San Miguel County,2010,29375
+50,4,8,35,49,New Mexico,Santa Fe County,2010,144237
+50,4,8,35,51,New Mexico,Sierra County,2010,11996
+50,4,8,35,53,New Mexico,Socorro County,2010,17861
+50,4,8,35,55,New Mexico,Taos County,2010,32933
+50,4,8,35,57,New Mexico,Torrance County,2010,16375
+50,4,8,35,59,New Mexico,Union County,2010,4553
+50,4,8,35,61,New Mexico,Valencia County,2010,76589
+40,1,2,36,0,New York,New York,2010,19378117
+50,1,2,36,1,New York,Albany County,2010,304199
+50,1,2,36,3,New York,Allegany County,2010,48923
+50,1,2,36,5,New York,Bronx County,2010,1384224
+50,1,2,36,7,New York,Broome County,2010,200670
+50,1,2,36,9,New York,Cattaraugus County,2010,80337
+50,1,2,36,11,New York,Cayuga County,2010,80022
+50,1,2,36,13,New York,Chautauqua County,2010,134907
+50,1,2,36,15,New York,Chemung County,2010,88846
+50,1,2,36,17,New York,Chenango County,2010,50516
+50,1,2,36,19,New York,Clinton County,2010,82131
+50,1,2,36,21,New York,Columbia County,2010,63063
+50,1,2,36,23,New York,Cortland County,2010,49287
+50,1,2,36,25,New York,Delaware County,2010,47962
+50,1,2,36,27,New York,Dutchess County,2010,297444
+50,1,2,36,29,New York,Erie County,2010,919129
+50,1,2,36,31,New York,Essex County,2010,39371
+50,1,2,36,33,New York,Franklin County,2010,51597
+50,1,2,36,35,New York,Fulton County,2010,55509
+50,1,2,36,37,New York,Genesee County,2010,59937
+50,1,2,36,39,New York,Greene County,2010,49212
+50,1,2,36,41,New York,Hamilton County,2010,4842
+50,1,2,36,43,New York,Herkimer County,2010,64469
+50,1,2,36,45,New York,Jefferson County,2010,116234
+50,1,2,36,47,New York,Kings County,2010,2504856
+50,1,2,36,49,New York,Lewis County,2010,27087
+50,1,2,36,51,New York,Livingston County,2010,65194
+50,1,2,36,53,New York,Madison County,2010,73457
+50,1,2,36,55,New York,Monroe County,2010,744396
+50,1,2,36,57,New York,Montgomery County,2010,50268
+50,1,2,36,59,New York,Nassau County,2010,1339854
+50,1,2,36,61,New York,New York County,2010,1586609
+50,1,2,36,63,New York,Niagara County,2010,216479
+50,1,2,36,65,New York,Oneida County,2010,234851
+50,1,2,36,67,New York,Onondaga County,2010,467068
+50,1,2,36,69,New York,Ontario County,2010,108106
+50,1,2,36,71,New York,Orange County,2010,372823
+50,1,2,36,73,New York,Orleans County,2010,42891
+50,1,2,36,75,New York,Oswego County,2010,122109
+50,1,2,36,77,New York,Otsego County,2010,62278
+50,1,2,36,79,New York,Putnam County,2010,99633
+50,1,2,36,81,New York,Queens County,2010,2230511
+50,1,2,36,83,New York,Rensselaer County,2010,159435
+50,1,2,36,85,New York,Richmond County,2010,468730
+50,1,2,36,87,New York,Rockland County,2010,311691
+50,1,2,36,89,New York,St. Lawrence County,2010,111941
+50,1,2,36,91,New York,Saratoga County,2010,219598
+50,1,2,36,93,New York,Schenectady County,2010,154758
+50,1,2,36,95,New York,Schoharie County,2010,32723
+50,1,2,36,97,New York,Schuyler County,2010,18369
+50,1,2,36,99,New York,Seneca County,2010,35253
+50,1,2,36,101,New York,Steuben County,2010,98946
+50,1,2,36,103,New York,Suffolk County,2010,1493116
+50,1,2,36,105,New York,Sullivan County,2010,77504
+50,1,2,36,107,New York,Tioga County,2010,51052
+50,1,2,36,109,New York,Tompkins County,2010,101581
+50,1,2,36,111,New York,Ulster County,2010,182522
+50,1,2,36,113,New York,Warren County,2010,65698
+50,1,2,36,115,New York,Washington County,2010,63254
+50,1,2,36,117,New York,Wayne County,2010,93751
+50,1,2,36,119,New York,Westchester County,2010,949376
+50,1,2,36,121,New York,Wyoming County,2010,42154
+50,1,2,36,123,New York,Yates County,2010,25364
+40,3,5,37,0,North Carolina,North Carolina,2010,9535762
+50,3,5,37,1,North Carolina,Alamance County,2010,151160
+50,3,5,37,3,North Carolina,Alexander County,2010,37182
+50,3,5,37,5,North Carolina,Alleghany County,2010,11150
+50,3,5,37,7,North Carolina,Anson County,2010,26929
+50,3,5,37,9,North Carolina,Ashe County,2010,27239
+50,3,5,37,11,North Carolina,Avery County,2010,17805
+50,3,5,37,13,North Carolina,Beaufort County,2010,47784
+50,3,5,37,15,North Carolina,Bertie County,2010,21273
+50,3,5,37,17,North Carolina,Bladen County,2010,35165
+50,3,5,37,19,North Carolina,Brunswick County,2010,107429
+50,3,5,37,21,North Carolina,Buncombe County,2010,238315
+50,3,5,37,23,North Carolina,Burke County,2010,90824
+50,3,5,37,25,North Carolina,Cabarrus County,2010,178116
+50,3,5,37,27,North Carolina,Caldwell County,2010,83059
+50,3,5,37,29,North Carolina,Camden County,2010,9980
+50,3,5,37,31,North Carolina,Carteret County,2010,66463
+50,3,5,37,33,North Carolina,Caswell County,2010,23727
+50,3,5,37,35,North Carolina,Catawba County,2010,154742
+50,3,5,37,37,North Carolina,Chatham County,2010,63486
+50,3,5,37,39,North Carolina,Cherokee County,2010,27447
+50,3,5,37,41,North Carolina,Chowan County,2010,14793
+50,3,5,37,43,North Carolina,Clay County,2010,10591
+50,3,5,37,45,North Carolina,Cleveland County,2010,98034
+50,3,5,37,47,North Carolina,Columbus County,2010,58129
+50,3,5,37,49,North Carolina,Craven County,2010,103498
+50,3,5,37,51,North Carolina,Cumberland County,2010,319455
+50,3,5,37,53,North Carolina,Currituck County,2010,23547
+50,3,5,37,55,North Carolina,Dare County,2010,33920
+50,3,5,37,57,North Carolina,Davidson County,2010,162824
+50,3,5,37,59,North Carolina,Davie County,2010,41218
+50,3,5,37,61,North Carolina,Duplin County,2010,58412
+50,3,5,37,63,North Carolina,Durham County,2010,269998
+50,3,5,37,65,North Carolina,Edgecombe County,2010,56511
+50,3,5,37,67,North Carolina,Forsyth County,2010,350635
+50,3,5,37,69,North Carolina,Franklin County,2010,60564
+50,3,5,37,71,North Carolina,Gaston County,2010,206100
+50,3,5,37,73,North Carolina,Gates County,2010,12185
+50,3,5,37,75,North Carolina,Graham County,2010,8858
+50,3,5,37,77,North Carolina,Granville County,2010,57550
+50,3,5,37,79,North Carolina,Greene County,2010,21351
+50,3,5,37,81,North Carolina,Guilford County,2010,488455
+50,3,5,37,83,North Carolina,Halifax County,2010,54631
+50,3,5,37,85,North Carolina,Harnett County,2010,114693
+50,3,5,37,87,North Carolina,Haywood County,2010,59030
+50,3,5,37,89,North Carolina,Henderson County,2010,106716
+50,3,5,37,91,North Carolina,Hertford County,2010,24684
+50,3,5,37,93,North Carolina,Hoke County,2010,46889
+50,3,5,37,95,North Carolina,Hyde County,2010,5817
+50,3,5,37,97,North Carolina,Iredell County,2010,159465
+50,3,5,37,99,North Carolina,Jackson County,2010,40273
+50,3,5,37,101,North Carolina,Johnston County,2010,168879
+50,3,5,37,103,North Carolina,Jones County,2010,10163
+50,3,5,37,105,North Carolina,Lee County,2010,57849
+50,3,5,37,107,North Carolina,Lenoir County,2010,59511
+50,3,5,37,109,North Carolina,Lincoln County,2010,78001
+50,3,5,37,111,North Carolina,McDowell County,2010,45002
+50,3,5,37,113,North Carolina,Macon County,2010,33925
+50,3,5,37,115,North Carolina,Madison County,2010,20803
+50,3,5,37,117,North Carolina,Martin County,2010,24515
+50,3,5,37,119,North Carolina,Mecklenburg County,2010,919675
+50,3,5,37,121,North Carolina,Mitchell County,2010,15581
+50,3,5,37,123,North Carolina,Montgomery County,2010,27782
+50,3,5,37,125,North Carolina,Moore County,2010,88250
+50,3,5,37,127,North Carolina,Nash County,2010,95858
+50,3,5,37,129,North Carolina,New Hanover County,2010,202683
+50,3,5,37,131,North Carolina,Northampton County,2010,22104
+50,3,5,37,133,North Carolina,Onslow County,2010,177801
+50,3,5,37,135,North Carolina,Orange County,2010,133692
+50,3,5,37,137,North Carolina,Pamlico County,2010,13143
+50,3,5,37,139,North Carolina,Pasquotank County,2010,40661
+50,3,5,37,141,North Carolina,Pender County,2010,52195
+50,3,5,37,143,North Carolina,Perquimans County,2010,13452
+50,3,5,37,145,North Carolina,Person County,2010,39479
+50,3,5,37,147,North Carolina,Pitt County,2010,168173
+50,3,5,37,149,North Carolina,Polk County,2010,20514
+50,3,5,37,151,North Carolina,Randolph County,2010,141825
+50,3,5,37,153,North Carolina,Richmond County,2010,46647
+50,3,5,37,155,North Carolina,Robeson County,2010,134205
+50,3,5,37,157,North Carolina,Rockingham County,2010,93663
+50,3,5,37,159,North Carolina,Rowan County,2010,138493
+50,3,5,37,161,North Carolina,Rutherford County,2010,67819
+50,3,5,37,163,North Carolina,Sampson County,2010,63471
+50,3,5,37,165,North Carolina,Scotland County,2010,36160
+50,3,5,37,167,North Carolina,Stanly County,2010,60585
+50,3,5,37,169,North Carolina,Stokes County,2010,47400
+50,3,5,37,171,North Carolina,Surry County,2010,73752
+50,3,5,37,173,North Carolina,Swain County,2010,13978
+50,3,5,37,175,North Carolina,Transylvania County,2010,33089
+50,3,5,37,177,North Carolina,Tyrrell County,2010,4407
+50,3,5,37,179,North Carolina,Union County,2010,201328
+50,3,5,37,181,North Carolina,Vance County,2010,45412
+50,3,5,37,183,North Carolina,Wake County,2010,901036
+50,3,5,37,185,North Carolina,Warren County,2010,21016
+50,3,5,37,187,North Carolina,Washington County,2010,13193
+50,3,5,37,189,North Carolina,Watauga County,2010,51061
+50,3,5,37,191,North Carolina,Wayne County,2010,122665
+50,3,5,37,193,North Carolina,Wilkes County,2010,69311
+50,3,5,37,195,North Carolina,Wilson County,2010,81225
+50,3,5,37,197,North Carolina,Yadkin County,2010,38412
+50,3,5,37,199,North Carolina,Yancey County,2010,17817
+40,2,4,38,0,North Dakota,North Dakota,2010,672575
+50,2,4,38,1,North Dakota,Adams County,2010,2343
+50,2,4,38,3,North Dakota,Barnes County,2010,11064
+50,2,4,38,5,North Dakota,Benson County,2010,6660
+50,2,4,38,7,North Dakota,Billings County,2010,784
+50,2,4,38,9,North Dakota,Bottineau County,2010,6429
+50,2,4,38,11,North Dakota,Bowman County,2010,3151
+50,2,4,38,13,North Dakota,Burke County,2010,1968
+50,2,4,38,15,North Dakota,Burleigh County,2010,81308
+50,2,4,38,17,North Dakota,Cass County,2010,149778
+50,2,4,38,19,North Dakota,Cavalier County,2010,3994
+50,2,4,38,21,North Dakota,Dickey County,2010,5287
+50,2,4,38,23,North Dakota,Divide County,2010,2071
+50,2,4,38,25,North Dakota,Dunn County,2010,3536
+50,2,4,38,27,North Dakota,Eddy County,2010,2385
+50,2,4,38,29,North Dakota,Emmons County,2010,3545
+50,2,4,38,31,North Dakota,Foster County,2010,3337
+50,2,4,38,33,North Dakota,Golden Valley County,2010,1680
+50,2,4,38,35,North Dakota,Grand Forks County,2010,66864
+50,2,4,38,37,North Dakota,Grant County,2010,2394
+50,2,4,38,39,North Dakota,Griggs County,2010,2421
+50,2,4,38,41,North Dakota,Hettinger County,2010,2478
+50,2,4,38,43,North Dakota,Kidder County,2010,2435
+50,2,4,38,45,North Dakota,LaMoure County,2010,4141
+50,2,4,38,47,North Dakota,Logan County,2010,1988
+50,2,4,38,49,North Dakota,McHenry County,2010,5392
+50,2,4,38,51,North Dakota,McIntosh County,2010,2813
+50,2,4,38,53,North Dakota,McKenzie County,2010,6359
+50,2,4,38,55,North Dakota,McLean County,2010,8962
+50,2,4,38,57,North Dakota,Mercer County,2010,8424
+50,2,4,38,59,North Dakota,Morton County,2010,27469
+50,2,4,38,61,North Dakota,Mountrail County,2010,7663
+50,2,4,38,63,North Dakota,Nelson County,2010,3126
+50,2,4,38,65,North Dakota,Oliver County,2010,1848
+50,2,4,38,67,North Dakota,Pembina County,2010,7403
+50,2,4,38,69,North Dakota,Pierce County,2010,4359
+50,2,4,38,71,North Dakota,Ramsey County,2010,11451
+50,2,4,38,73,North Dakota,Ransom County,2010,5457
+50,2,4,38,75,North Dakota,Renville County,2010,2470
+50,2,4,38,77,North Dakota,Richland County,2010,16321
+50,2,4,38,79,North Dakota,Rolette County,2010,13939
+50,2,4,38,81,North Dakota,Sargent County,2010,3829
+50,2,4,38,83,North Dakota,Sheridan County,2010,1321
+50,2,4,38,85,North Dakota,Sioux County,2010,4154
+50,2,4,38,87,North Dakota,Slope County,2010,727
+50,2,4,38,89,North Dakota,Stark County,2010,24198
+50,2,4,38,91,North Dakota,Steele County,2010,1975
+50,2,4,38,93,North Dakota,Stutsman County,2010,21100
+50,2,4,38,95,North Dakota,Towner County,2010,2246
+50,2,4,38,97,North Dakota,Traill County,2010,8121
+50,2,4,38,99,North Dakota,Walsh County,2010,11126
+50,2,4,38,101,North Dakota,Ward County,2010,61675
+50,2,4,38,103,North Dakota,Wells County,2010,4207
+50,2,4,38,105,North Dakota,Williams County,2010,22399
+40,2,3,39,0,Ohio,Ohio,2010,11536763
+50,2,3,39,1,Ohio,Adams County,2010,28532
+50,2,3,39,3,Ohio,Allen County,2010,106295
+50,2,3,39,5,Ohio,Ashland County,2010,53136
+50,2,3,39,7,Ohio,Ashtabula County,2010,101497
+50,2,3,39,9,Ohio,Athens County,2010,64763
+50,2,3,39,11,Ohio,Auglaize County,2010,45933
+50,2,3,39,13,Ohio,Belmont County,2010,70402
+50,2,3,39,15,Ohio,Brown County,2010,44831
+50,2,3,39,17,Ohio,Butler County,2010,368138
+50,2,3,39,19,Ohio,Carroll County,2010,28847
+50,2,3,39,21,Ohio,Champaign County,2010,40101
+50,2,3,39,23,Ohio,Clark County,2010,138339
+50,2,3,39,25,Ohio,Clermont County,2010,197370
+50,2,3,39,27,Ohio,Clinton County,2010,42046
+50,2,3,39,29,Ohio,Columbiana County,2010,107850
+50,2,3,39,31,Ohio,Coshocton County,2010,36900
+50,2,3,39,33,Ohio,Crawford County,2010,43783
+50,2,3,39,35,Ohio,Cuyahoga County,2010,1280119
+50,2,3,39,37,Ohio,Darke County,2010,52968
+50,2,3,39,39,Ohio,Defiance County,2010,39026
+50,2,3,39,41,Ohio,Delaware County,2010,174169
+50,2,3,39,43,Ohio,Erie County,2010,77063
+50,2,3,39,45,Ohio,Fairfield County,2010,146180
+50,2,3,39,47,Ohio,Fayette County,2010,29034
+50,2,3,39,49,Ohio,Franklin County,2010,1163473
+50,2,3,39,51,Ohio,Fulton County,2010,42698
+50,2,3,39,53,Ohio,Gallia County,2010,30937
+50,2,3,39,55,Ohio,Geauga County,2010,93397
+50,2,3,39,57,Ohio,Greene County,2010,161578
+50,2,3,39,59,Ohio,Guernsey County,2010,40092
+50,2,3,39,61,Ohio,Hamilton County,2010,802371
+50,2,3,39,63,Ohio,Hancock County,2010,74790
+50,2,3,39,65,Ohio,Hardin County,2010,32063
+50,2,3,39,67,Ohio,Harrison County,2010,15852
+50,2,3,39,69,Ohio,Henry County,2010,28215
+50,2,3,39,71,Ohio,Highland County,2010,43605
+50,2,3,39,73,Ohio,Hocking County,2010,29373
+50,2,3,39,75,Ohio,Holmes County,2010,42364
+50,2,3,39,77,Ohio,Huron County,2010,59625
+50,2,3,39,79,Ohio,Jackson County,2010,33219
+50,2,3,39,81,Ohio,Jefferson County,2010,69718
+50,2,3,39,83,Ohio,Knox County,2010,60926
+50,2,3,39,85,Ohio,Lake County,2010,230051
+50,2,3,39,87,Ohio,Lawrence County,2010,62451
+50,2,3,39,89,Ohio,Licking County,2010,166504
+50,2,3,39,91,Ohio,Logan County,2010,45848
+50,2,3,39,93,Ohio,Lorain County,2010,301374
+50,2,3,39,95,Ohio,Lucas County,2010,441813
+50,2,3,39,97,Ohio,Madison County,2010,43438
+50,2,3,39,99,Ohio,Mahoning County,2010,238788
+50,2,3,39,101,Ohio,Marion County,2010,66505
+50,2,3,39,103,Ohio,Medina County,2010,172329
+50,2,3,39,105,Ohio,Meigs County,2010,23767
+50,2,3,39,107,Ohio,Mercer County,2010,40818
+50,2,3,39,109,Ohio,Miami County,2010,102503
+50,2,3,39,111,Ohio,Monroe County,2010,14631
+50,2,3,39,113,Ohio,Montgomery County,2010,535199
+50,2,3,39,115,Ohio,Morgan County,2010,15043
+50,2,3,39,117,Ohio,Morrow County,2010,34825
+50,2,3,39,119,Ohio,Muskingum County,2010,86086
+50,2,3,39,121,Ohio,Noble County,2010,14655
+50,2,3,39,123,Ohio,Ottawa County,2010,41433
+50,2,3,39,125,Ohio,Paulding County,2010,19610
+50,2,3,39,127,Ohio,Perry County,2010,36036
+50,2,3,39,129,Ohio,Pickaway County,2010,55680
+50,2,3,39,131,Ohio,Pike County,2010,28568
+50,2,3,39,133,Ohio,Portage County,2010,161430
+50,2,3,39,135,Ohio,Preble County,2010,42254
+50,2,3,39,137,Ohio,Putnam County,2010,34496
+50,2,3,39,139,Ohio,Richland County,2010,124472
+50,2,3,39,141,Ohio,Ross County,2010,78079
+50,2,3,39,143,Ohio,Sandusky County,2010,60946
+50,2,3,39,145,Ohio,Scioto County,2010,79659
+50,2,3,39,147,Ohio,Seneca County,2010,56743
+50,2,3,39,149,Ohio,Shelby County,2010,49455
+50,2,3,39,151,Ohio,Stark County,2010,375561
+50,2,3,39,153,Ohio,Summit County,2010,541785
+50,2,3,39,155,Ohio,Trumbull County,2010,210331
+50,2,3,39,157,Ohio,Tuscarawas County,2010,92585
+50,2,3,39,159,Ohio,Union County,2010,52334
+50,2,3,39,161,Ohio,Van Wert County,2010,28759
+50,2,3,39,163,Ohio,Vinton County,2010,13430
+50,2,3,39,165,Ohio,Warren County,2010,212795
+50,2,3,39,167,Ohio,Washington County,2010,61787
+50,2,3,39,169,Ohio,Wayne County,2010,114531
+50,2,3,39,171,Ohio,Williams County,2010,37652
+50,2,3,39,173,Ohio,Wood County,2010,125490
+50,2,3,39,175,Ohio,Wyandot County,2010,22616
+40,3,7,40,0,Oklahoma,Oklahoma,2010,3751582
+50,3,7,40,1,Oklahoma,Adair County,2010,22671
+50,3,7,40,3,Oklahoma,Alfalfa County,2010,5639
+50,3,7,40,5,Oklahoma,Atoka County,2010,14165
+50,3,7,40,7,Oklahoma,Beaver County,2010,5636
+50,3,7,40,9,Oklahoma,Beckham County,2010,22119
+50,3,7,40,11,Oklahoma,Blaine County,2010,11943
+50,3,7,40,13,Oklahoma,Bryan County,2010,42416
+50,3,7,40,15,Oklahoma,Caddo County,2010,29605
+50,3,7,40,17,Oklahoma,Canadian County,2010,115566
+50,3,7,40,19,Oklahoma,Carter County,2010,47729
+50,3,7,40,21,Oklahoma,Cherokee County,2010,46992
+50,3,7,40,23,Oklahoma,Choctaw County,2010,15199
+50,3,7,40,25,Oklahoma,Cimarron County,2010,2475
+50,3,7,40,27,Oklahoma,Cleveland County,2010,255991
+50,3,7,40,29,Oklahoma,Coal County,2010,5927
+50,3,7,40,31,Oklahoma,Comanche County,2010,124093
+50,3,7,40,33,Oklahoma,Cotton County,2010,6186
+50,3,7,40,35,Oklahoma,Craig County,2010,15023
+50,3,7,40,37,Oklahoma,Creek County,2010,69985
+50,3,7,40,39,Oklahoma,Custer County,2010,27542
+50,3,7,40,41,Oklahoma,Delaware County,2010,41500
+50,3,7,40,43,Oklahoma,Dewey County,2010,4810
+50,3,7,40,45,Oklahoma,Ellis County,2010,4151
+50,3,7,40,47,Oklahoma,Garfield County,2010,60582
+50,3,7,40,49,Oklahoma,Garvin County,2010,27571
+50,3,7,40,51,Oklahoma,Grady County,2010,52423
+50,3,7,40,53,Oklahoma,Grant County,2010,4532
+50,3,7,40,55,Oklahoma,Greer County,2010,6239
+50,3,7,40,57,Oklahoma,Harmon County,2010,2922
+50,3,7,40,59,Oklahoma,Harper County,2010,3682
+50,3,7,40,61,Oklahoma,Haskell County,2010,12775
+50,3,7,40,63,Oklahoma,Hughes County,2010,13999
+50,3,7,40,65,Oklahoma,Jackson County,2010,26446
+50,3,7,40,67,Oklahoma,Jefferson County,2010,6472
+50,3,7,40,69,Oklahoma,Johnston County,2010,10957
+50,3,7,40,71,Oklahoma,Kay County,2010,46562
+50,3,7,40,73,Oklahoma,Kingfisher County,2010,15036
+50,3,7,40,75,Oklahoma,Kiowa County,2010,9446
+50,3,7,40,77,Oklahoma,Latimer County,2010,11156
+50,3,7,40,79,Oklahoma,Le Flore County,2010,50382
+50,3,7,40,81,Oklahoma,Lincoln County,2010,34274
+50,3,7,40,83,Oklahoma,Logan County,2010,41843
+50,3,7,40,85,Oklahoma,Love County,2010,9416
+50,3,7,40,87,Oklahoma,McClain County,2010,34507
+50,3,7,40,89,Oklahoma,McCurtain County,2010,33152
+50,3,7,40,91,Oklahoma,McIntosh County,2010,20245
+50,3,7,40,93,Oklahoma,Major County,2010,7526
+50,3,7,40,95,Oklahoma,Marshall County,2010,15838
+50,3,7,40,97,Oklahoma,Mayes County,2010,41268
+50,3,7,40,99,Oklahoma,Murray County,2010,13488
+50,3,7,40,101,Oklahoma,Muskogee County,2010,70991
+50,3,7,40,103,Oklahoma,Noble County,2010,11566
+50,3,7,40,105,Oklahoma,Nowata County,2010,10536
+50,3,7,40,107,Oklahoma,Okfuskee County,2010,12191
+50,3,7,40,109,Oklahoma,Oklahoma County,2010,718385
+50,3,7,40,111,Oklahoma,Okmulgee County,2010,40061
+50,3,7,40,113,Oklahoma,Osage County,2010,47461
+50,3,7,40,115,Oklahoma,Ottawa County,2010,31848
+50,3,7,40,117,Oklahoma,Pawnee County,2010,16569
+50,3,7,40,119,Oklahoma,Payne County,2010,77347
+50,3,7,40,121,Oklahoma,Pittsburg County,2010,45827
+50,3,7,40,123,Oklahoma,Pontotoc County,2010,37488
+50,3,7,40,125,Oklahoma,Pottawatomie County,2010,69447
+50,3,7,40,127,Oklahoma,Pushmataha County,2010,11577
+50,3,7,40,129,Oklahoma,Roger Mills County,2010,3647
+50,3,7,40,131,Oklahoma,Rogers County,2010,86910
+50,3,7,40,133,Oklahoma,Seminole County,2010,25483
+50,3,7,40,135,Oklahoma,Sequoyah County,2010,42430
+50,3,7,40,137,Oklahoma,Stephens County,2010,45051
+50,3,7,40,139,Oklahoma,Texas County,2010,20640
+50,3,7,40,141,Oklahoma,Tillman County,2010,7991
+50,3,7,40,143,Oklahoma,Tulsa County,2010,603451
+50,3,7,40,145,Oklahoma,Wagoner County,2010,73084
+50,3,7,40,147,Oklahoma,Washington County,2010,50979
+50,3,7,40,149,Oklahoma,Washita County,2010,11558
+50,3,7,40,151,Oklahoma,Woods County,2010,8878
+50,3,7,40,153,Oklahoma,Woodward County,2010,20084
+40,4,9,41,0,Oregon,Oregon,2010,3831083
+50,4,9,41,1,Oregon,Baker County,2010,16138
+50,4,9,41,3,Oregon,Benton County,2010,85581
+50,4,9,41,5,Oregon,Clackamas County,2010,375991
+50,4,9,41,7,Oregon,Clatsop County,2010,37034
+50,4,9,41,9,Oregon,Columbia County,2010,49350
+50,4,9,41,11,Oregon,Coos County,2010,63055
+50,4,9,41,13,Oregon,Crook County,2010,20978
+50,4,9,41,15,Oregon,Curry County,2010,22364
+50,4,9,41,17,Oregon,Deschutes County,2010,157728
+50,4,9,41,19,Oregon,Douglas County,2010,107684
+50,4,9,41,21,Oregon,Gilliam County,2010,1871
+50,4,9,41,23,Oregon,Grant County,2010,7444
+50,4,9,41,25,Oregon,Harney County,2010,7422
+50,4,9,41,27,Oregon,Hood River County,2010,22346
+50,4,9,41,29,Oregon,Jackson County,2010,203206
+50,4,9,41,31,Oregon,Jefferson County,2010,21725
+50,4,9,41,33,Oregon,Josephine County,2010,82718
+50,4,9,41,35,Oregon,Klamath County,2010,66383
+50,4,9,41,37,Oregon,Lake County,2010,7885
+50,4,9,41,39,Oregon,Lane County,2010,351705
+50,4,9,41,41,Oregon,Lincoln County,2010,46033
+50,4,9,41,43,Oregon,Linn County,2010,116681
+50,4,9,41,45,Oregon,Malheur County,2010,31316
+50,4,9,41,47,Oregon,Marion County,2010,315342
+50,4,9,41,49,Oregon,Morrow County,2010,11175
+50,4,9,41,51,Oregon,Multnomah County,2010,735152
+50,4,9,41,53,Oregon,Polk County,2010,75403
+50,4,9,41,55,Oregon,Sherman County,2010,1766
+50,4,9,41,57,Oregon,Tillamook County,2010,25244
+50,4,9,41,59,Oregon,Umatilla County,2010,75887
+50,4,9,41,61,Oregon,Union County,2010,25737
+50,4,9,41,63,Oregon,Wallowa County,2010,7008
+50,4,9,41,65,Oregon,Wasco County,2010,25211
+50,4,9,41,67,Oregon,Washington County,2010,529865
+50,4,9,41,69,Oregon,Wheeler County,2010,1441
+50,4,9,41,71,Oregon,Yamhill County,2010,99214
+40,1,2,42,0,Pennsylvania,Pennsylvania,2010,12702891
+50,1,2,42,1,Pennsylvania,Adams County,2010,101419
+50,1,2,42,3,Pennsylvania,Allegheny County,2010,1223288
+50,1,2,42,5,Pennsylvania,Armstrong County,2010,69108
+50,1,2,42,7,Pennsylvania,Beaver County,2010,170532
+50,1,2,42,9,Pennsylvania,Bedford County,2010,49775
+50,1,2,42,11,Pennsylvania,Berks County,2010,411569
+50,1,2,42,13,Pennsylvania,Blair County,2010,127121
+50,1,2,42,15,Pennsylvania,Bradford County,2010,62700
+50,1,2,42,17,Pennsylvania,Bucks County,2010,625426
+50,1,2,42,19,Pennsylvania,Butler County,2010,183851
+50,1,2,42,21,Pennsylvania,Cambria County,2010,143693
+50,1,2,42,23,Pennsylvania,Cameron County,2010,5085
+50,1,2,42,25,Pennsylvania,Carbon County,2010,65244
+50,1,2,42,27,Pennsylvania,Centre County,2010,154008
+50,1,2,42,29,Pennsylvania,Chester County,2010,499141
+50,1,2,42,31,Pennsylvania,Clarion County,2010,39988
+50,1,2,42,33,Pennsylvania,Clearfield County,2010,81609
+50,1,2,42,35,Pennsylvania,Clinton County,2010,39248
+50,1,2,42,37,Pennsylvania,Columbia County,2010,67296
+50,1,2,42,39,Pennsylvania,Crawford County,2010,88750
+50,1,2,42,41,Pennsylvania,Cumberland County,2010,235403
+50,1,2,42,43,Pennsylvania,Dauphin County,2010,268127
+50,1,2,42,45,Pennsylvania,Delaware County,2010,558776
+50,1,2,42,47,Pennsylvania,Elk County,2010,31946
+50,1,2,42,49,Pennsylvania,Erie County,2010,280586
+50,1,2,42,51,Pennsylvania,Fayette County,2010,136589
+50,1,2,42,53,Pennsylvania,Forest County,2010,7707
+50,1,2,42,55,Pennsylvania,Franklin County,2010,149625
+50,1,2,42,57,Pennsylvania,Fulton County,2010,14844
+50,1,2,42,59,Pennsylvania,Greene County,2010,38692
+50,1,2,42,61,Pennsylvania,Huntingdon County,2010,46002
+50,1,2,42,63,Pennsylvania,Indiana County,2010,88881
+50,1,2,42,65,Pennsylvania,Jefferson County,2010,45189
+50,1,2,42,67,Pennsylvania,Juniata County,2010,24637
+50,1,2,42,69,Pennsylvania,Lackawanna County,2010,214427
+50,1,2,42,71,Pennsylvania,Lancaster County,2010,519443
+50,1,2,42,73,Pennsylvania,Lawrence County,2010,91156
+50,1,2,42,75,Pennsylvania,Lebanon County,2010,133596
+50,1,2,42,77,Pennsylvania,Lehigh County,2010,349508
+50,1,2,42,79,Pennsylvania,Luzerne County,2010,320917
+50,1,2,42,81,Pennsylvania,Lycoming County,2010,116095
+50,1,2,42,83,Pennsylvania,McKean County,2010,43463
+50,1,2,42,85,Pennsylvania,Mercer County,2010,116663
+50,1,2,42,87,Pennsylvania,Mifflin County,2010,46677
+50,1,2,42,89,Pennsylvania,Monroe County,2010,169837
+50,1,2,42,91,Pennsylvania,Montgomery County,2010,799839
+50,1,2,42,93,Pennsylvania,Montour County,2010,18256
+50,1,2,42,95,Pennsylvania,Northampton County,2010,297704
+50,1,2,42,97,Pennsylvania,Northumberland County,2010,94468
+50,1,2,42,99,Pennsylvania,Perry County,2010,45927
+50,1,2,42,101,Pennsylvania,Philadelphia County,2010,1525999
+50,1,2,42,103,Pennsylvania,Pike County,2010,57359
+50,1,2,42,105,Pennsylvania,Potter County,2010,17445
+50,1,2,42,107,Pennsylvania,Schuylkill County,2010,148281
+50,1,2,42,109,Pennsylvania,Snyder County,2010,39719
+50,1,2,42,111,Pennsylvania,Somerset County,2010,77736
+50,1,2,42,113,Pennsylvania,Sullivan County,2010,6431
+50,1,2,42,115,Pennsylvania,Susquehanna County,2010,43318
+50,1,2,42,117,Pennsylvania,Tioga County,2010,41931
+50,1,2,42,119,Pennsylvania,Union County,2010,44968
+50,1,2,42,121,Pennsylvania,Venango County,2010,54988
+50,1,2,42,123,Pennsylvania,Warren County,2010,41811
+50,1,2,42,125,Pennsylvania,Washington County,2010,207852
+50,1,2,42,127,Pennsylvania,Wayne County,2010,52844
+50,1,2,42,129,Pennsylvania,Westmoreland County,2010,365071
+50,1,2,42,131,Pennsylvania,Wyoming County,2010,28291
+50,1,2,42,133,Pennsylvania,York County,2010,435016
+40,1,1,44,0,Rhode Island,Rhode Island,2010,1052970
+50,1,1,44,1,Rhode Island,Bristol County,2010,49842
+50,1,1,44,3,Rhode Island,Kent County,2010,166109
+50,1,1,44,5,Rhode Island,Newport County,2010,83141
+50,1,1,44,7,Rhode Island,Providence County,2010,626796
+50,1,1,44,9,Rhode Island,Washington County,2010,127082
+40,3,5,45,0,South Carolina,South Carolina,2010,4625358
+50,3,5,45,1,South Carolina,Abbeville County,2010,25427
+50,3,5,45,3,South Carolina,Aiken County,2010,160128
+50,3,5,45,5,South Carolina,Allendale County,2010,10419
+50,3,5,45,7,South Carolina,Anderson County,2010,186927
+50,3,5,45,9,South Carolina,Bamberg County,2010,15962
+50,3,5,45,11,South Carolina,Barnwell County,2010,22621
+50,3,5,45,13,South Carolina,Beaufort County,2010,162219
+50,3,5,45,15,South Carolina,Berkeley County,2010,178375
+50,3,5,45,17,South Carolina,Calhoun County,2010,15179
+50,3,5,45,19,South Carolina,Charleston County,2010,350162
+50,3,5,45,21,South Carolina,Cherokee County,2010,55484
+50,3,5,45,23,South Carolina,Chester County,2010,33159
+50,3,5,45,25,South Carolina,Chesterfield County,2010,46717
+50,3,5,45,27,South Carolina,Clarendon County,2010,34949
+50,3,5,45,29,South Carolina,Colleton County,2010,38885
+50,3,5,45,31,South Carolina,Darlington County,2010,68600
+50,3,5,45,33,South Carolina,Dillon County,2010,32059
+50,3,5,45,35,South Carolina,Dorchester County,2010,136110
+50,3,5,45,37,South Carolina,Edgefield County,2010,26966
+50,3,5,45,39,South Carolina,Fairfield County,2010,23977
+50,3,5,45,41,South Carolina,Florence County,2010,136981
+50,3,5,45,43,South Carolina,Georgetown County,2010,60324
+50,3,5,45,45,South Carolina,Greenville County,2010,451183
+50,3,5,45,47,South Carolina,Greenwood County,2010,69683
+50,3,5,45,49,South Carolina,Hampton County,2010,21092
+50,3,5,45,51,South Carolina,Horry County,2010,269136
+50,3,5,45,53,South Carolina,Jasper County,2010,24791
+50,3,5,45,55,South Carolina,Kershaw County,2010,61586
+50,3,5,45,57,South Carolina,Lancaster County,2010,76653
+50,3,5,45,59,South Carolina,Laurens County,2010,66529
+50,3,5,45,61,South Carolina,Lee County,2010,19225
+50,3,5,45,63,South Carolina,Lexington County,2010,262454
+50,3,5,45,65,South Carolina,McCormick County,2010,10229
+50,3,5,45,67,South Carolina,Marion County,2010,33055
+50,3,5,45,69,South Carolina,Marlboro County,2010,28935
+50,3,5,45,71,South Carolina,Newberry County,2010,37510
+50,3,5,45,73,South Carolina,Oconee County,2010,74285
+50,3,5,45,75,South Carolina,Orangeburg County,2010,92508
+50,3,5,45,77,South Carolina,Pickens County,2010,119384
+50,3,5,45,79,South Carolina,Richland County,2010,384425
+50,3,5,45,81,South Carolina,Saluda County,2010,19857
+50,3,5,45,83,South Carolina,Spartanburg County,2010,284329
+50,3,5,45,85,South Carolina,Sumter County,2010,107485
+50,3,5,45,87,South Carolina,Union County,2010,28956
+50,3,5,45,89,South Carolina,Williamsburg County,2010,34405
+50,3,5,45,91,South Carolina,York County,2010,226033
+40,2,4,46,0,South Dakota,South Dakota,2010,814198
+50,2,4,46,3,South Dakota,Aurora County,2010,2710
+50,2,4,46,5,South Dakota,Beadle County,2010,17399
+50,2,4,46,7,South Dakota,Bennett County,2010,3431
+50,2,4,46,9,South Dakota,Bon Homme County,2010,7067
+50,2,4,46,11,South Dakota,Brookings County,2010,31966
+50,2,4,46,13,South Dakota,Brown County,2010,36532
+50,2,4,46,15,South Dakota,Brule County,2010,5255
+50,2,4,46,17,South Dakota,Buffalo County,2010,1913
+50,2,4,46,19,South Dakota,Butte County,2010,10112
+50,2,4,46,21,South Dakota,Campbell County,2010,1466
+50,2,4,46,23,South Dakota,Charles Mix County,2010,9131
+50,2,4,46,25,South Dakota,Clark County,2010,3691
+50,2,4,46,27,South Dakota,Clay County,2010,13866
+50,2,4,46,29,South Dakota,Codington County,2010,27225
+50,2,4,46,31,South Dakota,Corson County,2010,4040
+50,2,4,46,33,South Dakota,Custer County,2010,8219
+50,2,4,46,35,South Dakota,Davison County,2010,19504
+50,2,4,46,37,South Dakota,Day County,2010,5710
+50,2,4,46,39,South Dakota,Deuel County,2010,4364
+50,2,4,46,41,South Dakota,Dewey County,2010,5301
+50,2,4,46,43,South Dakota,Douglas County,2010,2997
+50,2,4,46,45,South Dakota,Edmunds County,2010,4071
+50,2,4,46,47,South Dakota,Fall River County,2010,7094
+50,2,4,46,49,South Dakota,Faulk County,2010,2364
+50,2,4,46,51,South Dakota,Grant County,2010,7358
+50,2,4,46,53,South Dakota,Gregory County,2010,4271
+50,2,4,46,55,South Dakota,Haakon County,2010,1937
+50,2,4,46,57,South Dakota,Hamlin County,2010,5899
+50,2,4,46,59,South Dakota,Hand County,2010,3430
+50,2,4,46,61,South Dakota,Hanson County,2010,3332
+50,2,4,46,63,South Dakota,Harding County,2010,1255
+50,2,4,46,65,South Dakota,Hughes County,2010,17022
+50,2,4,46,67,South Dakota,Hutchinson County,2010,7346
+50,2,4,46,69,South Dakota,Hyde County,2010,1420
+50,2,4,46,71,South Dakota,Jackson County,2010,3030
+50,2,4,46,73,South Dakota,Jerauld County,2010,2071
+50,2,4,46,75,South Dakota,Jones County,2010,1006
+50,2,4,46,77,South Dakota,Kingsbury County,2010,5147
+50,2,4,46,79,South Dakota,Lake County,2010,11202
+50,2,4,46,81,South Dakota,Lawrence County,2010,24090
+50,2,4,46,83,South Dakota,Lincoln County,2010,44827
+50,2,4,46,85,South Dakota,Lyman County,2010,3755
+50,2,4,46,87,South Dakota,McCook County,2010,5618
+50,2,4,46,89,South Dakota,McPherson County,2010,2459
+50,2,4,46,91,South Dakota,Marshall County,2010,4656
+50,2,4,46,93,South Dakota,Meade County,2010,25433
+50,2,4,46,95,South Dakota,Mellette County,2010,2043
+50,2,4,46,97,South Dakota,Miner County,2010,2389
+50,2,4,46,99,South Dakota,Minnehaha County,2010,169474
+50,2,4,46,101,South Dakota,Moody County,2010,6493
+50,2,4,46,102,South Dakota,Oglala Lakota County,2010,13586
+50,2,4,46,103,South Dakota,Pennington County,2010,100966
+50,2,4,46,105,South Dakota,Perkins County,2010,2991
+50,2,4,46,107,South Dakota,Potter County,2010,2334
+50,2,4,46,109,South Dakota,Roberts County,2010,10147
+50,2,4,46,111,South Dakota,Sanborn County,2010,2355
+50,2,4,46,115,South Dakota,Spink County,2010,6415
+50,2,4,46,117,South Dakota,Stanley County,2010,2966
+50,2,4,46,119,South Dakota,Sully County,2010,1368
+50,2,4,46,121,South Dakota,Todd County,2010,9610
+50,2,4,46,123,South Dakota,Tripp County,2010,5649
+50,2,4,46,125,South Dakota,Turner County,2010,8349
+50,2,4,46,127,South Dakota,Union County,2010,14394
+50,2,4,46,129,South Dakota,Walworth County,2010,5438
+50,2,4,46,135,South Dakota,Yankton County,2010,22438
+50,2,4,46,137,South Dakota,Ziebach County,2010,2801
+40,3,6,47,0,Tennessee,Tennessee,2010,6346281
+50,3,6,47,1,Tennessee,Anderson County,2010,75072
+50,3,6,47,3,Tennessee,Bedford County,2010,45058
+50,3,6,47,5,Tennessee,Benton County,2010,16491
+50,3,6,47,7,Tennessee,Bledsoe County,2010,12882
+50,3,6,47,9,Tennessee,Blount County,2010,123101
+50,3,6,47,11,Tennessee,Bradley County,2010,98926
+50,3,6,47,13,Tennessee,Campbell County,2010,40722
+50,3,6,47,15,Tennessee,Cannon County,2010,13813
+50,3,6,47,17,Tennessee,Carroll County,2010,28486
+50,3,6,47,19,Tennessee,Carter County,2010,57383
+50,3,6,47,21,Tennessee,Cheatham County,2010,39101
+50,3,6,47,23,Tennessee,Chester County,2010,17145
+50,3,6,47,25,Tennessee,Claiborne County,2010,32209
+50,3,6,47,27,Tennessee,Clay County,2010,7856
+50,3,6,47,29,Tennessee,Cocke County,2010,35642
+50,3,6,47,31,Tennessee,Coffee County,2010,52803
+50,3,6,47,33,Tennessee,Crockett County,2010,14575
+50,3,6,47,35,Tennessee,Cumberland County,2010,56058
+50,3,6,47,37,Tennessee,Davidson County,2010,626577
+50,3,6,47,39,Tennessee,Decatur County,2010,11746
+50,3,6,47,41,Tennessee,DeKalb County,2010,18722
+50,3,6,47,43,Tennessee,Dickson County,2010,49658
+50,3,6,47,45,Tennessee,Dyer County,2010,38331
+50,3,6,47,47,Tennessee,Fayette County,2010,38439
+50,3,6,47,49,Tennessee,Fentress County,2010,17962
+50,3,6,47,51,Tennessee,Franklin County,2010,41064
+50,3,6,47,53,Tennessee,Gibson County,2010,49686
+50,3,6,47,55,Tennessee,Giles County,2010,29479
+50,3,6,47,57,Tennessee,Grainger County,2010,22654
+50,3,6,47,59,Tennessee,Greene County,2010,68825
+50,3,6,47,61,Tennessee,Grundy County,2010,13726
+50,3,6,47,63,Tennessee,Hamblen County,2010,62534
+50,3,6,47,65,Tennessee,Hamilton County,2010,336477
+50,3,6,47,67,Tennessee,Hancock County,2010,6809
+50,3,6,47,69,Tennessee,Hardeman County,2010,27245
+50,3,6,47,71,Tennessee,Hardin County,2010,26008
+50,3,6,47,73,Tennessee,Hawkins County,2010,56826
+50,3,6,47,75,Tennessee,Haywood County,2010,18805
+50,3,6,47,77,Tennessee,Henderson County,2010,27786
+50,3,6,47,79,Tennessee,Henry County,2010,32349
+50,3,6,47,81,Tennessee,Hickman County,2010,24692
+50,3,6,47,83,Tennessee,Houston County,2010,8428
+50,3,6,47,85,Tennessee,Humphreys County,2010,18534
+50,3,6,47,87,Tennessee,Jackson County,2010,11636
+50,3,6,47,89,Tennessee,Jefferson County,2010,51673
+50,3,6,47,91,Tennessee,Johnson County,2010,18240
+50,3,6,47,93,Tennessee,Knox County,2010,432259
+50,3,6,47,95,Tennessee,Lake County,2010,7832
+50,3,6,47,97,Tennessee,Lauderdale County,2010,27822
+50,3,6,47,99,Tennessee,Lawrence County,2010,41859
+50,3,6,47,101,Tennessee,Lewis County,2010,12170
+50,3,6,47,103,Tennessee,Lincoln County,2010,33351
+50,3,6,47,105,Tennessee,Loudon County,2010,48569
+50,3,6,47,107,Tennessee,McMinn County,2010,52283
+50,3,6,47,109,Tennessee,McNairy County,2010,26082
+50,3,6,47,111,Tennessee,Macon County,2010,22225
+50,3,6,47,113,Tennessee,Madison County,2010,98302
+50,3,6,47,115,Tennessee,Marion County,2010,28226
+50,3,6,47,117,Tennessee,Marshall County,2010,30611
+50,3,6,47,119,Tennessee,Maury County,2010,80986
+50,3,6,47,121,Tennessee,Meigs County,2010,11766
+50,3,6,47,123,Tennessee,Monroe County,2010,44496
+50,3,6,47,125,Tennessee,Montgomery County,2010,172361
+50,3,6,47,127,Tennessee,Moore County,2010,6345
+50,3,6,47,129,Tennessee,Morgan County,2010,21995
+50,3,6,47,131,Tennessee,Obion County,2010,31807
+50,3,6,47,133,Tennessee,Overton County,2010,22076
+50,3,6,47,135,Tennessee,Perry County,2010,7930
+50,3,6,47,137,Tennessee,Pickett County,2010,5086
+50,3,6,47,139,Tennessee,Polk County,2010,16821
+50,3,6,47,141,Tennessee,Putnam County,2010,72340
+50,3,6,47,143,Tennessee,Rhea County,2010,31804
+50,3,6,47,145,Tennessee,Roane County,2010,54209
+50,3,6,47,147,Tennessee,Robertson County,2010,66312
+50,3,6,47,149,Tennessee,Rutherford County,2010,262593
+50,3,6,47,151,Tennessee,Scott County,2010,22232
+50,3,6,47,153,Tennessee,Sequatchie County,2010,14117
+50,3,6,47,155,Tennessee,Sevier County,2010,89712
+50,3,6,47,157,Tennessee,Shelby County,2010,927682
+50,3,6,47,159,Tennessee,Smith County,2010,19150
+50,3,6,47,161,Tennessee,Stewart County,2010,13311
+50,3,6,47,163,Tennessee,Sullivan County,2010,156804
+50,3,6,47,165,Tennessee,Sumner County,2010,160639
+50,3,6,47,167,Tennessee,Tipton County,2010,61008
+50,3,6,47,169,Tennessee,Trousdale County,2010,7858
+50,3,6,47,171,Tennessee,Unicoi County,2010,18311
+50,3,6,47,173,Tennessee,Union County,2010,19108
+50,3,6,47,175,Tennessee,Van Buren County,2010,5556
+50,3,6,47,177,Tennessee,Warren County,2010,39824
+50,3,6,47,179,Tennessee,Washington County,2010,123063
+50,3,6,47,181,Tennessee,Wayne County,2010,17021
+50,3,6,47,183,Tennessee,Weakley County,2010,35015
+50,3,6,47,185,Tennessee,White County,2010,25847
+50,3,6,47,187,Tennessee,Williamson County,2010,183208
+50,3,6,47,189,Tennessee,Wilson County,2010,114063
+40,3,7,48,0,Texas,Texas,2010,25146072
+50,3,7,48,1,Texas,Anderson County,2010,58457
+50,3,7,48,3,Texas,Andrews County,2010,14786
+50,3,7,48,5,Texas,Angelina County,2010,86771
+50,3,7,48,7,Texas,Aransas County,2010,23165
+50,3,7,48,9,Texas,Archer County,2010,9061
+50,3,7,48,11,Texas,Armstrong County,2010,1901
+50,3,7,48,13,Texas,Atascosa County,2010,44923
+50,3,7,48,15,Texas,Austin County,2010,28421
+50,3,7,48,17,Texas,Bailey County,2010,7165
+50,3,7,48,19,Texas,Bandera County,2010,20473
+50,3,7,48,21,Texas,Bastrop County,2010,74230
+50,3,7,48,23,Texas,Baylor County,2010,3726
+50,3,7,48,25,Texas,Bee County,2010,31858
+50,3,7,48,27,Texas,Bell County,2010,310178
+50,3,7,48,29,Texas,Bexar County,2010,1714781
+50,3,7,48,31,Texas,Blanco County,2010,10485
+50,3,7,48,33,Texas,Borden County,2010,641
+50,3,7,48,35,Texas,Bosque County,2010,18214
+50,3,7,48,37,Texas,Bowie County,2010,92564
+50,3,7,48,39,Texas,Brazoria County,2010,313186
+50,3,7,48,41,Texas,Brazos County,2010,194861
+50,3,7,48,43,Texas,Brewster County,2010,9232
+50,3,7,48,45,Texas,Briscoe County,2010,1637
+50,3,7,48,47,Texas,Brooks County,2010,7227
+50,3,7,48,49,Texas,Brown County,2010,38106
+50,3,7,48,51,Texas,Burleson County,2010,17187
+50,3,7,48,53,Texas,Burnet County,2010,42710
+50,3,7,48,55,Texas,Caldwell County,2010,38014
+50,3,7,48,57,Texas,Calhoun County,2010,21380
+50,3,7,48,59,Texas,Callahan County,2010,13545
+50,3,7,48,61,Texas,Cameron County,2010,406214
+50,3,7,48,63,Texas,Camp County,2010,12399
+50,3,7,48,65,Texas,Carson County,2010,6186
+50,3,7,48,67,Texas,Cass County,2010,30469
+50,3,7,48,69,Texas,Castro County,2010,8063
+50,3,7,48,71,Texas,Chambers County,2010,35103
+50,3,7,48,73,Texas,Cherokee County,2010,50827
+50,3,7,48,75,Texas,Childress County,2010,7041
+50,3,7,48,77,Texas,Clay County,2010,10754
+50,3,7,48,79,Texas,Cochran County,2010,3127
+50,3,7,48,81,Texas,Coke County,2010,3316
+50,3,7,48,83,Texas,Coleman County,2010,8893
+50,3,7,48,85,Texas,Collin County,2010,780894
+50,3,7,48,87,Texas,Collingsworth County,2010,3057
+50,3,7,48,89,Texas,Colorado County,2010,20866
+50,3,7,48,91,Texas,Comal County,2010,108525
+50,3,7,48,93,Texas,Comanche County,2010,13960
+50,3,7,48,95,Texas,Concho County,2010,4087
+50,3,7,48,97,Texas,Cooke County,2010,38445
+50,3,7,48,99,Texas,Coryell County,2010,75475
+50,3,7,48,101,Texas,Cottle County,2010,1506
+50,3,7,48,103,Texas,Crane County,2010,4375
+50,3,7,48,105,Texas,Crockett County,2010,3719
+50,3,7,48,107,Texas,Crosby County,2010,6056
+50,3,7,48,109,Texas,Culberson County,2010,2398
+50,3,7,48,111,Texas,Dallam County,2010,6698
+50,3,7,48,113,Texas,Dallas County,2010,2368156
+50,3,7,48,115,Texas,Dawson County,2010,13833
+50,3,7,48,117,Texas,Deaf Smith County,2010,19372
+50,3,7,48,119,Texas,Delta County,2010,5232
+50,3,7,48,121,Texas,Denton County,2010,661615
+50,3,7,48,123,Texas,DeWitt County,2010,20097
+50,3,7,48,125,Texas,Dickens County,2010,2441
+50,3,7,48,127,Texas,Dimmit County,2010,9996
+50,3,7,48,129,Texas,Donley County,2010,3726
+50,3,7,48,131,Texas,Duval County,2010,11758
+50,3,7,48,133,Texas,Eastland County,2010,18582
+50,3,7,48,135,Texas,Ector County,2010,137131
+50,3,7,48,137,Texas,Edwards County,2010,2002
+50,3,7,48,139,Texas,Ellis County,2010,149649
+50,3,7,48,141,Texas,El Paso County,2010,800634
+50,3,7,48,143,Texas,Erath County,2010,37895
+50,3,7,48,145,Texas,Falls County,2010,17866
+50,3,7,48,147,Texas,Fannin County,2010,33912
+50,3,7,48,149,Texas,Fayette County,2010,24542
+50,3,7,48,151,Texas,Fisher County,2010,3978
+50,3,7,48,153,Texas,Floyd County,2010,6446
+50,3,7,48,155,Texas,Foard County,2010,1336
+50,3,7,48,157,Texas,Fort Bend County,2010,584632
+50,3,7,48,159,Texas,Franklin County,2010,10598
+50,3,7,48,161,Texas,Freestone County,2010,19817
+50,3,7,48,163,Texas,Frio County,2010,17217
+50,3,7,48,165,Texas,Gaines County,2010,17526
+50,3,7,48,167,Texas,Galveston County,2010,291318
+50,3,7,48,169,Texas,Garza County,2010,6461
+50,3,7,48,171,Texas,Gillespie County,2010,24828
+50,3,7,48,173,Texas,Glasscock County,2010,1226
+50,3,7,48,175,Texas,Goliad County,2010,7210
+50,3,7,48,177,Texas,Gonzales County,2010,19811
+50,3,7,48,179,Texas,Gray County,2010,22537
+50,3,7,48,181,Texas,Grayson County,2010,120869
+50,3,7,48,183,Texas,Gregg County,2010,121807
+50,3,7,48,185,Texas,Grimes County,2010,26588
+50,3,7,48,187,Texas,Guadalupe County,2010,131522
+50,3,7,48,189,Texas,Hale County,2010,36207
+50,3,7,48,191,Texas,Hall County,2010,3353
+50,3,7,48,193,Texas,Hamilton County,2010,8515
+50,3,7,48,195,Texas,Hansford County,2010,5613
+50,3,7,48,197,Texas,Hardeman County,2010,4139
+50,3,7,48,199,Texas,Hardin County,2010,54635
+50,3,7,48,201,Texas,Harris County,2010,4093109
+50,3,7,48,203,Texas,Harrison County,2010,65639
+50,3,7,48,205,Texas,Hartley County,2010,6064
+50,3,7,48,207,Texas,Haskell County,2010,5902
+50,3,7,48,209,Texas,Hays County,2010,156978
+50,3,7,48,211,Texas,Hemphill County,2010,3811
+50,3,7,48,213,Texas,Henderson County,2010,78567
+50,3,7,48,215,Texas,Hidalgo County,2010,774734
+50,3,7,48,217,Texas,Hill County,2010,35096
+50,3,7,48,219,Texas,Hockley County,2010,22898
+50,3,7,48,221,Texas,Hood County,2010,51161
+50,3,7,48,223,Texas,Hopkins County,2010,35166
+50,3,7,48,225,Texas,Houston County,2010,23731
+50,3,7,48,227,Texas,Howard County,2010,35006
+50,3,7,48,229,Texas,Hudspeth County,2010,3476
+50,3,7,48,231,Texas,Hunt County,2010,86144
+50,3,7,48,233,Texas,Hutchinson County,2010,22249
+50,3,7,48,235,Texas,Irion County,2010,1605
+50,3,7,48,237,Texas,Jack County,2010,9041
+50,3,7,48,239,Texas,Jackson County,2010,14075
+50,3,7,48,241,Texas,Jasper County,2010,35710
+50,3,7,48,243,Texas,Jeff Davis County,2010,2342
+50,3,7,48,245,Texas,Jefferson County,2010,252277
+50,3,7,48,247,Texas,Jim Hogg County,2010,5300
+50,3,7,48,249,Texas,Jim Wells County,2010,40867
+50,3,7,48,251,Texas,Johnson County,2010,150947
+50,3,7,48,253,Texas,Jones County,2010,20192
+50,3,7,48,255,Texas,Karnes County,2010,14828
+50,3,7,48,257,Texas,Kaufman County,2010,103352
+50,3,7,48,259,Texas,Kendall County,2010,33385
+50,3,7,48,261,Texas,Kenedy County,2010,413
+50,3,7,48,263,Texas,Kent County,2010,808
+50,3,7,48,265,Texas,Kerr County,2010,49643
+50,3,7,48,267,Texas,Kimble County,2010,4605
+50,3,7,48,269,Texas,King County,2010,285
+50,3,7,48,271,Texas,Kinney County,2010,3598
+50,3,7,48,273,Texas,Kleberg County,2010,32061
+50,3,7,48,275,Texas,Knox County,2010,3719
+50,3,7,48,277,Texas,Lamar County,2010,49791
+50,3,7,48,279,Texas,Lamb County,2010,13976
+50,3,7,48,281,Texas,Lampasas County,2010,19674
+50,3,7,48,283,Texas,La Salle County,2010,6886
+50,3,7,48,285,Texas,Lavaca County,2010,19275
+50,3,7,48,287,Texas,Lee County,2010,16609
+50,3,7,48,289,Texas,Leon County,2010,16799
+50,3,7,48,291,Texas,Liberty County,2010,75657
+50,3,7,48,293,Texas,Limestone County,2010,23388
+50,3,7,48,295,Texas,Lipscomb County,2010,3302
+50,3,7,48,297,Texas,Live Oak County,2010,11527
+50,3,7,48,299,Texas,Llano County,2010,19303
+50,3,7,48,301,Texas,Loving County,2010,82
+50,3,7,48,303,Texas,Lubbock County,2010,278946
+50,3,7,48,305,Texas,Lynn County,2010,5915
+50,3,7,48,307,Texas,McCulloch County,2010,8284
+50,3,7,48,309,Texas,McLennan County,2010,234895
+50,3,7,48,311,Texas,McMullen County,2010,707
+50,3,7,48,313,Texas,Madison County,2010,13669
+50,3,7,48,315,Texas,Marion County,2010,10542
+50,3,7,48,317,Texas,Martin County,2010,4799
+50,3,7,48,319,Texas,Mason County,2010,4013
+50,3,7,48,321,Texas,Matagorda County,2010,36702
+50,3,7,48,323,Texas,Maverick County,2010,54258
+50,3,7,48,325,Texas,Medina County,2010,46009
+50,3,7,48,327,Texas,Menard County,2010,2242
+50,3,7,48,329,Texas,Midland County,2010,136887
+50,3,7,48,331,Texas,Milam County,2010,24759
+50,3,7,48,333,Texas,Mills County,2010,4941
+50,3,7,48,335,Texas,Mitchell County,2010,9403
+50,3,7,48,337,Texas,Montague County,2010,19722
+50,3,7,48,339,Texas,Montgomery County,2010,455740
+50,3,7,48,341,Texas,Moore County,2010,21904
+50,3,7,48,343,Texas,Morris County,2010,12934
+50,3,7,48,345,Texas,Motley County,2010,1205
+50,3,7,48,347,Texas,Nacogdoches County,2010,64524
+50,3,7,48,349,Texas,Navarro County,2010,47840
+50,3,7,48,351,Texas,Newton County,2010,14445
+50,3,7,48,353,Texas,Nolan County,2010,15214
+50,3,7,48,355,Texas,Nueces County,2010,340223
+50,3,7,48,357,Texas,Ochiltree County,2010,10223
+50,3,7,48,359,Texas,Oldham County,2010,2052
+50,3,7,48,361,Texas,Orange County,2010,81839
+50,3,7,48,363,Texas,Palo Pinto County,2010,28134
+50,3,7,48,365,Texas,Panola County,2010,23794
+50,3,7,48,367,Texas,Parker County,2010,116959
+50,3,7,48,369,Texas,Parmer County,2010,10269
+50,3,7,48,371,Texas,Pecos County,2010,15507
+50,3,7,48,373,Texas,Polk County,2010,45413
+50,3,7,48,375,Texas,Potter County,2010,121037
+50,3,7,48,377,Texas,Presidio County,2010,7817
+50,3,7,48,379,Texas,Rains County,2010,10902
+50,3,7,48,381,Texas,Randall County,2010,120761
+50,3,7,48,383,Texas,Reagan County,2010,3367
+50,3,7,48,385,Texas,Real County,2010,3309
+50,3,7,48,387,Texas,Red River County,2010,12862
+50,3,7,48,389,Texas,Reeves County,2010,13783
+50,3,7,48,391,Texas,Refugio County,2010,7383
+50,3,7,48,393,Texas,Roberts County,2010,925
+50,3,7,48,395,Texas,Robertson County,2010,16617
+50,3,7,48,397,Texas,Rockwall County,2010,78398
+50,3,7,48,399,Texas,Runnels County,2010,10502
+50,3,7,48,401,Texas,Rusk County,2010,53255
+50,3,7,48,403,Texas,Sabine County,2010,10836
+50,3,7,48,405,Texas,San Augustine County,2010,8861
+50,3,7,48,407,Texas,San Jacinto County,2010,26383
+50,3,7,48,409,Texas,San Patricio County,2010,64792
+50,3,7,48,411,Texas,San Saba County,2010,6130
+50,3,7,48,413,Texas,Schleicher County,2010,3461
+50,3,7,48,415,Texas,Scurry County,2010,16919
+50,3,7,48,417,Texas,Shackelford County,2010,3376
+50,3,7,48,419,Texas,Shelby County,2010,25450
+50,3,7,48,421,Texas,Sherman County,2010,3034
+50,3,7,48,423,Texas,Smith County,2010,209729
+50,3,7,48,425,Texas,Somervell County,2010,8491
+50,3,7,48,427,Texas,Starr County,2010,60982
+50,3,7,48,429,Texas,Stephens County,2010,9634
+50,3,7,48,431,Texas,Sterling County,2010,1143
+50,3,7,48,433,Texas,Stonewall County,2010,1490
+50,3,7,48,435,Texas,Sutton County,2010,4128
+50,3,7,48,437,Texas,Swisher County,2010,7859
+50,3,7,48,439,Texas,Tarrant County,2010,1811345
+50,3,7,48,441,Texas,Taylor County,2010,131515
+50,3,7,48,443,Texas,Terrell County,2010,981
+50,3,7,48,445,Texas,Terry County,2010,12651
+50,3,7,48,447,Texas,Throckmorton County,2010,1641
+50,3,7,48,449,Texas,Titus County,2010,32334
+50,3,7,48,451,Texas,Tom Green County,2010,110220
+50,3,7,48,453,Texas,Travis County,2010,1024314
+50,3,7,48,455,Texas,Trinity County,2010,14675
+50,3,7,48,457,Texas,Tyler County,2010,21760
+50,3,7,48,459,Texas,Upshur County,2010,39304
+50,3,7,48,461,Texas,Upton County,2010,3349
+50,3,7,48,463,Texas,Uvalde County,2010,26403
+50,3,7,48,465,Texas,Val Verde County,2010,48879
+50,3,7,48,467,Texas,Van Zandt County,2010,52549
+50,3,7,48,469,Texas,Victoria County,2010,86795
+50,3,7,48,471,Texas,Walker County,2010,67862
+50,3,7,48,473,Texas,Waller County,2010,43319
+50,3,7,48,475,Texas,Ward County,2010,10658
+50,3,7,48,477,Texas,Washington County,2010,33687
+50,3,7,48,479,Texas,Webb County,2010,250304
+50,3,7,48,481,Texas,Wharton County,2010,41280
+50,3,7,48,483,Texas,Wheeler County,2010,5406
+50,3,7,48,485,Texas,Wichita County,2010,131659
+50,3,7,48,487,Texas,Wilbarger County,2010,13535
+50,3,7,48,489,Texas,Willacy County,2010,22137
+50,3,7,48,491,Texas,Williamson County,2010,422771
+50,3,7,48,493,Texas,Wilson County,2010,42907
+50,3,7,48,495,Texas,Winkler County,2010,7106
+50,3,7,48,497,Texas,Wise County,2010,59082
+50,3,7,48,499,Texas,Wood County,2010,41973
+50,3,7,48,501,Texas,Yoakum County,2010,7879
+50,3,7,48,503,Texas,Young County,2010,18550
+50,3,7,48,505,Texas,Zapata County,2010,14018
+50,3,7,48,507,Texas,Zavala County,2010,11677
+40,4,8,49,0,Utah,Utah,2010,2763891
+50,4,8,49,1,Utah,Beaver County,2010,6629
+50,4,8,49,3,Utah,Box Elder County,2010,49983
+50,4,8,49,5,Utah,Cache County,2010,112656
+50,4,8,49,7,Utah,Carbon County,2010,21403
+50,4,8,49,9,Utah,Daggett County,2010,1061
+50,4,8,49,11,Utah,Davis County,2010,306492
+50,4,8,49,13,Utah,Duchesne County,2010,18605
+50,4,8,49,15,Utah,Emery County,2010,10976
+50,4,8,49,17,Utah,Garfield County,2010,5172
+50,4,8,49,19,Utah,Grand County,2010,9212
+50,4,8,49,21,Utah,Iron County,2010,46163
+50,4,8,49,23,Utah,Juab County,2010,10246
+50,4,8,49,25,Utah,Kane County,2010,7125
+50,4,8,49,27,Utah,Millard County,2010,12503
+50,4,8,49,29,Utah,Morgan County,2010,9469
+50,4,8,49,31,Utah,Piute County,2010,1557
+50,4,8,49,33,Utah,Rich County,2010,2264
+50,4,8,49,35,Utah,Salt Lake County,2010,1029590
+50,4,8,49,37,Utah,San Juan County,2010,14757
+50,4,8,49,39,Utah,Sanpete County,2010,27822
+50,4,8,49,41,Utah,Sevier County,2010,20800
+50,4,8,49,43,Utah,Summit County,2010,36324
+50,4,8,49,45,Utah,Tooele County,2010,58218
+50,4,8,49,47,Utah,Uintah County,2010,32589
+50,4,8,49,49,Utah,Utah County,2010,516639
+50,4,8,49,51,Utah,Wasatch County,2010,23525
+50,4,8,49,53,Utah,Washington County,2010,138115
+50,4,8,49,55,Utah,Wayne County,2010,2778
+50,4,8,49,57,Utah,Weber County,2010,231218
+40,1,1,50,0,Vermont,Vermont,2010,625727
+50,1,1,50,1,Vermont,Addison County,2010,36809
+50,1,1,50,3,Vermont,Bennington County,2010,37119
+50,1,1,50,5,Vermont,Caledonia County,2010,31231
+50,1,1,50,7,Vermont,Chittenden County,2010,156535
+50,1,1,50,9,Vermont,Essex County,2010,6306
+50,1,1,50,11,Vermont,Franklin County,2010,47759
+50,1,1,50,13,Vermont,Grand Isle County,2010,6970
+50,1,1,50,15,Vermont,Lamoille County,2010,24473
+50,1,1,50,17,Vermont,Orange County,2010,28938
+50,1,1,50,19,Vermont,Orleans County,2010,27234
+50,1,1,50,21,Vermont,Rutland County,2010,61659
+50,1,1,50,23,Vermont,Washington County,2010,59525
+50,1,1,50,25,Vermont,Windham County,2010,44511
+50,1,1,50,27,Vermont,Windsor County,2010,56658
+40,3,5,51,0,Virginia,Virginia,2010,8001046
+50,3,5,51,1,Virginia,Accomack County,2010,33162
+50,3,5,51,3,Virginia,Albemarle County,2010,98984
+50,3,5,51,5,Virginia,Alleghany County,2010,16264
+50,3,5,51,7,Virginia,Amelia County,2010,12690
+50,3,5,51,9,Virginia,Amherst County,2010,32354
+50,3,5,51,11,Virginia,Appomattox County,2010,15022
+50,3,5,51,13,Virginia,Arlington County,2010,207696
+50,3,5,51,15,Virginia,Augusta County,2010,73759
+50,3,5,51,17,Virginia,Bath County,2010,4727
+50,3,5,51,19,Virginia,Bedford County,2010,74928
+50,3,5,51,21,Virginia,Bland County,2010,6826
+50,3,5,51,23,Virginia,Botetourt County,2010,33149
+50,3,5,51,25,Virginia,Brunswick County,2010,17418
+50,3,5,51,27,Virginia,Buchanan County,2010,24109
+50,3,5,51,29,Virginia,Buckingham County,2010,17140
+50,3,5,51,31,Virginia,Campbell County,2010,54815
+50,3,5,51,33,Virginia,Caroline County,2010,28550
+50,3,5,51,35,Virginia,Carroll County,2010,30072
+50,3,5,51,36,Virginia,Charles City County,2010,7252
+50,3,5,51,37,Virginia,Charlotte County,2010,12597
+50,3,5,51,41,Virginia,Chesterfield County,2010,316236
+50,3,5,51,43,Virginia,Clarke County,2010,14028
+50,3,5,51,45,Virginia,Craig County,2010,5175
+50,3,5,51,47,Virginia,Culpeper County,2010,46687
+50,3,5,51,49,Virginia,Cumberland County,2010,10039
+50,3,5,51,51,Virginia,Dickenson County,2010,15877
+50,3,5,51,53,Virginia,Dinwiddie County,2010,28011
+50,3,5,51,57,Virginia,Essex County,2010,11149
+50,3,5,51,59,Virginia,Fairfax County,2010,1081681
+50,3,5,51,61,Virginia,Fauquier County,2010,65222
+50,3,5,51,63,Virginia,Floyd County,2010,15293
+50,3,5,51,65,Virginia,Fluvanna County,2010,25743
+50,3,5,51,67,Virginia,Franklin County,2010,56124
+50,3,5,51,69,Virginia,Frederick County,2010,78266
+50,3,5,51,71,Virginia,Giles County,2010,17288
+50,3,5,51,73,Virginia,Gloucester County,2010,36859
+50,3,5,51,75,Virginia,Goochland County,2010,21852
+50,3,5,51,77,Virginia,Grayson County,2010,15557
+50,3,5,51,79,Virginia,Greene County,2010,18412
+50,3,5,51,81,Virginia,Greensville County,2010,12245
+50,3,5,51,83,Virginia,Halifax County,2010,36253
+50,3,5,51,85,Virginia,Hanover County,2010,99833
+50,3,5,51,87,Virginia,Henrico County,2010,306698
+50,3,5,51,89,Virginia,Henry County,2010,54144
+50,3,5,51,91,Virginia,Highland County,2010,2319
+50,3,5,51,93,Virginia,Isle of Wight County,2010,35279
+50,3,5,51,95,Virginia,James City County,2010,67400
+50,3,5,51,97,Virginia,King and Queen County,2010,6940
+50,3,5,51,99,Virginia,King George County,2010,23578
+50,3,5,51,101,Virginia,King William County,2010,15927
+50,3,5,51,103,Virginia,Lancaster County,2010,11390
+50,3,5,51,105,Virginia,Lee County,2010,25591
+50,3,5,51,107,Virginia,Loudoun County,2010,312342
+50,3,5,51,109,Virginia,Louisa County,2010,33028
+50,3,5,51,111,Virginia,Lunenburg County,2010,12916
+50,3,5,51,113,Virginia,Madison County,2010,13306
+50,3,5,51,115,Virginia,Mathews County,2010,8976
+50,3,5,51,117,Virginia,Mecklenburg County,2010,32722
+50,3,5,51,119,Virginia,Middlesex County,2010,10959
+50,3,5,51,121,Virginia,Montgomery County,2010,94419
+50,3,5,51,125,Virginia,Nelson County,2010,15015
+50,3,5,51,127,Virginia,New Kent County,2010,18432
+50,3,5,51,131,Virginia,Northampton County,2010,12391
+50,3,5,51,133,Virginia,Northumberland County,2010,12331
+50,3,5,51,135,Virginia,Nottoway County,2010,15858
+50,3,5,51,137,Virginia,Orange County,2010,33541
+50,3,5,51,139,Virginia,Page County,2010,24048
+50,3,5,51,141,Virginia,Patrick County,2010,18505
+50,3,5,51,143,Virginia,Pittsylvania County,2010,63471
+50,3,5,51,145,Virginia,Powhatan County,2010,28073
+50,3,5,51,147,Virginia,Prince Edward County,2010,23363
+50,3,5,51,149,Virginia,Prince George County,2010,35715
+50,3,5,51,153,Virginia,Prince William County,2010,402006
+50,3,5,51,155,Virginia,Pulaski County,2010,34857
+50,3,5,51,157,Virginia,Rappahannock County,2010,7507
+50,3,5,51,159,Virginia,Richmond County,2010,9250
+50,3,5,51,161,Virginia,Roanoke County,2010,92476
+50,3,5,51,163,Virginia,Rockbridge County,2010,22357
+50,3,5,51,165,Virginia,Rockingham County,2010,76324
+50,3,5,51,167,Virginia,Russell County,2010,28917
+50,3,5,51,169,Virginia,Scott County,2010,23166
+50,3,5,51,171,Virginia,Shenandoah County,2010,41991
+50,3,5,51,173,Virginia,Smyth County,2010,32211
+50,3,5,51,175,Virginia,Southampton County,2010,18573
+50,3,5,51,177,Virginia,Spotsylvania County,2010,122455
+50,3,5,51,179,Virginia,Stafford County,2010,128993
+50,3,5,51,181,Virginia,Surry County,2010,7064
+50,3,5,51,183,Virginia,Sussex County,2010,12071
+50,3,5,51,185,Virginia,Tazewell County,2010,45058
+50,3,5,51,187,Virginia,Warren County,2010,37452
+50,3,5,51,191,Virginia,Washington County,2010,54959
+50,3,5,51,193,Virginia,Westmoreland County,2010,17464
+50,3,5,51,195,Virginia,Wise County,2010,41436
+50,3,5,51,197,Virginia,Wythe County,2010,29246
+50,3,5,51,199,Virginia,York County,2010,65191
+50,3,5,51,510,Virginia,Alexandria city,2010,139998
+50,3,5,51,520,Virginia,Bristol city,2010,17738
+50,3,5,51,530,Virginia,Buena Vista city,2010,6608
+50,3,5,51,540,Virginia,Charlottesville city,2010,43425
+50,3,5,51,550,Virginia,Chesapeake city,2010,222268
+50,3,5,51,570,Virginia,Colonial Heights city,2010,17409
+50,3,5,51,580,Virginia,Covington city,2010,5951
+50,3,5,51,590,Virginia,Danville city,2010,43071
+50,3,5,51,595,Virginia,Emporia city,2010,5925
+50,3,5,51,600,Virginia,Fairfax city,2010,22554
+50,3,5,51,610,Virginia,Falls Church city,2010,12267
+50,3,5,51,620,Virginia,Franklin city,2010,8578
+50,3,5,51,630,Virginia,Fredericksburg city,2010,24178
+50,3,5,51,640,Virginia,Galax city,2010,6989
+50,3,5,51,650,Virginia,Hampton city,2010,137463
+50,3,5,51,660,Virginia,Harrisonburg city,2010,48902
+50,3,5,51,670,Virginia,Hopewell city,2010,22591
+50,3,5,51,678,Virginia,Lexington city,2010,7037
+50,3,5,51,680,Virginia,Lynchburg city,2010,75535
+50,3,5,51,683,Virginia,Manassas city,2010,37799
+50,3,5,51,685,Virginia,Manassas Park city,2010,14243
+50,3,5,51,690,Virginia,Martinsville city,2010,13840
+50,3,5,51,700,Virginia,Newport News city,2010,180956
+50,3,5,51,710,Virginia,Norfolk city,2010,242840
+50,3,5,51,720,Virginia,Norton city,2010,3994
+50,3,5,51,730,Virginia,Petersburg city,2010,32441
+50,3,5,51,735,Virginia,Poquoson city,2010,12159
+50,3,5,51,740,Virginia,Portsmouth city,2010,95531
+50,3,5,51,750,Virginia,Radford city,2010,16395
+50,3,5,51,760,Virginia,Richmond city,2010,204440
+50,3,5,51,770,Virginia,Roanoke city,2010,96910
+50,3,5,51,775,Virginia,Salem city,2010,24834
+50,3,5,51,790,Virginia,Staunton city,2010,23745
+50,3,5,51,800,Virginia,Suffolk city,2010,84606
+50,3,5,51,810,Virginia,Virginia Beach city,2010,437885
+50,3,5,51,820,Virginia,Waynesboro city,2010,20994
+50,3,5,51,830,Virginia,Williamsburg city,2010,13679
+50,3,5,51,840,Virginia,Winchester city,2010,26223
+40,4,9,53,0,Washington,Washington,2010,6724540
+50,4,9,53,1,Washington,Adams County,2010,18731
+50,4,9,53,3,Washington,Asotin County,2010,21623
+50,4,9,53,5,Washington,Benton County,2010,175168
+50,4,9,53,7,Washington,Chelan County,2010,72460
+50,4,9,53,9,Washington,Clallam County,2010,71396
+50,4,9,53,11,Washington,Clark County,2010,425360
+50,4,9,53,13,Washington,Columbia County,2010,4078
+50,4,9,53,15,Washington,Cowlitz County,2010,102408
+50,4,9,53,17,Washington,Douglas County,2010,38427
+50,4,9,53,19,Washington,Ferry County,2010,7554
+50,4,9,53,21,Washington,Franklin County,2010,78160
+50,4,9,53,23,Washington,Garfield County,2010,2266
+50,4,9,53,25,Washington,Grant County,2010,89124
+50,4,9,53,27,Washington,Grays Harbor County,2010,72800
+50,4,9,53,29,Washington,Island County,2010,78508
+50,4,9,53,31,Washington,Jefferson County,2010,29880
+50,4,9,53,33,Washington,King County,2010,1931289
+50,4,9,53,35,Washington,Kitsap County,2010,251143
+50,4,9,53,37,Washington,Kittitas County,2010,40910
+50,4,9,53,39,Washington,Klickitat County,2010,20317
+50,4,9,53,41,Washington,Lewis County,2010,75457
+50,4,9,53,43,Washington,Lincoln County,2010,10570
+50,4,9,53,45,Washington,Mason County,2010,60689
+50,4,9,53,47,Washington,Okanogan County,2010,41117
+50,4,9,53,49,Washington,Pacific County,2010,20919
+50,4,9,53,51,Washington,Pend Oreille County,2010,13001
+50,4,9,53,53,Washington,Pierce County,2010,795220
+50,4,9,53,55,Washington,San Juan County,2010,15768
+50,4,9,53,57,Washington,Skagit County,2010,116892
+50,4,9,53,59,Washington,Skamania County,2010,11070
+50,4,9,53,61,Washington,Snohomish County,2010,713299
+50,4,9,53,63,Washington,Spokane County,2010,471220
+50,4,9,53,65,Washington,Stevens County,2010,43532
+50,4,9,53,67,Washington,Thurston County,2010,252260
+50,4,9,53,69,Washington,Wahkiakum County,2010,3979
+50,4,9,53,71,Washington,Walla Walla County,2010,58781
+50,4,9,53,73,Washington,Whatcom County,2010,201146
+50,4,9,53,75,Washington,Whitman County,2010,44778
+50,4,9,53,77,Washington,Yakima County,2010,243240
+40,3,5,54,0,West Virginia,West Virginia,2010,1853008
+50,3,5,54,1,West Virginia,Barbour County,2010,16586
+50,3,5,54,3,West Virginia,Berkeley County,2010,104196
+50,3,5,54,5,West Virginia,Boone County,2010,24624
+50,3,5,54,7,West Virginia,Braxton County,2010,14519
+50,3,5,54,9,West Virginia,Brooke County,2010,24046
+50,3,5,54,11,West Virginia,Cabell County,2010,96246
+50,3,5,54,13,West Virginia,Calhoun County,2010,7629
+50,3,5,54,15,West Virginia,Clay County,2010,9394
+50,3,5,54,17,West Virginia,Doddridge County,2010,8201
+50,3,5,54,19,West Virginia,Fayette County,2010,46045
+50,3,5,54,21,West Virginia,Gilmer County,2010,8695
+50,3,5,54,23,West Virginia,Grant County,2010,11920
+50,3,5,54,25,West Virginia,Greenbrier County,2010,35487
+50,3,5,54,27,West Virginia,Hampshire County,2010,23952
+50,3,5,54,29,West Virginia,Hancock County,2010,30691
+50,3,5,54,31,West Virginia,Hardy County,2010,14027
+50,3,5,54,33,West Virginia,Harrison County,2010,69089
+50,3,5,54,35,West Virginia,Jackson County,2010,29215
+50,3,5,54,37,West Virginia,Jefferson County,2010,53490
+50,3,5,54,39,West Virginia,Kanawha County,2010,193056
+50,3,5,54,41,West Virginia,Lewis County,2010,16369
+50,3,5,54,43,West Virginia,Lincoln County,2010,21711
+50,3,5,54,45,West Virginia,Logan County,2010,36750
+50,3,5,54,47,West Virginia,McDowell County,2010,22108
+50,3,5,54,49,West Virginia,Marion County,2010,56451
+50,3,5,54,51,West Virginia,Marshall County,2010,33128
+50,3,5,54,53,West Virginia,Mason County,2010,27358
+50,3,5,54,55,West Virginia,Mercer County,2010,62265
+50,3,5,54,57,West Virginia,Mineral County,2010,28225
+50,3,5,54,59,West Virginia,Mingo County,2010,26834
+50,3,5,54,61,West Virginia,Monongalia County,2010,96192
+50,3,5,54,63,West Virginia,Monroe County,2010,13496
+50,3,5,54,65,West Virginia,Morgan County,2010,17541
+50,3,5,54,67,West Virginia,Nicholas County,2010,26225
+50,3,5,54,69,West Virginia,Ohio County,2010,44433
+50,3,5,54,71,West Virginia,Pendleton County,2010,7695
+50,3,5,54,73,West Virginia,Pleasants County,2010,7600
+50,3,5,54,75,West Virginia,Pocahontas County,2010,8722
+50,3,5,54,77,West Virginia,Preston County,2010,33511
+50,3,5,54,79,West Virginia,Putnam County,2010,55488
+50,3,5,54,81,West Virginia,Raleigh County,2010,78865
+50,3,5,54,83,West Virginia,Randolph County,2010,29402
+50,3,5,54,85,West Virginia,Ritchie County,2010,10449
+50,3,5,54,87,West Virginia,Roane County,2010,14928
+50,3,5,54,89,West Virginia,Summers County,2010,13926
+50,3,5,54,91,West Virginia,Taylor County,2010,16876
+50,3,5,54,93,West Virginia,Tucker County,2010,7141
+50,3,5,54,95,West Virginia,Tyler County,2010,9227
+50,3,5,54,97,West Virginia,Upshur County,2010,24260
+50,3,5,54,99,West Virginia,Wayne County,2010,42542
+50,3,5,54,101,West Virginia,Webster County,2010,9148
+50,3,5,54,103,West Virginia,Wetzel County,2010,16566
+50,3,5,54,105,West Virginia,Wirt County,2010,5710
+50,3,5,54,107,West Virginia,Wood County,2010,86954
+50,3,5,54,109,West Virginia,Wyoming County,2010,23804
+40,2,3,55,0,Wisconsin,Wisconsin,2010,5687285
+50,2,3,55,1,Wisconsin,Adams County,2010,20867
+50,2,3,55,3,Wisconsin,Ashland County,2010,16157
+50,2,3,55,5,Wisconsin,Barron County,2010,45876
+50,2,3,55,7,Wisconsin,Bayfield County,2010,15008
+50,2,3,55,9,Wisconsin,Brown County,2010,248006
+50,2,3,55,11,Wisconsin,Buffalo County,2010,13588
+50,2,3,55,13,Wisconsin,Burnett County,2010,15459
+50,2,3,55,15,Wisconsin,Calumet County,2010,48981
+50,2,3,55,17,Wisconsin,Chippewa County,2010,62510
+50,2,3,55,19,Wisconsin,Clark County,2010,34679
+50,2,3,55,21,Wisconsin,Columbia County,2010,56856
+50,2,3,55,23,Wisconsin,Crawford County,2010,16639
+50,2,3,55,25,Wisconsin,Dane County,2010,488091
+50,2,3,55,27,Wisconsin,Dodge County,2010,88744
+50,2,3,55,29,Wisconsin,Door County,2010,27784
+50,2,3,55,31,Wisconsin,Douglas County,2010,44160
+50,2,3,55,33,Wisconsin,Dunn County,2010,43865
+50,2,3,55,35,Wisconsin,Eau Claire County,2010,98873
+50,2,3,55,37,Wisconsin,Florence County,2010,4423
+50,2,3,55,39,Wisconsin,Fond du Lac County,2010,101626
+50,2,3,55,41,Wisconsin,Forest County,2010,9304
+50,2,3,55,43,Wisconsin,Grant County,2010,51204
+50,2,3,55,45,Wisconsin,Green County,2010,36839
+50,2,3,55,47,Wisconsin,Green Lake County,2010,19046
+50,2,3,55,49,Wisconsin,Iowa County,2010,23691
+50,2,3,55,51,Wisconsin,Iron County,2010,5916
+50,2,3,55,53,Wisconsin,Jackson County,2010,20441
+50,2,3,55,55,Wisconsin,Jefferson County,2010,83692
+50,2,3,55,57,Wisconsin,Juneau County,2010,26665
+50,2,3,55,59,Wisconsin,Kenosha County,2010,166424
+50,2,3,55,61,Wisconsin,Kewaunee County,2010,20578
+50,2,3,55,63,Wisconsin,La Crosse County,2010,114640
+50,2,3,55,65,Wisconsin,Lafayette County,2010,16825
+50,2,3,55,67,Wisconsin,Langlade County,2010,19977
+50,2,3,55,69,Wisconsin,Lincoln County,2010,28743
+50,2,3,55,71,Wisconsin,Manitowoc County,2010,81444
+50,2,3,55,73,Wisconsin,Marathon County,2010,134073
+50,2,3,55,75,Wisconsin,Marinette County,2010,41749
+50,2,3,55,77,Wisconsin,Marquette County,2010,15397
+50,2,3,55,78,Wisconsin,Menominee County,2010,4232
+50,2,3,55,79,Wisconsin,Milwaukee County,2010,947712
+50,2,3,55,81,Wisconsin,Monroe County,2010,44675
+50,2,3,55,83,Wisconsin,Oconto County,2010,37657
+50,2,3,55,85,Wisconsin,Oneida County,2010,36011
+50,2,3,55,87,Wisconsin,Outagamie County,2010,176614
+50,2,3,55,89,Wisconsin,Ozaukee County,2010,86395
+50,2,3,55,91,Wisconsin,Pepin County,2010,7469
+50,2,3,55,93,Wisconsin,Pierce County,2010,41029
+50,2,3,55,95,Wisconsin,Polk County,2010,44200
+50,2,3,55,97,Wisconsin,Portage County,2010,70021
+50,2,3,55,99,Wisconsin,Price County,2010,14159
+50,2,3,55,101,Wisconsin,Racine County,2010,195434
+50,2,3,55,103,Wisconsin,Richland County,2010,18028
+50,2,3,55,105,Wisconsin,Rock County,2010,160327
+50,2,3,55,107,Wisconsin,Rusk County,2010,14755
+50,2,3,55,109,Wisconsin,St. Croix County,2010,84332
+50,2,3,55,111,Wisconsin,Sauk County,2010,61955
+50,2,3,55,113,Wisconsin,Sawyer County,2010,16538
+50,2,3,55,115,Wisconsin,Shawano County,2010,41955
+50,2,3,55,117,Wisconsin,Sheboygan County,2010,115509
+50,2,3,55,119,Wisconsin,Taylor County,2010,20689
+50,2,3,55,121,Wisconsin,Trempealeau County,2010,28815
+50,2,3,55,123,Wisconsin,Vernon County,2010,29774
+50,2,3,55,125,Wisconsin,Vilas County,2010,21443
+50,2,3,55,127,Wisconsin,Walworth County,2010,102222
+50,2,3,55,129,Wisconsin,Washburn County,2010,15907
+50,2,3,55,131,Wisconsin,Washington County,2010,131885
+50,2,3,55,133,Wisconsin,Waukesha County,2010,389962
+50,2,3,55,135,Wisconsin,Waupaca County,2010,52409
+50,2,3,55,137,Wisconsin,Waushara County,2010,24510
+50,2,3,55,139,Wisconsin,Winnebago County,2010,167072
+50,2,3,55,141,Wisconsin,Wood County,2010,74750
+40,4,8,56,0,Wyoming,Wyoming,2010,563775
+50,4,8,56,1,Wyoming,Albany County,2010,36299
+50,4,8,56,3,Wyoming,Big Horn County,2010,11669
+50,4,8,56,5,Wyoming,Campbell County,2010,46133
+50,4,8,56,7,Wyoming,Carbon County,2010,15884
+50,4,8,56,9,Wyoming,Converse County,2010,13833
+50,4,8,56,11,Wyoming,Crook County,2010,7080
+50,4,8,56,13,Wyoming,Fremont County,2010,40123
+50,4,8,56,15,Wyoming,Goshen County,2010,13247
+50,4,8,56,17,Wyoming,Hot Springs County,2010,4812
+50,4,8,56,19,Wyoming,Johnson County,2010,8569
+50,4,8,56,21,Wyoming,Laramie County,2010,91885
+50,4,8,56,23,Wyoming,Lincoln County,2010,18106
+50,4,8,56,25,Wyoming,Natrona County,2010,75448
+50,4,8,56,27,Wyoming,Niobrara County,2010,2484
+50,4,8,56,29,Wyoming,Park County,2010,28207
+50,4,8,56,31,Wyoming,Platte County,2010,8667
+50,4,8,56,33,Wyoming,Sheridan County,2010,29124
+50,4,8,56,35,Wyoming,Sublette County,2010,10244
+50,4,8,56,37,Wyoming,Sweetwater County,2010,43806
+50,4,8,56,39,Wyoming,Teton County,2010,21298
+50,4,8,56,41,Wyoming,Uinta County,2010,21121
+50,4,8,56,43,Wyoming,Washakie County,2010,8528
+50,4,8,56,45,Wyoming,Weston County,2010,7208
