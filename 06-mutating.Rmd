@@ -13,7 +13,7 @@ library(tidyverse)
 Now we'll import a dataset of [PPP applications from Maryland](https://umd.box.com/s/czolak14n8ts55aqnt7rrqfb6cb8blr1). We'll use this, a sample of the entire PPP loan data, to explore ways to create new information from existing data.
 
 ```{r}
-maryland <- read_csv('ppp_applications_md.csv')
+maryland_ppp <- read_csv('ppp_applications_md.csv')
 ```
 
 First, let's add a column called `percent_payroll` for the percentage of each loan application that payroll expenses represent. The code to calculate a percentage is pretty simple. Remember, with `summarize`, we used `n()` to count things. With `mutate`, we use very similar syntax to calculate a new value -- a new column of data -- using other values in our dataset. So in this case, we're trying to do , but we're doing it with fields.
@@ -21,7 +21,7 @@ First, let's add a column called `percent_payroll` for the percentage of each lo
 If we look at what we got when we imported the data, you'll see there's `payroll_proceed` as the numerator, and we'll use `amount` as the denominator.
 
 ```{r}
-maryland %>%
+maryland_ppp %>%
   select(loan_number, amount, payroll_proceed) %>%
   mutate(
   percent_payroll = payroll_proceed/amount
@@ -30,7 +30,7 @@ maryland %>%
 Now we've got our `percent_payroll` column. But what do you see right away? Do those numbers look like we expect them to? No. They're a decimal expressed as a percentage. So let's fix that by multiplying by 100.
 
 ```{r}
-maryland %>%
+maryland_ppp %>%
   select(loan_number, amount, payroll_proceed) %>%
   mutate(
   percent_payroll = (payroll_proceed/amount)*100
@@ -39,7 +39,7 @@ maryland %>%
 Now, does this ordering do anything for us? No. Let's fix that with arrange.
 
 ```{r}
-maryland %>%
+maryland_ppp %>%
   select(loan_number, amount, payroll_proceed) %>%
   mutate(
   percent_payroll = (payroll_proceed/amount)*100
@@ -49,7 +49,7 @@ maryland %>%
 So now we have loans ordered by `percent_payroll` with the highest percentage first. Most loans are predominantly used for payroll expenses, so let's reverse that `arrange` function to show the lowest percentages first, then with the largest amount first.
 
 ```{r}
-maryland %>%
+maryland_ppp %>%
   select(loan_number, amount, payroll_proceed) %>%
   mutate(
   percent_payroll = (payroll_proceed/amount)*100
@@ -63,7 +63,7 @@ There's a loan application for $1.7 million where none of it would be used for p
 Take a look at the `city` column in our data.
 
 ```{r}
-View(maryland)
+View(maryland_ppp)
 ```
 
 You'll notice that there's a mix of styles: "Baltimore" and "BALTIMORE" for example. R will think those are two different cities, and that will mean that any aggregates we create based on city won't be accurate.
@@ -71,7 +71,7 @@ You'll notice that there's a mix of styles: "Baltimore" and "BALTIMORE" for exam
 So how can we fix that? Mutate - it's not just for math! And a function called `str_to_upper` that will convert a character column into all uppercase.
 
 ```{r}
-maryland %>%
+maryland_ppp %>%
   mutate(
     upper_city = str_to_upper(city)
 )
@@ -79,4 +79,38 @@ maryland %>%
 
 We could do the same thing with the `address` column in order to standardize that for analysis, too.
 
-> EXERCISE: What happens when you sort it in ascending order? Delete the desc part in arrange and see what happens. How would you describe this list?
+## A more powerful use
+
+Mutate is even more useful when combined with some additional functions. Let's say you want to know if the servicing lender is located in Maryland or outside the state. There are three possible answers:
+
+1. The lender is in Maryland
+2. The lender is outside Maryland
+3. The data doesn't tell us (`servicing_lender_state` is blank or NA)
+
+We can create a new column that accounts for these possibilities and populate it using mutate and `case_when`, which is like an if/else statement but for more than two options.
+
+```{r}
+maryland_with_in_out <- maryland_ppp %>%
+  mutate(
+    in_out = case_when(
+        servicing_lender_state == 'NA' ~ "NA",
+        servicing_lender_state == 'MD' ~ "IN",
+        servicing_lender_state != 'MD' ~ "OUT"
+      )
+  )
+```
+
+We can then use our new `in_out` column in group_by statements to make summarizing easier.
+
+In this case there are no Maryland loans where `servicing_lender_state` has a value of 'NA', but you should never assume that will be the case for a dataset. If you know that the only options are the lender is in Maryland or is outside it, you can rewrite the previous code as an if/else statement:
+
+```{r}
+maryland_with_in_out <- maryland_ppp %>%
+  mutate(
+    in_out = if_else(
+        servicing_lender_state == 'MD', "IN", "OUT"
+      )
+  )
+```
+
+Mutate is there to make your data more useful and to make it easier for you to ask more questions of it.

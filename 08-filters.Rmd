@@ -13,7 +13,7 @@ library(tidyverse)
 ```
 
 ```{r}
-maryland <- read.csv('ppp_applications_md.csv')
+maryland_ppp <- read.csv('ppp_applications_md.csv')
 ```
 
 The data we want to filter on is in `project_county_name`. So we're going to use filter and something called a comparison operator. We need to filter all records equal to "PRINCE GEORGES". The comparison operators in R, like most programming languages, are == for equal to, != for not equal to, > for greater than, >= for greater than or equal to and so on.
@@ -21,7 +21,7 @@ The data we want to filter on is in `project_county_name`. So we're going to use
 **Be careful: `=` is not `==` and `=` is not "equal to". `=` is an assignment operator in most languages -- how things get named.**
 
 ```{r}
-prince_georges <- maryland %>% filter(project_county_name == "PRINCE GEORGES")
+prince_georges <- maryland_ppp %>% filter(project_county_name == "PRINCE GEORGES")
 
 head(prince_georges)
 ```
@@ -45,7 +45,7 @@ And now we only have five columns of data for whatever analysis we might want to
 So let's say we wanted to know how many Prince George's applications were from non-profit organizations and applied for more than $150,000. We can do this a number of ways. The first is we can chain together a whole lot of filters.
 
 ```{r}
-large_prince_georges_nonprofit <- maryland %>% filter(project_county_name == "PRINCE GEORGES") %>% filter(business_type == "Non-Profit Organization") %>% filter(amount > 150000)
+large_prince_georges_nonprofit <- maryland_ppp %>% filter(project_county_name == "PRINCE GEORGES") %>% filter(business_type == "Non-Profit Organization") %>% filter(amount > 150000)
 
 nrow(large_prince_georges_nonprofit)
 ```
@@ -57,14 +57,14 @@ The difference? With AND, all three things must be true to be included. With OR,
 Here's the difference.
 
 ```{r}
-and_prince_georges <- maryland %>% filter(project_county_name == "PRINCE GEORGES" & business_type == "Non-Profit Organization" & amount > 150000)
+and_prince_georges <- maryland_ppp %>% filter(project_county_name == "PRINCE GEORGES" & business_type == "Non-Profit Organization" & amount > 150000)
 
 nrow(and_prince_georges)
 ```
 So AND gives us the same answer we got before. What does OR give us?
 
 ```{r}
-or_prince_georges <- maryland %>% filter(project_county_name == "PRINCE GEORGES" | business_type == "Non-Profit Organization" | amount > 150000)
+or_prince_georges <- maryland_ppp %>% filter(project_county_name == "PRINCE GEORGES" | business_type == "Non-Profit Organization" | amount > 150000)
 
 nrow(or_prince_georges)
 ```

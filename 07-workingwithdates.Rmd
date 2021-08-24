@@ -15,17 +15,16 @@ library(tidyverse)
 We're going to use a dataset of [PPP applications from Maryland](https://umd.box.com/s/czolak14n8ts55aqnt7rrqfb6cb8blr1). If we do this the old way -- using read.csv -- this is what we get:
 
 ```{r}
-maryland <- read.csv('ppp_applications_md.csv')
-head(maryland)
+maryland_ppp <- read.csv('ppp_applications_md.csv')
+head(maryland_ppp)
 ```
 Note the date is a factor, not a date. We have to fix that. There's a lot of ways to fix dates. The base R way is to use formatting. The code is ... a little odd ... but it's useful to know if you get a really odd date format. What you are doing is essentially parsing the date into it's component parts then reassembling it into a date using formatting.
 
 ```{r}
-new_maryland <- maryland %>% mutate(
+new_maryland_ppp <- maryland_ppp %>% mutate(
     CleanDate = as.POSIXct(date_approved, format="%Y-%m-%d %H:%M:%S")
 )
-
-head(new_maryland)
+head(new_maryland_ppp)
 ```
 
 CleanDate is now an actual date format that includes times, so you can use `filter` to isolate applications with specific dates.
@@ -41,11 +40,10 @@ library(lubridate)
 Lubridate can handle this tickets data easier with one of it's many functions. The functions parse dates given a basic pattern. In this case, our data is in a very common pattern of month date year hours minutes seconds. Lubridate has a function called `ymd_hms`.
 
 ```{r}
-lubridatemaryland <- maryland %>% mutate(
+lubridate_maryland_ppp <- maryland_ppp %>% mutate(
     CleanDate = ymd_hms(date_approved)
 )
-
-head(lubridatemaryland)
+head(lubridate_maryland_ppp)
 ```
 That's less code and less weirdness, so that's good.
 
@@ -56,8 +54,8 @@ Still, there's got to be a better way. And there is.
 Fortunately, `readr` anticipates some date formattings and can automatically handle this (indeed it uses lubridate under the hood). The change in your code? You just use `read_csv` instead of `read.csv`
 
 ```{r}
-maryland <- read_csv("ppp_applications_md.csv")
-head(maryland)
+maryland_ppp <- read_csv("ppp_applications_md.csv")
+head(maryland_ppp)
 ```
 
 And just like that, the dates are formatted correctly.
@@ -71,7 +69,7 @@ How about what month are the most applications approved? We could use formatting
 So to follow along here, we're going to use mutate to create a month field, group by to lump them together, summarize to count them up and arrange to order them. We're just chaining things together.
 
 ```{r}
-maryland %>%
+maryland_ppp %>%
   mutate(Month = floor_date(date_approved, "month")) %>%
   group_by(Month) %>%
   summarise(total = n()) %>%

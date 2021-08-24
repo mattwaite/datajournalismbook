@@ -1,0 +1,40 @@
+---
+title: "lab_02"
+author: "derek willis"
+date: "8/24/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load libraries and establish settings
+```{r}
+# Turn off scientific notation
+options(scipen=999)
+
+# Load the tidyverse and lubridate
+library(tidyverse)
+library(lubridate)
+```
+
+## Load Data
+
+Let's keep working with West Virginia loans contained in the PPP loans data.  
+
+```{r}
+west_virginia_ppp <- read_rds("lab_02.rds")
+```
+
+## Examine Data
+
+## Answer questions
+
+Q1. Create a new column that divides the loan amounts into multiple options: under_10k, 10k_50k, 50k_100k, 100k_500k, 500k_1m, 1m_plus. How many loans are in each group?
+
+Q2. Which servicing lenders have the most loans with undisbursed amounts greater than 0?
+
+Q3. How would you describe the top 10 list of those lenders? What do they have in common or not? (You may want to look up some of the top ones.)
+
+Q4. Which month in 2021 had the most loans approved?

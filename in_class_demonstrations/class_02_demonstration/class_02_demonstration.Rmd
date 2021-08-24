@@ -1,0 +1,159 @@
+---
+title: "class_02_demonstration.Rmd"
+author: "derek willis"
+date: "8/24/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Points to hit
+1. Review of first lab and questions/problems.
+2. Review GitHub?
+3. Demonstration of aggregation. Explanation of functions. Explanation of pipes.
+
+## Load Libraries
+```{r}
+# turn off sci notation
+options(scipen=999)
+library(tidyverse)
+library(lubridate)
+```
+
+## Load Data
+Maryland slice of PPP data
+```{r}
+maryland_ppp <- read_rds("class_02_demonstration.rds")
+```
+
+## Get a sense
+```{r}
+head(maryland_ppp)
+summary(maryland_ppp)
+colnames(maryland_ppp)
+glimpse(maryland_ppp)
+```
+
+## Mutating
+Let's add a new column based on an existing column.  
+
+```{r}
+maryland_ppp %>%
+  select(loan_number, amount, payroll_proceed) %>%
+  mutate(
+  percent_payroll = payroll_proceed/amount
+)
+```
+
+```{r}
+# make it a percentage
+maryland_ppp %>%
+  select(loan_number, amount, payroll_proceed) %>%
+  mutate(
+  percent_payroll = (payroll_proceed/amount)*100
+)
+```
+
+```{r}
+# better ordering?
+maryland_ppp %>%
+  select(loan_number, amount, payroll_proceed) %>%
+  mutate(
+  percent_payroll = (payroll_proceed/amount)*100
+)  %>% arrange(desc(percent_payroll))
+```
+
+```{r}
+# actual better ordering
+maryland_ppp %>%
+  select(loan_number, amount, payroll_proceed) %>%
+  mutate(
+  percent_payroll = (payroll_proceed/amount)*100
+)  %>% arrange(percent_payroll, desc(amount))
+```
+
+```{r}
+# case when
+maryland_with_in_out <- maryland_ppp %>%
+  mutate(
+    in_out = case_when(
+        servicing_lender_state == 'NA' ~ "NA",
+        servicing_lender_state == 'MD' ~ "IN",
+        servicing_lender_state != 'MD' ~ "OUT"
+      )
+  )
+```
+
+```{r}
+# if/else example
+maryland_with_in_out <- maryland_ppp %>%
+  mutate(
+    in_out = if_else(
+        servicing_lender_state == 'MD', "IN", "OUT"
+      )
+  )
+```
+
+## Filters
+
+
+```{r}
+# filter by county
+prince_georges <- maryland_ppp %>% filter(project_county_name == "PRINCE GEORGES")
+head(prince_georges)
+```
+
+```{r}
+# multiple filters first time
+large_prince_georges_nonprofit <- maryland_ppp %>% filter(project_county_name == "PRINCE GEORGES") %>% filter(business_type == "Non-Profit Organization") %>% filter(amount > 150000)
+
+nrow(large_prince_georges_nonprofit)
+```
+
+```{r}
+# and example
+and_prince_georges <- maryland_ppp %>% filter(project_county_name == "PRINCE GEORGES" & business_type == "Non-Profit Organization" & amount > 150000)
+
+nrow(and_prince_georges)
+```
+
+```{r}
+# or example
+or_prince_georges <- maryland_ppp %>% filter(project_county_name == "PRINCE GEORGES" | business_type == "Non-Profit Organization" | amount > 150000)
+
+nrow(or_prince_georges)
+```
+
+
+## Dates
+
+```{r}
+# using read.csv
+maryland_ppp <- read.csv('ppp_applications_md.csv')
+head(maryland_ppp)
+```
+
+```{r}
+# lubridate example
+lubridate_maryland_ppp <- maryland_ppp %>% mutate(
+    CleanDate = ymd_hms(date_approved)
+)
+head(lubridate_maryland_ppp)
+```
+
+```{r}
+# readr example
+maryland_ppp <- read_csv("ppp_applications_md.csv")
+head(maryland_ppp)
+```
+
+```{r}
+# lubridate with mutate
+maryland_ppp %>%
+  mutate(Month = floor_date(date_approved, "month")) %>%
+  group_by(Month) %>%
+  summarise(total = n()) %>%
+  arrange(desc(total))
+```
