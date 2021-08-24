@@ -1,0 +1,21 @@
+# Using GitHub
+
+GitHub is a platform for managing and storing files, data and code built atop Git, a popular open source version control software. GitHub accounts are free and it's [easy to get started](https://docs.github.com/en/get-started/quickstart). The one prerequisite is that you have [Git installed on your local computer](https://docs.github.com/en/get-started/quickstart/set-up-git). There are installers for Mac, Windows and Linux.
+
+## How It Works
+
+Version control is based on the ideas that you want to keep track of changes you make to a collection of files and that multiple people can work together without getting in each other's way or having to do things in a set order. For individual users, it's great for making sure that you always have your work.
+
+GitHub users work in what are known as repositories on their local computers and also _push_ changes to a remote repository located on GitHub. That remote repository is key: if you lose your computer, you can fetch a version of your files from GitHub. If you want to work with someone else on the same files, you can each have a local copy, push changes to GitHub and then pull each others' changes back to your local computers.
+
+So, like Microsoft Word's track changes but with a remote backup and multiple editors.
+
+## Getting Started
+
+After installing Git and signing up for a GitHub account, [download and install GitHub Desktop](https://docs.github.com/en/desktop/installing-and-configuring-github-desktop). It will have you sign into your GitHub account and then you'll have access to any existing repositories. If you don't have any, that's fine! You can [make one locally](https://docs.github.com/en/desktop/installing-and-configuring-github-desktop/overview/creating-your-first-repository-using-github-desktop).
+
+GitHub has [good documentation for working in the Desktop app](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop), and while the emphasis in this book will be on using GitHub for version control, it also supports recording issues (read: problems or questions) with your files, contributing to projects that aren't yours and more.
+
+## Advanced Use
+
+Although our focus is on the GitHub Desktop app, you can use Git and GitHub from your computer's command line interface, and GitHub has a purpose-built [command line client](https://docs.github.com/en/github-cli), too. GitHub  can also serve as a publishing platform for many types of files, and entire websites are hosted on [GitHub Pages](https://docs.github.com/en/pages).
