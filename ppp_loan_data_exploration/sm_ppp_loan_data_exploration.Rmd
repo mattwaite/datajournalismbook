@@ -70,7 +70,6 @@ write_csv(ppp_loans_wv,"../data/ppp_loan_data/processed/wv/ppp_loans_wv.csv.gz")
 
 
 
-
 ## Write Maryland 
 write_rds(ppp_loans_md,"../data/ppp_loan_data/processed/md/ppp_loans_md.rmd", compress="gz")
 ## Write West Virginia
@@ -134,6 +133,18 @@ write_rds(maryland_ppp_loan_county_pop,"../in_class_demonstrations/class_01_demo
 
 ```
 
+```{r}
+
+ppp_loans <- read_rds("../data/ppp_loan_data/processed/full/ppp_loans.rmd")
+
+ppp_loans %>% 
+  mutate(month_year_approved = floor_date(date_approved, "month")) %>%
+  group_by(month_year_approved) %>% 
+   summarise(
+    count=n()
+  ) %>%
+  arrange(month_year_approved)
+```
 # Lab 01
 
 ```{r}
