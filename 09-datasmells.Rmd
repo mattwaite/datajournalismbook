@@ -143,9 +143,7 @@ ppp_loans_md %>%
 
 So, our data starts in April 2020, the month that has more loans -- 45,040 -- than any other month.  That makes sense, as the program launched at the start of the pandemic, in April 2020.  The number of loans declines each month through August 2020, as the initial round of the program worked through the initial funding allocation.  
 
-Then, there are no loans until January 2021. EXPLAIN WHY? IS THIS A PROBLEM?  There are loans every month until the program winds down in June 
-
-First thing to notice: our data starts in April 2012. So 2012 isn't a complete year. Then, scroll through. Look at December 2013 - March 2014. The number of tickets drops to about 10 percent of normal. That's ... odd. And then let's look at the end -- November 2016. So not a complete year in 2016 either. 
+Then, there are no loans until January 2021. EXPLAIN WHY? IS THIS A PROBLEM?  There are loans every month until the program winds down on May 31, 2021.  There are still loans in June.  IS THIS A PROBLEM.   
 
 ## Internal inconsistency
 
