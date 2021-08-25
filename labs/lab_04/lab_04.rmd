@@ -1,0 +1,71 @@
+---
+title: "lab_04"
+author: "derek willis"
+date: "8/24/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load libraries and establish settings
+```{r}
+# Turn off scientific notation
+options(scipen=999)
+
+# Load the tidyverse.
+library(tidyverse)
+```
+
+## Load Data
+
+Let's keep working with [Maryland loan applications](https://umd.box.com/s/czolak14n8ts55aqnt7rrqfb6cb8blr1) contained in the PPP data.
+
+```{r}
+maryland_ppp <- read_csv('ppp_applications_md.csv')
+```
+
+To answer the questions below, you'll need to join both the NAICS code data and the ZCTA demographic data from the book chapter. There's a particular set of steps you'll need to perform to make that work properly.
+
+First, let's load [the NAICS code data we have](https://umd.box.com/s/thou3merdzwzbdimbvd06zkax1zndcsk):
+
+```{r}
+naics_codes <- read_csv('naics_codes.csv')
+```
+
+Next join the two and then create a 5-character `zip5` column that we can use to join to the ZCTA data:
+
+```{r}
+maryland_ppp_with_naics <- maryland_ppp %>% left_join(naics_codes)
+maryland_ppp_with_naics <- maryland_ppp_with_naics %>% mutate(zip5 = str_sub(zip, 1, 5))
+```
+
+Let's add the [Zip Code Tabulation Area dataset](https://umd.box.com/s/2xsq2rpkmg4ct3a77vt8j5bu4vu1z0tf). Remember that we'll need to make the `ZCTA5N` column a character column, not a numeric one:
+
+```{r}
+maryland_zcta <- read_csv('maryland_zcta.csv')
+maryland_zcta <- maryland_zcta %>% mutate(across(ZCTA5N, as.character))
+```
+
+Now we can join the PPP data to the ZCTA data:
+
+```{r}
+maryland_ppp_with_naics_and_demographics <- maryland_ppp_with_naics %>% left_join(maryland_zcta, by=c("zip5"="ZCTA5N"))
+```
+
+## Answer questions
+
+Q1. What are the top industries (using the NAICS title) for PPP applications in Maryland?
+
+Q2. What are the top industries (using the NAICS title) for PPP applications in Maryland with amounts of more than $150,000?
+
+Q3. Which Maryland zip code with at least 20 percent non-Hispanic Asian population had the largest sum of PPP loans? Also show the number (count) of loans.
+
+Q4. Which Maryland zip code had the largest sum of loans where the reported race of the applicant was "Asian", and what is the percentage of non-Hispanic Asian population in that zip code? Also show the number (count) of loans.
+
+Q5. What might explain why 20850 has a significant Asian population (23.5%) and only 240 of the 3,186 loans (7.5%) are to Asian applicants?
+
+Q6. Are there Maryland zip codes that have loans with Asian applicants but do not appear to have Asian population in the ZCTA data? What's going on here?
+
+Q7. How many industries have exactly one loan in the data (hint: you can filter _after_ using `summarise` to create a count). From a newsworthiness standpoint, which of these is most worthy of further exploration, and why?
