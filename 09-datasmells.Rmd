@@ -25,6 +25,7 @@ Not all of these data smells are detectable in code. You may have to ask people 
 
 But with several of these data smells, we can do them first, before we do anything else. 
 
+We're going to examine three here as they apply to the PPP loan data we've been working with: wrong type,   
 
 
 ## Wrong Type
@@ -36,12 +37,13 @@ We can sniff that out by looking at the output of `readr`.
 Let's load the Maryland slice of ppp_loan_data we've used previously.
 
 ```{r}
+options(scipen=999)
 library(tidyverse)
 ```
 
 ```{r}
 ppp_loans_md <- read_csv("data/ppp_loan_data/processed/md/ppp_loans_md.csv.gz")
-x<-read_rds("data/ppp_loan_data/processed/md/ppp_loans_md.rmd")
+#x<-read_rds("data/ppp_loan_data/processed/md/ppp_loans_md.rmd")
 
 ```
 Examine the data output message. There are "12802 parsing failures."
@@ -146,29 +148,35 @@ ppp_loans_md %>%
 So, our data starts in April 2020, the month that has more loans -- 45,040 -- than any other month.  That makes sense, as the program launched at the start of the pandemic, in April 2020.  The number of loans declines each month through August 2020, as the initial round of the program worked through the initial funding allocation.  
 
 Then, there are no loans until January 2021. EXPLAIN WHY? IS THIS A PROBLEM?  There are loans every month until the program winds down on May 31, 2021.  There are still loans in June.  IS THIS A PROBLEM.   
+## Supicious Outliers 
 
-## Outliers 
+Any time you are going to focus on a column for analysis, you should check for suspicious values. Are there any unusually large values or unusually small values?  Are there any values that should not exist in the data?
 
-Any time you are going to focus on something, you should check it for consistency inside the data set. So let's pretend the large number of Displaying Altered Permit tickets caught your attention and you want to do a story about tens of thousands of students being caught altering their parking permits to reduce their costs parking on campus. Good story right? Before you go calling the parking office for comment, I'd check that data first. 
-
-```{r}
-tickets %>% filter(Violation == "Displaying Altered Permit") %>% group_by(floor_date(Date, "month")) %>% tally()
-```
-
-So this charge exists when our data starts, but scroll forward: In October 2013, there's 1,081 tickets written. A month later, only 121. A month after that? 1. And then one sporadically for three more years. 
-
-Something major changed. What is it? That's why you are a reporter. Go ask. But we know our data doesn't support the story we started with.
-
-And that's what Data Smells are designed to do: stop you from going down a bad path.
-
-## A Shortcut: Summary
-
-One quick way to get some data smells is to use R's built in summary function. What summary does is run summary statistics on each column of your dataset. Some of the output is ... underwhelming ... but some is really useful. For example,  looking at min and max for dates can point to bad data there. Min and max will also show you out of range numbers -- numbers far too big or small to make sense. 
-
-The syntax is simple. 
+Let's consider the loan amount column from our Maryland PPP data, and find the largest (max) and smallest (min) amount.  
 
 ```{r}
-summary(tickets)
-```
 
-In this case, the output doesn't do much for us except dates. Looking at the min and max will tell us if we have any out of range dates. In this case, we do not. 
+ppp_loans_md %>% 
+  summarise(max_amount = max(amount),
+            min_amount= min(amount))
+```
+The largest amount is \$10 million which is the maximum size of a loan under the program. If the max amount was larger than \$10 million, that would be suspicious.  Similarly, if the smallest amount was a negative number, that would also raise an eyebrow.  What about $6?  That does seem a little odd. Why would someone take out a loan for that amount of money?
+
+Let's take a look at the full record set for any loan less than $100. 
+
+```{r}
+
+ppp_loans_md %>% 
+ filter(amount < 100)
+```
+We have two businesses, "GETGFTD LLC" and "LEGACY SPINE AND PAIN LLC" that both got very small loans of \$6 and \$78. Scan through the columns. Let's check for internal consistency.  There are other columns in the data that have related information: intial_approval_amount, current_approval_amount and payroll_proceed. Let's select just those columns
+
+```{r}
+
+ppp_loans_md %>% 
+ filter(amount < 100) %>%
+  select(name, amount, initial_approval_amount, current_approval_amount, payroll_proceed)
+```
+Those are all the same value, so at least this number is internally consistent.  But is it correct? Did someone mistype it when entering the data?  A call to the bank -- Bank of America in both cases -- or the companies could help resolve this mystery. 
+
+
