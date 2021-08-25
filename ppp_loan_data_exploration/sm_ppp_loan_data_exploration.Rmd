@@ -159,6 +159,9 @@ write_rds(arnold_md_loans,"../data/ppp_loan_data/processed/md/arnold_md_loans.rm
   
 
 ```
+
+
+
 ```{r}
 
 
