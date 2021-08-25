@@ -21,72 +21,128 @@ library(tidyverse)
 
 ## Load Data
 
-Let's keep working with Maryland loan applications contained in the PPP data.  
+Let's keep working with Maryland loan applications contained in the PPP data.
 
 ```{r}
-maryland_ppp <- read_rds("lab_04.rds")
+maryland_ppp <- read_csv('ppp_applications_md.csv')
 ```
 
-After reading into R [the NAICS code data we have](https://umd.box.com/s/thou3merdzwzbdimbvd06zkax1zndcsk):
+To answer the questions below, you'll need to join both the NAICS code data and the ZCTA demographic data from the book chapter. There's a particular set of steps you'll need to perform to make that work properly.
+
+First, let's load [the NAICS code data we have](https://umd.box.com/s/thou3merdzwzbdimbvd06zkax1zndcsk):
 
 ```{r}
 naics_codes <- read_csv('naics_codes.csv')
 ```
 
-Let's join the two:
+Next join the two and then create a 5-character `zip5` column that we can use to join to the ZCTA data:
 
 ```{r}
-maryland_ppp_with_title <- maryland_ppp %>% left_join(naics_codes)
+maryland_ppp_with_naics <- maryland_ppp %>% left_join(naics_codes)
+maryland_ppp_with_naics <- maryland_ppp_with_naics %>% mutate(zip5 = str_sub(zip, 1, 5))
+```
+
+Let's add the [Zip Code Tabulation Area dataset](https://umd.box.com/s/2xsq2rpkmg4ct3a77vt8j5bu4vu1z0tf). Remember that we'll need to make the `ZCTA5N` column a character column, not a numeric one:
+
+```{r}
+maryland_zcta <- read_csv('maryland_zcta.csv')
+maryland_zcta <- maryland_zcta %>% mutate(across(ZCTA5N, as.character))
+```
+
+Now we can join the PPP data to the ZCTA data:
+
+```{r}
+maryland_ppp_with_naics_and_demographics <- maryland_ppp_with_naics %>% left_join(maryland_zcta, by=c("zip5"="ZCTA5N"))
 ```
 
 ## Answer questions
 
-Q1. Create a new column that divides the loan amounts into multiple options: under_10k, 10k_50k, 50k_100k, 100k_500k, 500k_1m, 1m_plus. How many loans are in each group?
-A1. The 10k-50k group has 15,372, the most of any group.
+Q1. What are the top industries (using the NAICS title) for PPP applications in Maryland?
+A1. Taxi services, with 7,363 applications, followed by beauty salons and restaurants.
 
 ```{r}
-west_virginia_ppp %>%
-  mutate(
-    amount_option = case_when(
-      amount < 10000 ~ 'under_10k',
-      amount >= 10000 & amount < 50000 ~ '10k_50k',
-      amount >= 50000 & amount < 100000 ~ '50k_100k',
-      amount >= 100000 & amount < 500000 ~ '100k_500k',
-      amount >= 500000 & amount < 1000000 ~ '500k_1m',
-      amount >= 1000000 ~ '1m_plus'
-    )
-  ) %>%
-  group_by(amount_option) %>%
+maryland_ppp_with_naics_and_demographics %>%
+  group_by(title) %>%
   summarise(
-    total_loans = n()
+    count=n()
   ) %>%
-  arrange(desc(total_loans))
+  arrange(desc(count))
 ```
 
-Q2. Which servicing lenders have the most loans with undisbursed amounts greater than 0?
-A2. Harvest Small Business Finance, LLC, tops the list with 139.
+Q2. What are the top industries (using the NAICS title) for PPP applications in Maryland with amounts of more than $150,000?
+A2. Restaurants, with 1,488 applications, followed by physicians and plumbing/HVAC contractors.
 
 ```{r}
-west_virginia_ppp %>%
-  filter(undisbursed_amount > 0) %>%
-  group_by(servicing_lender_name, servicing_lender_state ) %>%
+maryland_ppp_with_naics_and_demographics %>%
+  filter(amount > 150000) %>%
+  group_by(title) %>%
   summarise(
-    total_loans = n()
+    count=n()
   ) %>%
-  arrange(desc(total_loans))
+  arrange(desc(count))
 ```
 
-Q3. How would you describe the top 10 list of those lenders? What do they have in common or not? (You may want to look up some of the top ones.)
-A3. The top seven lenders with the most undisbursed loans are banks or institutions located outside West Virginia. The top three are not chartered banks but specialty lenders that operate under different rules. They also have distinctly unhelpful websites for PPP applicants.
-
-Q4. Which month in 2021 had the most loans approved?
-A4. March 2021, with 4,404.
+Q3. Which Maryland zip code with at least 20 percent non-Hispanic Asian population had the largest sum of PPP loans? Also show the number (count) of loans.
+A3. 20850 (Rockville) was by far the leader, with $474,525,058 in loans.
 
 ```{r}
-west_virginia_ppp %>%
-  filter(date_approved > '2020-12-31') %>%
-  mutate(Month = floor_date(date_approved, "month")) %>%
-  group_by(Month) %>%
-  summarise(total = n()) %>%
-  arrange(desc(total))
+maryland_ppp_with_naics_and_demographics %>%
+  filter(PNHA >= 20) %>%
+  group_by(zip5) %>%
+  summarize(
+    sum = sum(amount),
+    count = n()
+  ) %>%
+  arrange(desc(sum))
+```
+
+Q4. Which Maryland zip code had the largest sum of loans where the reported race of the applicant was "Asian", and what is the percentage of non-Hispanic Asian population in that zip code? Also show the number (count) of loans.
+A4: 20850, which has $28,994,798 in loans to applicants listing "Asian" and 23.5 percent of its population is Asian.
+
+```{r}
+maryland_ppp_with_naics_and_demographics %>%
+  filter(race == 'Asian') %>%
+  group_by(zip5, PNHA) %>%
+  summarize(
+    sum = sum(amount),
+    count = n()
+  ) %>%
+  arrange(desc(sum))
+```
+
+Q5. What might explain why 20850 has a significant Asian population (23.5%) and only 240 of the 3,186 loans (7.5%) are to Asian applicants?
+A5: A major factor likely is that the `race` column in the PPP data is rarely filled out, which means there could be many more loans to Asian applicants that are not easily identified in the data, especially when applicants often use business names, not individual names. There also could be additional reasons, such as a lack of formal banking relationships or issues with outreach that may have resulted in fewer applications. This is one reason it's useful to combine the PPP data with demographic data.
+
+Q6. Are there Maryland zip codes that have loans with Asian applicants but do not appear to have Asian population in the ZCTA data? What's going on here?
+A6. Yes! There are three zip codes, with 21031 having 6 loans worth $6.8 million in total. Let's look at that zip code using [the handy Census Reporter site](https://censusreporter.org/profiles/86000US21031-21031/). This zip code appears to have _no population at all_, which at first seems weird, but remember that population is based on where people _live_. A quick check of Google Maps shows [21031 to be a commercial area](https://www.google.com/maps/place/Hunt+Valley,+MD+21031/@39.4849896,-76.6652558,3300m/data=!3m2!1e3!4b1!4m5!3m4!1s0x89c81265c9fb1935:0x8d4cd6bbb903a99a!8m2!3d39.4894521!4d-76.6614853). The lesson here is that while population data can be very useful, it has its limitations in that it represents people, not businesses.
+
+```{r}
+maryland_ppp_with_naics_and_demographics %>%
+  filter(race == 'Asian' & PNHA == 0) %>%
+  group_by(zip5, PNHA) %>%
+  summarize(
+    sum = sum(amount),
+    count = n()
+  ) %>%
+  arrange(desc(sum))
+```
+
+Q7. How many industries have exactly one loan in the data (hint: you can filter _after_ using `summarise` to create a count). From a newsworthiness standpoint, which of these is most worthy of further exploration, and why?
+A7. There are 44.
+
+```{r}
+lone_loans <- maryland_ppp_with_naics_and_demographics %>%
+  group_by(naics_code, title) %>%
+  summarize(
+    count = n()
+  ) %>%
+  filter(count==1)
+```
+
+My favorites:
+
+```{r}
+View(maryland_ppp %>% filter(naics_code==921140))
+View(maryland_ppp %>% filter(naics_code==521110))
+View(maryland_ppp %>% filter(naics_code==221113))
 ```

@@ -63,8 +63,8 @@ maryland_ppp %>% left_join(naics_codes) %>% select(name, naics_code, title)
 ```
 
 ```{r}
-# create new dataframe with title
-maryland_ppp_with_title <- maryland_ppp %>% left_join(naics_codes)
+# create new dataframe with naics data
+maryland_ppp_with_naics <- maryland_ppp %>% left_join(naics_codes)
 ```
 
 ```{r}
@@ -74,7 +74,7 @@ maryland_zcta <- read_csv('maryland_zcta.csv')
 
 ```{r}
 # join on zip - but there's a problem
-maryland_ppp_with_title_and_demographics <- maryland_ppp_with_title %>% left_join(maryland_zcta, by=c("zip"="ZCTA5N"))
+maryland_ppp_with_naics_and_demographics <- maryland_ppp_with_naics %>% left_join(maryland_zcta, by=c("zip"="ZCTA5N"))
 ```
 
 ```{r}
@@ -84,19 +84,19 @@ maryland_zcta <- maryland_zcta %>% mutate(across(ZCTA5N, as.character))
 
 ```{r}
 # join works, but check the results
-maryland_ppp_with_title_and_demographics <- maryland_ppp_with_title %>% left_join(maryland_zcta, by=c("zip"="ZCTA5N"))
+maryland_ppp_with_naics_and_demographics <- maryland_ppp_with_naics %>% left_join(maryland_zcta, by=c("zip"="ZCTA5N"))
 View(maryland_ppp_with_title_and_demographics)
 ```
 
 ```{r}
 # make a zip5 column and redo the join
-maryland_ppp_with_title <- maryland_ppp %>% mutate(zip5 = str_sub(zip, 1, 5))
-maryland_ppp_with_title_and_demographics <- maryland_ppp_with_title %>% left_join(maryland_zcta, by=c("zip5"="ZCTA5N"))
+maryland_ppp_with_naics <- maryland_ppp_with_naics %>% mutate(zip5 = str_sub(zip, 1, 5))
+maryland_ppp_with_naics_and_demographics <- maryland_ppp_with_naics %>% left_join(maryland_zcta, by=c("zip5"="ZCTA5N"))
 ```
 
 ```{r}
 # zcta with > 50% non-Hispanic Black population
-maryland_ppp_with_title_and_demographics %>%
+maryland_ppp_with_naics_and_demographics %>%
   filter(PNHB > 50) %>%
   summarize(
     count = n(),
@@ -107,7 +107,7 @@ maryland_ppp_with_title_and_demographics %>%
 
 ```{r}
 # zcta with > 50% non-Hispanic white population
-maryland_ppp_with_title_and_demographics %>%
+maryland_ppp_with_naics_and_demographics %>%
   filter(PNHW > 50) %>%
   summarize(
     count = n(),
@@ -118,7 +118,7 @@ maryland_ppp_with_title_and_demographics %>%
 
 ```{r}
 # zcta with > 50% non-Hispanic Black population grouped by rural/urban
-maryland_ppp_with_title_and_demographics %>%
+maryland_ppp_with_naics_and_demographics %>%
   filter(PNHB > 50) %>%
   group_by(rural_urban_indicator) %>%
   summarize(
@@ -129,7 +129,7 @@ maryland_ppp_with_title_and_demographics %>%
 
 ```{r}
 # zcta with > 50% non-Hispanic white population grouped by rural/urban
-maryland_ppp_with_title_and_demographics %>%
+maryland_ppp_with_naics_and_demographics %>%
   filter(PNHW > 50) %>%
   group_by(rural_urban_indicator) %>%
   summarize(
