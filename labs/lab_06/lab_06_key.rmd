@@ -50,12 +50,12 @@ international_migration <- international_migration %>% mutate(type='internationa
 
 ## Answer questions
 
-Q1. Which jurisdiction had the largest percentage change between 2011 and 2019? You'll need to add and populate a `pct_change` column using `mutate`.
-A1.
+Q1. Which jurisdiction below the state level accounted for the largest percentage of international migration overall? For July 2011? You'll need to add and populate columns representing percent of total using `mutate`.
+A1. Suburban Washington (62.8%)
 
 ```{r}
 international_migration %>%
-  mutate(pct_change=(july_2019-july_2011)/july_2011) %>%
-  select(jurisdiction, pct_change) %>%
-  arrange(desc(pct_change))
+  mutate(pct_total=(total/198996)*100) %>%
+  select(jurisdiction, pct_total) %>%
+  arrange(desc(pct_total))
 ```
