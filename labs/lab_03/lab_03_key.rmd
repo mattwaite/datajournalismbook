@@ -4,6 +4,9 @@ author: "sean mussenden"
 date: "8/19/2021"
 output: html_document
 ---
+https://github.com/smussenden/datajournalismbook/blob/master/pre_labs/pre_lab_01/pre_lab_01.zip
+https://github.com/smussenden/datajournalismbook/blob/master/pre_labs/pre_lab_01/pre_lab_01.zip
+https://github.com/smussenden/datajournalismbook/blob/master/pre_labs/pre_lab_01/pre_lab_01.zip
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -31,7 +34,7 @@ Mutating and filtering
 wv_ppp_loans <- read_rds("lab_03.rds")
 
 #Make total loans a character
-
+https://www.usatoday.com/story/news/politics/2020/07/06/ppp-loans-firms-tied-lawmakers-among-those-getting-pandemic-aid/5382594002/
 ```
 
 Q1: Working from the set of businesses that got PPP loans and are located in Kanawha County, West Virginia, name the four cities that got the most total loans?
