@@ -50,8 +50,8 @@ international_migration <- international_migration %>% mutate(type='internationa
 
 ## Answer questions
 
-Q1. Which jurisdiction below the state level accounted for the largest percentage of international migration overall? For July 2011? You'll need to add and populate columns representing percent of total using `mutate`.
-A1. Suburban Washington (62.8%)
+Q1. Which region and county/city below the state level accounted for the largest percentage of international migration overall?  You'll need to add and populate columns representing percent of total using `mutate`.
+A1. Suburban Washington (62.8%). Montgomery County (36.8%).
 
 ```{r}
 international_migration %>%
@@ -59,3 +59,39 @@ international_migration %>%
   select(jurisdiction, pct_total) %>%
   arrange(desc(pct_total))
 ```
+
+Q2. Write a sentence or two that describes the data you produced in A1. Treat this as if you were trying to convey the most important part.
+A2. International migrants to Maryland during the past 10 years were drawn mostly to the suburbs surrounding Washington, D.C., which accounted for more than six of every 10 foreign residents that moved to the state between July 2010 and July 2019.
+
+Q3. Which region & jurisdiction had the biggest percentage change for international migration between July 2018 and July 2017? The formula for percentage change is easy to remember: (New-Old)/Old.
+A3. Calvert County's international migrants declined 76 percent (albeit from a small population), and the Southern Maryland region declined 58.5 percent.
+
+```{r}
+international_migration %>%
+  mutate(pct_change=((july_2018-july_2017)/july_2017)*100) %>%
+  select(jurisdiction, pct_change) %>%
+  arrange(pct_change)
+```
+
+Q4. What's your best guess as to why these declines occurred, and in those area in particular?
+A4.
+
+## Back to Tabula
+
+Let's go to page 31 of the PDF, Table 2B, "Domestic Migration for Maryland's Jurisdictions, July 1, 2010 to July 1, 2019". In Tabula, draw a box around that table's border and click the "Preview & Export Extracted Data" button. It should look pretty clean. Let's export that CSV to your Downloads folder (let's rename it to `tabula-md-statistical-handbook-domestic.csv`).
+
+## Cleaning up the data in R
+
+Let's load it into R, and in doing so we'll skip the first two rows and add our own headers that are cleaner:
+
+```{r}
+domestic_migration <- read_csv('tabula-md-statistical-handbook-domestic.csv', skip=2, col_names=c("jurisdiction", "july_2011", "july_2012", "july_2013", "july_2014", "july_2015", "july_2016", "july_2017", "july_2018", "july_2019", "total"))
+```
+
+Add a column for the type of migration ("domestic") and populate it:
+
+```{r}
+domestic_migration <- domestic_migration %>% mutate(type='domestic')
+```
+
+## Answer questions
