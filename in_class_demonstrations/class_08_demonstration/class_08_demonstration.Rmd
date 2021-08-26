@@ -1,21 +1,33 @@
-# Intro to APIs: The Census
+---
+title: "class_08_demonstration.Rmd"
+author: "derek willis"
+date: "8/26/2021"
+output: html_document
+---
 
-There is truly an astonishing amount of data collected by the US Census Bureau. First, there's the Census that most people know -- the every 10 year census. That's the one mandated by the Constitution where the government attempts to count every person in the US. It's a mind-boggling feat to even try, and billions get spent on it. That data is used first for determining how many representatives each state gets in Congress. From there, the Census gets used to divide up billions of dollars of federal spending.
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
-To answer the questions the government needs to do that, a ton of data gets collected. That, unfortunately, means the Census is exceedingly complicated to work with. The good news is, the Census has an API -- an application programming interface. What that means is we can get data directly through the Census Bureau via calls over the internet.
+## Points to hit
+1. Review of fifth lab questions/problems.
+2. Demonstration of PDF parsing with Tabula
 
-Let's demonstrate.
-
-We're going to use a library called `tidycensus` which makes calls to the Census API in a very tidy way, and gives you back tidy data. That means we don't have to go through the process of importing the data from a file. I can't tell you how amazing this is, speaking from experience. The documentation for this library is [here](https://walker-data.com/tidycensus/). Another R library for working with Census APIs (there is more than one) is [this one](https://github.com/hrecht/censusapi) from Hannah Recht, a journalist with Kaiser Health News.
-
-First we need to install `tidycensus` using the console: `install.packages("tidycensus")`
-
+## Load Libraries
 ```{r}
+# turn off sci notation
+options(scipen=999)
 library(tidyverse)
+# if needed, install tidycensus
+# install.packages("tidycensus")
 library(tidycensus)
 ```
 
-To use the API, you need an API key. To get that, you need to [apply for an API key with the Census Bureau](https://api.census.gov/data/key_signup.html). It takes a few minutes and you need to activate your key via email. Once you have your key, you need to set that for this session. Just FYI: Your key is your key. Do not share it around.
+# Intro to APIs: The Census
+
+We're going to use a library called `tidycensus` which makes calls to the Census API in a very tidy way, and gives you back tidy data. That means we don't have to go through the process of importing the data from a file. I can't tell you how amazing this is, speaking from experience.
+
+To use the API, you need to [an API key from the Census Bureau](https://api.census.gov/data/key_signup.html). It takes a few minutes and you need to activate your key via email. Once you have your key, you need to set that for this session. Just FYI: Your key is your key. Do not share it.
 
 ```{r echo=FALSE}
 census_api_key("YOUR KEY HERE")
@@ -34,8 +46,6 @@ If you think that's crazy, try the SF3 file from 2000.
 ```{r}
 sf3 <- load_variables(2000, "sf3", cache = TRUE)
 ```
-
-Yes. That's more than 16,000 variables to choose from. I told you. Astonishing.
 
 So let's try to answer a question using the Census. What is the fastest growing state since 2000?
 
@@ -85,8 +95,6 @@ You may be asking: hey, wasn't there a 2020 Census? Where's that data? The answe
 
 In 2010, the Census Bureau replaced SF3 with the American Community Survey. The Good News is that the data would be updated on a rolling basis. The bad news is that it's more complicated because it's more like survey data with a large sample. That means there's margins of error and confidence intervals to worry about.
 
-Here's an example:
-
 What is Maryland's richest county?
 
 We can measure this by median household income. That variable is `B19013_001`, so we can get that data like this (I'm narrowing it to the top 20 for simplicity):
@@ -99,10 +107,9 @@ md <- get_acs(geography = "county",
 md <- md %>% arrange(desc(estimate)) %>% top_n(20, estimate)
 
 md
-
 ```
 
-Howard, Calvert, Montgomery, Anne Arundel, Charles. What do they all have in common? Lots of suburban flight from DC and Baltimore. But do the margins of error let us say one county is richer than the other. We can find this out visually using error bars. Don't worry much about the code here --  we'll cover that soon enough.
+Howard, Calvert, Montgomery, Anne Arundel, Charles. What do they all have in common? Lots of suburban flight from D.C and Baltimore. But do the margins of error let us say one county is richer than the other. We can find this out visually using error bars. Don't worry much about the code here --  we'll cover that soon enough.
 
 ```{r}
 md %>%
@@ -175,7 +182,7 @@ Check it out:
 view(coronavirus)
 ```
 
-So now we can start using it for data analysis. How about cases in the US?
+So now we can start using it for data analysis. How about cases in the U.S.?
 
 ```{r}
 coronavirus %>% filter(country == "US")
