@@ -23,6 +23,25 @@ library(readxl)
 library(gtsummary)
 ```
 
+## Link generation for labs
+
+```{r}
+root_files_url <- "https://github.com/smussenden/datajournalismbook/blob/master/"
+similar_url <- "https://github.com/your_username/data_journalism_2021_fall/blob/master/"
+urls_for_elms <- (1:15) %>%
+  as.character() %>%
+  as_data_frame() %>%
+  mutate(value = str_pad(value,2,"left","0")) %>%
+  mutate(lab_zip = paste0(root_files_url,"labs/lab_",value,"/lab_",value,".zip")) %>%
+  mutate(lab_key = paste0(root_files_url,"labs/lab_",value,"/lab_",value,"_key.Rmd")) %>%
+  mutate(lab_similar = paste0(similar_url,"labs/lab_",value,"/lab_",value,".Rmd")) %>%
+  mutate(pre_lab_zip = paste0(root_files_url,"pre_labs/pre_lab_",value,"/pre_lab_",value,".zip")) %>%
+   mutate(pre_lab_similar = paste0(similar_url,"pre_labs/pre_lab_",value,"/pre_lab_",value,".Rmd"))
+
+write_csv(urls_for_elms,"urls_for_elms.csv")
+
+
+```
 ## Load data
 ```{r}
 
