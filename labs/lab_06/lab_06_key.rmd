@@ -12,7 +12,6 @@ knitr::opts_chunk$set(echo = TRUE)
 ## You will need
 
 * Tabula
-* The [Atom](https://atom.io/) text editor.
 
 ## Load libraries and establish settings
 ```{r}
