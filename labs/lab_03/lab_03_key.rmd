@@ -30,7 +30,7 @@ Mutating and filtering
 ```{r}
 wv_ppp_loans <- read_rds("lab_03.rds")
 
-Make total loans a character
+#Make total loans a character
 
 ```
 
@@ -58,7 +58,7 @@ kanawha_ppp_loans <- wv_ppp_loans %>%
 
 ```
 
-Q1: What is the name of the business that got the largest loan (by dollar value) in the ZIP code (5 digit) in West Virginia that got more total loans (by dollar value) than any other ZIP code? Describe what the   
+Q1: What is the name of the business that got the largest loan (by dollar value) in the ZIP code (5 digit) in West Virginia that got more total loans (by dollar value) than any other ZIP code? Describe what the business does.    
 
 
 ```{r}
@@ -80,9 +80,46 @@ wv_top_biz_in_top_zip <- wv_ppp_loans %>%
   arrange(desc(amount)) #%>%
   #head(1) %>%
   #select(name, address, city, state,zip, amount)
+
+
+```
+
+#Q3: Five related business entities owned by the spouse of a member of West Virginia's U.S. House delegation got PPP loans. What are the business names? What do the businesses do? How much in total loans did they receive?  What percentage of the loans were forgiven? How did the member of Congress vote on the legislation initially authorizing the PPP loan program, the CARES Act (https://clerk.house.gov/Votes/2019493). The financial disclosure database https://disclosures-clerk.house.gov/PublicDisclosure/FinancialDisclosure. 
+#A1: 
+
+
+```{r}
+
+miller_ppp_loans <- wv_ppp_loans %>%
+  mutate(amount = as.numeric(amount)) %>%
+  filter(str_detect(name,"DUTCH |DM MOTOR")) %>%
+  select(amount,forgiveness_amount)
+
+miller_ppp_loan_totals <- miller_ppp_loans %>%
+  summarise(
+    total_amount = sum(amount),
+    total_forgiveness_amount = sum(forgiveness_amount)
+  )
+
+kanawha_ppp_loans <- wv_ppp_loans %>%
+  filter(project_county_name == "KANAWHA") %>%
+  mutate(city=str_to_title(city)) %>%
+  mutate(city=case_when(
+    str_detect(city, "^St") ~ "Saint Albans",
+    str_detect(city,"^S |^So ") ~ str_replace(city, "^S |^So ", "South "),
+    city == "Balle" ~ "Belle",
+    city == "Charelston" ~ "Charleston",
+    city == "Crosslanes" ~ "Cross Lanes",
+    city == "Elkveiw" ~ "Elkview",
+    TRUE ~ city
+  )) %>%
+  group_by(city) %>%
+  summarise(total_loans = n()) %>%
+  arrange(desc(total_loans)) %>%
+  head(4)
+
 MCKINLEY & ASSCIATES https://en.wikipedia.org/wiki/David_McKinley he continues to benefit https://disclosures-clerk.house.gov/public_disc/financial-pdfs/2017/10020402.pdf
 DM MOTOR, INC - Thisis miller's hsusbands dealership? https://disclosures-clerk.house.gov/public_disc/financial-pdfs/2020/10042734.pdf and there are a bunch more Dutch Miler
-
 ```
 
 
