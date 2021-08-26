@@ -23,6 +23,25 @@ library(readxl)
 library(gtsummary)
 ```
 
+## Link generation for labs
+
+```{r}
+root_files_url <- "https://github.com/smussenden/datajournalismbook/blob/master/"
+similar_url <- "https://github.com/your_username/data_journalism_2021_fall/blob/master/"
+urls_for_elms <- (1:15) %>%
+  as.character() %>%
+  as_data_frame() %>%
+  mutate(value = str_pad(value,2,"left","0")) %>%
+  mutate(lab_zip = paste0(root_files_url,"labs/lab_",value,"/lab_",value,".zip")) %>%
+  mutate(lab_key = paste0(root_files_url,"labs/lab_",value,"/lab_",value,"_key.Rmd")) %>%
+  mutate(lab_similar = paste0(similar_url,"labs/lab_",value,"/lab_",value,".Rmd")) %>%
+  mutate(pre_lab_zip = paste0(root_files_url,"pre_labs/pre_lab_",value,"/pre_lab_",value,".zip")) %>%
+   mutate(pre_lab_similar = paste0(similar_url,"pre_labs/pre_lab_",value,"/pre_lab_",value,".Rmd"))
+
+write_csv(urls_for_elms,"urls_for_elms.csv")
+
+
+```
 ## Load data
 ```{r}
 
@@ -70,7 +89,6 @@ write_csv(ppp_loans_wv,"../data/ppp_loan_data/processed/wv/ppp_loans_wv.csv.gz")
 
 
 
-
 ## Write Maryland 
 write_rds(ppp_loans_md,"../data/ppp_loan_data/processed/md/ppp_loans_md.rmd", compress="gz")
 ## Write West Virginia
@@ -87,6 +105,7 @@ ppp_loans_wv <- read_csv_chunked("../data/ppp_loan_data/recipients.csv", DataFra
 ## Create datasets
 ### Chapter 5 Aggregates
 ```{r}
+
 ### Chapter 5: Aggregates
 # 195,869 records
 maryland_ppp_loans <- ppp_loans %>%
@@ -128,12 +147,58 @@ maryland_ppp_loan_county_pop <- maryland_ppp_loan_county_pop %>%
 
 write_rds(maryland_ppp_loan_county_pop,"../in_class_demonstrations/class_01_demonstration/class_01_demonstration_a.rds", compress="gz")
 
-    
+   
 
 
 
 ```
 
+```{r}
+arnold_loans <- ppp_loans_md %>%
+  filter(str_detect(city,"Arnld|arnold|Arnold|ARNOLD|Anold")) %>%
+  group_by(city) %>% top_n(1, amount) %>%
+  select(id, name, amount, address, city, state, zip) %>%
+  ungroup()
+
+arnold_loan_for_dup <- arnold_loans %>%
+  head(1)
+
+arnold_md_loans <- arnold_loans %>%
+  bind_rows(arnold_loan_for_dup) %>%
+  arrange(id) %>%
+  mutate(amount = as.character(amount)) %>%
+  rename(NAME = name,
+         `1_id` = id,
+         `street address`=address)
+
+
+write_rds(arnold_md_loans,"../data/ppp_loan_data/processed/md/arnold_md_loans.rmd", compress="gz")
+
+  
+  
+
+```
+
+
+
+```{r}
+
+
+
+```
+
+```{r}
+
+ppp_loans <- read_rds("../data/ppp_loan_data/processed/full/ppp_loans.rmd")
+
+ppp_loans %>% 
+  mutate(month_year_approved = floor_date(date_approved, "month")) %>%
+  group_by(month_year_approved) %>% 
+   summarise(
+    count=n()
+  ) %>%
+  arrange(month_year_approved)
+```
 # Lab 01
 
 ```{r}

@@ -1,0 +1,246 @@
+---
+title: "lab_03"
+author: "sean mussenden"
+date: "8/19/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load libraries and establish settings
+```{r}
+# Turn off scientific notation
+options(scipen=999)
+
+# Load the tidyverse. If you have not installed the tidyverse already, remove the # from the next line and run it first.  
+# install.packages('tidyverse')
+library(tidyverse)
+```
+
+## Load Data 
+
+str_replace
+str_remove
+str_
+West Virginia loans contained in the PPP loans data.  
+Mutating and filtering
+
+```{r}
+wv_ppp_loans <- read_rds("lab_03.rds")
+
+#Make total loans a character
+
+```
+
+Q1: Working from the set of businesses that got PPP loans and are located in Kanawha County, West Virginia, name the four cities that got the most total loans?
+A1: Question is worded weirdly because some cities (like Nitro), are split between two counties. 
+
+```{r}
+kanawha_ppp_loans <- wv_ppp_loans %>%
+  filter(project_county_name == "KANAWHA") %>%
+  mutate(city=str_to_title(city)) %>%
+  mutate(city=case_when(
+    str_detect(city, "^St") ~ "Saint Albans",
+    str_detect(city,"^S |^So ") ~ str_replace(city, "^S |^So ", "South "),
+    city == "Balle" ~ "Belle",
+    city == "Charelston" ~ "Charleston",
+    city == "Crosslanes" ~ "Cross Lanes",
+    city == "Elkveiw" ~ "Elkview",
+    TRUE ~ city
+  )) %>%
+  group_by(city) %>%
+  summarise(total_loans = n()) %>%
+  arrange(desc(total_loans)) %>%
+  head(4)
+
+
+```
+
+Q1: What is the name of the business that got the largest loan (by dollar value) in the ZIP code (5 digit) in West Virginia that got more total loans (by dollar value) than any other ZIP code? Describe what the business does.    
+
+
+```{r}
+
+wv_top_zip_code <- wv_ppp_loans %>%
+  mutate(zip_five = str_sub(zip, start=1L, end=5L)) %>%
+  group_by(zip_five) %>%
+  summarise(
+    total_amount = sum(amount)
+  ) %>%
+  arrange(desc(total_amount)) %>%
+  select(zip_five) %>%
+  slice(5) %>%
+  as_vector()
+
+wv_top_biz_in_top_zip <- wv_ppp_loans %>%
+  mutate(zip_five = str_sub(zip, start=1L, end=5L)) %>%
+  filter(zip_five %in% wv_top_zip_code) %>%
+  arrange(desc(amount)) #%>%
+  #head(1) %>%
+  #select(name, address, city, state,zip, amount)
+
+
+```
+
+#Q3: Five related business entities owned by the spouse of a member of West Virginia's U.S. House delegation got PPP loans. What are the business names? What do the businesses do? How much in total loans did they receive?  What percentage of the loans were forgiven? How did the member of Congress vote on the legislation initially authorizing the PPP loan program, the CARES Act (https://clerk.house.gov/Votes/2019493). The financial disclosure database https://disclosures-clerk.house.gov/PublicDisclosure/FinancialDisclosure. 
+#A1: 
+
+
+```{r}
+
+miller_ppp_loans <- wv_ppp_loans %>%
+  mutate(amount = as.numeric(amount)) %>%
+  filter(str_detect(name,"DUTCH |DM MOTOR")) %>%
+  select(amount,forgiveness_amount)
+
+miller_ppp_loan_totals <- miller_ppp_loans %>%
+  summarise(
+    total_amount = sum(amount),
+    total_forgiveness_amount = sum(forgiveness_amount)
+  )
+
+kanawha_ppp_loans <- wv_ppp_loans %>%
+  filter(project_county_name == "KANAWHA") %>%
+  mutate(city=str_to_title(city)) %>%
+  mutate(city=case_when(
+    str_detect(city, "^St") ~ "Saint Albans",
+    str_detect(city,"^S |^So ") ~ str_replace(city, "^S |^So ", "South "),
+    city == "Balle" ~ "Belle",
+    city == "Charelston" ~ "Charleston",
+    city == "Crosslanes" ~ "Cross Lanes",
+    city == "Elkveiw" ~ "Elkview",
+    TRUE ~ city
+  )) %>%
+  group_by(city) %>%
+  summarise(total_loans = n()) %>%
+  arrange(desc(total_loans)) %>%
+  head(4)
+
+MCKINLEY & ASSCIATES https://en.wikipedia.org/wiki/David_McKinley he continues to benefit https://disclosures-clerk.house.gov/public_disc/financial-pdfs/2017/10020402.pdf
+DM MOTOR, INC - Thisis miller's hsusbands dealership? https://disclosures-clerk.house.gov/public_disc/financial-pdfs/2020/10042734.pdf and there are a bunch more Dutch Miler
+```
+
+
+```{r}
+wv_cities <- wv_ppp_loans %>%
+  filter(project_county_name == "KANAWHA") %>%
+  group_by(city) %>%
+  count()
+```
+
+
+
+```{r}
+wv_cities <- wv_ppp_loans %>%
+  filter(project_county_name == "KANAWHA") %>%
+  group_by(zip) %>%
+  count()
+```
+
+```{r}
+wv_cities <- wv_ppp_loans %>%
+  filter(project_county_name == "KANAWHA") %>%
+  group_by(name) %>%
+  count()
+```
+
+```{r}
+glimpse(wv_ppp_loans)
+```
+
+
+
+
+## Examine Data
+
+## Answer questions
+
+Q1. Which West Virginia county got the most loans? How many?
+A1. Kanawha County, West Virginia got 4,332 loans, more than any other West Virginia county.  
+
+```{r}
+wv_ppp_loans %>%
+  group_by(project_county_name) %>%
+  summarise(
+    total_loans = n()
+  ) %>%
+  arrange(desc(total_loans))
+```
+Q2. Which West Virginia county got the fewest loans? How many?
+A2. Wirt County West Virginia.    
+```{r}
+wv_ppp_loans %>%
+  group_by(project_county_name) %>%
+  summarise(
+    total_loans = n()
+  ) %>%
+  arrange(total_loans)
+```
+Q3. What's your best educated guess to explain why the county identified in question 1 had a lot of loans and why the county identified in question 2 had only a few loans? Hint: you won't find the answer in the data, you'll need to do some quick web research.
+A3. One possible explanation is that a lot of people live in Kanawha County, and few people live in Wirt County. According to 2019 U.S. Census American Community Survey 5-year population estimates, Kanawha is West Virginia's largest county with 183,279 people, and Wirt is its smallest, with 5,798 people. It's reasonable to expect a place with a lot more people to have a lot more loans. It's often important to account for population size when drawing conclusions from data analysis.    
+https://data.census.gov/cedsci/table?q=United%20States&g=0400000US54.0500000&tid=ACSDT5Y2019.B01003&hidePreview=true&tp=true&moe=false
+
+Q4. What West Virginia business got the state's largest PPP loan? How much was it for? What does the business do? How many jobs did the loan retain?
+A4. The Greenbriar Hotel Corporation got a loan of $8,912,202, more than any other business in the state. In a harbinger of things to come when working with PPP loan data, the name of the company is misspelled in the data. The correct name is the Greenbrier Hotel Corporation.  The company runs The Greenbrier, an 11,000 acre luxury resort in White Sulphur Springs that houses a secret bomb shelter that, at one time, was designed to protect Congress in the event of nuclear war. According to the PPP loan data, it retained 500 jobs, though ProPublica reported that the company originally listed 0 as the number of jobs that would be retained.  https://www.npr.org/2011/03/26/134379296/the-secret-bunker-congress-never-used . https://www.greenbrier.com/about-us.aspx. https://www.propublica.org/article/companies-owned-by-this-billionaire-governor-received-up-to-24-million-in-bailout-loans
+
+```{r}
+wv_ppp_loans %>%
+  arrange(desc(amount))
+```
+Q5. What West Virginia politician (with his family) owns the company identified in question 2? What's your source for that information? Hint: this will require web research, you won't be able to answer this purely from the data set.  
+A5. West Virginia Gov. Jim Justice https://www.propublica.org/article/companies-owned-by-this-billionaire-governor-received-up-to-24-million-in-bailout-loans
+
+```{r}
+wv_ppp_loans %>%
+  arrange(desc(amount))
+```
+
+Q6. Produce a summary table that has the following information for West Virginia as a whole (not by county):
+* count of loans
+* total amount of all loans
+* the average loan amount
+* the median loan amount
+* the smallest loan amount
+* the largest loan amount
+
+Store it as a variable object called `wv_summary` so that you can examine it with the data viewer. What newsworthy nuggets jump out at you that you could imagine dropping into a news story.   
+A6. Nearly 34,000 businesses in West Virginia got a total of \$2.6 billion in Paycheck Protection Program loans since the launch of the program. The average loan was \$77,338, but the median loan amount was only \$20,832, indicating several massive loans are skewing the average upward. The largest loan in the state was \$8.9 million, but the smallest was only $165.  It might be worth examining the small loans to identify patterns there. 
+```{r}
+wv_summary <- wv_ppp_loans %>%
+  summarise(
+    count_loans = n(),
+    total_loans_amount = sum(amount),
+    mean_loan_amount = mean(amount),
+    median_loan_amount = median(amount),
+    min_loan_amount = min(amount),
+    max_loan_amount = max(amount)
+  ) %>% 
+  arrange(desc(max_loan_amount))
+```
+Q7. Produce a summary table that has the following information for each West Virginia county:
+* count of loans
+* total amount of all loans
+* the average loan amount
+* the median loan amount
+* the smallest loan amount
+* the largest loan amount
+
+Store it as a variable object called `wv_county_summary` so that you can examine it with the data viewer. 
+
+What newsworthy nuggets or patterns jump out at you that you could imagine dropping into a news story or doing follow up reporting on? Can you identify examples of companies that are emblematic of these patterns?
+A7. 
+```{r}
+wv_county_summary <- wv_ppp_loans %>%
+  group_by(project_county_name) %>%
+  summarise(
+    count_loans = n(),
+    total_loans_amount = sum(amount),
+    mean_loan_amount = mean(amount),
+    median_loan_amount = median(amount),
+    min_loan_amount = min(amount),
+    max_loan_amount = max(amount)
+  ) %>% 
+  arrange(desc(max_loan_amount))
+```

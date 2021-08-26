@@ -1,17 +1,20 @@
 # Data Cleaning Part III: Open Refine
 
-Gather 'round kids and let me tell you a tale about your author. In college, your author got involved in a project where he mapped crime in the city, looking specifically in the neighborhoods surrounding campus. This was in the mid 1990s. Computers were under powered. Tools were pretty primitive. I was given a database of nearly 50,000 calls for service. 
+Gather 'round kids and let me tell you a tale about your author. In college, your author (Matt Waite) got involved in a project where he mapped crime in the city, looking specifically in the neighborhoods surrounding campus. This was in the mid 1990s. Computers were under powered. Tools were pretty primitive. I was given a database of nearly 50,000 calls for service. 
 
 And then I learned that addresses were not stored in a standard way. However the officer wrote it down, that's how it was recorded. 
 
 What did that mean? 
 
-It meant the Lincoln Police Department came up with dozens of ways to say a single place. And since the mapping software needed the addressed to be in a specific form, I had to fix them. For example, I will go to my grave knowing that Lincoln High School's street address is 2229 J Street. Police officers wrote down LHS, L.H.S., Lincoln HS, Lincoln H.S., LHS (J Street), 2229 J, 2229 J ST, St., Street and on and on and on. That one was relatively easy. The local convenience store chain, with 8 locations around the city, was harder. I had to use the patrol district to locate them. 
+It meant the Lincoln (Nebraska) Police Department came up with dozens of ways to say a single place. And since the mapping software needed the addressed to be in a specific form, I had to fix them. For example, I will go to my grave knowing that Lincoln High School's street address is 2229 J Street. Police officers wrote down LHS, L.H.S., Lincoln HS, Lincoln H.S., LHS (J Street), 2229 J, 2229 J ST, St., Street and on and on and on. That one was relatively easy. The local convenience store chain, with 8 locations around the city, was harder. I had to use the patrol district to locate them. 
 
 It took me four months to clean up more than 30,000 unique addresses and map them. 
 
 I tell you this because if I had Open Refine, it would have taken me a week, not four months. 
+
 Every time I talk about Open Refine, I remember this, and I get mad. 
+
+Fortunately (unfortunately?) several columns in the PPP loan data we're working with are flawed in exactly the same way. There are dozens of variations on just "Baltimore".    
 
 We're going to explore two ways into Open Refine: Through R, and through Open Refine itself.
 
@@ -19,7 +22,7 @@ We're going to explore two ways into Open Refine: Through R, and through Open Re
 
 What is Open Refine? 
 
-Open Refine is a series of tools -- algorithms -- that find small differences in text and helps you fix them quickly. How Open Refine finds those small differences is through something called clustering. The algorithms behind clustering are not exclusive to Open Refine, so they can be used elsewhere. 
+Open Refine is a software program that has tools -- algorithms -- that find small differences in text and helps you fix them quickly. How Open Refine finds those small differences is through something called clustering. The algorithms behind clustering are not exclusive to Open Refine, so they can be used elsewhere. 
 
 Enter `refinr`, a package that contains the same clustering algorithms as Open Refine but all within R. Go ahead and install it if you haven't already by opening the console and running `install.packages("refinr")`. Then we can load libraries as we do.
 
@@ -29,120 +32,84 @@ library(refinr)
 library(janitor)
 ```
 
-Let's load a simple dataset where we know there's a simple problem. Let's load the dataset of mountainlion sightings. 
+Let's load our full Maryland PPP loans data. 
 
 ```{r}
-mountainlions <- read_csv("data/mountainlions.csv")
+md_loans <- read_rds("data/ppp_loan_data/processed/md/ppp_loans_md.rmd")
 ```
 
-The issue in this dataset, if you look carefully, is that there's two Sheridan counties -- a Sheridan and a sheridan. 
+Now let's try and group and count the number of loans by city. To make it a bit more managable, let's use another string function from `stringr` and filter for cities that start with the uppercase "A" or lowercase "a" using the function `str_detect()` with a regular expression.  The filter function in the codeblock below says: look in the city column, and pluck out any value that starts with (the "^" symbol means "starts with") a lowercase "a" OR (the vertical "|", called a pipe, means OR) an uppercase "A".  
 
 ```{r}
-mountainlions %>% group_by(COUNTY) %>% tally()
+md_loans %>% 
+  group_by(city) %>% 
+  summarise(
+    count=n()
+  ) %>%
+  filter(str_detect(city, "^a|^A")) %>%
+  arrange(city)
 ```
 
-The first merging technique we'll try is the `key_collision_merge`. The key collision merge function takes each string and extracts the key parts of it. It then puts every key in a bin based on the keys matching. So in this case, it finds sheridan and Sheridan and recognizes that the keys match, and since Sheridan is more common, it uses that one. 
+By using the OpenRefine package for R, `refinr`, our hope is that it can identify and standardize the data. 
 
-One rule you should follow: **do not overwrite your original fields**. Always work on a copy. If you overwrite your original field, how will you know if it did the right thing? How can you compare it to your original data? To follow this, I'm going to mutate a new field called CleanCounty and put the results of key collision merge there. 
+The first merging technique that's part of the `refinr` package we'll try is the `key_collision_merge`. 
 
-Then, to show it worked, I'll do the same group and count. 
+The key collision merge function takes each string and extracts the key parts of it. It then puts every key in a bin based on the keys matching. 
+
+One rule you should follow when using this is: **do not overwrite your original fields**. Always work on a copy. If you overwrite your original field, how will you know if it did the right thing? How can you compare it to your original data? To follow this, I'm going to mutate a new field called clean_city and put the results of key collision merge there. 
 
 ```{r}
-mountainlions %>% 
-  mutate(CleanCounty = key_collision_merge(COUNTY)) %>%
-  group_by(CleanCounty) %>% tally()
+cleaned_md_loans <- md_loans %>% 
+  mutate(city_clean=key_collision_merge(city)) %>%
+  select(id:city, city_clean, everything()) %>%
+
+cleaned_md_loans
+
 ```
-
-And just like that, instead of 35 and 2 in two different Sheridan counties, we have 37 in one Sheridan County.
-
-## More complex issues
-
-Let's load a [dataset of the charges Nebraska prison inmates](https://unl.box.com/s/7vs5ycscmzg3bnxhxqdv7aegill2gz2z) were convicted of, which is why they're in prison. We'll also use `janitor`'s clean_names function to give us usable headers. 
+To examine changes `refinr` made, let's examine the changes it made to cities that start with the letter "A". 
 
 ```{r}
-charges <- read_csv("data/charges.csv")  %>% clean_names()
+cleaned_md_loans %>% 
+  group_by(city_clean, city) %>% 
+  summarise(
+    count=n()
+  ) %>%
+  filter(str_detect(city, "^a|^A")) %>%
+  arrange(city)
 ```
+It got a bunch of things right.  It merged three variations of "Aberdeen" -- "aberdeen","Aberdeen" and "ABERDEEN" -- and it didn't merge it with "Aberdeen Proving Ground", which are likely two distinct things. But it wasn't smart enough to convert "Abereen". 
 
-The problematic -- and among the most interesting -- fields in this dataset is the name of the charges. What is the most common charge keeping someone in prison? 
+It also merged "Annapolis" and "ANNAPOLIS" under "Annapolis", and was smart enough not to merge it with "Annapolis Junction", which is not the same city. But it wasn't smart enough to merge "Annapoils" or "Annalpolis".
 
-I'm not going to run the list here because it's long -- thousands of lines long. You should run it yourself:
-
-```
-charges %>% tabyl(offense_arrest_desc)
-```
-You'll see right away that there's problems. There's dozens upon dozens of charges that are the same thing, just slightly different. There's 4003 unique charges, and many of them are duplicates. 
+There's another merging algorithim that's part of refinr that works a bit differently, called `n_gram_merge()`.  Let's try applying that one. 
 
 ```{r}
-charges %>% group_by(offense_arrest_desc) %>% tally(sort=TRUE) %>% nrow()
+cleaned_md_loans <- md_loans %>% 
+  mutate(city_clean=n_gram_merge(city)) %>%
+  select(id:city, city_clean, everything()) 
+
+cleaned_md_loans
+
 ```
 
-So how does `key_collision_merge` do with this? 
+To examine changes `refinr` made with this algorithm, let's again look at cities that start with the letter "A". Examining Aberdeen and Annapolis, we see there wasn't a substantial change. 
 
 ```{r}
-charges %>%
-  mutate(
-    clean_charges = key_collision_merge(offense_arrest_desc)
-    ) %>%
-  group_by(clean_charges) %>%
-  tally() %>%
-  nrow()
+cleaned_md_loans %>% 
+  group_by(city_clean, city) %>% 
+  summarise(
+    count=n()
+  ) %>%
+  filter(str_detect(city, "^a|^A")) %>%
+  arrange(city)
 ```
-
-Cuts down the duplicates by 583. But since the charges are often multiple words, we should try using `n_gram_merge`, which looks a multiple words. 
-
-Here's an example using sensible defaults for weighting -- unfortunately [the documentation](https://github.com/ChrisMuir/refinr) doesn't do much to explain what they are.
-
-```{r}
-charges %>% 
-  mutate(
-    clean_charges = n_gram_merge(
-      offense_arrest_desc, weight = c(d = 0.2, i = 0.2, s = 1, t = 1))) %>% 
-  group_by(clean_charges) %>% 
-  tally() %>%
-  nrow()
-```
-
-Cuts it down by almost 1000. That seems pretty good. Here's a different method, using a method that turns words into phonetic spellings called soundex. 
-
-```{r}
-charges %>% 
-  mutate(
-    clean_charges = n_gram_merge(
-      offense_arrest_desc, method = "soundex", useBytes = TRUE
-      )) %>% 
-  group_by(clean_charges) %>% 
-  tally() %>%
-  nrow()
-```
-
-Cut it down by almost 1400!
-
-BUT.
-
-Are they right?
-
-We have no idea. Let's look at the first 30 rows. 
-
-```{r}
-charges %>% 
-  mutate(
-    clean_charges = n_gram_merge(
-      offense_arrest_desc, method = "soundex", useBytes = TRUE
-      )) %>%
-  filter(clean_charges != offense_arrest_desc) %>% select(offense_arrest_desc, clean_charges) %>% head(30)
-```
-
-If you look carefully, you'll see a lot of success here. But look at line 23. The charge is theft by taking \$0-500. The clean version? Theft by taking \$5000. That's a big difference, and a bad miss. 
-
-So can we trust automated data cleaning? 
-
-This note from the documentation is exceedingly important:
-
-> This package is NOT meant to replace OpenRefine for every use case. For situations in which merging accuracy is the most important consideration, OpenRefine is preferable. Since the merging steps in refinr are automated, there will usually be more false positive merges, versus manually selecting clusters to merge in OpenRefine.
+Let's upload the data to the interactive version of OpenRefine, which really shines at this task. 
 
 ## Manually cleaning data with Open Refine
 
-Open Refine is free software. [You should download and install it](https://openrefine.org/). Refinr is great for quick things on smaller datasets that you can check to make sure it's not up to any mischief. For bigger datasets, Open Refine is the way to go. And it has a lot more tools than refinr does (by design, but still).
+Open Refine is free software. [You should download and install it](https://openrefine.org/). Refinr is great for quick things on smaller datasets that you can check to make sure it's not up to any mischief. 
+
+For bigger datasets, Open Refine is the way to go. And it has a lot more tools than refinr does (by design).
 
 After you install it, run it. Open Refine works in the browser, and the app spins up a small web server visible only on your computer to interact with it. A browser will pop up automatically. 
 

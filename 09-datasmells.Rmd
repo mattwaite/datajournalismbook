@@ -6,11 +6,9 @@ One of the first things you should do is give it the smell test.
 
 Failure to give data the smell test [can lead you to miss stories and get your butt kicked on a competitive story](https://source.opennews.org/en-US/learning/handling-data-about-race-and-ethnicity/).
 
-Let's look at some campus parking ticket data. You can [get it here](https://unl.box.com/s/3c5kx2i5iouc52ty46k4js412u48yajr).
+With data smells, we're trying to find common mistakes in data. [For more on data smells, read the GitHub wiki post that started it all](https://github.com/nikeiubel/data-smells/wiki/Ensuring-Accuracy-in-Data-Journalism). Some common data smells are:
 
-With data smells, we're trying to find common mistakes in data. [For more on data smells, read the GitHub wiki post that started it all](https://github.com/nikeiubel/data-smells/wiki/Ensuring-Accuracy-in-Data-Journalism). The common mistakes we're looking for are:,
-
-* Missing data
+* Missing data or missing values
 * Gaps in data
 * Wrong type of data
 * Outliers
@@ -27,49 +25,110 @@ Not all of these data smells are detectable in code. You may have to ask people 
 
 But with several of these data smells, we can do them first, before we do anything else. 
 
+We're going to examine three here as they apply to the PPP loan data we've been working with: wrong type,   
+
+
 ## Wrong Type
 
-First, let's look at **Wrong Type Of Data**. We can sniff that out by looking at the output of `readr`
+First, let's look at **Wrong Type Of Data**. 
+
+We can sniff that out by looking at the output of `readr`. 
+
+Let's load the Maryland slice of ppp_loan_data we've used previously.
 
 ```{r}
+options(scipen=999)
 library(tidyverse)
 ```
 
 ```{r}
-tickets <- read_csv("data/tickets.csv")
+ppp_loans_md <- read_csv("data/ppp_loan_data/processed/md/ppp_loans_md.csv.gz")
+#x<-read_rds("data/ppp_loan_data/processed/md/ppp_loans_md.rmd")
+
 ```
+Examine the data output message. There are "12802 parsing failures."
 
-Right away, we see there's 104,265 parsing errors. Why? Look closely. The Citation number that `readr` interprets from the first rows comes in at a number. But 56,000 rows in, those citation numbers start having letters in them, and letters are not numbers.
+Why? Look closely. The `readr` library makes guesses on what data type to assign to each column based on the first 1,000 rows of data.  
 
-The cheap way to fix this is to change the guess_max parameter of `readr` to just use more than a few rows to guess the column types. It'll go a little slower, but it'll fix the problem.
+In the column "old_slug", there are no values for the first 1,000 rows.  They're all "NA".  `readr` just guesses what data type to assign it, so it chooses "logical", where the values it expects will be TRUE or FALSE, T or F, 1 or 0.  Then, on row 170,056, actual values start showing up in that "old_slug" column.  And those values look nothing like "TRUE or FALSE"; they're a long string of numbers and letters like "aditi-llc-d139eb25916444a03984f38eebda4e63", which should be stored as a "character".  Because `readr` has already set this as a logical column, though, it fails to parse correctly.  So it reads in as "NA", even though there's data to work with. 
+
+The easy way to fix this is to change the guess_max parameter of `readr` to use every row to determine what data type to make each column to guess the column types. It'll go a little slower, but it'll fix the problem.  This data set has 195,685 rows, so that's the value we'll use. 
 
 ```{r}
-tickets <- read_csv("data/tickets.csv", guess_max = 60000)
+ppp_loans_md <- read_csv("data/ppp_loan_data/processed/md/ppp_loans_md.csv.gz", guess_max=195865)
 ```
+This time, we got no parsing failures.  And if we examine the data types `readr` assigned to each column, they generally make sense. Things that should be characters -- like state, city, name -- are characters. Things that should be numbers (dbl) -- like amount -- are numbers.  There are some minor problems that don't warrant fixing, necessarily.  The id column is a good example.  It read in as a number (dbl), which makes sense, because it really is just a string of numbers.  But we'd never need to do math on these values; it wouldn't make sense to add two ids together, for example.  So it is probably best stored as a character. The opposite would be more problematic.  If something that should be stored as a number we want to do math on was stored as a character, we couldn't actually use it to do math. 
 
+```{r}
+glimpse(ppp_loans_md)
+```
 For this, things seem to be good. `Date` appears to be in date format, things that aren't numbers appear to be text. That's a good start.
 
 ## Missing Data
 
-The second smell we can find in code is **missing data**. We can do that through a series of Group By and Count steps. 
+The second smell we can find in code is **missing data**. 
+
+We can do that by grouping and counting columns. In addition to identifying the presence of NA values, this method will also give us a sense of the distribution of values in those columns. 
+
+Let's start with the "franchise" column. The following code groups by the franchise name column, counts the number in each group, and then sorts from highest to lowest.   
+
+There are 192,959 NA values in this column.  This makes sense. Not every business will be a franchisee of a larger company like Subway or Dunkin'. In this case, the presence of so many NAs isn't really concerning. 
 
 ```{r}
-tickets %>% group_by(Location) %>% tally()
+
+ppp_loans_md %>% 
+  group_by(franchise_name) %>% 
+  summarise(
+    count=n()
+  ) %>%
+  arrange(desc(count))
 ```
-
-What we're looking for here are blanks: Tickets without a location. Typically, those will appear first or last, depending on several things, so it's worth checking the front and back of our data. 
-
-What about ticket type?
+Now let's try the "forgiveness_amount" column, which represents the amount of the loan that was forgiven, or not required to be paid back. In this case, there are 135,073 NA values. The rest have different dollar amounts.  
 
 ```{r}
-tickets %>% group_by(Violation) %>% tally()
+
+ppp_loans_md %>% 
+  group_by(forgiveness_amount) %>% 
+  summarise(
+    count=n()
+  ) %>%
+  arrange(desc(count))
+```
+Do the 135,073 NAs represent loans that weren't forgiven? Do they represent loans that might have been forgiven, but the data is simply missing the amount of money?  
+
+We could check the documentation, which isn't particularly helpful.  It only says the column represents "forgiveness amount." 
+
+We could check the "forgiveness_date" column, to see how many NAs it has: 135,703, the same number as the number of NAs in "forgiveness_amount".   
+
+```{r}
+
+ppp_loans_md %>% 
+  group_by(forgiveness_date) %>% 
+  summarise(
+    count=n()
+  ) %>%
+  filter(is.na(forgiveness_date)) %>%
+  arrange(desc(count))
 ```
 
-None here either, so that's good. It means our tickets will always have a location and a violation type.
+We can group by forgiveness_amount and forgiveness_date to determine whether one is NA when the other is NA.  Because this grouping has 135,073 rows, too, we know this to be the case. 
+
+```{r}
+ppp_loans_md %>%
+  group_by(forgiveness_amount, forgiveness_date) %>%
+  summarise(
+    count=n()
+  ) %>%
+  #filter(is.na(forgiveness_date)) %>%
+  arrange(desc(count))
+
+```
+
+Before we decide to base a publishable finding on this column, we should call the custodian of the data to confirm our interpretation of NA values. 
 
 ## Gaps in data
 
-Let's now look at **gaps in data**. It's been my experience that gaps in data often have to do with time, so let's first look at ticket dates, so we can see if there's any big jumps in data. You'd expect the numbers to change, but not by huge amounts. Huge change would indicate, more often than not, that the data is missing. Let's start with Date. If we're going to work with dates, we should have `lubridate` handy for `floor_date`. 
+Let's now look at **gaps in data**. It's been my experience that gaps in data often have to do with time, so let's first look at "date_approved", so we can see if there's any missing months, or huge differences in the number of loans by month. Let's start with Date. If we're going to work with dates, we should have `lubridate` handy for `floor_date`. The `floor_date` function will allow us to group by month, instead of a single day. 
 
 ```{r}
 library(lubridate)
@@ -77,33 +136,47 @@ library(lubridate)
 
 
 ```{r}
-tickets %>% group_by(floor_date(Date, "month")) %>% tally()
+ppp_loans_md %>% 
+  mutate(month_year_approved = floor_date(date_approved, "month")) %>%
+  group_by(month_year_approved) %>% 
+   summarise(
+    count=n()
+  ) %>%
+  arrange(month_year_approved)
 ```
 
-First thing to notice: our data starts in April 2012. So 2012 isn't a complete year. Then, scroll through. Look at December 2013 - March 2014. The number of tickets drops to about 10 percent of normal. That's ... odd. And then let's look at the end -- November 2016. So not a complete year in 2016 either. 
+So, our data starts in April 2020, the month that has more loans -- 45,040 -- than any other month.  That makes sense, as the program launched at the start of the pandemic, in April 2020.  The number of loans declines each month through August 2020, as the initial round of the program worked through the initial funding allocation.  
 
-## Internal inconsistency
+Then, there are no loans until January 2021. EXPLAIN WHY? IS THIS A PROBLEM?  There are loans every month until the program winds down on May 31, 2021.  There are still loans in June.  IS THIS A PROBLEM.   
+## Supicious Outliers 
 
-Any time you are going to focus on something, you should check it for consistency inside the data set. So let's pretend the large number of Displaying Altered Permit tickets caught your attention and you want to do a story about tens of thousands of students being caught altering their parking permits to reduce their costs parking on campus. Good story right? Before you go calling the parking office for comment, I'd check that data first. 
+Any time you are going to focus on a column for analysis, you should check for suspicious values. Are there any unusually large values or unusually small values?  Are there any values that should not exist in the data?
+
+Let's consider the loan amount column from our Maryland PPP data, and find the largest (max) and smallest (min) amount.  
 
 ```{r}
-tickets %>% filter(Violation == "Displaying Altered Permit") %>% group_by(floor_date(Date, "month")) %>% tally()
+
+ppp_loans_md %>% 
+  summarise(max_amount = max(amount),
+            min_amount= min(amount))
 ```
+The largest amount is \$10 million which is the maximum size of a loan under the program. If the max amount was larger than \$10 million, that would be suspicious.  Similarly, if the smallest amount was a negative number, that would also raise an eyebrow.  What about $6?  That does seem a little odd. Why would someone take out a loan for that amount of money?
 
-So this charge exists when our data starts, but scroll forward: In October 2013, there's 1,081 tickets written. A month later, only 121. A month after that? 1. And then one sporadically for three more years. 
-
-Something major changed. What is it? That's why you are a reporter. Go ask. But we know our data doesn't support the story we started with.
-
-And that's what Data Smells are designed to do: stop you from going down a bad path.
-
-## A Shortcut: Summary
-
-One quick way to get some data smells is to use R's built in summary function. What summary does is run summary statistics on each column of your dataset. Some of the output is ... underwhelming ... but some is really useful. For example,  looking at min and max for dates can point to bad data there. Min and max will also show you out of range numbers -- numbers far too big or small to make sense. 
-
-The syntax is simple. 
+Let's take a look at the full record set for any loan less than $100. 
 
 ```{r}
-summary(tickets)
-```
 
-In this case, the output doesn't do much for us except dates. Looking at the min and max will tell us if we have any out of range dates. In this case, we do not. 
+ppp_loans_md %>% 
+ filter(amount < 100)
+```
+We have two businesses, "GETGFTD LLC" and "LEGACY SPINE AND PAIN LLC" that both got very small loans of \$6 and \$78. Scan through the columns. Let's check for internal consistency.  There are other columns in the data that have related information: intial_approval_amount, current_approval_amount and payroll_proceed. Let's select just those columns
+
+```{r}
+
+ppp_loans_md %>% 
+ filter(amount < 100) %>%
+  select(name, amount, initial_approval_amount, current_approval_amount, payroll_proceed)
+```
+Those are all the same value, so at least this number is internally consistent.  But is it correct? Did someone mistype it when entering the data?  A call to the bank -- Bank of America in both cases -- or the companies could help resolve this mystery. 
+
+
