@@ -1,7 +1,7 @@
 ---
 title: "lab_06"
 author: "derek willis"
-date: "8/25/2021"
+date: "8/26/2021"
 output: html_document
 ---
 
@@ -50,30 +50,12 @@ international_migration <- international_migration %>% mutate(type='internationa
 ## Answer questions
 
 Q1. Which region and county/city below the state level accounted for the largest percentage of international migration overall?  You'll need to add and populate columns representing percent of total using `mutate`.
-A1. Suburban Washington (62.8%). Montgomery County (36.8%).
-
-```{r}
-international_migration %>%
-  mutate(pct_total=(total/198996)*100) %>%
-  select(jurisdiction, pct_total) %>%
-  arrange(desc(pct_total))
-```
 
 Q2. Write a sentence or two that describes the data you produced in A1. Treat this as if you were trying to convey the most important part.
-A2. International migrants to Maryland during the past 10 years were drawn mostly to the suburbs surrounding Washington, D.C., which accounted for more than six of every 10 foreign residents that moved to the state between July 2010 and July 2019.
 
 Q3. Which region & jurisdiction had the biggest percentage change for international migration between July 2018 and July 2017? The formula for percentage change is easy to remember: (New-Old)/Old.
-A3. Calvert County's international migrants declined 76 percent (albeit from a small population), and the Southern Maryland region declined 58.5 percent.
-
-```{r}
-international_migration %>%
-  mutate(pct_change=((july_2018-july_2017)/july_2017)*100) %>%
-  select(jurisdiction, pct_change) %>%
-  arrange(pct_change)
-```
 
 Q4. What's your best guess as to why these declines occurred, and in those area in particular?
-A4. One answer is that with the advent of the Trump administration, controls on international migration tightened.
 
 ## Back to Tabula
 
@@ -95,22 +77,7 @@ domestic_migration <- domestic_migration %>% mutate(type='domestic')
 
 ## Answer questions
 Q5. Which Maryland individual jurisdiction saw the largest net decrease in domestic migration overall?
-A5. Baltimore City, with -62,834, with Prince George's County not far behind at -60,167.
-
-```{r}
-domestic_migration %>%
-  select(jurisdiction, total) %>%
-  arrange(total)
-```
 
 Q6. How many regions & jurisdictions had net positive migration for July 2017, July 2018 and July 2019?
-A6. 14, including the Southern Maryland and Upper Eastern Shore regions.
-
-```{r}
-domestic_migration %>%
-  filter(july_2017 > 0 & july_2018 > 0 & july_2019 > 0) %>%
-  select(jurisdiction, july_2017, july_2018, july_2019)
-```
 
 Q7. How would you describe this data? Is there a county or region that stands out, and why?
-A7. Frederick and Charles stand out for consistent growth, and Caroline for trending downwards.
