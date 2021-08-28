@@ -11,12 +11,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Points to hit
 1. Overview of R, R Studio, Console, R Markdown files.  
-2. Demonstrate how code runs in the console. print('your name'). 2+2. 
-3. Demonstrate how to install, then load libraries, and explain what libraries are. 
+2. Demonstrate how code runs in the console. print('your name'). 2+2.
+3. Demonstrate how to install, then load libraries, and explain what libraries are.
 5. Demonstrate how to load data, how to store it as an object, and how to view it. Show how to sort, filter in Viewer window.  
-6. Explain PPP loan data, what it is, why we're examining it, what stories journalists have done with it. Explain difference between rows and columns, and what each shows. Show documentation. 
+6. Explain PPP loan data, what it is, why we're examining it, what stories journalists have done with it. Explain difference between rows and columns, and what each shows. Show documentation.
 7. Explain that we're about to learn techniques, and that all of these techniques are about answering questions (we'll talk later about developing questions).
-8. Demonstration of aggregation. Explanation of functions. Explanation of pipes. 
+8. Demonstration of aggregation. Explanation of functions. Explanation of pipes.
 
 ## Load Libraries
 ```{r}
@@ -25,7 +25,7 @@ options(scipen=999)
 library(tidyverse)
 ```
 
-## Load Data 
+## Load Data
 Maryland slice of PPP data
 ```{r}
 maryland_ppp <- read_rds("class_01_demonstration.rds")
@@ -40,7 +40,7 @@ glimpse(maryland_ppp)
 ```
 
 ## Group and Summarize
-Follow the money. Where's it going? 
+Follow the money. Where's it going?
 Which county got the most ppp loans?   
 
 ```{r}
@@ -66,7 +66,7 @@ maryland_ppp_county_count <- maryland_ppp %>%
   ) %>%
   arrange(desc(coun))
 
-# Show fourth 
+# Show fourth
 maryland_ppp_county_count <- maryland_ppp %>%
   group_by(project_county_name) %>%
   summarise(
