@@ -1,5 +1,6 @@
 # Aggregates
 
+## Libraries
 R is a statistical programming language that is purpose built for data analysis.
 
 Base R does a lot, but there are a mountain of external libraries that do things to make R better/easier/more fully featured. We already installed the tidyverse -- or you should have if you followed the instructions for the last assignment -- which isn't exactly a library, but a collection of libraries. Together, they make up the tidyverse. Individually, they are extraordinarily useful for what they do. We can load them all at once using the tidyverse name, or we can load them individually. Let's start with individually. 
@@ -29,35 +30,40 @@ But, because those two libraries -- and several others that we're going to use o
 library(tidyverse)
 ```
 
-You can keep doing that for as many libraries as you need. I've seen notebooks with 10 or more library imports.
+You can keep doing that for as many libraries as you need. 
 
 ## Importing data
 
-The first thing we need to do is get some data to work with. We do that by reading it in. In our case, we're going to read data from a csv file -- a comma-separated values file.
+The first thing we need to do is get some data to work with. We do that by reading it in. In our case, we're going to read a datatable from an "rds" file, which is a format for storing data with R. Later in the course, we'll more frequently work with a format called a CSV. A CSV is a stripped down version of a spreadsheet you might open in a program like Excel, in which each column is separated by a comma. RDS files are less common when getting data from other people.  But reading in CSVs is less foolproof than reading in rds files, so for now we'll work with rds. 
 
-The CSV file we're going to read in is from the [Small Business Administration's Paycheck Protection Program(https://www.sba.gov/funding-programs/loans/covid-19-relief-options/paycheck-protection-program)]. The program gave loans to businesses to keep people employed during the Covid-19 pandemic. We'll be working with a slice of the data that documents loans to Maryland businesses. 
+The rds file we're going to read in is from the [Small Business Administration's Paycheck Protection Program(https://www.sba.gov/funding-programs/loans/covid-19-relief-options/paycheck-protection-program)]. The program gave loans to businesses to keep people employed during the Covid-19 pandemic. We'll be working with a slice of the data that documents loans to Maryland businesses. 
 
-So step 1 is to import the data. The code to import the data looks like this, but hold off copying it just yet:
+So step 1 is to import the data. The code to import the data looks like this:
 
-`ppp_maryland_loans <- read_csv("ppp_maryland.csv")`
+`ppp_maryland_loans <- read_rds("ppp_maryland.rds")`
 
 Let's unpack that.
 
 The first part -- **ppp_maryland_loans** -- is the name of a variable. 
 
-A **variable** is just a name that we'll use to refer to some more complex thing. In this case, the more complex thing is the data we're importing into R that will be stored as a **dataframe**, which is one way R stores data. We can call this whatever we want. 
+A **variable** is just a name that we'll use to refer to some more complex thing. In this case, the more complex thing is the data we're importing into R that will be stored as a **dataframe**, which is one way R stores data. 
 
-The variable name doesn't matter, technically.  We could use any word.  You could use your first name, if you like. Generally, though, we want to give variables names that are descriptive of the thing they refer to. Which is why we're calling this one **ppp_maryland_loans**. Variable names, by convention are one word all lower case (or two or more words connected by an underscore). You can end a variable with a number, but you can't start one with a number.
+We can call this variable whatever we want. The variable name doesn't matter, technically.  We could use any word.  You could use your first name, if you like. Generally, though, we want to give variables names that are descriptive of the thing they refer to. Which is why we're calling this one **ppp_maryland_loans**. Variable names, by convention are one word all lower case (or two or more words connected by an underscore). You can end a variable with a number, but you can't start one with a number.
 
-The <- bit, you'll recall from the basics, is the **variable assignment operator**. It's how we know we're assigning something to a word. Think of the arrow as saying "Take everything on the right of this arrow and stuff it into the thing on the left." So we're creating an empty vessel called **ppp_maryland_loans** and stuffing all this data into it. 
+The `<-` bit, you'll recall from the basics, is the **variable assignment operator**. It's how we know we're assigning something to a word. Think of the arrow as saying "Take everything on the right of this arrow and stuff it into the thing on the left." So we're creating an empty vessel called **ppp_maryland_loans** and stuffing all this data into it. 
 
-**read_csv()** is a function, one that only works when we've loaded the tidyverse.  A **function** is a little computer program that takes in information and follows a series of pre-determined steps and spits it back out.  A recipe to make pizza is a kind of function.  You take a set of ingredients -- flour, water, oil, cheese, tomato, salt -- and pass them through each step outlined in a recipe -- mix flour and water and oil, knead, let it sit, roll it out, put tomato sauce and cheese on it, bake it in an oven, then take it out.  The output of our "make pizza" function is a finished pie. 
+**read_rds()** is a function, one that only works when we've loaded the tidyverse.  A **function** is a little bit of computer code that takes in information and follows a series of pre-determined steps and spits it back out. 
+A recipe to make pizza is a kind of function.  We might call it **make_pizza()**.
+
+The function does one thing. It takes a preset collection of ingredients -- flour, water, oil, cheese, tomato, salt -- and passes them through each step outlined in a recipe, in order.  Things like: mix flour and water and oil, knead, let it sit, roll it out, put tomato sauce and cheese on it, bake it in an oven, then take it out.  
+
+The output of our **make pizza()** function is a finished pie. 
 
 We'll make use of a lot of pre-written functions from the tidyverse and other packages, and even write some of our own. Back to this line of code: 
 
-`ppp_maryland_loans <- read_csv("ppp_maryland.csv")`
+`ppp_maryland_loans <- read_rds("ppp_maryland.rds")`
 
-Inside of the **read_csv()** function, we've put the name of the file we want to load.  Things we put inside of function, to customize what the function does, are called **arguments**. 
+Inside of the **read_rds()** function, we've put the name of the file we want to load.  Things we put inside of function, to customize what the function does, are called **arguments**. 
 
 The easiest thing to do, if you are confused about how to find your data, is to put your data in the same folder as as your notebook (you'll have to save that notebook first). If you do that, then you just need to put the name of the file in there (ppp_maryland.csv). If you put your data in a folder called "data" that sits next to your data notebook, your function would instead look like this: 
 
@@ -68,6 +74,8 @@ The easiest thing to do, if you are confused about how to find your data, is to 
 ppp_maryland_loans <- read_rds("in_class_demonstrations/class_01_demonstration/class_01_demonstration.rds")
 
 ```
+
+In this data set, each row represents a loan application, and each column represents a feature of that loan: who it went to, how much it was for, whether the loan was forgiven. 
 
 After loading the data, it's a good idea to get a sense of its shape.  What does it look like? There are several ways we can examine it. 
 
