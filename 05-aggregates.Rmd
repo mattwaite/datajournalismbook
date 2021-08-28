@@ -94,13 +94,6 @@ If we type `head(ppp_maryland_loans)`, it will print out the columns and the fir
 ```{r}
 head(ppp_maryland_loans)
 ```
-If we type `summary(ppp_maryland_loans)`, it will print out a list of columns, column types, and a summary of the values in number columns (mean, median, other values). 
-
-```{r}
-
-summary(ppp_maryland_loans)
-
-```
 
 ## Group by and count
 
@@ -229,7 +222,7 @@ ppp_maryland_loans %>%
 From this, we can see that the largest loan amounts in Anne Arundel County, Baltimore County, Carroll County, Garrett County and Howard County were $10 million, the maximum loan value authorized under the program. 
 
 It would be interesting to see what these companies are that got the maximum of $10 million.  To do that, we could simply take our original data set and sort it from highest to lowest on the loan amount. 
-
+d
 ```{r}
 ppp_maryland_loans %>%
   arrange(desc(amount))
