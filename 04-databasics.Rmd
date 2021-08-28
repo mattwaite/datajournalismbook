@@ -4,20 +4,27 @@ Data is everywhere. It surrounds you. Every time you use your phone or buy somet
 
 In this class we'll deal largely with two kinds of data: **unaggregated data** and **aggregated data**. 
 
-Consider a spreadsheet of arrests made by police, organized into rows and columns. In its unaggregated form, a single row in this spreadsheet may represent a single arrest, with information like where the arrest took place, the name of the person arrested, and the crime they were charged with. In its aggregated form, the dataset is collapsed so that each row might represent a single category of arrests -- for example, auto thefts -- that includes the number of arrests in that category.    
+Unaggregated data, oversimplifying it a bit, is organized information that represents something tangible that exists in the real world. Aggregated data takes that raw, unaggregated information and summarizes it in some way. 
 
+In this class, we'll generally make use of unaggregated ["tidy data"](https://tidyr.tidyverse.org/articles/tidy-data.html#defining-tidy-data) that is organized into a grid of rows and columns in tables. 
 
-## Rows and columns
+Rows -- which run horizontally and are sometimes called observations or records -- each represent one individual element in a group.  Columns -- which run vertically and are also sometimes called variables or fields --  represent features of that group. 
 
-Unaggregated data, oversimplifying it a bit, is organized information that represents something that exists in the real world. In this class, we'll generally make use of unaggregated ["tidy data"](https://tidyr.tidyverse.org/articles/tidy-data.html#defining-tidy-data) that is organized into a grid of rows and columns. 
+To illustrate this, think about how the Metropolitan Police Department collects information about crime incidents in Washington, D.C. in 2021.
 
-Rows -- which run horizontally and are sometimes called observations -- each represent one individual element in a group.  Columns -- which run vertically and are also sometimes called variables or fields --  represent features of that group. If each row is a single arrest, the first column might explain the charge, the second the date and time, the third the location. And so on. 
+Below is an image of an **unaggrgated** information about crime incidents taken from [Washington, D.C.'s open data repository](https://opendata.dc.gov/datasets/crime-incidents-in-2021/explore?location=38.893745%2C-77.019147%2C11.78&showTable=true). 
 
 ```{r, echo=FALSE}
 knitr::include_graphics(rep("images/data1.png"))
 ```
 
-One of the critical components of data analysis, especially for beginners, is having a mental picture of your data. What does each row represent? What does each column in each row signify? How many rows do you have? How many columns? 
+Each row (blue box) represents a single reported crime incident that -- if this data is accurate -- actually happened.  Each column (green box), represents some feature of that incident: the date on which occured, the type of crime, where it occurred. The highlighted row in blue represents incident number 21075574 (CCN), an auto theft (OFFENSE) that was reported on June, 7 2021 at 12:02 p.m. (REPORT_DATE) during the day shift (SHIFT) that occured in the 400 Block of M Street (BLOCK).  By looking where a given row intersects a given column, we can tell a little story about each incident. 
+
+This is unaggregated data. Aggregated data -- also called summary data -- will take raw data and summarize it in some way.  For example, a table that counts up all of the assaults, thefts, and homicides would represent aggregated data.  
+
+## A Mental Picture
+One of the critical components of data analysis, especially for beginners, is having a mental picture of your data. What does each row represent? What does each column in each row signify? How many rows do you have? How many columns?
+
 All semester, we'll work with a dataset of loans made under the Paycheck Protection Act, a government program that loaned money to businesses during the Covid-19 pandemic with the goal of keeping people employed.  In the raw, unaggregated data set we'll work with, each row represents a single loan made to a single company. Each column describes a different feature of that loan: the company's name, the company's location, the industry the company operates in, the lender name, the amount of the loan, and so on.    
 
 ## Types
