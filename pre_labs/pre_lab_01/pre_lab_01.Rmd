@@ -12,31 +12,31 @@ options(scipen=999)
 
 ## About this notebook
 
-This notebook contains code and explanatory text that your should review and run as you read through chapters 1 - 5 of the course textbook, "Data Journalism with R and the Tidyverse". Answer questions and edit the document as directed. 
+This notebook contains code and explanatory text that your should review and run as you read through chapters 1 - 5 of the course textbook, "Data Journalism with R and the Tidyverse". Answer questions and edit the document as directed.
 
 Running this notebook will help you understand key data analysis methods and concepts that you will put into practice during this week's lab.  
 
-When you are finished running the code in this notebook, you will push changes to your course GitHub repo, and upload the link to ELMS as instructed. 
+When you are finished running the code in this notebook, you will push changes to your course GitHub repo, and upload the link to ELMS as instructed.
 
 ## Instructor in class demonstration outline
 
 * Load this notebook, and provide overview of R, RStudio (text editor, console, environment window, file explorer), Rmarkdown data notebooks.
 * Work through the code below, chapter by chapter.
-  * Chapter 2: explain the console and the concept of variables. 
+  * Chapter 2: explain the console and the concept of variables.
   * Chapter 3: explain packages, the Tidyverse, how to install them.
-  * Chapter 5: explain R markdown data notebooks, the difference between codeblocks and text, loading libraries, the concept of functions, loading data, the importance of having questions to guide data analysis, and aggregation and summarization. 
+  * Chapter 5: explain R markdown data notebooks, the difference between codeblocks and text, loading libraries, the concept of functions, loading data, the importance of having questions to guide data analysis, and aggregation and summarization.
 
 ## Chapter 1
 
-There is no code to run from Chapter 1. 
+There is no code to run from Chapter 1.
 
-## Chapter 2 
+## Chapter 2
 
 ### Task 1: The console
-**Task** In the console (look below), type 2+2 and hit enter. What does it return? Type your answer below. 
-**Answer:** 
+**Task** In the console (look below), type 2+2 and hit enter. What does it return? Type your answer below.
+**Answer:**
 
-### Task 2: Variables 
+### Task 2: Variables
 **Task** Put the following code -- which stores the numeral 2 as a variable called number -- in the console and hit enter.    
 
 ```{r}
@@ -51,7 +51,7 @@ number * number
 
 What does it return? Type your answer below:
 
-**Answer:** 
+**Answer:**
 
 ### Task 3: Install packages
 **Task** In the console, run the following code to install the Tidyverse:
@@ -68,11 +68,11 @@ install.packages('rmarkdown')
 
 ## Chapter 3
 
-There is no code to run from Chapter 3. 
+There is no code to run from Chapter 3.
 
 ## Chapter 4
 
-There is no code to run from Chapter 4. 
+There is no code to run from Chapter 4.
 
 ## Chapter 5
 
@@ -85,13 +85,13 @@ library(tidyverse)
 ```
 
 ### Task 2: Load data
-**Task** Load the PPP loan dataset by running the following codeblock. 
+**Task** Load the PPP loan dataset by running the following codeblock.
 
 ```{r}
 ppp_maryland_loans <- read_rds("pre_lab_01.rds")
 ```
 
-Once it loads, look at the environment window at right in RStudio for ppp_maryland_loans. It's next to a small blue circle with a white arrow in it.  To the right of that, look at how many "obs" the dataset has ("obs" is short for observation, which is another way of saying rows or records). Look at how many variables it has (another way of saying columns or fields).  Write the number of observations and variables below. 
+Once it loads, look at the environment window at right in RStudio for ppp_maryland_loans. It's next to a small blue circle with a white arrow in it.  To the right of that, look at how many "obs" the dataset has ("obs" is short for observation, which is another way of saying rows or records). Look at how many variables it has (another way of saying columns or fields).  Write the number of observations and variables below.
 
 **Answer**
 
@@ -102,22 +102,22 @@ Once it loads, look at the environment window at right in RStudio for ppp_maryla
 glimpse(ppp_maryland_loans)
 ```
 
-In the space below, write the data type for the "name" column and the "amount" column (it's in light gray, offset by < >).  Also offer your best guess as to what the "name" column and the "amount" column represent. 
-**Answer** 
+In the space below, write the data type for the "name" column and the "amount" column (it's in light gray, offset by < >).  Also offer your best guess as to what the "name" column and the "amount" column represent.
+**Answer**
 
 ### Task 4: Examine data "head"
 **Task** Run the following codeblock to use head() to examine the first six rows of data. Explore the data by clicking the black arrow on the right side of the output table, allowing you to examine additional columns.
 ```{r}
 head(ppp_maryland_loans)
 ```
-In the space below, write the name of the business from the first row of the "name" column. 
-**Answer** 
+In the space below, write the name of the business from the first row of the "name" column.
+**Answer**
 
-### Task 5: Explore data with interactive dataframe 
-**Task** look at the environment window at right in RStudio for ppp_maryland_loans. It's next to a small blue circle with a white arrow in it. Click on the ppp_maryland_loans -- not the blue circle. It will open the dataframe as an interactive table.  Scroll down to see additional rows.  Scroll left to see additional columns. Click on a column name to sort by that column. 
+### Task 5: Explore data with interactive dataframe
+**Task** look at the environment window at right in RStudio for ppp_maryland_loans. It's next to a small blue circle with a white arrow in it. Click on the ppp_maryland_loans -- not the blue circle. It will open the dataframe as an interactive table.  Scroll down to see additional rows.  Scroll left to see additional columns. Click on a column name to sort by that column.
 
 ### Task 6: Group and count
-**Task** Run the following codeblock to group the ppp_maryland_loans dataframe by the county for each loan, and then count the number of loans in that group. 
+**Task** Run the following codeblock to group the ppp_maryland_loans dataframe by the county for each loan, and then count the number of loans in that group.
 
 ```{r}
 ppp_maryland_loans %>%
@@ -126,52 +126,52 @@ ppp_maryland_loans %>%
     count_loans = n()
   )
 ```
-How many loans does Anne Arundel County have?  Put your answer in the space below. 
+How many loans does Anne Arundel County have?  Put your answer in the space below.
 **Answer**
 
 ### Task 7
-**Task** Run the following codeblock to group the ppp_maryland_loans dataframe by the county for each loan, count the number of loans in that group, and then sort so the county with the highest number of loans is listed first. 
+**Task** Run the following codeblock to group the ppp_maryland_loans dataframe by the county for each loan, count the number of loans in that group, and then sort so the county with the highest number of loans is listed first.
 ```{r}
 ppp_maryland_loans %>%
   group_by(project_county_name) %>%
   summarise(
     count_loans = n()
-  ) %>% 
+  ) %>%
   arrange(desc(count_loans))
 ```
-Which county has the most loans?  Put your answer in the space below. 
+Which county has the most loans?  Put your answer in the space below.
 **Answer**
 
 ### Task 8
-**Task** Run the following codeblock to group the ppp_maryland_loans dataframe by county and race, then count the number of loans in that group, and then sort from A-Z by county and then by race. 
+**Task** Run the following codeblock to group the ppp_maryland_loans dataframe by county and race, then count the number of loans in that group, and then sort from A-Z by county and then by race.
 ```{r}
 ppp_maryland_loans %>%
   group_by(project_county_name,race) %>%
   summarise(
     count_loans = n()
-  ) %>% 
+  ) %>%
   arrange(project_county_name,race)
 ```
 
-How many records were there for White loans in Anne Arundel County, according to the data?  Put your answer in the space below. 
+How many records were there for White loans in Anne Arundel County, according to the data?  Put your answer in the space below.
 **Answer**
 
 ### Task 9
-**Task** Run the following codeblock to group the ppp_maryland_loans dataframe by the county for each loan, and then count the number of loans in that group and add up the value of all loans in that group. Then sort so the county with the highest total loan dollar amount is listed first. 
+**Task** Run the following codeblock to group the ppp_maryland_loans dataframe by the county for each loan, and then count the number of loans in that group and add up the value of all loans in that group. Then sort so the county with the highest total loan dollar amount is listed first.
 ```{r}
 ppp_maryland_loans %>%
   group_by(project_county_name) %>%
   summarise(
     count_loans = n(),
     total_loans_amount = sum(amount)
-  ) %>% 
+  ) %>%
   arrange(desc(total_loans_amount))
 ```
-Which county has the highest total dollar amount of loans?  Put your answer in the space below. 
+Which county has the highest total dollar amount of loans?  Put your answer in the space below.
 **Answer**
 
 ### Task 10
-**Task** Run the following codeblock to group the ppp_maryland_loans dataframe by the county for each loan. Then do the following summarizations for each group:count the number of loans , add up the value of all loans, and calculate the mean and median loan amounts. Then sort so the county with the highest mean dollar amount is listed first. 
+**Task** Run the following codeblock to group the ppp_maryland_loans dataframe by the county for each loan. Then do the following summarizations for each group:count the number of loans , add up the value of all loans, and calculate the mean and median loan amounts. Then sort so the county with the highest mean dollar amount is listed first.
 ```{r}
 ppp_maryland_loans %>%
   group_by(project_county_name) %>%
@@ -180,13 +180,13 @@ ppp_maryland_loans %>%
     total_loans_amount = sum(amount),
     mean_loan_amount = mean(amount),
     median_loan_amount = median(amount)
-  ) %>% 
+  ) %>%
   arrange(desc(mean_loan_amount))
 ```
-Which county has the highest mean loan amount?  Put your answer in the space below. 
+Which county has the highest mean loan amount?  Put your answer in the space below.
 **Answer**
 ### Task 11
-**Task** Run the following codeblock to group the ppp_maryland_loans dataframe by the county for each loan. Then do the following summarizations for each group:count the number of loans, add up the value of all loans, calculate the mean and median loan amounts and calculate the smallest and largest loans. Then sort so the county with the largest max loan amount is listed first. 
+**Task** Run the following codeblock to group the ppp_maryland_loans dataframe by the county for each loan. Then do the following summarizations for each group:count the number of loans, add up the value of all loans, calculate the mean and median loan amounts and calculate the smallest and largest loans. Then sort so the county with the largest max loan amount is listed first.
 ```{r}
 ppp_maryland_loans %>%
   group_by(project_county_name) %>%
@@ -197,19 +197,18 @@ ppp_maryland_loans %>%
     median_loan_amount = median(amount),
     min_loan_amount = min(amount),
     max_loan_amount = max(amount)
-  ) %>% 
+  ) %>%
   arrange(desc(max_loan_amount))
 ```
-Which is the max loan amount in Anne Arundel County?  Put your answer in the space below. 
+Which is the max loan amount in Anne Arundel County?  Put your answer in the space below.
 **Answer**
 
 ### Task 12
-**Task** Sort the entire dataset so that the biggest loans appear first, allowing you to see which companies got the biggest loans. 
+**Task** Sort the entire dataset so that the biggest loans appear first, allowing you to see which companies got the biggest loans.
 ```{r}
 ppp_maryland_loans %>%
   arrange(desc(amount))
 
 ```
-How many companies got $10 million loans? One of them is a restaurant chain.  What kind of food do they server? Put your answers in the space below. 
+How many companies got $10 million loans? One of them is a restaurant chain.  What kind of food do they server? Put your answers in the space below.
 **Answer**
-
