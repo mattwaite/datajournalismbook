@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Points to hit
 1. Review of first lab and questions/problems.
 2. Review GitHub?
-3. Demonstration of aggregation. Explanation of functions. Explanation of pipes.
+3. Demonstration of mutate, filtering and dates
 
 ## Load Libraries
 ```{r}
