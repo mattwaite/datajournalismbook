@@ -18,6 +18,14 @@ Running this notebook will help you understand key data analysis methods and con
 
 When you are finished running the code in this notebook, you will push changes to your course GitHub repo, and upload the link to ELMS as instructed. 
 
+## Instructor in class demonstration outline
+
+* Load this notebook, and provide overview of R, RStudio (text editor, console, environment window, file explorer), Rmarkdown data notebooks.
+* Work through the code below, chapter by chapter.
+  * Chapter 2: explain the console and the concept of variables. 
+  * Chapter 3: explain packages, the Tidyverse, how to install them.
+  * Chapter 5: explain R markdown data notebooks, the difference between codeblocks and text, loading libraries, the concept of functions, loading data, the importance of having questions to guide data analysis, and aggregation and summarization. 
+
 ## Chapter 1
 
 There is no code to run from Chapter 1. 
@@ -205,11 +213,3 @@ ppp_maryland_loans %>%
 How many companies got $10 million loans? One of them is a restaurant chain.  What kind of food do they server? Put your answers in the space below. 
 **Answer**
 
-## Points to hit
-1. Overview of R, R Studio, Console, R Markdown files.  
-2. Demonstrate how code runs in the console. print('your name'). 2+2. 
-3. Demonstrate how to install, then load libraries, and explain what libraries are. 
-5. Demonstrate how to load data, how to store it as an object, and how to view it. Show how to sort, filter in Viewer window.  
-6. Explain PPP loan data, what it is, why we're examining it, what stories journalists have done with it. Explain difference between rows and columns, and what each shows. Show documentation. 
-7. Explain that we're about to learn techniques, and that all of these techniques are about answering questions (we'll talk later about developing questions).
-8. Demonstration of aggregation. Explanation of functions. Explanation of pipes. 
