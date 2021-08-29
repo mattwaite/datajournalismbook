@@ -4,7 +4,7 @@ The bane of every data analyst's existence is data cleaning.
 
 Every developer, every data system, every agency, the all have opinions about how data gets collected. Some decisions make sense from the outside. Some decisions are based entirely on internal politics: who is creating the data, how they are creating it, why they are creating it. Is it automated? Is it manual? Are data normalized? Are there free form fields where users can just type into or does the system restrict them to choices? 
 
-Your question -- what you want to do with the data -- is almost never part of that equation. 
+Your journalistic questions -- what you want the data to tell you -- is almost never part of that equation. 
 
 So cleaning data is the process of fixing issues in your data so you can answer the questions you want to answer. Data cleaning is a critical step that you can't skip past. A standard metric is that 80 percent of the time working with data will be spent cleaning and verifying data, and 20 percent the more exciting parts like analysis and visualization.  
 
@@ -15,13 +15,13 @@ library(tidyverse)
 library(janitor)
 ```
 
-Now let's load a tiny slice of our Maryland PPP loan dataset. To make the cleaning demonstration in this chapter easier, this dataset only has six rows and seven columns, all from Arnold, Maryland.  
+Now let's load a tiny slice of our Maryland PPP loan dataset. To make the cleaning demonstration in this chapter easier, this dataset only has six rows and seven columns. All six of these loans are from Arnold, Maryland. The full data set has more loans for Arnold, but we're only showing these six here.
 
 ```{r}
 arnold_md_loans <- read_rds("data/ppp_loan_data/processed/md/arnold_md_loans.rmd")
 ```
 
-Let's glimpse it to get a sense of it. 
+Let's glimpse it to get a sense of it, to examine the column data types and possible values. 
 
 ```{r}
 glimpse(arnold_md_loans)
@@ -33,15 +33,16 @@ And let's examine the full data set.
 arnold_md_loans
 ```
 
-There are a number of issues with this data set. They are:
-* The column headers are inconsistently styled.  The first column "1_id" starts with a number. The "NAME" column is all caps, while the rest are lowercase. And "street address" has a space in it. Those problems will make them hard to analyze. 
+There are a number of issues with this data set that might get in the way of asking questions and receiving accurate answers. They are:
+
+* The column headers are inconsistently styled (note: I've purposely dirtied these up, which is why they look different than previous versions of this data we've loaded).  The first column "1_id" starts with a number. The "NAME" column is all caps, while the rest are lowercase. And "street address" has a space in it. Those problems will make them hard to analyze, to refer to in functions we write. 
 * The amount column is stored as a character, not a number. If we try to do math to it -- say, calculate the average loan size -- it won't work. 
 * There's a fully duplicated row -- a common problem in data sets.  The first row is exactly the same as the second. 
 * The city field has five different forms -- including misspellings -- of Arnold. If we wanted to group and count the number of loans in Arnold, this inconsistency would not let us do that correctly. 
 * The zip field mixes five digit ZIP codes and nine digit ZIP codes.  If we wanted to group and count the number of loans in a given ZIP code, this inconsistency would not let us do that correctly. 
 * The street address field is inconsistent. It has multiple variations of Ritchie Hwy. 
 
-Let's get cleaning.  Our goal will be to build up one block of code that does all the necessary cleaning in order to answer this question: what is the total amount of loans made to businesses in Arnold, MD in ZIP code 21012.   
+Let's get cleaning.  Our goal will be to build up one block of code that does all the necessary cleaning in order to answer this question: what is the total amount of loans made to businesses in Arnold, MD in ZIP code 21012?
 
 ## Cleaning headers
 
@@ -64,9 +65,9 @@ cleaned_arnold_md_loans
   
 ```
 
-This function changed `NAME` to `name`.  It put an underscore in `street_address` to get rid of the space.  And it changed `1_id` to `x1_id`. That last one was an improvement -- it no longer starts with a number, but it's still kind of clunky. 
+This function changed `NAME` to `name`.  It put an underscore in `street_address` to get rid of the space.  And it changed `1_id` to `x1_id`. That last one was an improvement -- it no longer starts with a number -- but it's still kind of clunky. 
 
-We can use a tidyverse function ``rename` to fix that. Let's just call it `id` 
+We can use a tidyverse function `rename()` to fix that. Let's just call it `id` 
 
 ```{r}
 # cleaning function
@@ -124,7 +125,8 @@ total_arnold_md_loans
 ```
 ## Duplicates
 
-One of the most difficult problems to fix in data is duplicates in the data. They can creep  in with bad joins, bad data entry practices, mistakes -- all kinds of reasons. A duplicated record isn't always there because of an error, but you need to know if it's there before making that determination.
+One of the most difficult problems to fix in data is duplicate records in the data. They can creepin with bad joins, bad data entry practices, mistakes -- all kinds of reasons. A duplicated record isn't always there because of an error, but you need to know if it's there before making that determination.
+
 So the question is, do we have any records repeated? 
 
 Here we'll use a function called `get_dupes` from the janitor library to check for fully repeated records in our cleaned data set.   
@@ -154,9 +156,10 @@ cleaned_arnold_md_loans
 
 ## Cleaning strings
 
-The rest of the problems with this data set all have to do with inconsistent format of values that all represent essentially the same thing.  To fix these problems we're going to make use of mutate() and a new function, `case_when()` in concert with "string functions" -- special functions that allow us to clean up columns stored as character strings. The tidyverse package `stringr` has lots of useful string functions, more than we'll learn in this chapter. 
+The rest of the problems with this data set all have to do with inconsistent format of values in a few of the columns.  To fix these problems, we're going to make use of mutate() and a new function, `case_when()` in concert with "string functions" -- special functions that allow us to clean up columns stored as character strings. The tidyverse package `stringr` has lots of useful string functions, more than we'll learn in this chapter. 
 
 Let's start by cleaning up the zip field. Remember, three of rows had a five-digit ZIP code, while two had a nine-digit ZIP code, separated by a hyphen.
+
 We're going to write code that tells R to keep the first five digits on the left, and get rid of anything after that by using `mutate()` in concert with `str_sub()`, from the `stringr` package. 
 
 ```{r}
@@ -174,9 +177,9 @@ cleaned_arnold_md_loans
 
 ```
 
-This code says take the value in each ZIP column and extract the first character on the left (1L) through the fifth character on the left (5L), and then use that five-digit zip to overwrite the zip column. 
+Let's break down this line of code. It says: take the value in each zip column and extract the first character on the left (1L) through the fifth character on the left (5L), and then use that five-digit zip to overwrite the zip column. 
 
-Now let's clean the city column to standardize how we spell Arnold. For that, we're going to use a few different functions.  Let's start by changing every value to title case -- first letter uppercase, subsequent letters lowercase -- using the `str_to_title()` function from `stringr`.  
+We'll use a different set of functions to standardize how we standardize the different flavors of the word "Arnold" in the city column.  Let's start by changing every value to title case -- first letter uppercase, subsequent letters lowercase -- using the `str_to_title()` function from `stringr`.  
 
 ```{r}
 # cleaning function
@@ -216,7 +219,9 @@ cleaned_arnold_md_loans
 
 ```
 
-This is a little complex, so let's break it down.  What the code above says, in English, is this:  Look at all the values in the city column. If the value is "Anold", then (that's what the ~ means, then) replace it with the word "Arnold". If it's anything other than that (that's what TRUE means, otherwise), then keep the existing value in that column. 
+This is a little complex, so let's break it down.  
+
+What the code above says, in English, is this:  Look at all the values in the city column. If the value is "Anold", then (that's what the "~" means, then) replace it with the word "Arnold". If it's anything other than that (that's what "TRUE" means, otherwise), then keep the existing value in that column. 
 
 We can fix "Arnld" by adding a line to that same function. 
 
@@ -245,4 +250,6 @@ Lastly, there's the issue with inconsistent spelling of Ritchie Hwy in the stree
 
 Remember the motivating question that's driving us to do this cleaning: What's the total amount of loans (at least in this tiny slice of data) for Arnold, MD in ZIP code 21012?
 
-We don't need the street_address field to answer that question.  So we're not going to bother cleaning it.  That's a good approach for the future. A good rule of thumb is that you should only spend time cleaning fields that are critical to the specific analysis you want to do.  
+We don't need the street_address field to answer that question.  So we're not going to bother cleaning it.  
+
+That's a good approach for the future. A good rule of thumb is that you should only spend time cleaning fields that are critical to the specific analysis you want to do.  
