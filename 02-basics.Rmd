@@ -1,8 +1,10 @@
 # R basics
 
-[R](https://www.r-project.org/about.html) is a programming language, one specifically geared toward statistical analysis. 
+[R](https://www.r-project.org/about.html) is a programming language, one specifically geared toward data analysis. 
 
-Like all programming languages, it has certain built-in functions. There are many ways you can write and execute R code. The first, and most basic, is the console, shown here as part of a software tool called [RStudio (Desktop Open Source Edition)](https://www.rstudio.com/products/rstudio/) that we'll be using all semester. 
+Like all programming languages, it has certain built-in functions. 
+
+There are many ways you can write and execute R code. The first, and most basic, is the console, shown here as part of a software tool called [RStudio (Desktop Open Source Edition)](https://www.rstudio.com/products/rstudio/) that we'll be using all semester. 
 
 ```{r, echo=FALSE}
 knitr::include_graphics(rep("images/verybasics1.png"))
@@ -10,7 +12,7 @@ knitr::include_graphics(rep("images/verybasics1.png"))
 
 Think of the console like talking directly to the R language engine that's busy working inside your computer. You use it send R commands, making sure to use the only language it understands, which is R.  The R language engine processes those commands, and sends information back to you.  
 
-Using the console is  direct, but it has some drawbacks and some quirks we'll get into later.  Let's examine a basic example of how the console works.  
+Using the console is direct, but it has some drawbacks and some quirks we'll get into later.  Let's examine a basic example of how the console works.  
 
 If you load up R Studio, type 2+2 into the console and hit enter it will spit out the number 4, as displayed below. 
 
@@ -55,7 +57,7 @@ A quick note about the console: After this brief introduction, we won't spend mu
 
 ## About libraries
 
-The real strength of any programming language is the external libraries (interchangably called "packages") that power it. The base language can do a lot, but it's the external libraries that solve many specific problems -- even making the base language easier to use. 
+The real strength of any programming language is the external libraries (often called "packages") that power it. The base language can do a lot, but it's the external libraries that solve many specific problems -- even making the base language easier to use. 
 
 With R, there are hundreds of free, useful libraries that make it easier to do data journalism, created by a community of thousands of R users in multiple fields who contribute to open-source coding projects. 
 
@@ -68,10 +70,10 @@ Most of them are part of a collection of libraries bundled into one "metapackage
 * Data analysis. (We'll use the [dplyr](https://dplyr.tidyverse.org/) Tidyverse library) 
 * Data visualization (We'll use the [ggplot2](https://ggplot2.tidyverse.org/) Tidyverse library) 
 
-To install packages, we use the function `install.packages()`. 
+To install packages, we use the function `install.packages()`.
 
 You only need to install a library once, the first time you set up a new computer to do data journalism work. You never need to install it again, unless you want to update to a newer version of the package.   
 
-To install all of the Tidyverse libraries at once, the function is `install.packages('tidyverse)`.
+To install all of the Tidyverse libraries at once, the function is `install.packages('tidyverse')`. You can type it directly in the console.
 
 To use the R Markdown files mentioned earlier, we also need to install a Tidyverse-related library that doesn't load as part of the core Tidyverse package.  The package is called, conveniently, [rmarkdown](https://rmarkdown.rstudio.com/docs/). The code to install that is `install.packages('rmarkdown')`

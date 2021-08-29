@@ -2,7 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
-*.zip
+#*.zip
 data/LPD_Dispatch_Records.csv
 
 # Globally ignore .DS_Store files

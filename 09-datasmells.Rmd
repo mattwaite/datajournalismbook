@@ -25,8 +25,7 @@ Not all of these data smells are detectable in code. You may have to ask people 
 
 But with several of these data smells, we can do them first, before we do anything else. 
 
-We're going to examine three here as they apply to the PPP loan data we've been working with: wrong type,   
-
+We're going to examine three here as they apply to the PPP loan data we've been working with: wrong type, missing data and gaps in data.  
 
 ## Wrong Type
 
@@ -34,35 +33,65 @@ First, let's look at **Wrong Type Of Data**.
 
 We can sniff that out by looking at the output of `readr`. 
 
-Let's load the Maryland slice of ppp_loan_data we've used previously.
+Let's load the tidyverse, then the Maryland slice of PPP loan data we've used previously. 
+
+This time, we're going to load the data in a CSV format, which stands for comma separated values and is essentially a fancy structured text file. Each column in the csv is separated -- "delimited" -- by a comma from the next column. The file has a ".gz" extension on the end because it's zipped up to keep the file sizes smaller.
+
+We're also going to introduce a new argument to our function that reads in the data, read_csv(), called "guess_max". As R reads in the csv file, it will attempt to make some calls on what "data type" to assign to each field: number, character, date, and so on. The "guess_max" argument says: look at the values in the whatever number of rows we specify before deciding which data type to assign. In this case, we'll pick 10. 
 
 ```{r}
+
+# Remove scientific notation
 options(scipen=999)
+# Load the tidyverse
 library(tidyverse)
+# Load the data
+ppp_maryland_loans <- read_csv("data/ppp_loan_data/processed/md/ppp_loans_md.csv.gz", guess_max=10)
+
 ```
+Pay attention to the red warning that signals "one or more parsing issues." It advises us to run the problems() function to see what went wrong.  Let's do that. 
 
 ```{r}
-ppp_loans_md <- read_csv("data/ppp_loan_data/processed/md/ppp_loans_md.csv.gz")
-#x<-read_rds("data/ppp_loan_data/processed/md/ppp_loans_md.rmd")
+
+problems(ppp_maryland_loans)
 
 ```
-Examine the data output message. There are "12802 parsing failures."
+
+It produces a table of all the parsing problems. It has 87,927 rows, which means we have that many problems.  In almost every case here, the `readr` library has guessed that a given column was of a "logical" data type -- True or False. It did it based on very limited information -- only 1,000 rows.  So, when it hit a value that looked like a date, or a character string, it didn't know what to do.  So it just didn't read in that value correctly. 
 
 Why? Look closely. The `readr` library makes guesses on what data type to assign to each column based on the first 1,000 rows of data.  
 
-In the column "old_slug", there are no values for the first 1,000 rows.  They're all "NA".  `readr` just guesses what data type to assign it, so it chooses "logical", where the values it expects will be TRUE or FALSE, T or F, 1 or 0.  Then, on row 170,056, actual values start showing up in that "old_slug" column.  And those values look nothing like "TRUE or FALSE"; they're a long string of numbers and letters like "aditi-llc-d139eb25916444a03984f38eebda4e63", which should be stored as a "character".  Because `readr` has already set this as a logical column, though, it fails to parse correctly.  So it reads in as "NA", even though there's data to work with. 
-
-The easy way to fix this is to change the guess_max parameter of `readr` to use every row to determine what data type to make each column to guess the column types. It'll go a little slower, but it'll fix the problem.  This data set has 195,685 rows, so that's the value we'll use. 
+The easy way to fix this is to remove the guess_max argument, and let readr do its magic. 
 
 ```{r}
-ppp_loans_md <- read_csv("data/ppp_loan_data/processed/md/ppp_loans_md.csv.gz", guess_max=195865)
+ppp_maryland_loans <- read_csv("data/ppp_loan_data/processed/md/ppp_loans_md.csv.gz")
 ```
-This time, we got no parsing failures.  And if we examine the data types `readr` assigned to each column, they generally make sense. Things that should be characters -- like state, city, name -- are characters. Things that should be numbers (dbl) -- like amount -- are numbers.  There are some minor problems that don't warrant fixing, necessarily.  The id column is a good example.  It read in as a number (dbl), which makes sense, because it really is just a string of numbers.  But we'd never need to do math on these values; it wouldn't make sense to add two ids together, for example.  So it is probably best stored as a character. The opposite would be more problematic.  If something that should be stored as a number we want to do math on was stored as a character, we couldn't actually use it to do math. 
+This time, we got no parsing failures.  And if we examine the data types `readr` assigned to each column using glimpse(), they generally make sense. 
 
 ```{r}
-glimpse(ppp_loans_md)
+glimpse(ppp_maryland_loans)
 ```
-For this, things seem to be good. `Date` appears to be in date format, things that aren't numbers appear to be text. That's a good start.
+
+Things that should be characters -- like state, city, name -- are characters (chr). Things that should be numbers (dbl) -- like amount -- are numbers. Date columns -- like date_approved -- are stored as dates. 
+
+There are some minor problem.  The id column is a good example.  It read in as a number (dbl), which makes sense, because it really is just a string of numbers.  But we'd never need to do math on these values; it wouldn't make sense to add two ids together, for example.  So it is probably best stored as a character. The opposite would be more problematic.  If something that should be stored as a number we want to do math on was stored as a character, we couldn't actually use it to do math. 
+
+We can fix that pretty easily, by overwriting the column while changing the data type, using mutate()
+
+```{r}
+
+ppp_maryland_loans <- ppp_maryland_loans %>%
+  mutate(id = as.character(id))
+
+```
+
+When we glimpse() the dataframe again, it's been changed
+
+```{r}
+
+glimpse(ppp_maryland_loans)
+
+```
 
 ## Missing Data
 
@@ -76,7 +105,7 @@ There are 192,959 NA values in this column.  This makes sense. Not every busines
 
 ```{r}
 
-ppp_loans_md %>% 
+ppp_maryland_loans %>% 
   group_by(franchise_name) %>% 
   summarise(
     count=n()
@@ -87,14 +116,16 @@ Now let's try the "forgiveness_amount" column, which represents the amount of th
 
 ```{r}
 
-ppp_loans_md %>% 
+ppp_maryland_loans %>% 
   group_by(forgiveness_amount) %>% 
   summarise(
     count=n()
   ) %>%
   arrange(desc(count))
 ```
-Do the 135,073 NAs represent loans that weren't forgiven? Do they represent loans that might have been forgiven, but the data is simply missing the amount of money?  
+Do the 135,073 NAs represent loans that weren't forgiven? 
+
+Do they represent loans that might have been forgiven, but the data is simply missing the amount of money?  
 
 We could check the documentation, which isn't particularly helpful.  It only says the column represents "forgiveness amount." 
 
@@ -102,7 +133,7 @@ We could check the "forgiveness_date" column, to see how many NAs it has: 135,70
 
 ```{r}
 
-ppp_loans_md %>% 
+ppp_maryland_loans %>% 
   group_by(forgiveness_date) %>% 
   summarise(
     count=n()
@@ -110,21 +141,20 @@ ppp_loans_md %>%
   filter(is.na(forgiveness_date)) %>%
   arrange(desc(count))
 ```
-
 We can group by forgiveness_amount and forgiveness_date to determine whether one is NA when the other is NA.  Because this grouping has 135,073 rows, too, we know this to be the case. 
 
 ```{r}
-ppp_loans_md %>%
+ppp_maryland_loans %>%
   group_by(forgiveness_amount, forgiveness_date) %>%
   summarise(
     count=n()
   ) %>%
-  #filter(is.na(forgiveness_date)) %>%
+  filter(is.na(forgiveness_date)) %>%
   arrange(desc(count))
 
 ```
 
-Before we decide to base a publishable finding on this column, we should call the custodian of the data to confirm our interpretation of NA values. 
+Before we decide to base a publishable finding on this column, we should call the custodian of the data to confirm our hypothesis of NA values in these columns, that they represent loans that have not been forgiven. 
 
 ## Gaps in data
 
@@ -136,7 +166,7 @@ library(lubridate)
 
 
 ```{r}
-ppp_loans_md %>% 
+ppp_maryland_loans %>% 
   mutate(month_year_approved = floor_date(date_approved, "month")) %>%
   group_by(month_year_approved) %>% 
    summarise(
@@ -147,7 +177,12 @@ ppp_loans_md %>%
 
 So, our data starts in April 2020, the month that has more loans -- 45,040 -- than any other month.  That makes sense, as the program launched at the start of the pandemic, in April 2020.  The number of loans declines each month through August 2020, as the initial round of the program worked through the initial funding allocation.  
 
-Then, there are no loans until January 2021. EXPLAIN WHY? IS THIS A PROBLEM?  There are loans every month until the program winds down on May 31, 2021.  There are still loans in June.  IS THIS A PROBLEM.   
+Then, there are no loans until January 2021. Does the four-month gap in loans in this dataset represent a problem? Are we missing a bunch of records?  
+
+Probably not. The program was reauthorized a few times. For example, it expired in August 2020, before being reauthorized with new loans being given in January 2021.
+
+It's good to be aware of all gaps in data, but they don't always represent a problem. 
+
 ## Supicious Outliers 
 
 Any time you are going to focus on a column for analysis, you should check for suspicious values. Are there any unusually large values or unusually small values?  Are there any values that should not exist in the data?
@@ -156,7 +191,7 @@ Let's consider the loan amount column from our Maryland PPP data, and find the l
 
 ```{r}
 
-ppp_loans_md %>% 
+ppp_maryland_loans %>% 
   summarise(max_amount = max(amount),
             min_amount= min(amount))
 ```
@@ -166,17 +201,18 @@ Let's take a look at the full record set for any loan less than $100.
 
 ```{r}
 
-ppp_loans_md %>% 
+ppp_maryland_loans %>% 
  filter(amount < 100)
 ```
-We have two businesses, "GETGFTD LLC" and "LEGACY SPINE AND PAIN LLC" that both got very small loans of \$6 and \$78. Scan through the columns. Let's check for internal consistency.  There are other columns in the data that have related information: intial_approval_amount, current_approval_amount and payroll_proceed. Let's select just those columns
+We have two businesses, "GETGFTD LLC" and "LEGACY SPINE AND PAIN LLC" that both got very small loans of \$6 and \$78. Scan through the columns. Let's check for internal consistency.  There are other columns in the data that have related information: initial_approval_amount, current_approval_amount and payroll_proceed. Let's select just those columns
 
 ```{r}
 
-ppp_loans_md %>% 
+ppp_maryland_loans %>% 
  filter(amount < 100) %>%
   select(name, amount, initial_approval_amount, current_approval_amount, payroll_proceed)
 ```
-Those are all the same value, so at least this number is internally consistent.  But is it correct? Did someone mistype it when entering the data?  A call to the bank -- Bank of America in both cases -- or the companies could help resolve this mystery. 
+Those are all the same value, so at least this number is internally consistent.  But is it correct? Did someone mistype it when entering the data?  
 
+A call to the bank -- Bank of America in both cases -- or the companies could help resolve this mystery. Or a call to the SBA -- the owner of the data -- to ask about small values generally may help us understand if small values like this are suspicious or not. 
 

@@ -8,7 +8,7 @@ And then there's this:
 
 __"You should have a strong command of at least one toolset that (a) allows for filtering, joining, pivoting, and aggregating tabular data, and (b) enables reproducible workflows."__
 
-The word you're seeing more and more of? Reproducible. And it started in earnest in 2017 when data journalism crossed a major threshold in American journalism: It got it's own section in the Associated Press Stylebook.
+The word you're seeing more and more of? Reproducible. And it started in earnest in 2017 when data journalism crossed a major threshold in American journalism: It got it's own section in the [Associated Press Stylebook](https://www.apstylebook.com/).
 
 "Data journalism has become a staple of reporting across beats and platforms," the Data Journalism section of the Stylebook opens. "The ability to analyze quantitative information and present conclusions in an engaging and accurate way is no longer the domain of specialists alone."
 
@@ -22,7 +22,7 @@ It doesn't always work.
 
 Replication studies aren't funded at nearly the level as new research. And, to the alarm of many, scores of studies can't be replicated by others. Researchers across disciplines are finding that when their original studies are replicated, flaws are found, or the effects found aren't as strong as the original. Because of this, academics across a number of disciplines have written about a replication crisis in their respective fields, particularly psychology, social science and medical research.
 
-In Chapter 1 of the New Precision Journalism, Phil Meyer wrote that "we journalists would be wrong less often if we adapted to our own use some of the research tools of the social scientists."
+In Chapter 1 of the [New Precision Journalism](https://www.amazon.com/New-Precision-Journalism-Midland-Book/dp/0253206642), Phil Meyer wrote that "we journalists would be wrong less often if we adapted to our own use some of the research tools of the social scientists."
 
 Meyer would go on to write about how computers pouring over datasets too large to crunch by hand had changed social science from a discipline with "a few data and a lot of interpretation" into a much more meaningful and powerful area of study. If journalists could become comfortable with data and some basic statistics, they too could harness this power.
 
@@ -169,4 +169,4 @@ To start a notebook in R Studio, you click on the green plus in the top left cor
 knitr::include_graphics(rep("images/verybasics2.png"))
 ```
 
-In our first lab, we'll go through the process of creating and editing a markdown notebook. 
+In our first lab, we'll go through the process of editing a markdown notebook. 
