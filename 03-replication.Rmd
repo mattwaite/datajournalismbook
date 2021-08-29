@@ -169,4 +169,4 @@ To start a notebook in R Studio, you click on the green plus in the top left cor
 knitr::include_graphics(rep("images/verybasics2.png"))
 ```
 
-In our first lab, we'll go through the process of creating and editing a markdown notebook. 
+In our first lab, we'll go through the process of editing a markdown notebook. 

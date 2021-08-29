@@ -1,12 +1,11 @@
 # Data, structures and types
 
 Data is everywhere. It surrounds you. Every time you use your phone or buy something online, you are creating data that is stored in cloud-computing centers. Modernity is drowning in data, and more comes along all the time. As journalists, it's critical that we learn to work with it.  
-
 In this class we'll deal largely with two kinds of data: **unaggregated data** and **aggregated data**. 
 
 Unaggregated data, oversimplifying it a bit, is organized information that represents something tangible that exists in the real world. Aggregated data takes that raw, unaggregated information and summarizes it in some way. 
 
-In this class, we'll generally make use of unaggregated ["tidy data"](https://tidyr.tidyverse.org/articles/tidy-data.html#defining-tidy-data) that is organized into a grid of rows and columns in tables. 
+In this class, we'll generally start with unaggregated ["tidy data"](https://tidyr.tidyverse.org/articles/tidy-data.html#defining-tidy-data), that is organized into a grid of rows and columns in tables. 
 
 Rows -- which run horizontally and are sometimes called observations or records -- each represent one individual element in a group.  Columns -- which run vertically and are also sometimes called variables or fields --  represent features of that group. 
 
@@ -28,7 +27,6 @@ One of the critical components of data analysis, especially for beginners, is ha
 All semester, we'll work with a dataset of loans made under the Paycheck Protection Act, a government program that loaned money to businesses during the Covid-19 pandemic with the goal of keeping people employed.  In the raw, unaggregated data set we'll work with, each row represents a single loan made to a single company. Each column describes a different feature of that loan: the company's name, the company's location, the industry the company operates in, the lender name, the amount of the loan, and so on.    
 
 ## Types
-
 There are scores of data types in the world, and R has them. In this class, we're primarily going to be dealing with data frames, and each element of our data frames will have a data type.
 
 Typically, they'll be one of four types of data:

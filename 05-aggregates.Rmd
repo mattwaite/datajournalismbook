@@ -3,7 +3,7 @@
 ## Libraries
 R is a statistical programming language that is purpose built for data analysis.
 
-Base R does a lot, but there are a mountain of external libraries that do things to make R better/easier/more fully featured. We already installed the tidyverse -- or you should have if you followed the instructions for the last assignment -- which isn't exactly a library, but a collection of libraries. Together, they make up the tidyverse. Individually, they are extraordinarily useful for what they do. We can load them all at once using the tidyverse name, or we can load them individually. Let's start with individually. 
+Base R does a lot, but there are a mountain of external libraries that do things to make R better/easier/more fully featured. We already installed the tidyverse -- or you should have if you followed the instructions for the last assignment -- which isn't exactly a library, but a collection of libraries. Together, they make up the Tidyverse. Individually, they are extraordinarily useful for what they do. We can load them all at once using the tidyverse name, or we can load them individually. Let's start with individually. 
 
 The two libraries we are going to need for this assignment are `readr` and `dplyr`. The library `readr` reads different types of data in. For this assignment, we're going to read in csv data or Comma Separated Values data. That's data that has a comma between each column of data. 
 
@@ -94,6 +94,7 @@ If we type `head(ppp_maryland_loans)`, it will print out the columns and the fir
 ```{r}
 head(ppp_maryland_loans)
 ```
+We can also click on the data name in the R Studio environment window to explore it interactively. 
 
 ## Group by and count
 
@@ -222,11 +223,10 @@ ppp_maryland_loans %>%
 From this, we can see that the largest loan amounts in Anne Arundel County, Baltimore County, Carroll County, Garrett County and Howard County were $10 million, the maximum loan value authorized under the program. 
 
 It would be interesting to see what these companies are that got the maximum of $10 million.  To do that, we could simply take our original data set and sort it from highest to lowest on the loan amount. 
-d
+
 ```{r}
 ppp_maryland_loans %>%
   arrange(desc(amount))
-
 
 ```
 The first five rows here all represent companies that got $10 million loans. Who are they? What industries are they in?  The answers to these questions could provide a lead for further reporting. 

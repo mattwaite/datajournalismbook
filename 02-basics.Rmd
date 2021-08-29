@@ -74,6 +74,6 @@ To install packages, we use the function `install.packages()`.
 
 You only need to install a library once, the first time you set up a new computer to do data journalism work. You never need to install it again, unless you want to update to a newer version of the package.   
 
-To install all of the Tidyverse libraries at once, the function is `install.packages('tidyverse)`. You can type it directly in the console.
+To install all of the Tidyverse libraries at once, the function is `install.packages('tidyverse')`. You can type it directly in the console.
 
 To use the R Markdown files mentioned earlier, we also need to install a Tidyverse-related library that doesn't load as part of the core Tidyverse package.  The package is called, conveniently, [rmarkdown](https://rmarkdown.rstudio.com/docs/). The code to install that is `install.packages('rmarkdown')`
