@@ -5,26 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Aggregates | Data Journalism with R and the Tidyverse</title>
-  <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="description" content="This is a book built on a very opinionated philosophy for journalism students doing data journalism in R with replicable methods." />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Aggregates | Data Journalism with R and the Tidyverse" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  <meta property="og:description" content="This is a book built on a very opinionated philosophy for journalism students doing data journalism in R with replicable methods." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 6 Aggregates | Data Journalism with R and the Tidyverse" />
   
-  <meta name="twitter:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  <meta name="twitter:description" content="This is a book built on a very opinionated philosophy for journalism students doing data journalism in R with replicable methods." />
   
 
-<meta name="author" content="Matt Waite" />
+<meta name="author" content="Matt Waite (original author); updated by Derek Willis and Sean Mussenden" />
 
 
-<meta name="date" content="2020-04-21" />
+<meta name="date" content="2021-08-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,8 @@
   
 <link rel="prev" href="data-structures-and-types.html"/>
 <link rel="next" href="mutating-data.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,14 +51,16 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.13/datatables.js"></script>
+<script src="libs/datatables-binding-0.18/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160712129-1"></script>
 <script>
@@ -70,25 +73,27 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -97,9 +102,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -132,6 +137,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -145,127 +151,156 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="http://mattwaite.github.io/datajournalism/">Data Journalism With R</a></li>
+<li><a href="http://smussenden.github.io/coursefiles/data_journalism_book/">Data Journalism With R</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#modern-data-journalism"><i class="fa fa-check"></i><b>1.1</b> Modern data journalism</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installations"><i class="fa fa-check"></i><b>1.2</b> Installations</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#about-this-book"><i class="fa fa-check"></i><b>1.3</b> About this book</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#what-well-cover"><i class="fa fa-check"></i><b>1.4</b> What we’ll cover</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="public-records.html"><a href="public-records.html"><i class="fa fa-check"></i><b>2</b> Public records</a><ul>
+<li class="chapter" data-level="2" data-path="public-records.html"><a href="public-records.html"><i class="fa fa-check"></i><b>2</b> Public records</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="public-records.html"><a href="public-records.html#federal-law"><i class="fa fa-check"></i><b>2.1</b> Federal law</a></li>
 <li class="chapter" data-level="2.2" data-path="public-records.html"><a href="public-records.html#state-law"><i class="fa fa-check"></i><b>2.2</b> State law</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>3</b> R basics</a><ul>
-<li class="chapter" data-level="3.1" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-1"><i class="fa fa-check"></i><b>3.1</b> Adding libraries, part 1</a></li>
-<li class="chapter" data-level="3.2" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-2"><i class="fa fa-check"></i><b>3.2</b> Adding libraries, part 2</a></li>
+<li class="chapter" data-level="3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>3</b> R basics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="r-basics.html"><a href="r-basics.html#about-libraries"><i class="fa fa-check"></i><b>3.1</b> About libraries</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html"><i class="fa fa-check"></i><b>4</b> Data journalism in the age of replication</a><ul>
+<li class="chapter" data-level="4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html"><i class="fa fa-check"></i><b>4</b> Data journalism in the age of replication</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#the-stylebook"><i class="fa fa-check"></i><b>4.1</b> The stylebook</a></li>
 <li class="chapter" data-level="4.2" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication"><i class="fa fa-check"></i><b>4.2</b> Replication</a></li>
 <li class="chapter" data-level="4.3" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#goodbye-excel"><i class="fa fa-check"></i><b>4.3</b> Goodbye Excel?</a></li>
 <li class="chapter" data-level="4.4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#receptivity-is-high"><i class="fa fa-check"></i><b>4.4</b> “Receptivity … is high”</a></li>
 <li class="chapter" data-level="4.5" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication-in-notebooks"><i class="fa fa-check"></i><b>4.5</b> Replication in notebooks</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html"><i class="fa fa-check"></i><b>5</b> Data, structures and types</a><ul>
-<li class="chapter" data-level="5.1" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#rows-and-columns"><i class="fa fa-check"></i><b>5.1</b> Rows and columns</a></li>
+<li class="chapter" data-level="5" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html"><i class="fa fa-check"></i><b>5</b> Data, structures and types</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#a-mental-picture"><i class="fa fa-check"></i><b>5.1</b> A Mental Picture</a></li>
 <li class="chapter" data-level="5.2" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#types"><i class="fa fa-check"></i><b>5.2</b> Types</a></li>
-<li class="chapter" data-level="5.3" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#a-simple-way-to-get-data"><i class="fa fa-check"></i><b>5.3</b> A simple way to get data</a></li>
-<li class="chapter" data-level="5.4" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#cleaning-the-data"><i class="fa fa-check"></i><b>5.4</b> Cleaning the data</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="aggregates.html"><a href="aggregates.html"><i class="fa fa-check"></i><b>6</b> Aggregates</a><ul>
-<li class="chapter" data-level="6.1" data-path="aggregates.html"><a href="aggregates.html#importing-data"><i class="fa fa-check"></i><b>6.1</b> Importing data</a></li>
-<li class="chapter" data-level="6.2" data-path="aggregates.html"><a href="aggregates.html#group-by-and-count"><i class="fa fa-check"></i><b>6.2</b> Group by and count</a></li>
-<li class="chapter" data-level="6.3" data-path="aggregates.html"><a href="aggregates.html#other-aggregates-mean-and-median"><i class="fa fa-check"></i><b>6.3</b> Other aggregates: Mean and median</a></li>
-<li class="chapter" data-level="6.4" data-path="aggregates.html"><a href="aggregates.html#even-more-aggregates"><i class="fa fa-check"></i><b>6.4</b> Even more aggregates</a></li>
+<li class="chapter" data-level="6" data-path="aggregates.html"><a href="aggregates.html"><i class="fa fa-check"></i><b>6</b> Aggregates</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="aggregates.html"><a href="aggregates.html#libraries"><i class="fa fa-check"></i><b>6.1</b> Libraries</a></li>
+<li class="chapter" data-level="6.2" data-path="aggregates.html"><a href="aggregates.html#importing-data"><i class="fa fa-check"></i><b>6.2</b> Importing data</a></li>
+<li class="chapter" data-level="6.3" data-path="aggregates.html"><a href="aggregates.html#group-by-and-count"><i class="fa fa-check"></i><b>6.3</b> Group by and count</a></li>
+<li class="chapter" data-level="6.4" data-path="aggregates.html"><a href="aggregates.html#other-summarization-methods-summing-mean-median-min-and-max"><i class="fa fa-check"></i><b>6.4</b> Other summarization methods: summing, mean, median, min and max</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>7</b> Mutating data</a><ul>
+<li class="chapter" data-level="7" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>7</b> Mutating data</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="mutating-data.html"><a href="mutating-data.html#another-use-of-mutate"><i class="fa fa-check"></i><b>7.1</b> Another use of mutate</a></li>
+<li class="chapter" data-level="7.2" data-path="mutating-data.html"><a href="mutating-data.html#a-more-powerful-use"><i class="fa fa-check"></i><b>7.2</b> A more powerful use</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>8</b> Working with dates</a><ul>
+<li class="chapter" data-level="8" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>8</b> Working with dates</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="working-with-dates.html"><a href="working-with-dates.html#the-hard-way"><i class="fa fa-check"></i><b>8.1</b> The hard way</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="filters-and-selections.html"><a href="filters-and-selections.html"><i class="fa fa-check"></i><b>9</b> Filters and selections</a><ul>
+<li class="chapter" data-level="9" data-path="filters-and-selections.html"><a href="filters-and-selections.html"><i class="fa fa-check"></i><b>9</b> Filters and selections</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="filters-and-selections.html"><a href="filters-and-selections.html#combining-filters"><i class="fa fa-check"></i><b>9.1</b> Combining filters</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html"><i class="fa fa-check"></i><b>10</b> Data Cleaning Part I: Data smells</a><ul>
+<li class="chapter" data-level="10" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html"><i class="fa fa-check"></i><b>10</b> Data Cleaning Part I: Data smells</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#wrong-type"><i class="fa fa-check"></i><b>10.1</b> Wrong Type</a></li>
 <li class="chapter" data-level="10.2" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#missing-data"><i class="fa fa-check"></i><b>10.2</b> Missing Data</a></li>
 <li class="chapter" data-level="10.3" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#gaps-in-data"><i class="fa fa-check"></i><b>10.3</b> Gaps in data</a></li>
-<li class="chapter" data-level="10.4" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#internal-inconsistency"><i class="fa fa-check"></i><b>10.4</b> Internal inconsistency</a></li>
-<li class="chapter" data-level="10.5" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#a-shortcut-summary"><i class="fa fa-check"></i><b>10.5</b> A Shortcut: Summary</a></li>
+<li class="chapter" data-level="10.4" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#supicious-outliers"><i class="fa fa-check"></i><b>10.4</b> Supicious Outliers</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html"><i class="fa fa-check"></i><b>11</b> Data Cleaning Part II: Janitor</a><ul>
+<li class="chapter" data-level="11" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html"><i class="fa fa-check"></i><b>11</b> Data Cleaning Part II: Janitor</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#cleaning-headers"><i class="fa fa-check"></i><b>11.1</b> Cleaning headers</a></li>
-<li class="chapter" data-level="11.2" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#duplicates"><i class="fa fa-check"></i><b>11.2</b> Duplicates</a></li>
-<li class="chapter" data-level="11.3" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#inconsistency"><i class="fa fa-check"></i><b>11.3</b> Inconsistency</a></li>
+<li class="chapter" data-level="11.2" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#changing-data-types"><i class="fa fa-check"></i><b>11.2</b> Changing data types</a></li>
+<li class="chapter" data-level="11.3" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#duplicates"><i class="fa fa-check"></i><b>11.3</b> Duplicates</a></li>
+<li class="chapter" data-level="11.4" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#cleaning-strings"><i class="fa fa-check"></i><b>11.4</b> Cleaning strings</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html"><i class="fa fa-check"></i><b>12</b> Data Cleaning Part III: Open Refine</a><ul>
+<li class="chapter" data-level="12" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html"><i class="fa fa-check"></i><b>12</b> Data Cleaning Part III: Open Refine</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#refinr-open-refine-in-r"><i class="fa fa-check"></i><b>12.1</b> Refinr, Open Refine in R</a></li>
-<li class="chapter" data-level="12.2" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#more-complex-issues"><i class="fa fa-check"></i><b>12.2</b> More complex issues</a></li>
-<li class="chapter" data-level="12.3" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#manually-cleaning-data-with-open-refine"><i class="fa fa-check"></i><b>12.3</b> Manually cleaning data with Open Refine</a></li>
+<li class="chapter" data-level="12.2" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#manually-cleaning-data-with-open-refine"><i class="fa fa-check"></i><b>12.2</b> Manually cleaning data with Open Refine</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html"><i class="fa fa-check"></i><b>13</b> Cleaning Data Part IV: PDFs</a><ul>
-<li class="chapter" data-level="13.1" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-looks-good-but-goes-wrong"><i class="fa fa-check"></i><b>13.1</b> When it looks good, but goes wrong</a></li>
-<li class="chapter" data-level="13.2" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-works-well."><i class="fa fa-check"></i><b>13.2</b> When it works well.</a></li>
+<li class="chapter" data-level="13" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html"><i class="fa fa-check"></i><b>13</b> Cleaning Data Part IV: PDFs</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#easy-does-it"><i class="fa fa-check"></i><b>13.1</b> Easy does it</a></li>
+<li class="chapter" data-level="13.2" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-looks-good-but-needs-a-little-fixing"><i class="fa fa-check"></i><b>13.2</b> When it looks good, but needs a little fixing</a></li>
 <li class="chapter" data-level="13.3" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#cleaning-up-the-data-in-r"><i class="fa fa-check"></i><b>13.3</b> Cleaning up the data in R</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="combining-and-joining.html"><a href="combining-and-joining.html"><i class="fa fa-check"></i><b>14</b> Combining and joining</a><ul>
-<li class="chapter" data-level="14.1" data-path="combining-and-joining.html"><a href="combining-and-joining.html#combining-data"><i class="fa fa-check"></i><b>14.1</b> Combining data</a></li>
+<li class="chapter" data-level="14" data-path="combining-and-joining.html"><a href="combining-and-joining.html"><i class="fa fa-check"></i><b>14</b> Combining and joining</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="combining-and-joining.html"><a href="combining-and-joining.html#combining-data-stacking"><i class="fa fa-check"></i><b>14.1</b> Combining data (stacking)</a></li>
 <li class="chapter" data-level="14.2" data-path="combining-and-joining.html"><a href="combining-and-joining.html#joining-data"><i class="fa fa-check"></i><b>14.2</b> Joining data</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html"><i class="fa fa-check"></i><b>15</b> Scraping data with Rvest</a><ul>
+<li class="chapter" data-level="15" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html"><i class="fa fa-check"></i><b>15</b> Scraping data with Rvest</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html#a-more-difficult-example"><i class="fa fa-check"></i><b>15.1</b> A more difficult example</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="advanced-rvest.html"><a href="advanced-rvest.html"><i class="fa fa-check"></i><b>16</b> Advanced rvest</a></li>
-<li class="chapter" data-level="17" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html"><i class="fa fa-check"></i><b>17</b> Intro to APIs: The Census</a><ul>
+<li class="chapter" data-level="17" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html"><i class="fa fa-check"></i><b>17</b> Intro to APIs: The Census</a>
+<ul>
 <li class="chapter" data-level="17.1" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html#the-acs"><i class="fa fa-check"></i><b>17.1</b> The ACS</a></li>
 <li class="chapter" data-level="17.2" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html#bonus-api-example-coronavirus"><i class="fa fa-check"></i><b>17.2</b> Bonus API example: Coronavirus</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html"><i class="fa fa-check"></i><b>18</b> Visualizing your data for reporting</a><ul>
+<li class="chapter" data-level="18" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html"><i class="fa fa-check"></i><b>18</b> Visualizing your data for reporting</a>
+<ul>
 <li class="chapter" data-level="18.1" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html#bar-charts"><i class="fa fa-check"></i><b>18.1</b> Bar charts</a></li>
 <li class="chapter" data-level="18.2" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html#line-charts"><i class="fa fa-check"></i><b>18.2</b> Line charts</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="visualizing-your-data-for-publication.html"><a href="visualizing-your-data-for-publication.html"><i class="fa fa-check"></i><b>19</b> Visualizing your data for publication</a><ul>
+<li class="chapter" data-level="19" data-path="visualizing-your-data-for-publication.html"><a href="visualizing-your-data-for-publication.html"><i class="fa fa-check"></i><b>19</b> Visualizing your data for publication</a>
+<ul>
 <li class="chapter" data-level="19.1" data-path="visualizing-your-data-for-publication.html"><a href="visualizing-your-data-for-publication.html#datawrapper"><i class="fa fa-check"></i><b>19.1</b> Datawrapper</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html"><i class="fa fa-check"></i><b>20</b> Geographic data basics</a><ul>
+<li class="chapter" data-level="20" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html"><i class="fa fa-check"></i><b>20</b> Geographic data basics</a>
+<ul>
 <li class="chapter" data-level="20.1" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html#importing-and-viewing-data"><i class="fa fa-check"></i><b>20.1</b> Importing and viewing data</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="geographic-analysis.html"><a href="geographic-analysis.html"><i class="fa fa-check"></i><b>21</b> Geographic analysis</a><ul>
+<li class="chapter" data-level="21" data-path="geographic-analysis.html"><a href="geographic-analysis.html"><i class="fa fa-check"></i><b>21</b> Geographic analysis</a>
+<ul>
 <li class="chapter" data-level="21.1" data-path="geographic-analysis.html"><a href="geographic-analysis.html#why-tidycensus-is-so-useful"><i class="fa fa-check"></i><b>21.1</b> Why tidycensus is so useful</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="automating-analysis.html"><a href="automating-analysis.html"><i class="fa fa-check"></i><b>22</b> Automating analysis</a><ul>
+<li class="chapter" data-level="22" data-path="automating-analysis.html"><a href="automating-analysis.html"><i class="fa fa-check"></i><b>22</b> Automating analysis</a>
+<ul>
 <li class="chapter" data-level="22.1" data-path="automating-analysis.html"><a href="automating-analysis.html#automating-downloads-an-imports"><i class="fa fa-check"></i><b>22.1</b> Automating downloads an imports</a></li>
 <li class="chapter" data-level="22.2" data-path="automating-analysis.html"><a href="automating-analysis.html#exploring-the-data"><i class="fa fa-check"></i><b>22.2</b> Exploring the data</a></li>
 <li class="chapter" data-level="22.3" data-path="automating-analysis.html"><a href="automating-analysis.html#analysis"><i class="fa fa-check"></i><b>22.3</b> Analysis</a></li>
 <li class="chapter" data-level="22.4" data-path="automating-analysis.html"><a href="automating-analysis.html#making-updating-graphics"><i class="fa fa-check"></i><b>22.4</b> Making updating graphics</a></li>
 <li class="chapter" data-level="22.5" data-path="automating-analysis.html"><a href="automating-analysis.html#the-state-vs-the-feds"><i class="fa fa-check"></i><b>22.5</b> The State vs the Feds</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="automating-geographic-analysis.html"><a href="automating-geographic-analysis.html"><i class="fa fa-check"></i><b>23</b> Automating geographic analysis</a><ul>
+<li class="chapter" data-level="23" data-path="automating-geographic-analysis.html"><a href="automating-geographic-analysis.html"><i class="fa fa-check"></i><b>23</b> Automating geographic analysis</a>
+<ul>
 <li class="chapter" data-level="23.1" data-path="automating-geographic-analysis.html"><a href="automating-geographic-analysis.html#mapping-continuously"><i class="fa fa-check"></i><b>23.1</b> Mapping continuously</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="basic-stats-the-t-test.html"><a href="basic-stats-the-t-test.html"><i class="fa fa-check"></i><b>24</b> Basic Stats: The T-Test</a><ul>
+<li class="chapter" data-level="24" data-path="basic-stats-the-t-test.html"><a href="basic-stats-the-t-test.html"><i class="fa fa-check"></i><b>24</b> Basic Stats: The T-Test</a>
+<ul>
 <li class="chapter" data-level="24.1" data-path="basic-stats-the-t-test.html"><a href="basic-stats-the-t-test.html#specific-call-types"><i class="fa fa-check"></i><b>24.1</b> Specific call types</a></li>
 <li class="chapter" data-level="24.2" data-path="basic-stats-the-t-test.html"><a href="basic-stats-the-t-test.html#what-else-should-we-look-at"><i class="fa fa-check"></i><b>24.2</b> What else should we look at?</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="an-intro-to-text-analysis.html"><a href="an-intro-to-text-analysis.html"><i class="fa fa-check"></i><b>25</b> An intro to text analysis</a><ul>
+<li class="chapter" data-level="25" data-path="an-intro-to-text-analysis.html"><a href="an-intro-to-text-analysis.html"><i class="fa fa-check"></i><b>25</b> An intro to text analysis</a>
+<ul>
 <li class="chapter" data-level="25.1" data-path="an-intro-to-text-analysis.html"><a href="an-intro-to-text-analysis.html#going-further-by-analyzing-text"><i class="fa fa-check"></i><b>25.1</b> Going further by analyzing text</a></li>
 <li class="chapter" data-level="25.2" data-path="an-intro-to-text-analysis.html"><a href="an-intro-to-text-analysis.html#going-beyond-a-single-word"><i class="fa fa-check"></i><b>25.2</b> Going beyond a single word</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html"><i class="fa fa-check"></i><b>26</b> Writing with numbers</a><ul>
+<li class="chapter" data-level="26" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html"><i class="fa fa-check"></i><b>26</b> Writing with numbers</a>
+<ul>
 <li class="chapter" data-level="26.1" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html#how-to-write-about-numbers-without-overwhelming-with-numbers."><i class="fa fa-check"></i><b>26.1</b> How to write about numbers without overwhelming with numbers.</a></li>
 <li class="chapter" data-level="26.2" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html#when-exact-numbers-matter"><i class="fa fa-check"></i><b>26.2</b> When exact numbers matter</a></li>
 <li class="chapter" data-level="26.3" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html#an-example"><i class="fa fa-check"></i><b>26.3</b> An example</a></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html"><i class="fa fa-check"></i><b>27</b> Ethics in data journalism</a><ul>
+<li class="chapter" data-level="27" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html"><i class="fa fa-check"></i><b>27</b> Ethics in data journalism</a>
+<ul>
 <li class="chapter" data-level="27.1" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#problems"><i class="fa fa-check"></i><b>27.1</b> Problems</a></li>
 <li class="chapter" data-level="27.2" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#the-googlebot"><i class="fa fa-check"></i><b>27.2</b> The Googlebot</a></li>
 <li class="chapter" data-level="27.3" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#data-lifetimes"><i class="fa fa-check"></i><b>27.3</b> Data Lifetimes</a></li>
 <li class="chapter" data-level="27.4" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#you-are-a-data-provider"><i class="fa fa-check"></i><b>27.4</b> You Are a Data Provider</a></li>
 <li class="chapter" data-level="27.5" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#ethical-data"><i class="fa fa-check"></i><b>27.5</b> Ethical Data</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="using-github.html"><a href="using-github.html"><i class="fa fa-check"></i><b>28</b> Using GitHub</a>
+<ul>
+<li class="chapter" data-level="28.1" data-path="using-github.html"><a href="using-github.html#how-it-works"><i class="fa fa-check"></i><b>28.1</b> How It Works</a></li>
+<li class="chapter" data-level="28.2" data-path="using-github.html"><a href="using-github.html#getting-started"><i class="fa fa-check"></i><b>28.2</b> Getting Started</a></li>
+<li class="chapter" data-level="28.3" data-path="using-github.html"><a href="using-github.html#advanced-use"><i class="fa fa-check"></i><b>28.3</b> Advanced Use</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -287,19 +322,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="aggregates" class="section level1">
+<div id="aggregates" class="section level1" number="6">
 <h1><span class="header-section-number">Chapter 6</span> Aggregates</h1>
+<div id="libraries" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Libraries</h2>
 <p>R is a statistical programming language that is purpose built for data analysis.</p>
-<p>Base R does a lot, but there are a mountain of external libraries that do things to make R better/easier/more fully featured. We already installed the tidyverse – or you should have if you followed the instructions for the last assignment – which isn’t exactly a library, but a collection of libraries. Together, they make up the tidyverse. Individually, they are extraordinarily useful for what they do. We can load them all at once using the tidyverse name, or we can load them individually. Let’s start with individually.</p>
+<p>Base R does a lot, but there are a mountain of external libraries that do things to make R better/easier/more fully featured. We already installed the tidyverse – or you should have if you followed the instructions for the last assignment – which isn’t exactly a library, but a collection of libraries. Together, they make up the Tidyverse. Individually, they are extraordinarily useful for what they do. We can load them all at once using the tidyverse name, or we can load them individually. Let’s start with individually.</p>
 <p>The two libraries we are going to need for this assignment are <code>readr</code> and <code>dplyr</code>. The library <code>readr</code> reads different types of data in. For this assignment, we’re going to read in csv data or Comma Separated Values data. That’s data that has a comma between each column of data.</p>
 <p>Then we’re going to use <code>dplyr</code> to analyze it.</p>
 <p>To use a library, you need to import it. Good practice – one I’m going to insist on – is that you put all your library steps at the top of your notebooks.</p>
 <p>That code looks like this:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">library</span>(readr)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="aggregates.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code></pre></div>
 <p>To load them both, you need to do this:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">library</span>(readr)</a>
-<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a></code></pre></div>
-<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.5.2</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="aggregates.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb13-2"><a href="aggregates.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;dplyr&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:stats&#39;:
@@ -309,221 +345,324 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
 <p>But, because those two libraries – and several others that we’re going to use over the course of this class – are so commonly used, there’s a shortcut to loading all of the libraries we’ll need:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
-<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.5.2</code></pre>
-<pre><code>## ── Attaching packages ───── tidyverse 1.3.0 ──</code></pre>
-<pre><code>## ✓ ggplot2 3.3.0     ✓ purrr   0.3.3
-## ✓ tibble  3.0.0     ✓ stringr 1.4.0
-## ✓ tidyr   1.0.2     ✓ forcats 0.5.0</code></pre>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.5.2</code></pre>
-<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.5.2</code></pre>
-<pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.5.2</code></pre>
-<pre><code>## Warning: package &#39;stringr&#39; was built under R version 3.5.2</code></pre>
-<pre><code>## Warning: package &#39;forcats&#39; was built under R version 3.5.2</code></pre>
-<pre><code>## ── Conflicts ──────── tidyverse_conflicts() ──
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="aggregates.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
+## ✓ tibble  3.1.3     ✓ stringr 1.4.0
+## ✓ tidyr   1.1.3     ✓ forcats 0.5.1</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
-<p>You can keep doing that for as many libraries as you need. I’ve seen notebooks with 10 or more library imports.</p>
-<div id="importing-data" class="section level2">
-<h2><span class="header-section-number">6.1</span> Importing data</h2>
-<p>The first thing we need to do is get some data to work with. We do that by reading it in. In our case, we’re going to read data from a csv file – a comma-separated values file.</p>
-<p>The CSV file we’re going to read from is a <a href="https://unl.box.com/s/xjipgkesl9rjmng4weg77vb73xt41apf">Nebraska Game and Parks Commission dataset</a> of confirmed mountain lion sightings in Nebraska. There are, on occasion, fierce debates about mountain lions and if they should be hunted in Nebraska. This dataset can tell us some interesting things about that debate.</p>
-<p>So step 1 is to import the data. The code looks <em>something</em> like this, but hold off copying it just yet:</p>
-<p><code>mountainlions &lt;- read_csv(&quot;~/Documents/Data/mountainlions.csv&quot;)</code></p>
-<p>Let’s unpack that.</p>
-<p>The first part – mountainlions – is the name of your variable. A variable is just a name of a thing. In this case, our variable is a dataframe, which is R’s way of storing data. We can call this whatever we want. I always want to name dataframes after what is in it. In this case, we’re going to import a dataset of mountain lion sightings from the Nebraska Game and Parks Commission. <strong>Variable names, by convention are one word all lower case</strong>. You can end a variable with a number, but you can’t start one with a number.</p>
-<p>The &lt;- bit, you’ll recall from the basics, is the <strong>variable assignment operator</strong>. It’s how we know we’re assigning something to a word. Think of the arrow as saying “Take everything on the right of this arrow and stuff it into the thing on the left.” So we’re creating an empty vessel called mountainlions and stuffing all this data into it.</p>
-<p>The <code>read_csv</code> bits are pretty obvious, except for one thing. What happens in the quote marks is the path to the data. In there, I have to tell R where it will find the data.</p>
-<blockquote>
-<p>The easiest thing to do, if you are confused about how to find your data, is to put your data in the same folder as as your notebook (you’ll have to save that notebook first). If you do that, then you just need to put the name of the file in there (mountainlions.csv).</p>
-</blockquote>
-<p>In my case, the file path I’ve got starts with a ~ character. That’s a shortcut for my home directory. It’s the same on your computer. Your home directory is where your Documents, Desktop and Downloads directories are. I’ve got a folder called Documents in my home directory, and in there is a folder called Data that has the file called mountainlions.csv in it. Thus, <code>~/Documents/Data/mountainlions.csv</code></p>
-<p>Some people – insane people – leave the data in their downloads folder. The data path then would be <code>~/Downloads/nameofthedatafilehere.csv</code> on PC or Mac.</p>
-<p>A quick way to find your data file? The tab key. If you start your code <code>dataframenamehere &lt;- read_csv(&quot;)</code> and after typing the first quote mark you hit tab, it will show you the files in the folder you are in. With that, you can start to narrow in on where you need to go.</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/BZit27dLwbo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
-<p><strong>So what you put in your import step will be different from mine</strong>. Your first task is to import the data. Here’s mine. Use the tab key to find your data file and get the correct path.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">mountainlions &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/mountainlions.csv&quot;</span>)</a></code></pre></div>
-<pre><code>## Parsed with column specification:
-## cols(
-##   ID = col_double(),
-##   `Cofirm Type` = col_character(),
-##   COUNTY = col_character(),
-##   Date = col_character()
-## )</code></pre>
-<p>Now we can inspect the data we imported. What does it look like? To do that, we use <code>head(mountainlions)</code> to <strong>show the headers and the first six rows of data</strong>. If we wanted to see them all, we could just simply enter <code>mountainlions</code> and run it.</p>
-<p>To get the number of records in our dataset, we run <code>nrow(mountainlions)</code></p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">head</span>(mountainlions)</a></code></pre></div>
-<pre><code>## # A tibble: 6 x 4
-##      ID `Cofirm Type` COUNTY       Date    
-##   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;        &lt;chr&gt;   
-## 1     1 Track         Dawes        9/14/91 
-## 2     2 Mortality     Sioux        11/10/91
-## 3     3 Mortality     Scotts Bluff 4/21/96 
-## 4     4 Mortality     Sioux        5/9/99  
-## 5     5 Mortality     Box Butte    9/29/99 
-## 6     6 Track         Scotts Bluff 11/12/99</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">nrow</span>(mountainlions)</a></code></pre></div>
-<pre><code>## [1] 393</code></pre>
+<p>You can keep doing that for as many libraries as you need.</p>
 </div>
-<div id="group-by-and-count" class="section level2">
-<h2><span class="header-section-number">6.2</span> Group by and count</h2>
-<p>So what if we wanted to know how many mountain lion sightings there were in each county?</p>
-<p>To do that by hand, we’d have to take each of the 393 records and sort them into a pile. We’d put them in groups and then count them.</p>
+<div id="importing-data" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Importing data</h2>
+<p>The first thing we need to do is get some data to work with. We do that by reading it in. In our case, we’re going to read a datatable from an “rds” file, which is a format for storing data with R. Later in the course, we’ll more frequently work with a format called a CSV. A CSV is a stripped down version of a spreadsheet you might open in a program like Excel, in which each column is separated by a comma. RDS files are less common when getting data from other people. But reading in CSVs is less foolproof than reading in rds files, so for now we’ll work with rds.</p>
+<p>The rds file we’re going to read in is from the [Small Business Administration’s Paycheck Protection Program(<a href="https://www.sba.gov/funding-programs/loans/covid-19-relief-options/paycheck-protection-program" class="uri">https://www.sba.gov/funding-programs/loans/covid-19-relief-options/paycheck-protection-program</a>)]. The program gave loans to businesses to keep people employed during the Covid-19 pandemic. We’ll be working with a slice of the data that documents loans to Maryland businesses.</p>
+<p>So step 1 is to import the data. The code to import the data looks like this:</p>
+<p><code>ppp_maryland_loans &lt;- read_rds("ppp_maryland.rds")</code></p>
+<p>Let’s unpack that.</p>
+<p>The first part – <strong>ppp_maryland_loans</strong> – is the name of a variable.</p>
+<p>A <strong>variable</strong> is just a name that we’ll use to refer to some more complex thing. In this case, the more complex thing is the data we’re importing into R that will be stored as a <strong>dataframe</strong>, which is one way R stores data.</p>
+<p>We can call this variable whatever we want. The variable name doesn’t matter, technically. We could use any word. You could use your first name, if you like. Generally, though, we want to give variables names that are descriptive of the thing they refer to. Which is why we’re calling this one <strong>ppp_maryland_loans</strong>. Variable names, by convention are one word all lower case (or two or more words connected by an underscore). You can end a variable with a number, but you can’t start one with a number.</p>
+<p>The <code>&lt;-</code> bit, you’ll recall from the basics, is the <strong>variable assignment operator</strong>. It’s how we know we’re assigning something to a word. Think of the arrow as saying “Take everything on the right of this arrow and stuff it into the thing on the left.” So we’re creating an empty vessel called <strong>ppp_maryland_loans</strong> and stuffing all this data into it.</p>
+<p><strong>read_rds()</strong> is a function, one that only works when we’ve loaded the tidyverse. A <strong>function</strong> is a little bit of computer code that takes in information and follows a series of pre-determined steps and spits it back out.
+A recipe to make pizza is a kind of function. We might call it <strong>make_pizza()</strong>.</p>
+<p>The function does one thing. It takes a preset collection of ingredients – flour, water, oil, cheese, tomato, salt – and passes them through each step outlined in a recipe, in order. Things like: mix flour and water and oil, knead, let it sit, roll it out, put tomato sauce and cheese on it, bake it in an oven, then take it out.</p>
+<p>The output of our <strong>make pizza()</strong> function is a finished pie.</p>
+<p>We’ll make use of a lot of pre-written functions from the tidyverse and other packages, and even write some of our own. Back to this line of code:</p>
+<p><code>ppp_maryland_loans &lt;- read_rds("ppp_maryland.rds")</code></p>
+<p>Inside of the <strong>read_rds()</strong> function, we’ve put the name of the file we want to load. Things we put inside of function, to customize what the function does, are called <strong>arguments</strong>.</p>
+<p>The easiest thing to do, if you are confused about how to find your data, is to put your data in the same folder as as your notebook (you’ll have to save that notebook first). If you do that, then you just need to put the name of the file in there (ppp_maryland.csv). If you put your data in a folder called “data” that sits next to your data notebook, your function would instead look like this:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="aggregates.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ppp_maryland_loans &lt;- read_csv(&quot;ppp_loan_data/ppp_maryland.csv&quot;)</span></span>
+<span id="cb21-2"><a href="aggregates.html#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="aggregates.html#cb21-3" aria-hidden="true" tabindex="-1"></a>ppp_maryland_loans <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">&quot;pre_labs/pre_lab_01/pre_lab_01.rds&quot;</span>)</span></code></pre></div>
+<p>In this data set, each row represents a loan application, and each column represents a feature of that loan: who it went to, how much it was for, whether the loan was forgiven.</p>
+<p>After loading the data, it’s a good idea to get a sense of its shape. What does it look like? There are several ways we can examine it.</p>
+<p>By looking in the R Studio environment window, we can see the number of rows (called “obs.” which is short for observations), and the number of columns(called variables). We can double click on the dataframe name in the environment window, and explore it like a spreadsheet.</p>
+<p>There are several useful functions for getting a sense of the dataset right in our markdown document.</p>
+<p>If we run <code>glimpse(ppp_maryland_loans)</code>, it will give us a list of the columns, the data type for each column and and the first few values for each column.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="aggregates.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ppp_maryland_loans)</span></code></pre></div>
+<pre><code>## Rows: 195,856
+## Columns: 63
+## $ id                             &lt;dbl&gt; 99443772, 99444241, 99445051, 99445208,…
+## $ name                           &lt;chr&gt; &quot;TARBIYAH ACADEMY INC&quot;, &quot;J &amp;AMP; M DRYW…
+## $ slug                           &lt;chr&gt; &quot;tarbiyah-academy-inc-8387378410&quot;, &quot;j-a…
+## $ amount                         &lt;dbl&gt; 149000.0, 146000.0, 140400.0, 139527.0,…
+## $ state                          &lt;chr&gt; &quot;MD&quot;, &quot;MD&quot;, &quot;MD&quot;, &quot;MD&quot;, &quot;MD&quot;, &quot;MD&quot;, &quot;MD…
+## $ address                        &lt;chr&gt; &quot;6785 Business Pkwy Ste 108&quot;, &quot;10413 Fo…
+## $ city                           &lt;chr&gt; &quot;Elkridge&quot;, &quot;Union Bridge&quot;, &quot;PHOENIX&quot;, …
+## $ zip                            &lt;chr&gt; &quot;21075-6353&quot;, &quot;21791&quot;, &quot;21131-2229&quot;, &quot;2…
+## $ naics_code                     &lt;dbl&gt; 611110, 238310, 623110, 311920, 561730,…
+## $ business_type                  &lt;chr&gt; &quot;Corporation&quot;, &quot;Subchapter S Corporatio…
+## $ race                           &lt;chr&gt; &quot;Asian&quot;, &quot;Unanswered&quot;, &quot;Unanswered&quot;, &quot;U…
+## $ gender                         &lt;chr&gt; &quot;Male Owned&quot;, &quot;Unanswered&quot;, &quot;Unanswered…
+## $ veteran                        &lt;chr&gt; &quot;Non-Veteran&quot;, &quot;Unanswered&quot;, &quot;Unanswere…
+## $ non_profit                     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ jobs_retained                  &lt;dbl&gt; 25, 6, 18, 23, 15, 25, 14, 11, 24, 5, 1…
+## $ date_approved                  &lt;date&gt; 2021-02-13, 2020-05-01, 2020-04-28, 20…
+## $ lender                         &lt;chr&gt; &quot;Bank of America, National Association&quot;…
+## $ congressional_district         &lt;chr&gt; &quot;MD-02&quot;, &quot;MD-08&quot;, &quot;MD-01&quot;, &quot;MD-08&quot;, &quot;MD…
+## $ loan_range_sort_key            &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ previous_loan_range            &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ previous_name                  &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ loan_number                    &lt;dbl&gt; 8387378410, 7763877705, 1414477305, 806…
+## $ sba_office_code                &lt;dbl&gt; 373, 373, 373, 353, 373, 373, 373, 373,…
+## $ processing_method              &lt;chr&gt; &quot;PPS&quot;, &quot;PPP&quot;, &quot;PPP&quot;, &quot;PPP&quot;, &quot;PPS&quot;, &quot;PPP…
+## $ loan_status                    &lt;chr&gt; &quot;Exemption 4&quot;, &quot;Exemption 4&quot;, &quot;Paid in …
+## $ term                           &lt;dbl&gt; 60, 24, 24, 24, 24, 24, 60, 60, 24, 60,…
+## $ sba_guaranty_percentage        &lt;dbl&gt; 100, 100, 100, 100, 100, 100, 100, 100,…
+## $ initial_approval_amount        &lt;dbl&gt; 149000.0, 146000.0, 140400.0, 139527.0,…
+## $ current_approval_amount        &lt;dbl&gt; 149000.0, 146000.0, 140400.0, 139527.0,…
+## $ undisbursed_amount             &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+## $ franchise_name                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ servicing_lender_location_id   &lt;dbl&gt; 9551, 44449, 124055, 46391, 434059, 304…
+## $ servicing_lender_name          &lt;chr&gt; &quot;Bank of America, National Association&quot;…
+## $ servicing_lender_address       &lt;chr&gt; &quot;100 N Tryon St, Ste 170&quot;, &quot;222 Delawar…
+## $ servicing_lender_city          &lt;chr&gt; &quot;CHARLOTTE&quot;, &quot;WILMINGTON&quot;, &quot;ROCKVILLE&quot;,…
+## $ servicing_lender_state         &lt;chr&gt; &quot;NC&quot;, &quot;DE&quot;, &quot;MD&quot;, &quot;NY&quot;, &quot;VA&quot;, &quot;MD&quot;, &quot;NY…
+## $ servicing_lender_zip           &lt;chr&gt; &quot;28202-4024&quot;, &quot;19801-1621&quot;, &quot;20850-6238…
+## $ rural_urban_indicator          &lt;chr&gt; &quot;U&quot;, &quot;U&quot;, &quot;U&quot;, &quot;U&quot;, &quot;R&quot;, &quot;R&quot;, &quot;R&quot;, &quot;U&quot;,…
+## $ hubzone_indicator              &lt;chr&gt; &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;N&quot;,…
+## $ business_age_description       &lt;chr&gt; &quot;Existing or more than 2 years old&quot;, &quot;U…
+## $ project_city                   &lt;chr&gt; &quot;Elkridge&quot;, &quot;Union Bridge&quot;, &quot;PHOENIX&quot;, …
+## $ project_county_name            &lt;chr&gt; &quot;HOWARD&quot;, &quot;CARROLL&quot;, &quot;BALTIMORE&quot;, &quot;MONT…
+## $ project_state                  &lt;chr&gt; &quot;MD&quot;, &quot;MD&quot;, &quot;MD&quot;, &quot;MD&quot;, &quot;MD&quot;, &quot;MD&quot;, &quot;MD…
+## $ project_zip                    &lt;chr&gt; &quot;21075-6353&quot;, &quot;21791-0001&quot;, &quot;21131-2229…
+## $ utilities_proceed              &lt;dbl&gt; 1, NA, NA, 3926, 1, NA, 1, NA, NA, NA, …
+## $ payroll_proceed                &lt;dbl&gt; 148997.0, 146000.0, 140400.0, 88000.0, …
+## $ mortgage_interest_proceed      &lt;dbl&gt; NA, NA, NA, 0, NA, NA, NA, NA, NA, NA, …
+## $ rent_proceed                   &lt;dbl&gt; NA, NA, NA, 42062, NA, NA, NA, NA, NA, …
+## $ refinance_eidl_proceed         &lt;dbl&gt; NA, NA, NA, 0, NA, NA, NA, NA, NA, NA, …
+## $ health_care_proceed            &lt;dbl&gt; NA, NA, NA, 5539, NA, NA, NA, NA, NA, N…
+## $ debt_interest_proceed          &lt;dbl&gt; NA, NA, NA, 0, NA, NA, NA, NA, NA, NA, …
+## $ originating_lender_city        &lt;chr&gt; &quot;CHARLOTTE&quot;, &quot;WILMINGTON&quot;, &quot;ROCKVILLE&quot;,…
+## $ originating_lender_state       &lt;chr&gt; &quot;NC&quot;, &quot;DE&quot;, &quot;MD&quot;, &quot;NY&quot;, &quot;VA&quot;, &quot;MD&quot;, &quot;VA…
+## $ loan_status_date               &lt;date&gt; NA, NA, 2021-05-12, 2021-01-22, NA, 20…
+## $ originating_lender_location_id &lt;dbl&gt; 9551, 44449, 124055, 46391, 434059, 304…
+## $ old_slug                       &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ lmi_indicator                  &lt;chr&gt; &quot;N&quot;, &quot;Y&quot;, &quot;N&quot;, &quot;Y&quot;, &quot;N&quot;, &quot;Y&quot;, &quot;N&quot;, &quot;N&quot;,…
+## $ unmatched_original             &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ unmatched_updated              &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ previous_jobs_reported         &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ ethnicity                      &lt;chr&gt; &quot;Not Hispanic or Latino&quot;, &quot;Unknown/NotS…
+## $ forgiveness_amount             &lt;dbl&gt; NA, NA, 141554.40, 140486.49, NA, 13427…
+## $ forgiveness_date               &lt;date&gt; NA, NA, 2021-02-25, 2020-12-30, NA, 20…</code></pre>
+<p>If we type <code>head(ppp_maryland_loans)</code>, it will print out the columns and the first six rows of data.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="aggregates.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ppp_maryland_loans)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 63
+##         id name  slug  amount state address city  zip   naics_code business_type
+##      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;        
+## 1 99443772 TARB… tarb… 149000 MD    6785 B… Elkr… 2107…     611110 Corporation  
+## 2 99444241 J &amp;A… j-am… 146000 MD    10413 … Unio… 21791     238310 Subchapter S…
+## 3 99445051 DULA… dula… 140400 MD    4 Wind… PHOE… 2113…     623110 Corporation  
+## 4 99445208 QUAR… quar… 139527 MD    4972 W… Rock… 20852     311920 Corporation  
+## 5 99446123 ORCH… orch… 133400 MD    1855 W… Owin… 2073…     561730 Subchapter S…
+## 6 99446170 FRUI… frui… 133000 MD    402 MA… EAST… 2160…     531120 Limited  Lia…
+## # … with 53 more variables: race &lt;chr&gt;, gender &lt;chr&gt;, veteran &lt;chr&gt;,
+## #   non_profit &lt;lgl&gt;, jobs_retained &lt;dbl&gt;, date_approved &lt;date&gt;, lender &lt;chr&gt;,
+## #   congressional_district &lt;chr&gt;, loan_range_sort_key &lt;lgl&gt;,
+## #   previous_loan_range &lt;lgl&gt;, previous_name &lt;lgl&gt;, loan_number &lt;dbl&gt;,
+## #   sba_office_code &lt;dbl&gt;, processing_method &lt;chr&gt;, loan_status &lt;chr&gt;,
+## #   term &lt;dbl&gt;, sba_guaranty_percentage &lt;dbl&gt;, initial_approval_amount &lt;dbl&gt;,
+## #   current_approval_amount &lt;dbl&gt;, undisbursed_amount &lt;dbl&gt;, …</code></pre>
+<p>We can also click on the data name in the R Studio environment window to explore it interactively.</p>
+</div>
+<div id="group-by-and-count" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Group by and count</h2>
+<p>So what if we wanted to know how many loans were made in each Maryland county?</p>
+<p>To do that by hand, we’d have to take each of the 195,856 individual rows (or observations or records) and sort them into a pile. We’d put them in groups – one for each county – and then count them.</p>
 <p><code>dplyr</code> has a group by function in it that does just this. A massive amount of data analysis involves grouping like things together and then doing simple things like counting them, or averaging them together. So it’s a good place to start.</p>
 <p>So to do this, we’ll take our dataset and we’ll introduce a new operator: <code>%&gt;%</code>. The best way to read that operator, in my opinion, is to interpret that as “and then do this.”</p>
-<p>We’re going to establish a pattern that will come up again and again throughout this book: <code>data %&gt;% function</code>. The first step of every analysis starts with the data being used. Then we apply functions to the data.</p>
-<p>In our case, the pattern that you’ll use many, many times is: <code>data %&gt;% group_by(FIELD NAME) %&gt;% summarize(VARIABLE NAME = AGGREGATE FUNCTION(FIELD NAME))</code></p>
-<p>Here’s the code:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">mountainlions <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(COUNTY) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb33-4" data-line-number="4">    <span class="dt">total =</span> <span class="kw">n</span>()</a>
-<a class="sourceLine" id="cb33-5" data-line-number="5">  )</a></code></pre></div>
-<pre><code>## # A tibble: 42 x 2
-##    COUNTY    total
-##    &lt;chr&gt;     &lt;int&gt;
-##  1 Banner        6
-##  2 Blaine        3
-##  3 Box Butte     4
-##  4 Brown        15
-##  5 Buffalo       3
-##  6 Cedar         1
-##  7 Cherry       30
-##  8 Custer        8
-##  9 Dakota        3
-## 10 Dawes       111
-## # … with 32 more rows</code></pre>
-<p>So let’s walk through that. We start with our dataset – <code>mountainlions</code> – and then we tell it to group the data by a given field in the data. In this case, we wanted to group together all the counties, signified by the field name COUNTY, which you could get from looking at <code>head(mountainlions)</code>. After we group the data, we need to count them up. In dplyr, we use <code>summarize</code> <a href="http://dplyr.tidyverse.org/reference/summarise.html">which can do more than just count things</a>. Inside the parentheses in summarize, we set up the summaries we want. In this case, we just want a count of the counties: <code>total = n(),</code> says create a new field, called <code>total</code> and set it equal to <code>n()</code>, which might look weird, but it’s common in stats. The number of things in a dataset? Statisticians call in n. There are n number of incidents in this dataset. So <code>n()</code> is a function that counts the number of things there are.</p>
-<p>And when we run that, we get a list of counties with a count next to them. But it’s not in any order. So we’ll add another And Then Do This %&gt;% and use <code>arrange</code>. Arrange does what you think it does – it arranges data in order. By default, it’s in ascending order – smallest to largest. But if we want to know the county with the most mountain lion sightings, we need to sort it in descending order. That looks like this:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">mountainlions <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(COUNTY) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb35-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb35-4" data-line-number="4">    <span class="dt">count =</span> <span class="kw">n</span>()</a>
-<a class="sourceLine" id="cb35-5" data-line-number="5">  ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(count))</a></code></pre></div>
-<pre><code>## # A tibble: 42 x 2
-##    COUNTY       count
-##    &lt;chr&gt;        &lt;int&gt;
-##  1 Dawes          111
-##  2 Sioux           52
-##  3 Sheridan        35
-##  4 Cherry          30
-##  5 Scotts Bluff    26
-##  6 Keya Paha       20
-##  7 Brown           15
-##  8 Rock            11
-##  9 Lincoln         10
-## 10 Custer           8
-## # … with 32 more rows</code></pre>
-<p>We can, if we want, group by more than one thing. So how are these sightings being confirmed? To do that, we can group by County and “Cofirm Type”, which is how the state misspelled Confirm. But note something in this example below:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">mountainlions <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb37-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(COUNTY, <span class="st">`</span><span class="dt">Cofirm Type</span><span class="st">`</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb37-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb37-4" data-line-number="4">    <span class="dt">count =</span> <span class="kw">n</span>()</a>
-<a class="sourceLine" id="cb37-5" data-line-number="5">  ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(count))</a></code></pre></div>
-<pre><code>## # A tibble: 93 x 3
-## # Groups:   COUNTY [42]
-##    COUNTY       `Cofirm Type`      count
-##    &lt;chr&gt;        &lt;chr&gt;              &lt;int&gt;
-##  1 Dawes        Trail Camera Photo    41
-##  2 Sioux        Trail Camera Photo    40
-##  3 Dawes        Track                 19
-##  4 Keya Paha    Trail Camera Photo    18
-##  5 Cherry       Trail Camera Photo    17
-##  6 Dawes        Mortality             17
-##  7 Sheridan     Trail Camera Photo    16
-##  8 Dawes        Photo                 13
-##  9 Dawes        DNA                   11
-## 10 Scotts Bluff Trail Camera Photo    11
-## # … with 83 more rows</code></pre>
-<p>See it? When you have a field name that has two words, <code>readr</code> wraps it in back ticks, which is next to the 1 key on your keyboard. You can figure out which fields have back ticks around it by looking at the output of <code>readr</code>. Pay attention to that, because it’s coming up again in the next section and will be a part of your homework.</p>
+<p>We’re going to establish a pattern that will come up again and again throughout this book: <code>data %&gt;% function</code>. In English: take your data set and then do this specific action to it.</p>
+<p>The first step of every analysis starts with the data being used. Then we apply functions to the data.</p>
+<p>In our case, the pattern that you’ll use many, many times is: <code>data %&gt;% group_by(COLUMN NAME) %&gt;% summarize(VARIABLE NAME = AGGREGATE FUNCTION(COLUMN NAME))</code></p>
+<p>In our dataset, the column with county information is called “project_county_name”</p>
+<p>Here’s the code to count the number of loans in each county:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="aggregates.html#cb26-1" aria-hidden="true" tabindex="-1"></a>ppp_maryland_loans <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="aggregates.html#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(project_county_name) <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="aggregates.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb26-4"><a href="aggregates.html#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">count_loans =</span> <span class="fu">n</span>()</span>
+<span id="cb26-5"><a href="aggregates.html#cb26-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<pre><code>## # A tibble: 24 × 2
+##    project_county_name count_loans
+##    &lt;chr&gt;                     &lt;int&gt;
+##  1 ALLEGANY                   1293
+##  2 ANNE ARUNDEL              17336
+##  3 BALTIMORE                 28789
+##  4 BALTIMORE CITY            20004
+##  5 CALVERT                    1870
+##  6 CAROLINE                    828
+##  7 CARROLL                    4040
+##  8 CECIL                      1686
+##  9 CHARLES                    4398
+## 10 DORCHESTER                 1082
+## # … with 14 more rows</code></pre>
+<p>So let’s walk through that.</p>
+<p>We start with our dataset – <code>ppp_maryland_loans</code> – and then we tell it to group the data by a given field in the data. In this case, we wanted to group together all the counties, signified by the field name <code>project_county_name</code>, which you could get from using the glimpse() function. After we group the data, we need to count them up.</p>
+<p>In dplyr, we use the <code>summarize()</code> function, <a href="http://dplyr.tidyverse.org/reference/summarise.html">which can do alot more than just count things</a>.</p>
+<p>Inside the parentheses in summarize, we set up the summaries we want. In this case, we just want a count of the number of loans for each county grouping. The line of code <code>count_loans = n(),</code> says create a new field, called <code>total_loans</code> and set it equal to <code>n()</code>. <code>n()</code> is a function that counts the number of rows or records in each group. Why the letter n? The letter n is a common symbol used to denote a count of something. The number of things (or rows or observations or records) in a dataset? Statisticians call it n. There are n number of loans in this dataset.</p>
+<p>When we run that, we get a list of counties with a count next to them. But it’s not in any order.</p>
+<p>So we’ll add another “and then do this” symbol – %&gt;% – and use a new function called <code>arrange()</code>. Arrange does what you think it does – it arranges data in order. By default, it’s in ascending order – smallest to largest. But if we want to know the county with the most loans, we need to sort it in descending order. That looks like this:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="aggregates.html#cb28-1" aria-hidden="true" tabindex="-1"></a>ppp_maryland_loans <span class="sc">%&gt;%</span></span>
+<span id="cb28-2"><a href="aggregates.html#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(project_county_name) <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="aggregates.html#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb28-4"><a href="aggregates.html#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">count_loans =</span> <span class="fu">n</span>()</span>
+<span id="cb28-5"><a href="aggregates.html#cb28-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-6"><a href="aggregates.html#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(count_loans))</span></code></pre></div>
+<pre><code>## # A tibble: 24 × 2
+##    project_county_name count_loans
+##    &lt;chr&gt;                     &lt;int&gt;
+##  1 MONTGOMERY                38781
+##  2 PRINCE GEORGES            34408
+##  3 BALTIMORE                 28789
+##  4 BALTIMORE CITY            20004
+##  5 ANNE ARUNDEL              17336
+##  6 HOWARD                    12011
+##  7 FREDERICK                  6666
+##  8 HARFORD                    6300
+##  9 CHARLES                    4398
+## 10 CARROLL                    4040
+## # … with 14 more rows</code></pre>
+<p>Montgomery County has 38,781 loans, more than any other Maryland county.</p>
+<p>We can, if we want, group by more than one thing.</p>
+<p>The ppp loan data contains a column detailing the race of the business owner: “race.” It has six possible values:</p>
+<ul>
+<li>American Indian or Alaska Native</li>
+<li>Asian</li>
+<li>Black or African American</li>
+<li>Native Hawaiian or Other Pacific Islander</li>
+<li>White</li>
+<li>Unanswered</li>
+</ul>
+<p>We can group by “project_county_name” and “race” to see how many loans fell in each category in each county. We’ll sort alphabetically by county and then race.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="aggregates.html#cb30-1" aria-hidden="true" tabindex="-1"></a>ppp_maryland_loans <span class="sc">%&gt;%</span></span>
+<span id="cb30-2"><a href="aggregates.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(project_county_name,race) <span class="sc">%&gt;%</span></span>
+<span id="cb30-3"><a href="aggregates.html#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb30-4"><a href="aggregates.html#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">count_loans =</span> <span class="fu">n</span>()</span>
+<span id="cb30-5"><a href="aggregates.html#cb30-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-6"><a href="aggregates.html#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(project_county_name,race)</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;project_county_name&#39;. You can override using the `.groups` argument.</code></pre>
+<pre><code>## # A tibble: 126 × 3
+## # Groups:   project_county_name [24]
+##    project_county_name race                                      count_loans
+##    &lt;chr&gt;               &lt;chr&gt;                                           &lt;int&gt;
+##  1 ALLEGANY            American Indian or Alaska Native                    1
+##  2 ALLEGANY            Asian                                              14
+##  3 ALLEGANY            Black or African American                          11
+##  4 ALLEGANY            Unanswered                                       1035
+##  5 ALLEGANY            White                                             232
+##  6 ANNE ARUNDEL        American Indian or Alaska Native                   21
+##  7 ANNE ARUNDEL        Asian                                             544
+##  8 ANNE ARUNDEL        Black or African American                        1013
+##  9 ANNE ARUNDEL        Native Hawaiian or Other Pacific Islander          10
+## 10 ANNE ARUNDEL        Unanswered                                      13894
+## # … with 116 more rows</code></pre>
+<p>As you can see here, it’s not clear that we’ll be able to make use of the race data going forward. By far the most common category in every county is “Unanswered.” We’ll avoid grouping by race in the rest of the examples in this chapter.</p>
 </div>
-<div id="other-aggregates-mean-and-median" class="section level2">
-<h2><span class="header-section-number">6.3</span> Other aggregates: Mean and median</h2>
-<p>In the last example, we grouped some data together and counted it up, but there’s so much more you can do. You can do multiple measures in a single step as well.</p>
-<p>Let’s look at some <a href="https://unl.box.com/s/09t2u4qoncfh6qlv2156flzlxb8ruzpq">salary data from the University of Nebraska</a>.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">salaries &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/nusalaries1819.csv&quot;</span>)</a></code></pre></div>
-<pre><code>## Parsed with column specification:
-## cols(
-##   Employee = col_character(),
-##   Position = col_character(),
-##   Campus = col_character(),
-##   Department = col_character(),
-##   `Budgeted Annual Salary` = col_number(),
-##   `Salary from State Aided Funds` = col_number(),
-##   `Salary from Other Funds` = col_number()
-## )</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw">head</span>(salaries)</a></code></pre></div>
-<pre><code>## # A tibble: 6 x 7
-##   Employee Position Campus Department `Budgeted Annua… `Salary from St…
-##   &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;                 &lt;dbl&gt;            &lt;dbl&gt;
-## 1 Abbey, … Associa… UNK    Kinesiolo…            61276            61276
-## 2 Abbott,… Staff S… UNL    FM&amp;P Faci…            37318               NA
-## 3 Abboud,… Adminis… UNMC   Surgery-U…            76400            76400
-## 4 Abdalla… Asst Pr… UNMC   Pathology…            74774            71884
-## 5 Abdelka… Post-Do… UNMC   Surgery-T…            43516               NA
-## 6 Abdel-M… Researc… UNL    Public Po…            58502               NA
-## # … with 1 more variable: `Salary from Other Funds` &lt;dbl&gt;</code></pre>
-<p>In summarize, we can calculate any number of measures. Here, we’ll use R’s built in mean and median functions to calculate … well, you get the idea.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">salaries <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb43-2" data-line-number="2"><span class="st">  </span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb43-3" data-line-number="3">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
-<a class="sourceLine" id="cb43-4" data-line-number="4">    <span class="dt">mean_salary =</span> <span class="kw">mean</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>),</a>
-<a class="sourceLine" id="cb43-5" data-line-number="5">    <span class="dt">median_salary =</span> <span class="kw">median</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>)</a>
-<a class="sourceLine" id="cb43-6" data-line-number="6">  )</a></code></pre></div>
-<pre><code>## # A tibble: 1 x 3
-##   count mean_salary median_salary
-##   &lt;int&gt;       &lt;dbl&gt;         &lt;dbl&gt;
-## 1 13039      62065.         51343</code></pre>
-<p>So there’s 13,039 employees in the database, spread across four campuses plus the system office. The mean or average salary is about $62,000, but the median salary is slightly more than $51,000.</p>
-<p>Why?</p>
-<p>Let’s let sort help us.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1">salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>))</a></code></pre></div>
-<pre><code>## # A tibble: 13,039 x 7
-##    Employee Position Campus Department `Budgeted Annua… `Salary from St…
-##    &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;                 &lt;dbl&gt;            &lt;dbl&gt;
-##  1 Frost, … Head Co… UNL    Athletics           5000000               NA
-##  2 Miles, … Head Co… UNL    Athletics           2375000               NA
-##  3 Moos, W… Athleti… UNL    Athletics           1000000               NA
-##  4 Gold, J… Chancel… UNMC   Office of…           853338           853338
-##  5 Chinand… Assista… UNL    Athletics            800000               NA
-##  6 Walters… Assista… UNL    Athletics            700000               NA
-##  7 Cook, J… Head Co… UNL    Athletics            675000               NA
-##  8 William… Head Co… UNL    Athletics            626750               NA
-##  9 Bounds,… Preside… UNCA   Office of…           540000           540000
-## 10 Austin … Assista… UNL    Athletics            475000               NA
-## # … with 13,029 more rows, and 1 more variable: `Salary from Other Funds` &lt;dbl&gt;</code></pre>
-<p>Oh, right. In this dataset, the university pays a football coach $5 million. Extremes influence averages, not medians, and now you have your answer.</p>
-<p>So when choosing a measure of the middle, you have to ask yourself – could I have extremes? Because a median won’t be sensitive to extremes. It will be the point at which half the numbers are above and half are below. The average or mean will be a measure of the middle, but if you have a bunch of low paid people and then one football coach, the average will be wildly skewed. Here, because there’s so few highly paid football coaches compared to people who make a normal salary, the number is only slightly skewed in the grand scheme, but skewed nonetheless.</p>
-</div>
-<div id="even-more-aggregates" class="section level2">
-<h2><span class="header-section-number">6.4</span> Even more aggregates</h2>
-<p>There’s a ton of things we can do in summarize – we’ll work with more of them as the course progresses – but here’s a few other questions you can ask.</p>
-<p>Which department on campus has the highest wage bill? And what is the highest and lowest salary in the department? And how wide is the spread between salaries? We can find that with <code>sum</code> to add up the salaries to get the total wage bill, <code>min</code> to find the minumum salary, <code>max</code> to find the maximum salary and <code>sd</code> to find the standard deviation in the numbers.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1">salaries <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb47-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(Campus, Department) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb47-3" data-line-number="3"><span class="st">  </span><span class="kw">summarize</span>(</a>
-<a class="sourceLine" id="cb47-4" data-line-number="4">    <span class="dt">total =</span> <span class="kw">sum</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>), </a>
-<a class="sourceLine" id="cb47-5" data-line-number="5">    <span class="dt">avgsalary =</span> <span class="kw">mean</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>), </a>
-<a class="sourceLine" id="cb47-6" data-line-number="6">    <span class="dt">minsalary =</span> <span class="kw">min</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>),</a>
-<a class="sourceLine" id="cb47-7" data-line-number="7">    <span class="dt">maxsalary =</span> <span class="kw">max</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>),</a>
-<a class="sourceLine" id="cb47-8" data-line-number="8">    <span class="dt">stdev =</span> <span class="kw">sd</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(total))</a></code></pre></div>
-<pre><code>## # A tibble: 804 x 7
-## # Groups:   Campus [5]
-##    Campus Department                  total avgsalary minsalary maxsalary  stdev
-##    &lt;chr&gt;  &lt;chr&gt;                       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;
-##  1 UNL    Athletics                  3.56e7   118508.     12925   5000000 3.33e5
-##  2 UNMC   Pathology/Microbiology     1.36e7    63158.      1994    186925 3.41e4
-##  3 UNL    Agronomy &amp; Horticulture    8.98e6    66496.      5000    208156 4.01e4
-##  4 UNMC   Anesthesiology             7.90e6    78237.     10000    245174 3.59e4
-##  5 UNL    School of Natural Resour…  6.86e6    65995.      2400    194254 3.28e4
-##  6 UNL    College of Law             6.70e6    77953.      1000    326400 7.23e4
-##  7 UNL    University Television      6.44e6    55542.     16500    221954 2.75e4
-##  8 UNL    University Libraries       6.27e6    51390.      1200    215917 2.68e4
-##  9 UNMC   Pharmacology/Exp Neurosc…  6.24e6    58911.      2118    248139 4.29e4
-## 10 UNMC   CON-Omaha Division         6.11e6    78304.      3000    172522 4.48e4
-## # … with 794 more rows</code></pre>
-<p>So again, no surprise, the UNL athletic department has the single largest wage bill at nearly $36 million. The average salary in the department is $118,508 – more than double the univeristy as a whole, again thanks to Scott Frost’s paycheck.</p>
+<div id="other-summarization-methods-summing-mean-median-min-and-max" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> Other summarization methods: summing, mean, median, min and max</h2>
+<p>In the last example, we grouped like records together and counted them, but there’s so much more we can to summarize each group.</p>
+<p>Let’s say we wanted to know the total dollar amount of loans to each county? For that, we could use the <code>sum()</code> function to add up all of the loan values in the column “amount.” We put the column we want to total – “amount” – inside the sum() function <code>sum(amount)</code>. Note that we can simply add a new summarize function here, keeping our count_loans field in our output table.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="aggregates.html#cb33-1" aria-hidden="true" tabindex="-1"></a>ppp_maryland_loans <span class="sc">%&gt;%</span></span>
+<span id="cb33-2"><a href="aggregates.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(project_county_name) <span class="sc">%&gt;%</span></span>
+<span id="cb33-3"><a href="aggregates.html#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb33-4"><a href="aggregates.html#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">count_loans =</span> <span class="fu">n</span>(),</span>
+<span id="cb33-5"><a href="aggregates.html#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_loans_amount =</span> <span class="fu">sum</span>(amount)</span>
+<span id="cb33-6"><a href="aggregates.html#cb33-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-7"><a href="aggregates.html#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_loans_amount))</span></code></pre></div>
+<pre><code>## # A tibble: 24 × 3
+##    project_county_name count_loans total_loans_amount
+##    &lt;chr&gt;                     &lt;int&gt;              &lt;dbl&gt;
+##  1 MONTGOMERY                38781        3191350613.
+##  2 BALTIMORE                 28789        2241954213.
+##  3 PRINCE GEORGES            34408        1993351125.
+##  4 ANNE ARUNDEL              17336        1533274782.
+##  5 BALTIMORE CITY            20004        1454393232.
+##  6 HOWARD                    12011        1287751670.
+##  7 FREDERICK                  6666         611545614.
+##  8 HARFORD                    6300         458507678.
+##  9 CARROLL                    4040         326178266.
+## 10 WASHINGTON                 3338         284712867.
+## # … with 14 more rows</code></pre>
+<p>We can also calculate the average size loan in each county – the mean – and the loan amount that sits at the midpoint of our data – the median.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="aggregates.html#cb35-1" aria-hidden="true" tabindex="-1"></a>ppp_maryland_loans <span class="sc">%&gt;%</span></span>
+<span id="cb35-2"><a href="aggregates.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(project_county_name) <span class="sc">%&gt;%</span></span>
+<span id="cb35-3"><a href="aggregates.html#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb35-4"><a href="aggregates.html#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">count_loans =</span> <span class="fu">n</span>(),</span>
+<span id="cb35-5"><a href="aggregates.html#cb35-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_loans_amount =</span> <span class="fu">sum</span>(amount),</span>
+<span id="cb35-6"><a href="aggregates.html#cb35-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_loan_amount =</span> <span class="fu">mean</span>(amount),</span>
+<span id="cb35-7"><a href="aggregates.html#cb35-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">median_loan_amount =</span> <span class="fu">median</span>(amount)</span>
+<span id="cb35-8"><a href="aggregates.html#cb35-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-9"><a href="aggregates.html#cb35-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean_loan_amount))</span></code></pre></div>
+<pre><code>## # A tibble: 24 × 5
+##    project_county_name count_loans total_loans_amount mean_loan_amount
+##    &lt;chr&gt;                     &lt;int&gt;              &lt;dbl&gt;            &lt;dbl&gt;
+##  1 HOWARD                    12011        1287751670.          107214.
+##  2 FREDERICK                  6666         611545614.           91741.
+##  3 ANNE ARUNDEL              17336        1533274782.           88445.
+##  4 SAINT MARYS                1809         154853058.           85601.
+##  5 WASHINGTON                 3338         284712867.           85294.
+##  6 WICOMICO                   2718         228878462.           84208.
+##  7 ALLEGANY                   1293         107943361.           83483.
+##  8 MONTGOMERY                38781        3191350613.           82292.
+##  9 CARROLL                    4040         326178266.           80737.
+## 10 BALTIMORE                 28789        2241954213.           77875.
+## # … with 14 more rows, and 1 more variable: median_loan_amount &lt;dbl&gt;</code></pre>
+<p>We see something interesting here. The mean loan amount is much higher than the median loan amount in every county. Why? There are some very large loans – millions of dollars – skewing the mean higher. Examining both the median – which is less sensitive to extreme values – and the mean – which is more sensitive to extreme values – gives you a clearer picture of the composition of the data.</p>
+<p>Howard County has the highest average loan amount (107,217), while Carroll County has the highest median ($25,111.00)</p>
+<p>What about the highest and lowest loan values in each county? For that, we can use the <code>min()</code> and <code>max()</code> functions.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="aggregates.html#cb37-1" aria-hidden="true" tabindex="-1"></a>ppp_maryland_loans <span class="sc">%&gt;%</span></span>
+<span id="cb37-2"><a href="aggregates.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(project_county_name) <span class="sc">%&gt;%</span></span>
+<span id="cb37-3"><a href="aggregates.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb37-4"><a href="aggregates.html#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">count_loans =</span> <span class="fu">n</span>(),</span>
+<span id="cb37-5"><a href="aggregates.html#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_loans_amount =</span> <span class="fu">sum</span>(amount),</span>
+<span id="cb37-6"><a href="aggregates.html#cb37-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_loan_amount =</span> <span class="fu">mean</span>(amount),</span>
+<span id="cb37-7"><a href="aggregates.html#cb37-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">median_loan_amount =</span> <span class="fu">median</span>(amount),</span>
+<span id="cb37-8"><a href="aggregates.html#cb37-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_loan_amount =</span> <span class="fu">min</span>(amount),</span>
+<span id="cb37-9"><a href="aggregates.html#cb37-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_loan_amount =</span> <span class="fu">max</span>(amount)</span>
+<span id="cb37-10"><a href="aggregates.html#cb37-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-11"><a href="aggregates.html#cb37-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(max_loan_amount))</span></code></pre></div>
+<pre><code>## # A tibble: 24 × 7
+##    project_county_name count_loans total_loans_amount mean_loan_amount
+##    &lt;chr&gt;                     &lt;int&gt;              &lt;dbl&gt;            &lt;dbl&gt;
+##  1 ANNE ARUNDEL              17336        1533274782.           88445.
+##  2 BALTIMORE                 28789        2241954213.           77875.
+##  3 CARROLL                    4040         326178266.           80737.
+##  4 GARRETT                    1196          84889005.           70977.
+##  5 HOWARD                    12011        1287751670.          107214.
+##  6 MONTGOMERY                38781        3191350613.           82292.
+##  7 PRINCE GEORGES            34408        1993351125.           57933.
+##  8 FREDERICK                  6666         611545614.           91741.
+##  9 BALTIMORE CITY            20004        1454393232.           72705.
+## 10 CHARLES                    4398         238654940.           54264.
+## # … with 14 more rows, and 3 more variables: median_loan_amount &lt;dbl&gt;,
+## #   min_loan_amount &lt;dbl&gt;, max_loan_amount &lt;dbl&gt;</code></pre>
+<p>From this, we can see that the largest loan amounts in Anne Arundel County, Baltimore County, Carroll County, Garrett County and Howard County were $10 million, the maximum loan value authorized under the program.</p>
+<p>It would be interesting to see what these companies are that got the maximum of $10 million. To do that, we could simply take our original data set and sort it from highest to lowest on the loan amount.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="aggregates.html#cb39-1" aria-hidden="true" tabindex="-1"></a>ppp_maryland_loans <span class="sc">%&gt;%</span></span>
+<span id="cb39-2"><a href="aggregates.html#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(amount))</span></code></pre></div>
+<pre><code>## # A tibble: 195,856 × 63
+##          id name  slug  amount state address city  zip   naics_code business_type
+##       &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;        
+##  1 93757930 GSE … gse-… 1   e7 MD    1332 L… Syke… 21784     333318 Corporation  
+##  2 93757929 GMS … gms-… 1   e7 MD    PO Box… OAKL… 21550     212112 Corporation  
+##  3 93757932 LEME… leme… 1   e7 MD    8184 L… ELKR… 2107…     722513 Subchapter S…
+##  4 93757931 MISS… miss… 1   e7 MD    7750 G… Glen… 21061     722511 Limited  Lia…
+##  5 93757928 PT N… pt-n… 1   e7 MD    501 Fa… Tows… 21286     621340 Limited  Lia…
+##  6 93757933 SMAR… smar… 9.51e6 MD    1997 A… ANNA… 2140…     541611 Limited  Lia…
+##  7 93757934 SILV… silv… 9.50e6 MD    12276 … ROCK… 2085…     722511 Limited  Lia…
+##  8 93757935 D.A.… d-a-… 9.22e6 MD    1330 M… LAUR… 20708     238220 Limited  Lia…
+##  9 93757936 VISI… visi… 9.14e6 MD    530 Mc… Glen… 21061     517311 Subchapter S…
+## 10 93757937 YOUN… youn… 9.11e6 MD    303 W … Balt… 2120…     813410 501(c)3 – No…
+## # … with 195,846 more rows, and 53 more variables: race &lt;chr&gt;, gender &lt;chr&gt;,
+## #   veteran &lt;chr&gt;, non_profit &lt;lgl&gt;, jobs_retained &lt;dbl&gt;, date_approved &lt;date&gt;,
+## #   lender &lt;chr&gt;, congressional_district &lt;chr&gt;, loan_range_sort_key &lt;lgl&gt;,
+## #   previous_loan_range &lt;lgl&gt;, previous_name &lt;lgl&gt;, loan_number &lt;dbl&gt;,
+## #   sba_office_code &lt;dbl&gt;, processing_method &lt;chr&gt;, loan_status &lt;chr&gt;,
+## #   term &lt;dbl&gt;, sba_guaranty_percentage &lt;dbl&gt;, initial_approval_amount &lt;dbl&gt;,
+## #   current_approval_amount &lt;dbl&gt;, undisbursed_amount &lt;dbl&gt;, …</code></pre>
+<p>The first five rows here all represent companies that got $10 million loans. Who are they? What industries are they in? The answers to these questions could provide a lead for further reporting.</p>
 
 </div>
 </div>
@@ -556,6 +695,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -576,6 +716,10 @@ gitbook.start({
 "text": null
 },
 "download": ["datajournalism.pdf", "datajournalism.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

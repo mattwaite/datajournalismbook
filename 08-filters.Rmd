@@ -13,7 +13,7 @@ library(tidyverse)
 ```
 
 ```{r}
-maryland_ppp <- read.csv('ppp_applications_md.csv')
+maryland_ppp <- read.csv('data/ppp_applications_md.csv')
 ```
 
 The data we want to filter on is in `project_county_name`. So we're going to use filter and something called a comparison operator. We need to filter all records equal to "PRINCE GEORGES". The comparison operators in R, like most programming languages, are == for equal to, != for not equal to, > for greater than, >= for greater than or equal to and so on.

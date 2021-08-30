@@ -17,7 +17,11 @@ library(tidycensus)
 
 To use the API, you need an API key. To get that, you need to [apply for an API key with the Census Bureau](https://api.census.gov/data/key_signup.html). It takes a few minutes and you need to activate your key via email. Once you have your key, you need to set that for this session. Just FYI: Your key is your key. Do not share it around.
 
-```{r echo=FALSE}
+```{r, include=FALSE}
+census_api_key("549950d36c22ff16455fe196bbbd01d63cfbe6cf")
+```
+
+```{r, eval=FALSE}
 census_api_key("YOUR KEY HERE")
 ```
 
@@ -25,6 +29,8 @@ So to give you some idea of how complicated the data is, let's pull up just one 
 
 ```{r}
 sf1 <- load_variables(2010, "sf1", cache = TRUE)
+
+sf1
 ```
 
 Note: There are thousands of variables in SF1. That's not a typo. Open it in your environment by double clicking. As you scroll down, you'll get an idea of what you've got to choose from.
@@ -33,6 +39,8 @@ If you think that's crazy, try the SF3 file from 2000.
 
 ```{r}
 sf3 <- load_variables(2000, "sf3", cache = TRUE)
+
+sf3
 ```
 
 Yes. That's more than 16,000 variables to choose from. I told you. Astonishing.
@@ -41,25 +49,26 @@ So let's try to answer a question using the Census. What is the fastest growing 
 
 To answer this, we need to pull the total population by state in each of the decennial census. Here's 2000.
 
-```{r}
+```{r, eval=FALSE}
 p00 <- get_decennial(geography = "state", variables = "P001001", year = 2000)
+
 ```
 
 Now 2010.
 
-```{r}
+```{r, eval=FALSE}
 p10 <- get_decennial(geography = "state", variables = "P001001", year = 2010)
 ```
 
 Let's take a peek at 2010.
 
-```{r}
+```{r, eval=FALSE}
 p10
 ```
 
 As you can see, we have a GEOID, NAME, then variable and value. Variable and value are going to be the same. Because those are named the same thing, to merge them together, we need to rename them.
 
-```{r}
+```{r, eval=FALSE}
 p10 %>% select(GEOID, NAME, value) %>% rename(Population2010=value) -> p2010
 
 p00 %>% select(GEOID, NAME, value) %>% rename(Population2000=value) -> p2000
@@ -67,13 +76,13 @@ p00 %>% select(GEOID, NAME, value) %>% rename(Population2000=value) -> p2000
 
 Now we join the data together.
 
-```{r}
+```{r, eval=FALSE}
 alldata <- p2000 %>% inner_join(p2010)
 ```
 
 And now we calculate the percent change.
 
-```{r}
+```{r, eval=FALSE}
 alldata %>% mutate(change = ((Population2010-Population2000)/Population2000)*100) %>% arrange(desc(change))
 ```
 
@@ -171,8 +180,8 @@ What just happened, without you having to do anything, is the library just made 
 
 Check it out:
 
-```{r}
-view(coronavirus)
+```{r, eval=FALSE}
+coronavirus
 ```
 
 So now we can start using it for data analysis. How about cases in the US?

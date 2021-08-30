@@ -7,12 +7,25 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-```
-
-## Load libraries and establish settings
-```{r}
 # Turn off scientific notation
 options(scipen=999)
+```
+
+## About this lab
+
+To complete this lab, you need to:
+* run existing code as directed (look for **Task**). 
+* modify existing code as directed (look for **Task**).
+* write code in empty codeblocks provided to answer questions included (look for **Q**). 
+* write out the answer in the form of a complete sentence in the space given (look for **A**). 
+When you are finished, commit changes and push to your personal GitHub repo, then submit the URL to this document on ELMS. 
+
+## Load libraries and establish settings
+
+**Task** Run the codeblock below to load the Tidyverse.To run the codeblock, hit the little green play button in the upper right corner of the gray area (the codeblock) below.
+
+```{r}
+
 
 # Load the tidyverse. If you have not installed the tidyverse already, remove the # from the next line and run it first.  
 # install.packages('tidyverse')
@@ -21,14 +34,83 @@ library(tidyverse)
 
 ## Load Data 
 
+We're going to load the slice of PPP loans for West Virginia.
+
+**Task** Run the codeblock below to load the data. 
+
 ```{r}
-maryland_ppp <- read_rds("class_01_demonstration.rds")
+wv_ppp_loans <- read_rds("lab_01.rds")
 ```
 
-## Questions
+## Examine Data
 
-1.  Which West Virginia county got the most 
+**Task** Run the codeblock below to use glimpse to get a sense of the column names, types and sample data. 
+**Q1** How many rows and columns does this dataframe have?
+**A1** [write your answer here]
 
 ```{r}
+glimpse(wv_ppp_loans)
+```
 
+## Answer questions
+
+**Q2** Which West Virginia county got the most loans? How many?
+**A2** [write your answer here]
+
+```{r}
+# Write the code to produce your answer here
+
+```
+**Q3** Which West Virginia county got the fewest loans? How many?
+**A3** [write your answer here]
+
+```{r}
+# Write the code to produce your answer here
+
+```
+**Q4** What's your best educated guess to explain why the county identified in question 2 had a lot of loans and why the county identified in question 3 had only a few loans? Hint: you won't find the answer in the data, you'll need to do some quick web research. You do not need to write any code for this question, so no codeblock is provided.  
+**A4** [write your answer here]
+
+
+**Q5** What West Virginia business got the state's largest PPP loan? How much was it for? What does the business do? How many jobs did the loan retain, according to the data?
+**A5** [write your answer here]
+
+```{r}
+# Write the code to produce your answer here
+
+```
+
+**Q6** What West Virginia politician (with his family) owns the company identified in question 2? What's your source for that information? Hint: this will require web research, you won't be able to answer this purely from the data set.  You do not need to write any code for this question, so no codeblock is provided.  
+**A6** [write your answer here]
+
+**Q7**. Produce a summary table that has the following information for West Virginia as a whole (the whole state, not by county):
+* count of loans
+* total amount of all loans
+* the average loan amount
+* the median loan amount
+* the smallest loan amount
+* the largest loan amount
+
+Store it as a variable object called `wv_summary` so that you can examine it with the data viewer. What newsworthy nuggets jump out at you that you could imagine dropping into a news story? Write a few summary sentences with overall findings. 
+
+**A7** [write your answer here]
+```{r}
+# Write the code to produce your answer here
+```
+
+**Q8** Produce a summary table that has the following information for each West Virginia county:
+* count of loans
+* total amount of all loans
+* the average loan amount
+* the median loan amount
+* the smallest loan amount
+* the largest loan amount
+
+Store it as a variable object called `wv_county_summary` so that you can examine it with the data viewer. 
+
+What newsworthy nuggets or patterns jump out at you that you could imagine dropping into a news story or doing follow up reporting on? Write up a few sentence that summarizes one county. 
+
+**A8** [write your answer here]
+```{r}
+# Write the code to produce your answer here
 ```

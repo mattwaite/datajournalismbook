@@ -5,26 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Filters and selections | Data Journalism with R and the Tidyverse</title>
-  <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="description" content="This is a book built on a very opinionated philosophy for journalism students doing data journalism in R with replicable methods." />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Filters and selections | Data Journalism with R and the Tidyverse" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  <meta property="og:description" content="This is a book built on a very opinionated philosophy for journalism students doing data journalism in R with replicable methods." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 9 Filters and selections | Data Journalism with R and the Tidyverse" />
   
-  <meta name="twitter:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  <meta name="twitter:description" content="This is a book built on a very opinionated philosophy for journalism students doing data journalism in R with replicable methods." />
   
 
-<meta name="author" content="Matt Waite" />
+<meta name="author" content="Matt Waite (original author); updated by Derek Willis and Sean Mussenden" />
 
 
-<meta name="date" content="2020-04-21" />
+<meta name="date" content="2021-08-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,8 @@
   
 <link rel="prev" href="working-with-dates.html"/>
 <link rel="next" href="data-cleaning-part-i-data-smells.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,14 +51,16 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.13/datatables.js"></script>
+<script src="libs/datatables-binding-0.18/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160712129-1"></script>
 <script>
@@ -70,25 +73,27 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -97,9 +102,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -132,6 +137,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -145,127 +151,156 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="http://mattwaite.github.io/datajournalism/">Data Journalism With R</a></li>
+<li><a href="http://smussenden.github.io/coursefiles/data_journalism_book/">Data Journalism With R</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#modern-data-journalism"><i class="fa fa-check"></i><b>1.1</b> Modern data journalism</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installations"><i class="fa fa-check"></i><b>1.2</b> Installations</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#about-this-book"><i class="fa fa-check"></i><b>1.3</b> About this book</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#what-well-cover"><i class="fa fa-check"></i><b>1.4</b> What we’ll cover</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="public-records.html"><a href="public-records.html"><i class="fa fa-check"></i><b>2</b> Public records</a><ul>
+<li class="chapter" data-level="2" data-path="public-records.html"><a href="public-records.html"><i class="fa fa-check"></i><b>2</b> Public records</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="public-records.html"><a href="public-records.html#federal-law"><i class="fa fa-check"></i><b>2.1</b> Federal law</a></li>
 <li class="chapter" data-level="2.2" data-path="public-records.html"><a href="public-records.html#state-law"><i class="fa fa-check"></i><b>2.2</b> State law</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>3</b> R basics</a><ul>
-<li class="chapter" data-level="3.1" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-1"><i class="fa fa-check"></i><b>3.1</b> Adding libraries, part 1</a></li>
-<li class="chapter" data-level="3.2" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-2"><i class="fa fa-check"></i><b>3.2</b> Adding libraries, part 2</a></li>
+<li class="chapter" data-level="3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>3</b> R basics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="r-basics.html"><a href="r-basics.html#about-libraries"><i class="fa fa-check"></i><b>3.1</b> About libraries</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html"><i class="fa fa-check"></i><b>4</b> Data journalism in the age of replication</a><ul>
+<li class="chapter" data-level="4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html"><i class="fa fa-check"></i><b>4</b> Data journalism in the age of replication</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#the-stylebook"><i class="fa fa-check"></i><b>4.1</b> The stylebook</a></li>
 <li class="chapter" data-level="4.2" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication"><i class="fa fa-check"></i><b>4.2</b> Replication</a></li>
 <li class="chapter" data-level="4.3" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#goodbye-excel"><i class="fa fa-check"></i><b>4.3</b> Goodbye Excel?</a></li>
 <li class="chapter" data-level="4.4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#receptivity-is-high"><i class="fa fa-check"></i><b>4.4</b> “Receptivity … is high”</a></li>
 <li class="chapter" data-level="4.5" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication-in-notebooks"><i class="fa fa-check"></i><b>4.5</b> Replication in notebooks</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html"><i class="fa fa-check"></i><b>5</b> Data, structures and types</a><ul>
-<li class="chapter" data-level="5.1" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#rows-and-columns"><i class="fa fa-check"></i><b>5.1</b> Rows and columns</a></li>
+<li class="chapter" data-level="5" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html"><i class="fa fa-check"></i><b>5</b> Data, structures and types</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#a-mental-picture"><i class="fa fa-check"></i><b>5.1</b> A Mental Picture</a></li>
 <li class="chapter" data-level="5.2" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#types"><i class="fa fa-check"></i><b>5.2</b> Types</a></li>
-<li class="chapter" data-level="5.3" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#a-simple-way-to-get-data"><i class="fa fa-check"></i><b>5.3</b> A simple way to get data</a></li>
-<li class="chapter" data-level="5.4" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#cleaning-the-data"><i class="fa fa-check"></i><b>5.4</b> Cleaning the data</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="aggregates.html"><a href="aggregates.html"><i class="fa fa-check"></i><b>6</b> Aggregates</a><ul>
-<li class="chapter" data-level="6.1" data-path="aggregates.html"><a href="aggregates.html#importing-data"><i class="fa fa-check"></i><b>6.1</b> Importing data</a></li>
-<li class="chapter" data-level="6.2" data-path="aggregates.html"><a href="aggregates.html#group-by-and-count"><i class="fa fa-check"></i><b>6.2</b> Group by and count</a></li>
-<li class="chapter" data-level="6.3" data-path="aggregates.html"><a href="aggregates.html#other-aggregates-mean-and-median"><i class="fa fa-check"></i><b>6.3</b> Other aggregates: Mean and median</a></li>
-<li class="chapter" data-level="6.4" data-path="aggregates.html"><a href="aggregates.html#even-more-aggregates"><i class="fa fa-check"></i><b>6.4</b> Even more aggregates</a></li>
+<li class="chapter" data-level="6" data-path="aggregates.html"><a href="aggregates.html"><i class="fa fa-check"></i><b>6</b> Aggregates</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="aggregates.html"><a href="aggregates.html#libraries"><i class="fa fa-check"></i><b>6.1</b> Libraries</a></li>
+<li class="chapter" data-level="6.2" data-path="aggregates.html"><a href="aggregates.html#importing-data"><i class="fa fa-check"></i><b>6.2</b> Importing data</a></li>
+<li class="chapter" data-level="6.3" data-path="aggregates.html"><a href="aggregates.html#group-by-and-count"><i class="fa fa-check"></i><b>6.3</b> Group by and count</a></li>
+<li class="chapter" data-level="6.4" data-path="aggregates.html"><a href="aggregates.html#other-summarization-methods-summing-mean-median-min-and-max"><i class="fa fa-check"></i><b>6.4</b> Other summarization methods: summing, mean, median, min and max</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>7</b> Mutating data</a><ul>
+<li class="chapter" data-level="7" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>7</b> Mutating data</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="mutating-data.html"><a href="mutating-data.html#another-use-of-mutate"><i class="fa fa-check"></i><b>7.1</b> Another use of mutate</a></li>
+<li class="chapter" data-level="7.2" data-path="mutating-data.html"><a href="mutating-data.html#a-more-powerful-use"><i class="fa fa-check"></i><b>7.2</b> A more powerful use</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>8</b> Working with dates</a><ul>
+<li class="chapter" data-level="8" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>8</b> Working with dates</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="working-with-dates.html"><a href="working-with-dates.html#the-hard-way"><i class="fa fa-check"></i><b>8.1</b> The hard way</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="filters-and-selections.html"><a href="filters-and-selections.html"><i class="fa fa-check"></i><b>9</b> Filters and selections</a><ul>
+<li class="chapter" data-level="9" data-path="filters-and-selections.html"><a href="filters-and-selections.html"><i class="fa fa-check"></i><b>9</b> Filters and selections</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="filters-and-selections.html"><a href="filters-and-selections.html#combining-filters"><i class="fa fa-check"></i><b>9.1</b> Combining filters</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html"><i class="fa fa-check"></i><b>10</b> Data Cleaning Part I: Data smells</a><ul>
+<li class="chapter" data-level="10" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html"><i class="fa fa-check"></i><b>10</b> Data Cleaning Part I: Data smells</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#wrong-type"><i class="fa fa-check"></i><b>10.1</b> Wrong Type</a></li>
 <li class="chapter" data-level="10.2" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#missing-data"><i class="fa fa-check"></i><b>10.2</b> Missing Data</a></li>
 <li class="chapter" data-level="10.3" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#gaps-in-data"><i class="fa fa-check"></i><b>10.3</b> Gaps in data</a></li>
-<li class="chapter" data-level="10.4" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#internal-inconsistency"><i class="fa fa-check"></i><b>10.4</b> Internal inconsistency</a></li>
-<li class="chapter" data-level="10.5" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#a-shortcut-summary"><i class="fa fa-check"></i><b>10.5</b> A Shortcut: Summary</a></li>
+<li class="chapter" data-level="10.4" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#supicious-outliers"><i class="fa fa-check"></i><b>10.4</b> Supicious Outliers</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html"><i class="fa fa-check"></i><b>11</b> Data Cleaning Part II: Janitor</a><ul>
+<li class="chapter" data-level="11" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html"><i class="fa fa-check"></i><b>11</b> Data Cleaning Part II: Janitor</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#cleaning-headers"><i class="fa fa-check"></i><b>11.1</b> Cleaning headers</a></li>
-<li class="chapter" data-level="11.2" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#duplicates"><i class="fa fa-check"></i><b>11.2</b> Duplicates</a></li>
-<li class="chapter" data-level="11.3" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#inconsistency"><i class="fa fa-check"></i><b>11.3</b> Inconsistency</a></li>
+<li class="chapter" data-level="11.2" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#changing-data-types"><i class="fa fa-check"></i><b>11.2</b> Changing data types</a></li>
+<li class="chapter" data-level="11.3" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#duplicates"><i class="fa fa-check"></i><b>11.3</b> Duplicates</a></li>
+<li class="chapter" data-level="11.4" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#cleaning-strings"><i class="fa fa-check"></i><b>11.4</b> Cleaning strings</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html"><i class="fa fa-check"></i><b>12</b> Data Cleaning Part III: Open Refine</a><ul>
+<li class="chapter" data-level="12" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html"><i class="fa fa-check"></i><b>12</b> Data Cleaning Part III: Open Refine</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#refinr-open-refine-in-r"><i class="fa fa-check"></i><b>12.1</b> Refinr, Open Refine in R</a></li>
-<li class="chapter" data-level="12.2" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#more-complex-issues"><i class="fa fa-check"></i><b>12.2</b> More complex issues</a></li>
-<li class="chapter" data-level="12.3" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#manually-cleaning-data-with-open-refine"><i class="fa fa-check"></i><b>12.3</b> Manually cleaning data with Open Refine</a></li>
+<li class="chapter" data-level="12.2" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#manually-cleaning-data-with-open-refine"><i class="fa fa-check"></i><b>12.2</b> Manually cleaning data with Open Refine</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html"><i class="fa fa-check"></i><b>13</b> Cleaning Data Part IV: PDFs</a><ul>
-<li class="chapter" data-level="13.1" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-looks-good-but-goes-wrong"><i class="fa fa-check"></i><b>13.1</b> When it looks good, but goes wrong</a></li>
-<li class="chapter" data-level="13.2" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-works-well."><i class="fa fa-check"></i><b>13.2</b> When it works well.</a></li>
+<li class="chapter" data-level="13" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html"><i class="fa fa-check"></i><b>13</b> Cleaning Data Part IV: PDFs</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#easy-does-it"><i class="fa fa-check"></i><b>13.1</b> Easy does it</a></li>
+<li class="chapter" data-level="13.2" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-looks-good-but-needs-a-little-fixing"><i class="fa fa-check"></i><b>13.2</b> When it looks good, but needs a little fixing</a></li>
 <li class="chapter" data-level="13.3" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#cleaning-up-the-data-in-r"><i class="fa fa-check"></i><b>13.3</b> Cleaning up the data in R</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="combining-and-joining.html"><a href="combining-and-joining.html"><i class="fa fa-check"></i><b>14</b> Combining and joining</a><ul>
-<li class="chapter" data-level="14.1" data-path="combining-and-joining.html"><a href="combining-and-joining.html#combining-data"><i class="fa fa-check"></i><b>14.1</b> Combining data</a></li>
+<li class="chapter" data-level="14" data-path="combining-and-joining.html"><a href="combining-and-joining.html"><i class="fa fa-check"></i><b>14</b> Combining and joining</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="combining-and-joining.html"><a href="combining-and-joining.html#combining-data-stacking"><i class="fa fa-check"></i><b>14.1</b> Combining data (stacking)</a></li>
 <li class="chapter" data-level="14.2" data-path="combining-and-joining.html"><a href="combining-and-joining.html#joining-data"><i class="fa fa-check"></i><b>14.2</b> Joining data</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html"><i class="fa fa-check"></i><b>15</b> Scraping data with Rvest</a><ul>
+<li class="chapter" data-level="15" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html"><i class="fa fa-check"></i><b>15</b> Scraping data with Rvest</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html#a-more-difficult-example"><i class="fa fa-check"></i><b>15.1</b> A more difficult example</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="advanced-rvest.html"><a href="advanced-rvest.html"><i class="fa fa-check"></i><b>16</b> Advanced rvest</a></li>
-<li class="chapter" data-level="17" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html"><i class="fa fa-check"></i><b>17</b> Intro to APIs: The Census</a><ul>
+<li class="chapter" data-level="17" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html"><i class="fa fa-check"></i><b>17</b> Intro to APIs: The Census</a>
+<ul>
 <li class="chapter" data-level="17.1" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html#the-acs"><i class="fa fa-check"></i><b>17.1</b> The ACS</a></li>
 <li class="chapter" data-level="17.2" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html#bonus-api-example-coronavirus"><i class="fa fa-check"></i><b>17.2</b> Bonus API example: Coronavirus</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html"><i class="fa fa-check"></i><b>18</b> Visualizing your data for reporting</a><ul>
+<li class="chapter" data-level="18" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html"><i class="fa fa-check"></i><b>18</b> Visualizing your data for reporting</a>
+<ul>
 <li class="chapter" data-level="18.1" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html#bar-charts"><i class="fa fa-check"></i><b>18.1</b> Bar charts</a></li>
 <li class="chapter" data-level="18.2" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html#line-charts"><i class="fa fa-check"></i><b>18.2</b> Line charts</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="visualizing-your-data-for-publication.html"><a href="visualizing-your-data-for-publication.html"><i class="fa fa-check"></i><b>19</b> Visualizing your data for publication</a><ul>
+<li class="chapter" data-level="19" data-path="visualizing-your-data-for-publication.html"><a href="visualizing-your-data-for-publication.html"><i class="fa fa-check"></i><b>19</b> Visualizing your data for publication</a>
+<ul>
 <li class="chapter" data-level="19.1" data-path="visualizing-your-data-for-publication.html"><a href="visualizing-your-data-for-publication.html#datawrapper"><i class="fa fa-check"></i><b>19.1</b> Datawrapper</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html"><i class="fa fa-check"></i><b>20</b> Geographic data basics</a><ul>
+<li class="chapter" data-level="20" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html"><i class="fa fa-check"></i><b>20</b> Geographic data basics</a>
+<ul>
 <li class="chapter" data-level="20.1" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html#importing-and-viewing-data"><i class="fa fa-check"></i><b>20.1</b> Importing and viewing data</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="geographic-analysis.html"><a href="geographic-analysis.html"><i class="fa fa-check"></i><b>21</b> Geographic analysis</a><ul>
+<li class="chapter" data-level="21" data-path="geographic-analysis.html"><a href="geographic-analysis.html"><i class="fa fa-check"></i><b>21</b> Geographic analysis</a>
+<ul>
 <li class="chapter" data-level="21.1" data-path="geographic-analysis.html"><a href="geographic-analysis.html#why-tidycensus-is-so-useful"><i class="fa fa-check"></i><b>21.1</b> Why tidycensus is so useful</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="automating-analysis.html"><a href="automating-analysis.html"><i class="fa fa-check"></i><b>22</b> Automating analysis</a><ul>
+<li class="chapter" data-level="22" data-path="automating-analysis.html"><a href="automating-analysis.html"><i class="fa fa-check"></i><b>22</b> Automating analysis</a>
+<ul>
 <li class="chapter" data-level="22.1" data-path="automating-analysis.html"><a href="automating-analysis.html#automating-downloads-an-imports"><i class="fa fa-check"></i><b>22.1</b> Automating downloads an imports</a></li>
 <li class="chapter" data-level="22.2" data-path="automating-analysis.html"><a href="automating-analysis.html#exploring-the-data"><i class="fa fa-check"></i><b>22.2</b> Exploring the data</a></li>
 <li class="chapter" data-level="22.3" data-path="automating-analysis.html"><a href="automating-analysis.html#analysis"><i class="fa fa-check"></i><b>22.3</b> Analysis</a></li>
 <li class="chapter" data-level="22.4" data-path="automating-analysis.html"><a href="automating-analysis.html#making-updating-graphics"><i class="fa fa-check"></i><b>22.4</b> Making updating graphics</a></li>
 <li class="chapter" data-level="22.5" data-path="automating-analysis.html"><a href="automating-analysis.html#the-state-vs-the-feds"><i class="fa fa-check"></i><b>22.5</b> The State vs the Feds</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="automating-geographic-analysis.html"><a href="automating-geographic-analysis.html"><i class="fa fa-check"></i><b>23</b> Automating geographic analysis</a><ul>
+<li class="chapter" data-level="23" data-path="automating-geographic-analysis.html"><a href="automating-geographic-analysis.html"><i class="fa fa-check"></i><b>23</b> Automating geographic analysis</a>
+<ul>
 <li class="chapter" data-level="23.1" data-path="automating-geographic-analysis.html"><a href="automating-geographic-analysis.html#mapping-continuously"><i class="fa fa-check"></i><b>23.1</b> Mapping continuously</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="basic-stats-the-t-test.html"><a href="basic-stats-the-t-test.html"><i class="fa fa-check"></i><b>24</b> Basic Stats: The T-Test</a><ul>
+<li class="chapter" data-level="24" data-path="basic-stats-the-t-test.html"><a href="basic-stats-the-t-test.html"><i class="fa fa-check"></i><b>24</b> Basic Stats: The T-Test</a>
+<ul>
 <li class="chapter" data-level="24.1" data-path="basic-stats-the-t-test.html"><a href="basic-stats-the-t-test.html#specific-call-types"><i class="fa fa-check"></i><b>24.1</b> Specific call types</a></li>
 <li class="chapter" data-level="24.2" data-path="basic-stats-the-t-test.html"><a href="basic-stats-the-t-test.html#what-else-should-we-look-at"><i class="fa fa-check"></i><b>24.2</b> What else should we look at?</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="an-intro-to-text-analysis.html"><a href="an-intro-to-text-analysis.html"><i class="fa fa-check"></i><b>25</b> An intro to text analysis</a><ul>
+<li class="chapter" data-level="25" data-path="an-intro-to-text-analysis.html"><a href="an-intro-to-text-analysis.html"><i class="fa fa-check"></i><b>25</b> An intro to text analysis</a>
+<ul>
 <li class="chapter" data-level="25.1" data-path="an-intro-to-text-analysis.html"><a href="an-intro-to-text-analysis.html#going-further-by-analyzing-text"><i class="fa fa-check"></i><b>25.1</b> Going further by analyzing text</a></li>
 <li class="chapter" data-level="25.2" data-path="an-intro-to-text-analysis.html"><a href="an-intro-to-text-analysis.html#going-beyond-a-single-word"><i class="fa fa-check"></i><b>25.2</b> Going beyond a single word</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html"><i class="fa fa-check"></i><b>26</b> Writing with numbers</a><ul>
+<li class="chapter" data-level="26" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html"><i class="fa fa-check"></i><b>26</b> Writing with numbers</a>
+<ul>
 <li class="chapter" data-level="26.1" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html#how-to-write-about-numbers-without-overwhelming-with-numbers."><i class="fa fa-check"></i><b>26.1</b> How to write about numbers without overwhelming with numbers.</a></li>
 <li class="chapter" data-level="26.2" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html#when-exact-numbers-matter"><i class="fa fa-check"></i><b>26.2</b> When exact numbers matter</a></li>
 <li class="chapter" data-level="26.3" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html#an-example"><i class="fa fa-check"></i><b>26.3</b> An example</a></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html"><i class="fa fa-check"></i><b>27</b> Ethics in data journalism</a><ul>
+<li class="chapter" data-level="27" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html"><i class="fa fa-check"></i><b>27</b> Ethics in data journalism</a>
+<ul>
 <li class="chapter" data-level="27.1" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#problems"><i class="fa fa-check"></i><b>27.1</b> Problems</a></li>
 <li class="chapter" data-level="27.2" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#the-googlebot"><i class="fa fa-check"></i><b>27.2</b> The Googlebot</a></li>
 <li class="chapter" data-level="27.3" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#data-lifetimes"><i class="fa fa-check"></i><b>27.3</b> Data Lifetimes</a></li>
 <li class="chapter" data-level="27.4" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#you-are-a-data-provider"><i class="fa fa-check"></i><b>27.4</b> You Are a Data Provider</a></li>
 <li class="chapter" data-level="27.5" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#ethical-data"><i class="fa fa-check"></i><b>27.5</b> Ethical Data</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="using-github.html"><a href="using-github.html"><i class="fa fa-check"></i><b>28</b> Using GitHub</a>
+<ul>
+<li class="chapter" data-level="28.1" data-path="using-github.html"><a href="using-github.html#how-it-works"><i class="fa fa-check"></i><b>28.1</b> How It Works</a></li>
+<li class="chapter" data-level="28.2" data-path="using-github.html"><a href="using-github.html#getting-started"><i class="fa fa-check"></i><b>28.2</b> Getting Started</a></li>
+<li class="chapter" data-level="28.3" data-path="using-github.html"><a href="using-github.html#advanced-use"><i class="fa fa-check"></i><b>28.3</b> Advanced Use</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -287,75 +322,180 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="filters-and-selections" class="section level1">
+<div id="filters-and-selections" class="section level1" number="9">
 <h1><span class="header-section-number">Chapter 9</span> Filters and selections</h1>
 <p>More often than not, we have more data than we want. Sometimes we need to be rid of that data. In <code>dplyr</code>, there’s two ways to go about this: filtering and selecting.</p>
-<p><strong>Filtering creates a subset of the data based on criteria</strong>. All records where the count is greater than 10. All records that match “Nebraska”. Something like that. <strong>Filtering works with rows – when we filter, we get fewer rows back than we start with.</strong></p>
-<p><strong>Selecting simply returns only the fields named</strong>. So if you only want to see Year and County, you select those fields. When you look at your data again, you’ll have two columns. If you try to use one of your columns that you had before you used select, you’ll get an error. <strong>Selecting works with columns. You will have the same number of records when you are done, but fewer columns of data to work with.</strong></p>
-<p>Let’s work with the <a href="https://unl.box.com/s/9826nisk29fztlc1xhup988eah0mqdby">salaries data from the University of Nebraska</a>. It has data from all NU campuses, but only one of them is our campus, so let’s filter out everyone else.</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1">salaries &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/nusalaries1819.csv&quot;</span>)</a></code></pre></div>
-<pre><code>## Parsed with column specification:
-## cols(
-##   Employee = col_character(),
-##   Position = col_character(),
-##   Campus = col_character(),
-##   Department = col_character(),
-##   `Budgeted Annual Salary` = col_number(),
-##   `Salary from State Aided Funds` = col_number(),
-##   `Salary from Other Funds` = col_number()
-## )</code></pre>
-<p>The data we want to filter on is in <code>Campus</code>. So we’re going to use filter and something called a comparison operator. We need to filter all records equal to UNL. The comparison operators in R, like most programming languages, are == for equal to, != for not equal to, &gt; for greater than, &gt;= for greater than or equal to and so on.</p>
-<p><strong>Be careful: <code>=</code> is not <code>==</code> and <code>=</code> is not “equal to”. <code>=</code> is an assignment operator in most languages – how things get named.</strong></p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1">unl &lt;-<span class="st"> </span>salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Campus <span class="op">==</span><span class="st"> &quot;UNL&quot;</span>)</a>
-<a class="sourceLine" id="cb80-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb80-3" data-line-number="3"><span class="kw">head</span>(unl)</a></code></pre></div>
-<pre><code>## # A tibble: 6 x 7
-##   Employee Position Campus Department `Budgeted Annua… `Salary from St…
-##   &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;                 &lt;dbl&gt;            &lt;dbl&gt;
-## 1 Abbott,… Staff S… UNL    FM&amp;P Faci…            37318               NA
-## 2 Abdel-M… Researc… UNL    Public Po…            58502               NA
-## 3 Abel, M… Chairpe… UNL    English               64470            64470
-## 4 Abel, M… Profess… UNL    English               39647            39647
-## 5 Abel, R… Control… UNL    FM&amp;P Buil…            57178            57178
-## 6 Abendro… Asst Di… UNL    Housing F…            79037               NA
-## # … with 1 more variable: `Salary from Other Funds` &lt;dbl&gt;</code></pre>
-<p>And just like that, we have just UNL, which we can verify looking at the head, the first six rows.</p>
-<p>We also have more data than we might want. For example, the salary data is only in the Budgeted Annual Salary column. The other two salary fields are useless detail.</p>
+<p><strong>Filtering creates a subset of the data based on criteria</strong>. All records where the amount is greater than 150,000. All records that match “College Park.” Something like that. <strong>Filtering works with rows – when we filter, we get fewer rows back than we start with.</strong></p>
+<p><strong>Selecting simply returns only the fields named</strong>. So if you only want to see city and amount, you select those fields. When you look at your data again, you’ll have two columns. If you try to use one of your columns that you had before you used select, you’ll get an error. <strong>Selecting works with columns. You will have the same number of records when you are done, but fewer columns of data to work with.</strong></p>
+<p>Let’s work with the <a href="https://umd.box.com/s/czolak14n8ts55aqnt7rrqfb6cb8blr1">PPP applications from Maryland</a>. It has loan applications from all over the state, so one way to filter is to isolate on “county” - Maryland has both counties and Baltimore City as jurisdictions. Let’s start by loading tidyverse and reading in the Maryland data:</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="filters-and-selections.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="filters-and-selections.html#cb75-1" aria-hidden="true" tabindex="-1"></a>maryland_ppp <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;data/ppp_applications_md.csv&#39;</span>)</span></code></pre></div>
+<p>The data we want to filter on is in <code>project_county_name</code>. So we’re going to use filter and something called a comparison operator. We need to filter all records equal to “PRINCE GEORGES.” The comparison operators in R, like most programming languages, are == for equal to, != for not equal to, &gt; for greater than, &gt;= for greater than or equal to and so on.</p>
+<p><strong>Be careful: <code>=</code> is not <code>==</code> and <code>=</code> is not “equal to.” <code>=</code> is an assignment operator in most languages – how things get named.</strong></p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="filters-and-selections.html#cb76-1" aria-hidden="true" tabindex="-1"></a>prince_georges <span class="ot">&lt;-</span> maryland_ppp <span class="sc">%&gt;%</span> <span class="fu">filter</span>(project_county_name <span class="sc">==</span> <span class="st">&quot;PRINCE GEORGES&quot;</span>)</span>
+<span id="cb76-2"><a href="filters-and-selections.html#cb76-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-3"><a href="filters-and-selections.html#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(prince_georges)</span></code></pre></div>
+<pre><code>##         id                           name  amount state
+## 1 93759908 PARTNERS ELECTRIC SERVICE INC. 1086257    MD
+## 2 93763718    VILLAGE ACADEMY OF MARYLAND  469800    MD
+## 3 93766115       GOSHEN HOUSE TRADING LLC  346500    MD
+## 4 93775653       AMERICAN CABLING COMPANY  162437    MD
+## 5 99444988                  BAYOU II, INC  140886    MD
+## 6 99446934        UNION BETHEL AME CHURCH  128200    MD
+##                       address            city        zip naics_code
+## 1              4857 Walden Ln          Lanham 20706-4826     238210
+## 2             8601 Ashwood Dr Capitol Heights 20743-3721     611110
+## 3            4310 Pennwood Rd       Brentwood 20722-1524     721199
+## 4 1522 Pointer Ridge Pl Ste J           Bowie 20716-1875     238990
+## 5        5151 INDIAN HEAD HWY       OXON HILL 20745-2014     722511
+## 6       6810 Floral Park Road      Brandywine      20613     813110
+##                     business_type                      race       gender
+## 1                     Corporation                Unanswered   Unanswered
+## 2 Limited  Liability Company(LLC)                Unanswered Female Owned
+## 3 Limited  Liability Company(LLC) Black or African American   Male Owned
+## 4                     Corporation Black or African American   Unanswered
+## 5                     Corporation                Unanswered   Unanswered
+## 6         Non-Profit Organization                Unanswered   Unanswered
+##       veteran non_profit jobs_retained       date_approved
+## 1  Unanswered         NA            66 2021-03-04 00:00:00
+## 2 Non-Veteran         NA            48 2021-01-20 00:00:00
+## 3 Non-Veteran         NA            25 2021-02-06 00:00:00
+## 4  Unanswered         NA            24 2021-01-30 00:00:00
+## 5  Unanswered         NA            39 2020-05-22 00:00:00
+## 6  Unanswered       TRUE            32 2020-04-15 00:00:00
+##                                    lender congressional_district loan_number
+## 1 Manufacturers and Traders Trust Company                  MD-04  6548888500
+## 2                      Premier Bank, Inc.                  MD-04  1981258301
+## 3                        Cross River Bank                  MD-04  4232408403
+## 4   Bank of America, National Association                  MD-05  8721658309
+## 5   Bank of America, National Association                  MD-04  1799817801
+## 6 Manufacturers and Traders Trust Company                  MD-05  9360457103
+##   sba_office_code processing_method  loan_status term sba_guaranty_percentage
+## 1             353               PPS  Exemption 4   60                     100
+## 2             353               PPS  Exemption 4   60                     100
+## 3             353               PPS  Exemption 4   60                     100
+## 4             353               PPS  Exemption 4   60                     100
+## 5             353               PPP  Exemption 4   24                     100
+## 6             353               PPP Paid in Full   24                     100
+##   initial_approval_amount current_approval_amount undisbursed_amount
+## 1                 1086257                 1086257                  0
+## 2                  469800                  469800                  0
+## 3                  346500                  346500                  0
+## 4                  162437                  162437                  0
+## 5                  140886                  140886                  0
+## 6                  128200                  128200                  0
+##   franchise_name servicing_lender_location_id
+## 1           &lt;NA&gt;                        46391
+## 2           &lt;NA&gt;                       122871
+## 3           &lt;NA&gt;                       456756
+## 4           &lt;NA&gt;                         9551
+## 5           &lt;NA&gt;                         9551
+## 6           &lt;NA&gt;                        46391
+##                     servicing_lender_name servicing_lender_address
+## 1 Manufacturers and Traders Trust Company One M &amp; T Plaza, 15th Fl
+## 2                      Premier Bank, Inc.             2883 5th Ave
+## 3                        Cross River Bank           885 Teaneck Rd
+## 4   Bank of America, National Association  100 N Tryon St, Ste 170
+## 5   Bank of America, National Association  100 N Tryon St, Ste 170
+## 6 Manufacturers and Traders Trust Company One M &amp; T Plaza, 15th Fl
+##   servicing_lender_city servicing_lender_state servicing_lender_zip
+## 1               BUFFALO                     NY                14203
+## 2            HUNTINGTON                     WV           25702-1435
+## 3               TEANECK                     NJ           07666-4546
+## 4             CHARLOTTE                     NC           28202-4024
+## 5             CHARLOTTE                     NC           28202-4024
+## 6               BUFFALO                     NY                14203
+##   rural_urban_indicator hubzone_indicator          business_age_description
+## 1                     U                 N Existing or more than 2 years old
+## 2                     U                 Y Existing or more than 2 years old
+## 3                     U                 Y Existing or more than 2 years old
+## 4                     U                 N Existing or more than 2 years old
+## 5                     U                 Y Existing or more than 2 years old
+## 6                     U                 N Existing or more than 2 years old
+##      project_city project_county_name project_state project_zip
+## 1          Lanham      PRINCE GEORGES            MD  20706-4826
+## 2 Capitol Heights      PRINCE GEORGES            MD  20743-3721
+## 3       Brentwood      PRINCE GEORGES            MD  20722-1524
+## 4           Bowie      PRINCE GEORGES            MD  20716-1875
+## 5       OXON HILL      PRINCE GEORGES            MD  20745-2014
+## 6      Brandywine      PRINCE GEORGES            MD  20613-0001
+##   utilities_proceed payroll_proceed mortgage_interest_proceed rent_proceed
+## 1                 1         1086254                        NA           NA
+## 2                NA          469800                        NA           NA
+## 3                 1          346496                        NA           NA
+## 4                 1          162435                        NA           NA
+## 5                NA          140886                        NA           NA
+## 6                 0           94935                     16000        12365
+##   refinance_eidl_proceed health_care_proceed debt_interest_proceed
+## 1                     NA                  NA                    NA
+## 2                     NA                  NA                    NA
+## 3                     NA                  NA                    NA
+## 4                     NA                  NA                    NA
+## 5                     NA                  NA                    NA
+## 6                      0                4900                     0
+##   originating_lender_city originating_lender_state loan_status_date
+## 1                 BUFFALO                       NY             &lt;NA&gt;
+## 2              HUNTINGTON                       WV             &lt;NA&gt;
+## 3                 TEANECK                       NJ             &lt;NA&gt;
+## 4               CHARLOTTE                       NC             &lt;NA&gt;
+## 5               CHARLOTTE                       NC             &lt;NA&gt;
+## 6                 BUFFALO                       NY       2021-02-06
+##   originating_lender_location_id lmi_indicator              ethnicity
+## 1                          46391             Y      Unknown/NotStated
+## 2                         122871             N Not Hispanic or Latino
+## 3                         456756             Y Not Hispanic or Latino
+## 4                           9551             N Not Hispanic or Latino
+## 5                           9551             Y      Unknown/NotStated
+## 6                          46391             N      Unknown/NotStated
+##   forgiveness_amount forgiveness_date
+## 1                 NA             &lt;NA&gt;
+## 2                 NA             &lt;NA&gt;
+## 3                 NA             &lt;NA&gt;
+## 4                 NA             &lt;NA&gt;
+## 5                 NA             &lt;NA&gt;
+## 6           129095.6       2021-01-12</code></pre>
+<p>And just like that, we have just Prince Georges, which we can verify looking at the head, the first six rows.</p>
+<p>We also have more data than we might want. For example, we may only want to work with the name, address, city, zip code and amount of Prince George’s applicants.</p>
 <p>To simplify our dataset, we can use select.</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1">selected_unl &lt;-<span class="st"> </span>unl <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(Employee, Position, Campus, <span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span>)</a>
-<a class="sourceLine" id="cb82-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb82-3" data-line-number="3"><span class="kw">head</span>(selected_unl)</a></code></pre></div>
-<pre><code>## # A tibble: 6 x 4
-##   Employee           Position                      Campus `Budgeted Annual Sala…
-##   &lt;chr&gt;              &lt;chr&gt;                         &lt;chr&gt;                   &lt;dbl&gt;
-## 1 Abbott, Frances M  Staff Secy III                UNL                     37318
-## 2 Abdel-Monem, Tari… Research Specialist           UNL                     58502
-## 3 Abel, Marco        Chairperson                   UNL                     64470
-## 4 Abel, Marco        Professor                     UNL                     39647
-## 5 Abel, Rick A       Control Systems Tech/Alarm S… UNL                     57178
-## 6 Abendroth, Curtis… Asst Dir Facilities Mgt/Main… UNL                     79037</code></pre>
-<p>And now we only have four columns of data for whatever salary analysis we might want to do.</p>
-<div id="combining-filters" class="section level2">
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="filters-and-selections.html#cb78-1" aria-hidden="true" tabindex="-1"></a>selected_prince_georges <span class="ot">&lt;-</span> prince_georges <span class="sc">%&gt;%</span> <span class="fu">select</span>(name, address, city, zip, amount)</span>
+<span id="cb78-2"><a href="filters-and-selections.html#cb78-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-3"><a href="filters-and-selections.html#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(selected_prince_georges)</span></code></pre></div>
+<pre><code>##                             name                     address            city
+## 1 PARTNERS ELECTRIC SERVICE INC.              4857 Walden Ln          Lanham
+## 2    VILLAGE ACADEMY OF MARYLAND             8601 Ashwood Dr Capitol Heights
+## 3       GOSHEN HOUSE TRADING LLC            4310 Pennwood Rd       Brentwood
+## 4       AMERICAN CABLING COMPANY 1522 Pointer Ridge Pl Ste J           Bowie
+## 5                  BAYOU II, INC        5151 INDIAN HEAD HWY       OXON HILL
+## 6        UNION BETHEL AME CHURCH       6810 Floral Park Road      Brandywine
+##          zip  amount
+## 1 20706-4826 1086257
+## 2 20743-3721  469800
+## 3 20722-1524  346500
+## 4 20716-1875  162437
+## 5 20745-2014  140886
+## 6      20613  128200</code></pre>
+<p>And now we only have five columns of data for whatever analysis we might want to do.</p>
+<div id="combining-filters" class="section level2" number="9.1">
 <h2><span class="header-section-number">9.1</span> Combining filters</h2>
-<p>So let’s say we wanted to know how many full professors make more than $100,000. We can do this a number of ways. The first is we can chain together a whole lot of filters.</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1">profs &lt;-<span class="st"> </span>salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Campus <span class="op">==</span><span class="st"> &quot;UNL&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Position <span class="op">==</span><span class="st"> &quot;Professor&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="st">`</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">100000</span>)</a>
-<a class="sourceLine" id="cb84-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb84-3" data-line-number="3"><span class="kw">nrow</span>(profs)</a></code></pre></div>
-<pre><code>## [1] 312</code></pre>
-<p>So that gives us 312 full professors – that’s the top rank of tenured professors – who make more than $100,000. But that’s silly and repetitive, no? We can do better using boolean operators – AND and OR. In this case, AND is <code>&amp;</code> and OR is <code>|</code>.</p>
-<p>The difference? With AND, all three things must be true to be included. With OR, any of those three things can be true and it will be included. An assistant professor making $100k at UNO will get included because they make $100k. One of the conditions is true.</p>
+<p>So let’s say we wanted to know how many Prince George’s applications were from non-profit organizations and applied for more than $150,000. We can do this a number of ways. The first is we can chain together a whole lot of filters.</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="filters-and-selections.html#cb80-1" aria-hidden="true" tabindex="-1"></a>large_prince_georges_nonprofit <span class="ot">&lt;-</span> maryland_ppp <span class="sc">%&gt;%</span> <span class="fu">filter</span>(project_county_name <span class="sc">==</span> <span class="st">&quot;PRINCE GEORGES&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(business_type <span class="sc">==</span> <span class="st">&quot;Non-Profit Organization&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(amount <span class="sc">&gt;</span> <span class="dv">150000</span>)</span>
+<span id="cb80-2"><a href="filters-and-selections.html#cb80-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-3"><a href="filters-and-selections.html#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(large_prince_georges_nonprofit)</span></code></pre></div>
+<pre><code>## [1] 145</code></pre>
+<p>That gives us 145 applicants. But that’s silly and repetitive, no? We can do better using boolean operators – AND and OR. In this case, AND is <code>&amp;</code> and OR is <code>|</code>.</p>
+<p>The difference? With AND, all three things must be true to be included. With OR, any of those three things can be true and it will be included. A Prince George’s corporation will get included because it applied for more than $150k. One of the conditions is true.</p>
 <p>Here’s the difference.</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1">andprofs &lt;-<span class="st"> </span>salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Campus <span class="op">==</span><span class="st"> &quot;UNL&quot;</span> <span class="op">&amp;</span><span class="st"> </span>Position <span class="op">==</span><span class="st"> &quot;Professor&quot;</span> <span class="op">&amp;</span><span class="st"> `</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">100000</span>)</a>
-<a class="sourceLine" id="cb86-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb86-3" data-line-number="3"><span class="kw">nrow</span>(andprofs)</a></code></pre></div>
-<pre><code>## [1] 312</code></pre>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="filters-and-selections.html#cb82-1" aria-hidden="true" tabindex="-1"></a>and_prince_georges <span class="ot">&lt;-</span> maryland_ppp <span class="sc">%&gt;%</span> <span class="fu">filter</span>(project_county_name <span class="sc">==</span> <span class="st">&quot;PRINCE GEORGES&quot;</span> <span class="sc">&amp;</span> business_type <span class="sc">==</span> <span class="st">&quot;Non-Profit Organization&quot;</span> <span class="sc">&amp;</span> amount <span class="sc">&gt;</span> <span class="dv">150000</span>)</span>
+<span id="cb82-2"><a href="filters-and-selections.html#cb82-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-3"><a href="filters-and-selections.html#cb82-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(and_prince_georges)</span></code></pre></div>
+<pre><code>## [1] 145</code></pre>
 <p>So AND gives us the same answer we got before. What does OR give us?</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1">orprofs &lt;-<span class="st"> </span>salaries <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Campus <span class="op">==</span><span class="st"> &quot;UNL&quot;</span> <span class="op">|</span><span class="st"> </span>Position <span class="op">==</span><span class="st"> &quot;Professor&quot;</span> <span class="op">|</span><span class="st"> `</span><span class="dt">Budgeted Annual Salary</span><span class="st">`</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">100000</span>)</a>
-<a class="sourceLine" id="cb88-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb88-3" data-line-number="3"><span class="kw">nrow</span>(orprofs)</a></code></pre></div>
-<pre><code>## [1] 7248</code></pre>
-<p>So there’s 7,248 unique people in the NU system who are at UNL (6,079 to be exact), are full Professors (1,086 of them), or make more than $100,000 (1,604) of them. Included in that list? Football coach Scott Frost, who makes … ahem … more than $100,000. A smidge more.</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="filters-and-selections.html#cb84-1" aria-hidden="true" tabindex="-1"></a>or_prince_georges <span class="ot">&lt;-</span> maryland_ppp <span class="sc">%&gt;%</span> <span class="fu">filter</span>(project_county_name <span class="sc">==</span> <span class="st">&quot;PRINCE GEORGES&quot;</span> <span class="sc">|</span> business_type <span class="sc">==</span> <span class="st">&quot;Non-Profit Organization&quot;</span> <span class="sc">|</span> amount <span class="sc">&gt;</span> <span class="dv">150000</span>)</span>
+<span id="cb84-2"><a href="filters-and-selections.html#cb84-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-3"><a href="filters-and-selections.html#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(or_prince_georges)</span></code></pre></div>
+<pre><code>## [1] 54321</code></pre>
+<p>So there’s 54,321 applications from Maryland applicants who are EITHER in Prince George’s OR a non-profit organization OR applied for more than $150,000. Or is inclusive; AND is exclusive.</p>
+<p>A general tip about using filter: it’s easier to work your way towards the filter syntax you need rather than try and write it once and trust the result. Each time you modify your filter, check the results to see if they make sense. This adds a little time to your process but you’ll thank yourself for doing it because it helps avoid mistakes.</p>
 
 </div>
 </div>
@@ -388,6 +528,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -408,6 +549,10 @@ gitbook.start({
 "text": null
 },
 "download": ["datajournalism.pdf", "datajournalism.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

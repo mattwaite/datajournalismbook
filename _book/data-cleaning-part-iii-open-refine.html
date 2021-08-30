@@ -5,26 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 12 Data Cleaning Part III: Open Refine | Data Journalism with R and the Tidyverse</title>
-  <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="description" content="This is a book built on a very opinionated philosophy for journalism students doing data journalism in R with replicable methods." />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 12 Data Cleaning Part III: Open Refine | Data Journalism with R and the Tidyverse" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  <meta property="og:description" content="This is a book built on a very opinionated philosophy for journalism students doing data journalism in R with replicable methods." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 12 Data Cleaning Part III: Open Refine | Data Journalism with R and the Tidyverse" />
   
-  <meta name="twitter:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  <meta name="twitter:description" content="This is a book built on a very opinionated philosophy for journalism students doing data journalism in R with replicable methods." />
   
 
-<meta name="author" content="Matt Waite" />
+<meta name="author" content="Matt Waite (original author); updated by Derek Willis and Sean Mussenden" />
 
 
-<meta name="date" content="2020-04-21" />
+<meta name="date" content="2021-08-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,8 @@
   
 <link rel="prev" href="data-cleaning-part-ii-janitor.html"/>
 <link rel="next" href="cleaning-data-part-iv-pdfs.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,14 +51,16 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.13/datatables.js"></script>
+<script src="libs/datatables-binding-0.18/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160712129-1"></script>
 <script>
@@ -70,25 +73,27 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -97,9 +102,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -132,6 +137,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -145,127 +151,156 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="http://mattwaite.github.io/datajournalism/">Data Journalism With R</a></li>
+<li><a href="http://smussenden.github.io/coursefiles/data_journalism_book/">Data Journalism With R</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#modern-data-journalism"><i class="fa fa-check"></i><b>1.1</b> Modern data journalism</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installations"><i class="fa fa-check"></i><b>1.2</b> Installations</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#about-this-book"><i class="fa fa-check"></i><b>1.3</b> About this book</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#what-well-cover"><i class="fa fa-check"></i><b>1.4</b> What we’ll cover</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="public-records.html"><a href="public-records.html"><i class="fa fa-check"></i><b>2</b> Public records</a><ul>
+<li class="chapter" data-level="2" data-path="public-records.html"><a href="public-records.html"><i class="fa fa-check"></i><b>2</b> Public records</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="public-records.html"><a href="public-records.html#federal-law"><i class="fa fa-check"></i><b>2.1</b> Federal law</a></li>
 <li class="chapter" data-level="2.2" data-path="public-records.html"><a href="public-records.html#state-law"><i class="fa fa-check"></i><b>2.2</b> State law</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>3</b> R basics</a><ul>
-<li class="chapter" data-level="3.1" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-1"><i class="fa fa-check"></i><b>3.1</b> Adding libraries, part 1</a></li>
-<li class="chapter" data-level="3.2" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-2"><i class="fa fa-check"></i><b>3.2</b> Adding libraries, part 2</a></li>
+<li class="chapter" data-level="3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>3</b> R basics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="r-basics.html"><a href="r-basics.html#about-libraries"><i class="fa fa-check"></i><b>3.1</b> About libraries</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html"><i class="fa fa-check"></i><b>4</b> Data journalism in the age of replication</a><ul>
+<li class="chapter" data-level="4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html"><i class="fa fa-check"></i><b>4</b> Data journalism in the age of replication</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#the-stylebook"><i class="fa fa-check"></i><b>4.1</b> The stylebook</a></li>
 <li class="chapter" data-level="4.2" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication"><i class="fa fa-check"></i><b>4.2</b> Replication</a></li>
 <li class="chapter" data-level="4.3" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#goodbye-excel"><i class="fa fa-check"></i><b>4.3</b> Goodbye Excel?</a></li>
 <li class="chapter" data-level="4.4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#receptivity-is-high"><i class="fa fa-check"></i><b>4.4</b> “Receptivity … is high”</a></li>
 <li class="chapter" data-level="4.5" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication-in-notebooks"><i class="fa fa-check"></i><b>4.5</b> Replication in notebooks</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html"><i class="fa fa-check"></i><b>5</b> Data, structures and types</a><ul>
-<li class="chapter" data-level="5.1" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#rows-and-columns"><i class="fa fa-check"></i><b>5.1</b> Rows and columns</a></li>
+<li class="chapter" data-level="5" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html"><i class="fa fa-check"></i><b>5</b> Data, structures and types</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#a-mental-picture"><i class="fa fa-check"></i><b>5.1</b> A Mental Picture</a></li>
 <li class="chapter" data-level="5.2" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#types"><i class="fa fa-check"></i><b>5.2</b> Types</a></li>
-<li class="chapter" data-level="5.3" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#a-simple-way-to-get-data"><i class="fa fa-check"></i><b>5.3</b> A simple way to get data</a></li>
-<li class="chapter" data-level="5.4" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#cleaning-the-data"><i class="fa fa-check"></i><b>5.4</b> Cleaning the data</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="aggregates.html"><a href="aggregates.html"><i class="fa fa-check"></i><b>6</b> Aggregates</a><ul>
-<li class="chapter" data-level="6.1" data-path="aggregates.html"><a href="aggregates.html#importing-data"><i class="fa fa-check"></i><b>6.1</b> Importing data</a></li>
-<li class="chapter" data-level="6.2" data-path="aggregates.html"><a href="aggregates.html#group-by-and-count"><i class="fa fa-check"></i><b>6.2</b> Group by and count</a></li>
-<li class="chapter" data-level="6.3" data-path="aggregates.html"><a href="aggregates.html#other-aggregates-mean-and-median"><i class="fa fa-check"></i><b>6.3</b> Other aggregates: Mean and median</a></li>
-<li class="chapter" data-level="6.4" data-path="aggregates.html"><a href="aggregates.html#even-more-aggregates"><i class="fa fa-check"></i><b>6.4</b> Even more aggregates</a></li>
+<li class="chapter" data-level="6" data-path="aggregates.html"><a href="aggregates.html"><i class="fa fa-check"></i><b>6</b> Aggregates</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="aggregates.html"><a href="aggregates.html#libraries"><i class="fa fa-check"></i><b>6.1</b> Libraries</a></li>
+<li class="chapter" data-level="6.2" data-path="aggregates.html"><a href="aggregates.html#importing-data"><i class="fa fa-check"></i><b>6.2</b> Importing data</a></li>
+<li class="chapter" data-level="6.3" data-path="aggregates.html"><a href="aggregates.html#group-by-and-count"><i class="fa fa-check"></i><b>6.3</b> Group by and count</a></li>
+<li class="chapter" data-level="6.4" data-path="aggregates.html"><a href="aggregates.html#other-summarization-methods-summing-mean-median-min-and-max"><i class="fa fa-check"></i><b>6.4</b> Other summarization methods: summing, mean, median, min and max</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>7</b> Mutating data</a><ul>
+<li class="chapter" data-level="7" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>7</b> Mutating data</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="mutating-data.html"><a href="mutating-data.html#another-use-of-mutate"><i class="fa fa-check"></i><b>7.1</b> Another use of mutate</a></li>
+<li class="chapter" data-level="7.2" data-path="mutating-data.html"><a href="mutating-data.html#a-more-powerful-use"><i class="fa fa-check"></i><b>7.2</b> A more powerful use</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>8</b> Working with dates</a><ul>
+<li class="chapter" data-level="8" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>8</b> Working with dates</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="working-with-dates.html"><a href="working-with-dates.html#the-hard-way"><i class="fa fa-check"></i><b>8.1</b> The hard way</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="filters-and-selections.html"><a href="filters-and-selections.html"><i class="fa fa-check"></i><b>9</b> Filters and selections</a><ul>
+<li class="chapter" data-level="9" data-path="filters-and-selections.html"><a href="filters-and-selections.html"><i class="fa fa-check"></i><b>9</b> Filters and selections</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="filters-and-selections.html"><a href="filters-and-selections.html#combining-filters"><i class="fa fa-check"></i><b>9.1</b> Combining filters</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html"><i class="fa fa-check"></i><b>10</b> Data Cleaning Part I: Data smells</a><ul>
+<li class="chapter" data-level="10" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html"><i class="fa fa-check"></i><b>10</b> Data Cleaning Part I: Data smells</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#wrong-type"><i class="fa fa-check"></i><b>10.1</b> Wrong Type</a></li>
 <li class="chapter" data-level="10.2" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#missing-data"><i class="fa fa-check"></i><b>10.2</b> Missing Data</a></li>
 <li class="chapter" data-level="10.3" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#gaps-in-data"><i class="fa fa-check"></i><b>10.3</b> Gaps in data</a></li>
-<li class="chapter" data-level="10.4" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#internal-inconsistency"><i class="fa fa-check"></i><b>10.4</b> Internal inconsistency</a></li>
-<li class="chapter" data-level="10.5" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#a-shortcut-summary"><i class="fa fa-check"></i><b>10.5</b> A Shortcut: Summary</a></li>
+<li class="chapter" data-level="10.4" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#supicious-outliers"><i class="fa fa-check"></i><b>10.4</b> Supicious Outliers</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html"><i class="fa fa-check"></i><b>11</b> Data Cleaning Part II: Janitor</a><ul>
+<li class="chapter" data-level="11" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html"><i class="fa fa-check"></i><b>11</b> Data Cleaning Part II: Janitor</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#cleaning-headers"><i class="fa fa-check"></i><b>11.1</b> Cleaning headers</a></li>
-<li class="chapter" data-level="11.2" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#duplicates"><i class="fa fa-check"></i><b>11.2</b> Duplicates</a></li>
-<li class="chapter" data-level="11.3" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#inconsistency"><i class="fa fa-check"></i><b>11.3</b> Inconsistency</a></li>
+<li class="chapter" data-level="11.2" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#changing-data-types"><i class="fa fa-check"></i><b>11.2</b> Changing data types</a></li>
+<li class="chapter" data-level="11.3" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#duplicates"><i class="fa fa-check"></i><b>11.3</b> Duplicates</a></li>
+<li class="chapter" data-level="11.4" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#cleaning-strings"><i class="fa fa-check"></i><b>11.4</b> Cleaning strings</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html"><i class="fa fa-check"></i><b>12</b> Data Cleaning Part III: Open Refine</a><ul>
+<li class="chapter" data-level="12" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html"><i class="fa fa-check"></i><b>12</b> Data Cleaning Part III: Open Refine</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#refinr-open-refine-in-r"><i class="fa fa-check"></i><b>12.1</b> Refinr, Open Refine in R</a></li>
-<li class="chapter" data-level="12.2" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#more-complex-issues"><i class="fa fa-check"></i><b>12.2</b> More complex issues</a></li>
-<li class="chapter" data-level="12.3" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#manually-cleaning-data-with-open-refine"><i class="fa fa-check"></i><b>12.3</b> Manually cleaning data with Open Refine</a></li>
+<li class="chapter" data-level="12.2" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#manually-cleaning-data-with-open-refine"><i class="fa fa-check"></i><b>12.2</b> Manually cleaning data with Open Refine</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html"><i class="fa fa-check"></i><b>13</b> Cleaning Data Part IV: PDFs</a><ul>
-<li class="chapter" data-level="13.1" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-looks-good-but-goes-wrong"><i class="fa fa-check"></i><b>13.1</b> When it looks good, but goes wrong</a></li>
-<li class="chapter" data-level="13.2" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-works-well."><i class="fa fa-check"></i><b>13.2</b> When it works well.</a></li>
+<li class="chapter" data-level="13" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html"><i class="fa fa-check"></i><b>13</b> Cleaning Data Part IV: PDFs</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#easy-does-it"><i class="fa fa-check"></i><b>13.1</b> Easy does it</a></li>
+<li class="chapter" data-level="13.2" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-looks-good-but-needs-a-little-fixing"><i class="fa fa-check"></i><b>13.2</b> When it looks good, but needs a little fixing</a></li>
 <li class="chapter" data-level="13.3" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#cleaning-up-the-data-in-r"><i class="fa fa-check"></i><b>13.3</b> Cleaning up the data in R</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="combining-and-joining.html"><a href="combining-and-joining.html"><i class="fa fa-check"></i><b>14</b> Combining and joining</a><ul>
-<li class="chapter" data-level="14.1" data-path="combining-and-joining.html"><a href="combining-and-joining.html#combining-data"><i class="fa fa-check"></i><b>14.1</b> Combining data</a></li>
+<li class="chapter" data-level="14" data-path="combining-and-joining.html"><a href="combining-and-joining.html"><i class="fa fa-check"></i><b>14</b> Combining and joining</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="combining-and-joining.html"><a href="combining-and-joining.html#combining-data-stacking"><i class="fa fa-check"></i><b>14.1</b> Combining data (stacking)</a></li>
 <li class="chapter" data-level="14.2" data-path="combining-and-joining.html"><a href="combining-and-joining.html#joining-data"><i class="fa fa-check"></i><b>14.2</b> Joining data</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html"><i class="fa fa-check"></i><b>15</b> Scraping data with Rvest</a><ul>
+<li class="chapter" data-level="15" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html"><i class="fa fa-check"></i><b>15</b> Scraping data with Rvest</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html#a-more-difficult-example"><i class="fa fa-check"></i><b>15.1</b> A more difficult example</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="advanced-rvest.html"><a href="advanced-rvest.html"><i class="fa fa-check"></i><b>16</b> Advanced rvest</a></li>
-<li class="chapter" data-level="17" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html"><i class="fa fa-check"></i><b>17</b> Intro to APIs: The Census</a><ul>
+<li class="chapter" data-level="17" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html"><i class="fa fa-check"></i><b>17</b> Intro to APIs: The Census</a>
+<ul>
 <li class="chapter" data-level="17.1" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html#the-acs"><i class="fa fa-check"></i><b>17.1</b> The ACS</a></li>
 <li class="chapter" data-level="17.2" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html#bonus-api-example-coronavirus"><i class="fa fa-check"></i><b>17.2</b> Bonus API example: Coronavirus</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html"><i class="fa fa-check"></i><b>18</b> Visualizing your data for reporting</a><ul>
+<li class="chapter" data-level="18" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html"><i class="fa fa-check"></i><b>18</b> Visualizing your data for reporting</a>
+<ul>
 <li class="chapter" data-level="18.1" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html#bar-charts"><i class="fa fa-check"></i><b>18.1</b> Bar charts</a></li>
 <li class="chapter" data-level="18.2" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html#line-charts"><i class="fa fa-check"></i><b>18.2</b> Line charts</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="visualizing-your-data-for-publication.html"><a href="visualizing-your-data-for-publication.html"><i class="fa fa-check"></i><b>19</b> Visualizing your data for publication</a><ul>
+<li class="chapter" data-level="19" data-path="visualizing-your-data-for-publication.html"><a href="visualizing-your-data-for-publication.html"><i class="fa fa-check"></i><b>19</b> Visualizing your data for publication</a>
+<ul>
 <li class="chapter" data-level="19.1" data-path="visualizing-your-data-for-publication.html"><a href="visualizing-your-data-for-publication.html#datawrapper"><i class="fa fa-check"></i><b>19.1</b> Datawrapper</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html"><i class="fa fa-check"></i><b>20</b> Geographic data basics</a><ul>
+<li class="chapter" data-level="20" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html"><i class="fa fa-check"></i><b>20</b> Geographic data basics</a>
+<ul>
 <li class="chapter" data-level="20.1" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html#importing-and-viewing-data"><i class="fa fa-check"></i><b>20.1</b> Importing and viewing data</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="geographic-analysis.html"><a href="geographic-analysis.html"><i class="fa fa-check"></i><b>21</b> Geographic analysis</a><ul>
+<li class="chapter" data-level="21" data-path="geographic-analysis.html"><a href="geographic-analysis.html"><i class="fa fa-check"></i><b>21</b> Geographic analysis</a>
+<ul>
 <li class="chapter" data-level="21.1" data-path="geographic-analysis.html"><a href="geographic-analysis.html#why-tidycensus-is-so-useful"><i class="fa fa-check"></i><b>21.1</b> Why tidycensus is so useful</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="automating-analysis.html"><a href="automating-analysis.html"><i class="fa fa-check"></i><b>22</b> Automating analysis</a><ul>
+<li class="chapter" data-level="22" data-path="automating-analysis.html"><a href="automating-analysis.html"><i class="fa fa-check"></i><b>22</b> Automating analysis</a>
+<ul>
 <li class="chapter" data-level="22.1" data-path="automating-analysis.html"><a href="automating-analysis.html#automating-downloads-an-imports"><i class="fa fa-check"></i><b>22.1</b> Automating downloads an imports</a></li>
 <li class="chapter" data-level="22.2" data-path="automating-analysis.html"><a href="automating-analysis.html#exploring-the-data"><i class="fa fa-check"></i><b>22.2</b> Exploring the data</a></li>
 <li class="chapter" data-level="22.3" data-path="automating-analysis.html"><a href="automating-analysis.html#analysis"><i class="fa fa-check"></i><b>22.3</b> Analysis</a></li>
 <li class="chapter" data-level="22.4" data-path="automating-analysis.html"><a href="automating-analysis.html#making-updating-graphics"><i class="fa fa-check"></i><b>22.4</b> Making updating graphics</a></li>
 <li class="chapter" data-level="22.5" data-path="automating-analysis.html"><a href="automating-analysis.html#the-state-vs-the-feds"><i class="fa fa-check"></i><b>22.5</b> The State vs the Feds</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="automating-geographic-analysis.html"><a href="automating-geographic-analysis.html"><i class="fa fa-check"></i><b>23</b> Automating geographic analysis</a><ul>
+<li class="chapter" data-level="23" data-path="automating-geographic-analysis.html"><a href="automating-geographic-analysis.html"><i class="fa fa-check"></i><b>23</b> Automating geographic analysis</a>
+<ul>
 <li class="chapter" data-level="23.1" data-path="automating-geographic-analysis.html"><a href="automating-geographic-analysis.html#mapping-continuously"><i class="fa fa-check"></i><b>23.1</b> Mapping continuously</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="basic-stats-the-t-test.html"><a href="basic-stats-the-t-test.html"><i class="fa fa-check"></i><b>24</b> Basic Stats: The T-Test</a><ul>
+<li class="chapter" data-level="24" data-path="basic-stats-the-t-test.html"><a href="basic-stats-the-t-test.html"><i class="fa fa-check"></i><b>24</b> Basic Stats: The T-Test</a>
+<ul>
 <li class="chapter" data-level="24.1" data-path="basic-stats-the-t-test.html"><a href="basic-stats-the-t-test.html#specific-call-types"><i class="fa fa-check"></i><b>24.1</b> Specific call types</a></li>
 <li class="chapter" data-level="24.2" data-path="basic-stats-the-t-test.html"><a href="basic-stats-the-t-test.html#what-else-should-we-look-at"><i class="fa fa-check"></i><b>24.2</b> What else should we look at?</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="an-intro-to-text-analysis.html"><a href="an-intro-to-text-analysis.html"><i class="fa fa-check"></i><b>25</b> An intro to text analysis</a><ul>
+<li class="chapter" data-level="25" data-path="an-intro-to-text-analysis.html"><a href="an-intro-to-text-analysis.html"><i class="fa fa-check"></i><b>25</b> An intro to text analysis</a>
+<ul>
 <li class="chapter" data-level="25.1" data-path="an-intro-to-text-analysis.html"><a href="an-intro-to-text-analysis.html#going-further-by-analyzing-text"><i class="fa fa-check"></i><b>25.1</b> Going further by analyzing text</a></li>
 <li class="chapter" data-level="25.2" data-path="an-intro-to-text-analysis.html"><a href="an-intro-to-text-analysis.html#going-beyond-a-single-word"><i class="fa fa-check"></i><b>25.2</b> Going beyond a single word</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html"><i class="fa fa-check"></i><b>26</b> Writing with numbers</a><ul>
+<li class="chapter" data-level="26" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html"><i class="fa fa-check"></i><b>26</b> Writing with numbers</a>
+<ul>
 <li class="chapter" data-level="26.1" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html#how-to-write-about-numbers-without-overwhelming-with-numbers."><i class="fa fa-check"></i><b>26.1</b> How to write about numbers without overwhelming with numbers.</a></li>
 <li class="chapter" data-level="26.2" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html#when-exact-numbers-matter"><i class="fa fa-check"></i><b>26.2</b> When exact numbers matter</a></li>
 <li class="chapter" data-level="26.3" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html#an-example"><i class="fa fa-check"></i><b>26.3</b> An example</a></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html"><i class="fa fa-check"></i><b>27</b> Ethics in data journalism</a><ul>
+<li class="chapter" data-level="27" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html"><i class="fa fa-check"></i><b>27</b> Ethics in data journalism</a>
+<ul>
 <li class="chapter" data-level="27.1" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#problems"><i class="fa fa-check"></i><b>27.1</b> Problems</a></li>
 <li class="chapter" data-level="27.2" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#the-googlebot"><i class="fa fa-check"></i><b>27.2</b> The Googlebot</a></li>
 <li class="chapter" data-level="27.3" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#data-lifetimes"><i class="fa fa-check"></i><b>27.3</b> Data Lifetimes</a></li>
 <li class="chapter" data-level="27.4" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#you-are-a-data-provider"><i class="fa fa-check"></i><b>27.4</b> You Are a Data Provider</a></li>
 <li class="chapter" data-level="27.5" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#ethical-data"><i class="fa fa-check"></i><b>27.5</b> Ethical Data</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="using-github.html"><a href="using-github.html"><i class="fa fa-check"></i><b>28</b> Using GitHub</a>
+<ul>
+<li class="chapter" data-level="28.1" data-path="using-github.html"><a href="using-github.html#how-it-works"><i class="fa fa-check"></i><b>28.1</b> How It Works</a></li>
+<li class="chapter" data-level="28.2" data-path="using-github.html"><a href="using-github.html#getting-started"><i class="fa fa-check"></i><b>28.2</b> Getting Started</a></li>
+<li class="chapter" data-level="28.3" data-path="using-github.html"><a href="using-github.html#advanced-use"><i class="fa fa-check"></i><b>28.3</b> Advanced Use</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -287,180 +322,179 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-cleaning-part-iii-open-refine" class="section level1">
+<div id="data-cleaning-part-iii-open-refine" class="section level1" number="12">
 <h1><span class="header-section-number">Chapter 12</span> Data Cleaning Part III: Open Refine</h1>
-<p>Gather ’round kids and let me tell you a tale about your author. In college, your author got involved in a project where he mapped crime in the city, looking specifically in the neighborhoods surrounding campus. This was in the mid 1990s. Computers were under powered. Tools were pretty primitive. I was given a database of nearly 50,000 calls for service.</p>
+<p>Gather ’round kids and let me tell you a tale about your author. In college, your author (Matt Waite) got involved in a project where he mapped crime in the city, looking specifically in the neighborhoods surrounding campus. This was in the mid 1990s. Computers were under powered. Tools were pretty primitive. I was given a database of nearly 50,000 calls for service.</p>
 <p>And then I learned that addresses were not stored in a standard way. However the officer wrote it down, that’s how it was recorded.</p>
 <p>What did that mean?</p>
-<p>It meant the Lincoln Police Department came up with dozens of ways to say a single place. And since the mapping software needed the addressed to be in a specific form, I had to fix them. For example, I will go to my grave knowing that Lincoln High School’s street address is 2229 J Street. Police officers wrote down LHS, L.H.S., Lincoln HS, Lincoln H.S., LHS (J Street), 2229 J, 2229 J ST, St., Street and on and on and on. That one was relatively easy. The local convenience store chain, with 8 locations around the city, was harder. I had to use the patrol district to locate them.</p>
+<p>It meant the Lincoln (Nebraska) Police Department came up with dozens of ways to say a single place. And since the mapping software needed the addressed to be in a specific form, I had to fix them. For example, I will go to my grave knowing that Lincoln High School’s street address is 2229 J Street. Police officers wrote down LHS, L.H.S., Lincoln HS, Lincoln H.S., LHS (J Street), 2229 J, 2229 J ST, St., Street and on and on and on. That one was relatively easy. The local convenience store chain, with 8 locations around the city, was harder. I had to use the patrol district to locate them.</p>
 <p>It took me four months to clean up more than 30,000 unique addresses and map them.</p>
-<p>I tell you this because if I had Open Refine, it would have taken me a week, not four months.
-Every time I talk about Open Refine, I remember this, and I get mad.</p>
+<p>I tell you this because if I had Open Refine, it would have taken me a week, not four months.</p>
+<p>Every time I talk about Open Refine, I remember this, and I get mad.</p>
+<p>Fortunately (unfortunately?) several columns in the PPP loan data we’re working with are flawed in exactly the same way. There are dozens of variations on just “Baltimore.”</p>
 <p>We’re going to explore two ways into Open Refine: Through R, and through Open Refine itself.</p>
-<div id="refinr-open-refine-in-r" class="section level2">
+<div id="refinr-open-refine-in-r" class="section level2" number="12.1">
 <h2><span class="header-section-number">12.1</span> Refinr, Open Refine in R</h2>
 <p>What is Open Refine?</p>
-<p>Open Refine is a series of tools – algorithms – that find small differences in text and helps you fix them quickly. How Open Refine finds those small differences is through something called clustering. The algorithms behind clustering are not exclusive to Open Refine, so they can be used elsewhere.</p>
-<p>Enter <code>refinr</code>, a package that contains the same clustering algorithms as Open Refine but all within R. Go ahead and install it if you haven’t already by opening the console and running <code>install.packages(&quot;refinr&quot;)</code>. Then we can load libraries as we do.</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb133-2" data-line-number="2"><span class="kw">library</span>(refinr)</a>
-<a class="sourceLine" id="cb133-3" data-line-number="3"><span class="kw">library</span>(janitor)</a></code></pre></div>
-<p>Let’s load a simple dataset where we know there’s a simple problem. Let’s load the dataset of mountainlion sightings.</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" data-line-number="1">mountainlions &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/mountainlions.csv&quot;</span>)</a></code></pre></div>
-<pre><code>## Parsed with column specification:
-## cols(
-##   ID = col_double(),
-##   `Cofirm Type` = col_character(),
-##   COUNTY = col_character(),
-##   Date = col_character()
-## )</code></pre>
-<p>The issue in this dataset, if you look carefully, is that there’s two Sheridan counties – a Sheridan and a sheridan.</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1">mountainlions <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(COUNTY) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>()</a></code></pre></div>
-<pre><code>## # A tibble: 42 x 2
-##    COUNTY        n
-##    &lt;chr&gt;     &lt;int&gt;
-##  1 Banner        6
-##  2 Blaine        3
-##  3 Box Butte     4
-##  4 Brown        15
-##  5 Buffalo       3
-##  6 Cedar         1
-##  7 Cherry       30
-##  8 Custer        8
-##  9 Dakota        3
-## 10 Dawes       111
-## # … with 32 more rows</code></pre>
-<p>The first merging technique we’ll try is the <code>key_collision_merge</code>. The key collision merge function takes each string and extracts the key parts of it. It then puts every key in a bin based on the keys matching. So in this case, it finds sheridan and Sheridan and recognizes that the keys match, and since Sheridan is more common, it uses that one.</p>
-<p>One rule you should follow: <strong>do not overwrite your original fields</strong>. Always work on a copy. If you overwrite your original field, how will you know if it did the right thing? How can you compare it to your original data? To follow this, I’m going to mutate a new field called CleanCounty and put the results of key collision merge there.</p>
-<p>Then, to show it worked, I’ll do the same group and count.</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1">mountainlions <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb138-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">CleanCounty =</span> <span class="kw">key_collision_merge</span>(COUNTY)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb138-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(CleanCounty) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>()</a></code></pre></div>
-<pre><code>## # A tibble: 41 x 2
-##    CleanCounty     n
-##    &lt;chr&gt;       &lt;int&gt;
-##  1 Banner          6
-##  2 Blaine          3
-##  3 Box Butte       4
-##  4 Brown          15
-##  5 Buffalo         3
-##  6 Cedar           1
-##  7 Cherry         30
-##  8 Custer          8
-##  9 Dakota          3
-## 10 Dawes         111
-## # … with 31 more rows</code></pre>
-<p>And just like that, instead of 35 and 2 in two different Sheridan counties, we have 37 in one Sheridan County.</p>
+<p>Open Refine is a software program that has tools – algorithms – that find small differences in text and helps you fix them quickly. How Open Refine finds those small differences is through something called clustering. The algorithms behind clustering are not exclusive to Open Refine, so they can be used elsewhere.</p>
+<p>Enter <code>refinr</code>, a package that contains the same clustering algorithms as Open Refine but all within R. Go ahead and install it if you haven’t already by opening the console and running <code>install.packages("refinr")</code>. Then we can load libraries as we do.</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="data-cleaning-part-iii-open-refine.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb153-2"><a href="data-cleaning-part-iii-open-refine.html#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(refinr)</span>
+<span id="cb153-3"><a href="data-cleaning-part-iii-open-refine.html#cb153-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code></pre></div>
+<p>Let’s load our full Maryland PPP loans data.</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="data-cleaning-part-iii-open-refine.html#cb154-1" aria-hidden="true" tabindex="-1"></a>md_loans <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">&quot;data/ppp_loan_data/processed/md/ppp_loans_md.rmd&quot;</span>)</span></code></pre></div>
+<p>Now let’s try and group and count the number of loans by city. To make it a bit more managable, let’s use another string function from <code>stringr</code> and filter for cities that start with the uppercase “A” or lowercase “a” using the function <code>str_detect()</code> with a regular expression. The filter function in the codeblock below says: look in the city column, and pluck out any value that starts with (the “^” symbol means “starts with”) a lowercase “a” OR (the vertical “|,” called a pipe, means OR) an uppercase “A.”</p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="data-cleaning-part-iii-open-refine.html#cb155-1" aria-hidden="true" tabindex="-1"></a>md_loans <span class="sc">%&gt;%</span> </span>
+<span id="cb155-2"><a href="data-cleaning-part-iii-open-refine.html#cb155-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(city) <span class="sc">%&gt;%</span> </span>
+<span id="cb155-3"><a href="data-cleaning-part-iii-open-refine.html#cb155-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb155-4"><a href="data-cleaning-part-iii-open-refine.html#cb155-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">count=</span><span class="fu">n</span>()</span>
+<span id="cb155-5"><a href="data-cleaning-part-iii-open-refine.html#cb155-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb155-6"><a href="data-cleaning-part-iii-open-refine.html#cb155-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(city, <span class="st">&quot;^a|^A&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb155-7"><a href="data-cleaning-part-iii-open-refine.html#cb155-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(city)</span></code></pre></div>
+<pre><code>## # A tibble: 62 × 2
+##    city                    count
+##    &lt;chr&gt;                   &lt;int&gt;
+##  1 ABDULREZAK H ISSAC          1
+##  2 Abell                       3
+##  3 ABELL                       2
+##  4 aberdeen                    3
+##  5 Aberdeen                  456
+##  6 ABERDEEN                  192
+##  7 Aberdeen Proving Ground    13
+##  8 ABERDEEN PROVING GROUND     2
+##  9 Abereen                     1
+## 10 abigdon                     2
+## # … with 52 more rows</code></pre>
+<p>By using the OpenRefine package for R, <code>refinr</code>, our hope is that it can identify and standardize the data.</p>
+<p>The first merging technique that’s part of the <code>refinr</code> package we’ll try is the <code>key_collision_merge</code>.</p>
+<p>The key collision merge function takes each string and extracts the key parts of it. It then puts every key in a bin based on the keys matching.</p>
+<p>One rule you should follow when using this is: <strong>do not overwrite your original fields</strong>. Always work on a copy. If you overwrite your original field, how will you know if it did the right thing? How can you compare it to your original data? To follow this, I’m going to mutate a new field called clean_city and put the results of key collision merge there.</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="data-cleaning-part-iii-open-refine.html#cb157-1" aria-hidden="true" tabindex="-1"></a>cleaned_md_loans <span class="ot">&lt;-</span> md_loans <span class="sc">%&gt;%</span> </span>
+<span id="cb157-2"><a href="data-cleaning-part-iii-open-refine.html#cb157-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">city_clean=</span><span class="fu">key_collision_merge</span>(city)) <span class="sc">%&gt;%</span></span>
+<span id="cb157-3"><a href="data-cleaning-part-iii-open-refine.html#cb157-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id<span class="sc">:</span>city, city_clean, <span class="fu">everything</span>())</span>
+<span id="cb157-4"><a href="data-cleaning-part-iii-open-refine.html#cb157-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-5"><a href="data-cleaning-part-iii-open-refine.html#cb157-5" aria-hidden="true" tabindex="-1"></a>cleaned_md_loans</span></code></pre></div>
+<pre><code>## # A tibble: 195,865 × 64
+##          id name   slug   amount state address city  city_clean zip   naics_code
+##       &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;dbl&gt;
+##  1 99443772 TARBI… tarbi… 149000 MD    6785 B… Elkr… Elkridge   2107…     611110
+##  2 99444241 J &amp;AM… j-amp… 146000 MD    10413 … Unio… Union Bri… 21791     238310
+##  3 99445051 DULAN… dulan… 140400 MD    4 Wind… PHOE… Phoenix    2113…     623110
+##  4 99445208 QUART… quart… 139527 MD    4972 W… Rock… Rockville  20852     311920
+##  5 99446123 ORCHA… orcha… 133400 MD    1855 W… Owin… Owings     2073…     561730
+##  6 99446170 FRUIT… fruit… 133000 MD    402 MA… EAST… EASTON     2160…     531120
+##  7 99446547 YOUNI… youni… 130520 MD    5000 T… Oakl… Oakland    2155…     621610
+##  8 99448012 FRANK… frank… 121862 MD    14805 … Spar… Sparks     2115…     812990
+##  9 99448137 RACE … race-… 121100 MD    1 RAIL… WEST… Westminst… 2115…     451110
+## 10 99448298 VITAL… vital… 120165 MD    1701 P… Broo… Brookevil… 2083…     541330
+## # … with 195,855 more rows, and 54 more variables: business_type &lt;chr&gt;,
+## #   race &lt;chr&gt;, gender &lt;chr&gt;, veteran &lt;chr&gt;, non_profit &lt;lgl&gt;,
+## #   jobs_retained &lt;dbl&gt;, date_approved &lt;date&gt;, lender &lt;chr&gt;,
+## #   congressional_district &lt;chr&gt;, loan_range_sort_key &lt;lgl&gt;,
+## #   previous_loan_range &lt;lgl&gt;, previous_name &lt;lgl&gt;, loan_number &lt;dbl&gt;,
+## #   sba_office_code &lt;dbl&gt;, processing_method &lt;chr&gt;, loan_status &lt;chr&gt;,
+## #   term &lt;dbl&gt;, sba_guaranty_percentage &lt;dbl&gt;, initial_approval_amount &lt;dbl&gt;, …</code></pre>
+<p>To examine changes <code>refinr</code> made, let’s examine the changes it made to cities that start with the letter “A.”</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="data-cleaning-part-iii-open-refine.html#cb159-1" aria-hidden="true" tabindex="-1"></a>cleaned_md_loans <span class="sc">%&gt;%</span> </span>
+<span id="cb159-2"><a href="data-cleaning-part-iii-open-refine.html#cb159-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(city_clean, city) <span class="sc">%&gt;%</span> </span>
+<span id="cb159-3"><a href="data-cleaning-part-iii-open-refine.html#cb159-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb159-4"><a href="data-cleaning-part-iii-open-refine.html#cb159-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">count=</span><span class="fu">n</span>()</span>
+<span id="cb159-5"><a href="data-cleaning-part-iii-open-refine.html#cb159-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb159-6"><a href="data-cleaning-part-iii-open-refine.html#cb159-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(city, <span class="st">&quot;^a|^A&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb159-7"><a href="data-cleaning-part-iii-open-refine.html#cb159-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(city)</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;city_clean&#39;. You can override using the `.groups` argument.</code></pre>
+<pre><code>## # A tibble: 62 × 3
+## # Groups:   city_clean [38]
+##    city_clean              city                    count
+##    &lt;chr&gt;                   &lt;chr&gt;                   &lt;int&gt;
+##  1 ABDULREZAK H ISSAC      ABDULREZAK H ISSAC          1
+##  2 Abell                   Abell                       3
+##  3 Abell                   ABELL                       2
+##  4 Aberdeen                aberdeen                    3
+##  5 Aberdeen                Aberdeen                  456
+##  6 Aberdeen                ABERDEEN                  192
+##  7 Aberdeen Proving Ground Aberdeen Proving Ground    13
+##  8 Aberdeen Proving Ground ABERDEEN PROVING GROUND     2
+##  9 Abereen                 Abereen                     1
+## 10 abigdon                 abigdon                     2
+## # … with 52 more rows</code></pre>
+<p>It got a bunch of things right. It merged three variations of “Aberdeen” – “aberdeen,”“Aberdeen” and “ABERDEEN” – and it didn’t merge it with “Aberdeen Proving Ground,” which are likely two distinct things. But it wasn’t smart enough to convert “Abereen.”</p>
+<p>It also merged “Annapolis” and “ANNAPOLIS” under “Annapolis,” and was smart enough not to merge it with “Annapolis Junction,” which is not the same city. But it wasn’t smart enough to merge “Annapoils” or “Annalpolis.”</p>
+<p>There’s another merging algorithim that’s part of refinr that works a bit differently, called <code>n_gram_merge()</code>. Let’s try applying that one.</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="data-cleaning-part-iii-open-refine.html#cb162-1" aria-hidden="true" tabindex="-1"></a>cleaned_md_loans <span class="ot">&lt;-</span> md_loans <span class="sc">%&gt;%</span> </span>
+<span id="cb162-2"><a href="data-cleaning-part-iii-open-refine.html#cb162-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">city_clean=</span><span class="fu">n_gram_merge</span>(city)) <span class="sc">%&gt;%</span></span>
+<span id="cb162-3"><a href="data-cleaning-part-iii-open-refine.html#cb162-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id<span class="sc">:</span>city, city_clean, <span class="fu">everything</span>()) </span>
+<span id="cb162-4"><a href="data-cleaning-part-iii-open-refine.html#cb162-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-5"><a href="data-cleaning-part-iii-open-refine.html#cb162-5" aria-hidden="true" tabindex="-1"></a>cleaned_md_loans</span></code></pre></div>
+<pre><code>## # A tibble: 195,865 × 64
+##          id name   slug   amount state address city  city_clean zip   naics_code
+##       &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;dbl&gt;
+##  1 99443772 TARBI… tarbi… 149000 MD    6785 B… Elkr… Elkridge   2107…     611110
+##  2 99444241 J &amp;AM… j-amp… 146000 MD    10413 … Unio… Union Bri… 21791     238310
+##  3 99445051 DULAN… dulan… 140400 MD    4 Wind… PHOE… Phoenix    2113…     623110
+##  4 99445208 QUART… quart… 139527 MD    4972 W… Rock… Rockville  20852     311920
+##  5 99446123 ORCHA… orcha… 133400 MD    1855 W… Owin… Owings     2073…     561730
+##  6 99446170 FRUIT… fruit… 133000 MD    402 MA… EAST… EASTON     2160…     531120
+##  7 99446547 YOUNI… youni… 130520 MD    5000 T… Oakl… Oakland    2155…     621610
+##  8 99448012 FRANK… frank… 121862 MD    14805 … Spar… Sparks     2115…     812990
+##  9 99448137 RACE … race-… 121100 MD    1 RAIL… WEST… Westminst… 2115…     451110
+## 10 99448298 VITAL… vital… 120165 MD    1701 P… Broo… Brookevil… 2083…     541330
+## # … with 195,855 more rows, and 54 more variables: business_type &lt;chr&gt;,
+## #   race &lt;chr&gt;, gender &lt;chr&gt;, veteran &lt;chr&gt;, non_profit &lt;lgl&gt;,
+## #   jobs_retained &lt;dbl&gt;, date_approved &lt;date&gt;, lender &lt;chr&gt;,
+## #   congressional_district &lt;chr&gt;, loan_range_sort_key &lt;lgl&gt;,
+## #   previous_loan_range &lt;lgl&gt;, previous_name &lt;lgl&gt;, loan_number &lt;dbl&gt;,
+## #   sba_office_code &lt;dbl&gt;, processing_method &lt;chr&gt;, loan_status &lt;chr&gt;,
+## #   term &lt;dbl&gt;, sba_guaranty_percentage &lt;dbl&gt;, initial_approval_amount &lt;dbl&gt;, …</code></pre>
+<p>To examine changes <code>refinr</code> made with this algorithm, let’s again look at cities that start with the letter “A.” Examining Aberdeen and Annapolis, we see there wasn’t a substantial change.</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="data-cleaning-part-iii-open-refine.html#cb164-1" aria-hidden="true" tabindex="-1"></a>cleaned_md_loans <span class="sc">%&gt;%</span> </span>
+<span id="cb164-2"><a href="data-cleaning-part-iii-open-refine.html#cb164-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(city_clean, city) <span class="sc">%&gt;%</span> </span>
+<span id="cb164-3"><a href="data-cleaning-part-iii-open-refine.html#cb164-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb164-4"><a href="data-cleaning-part-iii-open-refine.html#cb164-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">count=</span><span class="fu">n</span>()</span>
+<span id="cb164-5"><a href="data-cleaning-part-iii-open-refine.html#cb164-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb164-6"><a href="data-cleaning-part-iii-open-refine.html#cb164-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(city, <span class="st">&quot;^a|^A&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb164-7"><a href="data-cleaning-part-iii-open-refine.html#cb164-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(city)</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;city_clean&#39;. You can override using the `.groups` argument.</code></pre>
+<pre><code>## # A tibble: 62 × 3
+## # Groups:   city_clean [36]
+##    city_clean              city                    count
+##    &lt;chr&gt;                   &lt;chr&gt;                   &lt;int&gt;
+##  1 ABDULREZAK H ISSAC      ABDULREZAK H ISSAC          1
+##  2 Abell                   Abell                       3
+##  3 Abell                   ABELL                       2
+##  4 Aberdeen                aberdeen                    3
+##  5 Aberdeen                Aberdeen                  456
+##  6 Aberdeen                ABERDEEN                  192
+##  7 Aberdeen Proving Ground Aberdeen Proving Ground    13
+##  8 Aberdeen Proving Ground ABERDEEN PROVING GROUND     2
+##  9 Abereen                 Abereen                     1
+## 10 Abingdon                abigdon                     2
+## # … with 52 more rows</code></pre>
+<p>Let’s upload the data to the interactive version of OpenRefine, which really shines at this task.</p>
 </div>
-<div id="more-complex-issues" class="section level2">
-<h2><span class="header-section-number">12.2</span> More complex issues</h2>
-<p>Let’s load a <a href="https://unl.box.com/s/7vs5ycscmzg3bnxhxqdv7aegill2gz2z">dataset of the charges Nebraska prison inmates</a> were convicted of, which is why they’re in prison. We’ll also use <code>janitor</code>’s clean_names function to give us usable headers.</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1">charges &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/charges.csv&quot;</span>)  <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">clean_names</span>()</a></code></pre></div>
-<pre><code>## Parsed with column specification:
-## cols(
-##   `ID NUMBER` = col_double(),
-##   `OFFENSE MINIMUM YEAR OR TERM` = col_character(),
-##   `MINIMUM MONTH` = col_double(),
-##   `MINIMUM DAY` = col_double(),
-##   `OFFENSE MAXIMUM YEAR OR TERM` = col_character(),
-##   `MAXIMUM MONTH` = col_double(),
-##   `MAXIMUM DAY` = col_double(),
-##   `OFFENSE ARREST DESC` = col_character(),
-##   `FELONY MSDMNR CODE` = col_character(),
-##   `OFFENSE TYPE CODE` = col_character(),
-##   `OFFENSE ATTEMPT DESC` = col_character(),
-##   `HABITUAL CRIMINAL` = col_character(),
-##   `OFFENSE RUN CODE` = col_character(),
-##   `COUNTY COMMITTED` = col_character()
-## )</code></pre>
-<p>The problematic – and among the most interesting – fields in this dataset is the name of the charges. What is the most common charge keeping someone in prison?</p>
-<p>I’m not going to run the list here because it’s long – thousands of lines long. You should run it yourself:</p>
-<pre><code>charges %&gt;% tabyl(offense_arrest_desc)</code></pre>
-<p>You’ll see right away that there’s problems. There’s dozens upon dozens of charges that are the same thing, just slightly different. There’s 4003 unique charges, and many of them are duplicates.</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" data-line-number="1">charges <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(offense_arrest_desc) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>(<span class="dt">sort=</span><span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">nrow</span>()</a></code></pre></div>
-<pre><code>## [1] 4003</code></pre>
-<p>So how does <code>key_collision_merge</code> do with this?</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" data-line-number="1">charges <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb145-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(</a>
-<a class="sourceLine" id="cb145-3" data-line-number="3">    <span class="dt">clean_charges =</span> <span class="kw">key_collision_merge</span>(offense_arrest_desc)</a>
-<a class="sourceLine" id="cb145-4" data-line-number="4">    ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb145-5" data-line-number="5"><span class="st">  </span><span class="kw">group_by</span>(clean_charges) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb145-6" data-line-number="6"><span class="st">  </span><span class="kw">tally</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb145-7" data-line-number="7"><span class="st">  </span><span class="kw">nrow</span>()</a></code></pre></div>
-<pre><code>## [1] 3420</code></pre>
-<p>Cuts down the duplicates by 583. But since the charges are often multiple words, we should try using <code>n_gram_merge</code>, which looks a multiple words.</p>
-<p>Here’s an example using sensible defaults for weighting – unfortunately <a href="https://github.com/ChrisMuir/refinr">the documentation</a> doesn’t do much to explain what they are.</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" data-line-number="1">charges <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb147-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(</a>
-<a class="sourceLine" id="cb147-3" data-line-number="3">    <span class="dt">clean_charges =</span> <span class="kw">n_gram_merge</span>(</a>
-<a class="sourceLine" id="cb147-4" data-line-number="4">      offense_arrest_desc, <span class="dt">weight =</span> <span class="kw">c</span>(<span class="dt">d =</span> <span class="fl">0.2</span>, <span class="dt">i =</span> <span class="fl">0.2</span>, <span class="dt">s =</span> <span class="dv">1</span>, <span class="dt">t =</span> <span class="dv">1</span>))) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb147-5" data-line-number="5"><span class="st">  </span><span class="kw">group_by</span>(clean_charges) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb147-6" data-line-number="6"><span class="st">  </span><span class="kw">tally</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb147-7" data-line-number="7"><span class="st">  </span><span class="kw">nrow</span>()</a></code></pre></div>
-<pre><code>## [1] 3035</code></pre>
-<p>Cuts it down by almost 1000. That seems pretty good. Here’s a different method, using a method that turns words into phonetic spellings called soundex.</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" data-line-number="1">charges <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb149-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(</a>
-<a class="sourceLine" id="cb149-3" data-line-number="3">    <span class="dt">clean_charges =</span> <span class="kw">n_gram_merge</span>(</a>
-<a class="sourceLine" id="cb149-4" data-line-number="4">      offense_arrest_desc, <span class="dt">method =</span> <span class="st">&quot;soundex&quot;</span>, <span class="dt">useBytes =</span> <span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb149-5" data-line-number="5">      )) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb149-6" data-line-number="6"><span class="st">  </span><span class="kw">group_by</span>(clean_charges) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb149-7" data-line-number="7"><span class="st">  </span><span class="kw">tally</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb149-8" data-line-number="8"><span class="st">  </span><span class="kw">nrow</span>()</a></code></pre></div>
-<pre><code>## [1] 2688</code></pre>
-<p>Cut it down by almost 1400!</p>
-<p>BUT.</p>
-<p>Are they right?</p>
-<p>We have no idea. Let’s look at the first 30 rows.</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" data-line-number="1">charges <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb151-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(</a>
-<a class="sourceLine" id="cb151-3" data-line-number="3">    <span class="dt">clean_charges =</span> <span class="kw">n_gram_merge</span>(</a>
-<a class="sourceLine" id="cb151-4" data-line-number="4">      offense_arrest_desc, <span class="dt">method =</span> <span class="st">&quot;soundex&quot;</span>, <span class="dt">useBytes =</span> <span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb151-5" data-line-number="5">      )) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb151-6" data-line-number="6"><span class="st">  </span><span class="kw">filter</span>(clean_charges <span class="op">!=</span><span class="st"> </span>offense_arrest_desc) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(offense_arrest_desc, clean_charges) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">30</span>)</a></code></pre></div>
-<pre><code>## # A tibble: 30 x 2
-##    offense_arrest_desc            clean_charges                 
-##    &lt;chr&gt;                          &lt;chr&gt;                         
-##  1 ASSLT WI INFLICT BODILY INJURY ASSLT W/I INFLCT BODILY INJURY
-##  2 STAB W/I TO KILL WOUND OR MAIM STAB W/I KILL, WOUND, OR MAIM 
-##  3 USE OF WEAPON TO COMMIT FELONY USE WEAPON TO COMMIT FELONY   
-##  4 3RD DEGREE ASSAULT ON OFFICER  ASSAULT ON OFFICER 3RD DEGREE 
-##  5 3RD DEGREE ASSAULT ON OFFICER  ASSAULT ON OFFICER 3RD DEGREE 
-##  6 POSS CONTROLLED SUBSTANCE      POSSESS CONTROLLED SUBSTANCE  
-##  7 MANUF/DIST CONT SUBST - MARIJ. DISTRIBUTION OF C/S-MARIJUANA 
-##  8 POSS DEADLY WEAP BY FELON      POSSESS DEADLY WEAPON BY FELON
-##  9 POSS FIREARM BY FELON          POS FIREARM BY FELON          
-## 10 3RD DGR ASSAULT ON AN OFFICER  ASSAULT ON AN OFFICER 3RD DEGR
-## # … with 20 more rows</code></pre>
-<p>If you look carefully, you’ll see a lot of success here. But look at line 23. The charge is theft by taking $0-500. The clean version? Theft by taking $5000. That’s a big difference, and a bad miss.</p>
-<p>So can we trust automated data cleaning?</p>
-<p>This note from the documentation is exceedingly important:</p>
-<blockquote>
-<p>This package is NOT meant to replace OpenRefine for every use case. For situations in which merging accuracy is the most important consideration, OpenRefine is preferable. Since the merging steps in refinr are automated, there will usually be more false positive merges, versus manually selecting clusters to merge in OpenRefine.</p>
-</blockquote>
-</div>
-<div id="manually-cleaning-data-with-open-refine" class="section level2">
-<h2><span class="header-section-number">12.3</span> Manually cleaning data with Open Refine</h2>
-<p>Open Refine is free software. <a href="https://openrefine.org/">You should download and install it</a>. Refinr is great for quick things on smaller datasets that you can check to make sure it’s not up to any mischief. For bigger datasets, Open Refine is the way to go. And it has a lot more tools than refinr does (by design, but still).</p>
+<div id="manually-cleaning-data-with-open-refine" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> Manually cleaning data with Open Refine</h2>
+<p>Open Refine is free software. <a href="https://openrefine.org/">You should download and install it</a>. Refinr is great for quick things on smaller datasets that you can check to make sure it’s not up to any mischief.</p>
+<p>For bigger datasets, Open Refine is the way to go. And it has a lot more tools than refinr does (by design).</p>
 <p>After you install it, run it. Open Refine works in the browser, and the app spins up a small web server visible only on your computer to interact with it. A browser will pop up automatically.</p>
 <p>You first have to import your data into a project.</p>
-<p><img src="images/open1.png" width="1276" /></p>
+<p><img src="images/open1.png" /><!-- --></p>
 <p>After your data is loaded into the app, you’ll get a screen to look over what the data looks like. On the top right corner, you’ll see a button to create the project.</p>
-<p><img src="images/open2.png" width="1679" /></p>
+<p><img src="images/open2.png" /><!-- --></p>
 <p>The real power in Open Refine is in faceting. In our case, we’re specifically going to use text faceting. Next to the OFFENSE ARREST DESC header, click the down arrow, then facet, then text facet.</p>
-<p><img src="images/open3.png" width="528" /></p>
+<p><img src="images/open3.png" /><!-- --></p>
 <p>After that, a new box will appear on the left. It tells us how many unique offenses are there: 4,082. And, there’s a button on the right of the box that says Cluster. Click that.</p>
-<p><img src="images/open4.png" width="303" /></p>
+<p><img src="images/open4.png" /><!-- --></p>
 <p>The default clustering algorithm used is key collision, using the fingerprint function. This is the same method we used with Sheridan County above.</p>
 <p>At the top, you’ll see which method was used, and how many clusters that algorithm identified. Then, below that, you can see what those clusters are. Then, using human judgement, you can say if you agree with the cluster. If you do, click the merge checkbox. When it merges, the new result will be what it says in New Cell Value. Most often, that’s the row with the most common result.</p>
-<p><img src="images/open6.png" width="1000" /></p>
+<p><img src="images/open6.png" /><!-- --></p>
 <p>Now begins the fun part: You have to look at all 303 clusters found and decide if they are indeed valid. The key collision method is very good, and very conservative. You’ll find that most of them are usually valid.</p>
 <p>When you’re done, click Merge Selected and Re-Cluster.</p>
 <p>If any new clusters come up, evaluate them. Repeat until either no clusters come up or the clusters that do come up are ones you reject.</p>
 <p>Now. Try a new method. Rinse and repeat. You’ll keep doing this, and if the dataset is reasonably clean, you’ll find the end.</p>
 <p>If it’s not, it’ll go on forever.</p>
-<p><img src="images/open7.png" width="999" />
-<img src="images/open8.png" width="1001" /></p>
+<p><img src="images/open7.png" /><!-- -->
+<img src="images/open8.png" /><!-- --></p>
 <p>A question for all data analysts – if the dataset is bad enough, can it ever be cleaned?</p>
 <p>There’s no good answer. You have to find it yourself.</p>
 
@@ -495,6 +529,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -515,6 +550,10 @@ gitbook.start({
 "text": null
 },
 "download": ["datajournalism.pdf", "datajournalism.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

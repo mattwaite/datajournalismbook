@@ -1,5 +1,5 @@
 ---
-title: "class_01_demonstration.Rmd"
+title: "pre_lab_01.Rmd"
 author: ""
 date: ""
 output: html_document

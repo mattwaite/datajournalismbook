@@ -280,7 +280,7 @@ library(lubridate)
 
 First, read the file you downloaded. You'll need to add the `fill=TRUE` to html_table() to solve a problem with some of the data.
 
-```{r}
+```{r, error=TRUE}
 claims <- read_html("~/Downloads/r539cy.xls") %>% 
   html_nodes("table") %>%
   html_table(fill=TRUE) 
@@ -288,7 +288,7 @@ claims <- read_html("~/Downloads/r539cy.xls") %>%
 
 Similar to previous efforts, we get a list. The first element is a dataframe, so let's get that.
 
-```{r}
+```{r, error=TRUE}
 claims <- claims[[1]] 
 ```
 
@@ -301,7 +301,7 @@ To do this, we're going to fix this in steps after we create a new dataframe cal
 3. We'll filter out the old header row.
 4. We'll mutate each field to format them correctly. The date columns will use `lubridate`'s `mdy` function. Numbers will use `readr`'s `parse_number` function to solve the comma separator issue.
 
-```{r}
+```{r, error=TRUE}
 cleanclaims <- claims %>% 
   remove_empty("cols") %>% 
   rename("state" = 1, "filed_week_ended"= 2, "initial_claims"=3, "reflecting_week_ended"=4, "continued_claims"=5, "covered_employment"=6, "insured_unemployment_rate"=7) %>%
@@ -311,7 +311,7 @@ cleanclaims <- claims %>%
 
 If you open `cleanclaims`, you may notice something:
 
-```{r}
+```{r, error=TRUE}
 cleanclaims %>% arrange(desc(filed_week_ended)) %>% head()
 ```
 
@@ -319,7 +319,7 @@ See it? The latest data isn't in there in my version. [It's in a press release](
 
 So how do we add it? We use `add_row` from the tidyverse (specifically the `tibble` library). 
 
-```{r}
+```{r, error=TRUE}
 updatedcleanclaims <- cleanclaims %>% add_row(state="Nebraska", filed_week_ended=as.Date("2020-03-28"), initial_claims=24572, reflecting_week_ended=as.Date("2020-03-21"))
 ```
 
@@ -327,49 +327,49 @@ Now we can repeat the analysis from above.
 
 First we rank.
 
-```{r}
+```{r, error=TRUE}
 fedranked <- updatedcleanclaims %>% mutate(Rank = min_rank(desc(initial_claims))) %>% arrange(desc(filed_week_ended))
 ```
 
 We get the latest week.
 
-```{r}
+```{r, error=TRUE}
 fedlatest <- fedranked %>% slice(1)
 ```
 
 The previous week ... 
 
-```{r}
+```{r, error=TRUE}
 fedprevious <- fedranked %>% slice(2)
 ```
 
 And for this one, let's grab the pre-crisis number as well as a basis point. 
 
-```{r}
+```{r, error=TRUE}
 pre <- fedranked %>% filter(filed_week_ended==as.Date("2020-03-14"))
 ```
 
 Now we can do some percent change math similar to above. First we calculate the current change. 
 
-```{r}
+```{r, error=TRUE}
 change <- round((((fedlatest$initial_claims - fedprevious$initial_claims)/fedprevious$initial_claims)*100), digits=0)
 ```
 
 Then the change from the pre-crisis week.
 
-```{r}
+```{r, error=TRUE}
 prechange <- round((((fedlatest$initial_claims - pre$initial_claims)/pre$initial_claims)*100), digits=0)
 ```
 
 And we roll it all into a subhead that we can use in the chart with a little paste-fu.
 
-```{r}
+```{r, error=TRUE}
 subhed <- paste("Applications for unemployment jumped ", change, " percent from last week to this week and are up ", prechange, " percent since March 14.", sep="")
 ```
 
 And we make the graphic. 
 
-```{r fig.width=9}
+```{r, error=TRUE, fig.width=9}
 ggplot() + 
   geom_line(data=fedranked, aes(x=filed_week_ended, y=initial_claims, group=1)) +
   geom_point(data=fedlatest, aes(x=filed_week_ended, y=initial_claims)) + 

@@ -85,7 +85,7 @@ cleaned_arnold_md_loans
 
 Right now, the amount column is stored as a character.  Do you see the little `<chr>` under the amount column in the table above?  If we wanted to do math to it, we'd get an error, like so. 
 
-```{r}
+```{r, error=TRUE}
 # cleaning function
 total_arnold_md_loans <- cleaned_arnold_md_loans %>%
   summarise(total_amount = sum(amount))

@@ -71,7 +71,7 @@ The easiest thing to do, if you are confused about how to find your data, is to 
 
 #ppp_maryland_loans <- read_csv("ppp_loan_data/ppp_maryland.csv")
 
-ppp_maryland_loans <- read_rds("in_class_demonstrations/class_01_demonstration/class_01_demonstration.rds")
+ppp_maryland_loans <- read_rds("pre_labs/pre_lab_01/pre_lab_01.rds")
 
 ```
 

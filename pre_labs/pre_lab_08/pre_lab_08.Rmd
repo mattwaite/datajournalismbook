@@ -1,0 +1,197 @@
+---
+title: "pre_lab_08.Rmd"
+author: "derek willis"
+date: "8/26/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Points to hit
+1. Review of fifth lab questions/problems.
+2. Demonstration of PDF parsing with Tabula
+
+## Load Libraries
+```{r}
+# turn off sci notation
+options(scipen=999)
+library(tidyverse)
+# if needed, install tidycensus
+# install.packages("tidycensus")
+library(tidycensus)
+```
+
+# Intro to APIs: The Census
+
+We're going to use a library called `tidycensus` which makes calls to the Census API in a very tidy way, and gives you back tidy data. That means we don't have to go through the process of importing the data from a file. I can't tell you how amazing this is, speaking from experience.
+
+To use the API, you need to [an API key from the Census Bureau](https://api.census.gov/data/key_signup.html). It takes a few minutes and you need to activate your key via email. Once you have your key, you need to set that for this session. Just FYI: Your key is your key. Do not share it.
+
+```{r echo=FALSE}
+census_api_key("YOUR KEY HERE")
+```
+
+So to give you some idea of how complicated the data is, let's pull up just one file from the decennial Census. We'll use Summary File 1, or SF1. That has the major population and housing stuff.
+
+```{r}
+sf1 <- load_variables(2010, "sf1", cache = TRUE)
+```
+
+Note: There are thousands of variables in SF1. That's not a typo. Open it in your environment by double clicking. As you scroll down, you'll get an idea of what you've got to choose from.
+
+If you think that's crazy, try the SF3 file from 2000.
+
+```{r}
+sf3 <- load_variables(2000, "sf3", cache = TRUE)
+```
+
+So let's try to answer a question using the Census. What is the fastest growing state since 2000?
+
+To answer this, we need to pull the total population by state in each of the decennial census. Here's 2000.
+
+```{r}
+p00 <- get_decennial(geography = "state", variables = "P001001", year = 2000)
+```
+
+Now 2010.
+
+```{r}
+p10 <- get_decennial(geography = "state", variables = "P001001", year = 2010)
+```
+
+Let's take a peek at 2010.
+
+```{r}
+p10
+```
+
+As you can see, we have a GEOID, NAME, then variable and value. Variable and value are going to be the same. Because those are named the same thing, to merge them together, we need to rename them.
+
+```{r}
+p10 %>% select(GEOID, NAME, value) %>% rename(Population2010=value) -> p2010
+
+p00 %>% select(GEOID, NAME, value) %>% rename(Population2000=value) -> p2000
+```
+
+Now we join the data together.
+
+```{r}
+alldata <- p2000 %>% inner_join(p2010)
+```
+
+And now we calculate the percent change.
+
+```{r}
+alldata %>% mutate(change = ((Population2010-Population2000)/Population2000)*100) %>% arrange(desc(change))
+```
+
+And just like that: Nevada.
+
+You may be asking: hey, wasn't there a 2020 Census? Where's that data? The answer is that it's coming - the Census Bureau has a [schedule of releases](https://www.census.gov/programs-surveys/popest/about/schedule.html).
+
+## The ACS
+
+In 2010, the Census Bureau replaced SF3 with the American Community Survey. The Good News is that the data would be updated on a rolling basis. The bad news is that it's more complicated because it's more like survey data with a large sample. That means there's margins of error and confidence intervals to worry about.
+
+What is Maryland's richest county?
+
+We can measure this by median household income. That variable is `B19013_001`, so we can get that data like this (I'm narrowing it to the top 20 for simplicity):
+```{r}
+md <- get_acs(geography = "county",
+              variables = c(medincome = "B19013_001"),
+              state = "MD",
+              year = 2019)
+
+md <- md %>% arrange(desc(estimate)) %>% top_n(20, estimate)
+
+md
+```
+
+Howard, Calvert, Montgomery, Anne Arundel, Charles. What do they all have in common? Lots of suburban flight from D.C and Baltimore. But do the margins of error let us say one county is richer than the other. We can find this out visually using error bars. Don't worry much about the code here --  we'll cover that soon enough.
+
+```{r}
+md %>%
+  mutate(NAME = gsub(" County, Maryland", "", NAME)) %>%
+  ggplot(aes(x = estimate, y = reorder(NAME, estimate))) +
+  geom_errorbarh(aes(xmin = estimate - moe, xmax = estimate + moe)) +
+  geom_point(color = "red") +
+  labs(title = "Household income by county in Maryland",
+       subtitle = "2015-2019 American Community Survey",
+       y = "",
+       x = "ACS estimate (bars represent margin of error)")
+```
+
+As you can see, some of the error bars are quite wide. Some are narrow. But if the bars overlap, it means the difference between the two counties is within the margin of error, and the differences aren't statistically significant. So is the difference between Calvert and Montgomery significant? Nope. Is the difference between Howard and everyone else significant? Yes it is.
+
+Let's ask another question of the ACS -- did any counties lose income from the time of the global financial crisis to the current 5-year window?
+
+Let's re-label our first household income data.
+
+```{r}
+md19 <- get_acs(geography = "county",
+              variables = c(medincome = "B19013_001"),
+              state = "MD",
+              year = 2019)
+```
+
+And now we grab the 2010 median household income.
+
+```{r}
+md10 <- get_acs(geography = "county",
+              variables = c(medincome = "B19013_001"),
+              state = "MD",
+              year = 2010)
+```
+
+What I'm going to do next is a lot, but each step is simple. I'm going to join the data together, so each county has one line of data. Then I'm going to rename some fields that repeat. Then I'm going to calculate the minimium and maximum value of the estimate using the margin of error. That'll help me later. After that, I'm going to calculate a perent change and sort it by that change.
+
+```{r}
+md10 %>%
+  inner_join(md19, by=c("GEOID", "NAME")) %>%
+  rename(estimate2010=estimate.x, estimate2019=estimate.y) %>%
+  mutate(min2010 = estimate2010-moe.x, max2010 = estimate2010+moe.x, min2019 = estimate2019-moe.y, max2019 = estimate2019+moe.y) %>%
+  select(-variable.x, -variable.y, -moe.x, -moe.y) %>%
+  mutate(change = ((estimate2019-estimate2010)/estimate2010)*100) %>%
+  arrange(change)
+```
+
+So according to this, Somerset and Caroline counties lost ground from the financial meltdown to now.
+
+But did they?
+
+Look at the min and max values for both. Is the change statistically significant?
+
+## Bonus API example: Coronavirus
+
+Of course there would be an R package about the novel coronavirus, COVID-19. It pulls daily updates of coronavirus reports. You install it with `install.packages("coronavirus")`
+
+```{r}
+library(coronavirus)
+
+data("coronavirus")
+update_dataset()
+```
+
+What just happened, without you having to do anything, is the library just made a call to servers at Johns Hopkins University and got the latest coronavirus numbers from around the world.
+
+Check it out:
+
+```{r}
+view(coronavirus)
+```
+
+So now we can start using it for data analysis. How about cases in the U.S.?
+
+```{r}
+coronavirus %>% filter(country == "US")
+```
+
+How about confirmed cases by country?
+
+```{r}
+coronavirus %>% filter(type == "confirmed") %>% group_by(country) %>% summarize(total=sum(cases)) %>% arrange(desc(total))
+```
+
+Seems a little out of date, but the idea is a good one.

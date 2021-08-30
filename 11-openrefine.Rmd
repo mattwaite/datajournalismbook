@@ -61,7 +61,7 @@ One rule you should follow when using this is: **do not overwrite your original 
 ```{r}
 cleaned_md_loans <- md_loans %>% 
   mutate(city_clean=key_collision_merge(city)) %>%
-  select(id:city, city_clean, everything()) %>%
+  select(id:city, city_clean, everything())
 
 cleaned_md_loans
 

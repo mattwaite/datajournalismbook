@@ -29,8 +29,9 @@ knitr::include_graphics(rep("images/md_voters2.png"))
 You can now export that extracted table to a CSV file using the "Export" button. And then we can read it into R:
 
 ```{r}
-voters_by_county <- read_csv("tabula-Eligible Active Voters by County - PG20.csv")
-View(voters_by_county)
+voters_by_county <- read_csv("data/tabula-Eligible Active Voters by County - PG20.csv")
+
+voters_by_county
 ```
 
 Boom - we're good to go.
@@ -62,8 +63,9 @@ knitr::include_graphics(rep("images/ppp_3.png"))
 You can now export that extracted table to a CSV file using the "Export" button. And then we can read it into R:
 
 ```{r}
-lender_types <- read_csv("tabula-PPP_Report_Public_210531-508.csv")
-View(lender_types)
+lender_types <- read_csv("data/tabula-PPP_Report_Public_210531-508.csv")
+
+lender_types
 ```
 
 ## Cleaning up the data in R
@@ -73,9 +75,9 @@ The good news is that we have data we don't have to retype. The bad news is, it'
 See the "Net Dollars" column? Thanks to the dollar signs, R doesn't recognize those values as numbers. The column names seem ok, but having spaces in them is a pain. Let's fix that by re-importing it and calling `mutate` so that the new `net_dollars` column is numeric.
 
 ```{r}
-lender_types <- read_csv("tabula-PPP_Report_Public_210531-508.csv", skip=1, col_names=c("type", "count", "approved", "net_dollars"))
+lender_types <- read_csv("data/tabula-PPP_Report_Public_210531-508.csv", skip=1, col_names=c("type", "count", "approved", "net_dollars"))
 lender_types <- lender_types %>% mutate(net_dollars=as.numeric(parse_number(net_dollars)))
-View(lender_types)
+lender_types
 ```
 
 All things considered, that was pretty easy. Many - most? - electronic PDFs aren't so easy to parse. Sometimes you'll need to open the exported CSV file and clean things up before importing into R. Other times you'll be able to do that cleaning in R itself.

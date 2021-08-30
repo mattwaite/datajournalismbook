@@ -5,26 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 11 Data Cleaning Part II: Janitor | Data Journalism with R and the Tidyverse</title>
-  <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="description" content="This is a book built on a very opinionated philosophy for journalism students doing data journalism in R with replicable methods." />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 11 Data Cleaning Part II: Janitor | Data Journalism with R and the Tidyverse" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  <meta property="og:description" content="This is a book built on a very opinionated philosophy for journalism students doing data journalism in R with replicable methods." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 11 Data Cleaning Part II: Janitor | Data Journalism with R and the Tidyverse" />
   
-  <meta name="twitter:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  <meta name="twitter:description" content="This is a book built on a very opinionated philosophy for journalism students doing data journalism in R with replicable methods." />
   
 
-<meta name="author" content="Matt Waite" />
+<meta name="author" content="Matt Waite (original author); updated by Derek Willis and Sean Mussenden" />
 
 
-<meta name="date" content="2020-04-21" />
+<meta name="date" content="2021-08-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,8 @@
   
 <link rel="prev" href="data-cleaning-part-i-data-smells.html"/>
 <link rel="next" href="data-cleaning-part-iii-open-refine.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,14 +51,16 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.13/datatables.js"></script>
+<script src="libs/datatables-binding-0.18/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160712129-1"></script>
 <script>
@@ -70,25 +73,27 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -97,9 +102,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -132,6 +137,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -145,127 +151,156 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="http://mattwaite.github.io/datajournalism/">Data Journalism With R</a></li>
+<li><a href="http://smussenden.github.io/coursefiles/data_journalism_book/">Data Journalism With R</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#modern-data-journalism"><i class="fa fa-check"></i><b>1.1</b> Modern data journalism</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installations"><i class="fa fa-check"></i><b>1.2</b> Installations</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#about-this-book"><i class="fa fa-check"></i><b>1.3</b> About this book</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#what-well-cover"><i class="fa fa-check"></i><b>1.4</b> What we’ll cover</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="public-records.html"><a href="public-records.html"><i class="fa fa-check"></i><b>2</b> Public records</a><ul>
+<li class="chapter" data-level="2" data-path="public-records.html"><a href="public-records.html"><i class="fa fa-check"></i><b>2</b> Public records</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="public-records.html"><a href="public-records.html#federal-law"><i class="fa fa-check"></i><b>2.1</b> Federal law</a></li>
 <li class="chapter" data-level="2.2" data-path="public-records.html"><a href="public-records.html#state-law"><i class="fa fa-check"></i><b>2.2</b> State law</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>3</b> R basics</a><ul>
-<li class="chapter" data-level="3.1" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-1"><i class="fa fa-check"></i><b>3.1</b> Adding libraries, part 1</a></li>
-<li class="chapter" data-level="3.2" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-2"><i class="fa fa-check"></i><b>3.2</b> Adding libraries, part 2</a></li>
+<li class="chapter" data-level="3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>3</b> R basics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="r-basics.html"><a href="r-basics.html#about-libraries"><i class="fa fa-check"></i><b>3.1</b> About libraries</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html"><i class="fa fa-check"></i><b>4</b> Data journalism in the age of replication</a><ul>
+<li class="chapter" data-level="4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html"><i class="fa fa-check"></i><b>4</b> Data journalism in the age of replication</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#the-stylebook"><i class="fa fa-check"></i><b>4.1</b> The stylebook</a></li>
 <li class="chapter" data-level="4.2" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication"><i class="fa fa-check"></i><b>4.2</b> Replication</a></li>
 <li class="chapter" data-level="4.3" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#goodbye-excel"><i class="fa fa-check"></i><b>4.3</b> Goodbye Excel?</a></li>
 <li class="chapter" data-level="4.4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#receptivity-is-high"><i class="fa fa-check"></i><b>4.4</b> “Receptivity … is high”</a></li>
 <li class="chapter" data-level="4.5" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication-in-notebooks"><i class="fa fa-check"></i><b>4.5</b> Replication in notebooks</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html"><i class="fa fa-check"></i><b>5</b> Data, structures and types</a><ul>
-<li class="chapter" data-level="5.1" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#rows-and-columns"><i class="fa fa-check"></i><b>5.1</b> Rows and columns</a></li>
+<li class="chapter" data-level="5" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html"><i class="fa fa-check"></i><b>5</b> Data, structures and types</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#a-mental-picture"><i class="fa fa-check"></i><b>5.1</b> A Mental Picture</a></li>
 <li class="chapter" data-level="5.2" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#types"><i class="fa fa-check"></i><b>5.2</b> Types</a></li>
-<li class="chapter" data-level="5.3" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#a-simple-way-to-get-data"><i class="fa fa-check"></i><b>5.3</b> A simple way to get data</a></li>
-<li class="chapter" data-level="5.4" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#cleaning-the-data"><i class="fa fa-check"></i><b>5.4</b> Cleaning the data</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="aggregates.html"><a href="aggregates.html"><i class="fa fa-check"></i><b>6</b> Aggregates</a><ul>
-<li class="chapter" data-level="6.1" data-path="aggregates.html"><a href="aggregates.html#importing-data"><i class="fa fa-check"></i><b>6.1</b> Importing data</a></li>
-<li class="chapter" data-level="6.2" data-path="aggregates.html"><a href="aggregates.html#group-by-and-count"><i class="fa fa-check"></i><b>6.2</b> Group by and count</a></li>
-<li class="chapter" data-level="6.3" data-path="aggregates.html"><a href="aggregates.html#other-aggregates-mean-and-median"><i class="fa fa-check"></i><b>6.3</b> Other aggregates: Mean and median</a></li>
-<li class="chapter" data-level="6.4" data-path="aggregates.html"><a href="aggregates.html#even-more-aggregates"><i class="fa fa-check"></i><b>6.4</b> Even more aggregates</a></li>
+<li class="chapter" data-level="6" data-path="aggregates.html"><a href="aggregates.html"><i class="fa fa-check"></i><b>6</b> Aggregates</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="aggregates.html"><a href="aggregates.html#libraries"><i class="fa fa-check"></i><b>6.1</b> Libraries</a></li>
+<li class="chapter" data-level="6.2" data-path="aggregates.html"><a href="aggregates.html#importing-data"><i class="fa fa-check"></i><b>6.2</b> Importing data</a></li>
+<li class="chapter" data-level="6.3" data-path="aggregates.html"><a href="aggregates.html#group-by-and-count"><i class="fa fa-check"></i><b>6.3</b> Group by and count</a></li>
+<li class="chapter" data-level="6.4" data-path="aggregates.html"><a href="aggregates.html#other-summarization-methods-summing-mean-median-min-and-max"><i class="fa fa-check"></i><b>6.4</b> Other summarization methods: summing, mean, median, min and max</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>7</b> Mutating data</a><ul>
+<li class="chapter" data-level="7" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>7</b> Mutating data</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="mutating-data.html"><a href="mutating-data.html#another-use-of-mutate"><i class="fa fa-check"></i><b>7.1</b> Another use of mutate</a></li>
+<li class="chapter" data-level="7.2" data-path="mutating-data.html"><a href="mutating-data.html#a-more-powerful-use"><i class="fa fa-check"></i><b>7.2</b> A more powerful use</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>8</b> Working with dates</a><ul>
+<li class="chapter" data-level="8" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>8</b> Working with dates</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="working-with-dates.html"><a href="working-with-dates.html#the-hard-way"><i class="fa fa-check"></i><b>8.1</b> The hard way</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="filters-and-selections.html"><a href="filters-and-selections.html"><i class="fa fa-check"></i><b>9</b> Filters and selections</a><ul>
+<li class="chapter" data-level="9" data-path="filters-and-selections.html"><a href="filters-and-selections.html"><i class="fa fa-check"></i><b>9</b> Filters and selections</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="filters-and-selections.html"><a href="filters-and-selections.html#combining-filters"><i class="fa fa-check"></i><b>9.1</b> Combining filters</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html"><i class="fa fa-check"></i><b>10</b> Data Cleaning Part I: Data smells</a><ul>
+<li class="chapter" data-level="10" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html"><i class="fa fa-check"></i><b>10</b> Data Cleaning Part I: Data smells</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#wrong-type"><i class="fa fa-check"></i><b>10.1</b> Wrong Type</a></li>
 <li class="chapter" data-level="10.2" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#missing-data"><i class="fa fa-check"></i><b>10.2</b> Missing Data</a></li>
 <li class="chapter" data-level="10.3" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#gaps-in-data"><i class="fa fa-check"></i><b>10.3</b> Gaps in data</a></li>
-<li class="chapter" data-level="10.4" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#internal-inconsistency"><i class="fa fa-check"></i><b>10.4</b> Internal inconsistency</a></li>
-<li class="chapter" data-level="10.5" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#a-shortcut-summary"><i class="fa fa-check"></i><b>10.5</b> A Shortcut: Summary</a></li>
+<li class="chapter" data-level="10.4" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#supicious-outliers"><i class="fa fa-check"></i><b>10.4</b> Supicious Outliers</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html"><i class="fa fa-check"></i><b>11</b> Data Cleaning Part II: Janitor</a><ul>
+<li class="chapter" data-level="11" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html"><i class="fa fa-check"></i><b>11</b> Data Cleaning Part II: Janitor</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#cleaning-headers"><i class="fa fa-check"></i><b>11.1</b> Cleaning headers</a></li>
-<li class="chapter" data-level="11.2" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#duplicates"><i class="fa fa-check"></i><b>11.2</b> Duplicates</a></li>
-<li class="chapter" data-level="11.3" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#inconsistency"><i class="fa fa-check"></i><b>11.3</b> Inconsistency</a></li>
+<li class="chapter" data-level="11.2" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#changing-data-types"><i class="fa fa-check"></i><b>11.2</b> Changing data types</a></li>
+<li class="chapter" data-level="11.3" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#duplicates"><i class="fa fa-check"></i><b>11.3</b> Duplicates</a></li>
+<li class="chapter" data-level="11.4" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#cleaning-strings"><i class="fa fa-check"></i><b>11.4</b> Cleaning strings</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html"><i class="fa fa-check"></i><b>12</b> Data Cleaning Part III: Open Refine</a><ul>
+<li class="chapter" data-level="12" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html"><i class="fa fa-check"></i><b>12</b> Data Cleaning Part III: Open Refine</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#refinr-open-refine-in-r"><i class="fa fa-check"></i><b>12.1</b> Refinr, Open Refine in R</a></li>
-<li class="chapter" data-level="12.2" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#more-complex-issues"><i class="fa fa-check"></i><b>12.2</b> More complex issues</a></li>
-<li class="chapter" data-level="12.3" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#manually-cleaning-data-with-open-refine"><i class="fa fa-check"></i><b>12.3</b> Manually cleaning data with Open Refine</a></li>
+<li class="chapter" data-level="12.2" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#manually-cleaning-data-with-open-refine"><i class="fa fa-check"></i><b>12.2</b> Manually cleaning data with Open Refine</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html"><i class="fa fa-check"></i><b>13</b> Cleaning Data Part IV: PDFs</a><ul>
-<li class="chapter" data-level="13.1" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-looks-good-but-goes-wrong"><i class="fa fa-check"></i><b>13.1</b> When it looks good, but goes wrong</a></li>
-<li class="chapter" data-level="13.2" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-works-well."><i class="fa fa-check"></i><b>13.2</b> When it works well.</a></li>
+<li class="chapter" data-level="13" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html"><i class="fa fa-check"></i><b>13</b> Cleaning Data Part IV: PDFs</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#easy-does-it"><i class="fa fa-check"></i><b>13.1</b> Easy does it</a></li>
+<li class="chapter" data-level="13.2" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-looks-good-but-needs-a-little-fixing"><i class="fa fa-check"></i><b>13.2</b> When it looks good, but needs a little fixing</a></li>
 <li class="chapter" data-level="13.3" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#cleaning-up-the-data-in-r"><i class="fa fa-check"></i><b>13.3</b> Cleaning up the data in R</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="combining-and-joining.html"><a href="combining-and-joining.html"><i class="fa fa-check"></i><b>14</b> Combining and joining</a><ul>
-<li class="chapter" data-level="14.1" data-path="combining-and-joining.html"><a href="combining-and-joining.html#combining-data"><i class="fa fa-check"></i><b>14.1</b> Combining data</a></li>
+<li class="chapter" data-level="14" data-path="combining-and-joining.html"><a href="combining-and-joining.html"><i class="fa fa-check"></i><b>14</b> Combining and joining</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="combining-and-joining.html"><a href="combining-and-joining.html#combining-data-stacking"><i class="fa fa-check"></i><b>14.1</b> Combining data (stacking)</a></li>
 <li class="chapter" data-level="14.2" data-path="combining-and-joining.html"><a href="combining-and-joining.html#joining-data"><i class="fa fa-check"></i><b>14.2</b> Joining data</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html"><i class="fa fa-check"></i><b>15</b> Scraping data with Rvest</a><ul>
+<li class="chapter" data-level="15" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html"><i class="fa fa-check"></i><b>15</b> Scraping data with Rvest</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html#a-more-difficult-example"><i class="fa fa-check"></i><b>15.1</b> A more difficult example</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="advanced-rvest.html"><a href="advanced-rvest.html"><i class="fa fa-check"></i><b>16</b> Advanced rvest</a></li>
-<li class="chapter" data-level="17" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html"><i class="fa fa-check"></i><b>17</b> Intro to APIs: The Census</a><ul>
+<li class="chapter" data-level="17" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html"><i class="fa fa-check"></i><b>17</b> Intro to APIs: The Census</a>
+<ul>
 <li class="chapter" data-level="17.1" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html#the-acs"><i class="fa fa-check"></i><b>17.1</b> The ACS</a></li>
 <li class="chapter" data-level="17.2" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html#bonus-api-example-coronavirus"><i class="fa fa-check"></i><b>17.2</b> Bonus API example: Coronavirus</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html"><i class="fa fa-check"></i><b>18</b> Visualizing your data for reporting</a><ul>
+<li class="chapter" data-level="18" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html"><i class="fa fa-check"></i><b>18</b> Visualizing your data for reporting</a>
+<ul>
 <li class="chapter" data-level="18.1" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html#bar-charts"><i class="fa fa-check"></i><b>18.1</b> Bar charts</a></li>
 <li class="chapter" data-level="18.2" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html#line-charts"><i class="fa fa-check"></i><b>18.2</b> Line charts</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="visualizing-your-data-for-publication.html"><a href="visualizing-your-data-for-publication.html"><i class="fa fa-check"></i><b>19</b> Visualizing your data for publication</a><ul>
+<li class="chapter" data-level="19" data-path="visualizing-your-data-for-publication.html"><a href="visualizing-your-data-for-publication.html"><i class="fa fa-check"></i><b>19</b> Visualizing your data for publication</a>
+<ul>
 <li class="chapter" data-level="19.1" data-path="visualizing-your-data-for-publication.html"><a href="visualizing-your-data-for-publication.html#datawrapper"><i class="fa fa-check"></i><b>19.1</b> Datawrapper</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html"><i class="fa fa-check"></i><b>20</b> Geographic data basics</a><ul>
+<li class="chapter" data-level="20" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html"><i class="fa fa-check"></i><b>20</b> Geographic data basics</a>
+<ul>
 <li class="chapter" data-level="20.1" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html#importing-and-viewing-data"><i class="fa fa-check"></i><b>20.1</b> Importing and viewing data</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="geographic-analysis.html"><a href="geographic-analysis.html"><i class="fa fa-check"></i><b>21</b> Geographic analysis</a><ul>
+<li class="chapter" data-level="21" data-path="geographic-analysis.html"><a href="geographic-analysis.html"><i class="fa fa-check"></i><b>21</b> Geographic analysis</a>
+<ul>
 <li class="chapter" data-level="21.1" data-path="geographic-analysis.html"><a href="geographic-analysis.html#why-tidycensus-is-so-useful"><i class="fa fa-check"></i><b>21.1</b> Why tidycensus is so useful</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="automating-analysis.html"><a href="automating-analysis.html"><i class="fa fa-check"></i><b>22</b> Automating analysis</a><ul>
+<li class="chapter" data-level="22" data-path="automating-analysis.html"><a href="automating-analysis.html"><i class="fa fa-check"></i><b>22</b> Automating analysis</a>
+<ul>
 <li class="chapter" data-level="22.1" data-path="automating-analysis.html"><a href="automating-analysis.html#automating-downloads-an-imports"><i class="fa fa-check"></i><b>22.1</b> Automating downloads an imports</a></li>
 <li class="chapter" data-level="22.2" data-path="automating-analysis.html"><a href="automating-analysis.html#exploring-the-data"><i class="fa fa-check"></i><b>22.2</b> Exploring the data</a></li>
 <li class="chapter" data-level="22.3" data-path="automating-analysis.html"><a href="automating-analysis.html#analysis"><i class="fa fa-check"></i><b>22.3</b> Analysis</a></li>
 <li class="chapter" data-level="22.4" data-path="automating-analysis.html"><a href="automating-analysis.html#making-updating-graphics"><i class="fa fa-check"></i><b>22.4</b> Making updating graphics</a></li>
 <li class="chapter" data-level="22.5" data-path="automating-analysis.html"><a href="automating-analysis.html#the-state-vs-the-feds"><i class="fa fa-check"></i><b>22.5</b> The State vs the Feds</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="automating-geographic-analysis.html"><a href="automating-geographic-analysis.html"><i class="fa fa-check"></i><b>23</b> Automating geographic analysis</a><ul>
+<li class="chapter" data-level="23" data-path="automating-geographic-analysis.html"><a href="automating-geographic-analysis.html"><i class="fa fa-check"></i><b>23</b> Automating geographic analysis</a>
+<ul>
 <li class="chapter" data-level="23.1" data-path="automating-geographic-analysis.html"><a href="automating-geographic-analysis.html#mapping-continuously"><i class="fa fa-check"></i><b>23.1</b> Mapping continuously</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="basic-stats-the-t-test.html"><a href="basic-stats-the-t-test.html"><i class="fa fa-check"></i><b>24</b> Basic Stats: The T-Test</a><ul>
+<li class="chapter" data-level="24" data-path="basic-stats-the-t-test.html"><a href="basic-stats-the-t-test.html"><i class="fa fa-check"></i><b>24</b> Basic Stats: The T-Test</a>
+<ul>
 <li class="chapter" data-level="24.1" data-path="basic-stats-the-t-test.html"><a href="basic-stats-the-t-test.html#specific-call-types"><i class="fa fa-check"></i><b>24.1</b> Specific call types</a></li>
 <li class="chapter" data-level="24.2" data-path="basic-stats-the-t-test.html"><a href="basic-stats-the-t-test.html#what-else-should-we-look-at"><i class="fa fa-check"></i><b>24.2</b> What else should we look at?</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="an-intro-to-text-analysis.html"><a href="an-intro-to-text-analysis.html"><i class="fa fa-check"></i><b>25</b> An intro to text analysis</a><ul>
+<li class="chapter" data-level="25" data-path="an-intro-to-text-analysis.html"><a href="an-intro-to-text-analysis.html"><i class="fa fa-check"></i><b>25</b> An intro to text analysis</a>
+<ul>
 <li class="chapter" data-level="25.1" data-path="an-intro-to-text-analysis.html"><a href="an-intro-to-text-analysis.html#going-further-by-analyzing-text"><i class="fa fa-check"></i><b>25.1</b> Going further by analyzing text</a></li>
 <li class="chapter" data-level="25.2" data-path="an-intro-to-text-analysis.html"><a href="an-intro-to-text-analysis.html#going-beyond-a-single-word"><i class="fa fa-check"></i><b>25.2</b> Going beyond a single word</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html"><i class="fa fa-check"></i><b>26</b> Writing with numbers</a><ul>
+<li class="chapter" data-level="26" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html"><i class="fa fa-check"></i><b>26</b> Writing with numbers</a>
+<ul>
 <li class="chapter" data-level="26.1" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html#how-to-write-about-numbers-without-overwhelming-with-numbers."><i class="fa fa-check"></i><b>26.1</b> How to write about numbers without overwhelming with numbers.</a></li>
 <li class="chapter" data-level="26.2" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html#when-exact-numbers-matter"><i class="fa fa-check"></i><b>26.2</b> When exact numbers matter</a></li>
 <li class="chapter" data-level="26.3" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html#an-example"><i class="fa fa-check"></i><b>26.3</b> An example</a></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html"><i class="fa fa-check"></i><b>27</b> Ethics in data journalism</a><ul>
+<li class="chapter" data-level="27" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html"><i class="fa fa-check"></i><b>27</b> Ethics in data journalism</a>
+<ul>
 <li class="chapter" data-level="27.1" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#problems"><i class="fa fa-check"></i><b>27.1</b> Problems</a></li>
 <li class="chapter" data-level="27.2" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#the-googlebot"><i class="fa fa-check"></i><b>27.2</b> The Googlebot</a></li>
 <li class="chapter" data-level="27.3" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#data-lifetimes"><i class="fa fa-check"></i><b>27.3</b> Data Lifetimes</a></li>
 <li class="chapter" data-level="27.4" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#you-are-a-data-provider"><i class="fa fa-check"></i><b>27.4</b> You Are a Data Provider</a></li>
 <li class="chapter" data-level="27.5" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#ethical-data"><i class="fa fa-check"></i><b>27.5</b> Ethical Data</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="using-github.html"><a href="using-github.html"><i class="fa fa-check"></i><b>28</b> Using GitHub</a>
+<ul>
+<li class="chapter" data-level="28.1" data-path="using-github.html"><a href="using-github.html#how-it-works"><i class="fa fa-check"></i><b>28.1</b> How It Works</a></li>
+<li class="chapter" data-level="28.2" data-path="using-github.html"><a href="using-github.html#getting-started"><i class="fa fa-check"></i><b>28.2</b> Getting Started</a></li>
+<li class="chapter" data-level="28.3" data-path="using-github.html"><a href="using-github.html#advanced-use"><i class="fa fa-check"></i><b>28.3</b> Advanced Use</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -287,154 +322,274 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-cleaning-part-ii-janitor" class="section level1">
+<div id="data-cleaning-part-ii-janitor" class="section level1" number="11">
 <h1><span class="header-section-number">Chapter 11</span> Data Cleaning Part II: Janitor</h1>
 <p>The bane of every data analyst’s existence is data cleaning.</p>
-<p>Every developer, every data system, every agency, the all have opinions about how data gets collected. Some decisions make sense from the outside. Some decisions are based entirely on internal poltics: who is creating the data, how they are creating it, why they are creating it. Is it automated? Is it manual? Are data normalized? Are there free form fields where users can just type into or does the system restrict them to choices?</p>
-<p>Your question – what you want to do with the data – is almost never part of that equation.</p>
-<p>So cleaning data is the process of fixing issues in your data so you can answer the questions you want to answer. Unfortunately, there’s no template here. There’s no checklist. It’s just a big bag of tricks that eventually runs out and you’ll be left fixing individual issues by hand, if it’s really bad.</p>
-<p>But let’s start simple. There are certain things that need we can start with that will make our lives easier. We’ll slowly make it harder as we dig deeper.</p>
-<div id="cleaning-headers" class="section level2">
-<h2><span class="header-section-number">11.1</span> Cleaning headers</h2>
-<p>One of the first places we can start with cleaning data is cleaning the headers. Every system has their own way of recording headers, and every developer has their own thoughts of what a good idea is within it. R is most happy when headers are one word, lower case, without special characters. If you’ve noticed <code>readr</code> output with backticks around headers like Incident Date, it’s because of the space. Headers that start with numbers or are just a number – 2002 – also get backticks in <code>readr</code>.</p>
-<p>There is an external library in R called <code>janitor</code> that makes fixing headers trivially simple. You can install it by running <code>install.packages(&quot;janitor&quot;)</code> in your console.</p>
-<p>Load libraries like we always do.</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb107-2" data-line-number="2"><span class="kw">library</span>(janitor)</a></code></pre></div>
-<pre><code>## Warning: package &#39;janitor&#39; was built under R version 3.5.2</code></pre>
+<p>Every developer, every data system, every agency, the all have opinions about how data gets collected. Some decisions make sense from the outside. Some decisions are based entirely on internal politics: who is creating the data, how they are creating it, why they are creating it. Is it automated? Is it manual? Are data normalized? Are there free form fields where users can just type into or does the system restrict them to choices?</p>
+<p>Your journalistic questions – what you want the data to tell you – is almost never part of that equation.</p>
+<p>So cleaning data is the process of fixing issues in your data so you can answer the questions you want to answer. Data cleaning is a critical step that you can’t skip past. A standard metric is that 80 percent of the time working with data will be spent cleaning and verifying data, and 20 percent the more exciting parts like analysis and visualization.</p>
+<p>The tidyverse has a lot of built-in tools for data cleaning. We’re also going to make use of a new library, called <code>janitor</code> that has a bunch of great functions for cleaning data. Let’s load those now.</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="data-cleaning-part-ii-janitor.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb120-2"><a href="data-cleaning-part-ii-janitor.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;janitor&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:stats&#39;:
 ## 
 ##     chisq.test, fisher.test</code></pre>
-<p>Let’s load a new dataset – the <a href="https://unl.box.com/s/wlurwk2ks880x65ao0l67k8pmjk04gy2">list of active inmates in the Nebraska prison system</a>.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1">inmates &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/activeinmates.csv&quot;</span>)</a></code></pre></div>
-<pre><code>## Warning: Missing column names filled in: &#39;X31&#39; [31], &#39;X32&#39; [32]</code></pre>
-<pre><code>## Warning: Duplicated column names deduplicated: &#39;FIRST NAME&#39; =&gt; &#39;FIRST
-## NAME_1&#39; [7], &#39;MIDDLE NAME&#39; =&gt; &#39;MIDDLE NAME_1&#39; [8], &#39;NAME EXTENSION&#39; =&gt; &#39;NAME
-## EXTENSION_1&#39; [9]</code></pre>
-<pre><code>## Parsed with column specification:
-## cols(
-##   .default = col_character(),
-##   `ID NUMBER` = col_double(),
-##   `GUN CLAUSE` = col_logical(),
-##   `MIN MONTH` = col_double(),
-##   `MIN DAY` = col_double(),
-##   `MAX MONTH` = col_double(),
-##   `MAX DAY` = col_double(),
-##   `GOOD TIME LAW` = col_double(),
-##   X31 = col_logical(),
-##   X32 = col_logical()
-## )</code></pre>
-<pre><code>## See spec(...) for full column specifications.</code></pre>
-<p>From the output of <code>readr</code>, you can see all kinds of problems from the get go. Two columns are missing names entirely. Three columns repeat – first name, middle name and name extension. And many field names have spaces or other not-allowed characters. Not to mention: All of them are in ALL CAPS.</p>
-<p>Janitor makes this easy to fix. How easy? This easy.</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1">inmates <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">clean_names</span>()</a></code></pre></div>
-<pre><code>## # A tibble: 7,674 x 32
-##    id_number committed_last_… first_name middle_name name_extension
-##        &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;         
-##  1      6145 KANE             THOMAS     &lt;NA&gt;        &lt;NA&gt;          
-##  2     20841 ARNOLD           WILLIAM    L           &lt;NA&gt;          
-##  3     25324 WALKER           RICHARD    T           &lt;NA&gt;          
-##  4     25565 ALVAREZ          THOMAS     A           &lt;NA&gt;          
-##  5     26103 ADAMS            BRIAN      J           &lt;NA&gt;          
-##  6     26547 KIRBY            RONALD     EUGENE      &lt;NA&gt;          
-##  7     27471 NIEMANN          MAX        A           &lt;NA&gt;          
-##  8     27666 ORTIZ            LAWRENCE   &lt;NA&gt;        &lt;NA&gt;          
-##  9     27767 POINDEXTER       EDWARD     &lt;NA&gt;        &lt;NA&gt;          
-## 10     27778 DITTRICH         LADDIE     F           &lt;NA&gt;          
-## # … with 7,664 more rows, and 27 more variables: legal_last_name &lt;chr&gt;,
-## #   first_name_1 &lt;chr&gt;, middle_name_1 &lt;chr&gt;, name_extension_1 &lt;chr&gt;,
-## #   date_of_birth &lt;chr&gt;, race_desc &lt;chr&gt;, gender &lt;chr&gt;, facility &lt;chr&gt;,
-## #   current_sentence_pardoned_or_commuted_date &lt;chr&gt;, gun_clause &lt;lgl&gt;,
-## #   sentence_begin_date &lt;chr&gt;, min_term_year &lt;chr&gt;, min_month &lt;dbl&gt;,
-## #   min_day &lt;dbl&gt;, max_term_year &lt;chr&gt;, max_month &lt;dbl&gt;, max_day &lt;dbl&gt;,
-## #   parole_eligibility_date &lt;chr&gt;, earliest_possible_release_date &lt;chr&gt;,
-## #   good_time_law &lt;dbl&gt;, inst_release_date &lt;chr&gt;, inst_release_type &lt;chr&gt;,
-## #   parole_board_next_review_date_month_year &lt;chr&gt;,
-## #   parole_board_final_hearing_date_month_year &lt;chr&gt;,
-## #   parole_board_status &lt;chr&gt;, x31 &lt;lgl&gt;, x32 &lt;lgl&gt;</code></pre>
-<p>Just like that, all lower case, all one word, no backticks necessary to confuse our code later on.</p>
-<p>Another thing janitor does well is to make it easy to drop empty columns. Remember the two unnamed columns in the data? Turns out they’re unnamamed because there’s nothing in them. Nada. Blank. We could use <code>select</code> but janitor reduces the labor involved there.</p>
-<p>First, let’s see how many columns we have.</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1">inmates <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">ncol</span>()</a></code></pre></div>
-<pre><code>## [1] 32</code></pre>
-<p>And by using <code>remove_empty(&quot;cols&quot;)</code>, how many do we get rid of?</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1">inmates <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">clean_names</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">remove_empty</span>(<span class="st">&quot;cols&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">ncol</span>()</a></code></pre></div>
-<pre><code>## [1] 29</code></pre>
-<p>So this tells us there’s three completely empty columns in our data. So why keep them around.</p>
-<p>So we can run all of this together and get a dataset with useful columns and clean headers.</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">inmates <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">clean_names</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">remove_empty</span>(<span class="st">&quot;cols&quot;</span>) -&gt;<span class="st"> </span>clean_headers_inmates</a></code></pre></div>
+<p>Now let’s load a tiny slice of our Maryland PPP loan dataset. To make the cleaning demonstration in this chapter easier, this dataset only has six rows and seven columns. All six of these loans are from Arnold, Maryland. The full data set has more loans for Arnold, but we’re only showing these six here.</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="data-cleaning-part-ii-janitor.html#cb123-1" aria-hidden="true" tabindex="-1"></a>arnold_md_loans <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">&quot;data/ppp_loan_data/processed/md/arnold_md_loans.rmd&quot;</span>)</span></code></pre></div>
+<p>Let’s glimpse it to get a sense of it, to examine the column data types and possible values.</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="data-cleaning-part-ii-janitor.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(arnold_md_loans)</span></code></pre></div>
+<pre><code>## Rows: 6
+## Columns: 7
+## $ `1_id`           &lt;dbl&gt; 93761495, 93761495, 93762575, 99479443, 99490480, 995…
+## $ NAME             &lt;chr&gt; &quot;STUART JONES LLC&quot;, &quot;STUART JONES LLC&quot;, &quot;CHAPELWOOD E…
+## $ amount           &lt;chr&gt; &quot;693361&quot;, &quot;693361&quot;, &quot;559000&quot;, &quot;39700&quot;, &quot;28422&quot;, &quot;1933…
+## $ `street address` &lt;chr&gt; &quot;700 Mill Creek Rd&quot;, &quot;700 Mill Creek Rd&quot;, &quot;1511 RITCH…
+## $ city             &lt;chr&gt; &quot;Arnold&quot;, &quot;Arnold&quot;, &quot;ARNOLD&quot;, &quot;Arnld&quot;, &quot;arnold&quot;, &quot;Ano…
+## $ state            &lt;chr&gt; &quot;MD&quot;, &quot;MD&quot;, &quot;MD&quot;, &quot;MD&quot;, &quot;MD&quot;, &quot;MD&quot;
+## $ zip              &lt;chr&gt; &quot;21012-1111&quot;, &quot;21012-1111&quot;, &quot;21012-2398&quot;, &quot;21012&quot;, &quot;2…</code></pre>
+<p>And let’s examine the full data set.</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="data-cleaning-part-ii-janitor.html#cb126-1" aria-hidden="true" tabindex="-1"></a>arnold_md_loans</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 7
+##     `1_id` NAME                  amount `street address`   city   state zip     
+##      &lt;dbl&gt; &lt;chr&gt;                 &lt;chr&gt;  &lt;chr&gt;              &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   
+## 1 93761495 STUART JONES LLC      693361 700 Mill Creek Rd  Arnold MD    21012-1…
+## 2 93761495 STUART JONES LLC      693361 700 Mill Creek Rd  Arnold MD    21012-1…
+## 3 93762575 CHAPELWOOD ENTERPRIS… 559000 1511 RITCHIE HWY   ARNOLD MD    21012-2…
+## 4 99479443 VINEVE LLC            39700  1506 Ritchie Hgwy  Arnld  MD    21012   
+## 5 99490480 ARNOLD CHIROPRACTIC … 28422  1507 ritchie hwy   arnold MD    21012   
+## 6 99535547 SPARKS ELECTRICAL SE… 19335  1238 Birchcrest C… Anold  MD    21012</code></pre>
+<p>There are a number of issues with this data set that might get in the way of asking questions and receiving accurate answers. They are:</p>
+<ul>
+<li>The column headers are inconsistently styled (note: I’ve purposely dirtied these up, which is why they look different than previous versions of this data we’ve loaded). The first column “1_id” starts with a number. The “NAME” column is all caps, while the rest are lowercase. And “street address” has a space in it. Those problems will make them hard to analyze, to refer to in functions we write.</li>
+<li>The amount column is stored as a character, not a number. If we try to do math to it – say, calculate the average loan size – it won’t work.</li>
+<li>There’s a fully duplicated row – a common problem in data sets. The first row is exactly the same as the second.</li>
+<li>The city field has five different forms – including misspellings – of Arnold. If we wanted to group and count the number of loans in Arnold, this inconsistency would not let us do that correctly.</li>
+<li>The zip field mixes five digit ZIP codes and nine digit ZIP codes. If we wanted to group and count the number of loans in a given ZIP code, this inconsistency would not let us do that correctly.</li>
+<li>The street address field is inconsistent. It has multiple variations of Ritchie Hwy.</li>
+</ul>
+<p>Let’s get cleaning. Our goal will be to build up one block of code that does all the necessary cleaning in order to answer this question: what is the total amount of loans made to businesses in Arnold, MD in ZIP code 21012?</p>
+<div id="cleaning-headers" class="section level2" number="11.1">
+<h2><span class="header-section-number">11.1</span> Cleaning headers</h2>
+<p>One of the first places we can start with cleaning data is cleaning the column names (or headers).</p>
+<p>Every system has their own way of recording headers, and every developer has their own thoughts of what a good idea is within it. R is most happy when headers are lower case, without special characters.</p>
+<p>If column headers start with a number, or have a space in between two words, you have to set them off with backticks when using them in a function. Generally speaking, we want one word (or words separated by an underscore), all lowercase, that don’t start with numbers.</p>
+<p>The <code>janitor</code> library makes fixing headers trivially simple with the function <code>clean_names()</code></p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="data-cleaning-part-ii-janitor.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cleaning function</span></span>
+<span id="cb128-2"><a href="data-cleaning-part-ii-janitor.html#cb128-2" aria-hidden="true" tabindex="-1"></a>cleaned_arnold_md_loans <span class="ot">&lt;-</span> arnold_md_loans <span class="sc">%&gt;%</span></span>
+<span id="cb128-3"><a href="data-cleaning-part-ii-janitor.html#cb128-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
+<span id="cb128-4"><a href="data-cleaning-part-ii-janitor.html#cb128-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-5"><a href="data-cleaning-part-ii-janitor.html#cb128-5" aria-hidden="true" tabindex="-1"></a><span class="co"># display the cleaned dataset</span></span>
+<span id="cb128-6"><a href="data-cleaning-part-ii-janitor.html#cb128-6" aria-hidden="true" tabindex="-1"></a>cleaned_arnold_md_loans</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 7
+##      x1_id name                          amount street_address city  state zip  
+##      &lt;dbl&gt; &lt;chr&gt;                         &lt;chr&gt;  &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+## 1 93761495 STUART JONES LLC              693361 700 Mill Cree… Arno… MD    2101…
+## 2 93761495 STUART JONES LLC              693361 700 Mill Cree… Arno… MD    2101…
+## 3 93762575 CHAPELWOOD ENTERPRISES, LLC   559000 1511 RITCHIE … ARNO… MD    2101…
+## 4 99479443 VINEVE LLC                    39700  1506 Ritchie … Arnld MD    21012
+## 5 99490480 ARNOLD CHIROPRACTIC CENTER    28422  1507 ritchie … arno… MD    21012
+## 6 99535547 SPARKS ELECTRICAL SERVICE LLC 19335  1238 Birchcre… Anold MD    21012</code></pre>
+<p>This function changed <code>NAME</code> to <code>name</code>. It put an underscore in <code>street_address</code> to get rid of the space. And it changed <code>1_id</code> to <code>x1_id</code>. That last one was an improvement – it no longer starts with a number – but it’s still kind of clunky.</p>
+<p>We can use a tidyverse function <code>rename()</code> to fix that. Let’s just call it <code>id</code></p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="data-cleaning-part-ii-janitor.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cleaning function</span></span>
+<span id="cb130-2"><a href="data-cleaning-part-ii-janitor.html#cb130-2" aria-hidden="true" tabindex="-1"></a>cleaned_arnold_md_loans <span class="ot">&lt;-</span> arnold_md_loans <span class="sc">%&gt;%</span></span>
+<span id="cb130-3"><a href="data-cleaning-part-ii-janitor.html#cb130-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb130-4"><a href="data-cleaning-part-ii-janitor.html#cb130-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">id =</span> x1_id)</span>
+<span id="cb130-5"><a href="data-cleaning-part-ii-janitor.html#cb130-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb130-6"><a href="data-cleaning-part-ii-janitor.html#cb130-6" aria-hidden="true" tabindex="-1"></a><span class="co"># display the cleaned dataset</span></span>
+<span id="cb130-7"><a href="data-cleaning-part-ii-janitor.html#cb130-7" aria-hidden="true" tabindex="-1"></a>cleaned_arnold_md_loans</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 7
+##         id name                          amount street_address city  state zip  
+##      &lt;dbl&gt; &lt;chr&gt;                         &lt;chr&gt;  &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+## 1 93761495 STUART JONES LLC              693361 700 Mill Cree… Arno… MD    2101…
+## 2 93761495 STUART JONES LLC              693361 700 Mill Cree… Arno… MD    2101…
+## 3 93762575 CHAPELWOOD ENTERPRISES, LLC   559000 1511 RITCHIE … ARNO… MD    2101…
+## 4 99479443 VINEVE LLC                    39700  1506 Ritchie … Arnld MD    21012
+## 5 99490480 ARNOLD CHIROPRACTIC CENTER    28422  1507 ritchie … arno… MD    21012
+## 6 99535547 SPARKS ELECTRICAL SERVICE LLC 19335  1238 Birchcre… Anold MD    21012</code></pre>
 </div>
-<div id="duplicates" class="section level2">
-<h2><span class="header-section-number">11.2</span> Duplicates</h2>
-<p>One of the most difficult problems to fix in data is duplicates in the data. They can creep in with bad joins, bad data entry practices, mistakes – all kinds of reasons. One trick is determining if a duplicate is indeed a duplicate.</p>
-<p>So the question is, do we have any inmates repeated? Anyone in prison twice?</p>
-<p>Here we’ll use a function called <code>get_dupes</code>. And we’ll use the inmate’s last name, first name and date of birth. The likelihood that someone has the same name and date of birth is very small, so if there are no duplicates, we should get zero records returned.</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1">clean_headers_inmates <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">get_dupes</span>(committed_last_name, first_name, date_of_birth)</a></code></pre></div>
-<pre><code>## # A tibble: 2 x 30
-##   committed_last_… first_name date_of_birth dupe_count id_number middle_name
-##   &lt;chr&gt;            &lt;chr&gt;      &lt;chr&gt;              &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;      
-## 1 WALLACE          PAMELA     7/11/1966              2     99240 &lt;NA&gt;       
-## 2 WALLACE          PAMELA     7/11/1966              2     99955 &lt;NA&gt;       
-## # … with 24 more variables: name_extension &lt;chr&gt;, legal_last_name &lt;chr&gt;,
-## #   first_name_1 &lt;chr&gt;, middle_name_1 &lt;chr&gt;, name_extension_1 &lt;chr&gt;,
-## #   race_desc &lt;chr&gt;, gender &lt;chr&gt;, facility &lt;chr&gt;,
-## #   current_sentence_pardoned_or_commuted_date &lt;chr&gt;,
-## #   sentence_begin_date &lt;chr&gt;, min_term_year &lt;chr&gt;, min_month &lt;dbl&gt;,
-## #   min_day &lt;dbl&gt;, max_term_year &lt;chr&gt;, max_month &lt;dbl&gt;, max_day &lt;dbl&gt;,
-## #   parole_eligibility_date &lt;chr&gt;, earliest_possible_release_date &lt;chr&gt;,
-## #   good_time_law &lt;dbl&gt;, inst_release_date &lt;chr&gt;, inst_release_type &lt;chr&gt;,
-## #   parole_board_next_review_date_month_year &lt;chr&gt;,
-## #   parole_board_final_hearing_date_month_year &lt;chr&gt;, parole_board_status &lt;chr&gt;</code></pre>
-<p>Uh oh. We get two Pamela Wallaces born on the same day in 1966. But is it a duplicate record? Look closely. Two different <code>id_number</code>s. In two different facilities on two different dates. Two different sentencing dates. Is it a duplicate record or the same person entering the system two different times?</p>
+<div id="changing-data-types" class="section level2" number="11.2">
+<h2><span class="header-section-number">11.2</span> Changing data types</h2>
+<p>Right now, the amount column is stored as a character. Do you see the little <code>&lt;chr&gt;</code> under the amount column in the table above? If we wanted to do math to it, we’d get an error, like so.</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="data-cleaning-part-ii-janitor.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cleaning function</span></span>
+<span id="cb132-2"><a href="data-cleaning-part-ii-janitor.html#cb132-2" aria-hidden="true" tabindex="-1"></a>total_arnold_md_loans <span class="ot">&lt;-</span> cleaned_arnold_md_loans <span class="sc">%&gt;%</span></span>
+<span id="cb132-3"><a href="data-cleaning-part-ii-janitor.html#cb132-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_amount =</span> <span class="fu">sum</span>(amount))</span></code></pre></div>
+<pre><code>## Error: Problem with `summarise()` column `total_amount`.
+## ℹ `total_amount = sum(amount)`.
+## x invalid &#39;type&#39; (character) of argument</code></pre>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="data-cleaning-part-ii-janitor.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="co"># display the cleaned dataset</span></span>
+<span id="cb134-2"><a href="data-cleaning-part-ii-janitor.html#cb134-2" aria-hidden="true" tabindex="-1"></a>total_arnold_md_loans</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;total_arnold_md_loans&#39; not found</code></pre>
+<p>We got an “invalid ‘type’ (character)” error. So let’s fix that using the mutate() function in concert with as.numeric(). We’ll reuse the same column name, so it overwrites it.</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="data-cleaning-part-ii-janitor.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cleaning function</span></span>
+<span id="cb136-2"><a href="data-cleaning-part-ii-janitor.html#cb136-2" aria-hidden="true" tabindex="-1"></a>cleaned_arnold_md_loans <span class="ot">&lt;-</span> arnold_md_loans <span class="sc">%&gt;%</span></span>
+<span id="cb136-3"><a href="data-cleaning-part-ii-janitor.html#cb136-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb136-4"><a href="data-cleaning-part-ii-janitor.html#cb136-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">id =</span> x1_id) <span class="sc">%&gt;%</span></span>
+<span id="cb136-5"><a href="data-cleaning-part-ii-janitor.html#cb136-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">amount =</span> <span class="fu">as.numeric</span>(amount))</span>
+<span id="cb136-6"><a href="data-cleaning-part-ii-janitor.html#cb136-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb136-7"><a href="data-cleaning-part-ii-janitor.html#cb136-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-8"><a href="data-cleaning-part-ii-janitor.html#cb136-8" aria-hidden="true" tabindex="-1"></a><span class="co"># display the cleaned dataset</span></span>
+<span id="cb136-9"><a href="data-cleaning-part-ii-janitor.html#cb136-9" aria-hidden="true" tabindex="-1"></a>cleaned_arnold_md_loans</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 7
+##         id name                          amount street_address city  state zip  
+##      &lt;dbl&gt; &lt;chr&gt;                          &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+## 1 93761495 STUART JONES LLC              693361 700 Mill Cree… Arno… MD    2101…
+## 2 93761495 STUART JONES LLC              693361 700 Mill Cree… Arno… MD    2101…
+## 3 93762575 CHAPELWOOD ENTERPRISES, LLC   559000 1511 RITCHIE … ARNO… MD    2101…
+## 4 99479443 VINEVE LLC                     39700 1506 Ritchie … Arnld MD    21012
+## 5 99490480 ARNOLD CHIROPRACTIC CENTER     28422 1507 ritchie … arno… MD    21012
+## 6 99535547 SPARKS ELECTRICAL SERVICE LLC  19335 1238 Birchcre… Anold MD    21012</code></pre>
+<p>Notice that the amount has been converted to a <code>&lt;dbl&gt;</code>, which is short for double, a number format. When we attempt to add up all of the amounts to create a total, this time it works fine.</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="data-cleaning-part-ii-janitor.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cleaning function</span></span>
+<span id="cb138-2"><a href="data-cleaning-part-ii-janitor.html#cb138-2" aria-hidden="true" tabindex="-1"></a>total_arnold_md_loans <span class="ot">&lt;-</span> cleaned_arnold_md_loans <span class="sc">%&gt;%</span></span>
+<span id="cb138-3"><a href="data-cleaning-part-ii-janitor.html#cb138-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_amount =</span> <span class="fu">sum</span>(amount))</span>
+<span id="cb138-4"><a href="data-cleaning-part-ii-janitor.html#cb138-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-5"><a href="data-cleaning-part-ii-janitor.html#cb138-5" aria-hidden="true" tabindex="-1"></a><span class="co"># display the cleaned dataset</span></span>
+<span id="cb138-6"><a href="data-cleaning-part-ii-janitor.html#cb138-6" aria-hidden="true" tabindex="-1"></a>total_arnold_md_loans</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 1
+##   total_amount
+##          &lt;dbl&gt;
+## 1      2033179</code></pre>
 </div>
-<div id="inconsistency" class="section level2">
-<h2><span class="header-section-number">11.3</span> Inconsistency</h2>
-<p>Janitor also has some handy tools for our data smells. One is called <code>tabyl</code>, which creates a table of unique records in a single field.</p>
-<p>So does the Department of Corrections record gender consistently? <code>tabyl</code> will tell us and will tell us a little bit about the data.</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1">clean_headers_inmates <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tabyl</span>(gender)</a></code></pre></div>
-<pre><code>##  gender    n    percent
-##  FEMALE  732 0.09538702
-##    MALE 6942 0.90461298</code></pre>
-<p>So the Department of Corrections clearly doesn’t buy into more modern sentiments about gender, but they are at least consistent. Every inmate has a gender – no NAs – and note that 90 percent of inmates are men.</p>
-<p>How about race?</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" data-line-number="1">clean_headers_inmates <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tabyl</span>(race_desc)</a></code></pre></div>
-<pre><code>##         race_desc    n      percent valid_percent
-##             ASIAN   61 0.0079489184  0.0079520271
-##             BLACK 2037 0.2654417514  0.2655455612
-##          HISPANIC 1059 0.1379984363  0.1380524052
-##   NATIVE AMERICAN  349 0.0454782382  0.0454960240
-##             OTHER   56 0.0072973677  0.0073002216
-##  PACIFIC ISLANDER    7 0.0009121710  0.0009125277
-##             WHITE 4102 0.5345321866  0.5347412332
-##              &lt;NA&gt;    3 0.0003909304            NA</code></pre>
-<p>Three people do not have a race – and according to the Census Bureau, Hispanic is not a race, it’s an ethnicity – but otherwise, it looks solid. There’s very little in the way of inconsistency.</p>
-<p>How about what facilities they are in?</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1">clean_headers_inmates <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tabyl</span>(facility)</a></code></pre></div>
-<pre><code>##                        facility    n    percent valid_percent
-##   COMMUNITY CORRECTIONS-LINCOLN 1276 0.16627574    0.16887242
-##     COMMUNITY CORRECTIONS-OMAHA  368 0.04795413    0.04870302
-##  DIAGNOSTIC &amp; EVALUATION CENTER  778 0.10138129    0.10296453
-##     LINCOLN CORRECTIONAL CENTER  571 0.07440709    0.07556908
-##  NEBRASKA CORR CENTER FOR WOMEN  480 0.06254887    0.06352567
-##     NEBRASKA CORR YOUTH FACILTY   83 0.01081574    0.01098465
-##     NEBRASKA STATE PENITENTIARY 1588 0.20693250    0.21016411
-##       OMAHA CORRECTIONAL CENTER 1059 0.13799844    0.14015352
-##  TECUMSEH STATE COR INSTITUTION 1104 0.14386239    0.14610905
-##                 WORK ETHIC CAMP  249 0.03244722    0.03295394
-##                            &lt;NA&gt;  118 0.01537660            NA</code></pre>
-<p>Not sure how I feel about 118 inmates not having a facility. That’s probably worth investigating. At least one, I know about – it lists the inmate as having escaped in the 1960s and never found. Not sure about the others.</p>
-<p>But sometimes, NAs are not bad data. Sometimes they’re just NA. Let’s look at <code>inst_release_type</code> or how inmates were released.</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" data-line-number="1">clean_headers_inmates <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tabyl</span>(inst_release_type)</a></code></pre></div>
-<pre><code>##     inst_release_type    n      percent valid_percent
-##  DISCRETIONARY PAROLE 1391 0.1812614021  0.5506730008
-##                ESCAPE   51 0.0066458170  0.0201900238
-##      MANDATORY PAROLE    2 0.0002606203  0.0007917656
-##             RE-PAROLE    3 0.0003909304  0.0011876485
-##       RELEASED TO PRS 1079 0.1406046390  0.4271575614
-##                  &lt;NA&gt; 5148 0.6708365911            NA</code></pre>
-<p>By far the largest group here is NA. Why is that? They haven’t been released yet. They’re still in prison.</p>
+<div id="duplicates" class="section level2" number="11.3">
+<h2><span class="header-section-number">11.3</span> Duplicates</h2>
+<p>One of the most difficult problems to fix in data is duplicate records in the data. They can creepin with bad joins, bad data entry practices, mistakes – all kinds of reasons. A duplicated record isn’t always there because of an error, but you need to know if it’s there before making that determination.</p>
+<p>So the question is, do we have any records repeated?</p>
+<p>Here we’ll use a function called <code>get_dupes</code> from the janitor library to check for fully repeated records in our cleaned data set.</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="data-cleaning-part-ii-janitor.html#cb140-1" aria-hidden="true" tabindex="-1"></a>cleaned_arnold_md_loans <span class="sc">%&gt;%</span> </span>
+<span id="cb140-2"><a href="data-cleaning-part-ii-janitor.html#cb140-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_dupes</span>()</span></code></pre></div>
+<pre><code>## No variable names specified - using all columns.</code></pre>
+<pre><code>## # A tibble: 2 × 8
+##         id name             amount street_address    city   state zip   dupe_count
+##      &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;      &lt;int&gt;
+## 1 93761495 STUART JONES LLC 693361 700 Mill Creek Rd Arnold MD    2101…          2
+## 2 93761495 STUART JONES LLC 693361 700 Mill Creek Rd Arnold MD    2101…          2</code></pre>
+<p>In this case, the first two records in our table are fully duplicated. Every field is identical in each.</p>
+<p>We can fix this by adding the function <code>distinct()</code> to our cleaning script. This will keep only one copy of each unique record in our table</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="data-cleaning-part-ii-janitor.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cleaning function</span></span>
+<span id="cb143-2"><a href="data-cleaning-part-ii-janitor.html#cb143-2" aria-hidden="true" tabindex="-1"></a>cleaned_arnold_md_loans <span class="ot">&lt;-</span> arnold_md_loans <span class="sc">%&gt;%</span></span>
+<span id="cb143-3"><a href="data-cleaning-part-ii-janitor.html#cb143-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb143-4"><a href="data-cleaning-part-ii-janitor.html#cb143-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">id =</span> x1_id) <span class="sc">%&gt;%</span></span>
+<span id="cb143-5"><a href="data-cleaning-part-ii-janitor.html#cb143-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">amount =</span> <span class="fu">as.numeric</span>(amount)) <span class="sc">%&gt;%</span></span>
+<span id="cb143-6"><a href="data-cleaning-part-ii-janitor.html#cb143-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb143-7"><a href="data-cleaning-part-ii-janitor.html#cb143-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb143-8"><a href="data-cleaning-part-ii-janitor.html#cb143-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb143-9"><a href="data-cleaning-part-ii-janitor.html#cb143-9" aria-hidden="true" tabindex="-1"></a><span class="co"># display the cleaned dataset</span></span>
+<span id="cb143-10"><a href="data-cleaning-part-ii-janitor.html#cb143-10" aria-hidden="true" tabindex="-1"></a>cleaned_arnold_md_loans</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 7
+##         id name                          amount street_address city  state zip  
+##      &lt;dbl&gt; &lt;chr&gt;                          &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+## 1 93761495 STUART JONES LLC              693361 700 Mill Cree… Arno… MD    2101…
+## 2 93762575 CHAPELWOOD ENTERPRISES, LLC   559000 1511 RITCHIE … ARNO… MD    2101…
+## 3 99479443 VINEVE LLC                     39700 1506 Ritchie … Arnld MD    21012
+## 4 99490480 ARNOLD CHIROPRACTIC CENTER     28422 1507 ritchie … arno… MD    21012
+## 5 99535547 SPARKS ELECTRICAL SERVICE LLC  19335 1238 Birchcre… Anold MD    21012</code></pre>
+</div>
+<div id="cleaning-strings" class="section level2" number="11.4">
+<h2><span class="header-section-number">11.4</span> Cleaning strings</h2>
+<p>The rest of the problems with this data set all have to do with inconsistent format of values in a few of the columns. To fix these problems, we’re going to make use of mutate() and a new function, <code>case_when()</code> in concert with “string functions” – special functions that allow us to clean up columns stored as character strings. The tidyverse package <code>stringr</code> has lots of useful string functions, more than we’ll learn in this chapter.</p>
+<p>Let’s start by cleaning up the zip field. Remember, three of rows had a five-digit ZIP code, while two had a nine-digit ZIP code, separated by a hyphen.</p>
+<p>We’re going to write code that tells R to keep the first five digits on the left, and get rid of anything after that by using <code>mutate()</code> in concert with <code>str_sub()</code>, from the <code>stringr</code> package.</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="data-cleaning-part-ii-janitor.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cleaning function</span></span>
+<span id="cb145-2"><a href="data-cleaning-part-ii-janitor.html#cb145-2" aria-hidden="true" tabindex="-1"></a>cleaned_arnold_md_loans <span class="ot">&lt;-</span> arnold_md_loans <span class="sc">%&gt;%</span></span>
+<span id="cb145-3"><a href="data-cleaning-part-ii-janitor.html#cb145-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb145-4"><a href="data-cleaning-part-ii-janitor.html#cb145-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">id =</span> x1_id) <span class="sc">%&gt;%</span></span>
+<span id="cb145-5"><a href="data-cleaning-part-ii-janitor.html#cb145-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">amount =</span> <span class="fu">as.numeric</span>(amount)) <span class="sc">%&gt;%</span></span>
+<span id="cb145-6"><a href="data-cleaning-part-ii-janitor.html#cb145-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb145-7"><a href="data-cleaning-part-ii-janitor.html#cb145-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">zip =</span> <span class="fu">str_sub</span>(zip, <span class="at">start=</span>1L, <span class="at">end=</span>5L))</span>
+<span id="cb145-8"><a href="data-cleaning-part-ii-janitor.html#cb145-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb145-9"><a href="data-cleaning-part-ii-janitor.html#cb145-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb145-10"><a href="data-cleaning-part-ii-janitor.html#cb145-10" aria-hidden="true" tabindex="-1"></a><span class="co"># display the cleaned dataset</span></span>
+<span id="cb145-11"><a href="data-cleaning-part-ii-janitor.html#cb145-11" aria-hidden="true" tabindex="-1"></a>cleaned_arnold_md_loans</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 7
+##         id name                          amount street_address city  state zip  
+##      &lt;dbl&gt; &lt;chr&gt;                          &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+## 1 93761495 STUART JONES LLC              693361 700 Mill Cree… Arno… MD    21012
+## 2 93762575 CHAPELWOOD ENTERPRISES, LLC   559000 1511 RITCHIE … ARNO… MD    21012
+## 3 99479443 VINEVE LLC                     39700 1506 Ritchie … Arnld MD    21012
+## 4 99490480 ARNOLD CHIROPRACTIC CENTER     28422 1507 ritchie … arno… MD    21012
+## 5 99535547 SPARKS ELECTRICAL SERVICE LLC  19335 1238 Birchcre… Anold MD    21012</code></pre>
+<p>Let’s break down this line of code. It says: take the value in each zip column and extract the first character on the left (1L) through the fifth character on the left (5L), and then use that five-digit zip to overwrite the zip column.</p>
+<p>We’ll use a different set of functions to standardize how we standardize the different flavors of the word “Arnold” in the city column. Let’s start by changing every value to title case – first letter uppercase, subsequent letters lowercase – using the <code>str_to_title()</code> function from <code>stringr</code>.</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="data-cleaning-part-ii-janitor.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cleaning function</span></span>
+<span id="cb147-2"><a href="data-cleaning-part-ii-janitor.html#cb147-2" aria-hidden="true" tabindex="-1"></a>cleaned_arnold_md_loans <span class="ot">&lt;-</span> arnold_md_loans <span class="sc">%&gt;%</span></span>
+<span id="cb147-3"><a href="data-cleaning-part-ii-janitor.html#cb147-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb147-4"><a href="data-cleaning-part-ii-janitor.html#cb147-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">id =</span> x1_id) <span class="sc">%&gt;%</span></span>
+<span id="cb147-5"><a href="data-cleaning-part-ii-janitor.html#cb147-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">amount =</span> <span class="fu">as.numeric</span>(amount)) <span class="sc">%&gt;%</span></span>
+<span id="cb147-6"><a href="data-cleaning-part-ii-janitor.html#cb147-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb147-7"><a href="data-cleaning-part-ii-janitor.html#cb147-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">zip =</span> <span class="fu">str_sub</span>(zip, <span class="at">start=</span>1L, <span class="at">end=</span>5L)) <span class="sc">%&gt;%</span></span>
+<span id="cb147-8"><a href="data-cleaning-part-ii-janitor.html#cb147-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">city =</span> <span class="fu">str_to_title</span>(city))</span>
+<span id="cb147-9"><a href="data-cleaning-part-ii-janitor.html#cb147-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb147-10"><a href="data-cleaning-part-ii-janitor.html#cb147-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb147-11"><a href="data-cleaning-part-ii-janitor.html#cb147-11" aria-hidden="true" tabindex="-1"></a><span class="co"># display the cleaned dataset</span></span>
+<span id="cb147-12"><a href="data-cleaning-part-ii-janitor.html#cb147-12" aria-hidden="true" tabindex="-1"></a>cleaned_arnold_md_loans</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 7
+##         id name                          amount street_address city  state zip  
+##      &lt;dbl&gt; &lt;chr&gt;                          &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+## 1 93761495 STUART JONES LLC              693361 700 Mill Cree… Arno… MD    21012
+## 2 93762575 CHAPELWOOD ENTERPRISES, LLC   559000 1511 RITCHIE … Arno… MD    21012
+## 3 99479443 VINEVE LLC                     39700 1506 Ritchie … Arnld MD    21012
+## 4 99490480 ARNOLD CHIROPRACTIC CENTER     28422 1507 ritchie … Arno… MD    21012
+## 5 99535547 SPARKS ELECTRICAL SERVICE LLC  19335 1238 Birchcre… Anold MD    21012</code></pre>
+<p>That was enough to standardize two values (ARNOLD and arnold). The only ones that remain are the two clear misspellings (Arnld and Anold). To fix those, we’re going to do some manual editing. And for that, we’re going to use <code>case_when()</code>, a function that let’s us say if a value meets a certain condition, then change it, and if it doesn’t, don’t change it.</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="data-cleaning-part-ii-janitor.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cleaning function</span></span>
+<span id="cb149-2"><a href="data-cleaning-part-ii-janitor.html#cb149-2" aria-hidden="true" tabindex="-1"></a>cleaned_arnold_md_loans <span class="ot">&lt;-</span> arnold_md_loans <span class="sc">%&gt;%</span></span>
+<span id="cb149-3"><a href="data-cleaning-part-ii-janitor.html#cb149-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb149-4"><a href="data-cleaning-part-ii-janitor.html#cb149-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">id =</span> x1_id) <span class="sc">%&gt;%</span></span>
+<span id="cb149-5"><a href="data-cleaning-part-ii-janitor.html#cb149-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">amount =</span> <span class="fu">as.numeric</span>(amount)) <span class="sc">%&gt;%</span></span>
+<span id="cb149-6"><a href="data-cleaning-part-ii-janitor.html#cb149-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb149-7"><a href="data-cleaning-part-ii-janitor.html#cb149-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">zip =</span> <span class="fu">str_sub</span>(zip, <span class="at">start=</span>1L, <span class="at">end=</span>5L)) <span class="sc">%&gt;%</span></span>
+<span id="cb149-8"><a href="data-cleaning-part-ii-janitor.html#cb149-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">city =</span> <span class="fu">str_to_title</span>(city)) <span class="sc">%&gt;%</span></span>
+<span id="cb149-9"><a href="data-cleaning-part-ii-janitor.html#cb149-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">city =</span> <span class="fu">case_when</span>(</span>
+<span id="cb149-10"><a href="data-cleaning-part-ii-janitor.html#cb149-10" aria-hidden="true" tabindex="-1"></a>    city <span class="sc">==</span> <span class="st">&quot;Anold&quot;</span> <span class="sc">~</span> <span class="st">&quot;Arnold&quot;</span>,</span>
+<span id="cb149-11"><a href="data-cleaning-part-ii-janitor.html#cb149-11" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> city</span>
+<span id="cb149-12"><a href="data-cleaning-part-ii-janitor.html#cb149-12" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb149-13"><a href="data-cleaning-part-ii-janitor.html#cb149-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb149-14"><a href="data-cleaning-part-ii-janitor.html#cb149-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-15"><a href="data-cleaning-part-ii-janitor.html#cb149-15" aria-hidden="true" tabindex="-1"></a><span class="co"># display the cleaned dataset</span></span>
+<span id="cb149-16"><a href="data-cleaning-part-ii-janitor.html#cb149-16" aria-hidden="true" tabindex="-1"></a>cleaned_arnold_md_loans</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 7
+##         id name                          amount street_address city  state zip  
+##      &lt;dbl&gt; &lt;chr&gt;                          &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+## 1 93761495 STUART JONES LLC              693361 700 Mill Cree… Arno… MD    21012
+## 2 93762575 CHAPELWOOD ENTERPRISES, LLC   559000 1511 RITCHIE … Arno… MD    21012
+## 3 99479443 VINEVE LLC                     39700 1506 Ritchie … Arnld MD    21012
+## 4 99490480 ARNOLD CHIROPRACTIC CENTER     28422 1507 ritchie … Arno… MD    21012
+## 5 99535547 SPARKS ELECTRICAL SERVICE LLC  19335 1238 Birchcre… Arno… MD    21012</code></pre>
+<p>This is a little complex, so let’s break it down.</p>
+<p>What the code above says, in English, is this: Look at all the values in the city column. If the value is “Anold,” then (that’s what the “~” means, then) replace it with the word “Arnold.” If it’s anything other than that (that’s what “TRUE” means, otherwise), then keep the existing value in that column.</p>
+<p>We can fix “Arnld” by adding a line to that same function.</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="data-cleaning-part-ii-janitor.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cleaning function</span></span>
+<span id="cb151-2"><a href="data-cleaning-part-ii-janitor.html#cb151-2" aria-hidden="true" tabindex="-1"></a>cleaned_arnold_md_loans <span class="ot">&lt;-</span> arnold_md_loans <span class="sc">%&gt;%</span></span>
+<span id="cb151-3"><a href="data-cleaning-part-ii-janitor.html#cb151-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb151-4"><a href="data-cleaning-part-ii-janitor.html#cb151-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">id =</span> x1_id) <span class="sc">%&gt;%</span></span>
+<span id="cb151-5"><a href="data-cleaning-part-ii-janitor.html#cb151-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">amount =</span> <span class="fu">as.numeric</span>(amount)) <span class="sc">%&gt;%</span></span>
+<span id="cb151-6"><a href="data-cleaning-part-ii-janitor.html#cb151-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb151-7"><a href="data-cleaning-part-ii-janitor.html#cb151-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">zip =</span> <span class="fu">str_sub</span>(zip, <span class="at">start=</span>1L, <span class="at">end=</span>5L)) <span class="sc">%&gt;%</span></span>
+<span id="cb151-8"><a href="data-cleaning-part-ii-janitor.html#cb151-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">city =</span> <span class="fu">str_to_title</span>(city)) <span class="sc">%&gt;%</span></span>
+<span id="cb151-9"><a href="data-cleaning-part-ii-janitor.html#cb151-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">city =</span> <span class="fu">case_when</span>(</span>
+<span id="cb151-10"><a href="data-cleaning-part-ii-janitor.html#cb151-10" aria-hidden="true" tabindex="-1"></a>    city <span class="sc">==</span> <span class="st">&quot;Anold&quot;</span> <span class="sc">~</span> <span class="st">&quot;Arnold&quot;</span>,</span>
+<span id="cb151-11"><a href="data-cleaning-part-ii-janitor.html#cb151-11" aria-hidden="true" tabindex="-1"></a>    city <span class="sc">==</span> <span class="st">&quot;Arnld&quot;</span> <span class="sc">~</span> <span class="st">&quot;Arnold&quot;</span>,</span>
+<span id="cb151-12"><a href="data-cleaning-part-ii-janitor.html#cb151-12" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> city</span>
+<span id="cb151-13"><a href="data-cleaning-part-ii-janitor.html#cb151-13" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb151-14"><a href="data-cleaning-part-ii-janitor.html#cb151-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb151-15"><a href="data-cleaning-part-ii-janitor.html#cb151-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-16"><a href="data-cleaning-part-ii-janitor.html#cb151-16" aria-hidden="true" tabindex="-1"></a><span class="co"># display the cleaned dataset</span></span>
+<span id="cb151-17"><a href="data-cleaning-part-ii-janitor.html#cb151-17" aria-hidden="true" tabindex="-1"></a>cleaned_arnold_md_loans</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 7
+##         id name                          amount street_address city  state zip  
+##      &lt;dbl&gt; &lt;chr&gt;                          &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+## 1 93761495 STUART JONES LLC              693361 700 Mill Cree… Arno… MD    21012
+## 2 93762575 CHAPELWOOD ENTERPRISES, LLC   559000 1511 RITCHIE … Arno… MD    21012
+## 3 99479443 VINEVE LLC                     39700 1506 Ritchie … Arno… MD    21012
+## 4 99490480 ARNOLD CHIROPRACTIC CENTER     28422 1507 ritchie … Arno… MD    21012
+## 5 99535547 SPARKS ELECTRICAL SERVICE LLC  19335 1238 Birchcre… Arno… MD    21012</code></pre>
+<p>Lastly, there’s the issue with inconsistent spelling of Ritchie Hwy in the street address column. Do we need to clean this?</p>
+<p>Remember the motivating question that’s driving us to do this cleaning: What’s the total amount of loans (at least in this tiny slice of data) for Arnold, MD in ZIP code 21012?</p>
+<p>We don’t need the street_address field to answer that question. So we’re not going to bother cleaning it.</p>
+<p>That’s a good approach for the future. A good rule of thumb is that you should only spend time cleaning fields that are critical to the specific analysis you want to do.</p>
 
 </div>
 </div>
@@ -467,6 +622,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -487,6 +643,10 @@ gitbook.start({
 "text": null
 },
 "download": ["datajournalism.pdf", "datajournalism.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

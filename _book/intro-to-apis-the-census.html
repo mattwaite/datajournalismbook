@@ -5,26 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 17 Intro to APIs: The Census | Data Journalism with R and the Tidyverse</title>
-  <meta name="description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="description" content="This is a book built on a very opinionated philosophy for journalism students doing data journalism in R with replicable methods." />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 17 Intro to APIs: The Census | Data Journalism with R and the Tidyverse" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  <meta property="og:description" content="This is a book built on a very opinionated philosophy for journalism students doing data journalism in R with replicable methods." />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 17 Intro to APIs: The Census | Data Journalism with R and the Tidyverse" />
   
-  <meta name="twitter:description" content="This is a book built on a very opinionated philosophy for undergraduate journalism students in doing data journalism in R with replicable methods." />
+  <meta name="twitter:description" content="This is a book built on a very opinionated philosophy for journalism students doing data journalism in R with replicable methods." />
   
 
-<meta name="author" content="Matt Waite" />
+<meta name="author" content="Matt Waite (original author); updated by Derek Willis and Sean Mussenden" />
 
 
-<meta name="date" content="2020-04-21" />
+<meta name="date" content="2021-08-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,8 @@
   
 <link rel="prev" href="advanced-rvest.html"/>
 <link rel="next" href="visualizing-your-data-for-reporting.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,14 +51,16 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.13/datatables.js"></script>
+<script src="libs/datatables-binding-0.18/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160712129-1"></script>
 <script>
@@ -70,25 +73,27 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -97,9 +102,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -132,6 +137,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -145,127 +151,156 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="http://mattwaite.github.io/datajournalism/">Data Journalism With R</a></li>
+<li><a href="http://smussenden.github.io/coursefiles/data_journalism_book/">Data Journalism With R</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#modern-data-journalism"><i class="fa fa-check"></i><b>1.1</b> Modern data journalism</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installations"><i class="fa fa-check"></i><b>1.2</b> Installations</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#about-this-book"><i class="fa fa-check"></i><b>1.3</b> About this book</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#what-well-cover"><i class="fa fa-check"></i><b>1.4</b> What we’ll cover</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="public-records.html"><a href="public-records.html"><i class="fa fa-check"></i><b>2</b> Public records</a><ul>
+<li class="chapter" data-level="2" data-path="public-records.html"><a href="public-records.html"><i class="fa fa-check"></i><b>2</b> Public records</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="public-records.html"><a href="public-records.html#federal-law"><i class="fa fa-check"></i><b>2.1</b> Federal law</a></li>
 <li class="chapter" data-level="2.2" data-path="public-records.html"><a href="public-records.html#state-law"><i class="fa fa-check"></i><b>2.2</b> State law</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>3</b> R basics</a><ul>
-<li class="chapter" data-level="3.1" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-1"><i class="fa fa-check"></i><b>3.1</b> Adding libraries, part 1</a></li>
-<li class="chapter" data-level="3.2" data-path="r-basics.html"><a href="r-basics.html#adding-libraries-part-2"><i class="fa fa-check"></i><b>3.2</b> Adding libraries, part 2</a></li>
+<li class="chapter" data-level="3" data-path="r-basics.html"><a href="r-basics.html"><i class="fa fa-check"></i><b>3</b> R basics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="r-basics.html"><a href="r-basics.html#about-libraries"><i class="fa fa-check"></i><b>3.1</b> About libraries</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html"><i class="fa fa-check"></i><b>4</b> Data journalism in the age of replication</a><ul>
+<li class="chapter" data-level="4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html"><i class="fa fa-check"></i><b>4</b> Data journalism in the age of replication</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#the-stylebook"><i class="fa fa-check"></i><b>4.1</b> The stylebook</a></li>
 <li class="chapter" data-level="4.2" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication"><i class="fa fa-check"></i><b>4.2</b> Replication</a></li>
 <li class="chapter" data-level="4.3" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#goodbye-excel"><i class="fa fa-check"></i><b>4.3</b> Goodbye Excel?</a></li>
 <li class="chapter" data-level="4.4" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#receptivity-is-high"><i class="fa fa-check"></i><b>4.4</b> “Receptivity … is high”</a></li>
 <li class="chapter" data-level="4.5" data-path="data-journalism-in-the-age-of-replication.html"><a href="data-journalism-in-the-age-of-replication.html#replication-in-notebooks"><i class="fa fa-check"></i><b>4.5</b> Replication in notebooks</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html"><i class="fa fa-check"></i><b>5</b> Data, structures and types</a><ul>
-<li class="chapter" data-level="5.1" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#rows-and-columns"><i class="fa fa-check"></i><b>5.1</b> Rows and columns</a></li>
+<li class="chapter" data-level="5" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html"><i class="fa fa-check"></i><b>5</b> Data, structures and types</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#a-mental-picture"><i class="fa fa-check"></i><b>5.1</b> A Mental Picture</a></li>
 <li class="chapter" data-level="5.2" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#types"><i class="fa fa-check"></i><b>5.2</b> Types</a></li>
-<li class="chapter" data-level="5.3" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#a-simple-way-to-get-data"><i class="fa fa-check"></i><b>5.3</b> A simple way to get data</a></li>
-<li class="chapter" data-level="5.4" data-path="data-structures-and-types.html"><a href="data-structures-and-types.html#cleaning-the-data"><i class="fa fa-check"></i><b>5.4</b> Cleaning the data</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="aggregates.html"><a href="aggregates.html"><i class="fa fa-check"></i><b>6</b> Aggregates</a><ul>
-<li class="chapter" data-level="6.1" data-path="aggregates.html"><a href="aggregates.html#importing-data"><i class="fa fa-check"></i><b>6.1</b> Importing data</a></li>
-<li class="chapter" data-level="6.2" data-path="aggregates.html"><a href="aggregates.html#group-by-and-count"><i class="fa fa-check"></i><b>6.2</b> Group by and count</a></li>
-<li class="chapter" data-level="6.3" data-path="aggregates.html"><a href="aggregates.html#other-aggregates-mean-and-median"><i class="fa fa-check"></i><b>6.3</b> Other aggregates: Mean and median</a></li>
-<li class="chapter" data-level="6.4" data-path="aggregates.html"><a href="aggregates.html#even-more-aggregates"><i class="fa fa-check"></i><b>6.4</b> Even more aggregates</a></li>
+<li class="chapter" data-level="6" data-path="aggregates.html"><a href="aggregates.html"><i class="fa fa-check"></i><b>6</b> Aggregates</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="aggregates.html"><a href="aggregates.html#libraries"><i class="fa fa-check"></i><b>6.1</b> Libraries</a></li>
+<li class="chapter" data-level="6.2" data-path="aggregates.html"><a href="aggregates.html#importing-data"><i class="fa fa-check"></i><b>6.2</b> Importing data</a></li>
+<li class="chapter" data-level="6.3" data-path="aggregates.html"><a href="aggregates.html#group-by-and-count"><i class="fa fa-check"></i><b>6.3</b> Group by and count</a></li>
+<li class="chapter" data-level="6.4" data-path="aggregates.html"><a href="aggregates.html#other-summarization-methods-summing-mean-median-min-and-max"><i class="fa fa-check"></i><b>6.4</b> Other summarization methods: summing, mean, median, min and max</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>7</b> Mutating data</a><ul>
+<li class="chapter" data-level="7" data-path="mutating-data.html"><a href="mutating-data.html"><i class="fa fa-check"></i><b>7</b> Mutating data</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="mutating-data.html"><a href="mutating-data.html#another-use-of-mutate"><i class="fa fa-check"></i><b>7.1</b> Another use of mutate</a></li>
+<li class="chapter" data-level="7.2" data-path="mutating-data.html"><a href="mutating-data.html#a-more-powerful-use"><i class="fa fa-check"></i><b>7.2</b> A more powerful use</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>8</b> Working with dates</a><ul>
+<li class="chapter" data-level="8" data-path="working-with-dates.html"><a href="working-with-dates.html"><i class="fa fa-check"></i><b>8</b> Working with dates</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="working-with-dates.html"><a href="working-with-dates.html#the-hard-way"><i class="fa fa-check"></i><b>8.1</b> The hard way</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="filters-and-selections.html"><a href="filters-and-selections.html"><i class="fa fa-check"></i><b>9</b> Filters and selections</a><ul>
+<li class="chapter" data-level="9" data-path="filters-and-selections.html"><a href="filters-and-selections.html"><i class="fa fa-check"></i><b>9</b> Filters and selections</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="filters-and-selections.html"><a href="filters-and-selections.html#combining-filters"><i class="fa fa-check"></i><b>9.1</b> Combining filters</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html"><i class="fa fa-check"></i><b>10</b> Data Cleaning Part I: Data smells</a><ul>
+<li class="chapter" data-level="10" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html"><i class="fa fa-check"></i><b>10</b> Data Cleaning Part I: Data smells</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#wrong-type"><i class="fa fa-check"></i><b>10.1</b> Wrong Type</a></li>
 <li class="chapter" data-level="10.2" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#missing-data"><i class="fa fa-check"></i><b>10.2</b> Missing Data</a></li>
 <li class="chapter" data-level="10.3" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#gaps-in-data"><i class="fa fa-check"></i><b>10.3</b> Gaps in data</a></li>
-<li class="chapter" data-level="10.4" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#internal-inconsistency"><i class="fa fa-check"></i><b>10.4</b> Internal inconsistency</a></li>
-<li class="chapter" data-level="10.5" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#a-shortcut-summary"><i class="fa fa-check"></i><b>10.5</b> A Shortcut: Summary</a></li>
+<li class="chapter" data-level="10.4" data-path="data-cleaning-part-i-data-smells.html"><a href="data-cleaning-part-i-data-smells.html#supicious-outliers"><i class="fa fa-check"></i><b>10.4</b> Supicious Outliers</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html"><i class="fa fa-check"></i><b>11</b> Data Cleaning Part II: Janitor</a><ul>
+<li class="chapter" data-level="11" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html"><i class="fa fa-check"></i><b>11</b> Data Cleaning Part II: Janitor</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#cleaning-headers"><i class="fa fa-check"></i><b>11.1</b> Cleaning headers</a></li>
-<li class="chapter" data-level="11.2" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#duplicates"><i class="fa fa-check"></i><b>11.2</b> Duplicates</a></li>
-<li class="chapter" data-level="11.3" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#inconsistency"><i class="fa fa-check"></i><b>11.3</b> Inconsistency</a></li>
+<li class="chapter" data-level="11.2" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#changing-data-types"><i class="fa fa-check"></i><b>11.2</b> Changing data types</a></li>
+<li class="chapter" data-level="11.3" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#duplicates"><i class="fa fa-check"></i><b>11.3</b> Duplicates</a></li>
+<li class="chapter" data-level="11.4" data-path="data-cleaning-part-ii-janitor.html"><a href="data-cleaning-part-ii-janitor.html#cleaning-strings"><i class="fa fa-check"></i><b>11.4</b> Cleaning strings</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html"><i class="fa fa-check"></i><b>12</b> Data Cleaning Part III: Open Refine</a><ul>
+<li class="chapter" data-level="12" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html"><i class="fa fa-check"></i><b>12</b> Data Cleaning Part III: Open Refine</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#refinr-open-refine-in-r"><i class="fa fa-check"></i><b>12.1</b> Refinr, Open Refine in R</a></li>
-<li class="chapter" data-level="12.2" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#more-complex-issues"><i class="fa fa-check"></i><b>12.2</b> More complex issues</a></li>
-<li class="chapter" data-level="12.3" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#manually-cleaning-data-with-open-refine"><i class="fa fa-check"></i><b>12.3</b> Manually cleaning data with Open Refine</a></li>
+<li class="chapter" data-level="12.2" data-path="data-cleaning-part-iii-open-refine.html"><a href="data-cleaning-part-iii-open-refine.html#manually-cleaning-data-with-open-refine"><i class="fa fa-check"></i><b>12.2</b> Manually cleaning data with Open Refine</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html"><i class="fa fa-check"></i><b>13</b> Cleaning Data Part IV: PDFs</a><ul>
-<li class="chapter" data-level="13.1" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-looks-good-but-goes-wrong"><i class="fa fa-check"></i><b>13.1</b> When it looks good, but goes wrong</a></li>
-<li class="chapter" data-level="13.2" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-works-well."><i class="fa fa-check"></i><b>13.2</b> When it works well.</a></li>
+<li class="chapter" data-level="13" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html"><i class="fa fa-check"></i><b>13</b> Cleaning Data Part IV: PDFs</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#easy-does-it"><i class="fa fa-check"></i><b>13.1</b> Easy does it</a></li>
+<li class="chapter" data-level="13.2" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#when-it-looks-good-but-needs-a-little-fixing"><i class="fa fa-check"></i><b>13.2</b> When it looks good, but needs a little fixing</a></li>
 <li class="chapter" data-level="13.3" data-path="cleaning-data-part-iv-pdfs.html"><a href="cleaning-data-part-iv-pdfs.html#cleaning-up-the-data-in-r"><i class="fa fa-check"></i><b>13.3</b> Cleaning up the data in R</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="combining-and-joining.html"><a href="combining-and-joining.html"><i class="fa fa-check"></i><b>14</b> Combining and joining</a><ul>
-<li class="chapter" data-level="14.1" data-path="combining-and-joining.html"><a href="combining-and-joining.html#combining-data"><i class="fa fa-check"></i><b>14.1</b> Combining data</a></li>
+<li class="chapter" data-level="14" data-path="combining-and-joining.html"><a href="combining-and-joining.html"><i class="fa fa-check"></i><b>14</b> Combining and joining</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="combining-and-joining.html"><a href="combining-and-joining.html#combining-data-stacking"><i class="fa fa-check"></i><b>14.1</b> Combining data (stacking)</a></li>
 <li class="chapter" data-level="14.2" data-path="combining-and-joining.html"><a href="combining-and-joining.html#joining-data"><i class="fa fa-check"></i><b>14.2</b> Joining data</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html"><i class="fa fa-check"></i><b>15</b> Scraping data with Rvest</a><ul>
+<li class="chapter" data-level="15" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html"><i class="fa fa-check"></i><b>15</b> Scraping data with Rvest</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="scraping-data-with-rvest.html"><a href="scraping-data-with-rvest.html#a-more-difficult-example"><i class="fa fa-check"></i><b>15.1</b> A more difficult example</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="advanced-rvest.html"><a href="advanced-rvest.html"><i class="fa fa-check"></i><b>16</b> Advanced rvest</a></li>
-<li class="chapter" data-level="17" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html"><i class="fa fa-check"></i><b>17</b> Intro to APIs: The Census</a><ul>
+<li class="chapter" data-level="17" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html"><i class="fa fa-check"></i><b>17</b> Intro to APIs: The Census</a>
+<ul>
 <li class="chapter" data-level="17.1" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html#the-acs"><i class="fa fa-check"></i><b>17.1</b> The ACS</a></li>
 <li class="chapter" data-level="17.2" data-path="intro-to-apis-the-census.html"><a href="intro-to-apis-the-census.html#bonus-api-example-coronavirus"><i class="fa fa-check"></i><b>17.2</b> Bonus API example: Coronavirus</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html"><i class="fa fa-check"></i><b>18</b> Visualizing your data for reporting</a><ul>
+<li class="chapter" data-level="18" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html"><i class="fa fa-check"></i><b>18</b> Visualizing your data for reporting</a>
+<ul>
 <li class="chapter" data-level="18.1" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html#bar-charts"><i class="fa fa-check"></i><b>18.1</b> Bar charts</a></li>
 <li class="chapter" data-level="18.2" data-path="visualizing-your-data-for-reporting.html"><a href="visualizing-your-data-for-reporting.html#line-charts"><i class="fa fa-check"></i><b>18.2</b> Line charts</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="visualizing-your-data-for-publication.html"><a href="visualizing-your-data-for-publication.html"><i class="fa fa-check"></i><b>19</b> Visualizing your data for publication</a><ul>
+<li class="chapter" data-level="19" data-path="visualizing-your-data-for-publication.html"><a href="visualizing-your-data-for-publication.html"><i class="fa fa-check"></i><b>19</b> Visualizing your data for publication</a>
+<ul>
 <li class="chapter" data-level="19.1" data-path="visualizing-your-data-for-publication.html"><a href="visualizing-your-data-for-publication.html#datawrapper"><i class="fa fa-check"></i><b>19.1</b> Datawrapper</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html"><i class="fa fa-check"></i><b>20</b> Geographic data basics</a><ul>
+<li class="chapter" data-level="20" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html"><i class="fa fa-check"></i><b>20</b> Geographic data basics</a>
+<ul>
 <li class="chapter" data-level="20.1" data-path="geographic-data-basics.html"><a href="geographic-data-basics.html#importing-and-viewing-data"><i class="fa fa-check"></i><b>20.1</b> Importing and viewing data</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="geographic-analysis.html"><a href="geographic-analysis.html"><i class="fa fa-check"></i><b>21</b> Geographic analysis</a><ul>
+<li class="chapter" data-level="21" data-path="geographic-analysis.html"><a href="geographic-analysis.html"><i class="fa fa-check"></i><b>21</b> Geographic analysis</a>
+<ul>
 <li class="chapter" data-level="21.1" data-path="geographic-analysis.html"><a href="geographic-analysis.html#why-tidycensus-is-so-useful"><i class="fa fa-check"></i><b>21.1</b> Why tidycensus is so useful</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="automating-analysis.html"><a href="automating-analysis.html"><i class="fa fa-check"></i><b>22</b> Automating analysis</a><ul>
+<li class="chapter" data-level="22" data-path="automating-analysis.html"><a href="automating-analysis.html"><i class="fa fa-check"></i><b>22</b> Automating analysis</a>
+<ul>
 <li class="chapter" data-level="22.1" data-path="automating-analysis.html"><a href="automating-analysis.html#automating-downloads-an-imports"><i class="fa fa-check"></i><b>22.1</b> Automating downloads an imports</a></li>
 <li class="chapter" data-level="22.2" data-path="automating-analysis.html"><a href="automating-analysis.html#exploring-the-data"><i class="fa fa-check"></i><b>22.2</b> Exploring the data</a></li>
 <li class="chapter" data-level="22.3" data-path="automating-analysis.html"><a href="automating-analysis.html#analysis"><i class="fa fa-check"></i><b>22.3</b> Analysis</a></li>
 <li class="chapter" data-level="22.4" data-path="automating-analysis.html"><a href="automating-analysis.html#making-updating-graphics"><i class="fa fa-check"></i><b>22.4</b> Making updating graphics</a></li>
 <li class="chapter" data-level="22.5" data-path="automating-analysis.html"><a href="automating-analysis.html#the-state-vs-the-feds"><i class="fa fa-check"></i><b>22.5</b> The State vs the Feds</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="automating-geographic-analysis.html"><a href="automating-geographic-analysis.html"><i class="fa fa-check"></i><b>23</b> Automating geographic analysis</a><ul>
+<li class="chapter" data-level="23" data-path="automating-geographic-analysis.html"><a href="automating-geographic-analysis.html"><i class="fa fa-check"></i><b>23</b> Automating geographic analysis</a>
+<ul>
 <li class="chapter" data-level="23.1" data-path="automating-geographic-analysis.html"><a href="automating-geographic-analysis.html#mapping-continuously"><i class="fa fa-check"></i><b>23.1</b> Mapping continuously</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="basic-stats-the-t-test.html"><a href="basic-stats-the-t-test.html"><i class="fa fa-check"></i><b>24</b> Basic Stats: The T-Test</a><ul>
+<li class="chapter" data-level="24" data-path="basic-stats-the-t-test.html"><a href="basic-stats-the-t-test.html"><i class="fa fa-check"></i><b>24</b> Basic Stats: The T-Test</a>
+<ul>
 <li class="chapter" data-level="24.1" data-path="basic-stats-the-t-test.html"><a href="basic-stats-the-t-test.html#specific-call-types"><i class="fa fa-check"></i><b>24.1</b> Specific call types</a></li>
 <li class="chapter" data-level="24.2" data-path="basic-stats-the-t-test.html"><a href="basic-stats-the-t-test.html#what-else-should-we-look-at"><i class="fa fa-check"></i><b>24.2</b> What else should we look at?</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="an-intro-to-text-analysis.html"><a href="an-intro-to-text-analysis.html"><i class="fa fa-check"></i><b>25</b> An intro to text analysis</a><ul>
+<li class="chapter" data-level="25" data-path="an-intro-to-text-analysis.html"><a href="an-intro-to-text-analysis.html"><i class="fa fa-check"></i><b>25</b> An intro to text analysis</a>
+<ul>
 <li class="chapter" data-level="25.1" data-path="an-intro-to-text-analysis.html"><a href="an-intro-to-text-analysis.html#going-further-by-analyzing-text"><i class="fa fa-check"></i><b>25.1</b> Going further by analyzing text</a></li>
 <li class="chapter" data-level="25.2" data-path="an-intro-to-text-analysis.html"><a href="an-intro-to-text-analysis.html#going-beyond-a-single-word"><i class="fa fa-check"></i><b>25.2</b> Going beyond a single word</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html"><i class="fa fa-check"></i><b>26</b> Writing with numbers</a><ul>
+<li class="chapter" data-level="26" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html"><i class="fa fa-check"></i><b>26</b> Writing with numbers</a>
+<ul>
 <li class="chapter" data-level="26.1" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html#how-to-write-about-numbers-without-overwhelming-with-numbers."><i class="fa fa-check"></i><b>26.1</b> How to write about numbers without overwhelming with numbers.</a></li>
 <li class="chapter" data-level="26.2" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html#when-exact-numbers-matter"><i class="fa fa-check"></i><b>26.2</b> When exact numbers matter</a></li>
 <li class="chapter" data-level="26.3" data-path="writing-with-numbers.html"><a href="writing-with-numbers.html#an-example"><i class="fa fa-check"></i><b>26.3</b> An example</a></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html"><i class="fa fa-check"></i><b>27</b> Ethics in data journalism</a><ul>
+<li class="chapter" data-level="27" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html"><i class="fa fa-check"></i><b>27</b> Ethics in data journalism</a>
+<ul>
 <li class="chapter" data-level="27.1" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#problems"><i class="fa fa-check"></i><b>27.1</b> Problems</a></li>
 <li class="chapter" data-level="27.2" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#the-googlebot"><i class="fa fa-check"></i><b>27.2</b> The Googlebot</a></li>
 <li class="chapter" data-level="27.3" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#data-lifetimes"><i class="fa fa-check"></i><b>27.3</b> Data Lifetimes</a></li>
 <li class="chapter" data-level="27.4" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#you-are-a-data-provider"><i class="fa fa-check"></i><b>27.4</b> You Are a Data Provider</a></li>
 <li class="chapter" data-level="27.5" data-path="ethics-in-data-journalism.html"><a href="ethics-in-data-journalism.html#ethical-data"><i class="fa fa-check"></i><b>27.5</b> Ethical Data</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="using-github.html"><a href="using-github.html"><i class="fa fa-check"></i><b>28</b> Using GitHub</a>
+<ul>
+<li class="chapter" data-level="28.1" data-path="using-github.html"><a href="using-github.html#how-it-works"><i class="fa fa-check"></i><b>28.1</b> How It Works</a></li>
+<li class="chapter" data-level="28.2" data-path="using-github.html"><a href="using-github.html#getting-started"><i class="fa fa-check"></i><b>28.2</b> Getting Started</a></li>
+<li class="chapter" data-level="28.3" data-path="using-github.html"><a href="using-github.html#advanced-use"><i class="fa fa-check"></i><b>28.3</b> Advanced Use</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -287,205 +322,1676 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="intro-to-apis-the-census" class="section level1">
+<div id="intro-to-apis-the-census" class="section level1" number="17">
 <h1><span class="header-section-number">Chapter 17</span> Intro to APIs: The Census</h1>
 <p>There is truly an astonishing amount of data collected by the US Census Bureau. First, there’s the Census that most people know – the every 10 year census. That’s the one mandated by the Constitution where the government attempts to count every person in the US. It’s a mind-boggling feat to even try, and billions get spent on it. That data is used first for determining how many representatives each state gets in Congress. From there, the Census gets used to divide up billions of dollars of federal spending.</p>
 <p>To answer the questions the government needs to do that, a ton of data gets collected. That, unfortunately, means the Census is exceedingly complicated to work with. The good news is, the Census has an API – an application programming interface. What that means is we can get data directly through the Census Bureau via calls over the internet.</p>
 <p>Let’s demonstrate.</p>
-<p>We’re going to use a library called <code>tidycensus</code> which makes calls to the Census API in a very tidy way, and gives you back tidy data. That means we don’t have to go through the process of importing the data from a file. I can’t tell you how amazing this is, speaking from experience.</p>
-<p>First we need to install <code>tidycensus</code> using the console: <code>install.packages(&quot;tidycensus&quot;)</code></p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb228-2" data-line-number="2"><span class="kw">library</span>(tidycensus)</a></code></pre></div>
-<pre><code>## Warning: package &#39;tidycensus&#39; was built under R version 3.5.2</code></pre>
-<p>To use the API, you need an API key. To get that, you need to <a href="https://api.census.gov/data/key_signup.html">apply for an API key with the Census Bureau</a>. It takes a few minutes and you need to activate your key via email. Once you have your key, you need to set that for this session:</p>
-<pre><code>census_api_key(&quot;YOUR KEY HERE&quot;)</code></pre>
-<p>Just FYI: Your key is your key. Do not share it around.</p>
-<pre><code>## To install your API key for use in future sessions, run this function with `install = TRUE`.</code></pre>
+<p>We’re going to use a library called <code>tidycensus</code> which makes calls to the Census API in a very tidy way, and gives you back tidy data. That means we don’t have to go through the process of importing the data from a file. I can’t tell you how amazing this is, speaking from experience. The documentation for this library is <a href="https://walker-data.com/tidycensus/">here</a>. Another R library for working with Census APIs (there is more than one) is <a href="https://github.com/hrecht/censusapi">this one</a> from Hannah Recht, a journalist with Kaiser Health News.</p>
+<p>First we need to install <code>tidycensus</code> using the console: <code>install.packages("tidycensus")</code></p>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="intro-to-apis-the-census.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb271-2"><a href="intro-to-apis-the-census.html#cb271-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidycensus)</span></code></pre></div>
+<p>To use the API, you need an API key. To get that, you need to <a href="https://api.census.gov/data/key_signup.html">apply for an API key with the Census Bureau</a>. It takes a few minutes and you need to activate your key via email. Once you have your key, you need to set that for this session. Just FYI: Your key is your key. Do not share it around.</p>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="intro-to-apis-the-census.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="fu">census_api_key</span>(<span class="st">&quot;YOUR KEY HERE&quot;</span>)</span></code></pre></div>
 <p>So to give you some idea of how complicated the data is, let’s pull up just one file from the decennial Census. We’ll use Summary File 1, or SF1. That has the major population and housing stuff.</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" data-line-number="1">sf1 &lt;-<span class="st"> </span><span class="kw">load_variables</span>(<span class="dv">2010</span>, <span class="st">&quot;sf1&quot;</span>, <span class="dt">cache =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<p>Note: There are 3,346 variables in SF1. That’s not a typo. Open it in your environment by double clicking. As you scroll down, you’ll get an idea of what you’ve got to choose from.</p>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="intro-to-apis-the-census.html#cb273-1" aria-hidden="true" tabindex="-1"></a>sf1 <span class="ot">&lt;-</span> <span class="fu">load_variables</span>(<span class="dv">2010</span>, <span class="st">&quot;sf1&quot;</span>, <span class="at">cache =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb273-2"><a href="intro-to-apis-the-census.html#cb273-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb273-3"><a href="intro-to-apis-the-census.html#cb273-3" aria-hidden="true" tabindex="-1"></a>sf1</span></code></pre></div>
+<pre><code>## # A tibble: 8,959 × 3
+##    name    label                                concept         
+##    &lt;chr&gt;   &lt;chr&gt;                                &lt;chr&gt;           
+##  1 H001001 Total                                HOUSING UNITS   
+##  2 H002001 Total                                URBAN AND RURAL 
+##  3 H002002 Total!!Urban                         URBAN AND RURAL 
+##  4 H002003 Total!!Urban!!Inside urbanized areas URBAN AND RURAL 
+##  5 H002004 Total!!Urban!!Inside urban clusters  URBAN AND RURAL 
+##  6 H002005 Total!!Rural                         URBAN AND RURAL 
+##  7 H002006 Total!!Not defined for this file     URBAN AND RURAL 
+##  8 H003001 Total                                OCCUPANCY STATUS
+##  9 H003002 Total!!Occupied                      OCCUPANCY STATUS
+## 10 H003003 Total!!Vacant                        OCCUPANCY STATUS
+## # … with 8,949 more rows</code></pre>
+<p>Note: There are thousands of variables in SF1. That’s not a typo. Open it in your environment by double clicking. As you scroll down, you’ll get an idea of what you’ve got to choose from.</p>
 <p>If you think that’s crazy, try the SF3 file from 2000.</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" data-line-number="1">sf3 &lt;-<span class="st"> </span><span class="kw">load_variables</span>(<span class="dv">2000</span>, <span class="st">&quot;sf3&quot;</span>, <span class="dt">cache =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<p>Yes. That’s 5,555 variables to choose from. I told you. Astonishing.</p>
-<p>So let’s try to answer a question using the Census. What is the fastest growing state since 1990?</p>
-<p>To answer this, we need to pull the total population by state in each of the decennial census. Here’s 1990.</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" data-line-number="1">p90 &lt;-<span class="st"> </span><span class="kw">get_decennial</span>(<span class="dt">geography =</span> <span class="st">&quot;state&quot;</span>, <span class="dt">variables =</span> <span class="st">&quot;P0010001&quot;</span>, <span class="dt">year =</span> <span class="dv">1990</span>)</a></code></pre></div>
-<pre><code>## Getting data from the 1990 decennial Census</code></pre>
-<p>Now 2000.</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" data-line-number="1">p00 &lt;-<span class="st"> </span><span class="kw">get_decennial</span>(<span class="dt">geography =</span> <span class="st">&quot;state&quot;</span>, <span class="dt">variables =</span> <span class="st">&quot;P001001&quot;</span>, <span class="dt">year =</span> <span class="dv">2000</span>)</a></code></pre></div>
-<pre><code>## Getting data from the 2000 decennial Census</code></pre>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="intro-to-apis-the-census.html#cb275-1" aria-hidden="true" tabindex="-1"></a>sf3 <span class="ot">&lt;-</span> <span class="fu">load_variables</span>(<span class="dv">2000</span>, <span class="st">&quot;sf3&quot;</span>, <span class="at">cache =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb275-2"><a href="intro-to-apis-the-census.html#cb275-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb275-3"><a href="intro-to-apis-the-census.html#cb275-3" aria-hidden="true" tabindex="-1"></a>sf3</span></code></pre></div>
+<pre><code>## # A tibble: 16,520 × 3
+##    name    label                                       concept                  
+##    &lt;chr&gt;   &lt;chr&gt;                                       &lt;chr&gt;                    
+##  1 H001001 Total                                       HOUSING UNITS [1]        
+##  2 H002001 Total                                       UNWEIGHTED SAMPLE HOUSIN…
+##  3 H002002 Total!!Occupied                             UNWEIGHTED SAMPLE HOUSIN…
+##  4 H002003 Total!!Vacant                               UNWEIGHTED SAMPLE HOUSIN…
+##  5 H003001 Total                                       100-PERCENT COUNT OF HOU…
+##  6 H004001 Percent of occupied housing units in sample PERCENT OF HOUSING UNITS…
+##  7 H004002 Percent of vacant housing units in sample   PERCENT OF HOUSING UNITS…
+##  8 H005001 Total                                       URBAN AND RURAL [7]      
+##  9 H005002 Total!!Urban                                URBAN AND RURAL [7]      
+## 10 H005003 Total!!Urban!!Inside urbanized areas        URBAN AND RURAL [7]      
+## # … with 16,510 more rows</code></pre>
+<p>Yes. That’s more than 16,000 variables to choose from. I told you. Astonishing.</p>
+<p>So let’s try to answer a question using the Census. What is the fastest growing state since 2000?</p>
+<p>To answer this, we need to pull the total population by state in each of the decennial census. Here’s 2000.</p>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="intro-to-apis-the-census.html#cb277-1" aria-hidden="true" tabindex="-1"></a>p00 <span class="ot">&lt;-</span> <span class="fu">get_decennial</span>(<span class="at">geography =</span> <span class="st">&quot;state&quot;</span>, <span class="at">variables =</span> <span class="st">&quot;P001001&quot;</span>, <span class="at">year =</span> <span class="dv">2000</span>)</span></code></pre></div>
 <p>Now 2010.</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" data-line-number="1">p10 &lt;-<span class="st"> </span><span class="kw">get_decennial</span>(<span class="dt">geography =</span> <span class="st">&quot;state&quot;</span>, <span class="dt">variables =</span> <span class="st">&quot;P001001&quot;</span>, <span class="dt">year =</span> <span class="dv">2010</span>)</a></code></pre></div>
-<pre><code>## Getting data from the 2010 decennial Census</code></pre>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="intro-to-apis-the-census.html#cb278-1" aria-hidden="true" tabindex="-1"></a>p10 <span class="ot">&lt;-</span> <span class="fu">get_decennial</span>(<span class="at">geography =</span> <span class="st">&quot;state&quot;</span>, <span class="at">variables =</span> <span class="st">&quot;P001001&quot;</span>, <span class="at">year =</span> <span class="dv">2010</span>)</span></code></pre></div>
 <p>Let’s take a peek at 2010.</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" data-line-number="1">p10</a></code></pre></div>
-<pre><code>## # A tibble: 52 x 4
-##    GEOID NAME        variable    value
-##    &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;dbl&gt;
-##  1 01    Alabama     P001001   4779736
-##  2 02    Alaska      P001001    710231
-##  3 04    Arizona     P001001   6392017
-##  4 05    Arkansas    P001001   2915918
-##  5 06    California  P001001  37253956
-##  6 22    Louisiana   P001001   4533372
-##  7 21    Kentucky    P001001   4339367
-##  8 08    Colorado    P001001   5029196
-##  9 09    Connecticut P001001   3574097
-## 10 10    Delaware    P001001    897934
-## # … with 42 more rows</code></pre>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="intro-to-apis-the-census.html#cb279-1" aria-hidden="true" tabindex="-1"></a>p10</span></code></pre></div>
 <p>As you can see, we have a GEOID, NAME, then variable and value. Variable and value are going to be the same. Because those are named the same thing, to merge them together, we need to rename them.</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb242-1" data-line-number="1">p10 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(GEOID, NAME, value) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rename</span>(<span class="dt">Population2010=</span>value) -&gt;<span class="st"> </span>p2010</a>
-<a class="sourceLine" id="cb242-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb242-3" data-line-number="3">p00 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(GEOID, NAME, value) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rename</span>(<span class="dt">Population2000=</span>value) -&gt;<span class="st"> </span>p2000</a>
-<a class="sourceLine" id="cb242-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb242-5" data-line-number="5">p90 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(GEOID, NAME, value) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rename</span>(<span class="dt">Population1990=</span>value) -&gt;<span class="st"> </span>p1990</a></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="intro-to-apis-the-census.html#cb280-1" aria-hidden="true" tabindex="-1"></a>p10 <span class="sc">%&gt;%</span> <span class="fu">select</span>(GEOID, NAME, value) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Population2010=</span>value) <span class="ot">-&gt;</span> p2010</span>
+<span id="cb280-2"><a href="intro-to-apis-the-census.html#cb280-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb280-3"><a href="intro-to-apis-the-census.html#cb280-3" aria-hidden="true" tabindex="-1"></a>p00 <span class="sc">%&gt;%</span> <span class="fu">select</span>(GEOID, NAME, value) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">Population2000=</span>value) <span class="ot">-&gt;</span> p2000</span></code></pre></div>
 <p>Now we join the data together.</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" data-line-number="1">alldata &lt;-<span class="st"> </span>p1990 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(p2000) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(p2010)</a></code></pre></div>
-<pre><code>## Joining, by = c(&quot;GEOID&quot;, &quot;NAME&quot;)
-## Joining, by = c(&quot;GEOID&quot;, &quot;NAME&quot;)</code></pre>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="intro-to-apis-the-census.html#cb281-1" aria-hidden="true" tabindex="-1"></a>alldata <span class="ot">&lt;-</span> p2000 <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(p2010)</span></code></pre></div>
 <p>And now we calculate the percent change.</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" data-line-number="1">alldata <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">change =</span> ((Population2010<span class="op">-</span>Population1990)<span class="op">/</span>Population1990)<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(change))</a></code></pre></div>
-<pre><code>## # A tibble: 51 x 6
-##    GEOID NAME           Population1990 Population2000 Population2010 change
-##    &lt;chr&gt; &lt;chr&gt;                   &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt;  &lt;dbl&gt;
-##  1 32    Nevada                1201833        1998257        2700551  125. 
-##  2 04    Arizona               3665228        5130632        6392017   74.4
-##  3 49    Utah                  1722850        2233169        2763885   60.4
-##  4 16    Idaho                 1006749        1293953        1567582   55.7
-##  5 08    Colorado              3294394        4301261        5029196   52.7
-##  6 13    Georgia               6478216        8186453        9687653   49.5
-##  7 48    Texas                16986510       20851820       25145561   48.0
-##  8 12    Florida              12937926       15982378       18801310   45.3
-##  9 37    North Carolina        6628637        8049313        9535483   43.9
-## 10 53    Washington            4866692        5894121        6724540   38.2
-## # … with 41 more rows</code></pre>
-<p>And just like that: Nevada. Nebraska is 33rd fastest growing.</p>
-<div id="the-acs" class="section level2">
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="intro-to-apis-the-census.html#cb282-1" aria-hidden="true" tabindex="-1"></a>alldata <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">change =</span> ((Population2010<span class="sc">-</span>Population2000)<span class="sc">/</span>Population2000)<span class="sc">*</span><span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(change))</span></code></pre></div>
+<p>And just like that: Nevada.</p>
+<p>You may be asking: hey, wasn’t there a 2020 Census? Where’s that data? The answer is that it’s coming - the Census Bureau has a <a href="https://www.census.gov/programs-surveys/popest/about/schedule.html">schedule of releases</a>.</p>
+<div id="the-acs" class="section level2" number="17.1">
 <h2><span class="header-section-number">17.1</span> The ACS</h2>
 <p>In 2010, the Census Bureau replaced SF3 with the American Community Survey. The Good News is that the data would be updated on a rolling basis. The bad news is that it’s more complicated because it’s more like survey data with a large sample. That means there’s margins of error and confidence intervals to worry about.</p>
 <p>Here’s an example:</p>
-<p>What is Nebraska’s richest county?</p>
+<p>What is Maryland’s richest county?</p>
 <p>We can measure this by median household income. That variable is <code>B19013_001</code>, so we can get that data like this (I’m narrowing it to the top 20 for simplicity):</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" data-line-number="1">ne &lt;-<span class="st"> </span><span class="kw">get_acs</span>(<span class="dt">geography =</span> <span class="st">&quot;county&quot;</span>, </a>
-<a class="sourceLine" id="cb247-2" data-line-number="2">              <span class="dt">variables =</span> <span class="kw">c</span>(<span class="dt">medincome =</span> <span class="st">&quot;B19013_001&quot;</span>), </a>
-<a class="sourceLine" id="cb247-3" data-line-number="3">              <span class="dt">state =</span> <span class="st">&quot;NE&quot;</span>, </a>
-<a class="sourceLine" id="cb247-4" data-line-number="4">              <span class="dt">year =</span> <span class="dv">2018</span>)</a></code></pre></div>
-<pre><code>## Getting data from the 2014-2018 5-year ACS</code></pre>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" data-line-number="1">ne &lt;-<span class="st"> </span>ne <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(estimate)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">top_n</span>(<span class="dv">20</span>, estimate)</a>
-<a class="sourceLine" id="cb249-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb249-3" data-line-number="3">ne</a></code></pre></div>
-<pre><code>## # A tibble: 21 x 5
-##    GEOID NAME                        variable  estimate   moe
-##    &lt;chr&gt; &lt;chr&gt;                       &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;
-##  1 31153 Sarpy County, Nebraska      medincome    79549  1419
-##  2 31025 Cass County, Nebraska       medincome    71139  2310
-##  3 31177 Washington County, Nebraska medincome    70753  3504
-##  4 31159 Seward County, Nebraska     medincome    67591  3082
-##  5 31155 Saunders County, Nebraska   medincome    66718  3394
-##  6 31081 Hamilton County, Nebraska   medincome    64042  3775
-##  7 31167 Stanton County, Nebraska    medincome    62687  4761
-##  8 31179 Wayne County, Nebraska      medincome    62623  8752
-##  9 31141 Platte County, Nebraska     medincome    62617  3413
-## 10 31073 Gosper County, Nebraska     medincome    62545  3065
-## # … with 11 more rows</code></pre>
-<p>Sarpy, Cass, Washington. What do they all have in common? They ring Douglas County – Omaha. So lots of suburban flight. But do the margins of error let us say one county is richer than the other. We can find this out visually using error bars. Don’t worry much about the code here – we’ll cover that soon enough.</p>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" data-line-number="1">ne <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb251-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">NAME =</span> <span class="kw">gsub</span>(<span class="st">&quot; County, Nebraska&quot;</span>, <span class="st">&quot;&quot;</span>, NAME)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb251-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> estimate, <span class="dt">y =</span> <span class="kw">reorder</span>(NAME, estimate))) <span class="op">+</span></a>
-<a class="sourceLine" id="cb251-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_errorbarh</span>(<span class="kw">aes</span>(<span class="dt">xmin =</span> estimate <span class="op">-</span><span class="st"> </span>moe, <span class="dt">xmax =</span> estimate <span class="op">+</span><span class="st"> </span>moe)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb251-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb251-6" data-line-number="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Household income by county in Nebraska&quot;</span>,</a>
-<a class="sourceLine" id="cb251-7" data-line-number="7">       <span class="dt">subtitle =</span> <span class="st">&quot;2013-2017 American Community Survey&quot;</span>,</a>
-<a class="sourceLine" id="cb251-8" data-line-number="8">       <span class="dt">y =</span> <span class="st">&quot;&quot;</span>,</a>
-<a class="sourceLine" id="cb251-9" data-line-number="9">       <span class="dt">x =</span> <span class="st">&quot;ACS estimate (bars represent margin of error)&quot;</span>)</a></code></pre></div>
-<p><img src="datajournalism_files/figure-html/unnamed-chunk-139-1.png" width="672" /></p>
-<p>As you can see, some of the error bars are quite wide. Some are narrow. But if the bars overlap, it means the difference between the two counties is within the margin of error, and the differences aren’t statistically significant. So is the difference between Cass and Washington significant? Nope. Is the difference between Sarpy and everyone else significant? Yes it is.</p>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="intro-to-apis-the-census.html#cb283-1" aria-hidden="true" tabindex="-1"></a>md <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
+<span id="cb283-2"><a href="intro-to-apis-the-census.html#cb283-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">medincome =</span> <span class="st">&quot;B19013_001&quot;</span>),</span>
+<span id="cb283-3"><a href="intro-to-apis-the-census.html#cb283-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">state =</span> <span class="st">&quot;MD&quot;</span>,</span>
+<span id="cb283-4"><a href="intro-to-apis-the-census.html#cb283-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">year =</span> <span class="dv">2019</span>)</span></code></pre></div>
+<pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="intro-to-apis-the-census.html#cb285-1" aria-hidden="true" tabindex="-1"></a>md <span class="ot">&lt;-</span> md <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(estimate)) <span class="sc">%&gt;%</span> <span class="fu">top_n</span>(<span class="dv">20</span>, estimate)</span>
+<span id="cb285-2"><a href="intro-to-apis-the-census.html#cb285-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb285-3"><a href="intro-to-apis-the-census.html#cb285-3" aria-hidden="true" tabindex="-1"></a>md</span></code></pre></div>
+<pre><code>## # A tibble: 20 × 5
+##    GEOID NAME                             variable  estimate   moe
+##    &lt;chr&gt; &lt;chr&gt;                            &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;
+##  1 24027 Howard County, Maryland          medincome   121160  2169
+##  2 24009 Calvert County, Maryland         medincome   109313  3736
+##  3 24031 Montgomery County, Maryland      medincome   108820  1009
+##  4 24003 Anne Arundel County, Maryland    medincome   100798  1103
+##  5 24017 Charles County, Maryland         medincome   100003  2950
+##  6 24021 Frederick County, Maryland       medincome    97730  1897
+##  7 24035 Queen Anne&#39;s County, Maryland    medincome    97034  3765
+##  8 24013 Carroll County, Maryland         medincome    96769  1983
+##  9 24037 St. Mary&#39;s County, Maryland      medincome    89845  3200
+## 10 24025 Harford County, Maryland         medincome    89147  1748
+## 11 24033 Prince George&#39;s County, Maryland medincome    84920   802
+## 12 24015 Cecil County, Maryland           medincome    76887  2518
+## 13 24005 Baltimore County, Maryland       medincome    76866   944
+## 14 24041 Talbot County, Maryland          medincome    73547  3785
+## 15 24047 Worcester County, Maryland       medincome    63499  2925
+## 16 24043 Washington County, Maryland      medincome    60860  1550
+## 17 24011 Caroline County, Maryland        medincome    58638  3620
+## 18 24029 Kent County, Maryland            medincome    58598  5650
+## 19 24045 Wicomico County, Maryland        medincome    56956  2596
+## 20 24019 Dorchester County, Maryland      medincome    52917  3255</code></pre>
+<p>Howard, Calvert, Montgomery, Anne Arundel, Charles. What do they all have in common? Lots of suburban flight from DC and Baltimore. But do the margins of error let us say one county is richer than the other. We can find this out visually using error bars. Don’t worry much about the code here – we’ll cover that soon enough.</p>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="intro-to-apis-the-census.html#cb287-1" aria-hidden="true" tabindex="-1"></a>md <span class="sc">%&gt;%</span></span>
+<span id="cb287-2"><a href="intro-to-apis-the-census.html#cb287-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">NAME =</span> <span class="fu">gsub</span>(<span class="st">&quot; County, Maryland&quot;</span>, <span class="st">&quot;&quot;</span>, NAME)) <span class="sc">%&gt;%</span></span>
+<span id="cb287-3"><a href="intro-to-apis-the-census.html#cb287-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> estimate, <span class="at">y =</span> <span class="fu">reorder</span>(NAME, estimate))) <span class="sc">+</span></span>
+<span id="cb287-4"><a href="intro-to-apis-the-census.html#cb287-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbarh</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> estimate <span class="sc">-</span> moe, <span class="at">xmax =</span> estimate <span class="sc">+</span> moe)) <span class="sc">+</span></span>
+<span id="cb287-5"><a href="intro-to-apis-the-census.html#cb287-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb287-6"><a href="intro-to-apis-the-census.html#cb287-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Household income by county in Maryland&quot;</span>,</span>
+<span id="cb287-7"><a href="intro-to-apis-the-census.html#cb287-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;2015-2019 American Community Survey&quot;</span>,</span>
+<span id="cb287-8"><a href="intro-to-apis-the-census.html#cb287-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb287-9"><a href="intro-to-apis-the-census.html#cb287-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;ACS estimate (bars represent margin of error)&quot;</span>)</span></code></pre></div>
+<p><img src="datajournalism_files/figure-html/unnamed-chunk-157-1.png" width="672" /></p>
+<p>As you can see, some of the error bars are quite wide. Some are narrow. But if the bars overlap, it means the difference between the two counties is within the margin of error, and the differences aren’t statistically significant. So is the difference between Calvert and Montgomery significant? Nope. Is the difference between Howard and everyone else significant? Yes it is.</p>
 <p>Let’s ask another question of the ACS – did any counties lose income from the time of the global financial crisis to the current 5-year window?</p>
 <p>Let’s re-label our first household income data.</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" data-line-number="1">ne18 &lt;-<span class="st"> </span><span class="kw">get_acs</span>(<span class="dt">geography =</span> <span class="st">&quot;county&quot;</span>, </a>
-<a class="sourceLine" id="cb252-2" data-line-number="2">              <span class="dt">variables =</span> <span class="kw">c</span>(<span class="dt">medincome =</span> <span class="st">&quot;B19013_001&quot;</span>), </a>
-<a class="sourceLine" id="cb252-3" data-line-number="3">              <span class="dt">state =</span> <span class="st">&quot;NE&quot;</span>, </a>
-<a class="sourceLine" id="cb252-4" data-line-number="4">              <span class="dt">year =</span> <span class="dv">2018</span>)</a></code></pre></div>
-<pre><code>## Getting data from the 2014-2018 5-year ACS</code></pre>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="intro-to-apis-the-census.html#cb288-1" aria-hidden="true" tabindex="-1"></a>md19 <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
+<span id="cb288-2"><a href="intro-to-apis-the-census.html#cb288-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">medincome =</span> <span class="st">&quot;B19013_001&quot;</span>),</span>
+<span id="cb288-3"><a href="intro-to-apis-the-census.html#cb288-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">state =</span> <span class="st">&quot;MD&quot;</span>,</span>
+<span id="cb288-4"><a href="intro-to-apis-the-census.html#cb288-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">year =</span> <span class="dv">2019</span>)</span></code></pre></div>
+<pre><code>## Getting data from the 2015-2019 5-year ACS</code></pre>
 <p>And now we grab the 2010 median household income.</p>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" data-line-number="1">ne10 &lt;-<span class="st"> </span><span class="kw">get_acs</span>(<span class="dt">geography =</span> <span class="st">&quot;county&quot;</span>, </a>
-<a class="sourceLine" id="cb254-2" data-line-number="2">              <span class="dt">variables =</span> <span class="kw">c</span>(<span class="dt">medincome =</span> <span class="st">&quot;B19013_001&quot;</span>), </a>
-<a class="sourceLine" id="cb254-3" data-line-number="3">              <span class="dt">state =</span> <span class="st">&quot;NE&quot;</span>, </a>
-<a class="sourceLine" id="cb254-4" data-line-number="4">              <span class="dt">year =</span> <span class="dv">2010</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="intro-to-apis-the-census.html#cb290-1" aria-hidden="true" tabindex="-1"></a>md10 <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(<span class="at">geography =</span> <span class="st">&quot;county&quot;</span>,</span>
+<span id="cb290-2"><a href="intro-to-apis-the-census.html#cb290-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">variables =</span> <span class="fu">c</span>(<span class="at">medincome =</span> <span class="st">&quot;B19013_001&quot;</span>),</span>
+<span id="cb290-3"><a href="intro-to-apis-the-census.html#cb290-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">state =</span> <span class="st">&quot;MD&quot;</span>,</span>
+<span id="cb290-4"><a href="intro-to-apis-the-census.html#cb290-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">year =</span> <span class="dv">2010</span>)</span></code></pre></div>
 <pre><code>## Getting data from the 2006-2010 5-year ACS</code></pre>
 <p>What I’m going to do next is a lot, but each step is simple. I’m going to join the data together, so each county has one line of data. Then I’m going to rename some fields that repeat. Then I’m going to calculate the minimium and maximum value of the estimate using the margin of error. That’ll help me later. After that, I’m going to calculate a perent change and sort it by that change.</p>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" data-line-number="1">ne10 <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb256-2" data-line-number="2"><span class="st">  </span><span class="kw">inner_join</span>(ne18, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;GEOID&quot;</span>, <span class="st">&quot;NAME&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb256-3" data-line-number="3"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">estimate2010=</span>estimate.x, <span class="dt">estimate2018=</span>estimate.y) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb256-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">min2010 =</span> estimate2010<span class="op">-</span>moe.x, <span class="dt">max2010 =</span> estimate2010<span class="op">+</span>moe.x, <span class="dt">min2018 =</span> estimate2018<span class="op">-</span>moe.y, <span class="dt">max2018 =</span> estimate2018<span class="op">+</span>moe.y) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb256-5" data-line-number="5"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>variable.x, <span class="op">-</span>variable.y, <span class="op">-</span>moe.x, <span class="op">-</span>moe.y) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb256-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">change =</span> ((estimate2018<span class="op">-</span>estimate2010)<span class="op">/</span>estimate2010)<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb256-7" data-line-number="7"><span class="st">  </span><span class="kw">arrange</span>(change)</a></code></pre></div>
-<pre><code>## # A tibble: 93 x 9
-##    GEOID NAME   estimate2010 estimate2018 min2010 max2010 min2018 max2018 change
-##    &lt;chr&gt; &lt;chr&gt;         &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
-##  1 31117 McPhe…        50625        48882   38979   62271   41666   56098 -3.44 
-##  2 31085 Hayes…        45595        45515   41833   49357   38687   52343 -0.175
-##  3 31075 Grant…        39261        39479   35341   43181   27482   51476  0.555
-##  4 31091 Hooke…        38750        39115   28329   49171   33409   44821  0.942
-##  5 31005 Arthu…        43250        43854   33524   52976   40943   46765  1.40 
-##  6 31095 Jeffe…        42665        43295   38489   46841   39615   46975  1.48 
-##  7 31105 Kimba…        42010        43856   36672   47348   39378   48334  4.39 
-##  8 31099 Kearn…        54518        56952   50397   58639   51557   62347  4.46 
-##  9 31171 Thoma…        48250        50682   41698   54802   43155   58209  5.04 
-## 10 31125 Nance…        41610        45833   39073   44147   40753   50913 10.1  
-## # … with 83 more rows</code></pre>
-<p>So according to this, McPherson and Hayes counties lost ground from the financial meltdown to now.</p>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="intro-to-apis-the-census.html#cb292-1" aria-hidden="true" tabindex="-1"></a>md10 <span class="sc">%&gt;%</span></span>
+<span id="cb292-2"><a href="intro-to-apis-the-census.html#cb292-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(md19, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;GEOID&quot;</span>, <span class="st">&quot;NAME&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb292-3"><a href="intro-to-apis-the-census.html#cb292-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">estimate2010=</span>estimate.x, <span class="at">estimate2019=</span>estimate.y) <span class="sc">%&gt;%</span></span>
+<span id="cb292-4"><a href="intro-to-apis-the-census.html#cb292-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">min2010 =</span> estimate2010<span class="sc">-</span>moe.x, <span class="at">max2010 =</span> estimate2010<span class="sc">+</span>moe.x, <span class="at">min2019 =</span> estimate2019<span class="sc">-</span>moe.y, <span class="at">max2019 =</span> estimate2019<span class="sc">+</span>moe.y) <span class="sc">%&gt;%</span></span>
+<span id="cb292-5"><a href="intro-to-apis-the-census.html#cb292-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>variable.x, <span class="sc">-</span>variable.y, <span class="sc">-</span>moe.x, <span class="sc">-</span>moe.y) <span class="sc">%&gt;%</span></span>
+<span id="cb292-6"><a href="intro-to-apis-the-census.html#cb292-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">change =</span> ((estimate2019<span class="sc">-</span>estimate2010)<span class="sc">/</span>estimate2010)<span class="sc">*</span><span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb292-7"><a href="intro-to-apis-the-census.html#cb292-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(change)</span></code></pre></div>
+<pre><code>## # A tibble: 24 × 9
+##    GEOID NAME  estimate2010 estimate2019 min2010 max2010 min2019 max2019  change
+##    &lt;chr&gt; &lt;chr&gt;        &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+##  1 24039 Some…        42443        37803   39092   45794   31139   44467 -10.9  
+##  2 24011 Caro…        58799        58638   56740   60858   55018   62258  -0.274
+##  3 24045 Wico…        50752        56956   49313   52191   54360   59552  12.2  
+##  4 24037 St. …        80053        89845   77742   82364   86645   93045  12.2  
+##  5 24017 Char…        88825       100003   87268   90382   97053  102953  12.6  
+##  6 24047 Worc…        55487        63499   52749   58225   60574   66424  14.4  
+##  7 24043 Wash…        52994        60860   51261   54727   59310   62410  14.8  
+##  8 24023 Garr…        45760        52617   43729   47791   50065   55169  15.0  
+##  9 24025 Harf…        77010        89147   75782   78238   87399   90895  15.8  
+## 10 24031 Mont…        93373       108820   92535   94211  107811  109829  16.5  
+## # … with 14 more rows</code></pre>
+<p>So according to this, Somerset and Caroline counties lost ground from the financial meltdown to now.</p>
 <p>But did they?</p>
 <p>Look at the min and max values for both. Is the change statistically significant?</p>
 </div>
-<div id="bonus-api-example-coronavirus" class="section level2">
+<div id="bonus-api-example-coronavirus" class="section level2" number="17.2">
 <h2><span class="header-section-number">17.2</span> Bonus API example: Coronavirus</h2>
-<p>As I’m writing this, there is a growing level of fear about the novel coronavirus, COVID-19. And, as I’m writing this, I was alerted to a new R package that pulls daily updates of coronavirus reports daily. You install it with <code>install.packages(&quot;coronavirus&quot;)</code></p>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" data-line-number="1"><span class="kw">library</span>(coronavirus)</a></code></pre></div>
-<pre><code>## Warning: package &#39;coronavirus&#39; was built under R version 3.5.2</code></pre>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" data-line-number="1"><span class="kw">data</span>(<span class="st">&quot;coronavirus&quot;</span>) </a></code></pre></div>
+<p>Of course there would be an R package about the novel coronavirus, COVID-19. It pulls daily updates of coronavirus reports. You install it with <code>install.packages("coronavirus")</code></p>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="intro-to-apis-the-census.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(coronavirus)</span>
+<span id="cb294-2"><a href="intro-to-apis-the-census.html#cb294-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb294-3"><a href="intro-to-apis-the-census.html#cb294-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;coronavirus&quot;</span>)</span>
+<span id="cb294-4"><a href="intro-to-apis-the-census.html#cb294-4" aria-hidden="true" tabindex="-1"></a><span class="fu">update_dataset</span>()</span></code></pre></div>
+<pre><code>## Rows: 480870 Columns: 7</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr  (3): province, country, type
+## dbl  (3): lat, long, cases
+## date (1): date</code></pre>
+<pre><code>## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre><code>## Updates are available on the coronavirus Dev version, do you want to update? n/Y</code></pre>
 <p>What just happened, without you having to do anything, is the library just made a call to servers at Johns Hopkins University and got the latest coronavirus numbers from around the world.</p>
 <p>Check it out:</p>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" data-line-number="1"><span class="kw">view</span>(coronavirus)</a></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="intro-to-apis-the-census.html#cb299-1" aria-hidden="true" tabindex="-1"></a>coronavirus</span></code></pre></div>
 <p>So now we can start using it for data analysis. How about cases in the US?</p>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" data-line-number="1">coronavirus <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Country.Region <span class="op">==</span><span class="st"> &quot;US&quot;</span>)</a></code></pre></div>
-<pre><code>## # A tibble: 16 x 7
-##    Province.State       Country.Region   Lat   Long date       cases type     
-##    &lt;chr&gt;                &lt;chr&gt;          &lt;dbl&gt;  &lt;dbl&gt; &lt;date&gt;     &lt;int&gt; &lt;chr&gt;    
-##  1 Seattle, WA          US              47.8 -121.  2020-01-22     1 confirmed
-##  2 Chicago, IL          US              40.6  -89.4 2020-01-24     1 confirmed
-##  3 Los Angeles, CA      US              34.1 -118.  2020-01-26     1 confirmed
-##  4 Orange, CA           US              33.8 -118.  2020-01-26     1 confirmed
-##  5 Tempe, AZ            US              34.0 -111.  2020-01-26     1 confirmed
-##  6 Chicago, IL          US              40.6  -89.4 2020-01-31     1 confirmed
-##  7 Santa Clara, CA      US              37.4 -122.  2020-01-31     1 confirmed
-##  8 Boston, MA           US              42.4  -71.1 2020-02-01     1 confirmed
-##  9 San Benito, CA       US              36.6 -121.  2020-02-03     2 confirmed
-## 10 Santa Clara, CA      US              37.4 -122.  2020-02-03     1 confirmed
-## 11 Madison, WI          US              43.1  -89.4 2020-02-05     1 confirmed
-## 12 Chicago, IL          US              40.6  -89.4 2020-02-09     2 recovered
-## 13 Seattle, WA          US              47.8 -121.  2020-02-09     1 recovered
-## 14 San Diego County, CA US              32.7 -117.  2020-02-11     1 confirmed
-## 15 San Antonio, TX      US              29.4  -98.5 2020-02-13     1 confirmed
-## 16 San Diego County, CA US              32.7 -117.  2020-02-13     1 confirmed</code></pre>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="intro-to-apis-the-census.html#cb300-1" aria-hidden="true" tabindex="-1"></a>coronavirus <span class="sc">%&gt;%</span> <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">&quot;US&quot;</span>)</span></code></pre></div>
+<pre><code>##            date province country lat long      type  cases
+## 1    2020-01-22               US  40 -100 confirmed      1
+## 2    2020-01-23               US  40 -100 confirmed      0
+## 3    2020-01-24               US  40 -100 confirmed      1
+## 4    2020-01-25               US  40 -100 confirmed      0
+## 5    2020-01-26               US  40 -100 confirmed      3
+## 6    2020-01-27               US  40 -100 confirmed      0
+## 7    2020-01-28               US  40 -100 confirmed      0
+## 8    2020-01-29               US  40 -100 confirmed      1
+## 9    2020-01-30               US  40 -100 confirmed      0
+## 10   2020-01-31               US  40 -100 confirmed      2
+## 11   2020-02-01               US  40 -100 confirmed      0
+## 12   2020-02-02               US  40 -100 confirmed      0
+## 13   2020-02-03               US  40 -100 confirmed      3
+## 14   2020-02-04               US  40 -100 confirmed      0
+## 15   2020-02-05               US  40 -100 confirmed      0
+## 16   2020-02-06               US  40 -100 confirmed      1
+## 17   2020-02-07               US  40 -100 confirmed      0
+## 18   2020-02-08               US  40 -100 confirmed      0
+## 19   2020-02-09               US  40 -100 confirmed      0
+## 20   2020-02-10               US  40 -100 confirmed      0
+## 21   2020-02-11               US  40 -100 confirmed      1
+## 22   2020-02-12               US  40 -100 confirmed      0
+## 23   2020-02-13               US  40 -100 confirmed      1
+## 24   2020-02-14               US  40 -100 confirmed      0
+## 25   2020-02-15               US  40 -100 confirmed      0
+## 26   2020-02-16               US  40 -100 confirmed      0
+## 27   2020-02-17               US  40 -100 confirmed      0
+## 28   2020-02-18               US  40 -100 confirmed      0
+## 29   2020-02-19               US  40 -100 confirmed      0
+## 30   2020-02-20               US  40 -100 confirmed      0
+## 31   2020-02-21               US  40 -100 confirmed      2
+## 32   2020-02-22               US  40 -100 confirmed      0
+## 33   2020-02-23               US  40 -100 confirmed      0
+## 34   2020-02-24               US  40 -100 confirmed      0
+## 35   2020-02-25               US  40 -100 confirmed      0
+## 36   2020-02-26               US  40 -100 confirmed      0
+## 37   2020-02-27               US  40 -100 confirmed      1
+## 38   2020-02-28               US  40 -100 confirmed      0
+## 39   2020-02-29               US  40 -100 confirmed      8
+## 40   2020-03-01               US  40 -100 confirmed      7
+## 41   2020-03-02               US  40 -100 confirmed     23
+## 42   2020-03-03               US  40 -100 confirmed     19
+## 43   2020-03-04               US  40 -100 confirmed     33
+## 44   2020-03-05               US  40 -100 confirmed     77
+## 45   2020-03-06               US  40 -100 confirmed     53
+## 46   2020-03-07               US  40 -100 confirmed    166
+## 47   2020-03-08               US  40 -100 confirmed    116
+## 48   2020-03-09               US  40 -100 confirmed     75
+## 49   2020-03-10               US  40 -100 confirmed    188
+## 50   2020-03-11               US  40 -100 confirmed    365
+## 51   2020-03-12               US  40 -100 confirmed    439
+## 52   2020-03-13               US  40 -100 confirmed    633
+## 53   2020-03-14               US  40 -100 confirmed    759
+## 54   2020-03-15               US  40 -100 confirmed    234
+## 55   2020-03-16               US  40 -100 confirmed   1467
+## 56   2020-03-17               US  40 -100 confirmed   1833
+## 57   2020-03-18               US  40 -100 confirmed   2657
+## 58   2020-03-19               US  40 -100 confirmed   4494
+## 59   2020-03-20               US  40 -100 confirmed   6367
+## 60   2020-03-21               US  40 -100 confirmed   5995
+## 61   2020-03-22               US  40 -100 confirmed   8873
+## 62   2020-03-23               US  40 -100 confirmed  11238
+## 63   2020-03-24               US  40 -100 confirmed  10619
+## 64   2020-03-25               US  40 -100 confirmed  12082
+## 65   2020-03-26               US  40 -100 confirmed  17856
+## 66   2020-03-27               US  40 -100 confirmed  18690
+## 67   2020-03-28               US  40 -100 confirmed  19630
+## 68   2020-03-29               US  40 -100 confirmed  18899
+## 69   2020-03-30               US  40 -100 confirmed  22075
+## 70   2020-03-31               US  40 -100 confirmed  26314
+## 71   2020-04-01               US  40 -100 confirmed  32259
+## 72   2020-04-02               US  40 -100 confirmed  32232
+## 73   2020-04-03               US  40 -100 confirmed  32295
+## 74   2020-04-04               US  40 -100 confirmed  32390
+## 75   2020-04-05               US  40 -100 confirmed  29877
+## 76   2020-04-06               US  40 -100 confirmed  31393
+## 77   2020-04-07               US  40 -100 confirmed  30769
+## 78   2020-04-08               US  40 -100 confirmed  31215
+## 79   2020-04-09               US  40 -100 confirmed  35936
+## 80   2020-04-10               US  40 -100 confirmed  34414
+## 81   2020-04-11               US  40 -100 confirmed  29102
+## 82   2020-04-12               US  40 -100 confirmed  27257
+## 83   2020-04-13               US  40 -100 confirmed  26940
+## 84   2020-04-14               US  40 -100 confirmed  28825
+## 85   2020-04-15               US  40 -100 confirmed  25406
+## 86   2020-04-16               US  40 -100 confirmed  30015
+## 87   2020-04-17               US  40 -100 confirmed  33030
+## 88   2020-04-18               US  40 -100 confirmed  27932
+## 89   2020-04-19               US  40 -100 confirmed  26096
+## 90   2020-04-20               US  40 -100 confirmed  29828
+## 91   2020-04-21               US  40 -100 confirmed  25917
+## 92   2020-04-22               US  40 -100 confirmed  28859
+## 93   2020-04-23               US  40 -100 confirmed  33570
+## 94   2020-04-24               US  40 -100 confirmed  32327
+## 95   2020-04-25               US  40 -100 confirmed  30396
+## 96   2020-04-26               US  40 -100 confirmed  26501
+## 97   2020-04-27               US  40 -100 confirmed  23703
+## 98   2020-04-28               US  40 -100 confirmed  24577
+## 99   2020-04-29               US  40 -100 confirmed  26438
+## 100  2020-04-30               US  40 -100 confirmed  29220
+## 101  2020-05-01               US  40 -100 confirmed  34926
+## 102  2020-05-02               US  40 -100 confirmed  27350
+## 103  2020-05-03               US  40 -100 confirmed  24297
+## 104  2020-05-04               US  40 -100 confirmed  24085
+## 105  2020-05-05               US  40 -100 confirmed  24531
+## 106  2020-05-06               US  40 -100 confirmed  24560
+## 107  2020-05-07               US  40 -100 confirmed  27411
+## 108  2020-05-08               US  40 -100 confirmed  26839
+## 109  2020-05-09               US  40 -100 confirmed  25136
+## 110  2020-05-10               US  40 -100 confirmed  18867
+## 111  2020-05-11               US  40 -100 confirmed  19271
+## 112  2020-05-12               US  40 -100 confirmed  22948
+## 113  2020-05-13               US  40 -100 confirmed  20408
+## 114  2020-05-14               US  40 -100 confirmed  26818
+## 115  2020-05-15               US  40 -100 confirmed  24747
+## 116  2020-05-16               US  40 -100 confirmed  24159
+## 117  2020-05-17               US  40 -100 confirmed  18363
+## 118  2020-05-18               US  40 -100 confirmed  22390
+## 119  2020-05-19               US  40 -100 confirmed  21007
+## 120  2020-05-20               US  40 -100 confirmed  22697
+## 121  2020-05-21               US  40 -100 confirmed  25766
+## 122  2020-05-22               US  40 -100 confirmed  23657
+## 123  2020-05-23               US  40 -100 confirmed  21111
+## 124  2020-05-24               US  40 -100 confirmed  20067
+## 125  2020-05-25               US  40 -100 confirmed  18673
+## 126  2020-05-26               US  40 -100 confirmed  19650
+## 127  2020-05-27               US  40 -100 confirmed  18549
+## 128  2020-05-28               US  40 -100 confirmed  22322
+## 129  2020-05-29               US  40 -100 confirmed  24473
+## 130  2020-05-30               US  40 -100 confirmed  23633
+## 131  2020-05-31               US  40 -100 confirmed  18987
+## 132  2020-06-01               US  40 -100 confirmed  17436
+## 133  2020-06-02               US  40 -100 confirmed  21502
+## 134  2020-06-03               US  40 -100 confirmed  19855
+## 135  2020-06-04               US  40 -100 confirmed  21639
+## 136  2020-06-05               US  40 -100 confirmed  25400
+## 137  2020-06-06               US  40 -100 confirmed  21160
+## 138  2020-06-07               US  40 -100 confirmed  17916
+## 139  2020-06-08               US  40 -100 confirmed  17637
+## 140  2020-06-09               US  40 -100 confirmed  18384
+## 141  2020-06-10               US  40 -100 confirmed  21110
+## 142  2020-06-11               US  40 -100 confirmed  23133
+## 143  2020-06-12               US  40 -100 confirmed  24866
+## 144  2020-06-13               US  40 -100 confirmed  25208
+## 145  2020-06-14               US  40 -100 confirmed  18948
+## 146  2020-06-15               US  40 -100 confirmed  19819
+## 147  2020-06-16               US  40 -100 confirmed  23670
+## 148  2020-06-17               US  40 -100 confirmed  27064
+## 149  2020-06-18               US  40 -100 confirmed  28526
+## 150  2020-06-19               US  40 -100 confirmed  31562
+## 151  2020-06-20               US  40 -100 confirmed  32270
+## 152  2020-06-21               US  40 -100 confirmed  25148
+## 153  2020-06-22               US  40 -100 confirmed  32152
+## 154  2020-06-23               US  40 -100 confirmed  37075
+## 155  2020-06-24               US  40 -100 confirmed  35876
+## 156  2020-06-25               US  40 -100 confirmed  40317
+## 157  2020-06-26               US  40 -100 confirmed  45994
+## 158  2020-06-27               US  40 -100 confirmed  41346
+## 159  2020-06-28               US  40 -100 confirmed  40730
+## 160  2020-06-29               US  40 -100 confirmed  41283
+## 161  2020-06-30               US  40 -100 confirmed  46430
+## 162  2020-07-01               US  40 -100 confirmed  51819
+## 163  2020-07-02               US  40 -100 confirmed  56629
+## 164  2020-07-03               US  40 -100 confirmed  51361
+## 165  2020-07-04               US  40 -100 confirmed  45681
+## 166  2020-07-05               US  40 -100 confirmed  50768
+## 167  2020-07-06               US  40 -100 confirmed  43085
+## 168  2020-07-07               US  40 -100 confirmed  60654
+## 169  2020-07-08               US  40 -100 confirmed  60119
+## 170  2020-07-09               US  40 -100 confirmed  62496
+## 171  2020-07-10               US  40 -100 confirmed  68055
+## 172  2020-07-11               US  40 -100 confirmed  60033
+## 173  2020-07-12               US  40 -100 confirmed  58438
+## 174  2020-07-13               US  40 -100 confirmed  58896
+## 175  2020-07-14               US  40 -100 confirmed  68036
+## 176  2020-07-15               US  40 -100 confirmed  68120
+## 177  2020-07-16               US  40 -100 confirmed  75820
+## 178  2020-07-17               US  40 -100 confirmed  72261
+## 179  2020-07-18               US  40 -100 confirmed  62535
+## 180  2020-07-19               US  40 -100 confirmed  60476
+## 181  2020-07-20               US  40 -100 confirmed  62090
+## 182  2020-07-21               US  40 -100 confirmed  64520
+## 183  2020-07-22               US  40 -100 confirmed  70564
+## 184  2020-07-23               US  40 -100 confirmed  68440
+## 185  2020-07-24               US  40 -100 confirmed  73323
+## 186  2020-07-25               US  40 -100 confirmed  64915
+## 187  2020-07-26               US  40 -100 confirmed  54775
+## 188  2020-07-27               US  40 -100 confirmed  56851
+## 189  2020-07-28               US  40 -100 confirmed  66457
+## 190  2020-07-29               US  40 -100 confirmed  71853
+## 191  2020-07-30               US  40 -100 confirmed  67457
+## 192  2020-07-31               US  40 -100 confirmed  68719
+## 193  2020-08-01               US  40 -100 confirmed  56184
+## 194  2020-08-02               US  40 -100 confirmed  45545
+## 195  2020-08-03               US  40 -100 confirmed  45529
+## 196  2020-08-04               US  40 -100 confirmed  58801
+## 197  2020-08-05               US  40 -100 confirmed  54457
+## 198  2020-08-06               US  40 -100 confirmed  59357
+## 199  2020-08-07               US  40 -100 confirmed  59297
+## 200  2020-08-08               US  40 -100 confirmed  54119
+## 201  2020-08-09               US  40 -100 confirmed  45754
+## 202  2020-08-10               US  40 -100 confirmed  47624
+## 203  2020-08-11               US  40 -100 confirmed  48001
+## 204  2020-08-12               US  40 -100 confirmed  56049
+## 205  2020-08-13               US  40 -100 confirmed  51314
+## 206  2020-08-14               US  40 -100 confirmed  65340
+## 207  2020-08-15               US  40 -100 confirmed  46921
+## 208  2020-08-16               US  40 -100 confirmed  39192
+## 209  2020-08-17               US  40 -100 confirmed  36676
+## 210  2020-08-18               US  40 -100 confirmed  45034
+## 211  2020-08-19               US  40 -100 confirmed  47359
+## 212  2020-08-20               US  40 -100 confirmed  44040
+## 213  2020-08-21               US  40 -100 confirmed  48829
+## 214  2020-08-22               US  40 -100 confirmed  43045
+## 215  2020-08-23               US  40 -100 confirmed  34232
+## 216  2020-08-24               US  40 -100 confirmed  36522
+## 217  2020-08-25               US  40 -100 confirmed  40360
+## 218  2020-08-26               US  40 -100 confirmed  45166
+## 219  2020-08-27               US  40 -100 confirmed  45380
+## 220  2020-08-28               US  40 -100 confirmed  46848
+## 221  2020-08-29               US  40 -100 confirmed  42731
+## 222  2020-08-30               US  40 -100 confirmed  34381
+## 223  2020-08-31               US  40 -100 confirmed  35388
+## 224  2020-09-01               US  40 -100 confirmed  41864
+## 225  2020-09-02               US  40 -100 confirmed  41014
+## 226  2020-09-03               US  40 -100 confirmed  44210
+## 227  2020-09-04               US  40 -100 confirmed  50393
+## 228  2020-09-05               US  40 -100 confirmed  43088
+## 229  2020-09-06               US  40 -100 confirmed  31169
+## 230  2020-09-07               US  40 -100 confirmed  23567
+## 231  2020-09-08               US  40 -100 confirmed  27393
+## 232  2020-09-09               US  40 -100 confirmed  34057
+## 233  2020-09-10               US  40 -100 confirmed  36073
+## 234  2020-09-11               US  40 -100 confirmed  47778
+## 235  2020-09-12               US  40 -100 confirmed  41062
+## 236  2020-09-13               US  40 -100 confirmed  34351
+## 237  2020-09-14               US  40 -100 confirmed  34428
+## 238  2020-09-15               US  40 -100 confirmed  39507
+## 239  2020-09-16               US  40 -100 confirmed  39018
+## 240  2020-09-17               US  40 -100 confirmed  45137
+## 241  2020-09-18               US  40 -100 confirmed  49284
+## 242  2020-09-19               US  40 -100 confirmed  42159
+## 243  2020-09-20               US  40 -100 confirmed  38415
+## 244  2020-09-21               US  40 -100 confirmed  51972
+## 245  2020-09-22               US  40 -100 confirmed  39862
+## 246  2020-09-23               US  40 -100 confirmed  39062
+## 247  2020-09-24               US  40 -100 confirmed  47111
+## 248  2020-09-25               US  40 -100 confirmed  48282
+## 249  2020-09-26               US  40 -100 confirmed  44652
+## 250  2020-09-27               US  40 -100 confirmed  37508
+## 251  2020-09-28               US  40 -100 confirmed  33235
+## 252  2020-09-29               US  40 -100 confirmed  43448
+## 253  2020-09-30               US  40 -100 confirmed  39434
+## 254  2020-10-01               US  40 -100 confirmed  45653
+## 255  2020-10-02               US  40 -100 confirmed  54962
+## 256  2020-10-03               US  40 -100 confirmed  48535
+## 257  2020-10-04               US  40 -100 confirmed  35715
+## 258  2020-10-05               US  40 -100 confirmed  39449
+## 259  2020-10-06               US  40 -100 confirmed  45256
+## 260  2020-10-07               US  40 -100 confirmed  51062
+## 261  2020-10-08               US  40 -100 confirmed  58593
+## 262  2020-10-09               US  40 -100 confirmed  56381
+## 263  2020-10-10               US  40 -100 confirmed  54918
+## 264  2020-10-11               US  40 -100 confirmed  45941
+## 265  2020-10-12               US  40 -100 confirmed  41842
+## 266  2020-10-13               US  40 -100 confirmed  52248
+## 267  2020-10-14               US  40 -100 confirmed  59765
+## 268  2020-10-15               US  40 -100 confirmed  64888
+## 269  2020-10-16               US  40 -100 confirmed  69146
+## 270  2020-10-17               US  40 -100 confirmed  56736
+## 271  2020-10-18               US  40 -100 confirmed  49340
+## 272  2020-10-19               US  40 -100 confirmed  67752
+## 273  2020-10-20               US  40 -100 confirmed  61971
+## 274  2020-10-21               US  40 -100 confirmed  63283
+## 275  2020-10-22               US  40 -100 confirmed  76300
+## 276  2020-10-23               US  40 -100 confirmed  81949
+## 277  2020-10-24               US  40 -100 confirmed  82729
+## 278  2020-10-25               US  40 -100 confirmed  62140
+## 279  2020-10-26               US  40 -100 confirmed  67403
+## 280  2020-10-27               US  40 -100 confirmed  76843
+## 281  2020-10-28               US  40 -100 confirmed  79404
+## 282  2020-10-29               US  40 -100 confirmed  91052
+## 283  2020-10-30               US  40 -100 confirmed  99240
+## 284  2020-10-31               US  40 -100 confirmed  89695
+## 285  2020-11-01               US  40 -100 confirmed 104848
+## 286  2020-11-02               US  40 -100 confirmed  85308
+## 287  2020-11-03               US  40 -100 confirmed 127116
+## 288  2020-11-04               US  40 -100 confirmed 104608
+## 289  2020-11-05               US  40 -100 confirmed 129354
+## 290  2020-11-06               US  40 -100 confirmed 128005
+## 291  2020-11-07               US  40 -100 confirmed 127450
+## 292  2020-11-08               US  40 -100 confirmed 115072
+## 293  2020-11-09               US  40 -100 confirmed 120573
+## 294  2020-11-10               US  40 -100 confirmed 140496
+## 295  2020-11-11               US  40 -100 confirmed 146626
+## 296  2020-11-12               US  40 -100 confirmed 164839
+## 297  2020-11-13               US  40 -100 confirmed 180389
+## 298  2020-11-14               US  40 -100 confirmed 167761
+## 299  2020-11-15               US  40 -100 confirmed 136224
+## 300  2020-11-16               US  40 -100 confirmed 162945
+## 301  2020-11-17               US  40 -100 confirmed 163922
+## 302  2020-11-18               US  40 -100 confirmed 173177
+## 303  2020-11-19               US  40 -100 confirmed 191548
+## 304  2020-11-20               US  40 -100 confirmed 198297
+## 305  2020-11-21               US  40 -100 confirmed 179274
+## 306  2020-11-22               US  40 -100 confirmed 146784
+## 307  2020-11-23               US  40 -100 confirmed 174449
+## 308  2020-11-24               US  40 -100 confirmed 175514
+## 309  2020-11-25               US  40 -100 confirmed 183287
+## 310  2020-11-26               US  40 -100 confirmed 112322
+## 311  2020-11-27               US  40 -100 confirmed 208188
+## 312  2020-11-28               US  40 -100 confirmed 155533
+## 313  2020-11-29               US  40 -100 confirmed 140234
+## 314  2020-11-30               US  40 -100 confirmed 160570
+## 315  2020-12-01               US  40 -100 confirmed 188219
+## 316  2020-12-02               US  40 -100 confirmed 202557
+## 317  2020-12-03               US  40 -100 confirmed 223613
+## 318  2020-12-04               US  40 -100 confirmed 232785
+## 319  2020-12-05               US  40 -100 confirmed 215542
+## 320  2020-12-06               US  40 -100 confirmed 181012
+## 321  2020-12-07               US  40 -100 confirmed 194858
+## 322  2020-12-08               US  40 -100 confirmed 224492
+## 323  2020-12-09               US  40 -100 confirmed 222539
+## 324  2020-12-10               US  40 -100 confirmed 231515
+## 325  2020-12-11               US  40 -100 confirmed 239977
+## 326  2020-12-12               US  40 -100 confirmed 217585
+## 327  2020-12-13               US  40 -100 confirmed 187703
+## 328  2020-12-14               US  40 -100 confirmed 194821
+## 329  2020-12-15               US  40 -100 confirmed 209006
+## 330  2020-12-16               US  40 -100 confirmed 246700
+## 331  2020-12-17               US  40 -100 confirmed 239725
+## 332  2020-12-18               US  40 -100 confirmed 251969
+## 333  2020-12-19               US  40 -100 confirmed 191906
+## 334  2020-12-20               US  40 -100 confirmed 187819
+## 335  2020-12-21               US  40 -100 confirmed 199049
+## 336  2020-12-22               US  40 -100 confirmed 198011
+## 337  2020-12-23               US  40 -100 confirmed 229618
+## 338  2020-12-24               US  40 -100 confirmed 194204
+## 339  2020-12-25               US  40 -100 confirmed  97646
+## 340  2020-12-26               US  40 -100 confirmed 226288
+## 341  2020-12-27               US  40 -100 confirmed 155635
+## 342  2020-12-28               US  40 -100 confirmed 174634
+## 343  2020-12-29               US  40 -100 confirmed 200252
+## 344  2020-12-30               US  40 -100 confirmed 233684
+## 345  2020-12-31               US  40 -100 confirmed 235667
+## 346  2021-01-01               US  40 -100 confirmed 153628
+## 347  2021-01-02               US  40 -100 confirmed 300310
+## 348  2021-01-03               US  40 -100 confirmed 208746
+## 349  2021-01-04               US  40 -100 confirmed 184282
+## 350  2021-01-05               US  40 -100 confirmed 235111
+## 351  2021-01-06               US  40 -100 confirmed 255444
+## 352  2021-01-07               US  40 -100 confirmed 278290
+## 353  2021-01-08               US  40 -100 confirmed 295215
+## 354  2021-01-09               US  40 -100 confirmed 260695
+## 355  2021-01-10               US  40 -100 confirmed 213248
+## 356  2021-01-11               US  40 -100 confirmed 214994
+## 357  2021-01-12               US  40 -100 confirmed 226920
+## 358  2021-01-13               US  40 -100 confirmed 230362
+## 359  2021-01-14               US  40 -100 confirmed 235707
+## 360  2021-01-15               US  40 -100 confirmed 242731
+## 361  2021-01-16               US  40 -100 confirmed 201680
+## 362  2021-01-17               US  40 -100 confirmed 177782
+## 363  2021-01-18               US  40 -100 confirmed 143416
+## 364  2021-01-19               US  40 -100 confirmed 176706
+## 365  2021-01-20               US  40 -100 confirmed 183236
+## 366  2021-01-21               US  40 -100 confirmed 193818
+## 367  2021-01-22               US  40 -100 confirmed 190753
+## 368  2021-01-23               US  40 -100 confirmed 170613
+## 369  2021-01-24               US  40 -100 confirmed 131062
+## 370  2021-01-25               US  40 -100 confirmed 151969
+## 371  2021-01-26               US  40 -100 confirmed 147540
+## 372  2021-01-27               US  40 -100 confirmed 153945
+## 373  2021-01-28               US  40 -100 confirmed 168610
+## 374  2021-01-29               US  40 -100 confirmed 166568
+## 375  2021-01-30               US  40 -100 confirmed 142312
+## 376  2021-01-31               US  40 -100 confirmed 111997
+## 377  2021-02-01               US  40 -100 confirmed 135202
+## 378  2021-02-02               US  40 -100 confirmed 115333
+## 379  2021-02-03               US  40 -100 confirmed 121641
+## 380  2021-02-04               US  40 -100 confirmed 123975
+## 381  2021-02-05               US  40 -100 confirmed 134397
+## 382  2021-02-06               US  40 -100 confirmed 103987
+## 383  2021-02-07               US  40 -100 confirmed  89648
+## 384  2021-02-08               US  40 -100 confirmed  90315
+## 385  2021-02-09               US  40 -100 confirmed  95632
+## 386  2021-02-10               US  40 -100 confirmed  95177
+## 387  2021-02-11               US  40 -100 confirmed 105760
+## 388  2021-02-12               US  40 -100 confirmed  99638
+## 389  2021-02-13               US  40 -100 confirmed  87122
+## 390  2021-02-14               US  40 -100 confirmed  65021
+## 391  2021-02-15               US  40 -100 confirmed  54186
+## 392  2021-02-16               US  40 -100 confirmed  62719
+## 393  2021-02-17               US  40 -100 confirmed  70118
+## 394  2021-02-18               US  40 -100 confirmed  69924
+## 395  2021-02-19               US  40 -100 confirmed  79297
+## 396  2021-02-20               US  40 -100 confirmed  71525
+## 397  2021-02-21               US  40 -100 confirmed  57080
+## 398  2021-02-22               US  40 -100 confirmed  56220
+## 399  2021-02-23               US  40 -100 confirmed  72263
+## 400  2021-02-24               US  40 -100 confirmed  74732
+## 401  2021-02-25               US  40 -100 confirmed  77501
+## 402  2021-02-26               US  40 -100 confirmed  77346
+## 403  2021-02-27               US  40 -100 confirmed  64575
+## 404  2021-02-28               US  40 -100 confirmed  51357
+## 405  2021-03-01               US  40 -100 confirmed  58229
+## 406  2021-03-02               US  40 -100 confirmed  57060
+## 407  2021-03-03               US  40 -100 confirmed  67193
+## 408  2021-03-04               US  40 -100 confirmed  68051
+## 409  2021-03-05               US  40 -100 confirmed  66451
+## 410  2021-03-06               US  40 -100 confirmed  58203
+## 411  2021-03-07               US  40 -100 confirmed  41007
+## 412  2021-03-08               US  40 -100 confirmed  45036
+## 413  2021-03-09               US  40 -100 confirmed  57642
+## 414  2021-03-10               US  40 -100 confirmed  57920
+## 415  2021-03-11               US  40 -100 confirmed  62474
+## 416  2021-03-12               US  40 -100 confirmed  61523
+## 417  2021-03-13               US  40 -100 confirmed  52932
+## 418  2021-03-14               US  40 -100 confirmed  38221
+## 419  2021-03-15               US  40 -100 confirmed  56666
+## 420  2021-03-16               US  40 -100 confirmed  53957
+## 421  2021-03-17               US  40 -100 confirmed  59136
+## 422  2021-03-18               US  40 -100 confirmed  60538
+## 423  2021-03-19               US  40 -100 confirmed  61629
+## 424  2021-03-20               US  40 -100 confirmed  55374
+## 425  2021-03-21               US  40 -100 confirmed  33768
+## 426  2021-03-22               US  40 -100 confirmed  51593
+## 427  2021-03-23               US  40 -100 confirmed  53603
+## 428  2021-03-24               US  40 -100 confirmed  86960
+## 429  2021-03-25               US  40 -100 confirmed  67465
+## 430  2021-03-26               US  40 -100 confirmed  77321
+## 431  2021-03-27               US  40 -100 confirmed  62700
+## 432  2021-03-28               US  40 -100 confirmed  43097
+## 433  2021-03-29               US  40 -100 confirmed  69429
+## 434  2021-03-30               US  40 -100 confirmed  61249
+## 435  2021-03-31               US  40 -100 confirmed  67039
+## 436  2021-04-01               US  40 -100 confirmed  79045
+## 437  2021-04-02               US  40 -100 confirmed  69831
+## 438  2021-04-03               US  40 -100 confirmed  63067
+## 439  2021-04-04               US  40 -100 confirmed  34972
+## 440  2021-04-05               US  40 -100 confirmed  77679
+## 441  2021-04-06               US  40 -100 confirmed  60544
+## 442  2021-04-07               US  40 -100 confirmed  75038
+## 443  2021-04-08               US  40 -100 confirmed  79878
+## 444  2021-04-09               US  40 -100 confirmed  82698
+## 445  2021-04-10               US  40 -100 confirmed  66535
+## 446  2021-04-11               US  40 -100 confirmed  46380
+## 447  2021-04-12               US  40 -100 confirmed  70230
+## 448  2021-04-13               US  40 -100 confirmed  77878
+## 449  2021-04-14               US  40 -100 confirmed  75375
+## 450  2021-04-15               US  40 -100 confirmed  74289
+## 451  2021-04-16               US  40 -100 confirmed  79991
+## 452  2021-04-17               US  40 -100 confirmed  52373
+## 453  2021-04-18               US  40 -100 confirmed  42018
+## 454  2021-04-19               US  40 -100 confirmed  67933
+## 455  2021-04-20               US  40 -100 confirmed  61273
+## 456  2021-04-21               US  40 -100 confirmed  62857
+## 457  2021-04-22               US  40 -100 confirmed  67257
+## 458  2021-04-23               US  40 -100 confirmed  62399
+## 459  2021-04-24               US  40 -100 confirmed  53363
+## 460  2021-04-25               US  40 -100 confirmed  32065
+## 461  2021-04-26               US  40 -100 confirmed  47691
+## 462  2021-04-27               US  40 -100 confirmed  50856
+## 463  2021-04-28               US  40 -100 confirmed  55125
+## 464  2021-04-29               US  40 -100 confirmed  58199
+## 465  2021-04-30               US  40 -100 confirmed  57922
+## 466  2021-05-01               US  40 -100 confirmed  45303
+## 467  2021-05-02               US  40 -100 confirmed  29367
+## 468  2021-05-03               US  40 -100 confirmed  50560
+## 469  2021-05-04               US  40 -100 confirmed  40733
+## 470  2021-05-05               US  40 -100 confirmed  44735
+## 471  2021-05-06               US  40 -100 confirmed  47514
+## 472  2021-05-07               US  40 -100 confirmed  47289
+## 473  2021-05-08               US  40 -100 confirmed  34493
+## 474  2021-05-09               US  40 -100 confirmed  21392
+## 475  2021-05-10               US  40 -100 confirmed  36898
+## 476  2021-05-11               US  40 -100 confirmed  33651
+## 477  2021-05-12               US  40 -100 confirmed  35878
+## 478  2021-05-13               US  40 -100 confirmed  38087
+## 479  2021-05-14               US  40 -100 confirmed  42298
+## 480  2021-05-15               US  40 -100 confirmed  28813
+## 481  2021-05-16               US  40 -100 confirmed  16864
+## 482  2021-05-17               US  40 -100 confirmed  28666
+## 483  2021-05-18               US  40 -100 confirmed  27819
+## 484  2021-05-19               US  40 -100 confirmed  29293
+## 485  2021-05-20               US  40 -100 confirmed  30141
+## 486  2021-05-21               US  40 -100 confirmed  28341
+## 487  2021-05-22               US  40 -100 confirmed  19778
+## 488  2021-05-23               US  40 -100 confirmed  12853
+## 489  2021-05-24               US  40 -100 confirmed  25925
+## 490  2021-05-25               US  40 -100 confirmed  22756
+## 491  2021-05-26               US  40 -100 confirmed  24052
+## 492  2021-05-27               US  40 -100 confirmed  27525
+## 493  2020-01-22               US  40 -100     death      0
+## 494  2020-01-23               US  40 -100     death      0
+## 495  2020-01-24               US  40 -100     death      0
+## 496  2020-01-25               US  40 -100     death      0
+## 497  2020-01-26               US  40 -100     death      0
+## 498  2020-01-27               US  40 -100     death      0
+## 499  2020-01-28               US  40 -100     death      0
+## 500  2020-01-29               US  40 -100     death      0
+## 501  2020-01-30               US  40 -100     death      0
+## 502  2020-01-31               US  40 -100     death      0
+## 503  2020-02-01               US  40 -100     death      0
+## 504  2020-02-02               US  40 -100     death      0
+## 505  2020-02-03               US  40 -100     death      0
+## 506  2020-02-04               US  40 -100     death      0
+## 507  2020-02-05               US  40 -100     death      0
+## 508  2020-02-06               US  40 -100     death      0
+## 509  2020-02-07               US  40 -100     death      0
+## 510  2020-02-08               US  40 -100     death      0
+## 511  2020-02-09               US  40 -100     death      0
+## 512  2020-02-10               US  40 -100     death      0
+## 513  2020-02-11               US  40 -100     death      0
+## 514  2020-02-12               US  40 -100     death      0
+## 515  2020-02-13               US  40 -100     death      0
+## 516  2020-02-14               US  40 -100     death      0
+## 517  2020-02-15               US  40 -100     death      0
+## 518  2020-02-16               US  40 -100     death      0
+## 519  2020-02-17               US  40 -100     death      0
+## 520  2020-02-18               US  40 -100     death      0
+## 521  2020-02-19               US  40 -100     death      0
+## 522  2020-02-20               US  40 -100     death      0
+## 523  2020-02-21               US  40 -100     death      0
+## 524  2020-02-22               US  40 -100     death      0
+## 525  2020-02-23               US  40 -100     death      0
+## 526  2020-02-24               US  40 -100     death      0
+## 527  2020-02-25               US  40 -100     death      0
+## 528  2020-02-26               US  40 -100     death      0
+## 529  2020-02-27               US  40 -100     death      0
+## 530  2020-02-28               US  40 -100     death      0
+## 531  2020-02-29               US  40 -100     death      1
+## 532  2020-03-01               US  40 -100     death      0
+## 533  2020-03-02               US  40 -100     death      5
+## 534  2020-03-03               US  40 -100     death      1
+## 535  2020-03-04               US  40 -100     death      4
+## 536  2020-03-05               US  40 -100     death      1
+## 537  2020-03-06               US  40 -100     death      2
+## 538  2020-03-07               US  40 -100     death      3
+## 539  2020-03-08               US  40 -100     death      4
+## 540  2020-03-09               US  40 -100     death      1
+## 541  2020-03-10               US  40 -100     death      6
+## 542  2020-03-11               US  40 -100     death      5
+## 543  2020-03-12               US  40 -100     death     10
+## 544  2020-03-13               US  40 -100     death      8
+## 545  2020-03-14               US  40 -100     death      7
+## 546  2020-03-15               US  40 -100     death     12
+## 547  2020-03-16               US  40 -100     death     27
+## 548  2020-03-17               US  40 -100     death     37
+## 549  2020-03-18               US  40 -100     death     60
+## 550  2020-03-19               US  40 -100     death     72
+## 551  2020-03-20               US  40 -100     death    106
+## 552  2020-03-21               US  40 -100     death    103
+## 553  2020-03-22               US  40 -100     death    122
+## 554  2020-03-23               US  40 -100     death    192
+## 555  2020-03-24               US  40 -100     death    243
+## 556  2020-03-25               US  40 -100     death    333
+## 557  2020-03-26               US  40 -100     death    419
+## 558  2020-03-27               US  40 -100     death    522
+## 559  2020-03-28               US  40 -100     death    642
+## 560  2020-03-29               US  40 -100     death    624
+## 561  2020-03-30               US  40 -100     death    713
+## 562  2020-03-31               US  40 -100     death   1085
+## 563  2020-04-01               US  40 -100     death   1283
+## 564  2020-04-02               US  40 -100     death   1512
+## 565  2020-04-03               US  40 -100     death   1431
+## 566  2020-04-04               US  40 -100     death   1563
+## 567  2020-04-05               US  40 -100     death   1615
+## 568  2020-04-06               US  40 -100     death   1771
+## 569  2020-04-07               US  40 -100     death   2575
+## 570  2020-04-08               US  40 -100     death   2160
+## 571  2020-04-09               US  40 -100     death   2203
+## 572  2020-04-10               US  40 -100     death   2194
+## 573  2020-04-11               US  40 -100     death   2127
+## 574  2020-04-12               US  40 -100     death   1874
+## 575  2020-04-13               US  40 -100     death   2009
+## 576  2020-04-14               US  40 -100     death   2435
+## 577  2020-04-15               US  40 -100     death   2612
+## 578  2020-04-16               US  40 -100     death   2143
+## 579  2020-04-17               US  40 -100     death   2110
+## 580  2020-04-18               US  40 -100     death   1973
+## 581  2020-04-19               US  40 -100     death   1971
+## 582  2020-04-20               US  40 -100     death   2230
+## 583  2020-04-21               US  40 -100     death   2514
+## 584  2020-04-22               US  40 -100     death   2460
+## 585  2020-04-23               US  40 -100     death   2456
+## 586  2020-04-24               US  40 -100     death   2188
+## 587  2020-04-25               US  40 -100     death   1711
+## 588  2020-04-26               US  40 -100     death   1399
+## 589  2020-04-27               US  40 -100     death   1508
+## 590  2020-04-28               US  40 -100     death   2224
+## 591  2020-04-29               US  40 -100     death   2418
+## 592  2020-04-30               US  40 -100     death   2196
+## 593  2020-05-01               US  40 -100     death   1909
+## 594  2020-05-02               US  40 -100     death   1731
+## 595  2020-05-03               US  40 -100     death   1190
+## 596  2020-05-04               US  40 -100     death   1380
+## 597  2020-05-05               US  40 -100     death   2242
+## 598  2020-05-06               US  40 -100     death   2314
+## 599  2020-05-07               US  40 -100     death   1929
+## 600  2020-05-08               US  40 -100     death   1763
+## 601  2020-05-09               US  40 -100     death   1468
+## 602  2020-05-10               US  40 -100     death    978
+## 603  2020-05-11               US  40 -100     death   1042
+## 604  2020-05-12               US  40 -100     death   1599
+## 605  2020-05-13               US  40 -100     death   1727
+## 606  2020-05-14               US  40 -100     death   1796
+## 607  2020-05-15               US  40 -100     death   1668
+## 608  2020-05-16               US  40 -100     death   1198
+## 609  2020-05-17               US  40 -100     death    821
+## 610  2020-05-18               US  40 -100     death   1227
+## 611  2020-05-19               US  40 -100     death   1456
+## 612  2020-05-20               US  40 -100     death   1501
+## 613  2020-05-21               US  40 -100     death   1185
+## 614  2020-05-22               US  40 -100     death   1217
+## 615  2020-05-23               US  40 -100     death   1090
+## 616  2020-05-24               US  40 -100     death    639
+## 617  2020-05-25               US  40 -100     death    592
+## 618  2020-05-26               US  40 -100     death    677
+## 619  2020-05-27               US  40 -100     death   1463
+## 620  2020-05-28               US  40 -100     death   1101
+## 621  2020-05-29               US  40 -100     death   1133
+## 622  2020-05-30               US  40 -100     death    954
+## 623  2020-05-31               US  40 -100     death    615
+## 624  2020-06-01               US  40 -100     death    776
+## 625  2020-06-02               US  40 -100     death    981
+## 626  2020-06-03               US  40 -100     death   1010
+## 627  2020-06-04               US  40 -100     death   1013
+## 628  2020-06-05               US  40 -100     death    891
+## 629  2020-06-06               US  40 -100     death    642
+## 630  2020-06-07               US  40 -100     death    459
+## 631  2020-06-08               US  40 -100     death    507
+## 632  2020-06-09               US  40 -100     death    913
+## 633  2020-06-10               US  40 -100     death    876
+## 634  2020-06-11               US  40 -100     death    830
+## 635  2020-06-12               US  40 -100     death    829
+## 636  2020-06-13               US  40 -100     death    735
+## 637  2020-06-14               US  40 -100     death    345
+## 638  2020-06-15               US  40 -100     death    396
+## 639  2020-06-16               US  40 -100     death    814
+## 640  2020-06-17               US  40 -100     death    739
+## 641  2020-06-18               US  40 -100     death    689
+## 642  2020-06-19               US  40 -100     death    629
+## 643  2020-06-20               US  40 -100     death    559
+## 644  2020-06-21               US  40 -100     death    317
+## 645  2020-06-22               US  40 -100     death    407
+## 646  2020-06-23               US  40 -100     death    748
+## 647  2020-06-24               US  40 -100     death    737
+## 648  2020-06-25               US  40 -100     death    537
+## 649  2020-06-26               US  40 -100     death    629
+## 650  2020-06-27               US  40 -100     death    503
+## 651  2020-06-28               US  40 -100     death    318
+## 652  2020-06-29               US  40 -100     death    385
+## 653  2020-06-30               US  40 -100     death    553
+## 654  2020-07-01               US  40 -100     death    704
+## 655  2020-07-02               US  40 -100     death    713
+## 656  2020-07-03               US  40 -100     death    670
+## 657  2020-07-04               US  40 -100     death    315
+## 658  2020-07-05               US  40 -100     death    326
+## 659  2020-07-06               US  40 -100     death    376
+## 660  2020-07-07               US  40 -100     death   1162
+## 661  2020-07-08               US  40 -100     death    825
+## 662  2020-07-09               US  40 -100     death   1020
+## 663  2020-07-10               US  40 -100     death    817
+## 664  2020-07-11               US  40 -100     death    728
+## 665  2020-07-12               US  40 -100     death    472
+## 666  2020-07-13               US  40 -100     death    445
+## 667  2020-07-14               US  40 -100     death    928
+## 668  2020-07-15               US  40 -100     death    975
+## 669  2020-07-16               US  40 -100     death    956
+## 670  2020-07-17               US  40 -100     death    924
+## 671  2020-07-18               US  40 -100     death    857
+## 672  2020-07-19               US  40 -100     death    483
+## 673  2020-07-20               US  40 -100     death    563
+## 674  2020-07-21               US  40 -100     death   1091
+## 675  2020-07-22               US  40 -100     death   1224
+## 676  2020-07-23               US  40 -100     death   1070
+## 677  2020-07-24               US  40 -100     death   1107
+## 678  2020-07-25               US  40 -100     death    930
+## 679  2020-07-26               US  40 -100     death    531
+## 680  2020-07-27               US  40 -100     death   1126
+## 681  2020-07-28               US  40 -100     death   1330
+## 682  2020-07-29               US  40 -100     death   1414
+## 683  2020-07-30               US  40 -100     death   1231
+## 684  2020-07-31               US  40 -100     death   1237
+## 685  2020-08-01               US  40 -100     death   1093
+## 686  2020-08-02               US  40 -100     death    437
+## 687  2020-08-03               US  40 -100     death    581
+## 688  2020-08-04               US  40 -100     death   1282
+## 689  2020-08-05               US  40 -100     death   1438
+## 690  2020-08-06               US  40 -100     death   1244
+## 691  2020-08-07               US  40 -100     death   1237
+## 692  2020-08-08               US  40 -100     death   1078
+## 693  2020-08-09               US  40 -100     death    524
+## 694  2020-08-10               US  40 -100     death    635
+## 695  2020-08-11               US  40 -100     death   1020
+## 696  2020-08-12               US  40 -100     death   1499
+## 697  2020-08-13               US  40 -100     death   1067
+## 698  2020-08-14               US  40 -100     death   1337
+## 699  2020-08-15               US  40 -100     death   1000
+## 700  2020-08-16               US  40 -100     death    617
+## 701  2020-08-17               US  40 -100     death    493
+## 702  2020-08-18               US  40 -100     death   1226
+## 703  2020-08-19               US  40 -100     death   1339
+## 704  2020-08-20               US  40 -100     death   1103
+## 705  2020-08-21               US  40 -100     death   1091
+## 706  2020-08-22               US  40 -100     death    909
+## 707  2020-08-23               US  40 -100     death    545
+## 708  2020-08-24               US  40 -100     death    473
+## 709  2020-08-25               US  40 -100     death   1236
+## 710  2020-08-26               US  40 -100     death   1166
+## 711  2020-08-27               US  40 -100     death   1116
+## 712  2020-08-28               US  40 -100     death    977
+## 713  2020-08-29               US  40 -100     death    902
+## 714  2020-08-30               US  40 -100     death    454
+## 715  2020-08-31               US  40 -100     death    542
+## 716  2020-09-01               US  40 -100     death   1028
+## 717  2020-09-02               US  40 -100     death   1079
+## 718  2020-09-03               US  40 -100     death   1037
+## 719  2020-09-04               US  40 -100     death    958
+## 720  2020-09-05               US  40 -100     death    762
+## 721  2020-09-06               US  40 -100     death    470
+## 722  2020-09-07               US  40 -100     death    296
+## 723  2020-09-08               US  40 -100     death    452
+## 724  2020-09-09               US  40 -100     death   1160
+## 725  2020-09-10               US  40 -100     death    916
+## 726  2020-09-11               US  40 -100     death   1174
+## 727  2020-09-12               US  40 -100     death    702
+## 728  2020-09-13               US  40 -100     death    435
+## 729  2020-09-14               US  40 -100     death    431
+## 730  2020-09-15               US  40 -100     death   1200
+## 731  2020-09-16               US  40 -100     death    956
+## 732  2020-09-17               US  40 -100     death    861
+## 733  2020-09-18               US  40 -100     death    896
+## 734  2020-09-19               US  40 -100     death    732
+## 735  2020-09-20               US  40 -100     death    265
+## 736  2020-09-21               US  40 -100     death    427
+## 737  2020-09-22               US  40 -100     death   1032
+## 738  2020-09-23               US  40 -100     death   1056
+## 739  2020-09-24               US  40 -100     death    897
+## 740  2020-09-25               US  40 -100     death    944
+## 741  2020-09-26               US  40 -100     death    768
+## 742  2020-09-27               US  40 -100     death    315
+## 743  2020-09-28               US  40 -100     death    358
+## 744  2020-09-29               US  40 -100     death    834
+## 745  2020-09-30               US  40 -100     death    958
+## 746  2020-10-01               US  40 -100     death    873
+## 747  2020-10-02               US  40 -100     death    860
+## 748  2020-10-03               US  40 -100     death    684
+## 749  2020-10-04               US  40 -100     death    381
+## 750  2020-10-05               US  40 -100     death    480
+## 751  2020-10-06               US  40 -100     death    686
+## 752  2020-10-07               US  40 -100     death    927
+## 753  2020-10-08               US  40 -100     death    989
+## 754  2020-10-09               US  40 -100     death    968
+## 755  2020-10-10               US  40 -100     death    658
+## 756  2020-10-11               US  40 -100     death    471
+## 757  2020-10-12               US  40 -100     death    394
+## 758  2020-10-13               US  40 -100     death    796
+## 759  2020-10-14               US  40 -100     death    990
+## 760  2020-10-15               US  40 -100     death    849
+## 761  2020-10-16               US  40 -100     death    937
+## 762  2020-10-17               US  40 -100     death    762
+## 763  2020-10-18               US  40 -100     death    493
+## 764  2020-10-19               US  40 -100     death    479
+## 765  2020-10-20               US  40 -100     death    924
+## 766  2020-10-21               US  40 -100     death   1121
+## 767  2020-10-22               US  40 -100     death    914
+## 768  2020-10-23               US  40 -100     death    967
+## 769  2020-10-24               US  40 -100     death    951
+## 770  2020-10-25               US  40 -100     death    462
+## 771  2020-10-26               US  40 -100     death    533
+## 772  2020-10-27               US  40 -100     death    973
+## 773  2020-10-28               US  40 -100     death   1035
+## 774  2020-10-29               US  40 -100     death   1004
+## 775  2020-10-30               US  40 -100     death   1061
+## 776  2020-10-31               US  40 -100     death    910
+## 777  2020-11-01               US  40 -100     death    496
+## 778  2020-11-02               US  40 -100     death    573
+## 779  2020-11-03               US  40 -100     death   1578
+## 780  2020-11-04               US  40 -100     death   1115
+## 781  2020-11-05               US  40 -100     death   1156
+## 782  2020-11-06               US  40 -100     death   1239
+## 783  2020-11-07               US  40 -100     death   1081
+## 784  2020-11-08               US  40 -100     death    572
+## 785  2020-11-09               US  40 -100     death    779
+## 786  2020-11-10               US  40 -100     death   1418
+## 787  2020-11-11               US  40 -100     death   1436
+## 788  2020-11-12               US  40 -100     death   1204
+## 789  2020-11-13               US  40 -100     death   1200
+## 790  2020-11-14               US  40 -100     death   1347
+## 791  2020-11-15               US  40 -100     death    777
+## 792  2020-11-16               US  40 -100     death    829
+## 793  2020-11-17               US  40 -100     death   1721
+## 794  2020-11-18               US  40 -100     death   1919
+## 795  2020-11-19               US  40 -100     death   2053
+## 796  2020-11-20               US  40 -100     death   1957
+## 797  2020-11-21               US  40 -100     death   1619
+## 798  2020-11-22               US  40 -100     death   1033
+## 799  2020-11-23               US  40 -100     death   1100
+## 800  2020-11-24               US  40 -100     death   2129
+## 801  2020-11-25               US  40 -100     death   2263
+## 802  2020-11-26               US  40 -100     death   1385
+## 803  2020-11-27               US  40 -100     death   1549
+## 804  2020-11-28               US  40 -100     death   1361
+## 805  2020-11-29               US  40 -100     death   1036
+## 806  2020-11-30               US  40 -100     death   1346
+## 807  2020-12-01               US  40 -100     death   2546
+## 808  2020-12-02               US  40 -100     death   2815
+## 809  2020-12-03               US  40 -100     death   2956
+## 810  2020-12-04               US  40 -100     death   2699
+## 811  2020-12-05               US  40 -100     death   2354
+## 812  2020-12-06               US  40 -100     death   1346
+## 813  2020-12-07               US  40 -100     death   1606
+## 814  2020-12-08               US  40 -100     death   2621
+## 815  2020-12-09               US  40 -100     death   3183
+## 816  2020-12-10               US  40 -100     death   2995
+## 817  2020-12-11               US  40 -100     death   3418
+## 818  2020-12-12               US  40 -100     death   2462
+## 819  2020-12-13               US  40 -100     death   1628
+## 820  2020-12-14               US  40 -100     death   1652
+## 821  2020-12-15               US  40 -100     death   3119
+## 822  2020-12-16               US  40 -100     death   3664
+## 823  2020-12-17               US  40 -100     death   3502
+## 824  2020-12-18               US  40 -100     death   2968
+## 825  2020-12-19               US  40 -100     death   2656
+## 826  2020-12-20               US  40 -100     death   1715
+## 827  2020-12-21               US  40 -100     death   1920
+## 828  2020-12-22               US  40 -100     death   3399
+## 829  2020-12-23               US  40 -100     death   3421
+## 830  2020-12-24               US  40 -100     death   2908
+## 831  2020-12-25               US  40 -100     death   1428
+## 832  2020-12-26               US  40 -100     death   1885
+## 833  2020-12-27               US  40 -100     death   1427
+## 834  2020-12-28               US  40 -100     death   2004
+## 835  2020-12-29               US  40 -100     death   3633
+## 836  2020-12-30               US  40 -100     death   3733
+## 837  2020-12-31               US  40 -100     death   3480
+## 838  2021-01-01               US  40 -100     death   2150
+## 839  2021-01-02               US  40 -100     death   2508
+## 840  2021-01-03               US  40 -100     death   1447
+## 841  2021-01-04               US  40 -100     death   2094
+## 842  2021-01-05               US  40 -100     death   3715
+## 843  2021-01-06               US  40 -100     death   3927
+## 844  2021-01-07               US  40 -100     death   3988
+## 845  2021-01-08               US  40 -100     death   4108
+## 846  2021-01-09               US  40 -100     death   3322
+## 847  2021-01-10               US  40 -100     death   2000
+## 848  2021-01-11               US  40 -100     death   2104
+## 849  2021-01-12               US  40 -100     death   4475
+## 850  2021-01-13               US  40 -100     death   4031
+## 851  2021-01-14               US  40 -100     death   3988
+## 852  2021-01-15               US  40 -100     death   3893
+## 853  2021-01-16               US  40 -100     death   3404
+## 854  2021-01-17               US  40 -100     death   1899
+## 855  2021-01-18               US  40 -100     death   1535
+## 856  2021-01-19               US  40 -100     death   2733
+## 857  2021-01-20               US  40 -100     death   4408
+## 858  2021-01-21               US  40 -100     death   4205
+## 859  2021-01-22               US  40 -100     death   3847
+## 860  2021-01-23               US  40 -100     death   3345
+## 861  2021-01-24               US  40 -100     death   1899
+## 862  2021-01-25               US  40 -100     death   1977
+## 863  2021-01-26               US  40 -100     death   4008
+## 864  2021-01-27               US  40 -100     death   3961
+## 865  2021-01-28               US  40 -100     death   4039
+## 866  2021-01-29               US  40 -100     death   3635
+## 867  2021-01-30               US  40 -100     death   2786
+## 868  2021-01-31               US  40 -100     death   1854
+## 869  2021-02-01               US  40 -100     death   2067
+## 870  2021-02-02               US  40 -100     death   3430
+## 871  2021-02-03               US  40 -100     death   3907
+## 872  2021-02-04               US  40 -100     death   3737
+## 873  2021-02-05               US  40 -100     death   3688
+## 874  2021-02-06               US  40 -100     death   2641
+## 875  2021-02-07               US  40 -100     death   1437
+## 876  2021-02-08               US  40 -100     death   1617
+## 877  2021-02-09               US  40 -100     death   3075
+## 878  2021-02-10               US  40 -100     death   3310
+## 879  2021-02-11               US  40 -100     death   3208
+## 880  2021-02-12               US  40 -100     death   2929
+## 881  2021-02-13               US  40 -100     death   2198
+## 882  2021-02-14               US  40 -100     death   1161
+## 883  2021-02-15               US  40 -100     death    959
+## 884  2021-02-16               US  40 -100     death   1750
+## 885  2021-02-17               US  40 -100     death   2406
+## 886  2021-02-18               US  40 -100     death   2519
+## 887  2021-02-19               US  40 -100     death   2631
+## 888  2021-02-20               US  40 -100     death   1818
+## 889  2021-02-21               US  40 -100     death   1249
+## 890  2021-02-22               US  40 -100     death   1323
+## 891  2021-02-23               US  40 -100     death   2274
+## 892  2021-02-24               US  40 -100     death   3179
+## 893  2021-02-25               US  40 -100     death   2446
+## 894  2021-02-26               US  40 -100     death   2068
+## 895  2021-02-27               US  40 -100     death   1515
+## 896  2021-02-28               US  40 -100     death   1094
+## 897  2021-03-01               US  40 -100     death   1522
+## 898  2021-03-02               US  40 -100     death   1950
+## 899  2021-03-03               US  40 -100     death   2491
+## 900  2021-03-04               US  40 -100     death   1938
+## 901  2021-03-05               US  40 -100     death   1785
+## 902  2021-03-06               US  40 -100     death   1506
+## 903  2021-03-07               US  40 -100     death    698
+## 904  2021-03-08               US  40 -100     death    740
+## 905  2021-03-09               US  40 -100     death   1807
+## 906  2021-03-10               US  40 -100     death   1573
+## 907  2021-03-11               US  40 -100     death   1569
+## 908  2021-03-12               US  40 -100     death   1571
+## 909  2021-03-13               US  40 -100     death    998
+## 910  2021-03-14               US  40 -100     death    581
+## 911  2021-03-15               US  40 -100     death    757
+## 912  2021-03-16               US  40 -100     death   1179
+## 913  2021-03-17               US  40 -100     death   1235
+## 914  2021-03-18               US  40 -100     death   1666
+## 915  2021-03-19               US  40 -100     death   1149
+## 916  2021-03-20               US  40 -100     death    744
+## 917  2021-03-21               US  40 -100     death    440
+## 918  2021-03-22               US  40 -100     death    720
+## 919  2021-03-23               US  40 -100     death    877
+## 920  2021-03-24               US  40 -100     death   1513
+## 921  2021-03-25               US  40 -100     death   1411
+## 922  2021-03-26               US  40 -100     death   1155
+## 923  2021-03-27               US  40 -100     death    788
+## 924  2021-03-28               US  40 -100     death    523
+## 925  2021-03-29               US  40 -100     death    713
+## 926  2021-03-30               US  40 -100     death    887
+## 927  2021-03-31               US  40 -100     death   1091
+## 928  2021-04-01               US  40 -100     death   1078
+## 929  2021-04-02               US  40 -100     death    953
+## 930  2021-04-03               US  40 -100     death    737
+## 931  2021-04-04               US  40 -100     death    294
+## 932  2021-04-05               US  40 -100     death    519
+## 933  2021-04-06               US  40 -100     death    861
+## 934  2021-04-07               US  40 -100     death   2593
+## 935  2021-04-08               US  40 -100     death   1023
+## 936  2021-04-09               US  40 -100     death    889
+## 937  2021-04-10               US  40 -100     death    717
+## 938  2021-04-11               US  40 -100     death    301
+## 939  2021-04-12               US  40 -100     death    477
+## 940  2021-04-13               US  40 -100     death    833
+## 941  2021-04-14               US  40 -100     death    974
+## 942  2021-04-15               US  40 -100     death    900
+## 943  2021-04-16               US  40 -100     death    872
+## 944  2021-04-17               US  40 -100     death    693
+## 945  2021-04-18               US  40 -100     death    335
+## 946  2021-04-19               US  40 -100     death    501
+## 947  2021-04-20               US  40 -100     death    837
+## 948  2021-04-21               US  40 -100     death    860
+## 949  2021-04-22               US  40 -100     death    959
+## 950  2021-04-23               US  40 -100     death    778
+## 951  2021-04-24               US  40 -100     death    742
+## 952  2021-04-25               US  40 -100     death    290
+## 953  2021-04-26               US  40 -100     death    490
+## 954  2021-04-27               US  40 -100     death    651
+## 955  2021-04-28               US  40 -100     death    969
+## 956  2021-04-29               US  40 -100     death    867
+## 957  2021-04-30               US  40 -100     death    743
+## 958  2021-05-01               US  40 -100     death    719
+## 959  2021-05-02               US  40 -100     death    336
+## 960  2021-05-03               US  40 -100     death    492
+## 961  2021-05-04               US  40 -100     death    878
+## 962  2021-05-05               US  40 -100     death    781
+## 963  2021-05-06               US  40 -100     death    795
+## 964  2021-05-07               US  40 -100     death    756
+## 965  2021-05-08               US  40 -100     death    617
+## 966  2021-05-09               US  40 -100     death    242
+## 967  2021-05-10               US  40 -100     death    401
+## 968  2021-05-11               US  40 -100     death    677
+## 969  2021-05-12               US  40 -100     death    851
+## 970  2021-05-13               US  40 -100     death    806
+## 971  2021-05-14               US  40 -100     death    659
+## 972  2021-05-15               US  40 -100     death    477
+## 973  2021-05-16               US  40 -100     death    263
+## 974  2021-05-17               US  40 -100     death    393
+## 975  2021-05-18               US  40 -100     death    760
+## 976  2021-05-19               US  40 -100     death    655
+## 977  2021-05-20               US  40 -100     death    665
+## 978  2021-05-21               US  40 -100     death    603
+## 979  2021-05-22               US  40 -100     death    480
+## 980  2021-05-23               US  40 -100     death    190
+## 981  2021-05-24               US  40 -100     death    427
+## 982  2021-05-25               US  40 -100     death    621
+## 983  2021-05-26               US  40 -100     death   1009
+## 984  2021-05-27               US  40 -100     death   1338
+## 985  2020-01-22               US  40 -100 recovered      0
+## 986  2020-01-23               US  40 -100 recovered      0
+## 987  2020-01-24               US  40 -100 recovered      0
+## 988  2020-01-25               US  40 -100 recovered      0
+## 989  2020-01-26               US  40 -100 recovered      0
+## 990  2020-01-27               US  40 -100 recovered      0
+## 991  2020-01-28               US  40 -100 recovered      0
+## 992  2020-01-29               US  40 -100 recovered      0
+## 993  2020-01-30               US  40 -100 recovered      0
+## 994  2020-01-31               US  40 -100 recovered      0
+## 995  2020-02-01               US  40 -100 recovered      0
+## 996  2020-02-02               US  40 -100 recovered      0
+## 997  2020-02-03               US  40 -100 recovered      0
+## 998  2020-02-04               US  40 -100 recovered      0
+## 999  2020-02-05               US  40 -100 recovered      0
+## 1000 2020-02-06               US  40 -100 recovered      0
+## 1001 2020-02-07               US  40 -100 recovered      0
+## 1002 2020-02-08               US  40 -100 recovered      0
+## 1003 2020-02-09               US  40 -100 recovered      3
+## 1004 2020-02-10               US  40 -100 recovered      0
+## 1005 2020-02-11               US  40 -100 recovered      0
+## 1006 2020-02-12               US  40 -100 recovered      0
+## 1007 2020-02-13               US  40 -100 recovered      0
+## 1008 2020-02-14               US  40 -100 recovered      0
+## 1009 2020-02-15               US  40 -100 recovered      0
+## 1010 2020-02-16               US  40 -100 recovered      0
+## 1011 2020-02-17               US  40 -100 recovered      0
+## 1012 2020-02-18               US  40 -100 recovered      0
+## 1013 2020-02-19               US  40 -100 recovered      0
+## 1014 2020-02-20               US  40 -100 recovered      0
+## 1015 2020-02-21               US  40 -100 recovered      2
+## 1016 2020-02-22               US  40 -100 recovered      0
+## 1017 2020-02-23               US  40 -100 recovered      0
+## 1018 2020-02-24               US  40 -100 recovered      0
+## 1019 2020-02-25               US  40 -100 recovered      1
+## 1020 2020-02-26               US  40 -100 recovered      0
+## 1021 2020-02-27               US  40 -100 recovered      0
+## 1022 2020-02-28               US  40 -100 recovered      1
+## 1023 2020-02-29               US  40 -100 recovered      0
+## 1024 2020-03-01               US  40 -100 recovered      0
+## 1025 2020-03-02               US  40 -100 recovered      0
+## 1026 2020-03-03               US  40 -100 recovered      0
+## 1027 2020-03-04               US  40 -100 recovered      0
+## 1028 2020-03-05               US  40 -100 recovered      0
+## 1029 2020-03-06               US  40 -100 recovered      0
+## 1030 2020-03-07               US  40 -100 recovered      0
+## 1031 2020-03-08               US  40 -100 recovered      0
+## 1032 2020-03-09               US  40 -100 recovered      0
+## 1033 2020-03-10               US  40 -100 recovered      1
+## 1034 2020-03-11               US  40 -100 recovered      0
+## 1035 2020-03-12               US  40 -100 recovered      4
+## 1036 2020-03-13               US  40 -100 recovered      0
+## 1037 2020-03-14               US  40 -100 recovered      0
+## 1038 2020-03-15               US  40 -100 recovered      0
+## 1039 2020-03-16               US  40 -100 recovered      5
+## 1040 2020-03-17               US  40 -100 recovered      0
+## 1041 2020-03-18               US  40 -100 recovered     88
+## 1042 2020-03-19               US  40 -100 recovered     16
+## 1043 2020-03-20               US  40 -100 recovered     26
+## 1044 2020-03-21               US  40 -100 recovered     29
+## 1045 2020-03-22               US  40 -100 recovered      2
+## 1046 2020-03-23               US  40 -100 recovered      0
+## 1047 2020-03-24               US  40 -100 recovered    170
+## 1048 2020-03-25               US  40 -100 recovered     13
+## 1049 2020-03-26               US  40 -100 recovered    320
+## 1050 2020-03-27               US  40 -100 recovered    188
+## 1051 2020-03-28               US  40 -100 recovered    203
+## 1052 2020-03-29               US  40 -100 recovered   1593
+## 1053 2020-03-30               US  40 -100 recovered   2979
+## 1054 2020-03-31               US  40 -100 recovered   1380
+## 1055 2020-04-01               US  40 -100 recovered   1450
+## 1056 2020-04-02               US  40 -100 recovered    527
+## 1057 2020-04-03               US  40 -100 recovered    706
+## 1058 2020-04-04               US  40 -100 recovered   4945
+## 1059 2020-04-05               US  40 -100 recovered   2796
+## 1060 2020-04-06               US  40 -100 recovered   2133
+## 1061 2020-04-07               US  40 -100 recovered   2182
+## 1062 2020-04-08               US  40 -100 recovered   1796
+## 1063 2020-04-09               US  40 -100 recovered   1851
+## 1064 2020-04-10               US  40 -100 recovered   3380
+## 1065 2020-04-11               US  40 -100 recovered   2480
+## 1066 2020-04-12               US  40 -100 recovered   1718
+## 1067 2020-04-13               US  40 -100 recovered  10494
+## 1068 2020-04-14               US  40 -100 recovered   4281
+## 1069 2020-04-15               US  40 -100 recovered   4333
+## 1070 2020-04-16               US  40 -100 recovered   2607
+## 1071 2020-04-17               US  40 -100 recovered   3842
+## 1072 2020-04-18               US  40 -100 recovered   6295
+## 1073 2020-04-19               US  40 -100 recovered   5497
+## 1074 2020-04-20               US  40 -100 recovered   1992
+## 1075 2020-04-21               US  40 -100 recovered   2875
+## 1076 2020-04-22               US  40 -100 recovered   2162
+## 1077 2020-04-23               US  40 -100 recovered   2837
+## 1078 2020-04-24               US  40 -100 recovered  18876
+## 1079 2020-04-25               US  40 -100 recovered   1293
+## 1080 2020-04-26               US  40 -100 recovered   6616
+## 1081 2020-04-27               US  40 -100 recovered   4436
+## 1082 2020-04-28               US  40 -100 recovered   4512
+## 1083 2020-04-29               US  40 -100 recovered   4784
+## 1084 2020-04-30               US  40 -100 recovered  33227
+## 1085 2020-05-01               US  40 -100 recovered  10068
+## 1086 2020-05-02               US  40 -100 recovered  11367
+## 1087 2020-05-03               US  40 -100 recovered   4770
+## 1088 2020-05-04               US  40 -100 recovered   7028
+## 1089 2020-05-05               US  40 -100 recovered   2611
+## 1090 2020-05-06               US  40 -100 recovered    119
+## 1091 2020-05-07               US  40 -100 recovered   5126
+## 1092 2020-05-08               US  40 -100 recovered   3957
+## 1093 2020-05-09               US  40 -100 recovered  13541
+## 1094 2020-05-10               US  40 -100 recovered   3635
+## 1095 2020-05-11               US  40 -100 recovered  16564
+## 1096 2020-05-12               US  40 -100 recovered  -2446
+## 1097 2020-05-13               US  40 -100 recovered  13143
+## 1098 2020-05-14               US  40 -100 recovered   2984
+## 1099 2020-05-15               US  40 -100 recovered   4333
+## 1100 2020-05-16               US  40 -100 recovered  17629
+## 1101 2020-05-17               US  40 -100 recovered   3889
+## 1102 2020-05-18               US  40 -100 recovered  10913
+## 1103 2020-05-19               US  40 -100 recovered   6214
+## 1104 2020-05-20               US  40 -100 recovered   4920
+## 1105 2020-05-21               US  40 -100 recovered   4106
+## 1106 2020-05-22               US  40 -100 recovered  51717
+## 1107 2020-05-23               US  40 -100 recovered  11104
+## 1108 2020-05-24               US  40 -100 recovered   5497
+## 1109 2020-05-25               US  40 -100 recovered  12421
+## 1110 2020-05-26               US  40 -100 recovered   5745
+## 1111 2020-05-27               US  40 -100 recovered   6606
+## 1112 2020-05-28               US  40 -100 recovered   8483
+## 1113 2020-05-29               US  40 -100 recovered   6455
+## 1114 2020-05-30               US  40 -100 recovered  10015
+## 1115 2020-05-31               US  40 -100 recovered  28297
+## 1116 2020-06-01               US  40 -100 recovered  13473
+## 1117 2020-06-02               US  40 -100 recovered   5637
+## 1118 2020-06-03               US  40 -100 recovered  15390
+## 1119 2020-06-04               US  40 -100 recovered   5744
+## 1120 2020-06-05               US  40 -100 recovered   6704
+## 1121 2020-06-06               US  40 -100 recovered   9143
+## 1122 2020-06-07               US  40 -100 recovered   5518
+## 1123 2020-06-08               US  40 -100 recovered  12155
+## 1124 2020-06-09               US  40 -100 recovered   6333
+## 1125 2020-06-10               US  40 -100 recovered   8649
+## 1126 2020-06-11               US  40 -100 recovered   6788
+## 1127 2020-06-12               US  40 -100 recovered   7094
+## 1128 2020-06-13               US  40 -100 recovered   9220
+## 1129 2020-06-14               US  40 -100 recovered   5210
+## 1130 2020-06-15               US  40 -100 recovered  14518
+## 1131 2020-06-16               US  40 -100 recovered   7169
+## 1132 2020-06-17               US  40 -100 recovered   8688
+## 1133 2020-06-18               US  40 -100 recovered   6924
+## 1134 2020-06-19               US  40 -100 recovered   7600
+## 1135 2020-06-20               US  40 -100 recovered  10745
+## 1136 2020-06-21               US  40 -100 recovered   4673
+## 1137 2020-06-22               US  40 -100 recovered  18065
+## 1138 2020-06-23               US  40 -100 recovered   7350
+## 1139 2020-06-24               US  40 -100 recovered   8613
+## 1140 2020-06-25               US  40 -100 recovered   7401
+## 1141 2020-06-26               US  40 -100 recovered   7247
+## 1142 2020-06-27               US  40 -100 recovered   8499
+## 1143 2020-06-28               US  40 -100 recovered   5856
+## 1144 2020-06-29               US  40 -100 recovered  20039
+## 1145 2020-06-30               US  40 -100 recovered  15428
+## 1146 2020-07-01               US  40 -100 recovered   9363
+## 1147 2020-07-02               US  40 -100 recovered  51976
+## 1148 2020-07-03               US  40 -100 recovered   8434
+## 1149 2020-07-04               US  40 -100 recovered 103921
+## 1150 2020-07-05               US  40 -100 recovered  12438
+## 1151 2020-07-06               US  40 -100 recovered  17385
+## 1152 2020-07-07               US  40 -100 recovered  12328
+## 1153 2020-07-08               US  40 -100 recovered  16986
+## 1154 2020-07-09               US  40 -100 recovered  15649
+## 1155 2020-07-10               US  40 -100 recovered  14074
+## 1156 2020-07-11               US  40 -100 recovered  12391
+## 1157 2020-07-12               US  40 -100 recovered  10750
+## 1158 2020-07-13               US  40 -100 recovered  25613
+## 1159 2020-07-14               US  40 -100 recovered  17159
+## 1160 2020-07-15               US  40 -100 recovered  26784
+## 1161 2020-07-16               US  40 -100 recovered  14763
+## 1162 2020-07-17               US  40 -100 recovered  16559
+## 1163 2020-07-18               US  40 -100 recovered  15516
+## 1164 2020-07-19               US  40 -100 recovered   8401
+## 1165 2020-07-20               US  40 -100 recovered  28966
+## 1166 2020-07-21               US  40 -100 recovered  21931
+## 1167 2020-07-22               US  40 -100 recovered  28831
+## 1168 2020-07-23               US  40 -100 recovered  22420
+## 1169 2020-07-24               US  40 -100 recovered  28355
+## 1170 2020-07-25               US  40 -100 recovered  17790
+## 1171 2020-07-26               US  40 -100 recovered  18449
+## 1172 2020-07-27               US  40 -100 recovered  27941
+## 1173 2020-07-28               US  40 -100 recovered  29559
+## 1174 2020-07-29               US  40 -100 recovered  34062
+## 1175 2020-07-30               US  40 -100 recovered  24730
+## 1176 2020-07-31               US  40 -100 recovered  24005
+## 1177 2020-08-01               US  40 -100 recovered  23725
+## 1178 2020-08-02               US  40 -100 recovered   6804
+## 1179 2020-08-03               US  40 -100 recovered  44757
+## 1180 2020-08-04               US  40 -100 recovered  15533
+## 1181 2020-08-05               US  40 -100 recovered  48872
+## 1182 2020-08-06               US  40 -100 recovered  20773
+## 1183 2020-08-07               US  40 -100 recovered  25246
+## 1184 2020-08-08               US  40 -100 recovered  19248
+## 1185 2020-08-09               US  40 -100 recovered  13746
+## 1186 2020-08-10               US  40 -100 recovered  13891
+## 1187 2020-08-11               US  40 -100 recovered  44205
+## 1188 2020-08-12               US  40 -100 recovered  38800
+## 1189 2020-08-13               US  40 -100 recovered  20888
+## 1190 2020-08-14               US  40 -100 recovered  21678
+## 1191 2020-08-15               US  40 -100 recovered  22201
+## 1192 2020-08-16               US  40 -100 recovered  14540
+## 1193 2020-08-17               US  40 -100 recovered  32513
+## 1194 2020-08-18               US  40 -100 recovered  32579
+## 1195 2020-08-19               US  40 -100 recovered  26890
+## 1196 2020-08-20               US  40 -100 recovered  21986
+## 1197 2020-08-21               US  40 -100 recovered  18021
+## 1198 2020-08-22               US  40 -100 recovered  20428
+## 1199 2020-08-23               US  40 -100 recovered  12277
+## 1200 2020-08-24               US  40 -100 recovered  23013
+## 1201 2020-08-25               US  40 -100 recovered  32925
+## 1202 2020-08-26               US  40 -100 recovered  30766
+## 1203 2020-08-27               US  40 -100 recovered  16861
+## 1204 2020-08-28               US  40 -100 recovered  17041
+## 1205 2020-08-29               US  40 -100 recovered  22247
+## 1206 2020-08-30               US  40 -100 recovered  13325
+## 1207 2020-08-31               US  40 -100 recovered  30886
+## 1208 2020-09-01               US  40 -100 recovered  17838
+## 1209 2020-09-02               US  40 -100 recovered  29094
+## 1210 2020-09-03               US  40 -100 recovered  35200
+## 1211 2020-09-04               US  40 -100 recovered  16497
+## 1212 2020-09-05               US  40 -100 recovered  18733
+## 1213 2020-09-06               US  40 -100 recovered  13808
+## 1214 2020-09-07               US  40 -100 recovered  17556
+## 1215 2020-09-08               US  40 -100 recovered  25560
+## 1216 2020-09-09               US  40 -100 recovered  28368
+## 1217 2020-09-10               US  40 -100 recovered  16032
+## 1218 2020-09-11               US  40 -100 recovered  14367
+## 1219 2020-09-12               US  40 -100 recovered  16780
+## 1220 2020-09-13               US  40 -100 recovered  16748
+## 1221 2020-09-14               US  40 -100 recovered  23164
+## 1222 2020-09-15               US  40 -100 recovered  20557
+## 1223 2020-09-16               US  40 -100 recovered  30446
+## 1224 2020-09-17               US  40 -100 recovered  14761
+## 1225 2020-09-18               US  40 -100 recovered  16131
+## 1226 2020-09-19               US  40 -100 recovered  20981
+## 1227 2020-09-20               US  40 -100 recovered  13225
+## 1228 2020-09-21               US  40 -100 recovered  25278
+## 1229 2020-09-22               US  40 -100 recovered  31010
+## 1230 2020-09-23               US  40 -100 recovered  23297
+## 1231 2020-09-24               US  40 -100 recovered  39927
+## 1232 2020-09-25               US  40 -100 recovered  17152
+## 1233 2020-09-26               US  40 -100 recovered  23124
+## 1234 2020-09-27               US  40 -100 recovered  15821
+## 1235 2020-09-28               US  40 -100 recovered  28328
+## 1236 2020-09-29               US  40 -100 recovered  18697
+## 1237 2020-09-30               US  40 -100 recovered  27383
+## 1238 2020-10-01               US  40 -100 recovered  19962
+## 1239 2020-10-02               US  40 -100 recovered  12719
+## 1240 2020-10-03               US  40 -100 recovered  23953
+## 1241 2020-10-04               US  40 -100 recovered  14377
+## 1242 2020-10-05               US  40 -100 recovered  23443
+## 1243 2020-10-06               US  40 -100 recovered  17248
+## 1244 2020-10-07               US  40 -100 recovered  47505
+## 1245 2020-10-08               US  40 -100 recovered  21357
+## 1246 2020-10-09               US  40 -100 recovered  17837
+## 1247 2020-10-10               US  40 -100 recovered  23894
+## 1248 2020-10-11               US  40 -100 recovered  12094
+## 1249 2020-10-12               US  40 -100 recovered  31651
+## 1250 2020-10-13               US  40 -100 recovered  17865
+## 1251 2020-10-14               US  40 -100 recovered  31201
+## 1252 2020-10-15               US  40 -100 recovered  21603
+## 1253 2020-10-16               US  40 -100 recovered  20142
+## 1254 2020-10-17               US  40 -100 recovered  23034
+## 1255 2020-10-18               US  40 -100 recovered  13565
+## 1256 2020-10-19               US  40 -100 recovered  38465
+## 1257 2020-10-20               US  40 -100 recovered  22545
+## 1258 2020-10-21               US  40 -100 recovered  28206
+## 1259 2020-10-22               US  40 -100 recovered  29702
+## 1260 2020-10-23               US  40 -100 recovered  22371
+## 1261 2020-10-24               US  40 -100 recovered  31229
+## 1262 2020-10-25               US  40 -100 recovered  16222
+## 1263 2020-10-26               US  40 -100 recovered  37577
+## 1264 2020-10-27               US  40 -100 recovered  27211
+## 1265 2020-10-28               US  40 -100 recovered  30474
+## 1266 2020-10-29               US  40 -100 recovered  36196
+## 1267 2020-10-30               US  40 -100 recovered  24116
+## 1268 2020-10-31               US  40 -100 recovered  34026
+## 1269 2020-11-01               US  40 -100 recovered  18101
+## 1270 2020-11-02               US  40 -100 recovered  44402
+## 1271 2020-11-03               US  40 -100 recovered  30149
+## 1272 2020-11-04               US  40 -100 recovered  38397
+## 1273 2020-11-05               US  40 -100 recovered  38224
+## 1274 2020-11-06               US  40 -100 recovered  29040
+## 1275 2020-11-07               US  40 -100 recovered  40674
+## 1276 2020-11-08               US  40 -100 recovered  30026
+## 1277 2020-11-09               US  40 -100 recovered  47354
+## 1278 2020-11-10               US  40 -100 recovered  33028
+## 1279 2020-11-11               US  40 -100 recovered  35302
+## 1280 2020-11-12               US  40 -100 recovered  54081
+## 1281 2020-11-13               US  40 -100 recovered  43890
+## 1282 2020-11-14               US  40 -100 recovered  53298
+## 1283 2020-11-15               US  40 -100 recovered  26440
+## 1284 2020-11-16               US  40 -100 recovered  69927
+## 1285 2020-11-17               US  40 -100 recovered  48829
+## 1286 2020-11-18               US  40 -100 recovered  57149
+## 1287 2020-11-19               US  40 -100 recovered  59920
+## 1288 2020-11-20               US  40 -100 recovered  47221
+## 1289 2020-11-21               US  40 -100 recovered  71770
+## 1290 2020-11-22               US  40 -100 recovered  -3187
+## 1291 2020-11-23               US  40 -100 recovered 107087
+## 1292 2020-11-24               US  40 -100 recovered  63064
+## 1293 2020-11-25               US  40 -100 recovered 139292
+## 1294 2020-11-26               US  40 -100 recovered  35247
+## 1295 2020-11-27               US  40 -100 recovered  76243
+## 1296 2020-11-28               US  40 -100 recovered  75617
+## 1297 2020-11-29               US  40 -100 recovered  41967
+## 1298 2020-11-30               US  40 -100 recovered  81289
+## 1299 2020-12-01               US  40 -100 recovered  80262
+## 1300 2020-12-02               US  40 -100 recovered  95547
+## 1301 2020-12-03               US  40 -100 recovered  81890
+## 1302 2020-12-04               US  40 -100 recovered  66371
+## 1303 2020-12-05               US  40 -100 recovered 105637
+## 1304 2020-12-06               US  40 -100 recovered  48418
+## 1305 2020-12-07               US  40 -100 recovered  90113
+## 1306 2020-12-08               US  40 -100 recovered  72358
+## 1307 2020-12-09               US  40 -100 recovered 102981
+## 1308 2020-12-10               US  40 -100 recovered  95151
+## 1309 2020-12-11               US  40 -100 recovered 150267
+## 1310 2020-12-12               US  40 -100 recovered 111291
+## 1311 2020-12-13               US  40 -100 recovered  51477
+## 1312 2020-12-14               US  40 -100 recovered      0
+## 1313 2020-12-15               US  40 -100 recovered      0
+## 1314 2020-12-16               US  40 -100 recovered      0
+## 1315 2020-12-17               US  40 -100 recovered      0
+## 1316 2020-12-18               US  40 -100 recovered      0
+## 1317 2020-12-19               US  40 -100 recovered      0
+## 1318 2020-12-20               US  40 -100 recovered      0
+## 1319 2020-12-21               US  40 -100 recovered      0
+## 1320 2020-12-22               US  40 -100 recovered      0
+## 1321 2020-12-23               US  40 -100 recovered      0
+## 1322 2020-12-24               US  40 -100 recovered      0
+## 1323 2020-12-25               US  40 -100 recovered      0
+## 1324 2020-12-26               US  40 -100 recovered      0
+## 1325 2020-12-27               US  40 -100 recovered      0
+## 1326 2020-12-28               US  40 -100 recovered      0
+## 1327 2020-12-29               US  40 -100 recovered      0
+## 1328 2020-12-30               US  40 -100 recovered      0
+## 1329 2020-12-31               US  40 -100 recovered      0
+## 1330 2021-01-01               US  40 -100 recovered      0
+## 1331 2021-01-02               US  40 -100 recovered      0
+## 1332 2021-01-03               US  40 -100 recovered      0
+## 1333 2021-01-04               US  40 -100 recovered      0
+## 1334 2021-01-05               US  40 -100 recovered      0
+## 1335 2021-01-06               US  40 -100 recovered      0
+## 1336 2021-01-07               US  40 -100 recovered      0
+## 1337 2021-01-08               US  40 -100 recovered      0
+## 1338 2021-01-09               US  40 -100 recovered      0
+## 1339 2021-01-10               US  40 -100 recovered      0
+## 1340 2021-01-11               US  40 -100 recovered      0
+## 1341 2021-01-12               US  40 -100 recovered      0
+## 1342 2021-01-13               US  40 -100 recovered      0
+## 1343 2021-01-14               US  40 -100 recovered      0
+## 1344 2021-01-15               US  40 -100 recovered      0
+## 1345 2021-01-16               US  40 -100 recovered      0
+## 1346 2021-01-17               US  40 -100 recovered      0
+## 1347 2021-01-18               US  40 -100 recovered      0
+## 1348 2021-01-19               US  40 -100 recovered      0
+## 1349 2021-01-20               US  40 -100 recovered      0
+## 1350 2021-01-21               US  40 -100 recovered      0
+## 1351 2021-01-22               US  40 -100 recovered      0
+## 1352 2021-01-23               US  40 -100 recovered      0
+## 1353 2021-01-24               US  40 -100 recovered      0
+## 1354 2021-01-25               US  40 -100 recovered      0
+## 1355 2021-01-26               US  40 -100 recovered      0
+## 1356 2021-01-27               US  40 -100 recovered      0
+## 1357 2021-01-28               US  40 -100 recovered      0
+## 1358 2021-01-29               US  40 -100 recovered      0
+## 1359 2021-01-30               US  40 -100 recovered      0
+## 1360 2021-01-31               US  40 -100 recovered      0
+## 1361 2021-02-01               US  40 -100 recovered      0
+## 1362 2021-02-02               US  40 -100 recovered      0
+## 1363 2021-02-03               US  40 -100 recovered      0
+## 1364 2021-02-04               US  40 -100 recovered      0
+## 1365 2021-02-05               US  40 -100 recovered      0
+## 1366 2021-02-06               US  40 -100 recovered      0
+## 1367 2021-02-07               US  40 -100 recovered      0
+## 1368 2021-02-08               US  40 -100 recovered      0
+## 1369 2021-02-09               US  40 -100 recovered      0
+## 1370 2021-02-10               US  40 -100 recovered      0
+## 1371 2021-02-11               US  40 -100 recovered      0
+## 1372 2021-02-12               US  40 -100 recovered      0
+## 1373 2021-02-13               US  40 -100 recovered      0
+## 1374 2021-02-14               US  40 -100 recovered      0
+## 1375 2021-02-15               US  40 -100 recovered      0
+## 1376 2021-02-16               US  40 -100 recovered      0
+## 1377 2021-02-17               US  40 -100 recovered      0
+## 1378 2021-02-18               US  40 -100 recovered      0
+## 1379 2021-02-19               US  40 -100 recovered      0
+## 1380 2021-02-20               US  40 -100 recovered      0
+## 1381 2021-02-21               US  40 -100 recovered      0
+## 1382 2021-02-22               US  40 -100 recovered      0
+## 1383 2021-02-23               US  40 -100 recovered      0
+## 1384 2021-02-24               US  40 -100 recovered      0
+## 1385 2021-02-25               US  40 -100 recovered      0
+## 1386 2021-02-26               US  40 -100 recovered      0
+## 1387 2021-02-27               US  40 -100 recovered      0
+## 1388 2021-02-28               US  40 -100 recovered      0
+## 1389 2021-03-01               US  40 -100 recovered      0
+## 1390 2021-03-02               US  40 -100 recovered      0
+## 1391 2021-03-03               US  40 -100 recovered      0
+## 1392 2021-03-04               US  40 -100 recovered      0
+## 1393 2021-03-05               US  40 -100 recovered      0
+## 1394 2021-03-06               US  40 -100 recovered      0
+## 1395 2021-03-07               US  40 -100 recovered      0
+## 1396 2021-03-08               US  40 -100 recovered      0
+## 1397 2021-03-09               US  40 -100 recovered      0
+## 1398 2021-03-10               US  40 -100 recovered      0
+## 1399 2021-03-11               US  40 -100 recovered      0
+## 1400 2021-03-12               US  40 -100 recovered      0
+## 1401 2021-03-13               US  40 -100 recovered      0
+## 1402 2021-03-14               US  40 -100 recovered      0
+## 1403 2021-03-15               US  40 -100 recovered      0
+## 1404 2021-03-16               US  40 -100 recovered      0
+## 1405 2021-03-17               US  40 -100 recovered      0
+## 1406 2021-03-18               US  40 -100 recovered      0
+## 1407 2021-03-19               US  40 -100 recovered      0
+## 1408 2021-03-20               US  40 -100 recovered      0
+## 1409 2021-03-21               US  40 -100 recovered      0
+## 1410 2021-03-22               US  40 -100 recovered      0
+## 1411 2021-03-23               US  40 -100 recovered      0
+## 1412 2021-03-24               US  40 -100 recovered      0
+## 1413 2021-03-25               US  40 -100 recovered      0
+## 1414 2021-03-26               US  40 -100 recovered      0
+## 1415 2021-03-27               US  40 -100 recovered      0
+## 1416 2021-03-28               US  40 -100 recovered      0
+## 1417 2021-03-29               US  40 -100 recovered      0
+## 1418 2021-03-30               US  40 -100 recovered      0
+## 1419 2021-03-31               US  40 -100 recovered      0
+## 1420 2021-04-01               US  40 -100 recovered      0
+## 1421 2021-04-02               US  40 -100 recovered      0
+## 1422 2021-04-03               US  40 -100 recovered      0
+## 1423 2021-04-04               US  40 -100 recovered      0
+## 1424 2021-04-05               US  40 -100 recovered      0
+## 1425 2021-04-06               US  40 -100 recovered      0
+## 1426 2021-04-07               US  40 -100 recovered      0
+## 1427 2021-04-08               US  40 -100 recovered      0
+## 1428 2021-04-09               US  40 -100 recovered      0
+## 1429 2021-04-10               US  40 -100 recovered      0
+## 1430 2021-04-11               US  40 -100 recovered      0
+## 1431 2021-04-12               US  40 -100 recovered      0
+## 1432 2021-04-13               US  40 -100 recovered      0
+## 1433 2021-04-14               US  40 -100 recovered      0
+## 1434 2021-04-15               US  40 -100 recovered      0
+## 1435 2021-04-16               US  40 -100 recovered      0
+## 1436 2021-04-17               US  40 -100 recovered      0
+## 1437 2021-04-18               US  40 -100 recovered      0
+## 1438 2021-04-19               US  40 -100 recovered      0
+## 1439 2021-04-20               US  40 -100 recovered      0
+## 1440 2021-04-21               US  40 -100 recovered      0
+## 1441 2021-04-22               US  40 -100 recovered      0
+## 1442 2021-04-23               US  40 -100 recovered      0
+## 1443 2021-04-24               US  40 -100 recovered      0
+## 1444 2021-04-25               US  40 -100 recovered      0
+## 1445 2021-04-26               US  40 -100 recovered      0
+## 1446 2021-04-27               US  40 -100 recovered      0
+## 1447 2021-04-28               US  40 -100 recovered      0
+## 1448 2021-04-29               US  40 -100 recovered      0
+## 1449 2021-04-30               US  40 -100 recovered      0
+## 1450 2021-05-01               US  40 -100 recovered      0
+## 1451 2021-05-02               US  40 -100 recovered      0
+## 1452 2021-05-03               US  40 -100 recovered      0
+## 1453 2021-05-04               US  40 -100 recovered      0
+## 1454 2021-05-05               US  40 -100 recovered      0
+## 1455 2021-05-06               US  40 -100 recovered      0
+## 1456 2021-05-07               US  40 -100 recovered      0
+## 1457 2021-05-08               US  40 -100 recovered      0
+## 1458 2021-05-09               US  40 -100 recovered      0
+## 1459 2021-05-10               US  40 -100 recovered      0
+## 1460 2021-05-11               US  40 -100 recovered      0
+## 1461 2021-05-12               US  40 -100 recovered      0
+## 1462 2021-05-13               US  40 -100 recovered      0
+## 1463 2021-05-14               US  40 -100 recovered      0
+## 1464 2021-05-15               US  40 -100 recovered      0
+## 1465 2021-05-16               US  40 -100 recovered      0
+## 1466 2021-05-17               US  40 -100 recovered      0
+## 1467 2021-05-18               US  40 -100 recovered      0
+## 1468 2021-05-19               US  40 -100 recovered      0
+## 1469 2021-05-20               US  40 -100 recovered      0
+## 1470 2021-05-21               US  40 -100 recovered      0
+## 1471 2021-05-22               US  40 -100 recovered      0
+## 1472 2021-05-23               US  40 -100 recovered      0
+## 1473 2021-05-24               US  40 -100 recovered      0
+## 1474 2021-05-25               US  40 -100 recovered      0
+## 1475 2021-05-26               US  40 -100 recovered      0
+## 1476 2021-05-27               US  40 -100 recovered      0</code></pre>
 <p>How about confirmed cases by country?</p>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb264-1" data-line-number="1">coronavirus <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(type <span class="op">==</span><span class="st"> &quot;confirmed&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Country.Region) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="dt">total=</span><span class="kw">sum</span>(cases)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(total))</a></code></pre></div>
-<pre><code>## # A tibble: 30 x 2
-##    Country.Region total
-##    &lt;chr&gt;          &lt;int&gt;
-##  1 Mainland China 70446
-##  2 Others           355
-##  3 Singapore         75
-##  4 Japan             59
-##  5 Hong Kong         57
-##  6 Thailand          34
-##  7 South Korea       29
-##  8 Malaysia          22
-##  9 Taiwan            20
-## 10 Germany           16
-## # … with 20 more rows</code></pre>
-<p>With this library, you could track this every day. Pretty neat, if you ask me.</p>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="intro-to-apis-the-census.html#cb302-1" aria-hidden="true" tabindex="-1"></a>coronavirus <span class="sc">%&gt;%</span> <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">&quot;confirmed&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">total=</span><span class="fu">sum</span>(cases)) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(total))</span></code></pre></div>
+<pre><code>## # A tibble: 193 × 2
+##    country           total
+##    &lt;chr&gt;             &lt;dbl&gt;
+##  1 US             33217995
+##  2 India          27555457
+##  3 Brazil         16342162
+##  4 France          5697076
+##  5 Turkey          5220549
+##  6 Russia          4977332
+##  7 United Kingdom  4489552
+##  8 Italy           4205970
+##  9 Germany         3673990
+## 10 Argentina       3663215
+## # … with 183 more rows</code></pre>
+<p>Seems a little out of date, but the idea is a good one.</p>
 
 </div>
 </div>
@@ -518,6 +2024,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -538,6 +2045,10 @@ gitbook.start({
 "text": null
 },
 "download": ["datajournalism.pdf", "datajournalism.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

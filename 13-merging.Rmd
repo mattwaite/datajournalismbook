@@ -17,15 +17,15 @@ library(tidyverse)
 ```
 
 ```{r}
-popestimate_2010 <- read_csv("popestimate_2010.csv")
+popestimate_2010 <- read_csv("data/popestimate_2010.csv")
 ```
 
 ```{r}
-popestimate_2015 <- read_csv("popestimate_2015.csv")
+popestimate_2015 <- read_csv("data/popestimate_2015.csv")
 ```
 
 ```{r}
-popestimate_2020 <- read_csv("popestimate_2020.csv")
+popestimate_2020 <- read_csv("data/popestimate_2020.csv")
 ```
 
 All three of these datasets have the same number of columns, all with the same names, so if we want to merge them together to compare them over time, we need to stack them together. The verb here, in R, is `bind_rows`. You tell the function what you want to combine and it does it, assuming that you've got column names in common containing identically formatted data.
@@ -45,7 +45,7 @@ More difficult is when you have two separate tables that are connected by a comm
 Let's start by reading in the Maryland PPP loan applications data:
 
 ```{r}
-maryland_ppp <- read_csv('ppp_applications_md.csv')
+maryland_ppp <- read_csv('data/ppp_applications_md.csv')
 ```
 
 One of the columns we have is called `naics_code`, which is a six-digit number used by the federal government "in classifying business establishments for the purpose of collecting, analyzing, and publishing statistical data related to the U.S. business economy." More details at [the official NAICS site](https://www.census.gov/naics/).
@@ -55,7 +55,7 @@ But unless you have a particular interest in memorizing what those more than 1,0
 Using a [CSV file of the 2017 NAICS codes](https://umd.box.com/s/thou3merdzwzbdimbvd06zkax1zndcsk), let's read the file into R:
 
 ```{r}
-naics_codes <- read_csv('naics_codes.csv')
+naics_codes <- read_csv('data/naics_codes.csv')
 ```
 
 To put the Maryland applications and NAICS codes together, we need to use something called a join. There are different kinds of joins. It's better if you think of two tables sitting next to each other. A `left_join` takes all the records from the left table and only the records that match in the right one. A `right_join` does the same thing. An `inner_join` takes only the records where they are equal. There's one other join -- a `full_join` which returns all rows of both, regardless of if there's a match -- but I've never once had a use for a full join.
@@ -87,7 +87,7 @@ Now, with our joined data, we can answer questions in a more useful way. But joi
 Let's try adding zip code demographic data to the mix. Using [a file from the state's data catalog](https://umd.box.com/s/2xsq2rpkmg4ct3a77vt8j5bu4vu1z0tf), we can read it into R:
 
 ```{r}
-maryland_zcta <- read_csv('maryland_zcta.csv')
+maryland_zcta <- read_csv('data/maryland_zcta.csv')
 ```
 
 You'll want to keep open the [data documentation](https://geodata.md.gov/imap/rest/services/Demographics/MD_CensusData/FeatureServer/1) that hosts the data, because the field names are abbreviations.
@@ -96,17 +96,16 @@ Note that this file describes Zip Code Tabulation Areas, which are very similar 
 
 Again, we can use a `left_join` to make our demographic data available. This time we'll need to specify the two fields to join because they do not have identical names. We'll use `zip` from our PPP data and `ZCTA5N` from the demographic data:
 
-```{r}
+```{r, error=TRUE}
 maryland_ppp_with_naics_and_demographics <- maryland_ppp_with_naics %>% left_join(maryland_zcta, by=c("zip"="ZCTA5N"))
 ```
 
 You probably got an error when running that:
 
-```{r}
+
 Error: Can't join on `x$zip` x `y$zip` because of incompatible types.
 ℹ `x$zip` is of type <character>>.
 ℹ `y$zip` is of type <double>>
-```
 
 Let's unpack this: R is saying it can't join those two columns because one of them is a character column and the other is a double (number) column. When joining, _the two columns need to have the same data type_.
 
@@ -120,7 +119,8 @@ Now we can re-run the join:
 
 ```{r}
 maryland_ppp_with_naics_and_demographics <- maryland_ppp_with_naics %>% left_join(maryland_zcta, by=c("zip"="ZCTA5N"))
-View(maryland_ppp_with_naics_and_demographics)
+
+maryland_ppp_with_naics_and_demographics
 ```
 
 Now, if you use the tiny black right arrows to see what's in those demographic columns, you'll see ... a lot of NAs. What's going on there? Are there zip codes in the PPP data that aren't in the ZCTA data? If you go back using the left arrows, you can see that the PPP zip codes often are zip+4, and we're using the ZCTA5N field to join, which is a 5-character field. But not all of the PPP codes are zip+4. So we'll need to use `mutate` once more to give us a PPP zip field that is exactly 5 characters. Let's do this on the original `maryland` dataframe so we can then do the join using our new `zip5` field:
