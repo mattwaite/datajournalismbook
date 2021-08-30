@@ -355,7 +355,7 @@ If you’re interested I how effective social distancing is working, a good surr
 <p>First, let’s just visualize regular call volumes and see: Does the end of the line drop sharply, indicating people are socially distancing?</p>
 <div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="basic-stats-the-t-test.html#cb463-1" aria-hidden="true" tabindex="-1"></a>calls <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(RPT_Date) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">total=</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span>RPT_Date, <span class="at">y=</span>total))</span></code></pre></div>
 <pre><code>## Warning: Removed 1 row(s) containing missing values (geom_path).</code></pre>
-<p><img src="datajournalism_files/figure-html/unnamed-chunk-265-1.png" width="672" /></p>
+<p><img src="datajournalism_files/figure-html/unnamed-chunk-266-1.png" width="672" /></p>
 <p>Short answer? No. Longer answer? It’s obvious that Lincoln has a seasonality to crime. It generally is low over the dead of winter and rises as it gets warmer, peaking during early football season (no surprise there) and dropping back down as winter sets in. So to make this useful, we should only compare dates in this March to previous March dates. Then we eliminate the seasonality issue.</p>
 <p>So we’re going to do some filtering here. The following block is broken down like this:</p>
 <ol style="list-style-type: decimal">

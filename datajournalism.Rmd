@@ -542,11 +542,15 @@ We'll make use of a lot of pre-written functions from the tidyverse and other pa
 
 Inside of the **read_rds()** function, we've put the name of the file we want to load.  Things we put inside of function, to customize what the function does, are called **arguments**. 
 
-The easiest thing to do, if you are confused about how to find your data, is to put your data in the same folder as as your notebook (you'll have to save that notebook first). If you do that, then you just need to put the name of the file in there (ppp_maryland.csv). If you put your data in a folder called "data" that sits next to your data notebook, your function would instead look like this: 
+The easiest thing to do, if you are confused about how to find your data, is to put your data in the same folder as as your notebook (you'll have to save that notebook first). If you do that, then you just need to put the name of the file in there (ppp_maryland.rds). If you put your data in a folder called "data" that sits next to your data notebook, your function would instead look like this: 
 
-```{r}
+```{r, eval=FALSE}
 
-#ppp_maryland_loans <- read_csv("ppp_loan_data/ppp_maryland.csv")
+ppp_maryland_loans <- read_rds("data/ppp_maryland.rds")
+
+```
+
+```{r, echo=FALSE}
 
 ppp_maryland_loans <- read_rds("pre_labs/pre_lab_01/pre_lab_01.rds")
 

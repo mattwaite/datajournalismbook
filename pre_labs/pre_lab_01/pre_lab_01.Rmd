@@ -210,5 +210,5 @@ ppp_maryland_loans %>%
   arrange(desc(amount))
 
 ```
-How many companies got $10 million loans? One of them is a restaurant chain.  What kind of food do they server? Put your answers in the space below.
+How many companies got $10 million loans? One of them is a restaurant chain.  What kind of food do they serve? Put your answers in the space below.
 **Answer**

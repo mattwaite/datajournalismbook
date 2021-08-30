@@ -376,7 +376,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="geographic-data-basics.html#cb339-1" aria-hidden="true" tabindex="-1"></a>nehospitals <span class="ot">&lt;-</span> ne <span class="sc">%&gt;%</span> <span class="fu">filter</span>(TYPE <span class="sc">==</span> <span class="st">&quot;CRITICAL ACCESS&quot;</span> <span class="sc">|</span> TYPE <span class="sc">==</span> <span class="st">&quot;GENERAL ACUTE CARE&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(STATUS <span class="sc">==</span> <span class="st">&quot;OPEN&quot;</span>)</span></code></pre></div>
 <p>That gives us 90 hospitals in Nebraska. Where are they? We can simply plot them using ggplot.</p>
 <div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="geographic-data-basics.html#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data=</span>nehospitals) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="datajournalism_files/figure-html/unnamed-chunk-194-1.png" width="672" /></p>
+<p><img src="datajournalism_files/figure-html/unnamed-chunk-195-1.png" width="672" /></p>
 <p>If you know anything about the state of Nebraska, you can kinda pick out the shape of the state there. But that’s not exactly ideal.</p>
 <p>This is where layering becomes more clear.</p>
 <p>Download <a href="https://unl.box.com/s/bgvm2x2wzu66mp5o6qykx1flxzz765dj">this file of county boundaries</a>. We can read it the same way.</p>
@@ -394,7 +394,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>And now we can layer them in. Something to note: The layers are rendered in the order they appear. So the first geom_sf is rendered first. The second geom_sf is rendered ON TOP OF the first one.</p>
 <p>So if we want to see where hospitals are in Nebraska, we add the counties, then the hospitals.</p>
 <div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="geographic-data-basics.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data=</span>necounties) <span class="sc">+</span> <span class="fu">geom_sf</span>(<span class="at">data=</span>nehospitals) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="datajournalism_files/figure-html/unnamed-chunk-197-1.png" width="672" /></p>
+<p><img src="datajournalism_files/figure-html/unnamed-chunk-198-1.png" width="672" /></p>
 <p>And with that, we can see some questions already arising. How many counties don’t have hospitals at all? How many beds are there in each county? What if we had towns as points. Could we find the town that’s the farthest from a hospital?</p>
 
 </div>

@@ -413,13 +413,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="geographic-analysis.html#cb363-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb363-2"><a href="geographic-analysis.html#cb363-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data=</span>nehospbycounty, <span class="fu">aes</span>(<span class="at">fill=</span>total_beds)) <span class="sc">+</span> </span>
 <span id="cb363-3"><a href="geographic-analysis.html#cb363-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="datajournalism_files/figure-html/unnamed-chunk-208-1.png" width="672" /></p>
+<p><img src="datajournalism_files/figure-html/unnamed-chunk-209-1.png" width="672" /></p>
 <p>We get what we expect … it’s not ideal. We can’t really tell a difference between anything outside of Douglas and Lancaster counties. So we can add a scale in here. This one is called viridis, and it makes a more visibile color ramp. And since we have a large disparity between Douglas County and pretty much everywhere else, we’ll make the scale exponential.</p>
 <div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="geographic-analysis.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
 <span id="cb364-2"><a href="geographic-analysis.html#cb364-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data=</span>nehospbycounty, <span class="fu">aes</span>(<span class="at">fill=</span>total_beds)) <span class="sc">+</span> </span>
 <span id="cb364-3"><a href="geographic-analysis.html#cb364-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
 <span id="cb364-4"><a href="geographic-analysis.html#cb364-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">option =</span> <span class="st">&quot;plasma&quot;</span>, <span class="at">trans =</span> <span class="st">&quot;sqrt&quot;</span>)</span></code></pre></div>
-<p><img src="datajournalism_files/figure-html/unnamed-chunk-209-1.png" width="672" /></p>
+<p><img src="datajournalism_files/figure-html/unnamed-chunk-210-1.png" width="672" /></p>
 <p>So there’s the map. How about a list:</p>
 <div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="geographic-analysis.html#cb365-1" aria-hidden="true" tabindex="-1"></a>nebedcount <span class="sc">%&gt;%</span> <span class="fu">select</span>(COUNTY, total_beds) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(total_beds)) </span></code></pre></div>
 <pre><code>##          COUNTY total_beds

@@ -358,12 +358,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="automating-geographic-analysis.html#cb444-1" aria-hidden="true" tabindex="-1"></a>nebraska <span class="ot">&lt;-</span> covid <span class="sc">%&gt;%</span> <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">&quot;Nebraska&quot;</span>)</span></code></pre></div>
 <p>And we can create line chart like this:</p>
 <div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="automating-geographic-analysis.html#cb445-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">data=</span>nebraska, <span class="fu">aes</span>(<span class="at">x=</span>date, <span class="at">y=</span>cases, <span class="at">group=</span>county, <span class="at">color=</span>county))</span></code></pre></div>
-<p><img src="datajournalism_files/figure-html/unnamed-chunk-254-1.png" width="672" /></p>
+<p><img src="datajournalism_files/figure-html/unnamed-chunk-255-1.png" width="672" /></p>
 <p>The little county on the bottom that curves sharply up? That’s my home county, Washington County. One day of this writing, they added 10 cases in one day in one nursing home. Grim stuff.</p>
 <p>The curve you see for Douglas County is a classic exponential curve. Because the number of cases here are small, we can get away with it for a little while. But when looking at much larger places, you’d use a log scale. <a href="https://www.ft.com/video/9a72a9d4-8db1-4615-8333-4b73ae3ddff8">YOU REALLY SHOULD WATCH THIS</a>. You’ve no doubt seen the Financial Times coronavirus trajectory tracker. Hear why they are using a log scale. And here’s what our chart looks like with it. Note the y-axis scale.</p>
 <div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="automating-geographic-analysis.html#cb446-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">data=</span>nebraska, <span class="fu">aes</span>(<span class="at">x=</span>date, <span class="at">y=</span>cases, <span class="at">group=</span>county, <span class="at">color=</span>county)) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">trans=</span><span class="st">&quot;log10&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning: Transformation introduced infinite values in continuous y-axis</code></pre>
-<p><img src="datajournalism_files/figure-html/unnamed-chunk-255-1.png" width="672" /></p>
+<p><img src="datajournalism_files/figure-html/unnamed-chunk-256-1.png" width="672" /></p>
 <div id="mapping-continuously" class="section level2" number="23.1">
 <h2><span class="header-section-number">23.1</span> Mapping continuously</h2>
 <p>But for a map, we can’t have multiple days. We need a single day. Ideally, it would be the most recent date. We can get it using the <code>max</code> function.</p>
@@ -392,7 +392,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb455-3"><a href="automating-geographic-analysis.html#cb455-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">option =</span> <span class="st">&quot;plasma&quot;</span>, <span class="at">trans =</span> <span class="st">&quot;sqrt&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb455-4"><a href="automating-geographic-analysis.html#cb455-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span> </span>
 <span id="cb455-5"><a href="automating-geographic-analysis.html#cb455-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">&quot;COVID-19 cases as of &quot;</span>, current[[<span class="dv">1</span>]], <span class="at">sep=</span><span class="st">&quot;&quot;</span>))</span></code></pre></div>
-<p><img src="datajournalism_files/figure-html/unnamed-chunk-261-1.png" width="672" /></p>
+<p><img src="datajournalism_files/figure-html/unnamed-chunk-262-1.png" width="672" /></p>
 <p>As it stands, we can run this every day and get an up-to-date map.</p>
 
 </div>
